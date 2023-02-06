@@ -120,8 +120,8 @@ export function Header() {
             </CustomLink>
           </li>
           <li>
-            <CustomLink className="link" onClick={openCloseNavMenu} to={"/"}>
-              ABOUT
+            <CustomLink className="link" onClick={openCloseNavMenu} to={"/orders"}>
+              ORDERS
             </CustomLink>
           </li>
           <li>

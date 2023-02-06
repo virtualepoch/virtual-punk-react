@@ -3,8 +3,9 @@ import { useEffect } from "react";
 import { Header } from "./components/Header";
 import { ButtonToTop } from "./components/ButtonToTop";
 import { WireBoxUnderlay } from "./components/WireBoxUnderlay";
-import { Home } from "./pages/Home";
 import "./App.css";
+import { Home } from "./pages/Home";
+import { Orders } from "./pages/Orders";
 
 function useScrollToTop() {
   const { pathname } = useLocation();
@@ -24,6 +25,7 @@ function App() {
       <section className="page-container">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/orders" element={<Orders />} />
         </Routes>
       </section>
     </div>
