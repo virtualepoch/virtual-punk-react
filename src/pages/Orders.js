@@ -2,16 +2,35 @@ export function Orders() {
   return (
     <div className="page">
       <div className="banner thd-notes">
-      <h1>ORDERS - SECTION LINKS</h1>
+        <h1>ORDERS - SECTION LINKS</h1>
         <div className="hash-links">
-            <a className="hash-link" href="#general">ORDERS - GENERAL</a>
-            <a className="hash-link" href="#markdowns">ORDERS - MARKDOWNS</a>
-            <a className="hash-link" href="#addPartsServices">ORDERS - ADDING PARTS & SERVICES</a>
-            <a className="hash-link" href="#canceling">ORDERS - CANCELING</a>
-            <a className="hash-link" href="#osofc">ORDERS - OSOFC (OPEN SOLD ORDER FOR CHANGE)</a>
-            <a className="hash-link" href="#giftCards">ORDERS - GIFT CARDS</a>
-            <a className="hash-link" href="#postDelivery">ORDERS - POST DELIVERY</a>
-            <a className="hash-link" href="#returns">ORDERS - RETURNS</a>
+          <a className="hash-link" href="#general">
+            ORDERS - GENERAL
+          </a>
+          <a className="hash-link" href="#markdowns">
+            ORDERS - MARKDOWNS
+          </a>
+          <a className="hash-link" href="#damageAllowances">
+            ORDERS - DAMAGE ALLOWANCES
+          </a>
+          <a className="hash-link" href="#addPartsServices">
+            ORDERS - ADDING PARTS & SERVICES
+          </a>
+          <a className="hash-link" href="#canceling">
+            ORDERS - CANCELING
+          </a>
+          <a className="hash-link" href="#osofc">
+            ORDERS - OSOFC (OPEN SOLD ORDER FOR CHANGE)
+          </a>
+          <a className="hash-link" href="#giftCards">
+            ORDERS - GIFT CARDS
+          </a>
+          <a className="hash-link" href="#postDelivery">
+            ORDERS - POST DELIVERY
+          </a>
+          <a className="hash-link" href="#returns">
+            ORDERS - RETURNS
+          </a>
         </div>
         {/* GENERAL ORDERS ///////////// */}
         <div id="general" className="thd-notes-section">
@@ -27,20 +46,64 @@ export function Orders() {
         {/* MARKDOWNS ////////////////// */}
         <div id="markdowns" className="thd-notes-section">
           <h1>ORDERS - MARKDOWNS</h1>
-          <h2>&gt; SHOULD ON BE CONSIDERED AS A LAST RESORT, FIRST GOAL IS RESOLVE THE CUSTOMER'S ISSUE.</h2>
+          <h2>&gt; SHOULD ONLY BE CONSIDERED AS A LAST RESORT, FIRST GOAL IS RESOLVE THE CUSTOMER'S ISSUE.</h2>
           <h2>&gt; WE SHOULD NEVER INITIATE THE CONVERSATION.</h2>
           <h2>&gt; COMPETING PRICE MUST COME FROM COMPARABLE RETAILER.</h2>
           <h2>&gt; MUST BE THE EXACT ITEM. USE PRODUCT MODEL NUMBERS.</h2>
           <p>&gt; PRICE OVERRIDE - If not charged.</p>
           <p>&gt; PRICE MARKDOWN - If already charged.</p>
-          <p>&gt; We can do a PRICE OVERRIDE or PRICE MARKDOWN up to $150. Greater amounts require a supervisor.</p>
-          <p>&gt; GM markdowns are honored within the return policy, usually 30-90 days.</p>
-          <p>&gt; MA markdowns are honored within 30 days of purchase.</p>
+          <h2>&gt; We can do a PRICE OVERRIDE or PRICE MARKDOWN up to $150. If over:</h2>
+          <p>&gt; $151 - $500 - Supervisor Required</p>
+          <p>&gt; $500 - $1000 - Manager Required</p>
+          <p>&gt; OVER $1000 - Director Required</p>
+          <p>&gt; GM markdowns are honored within the return policy, usually 30-90 days. Complete these in 'HOME'.</p>
+          <h2>&gt; MA markdowns are honored within 30 days of purchase.</h2>
+          <p>&gt; If PRE-DELIVERY: Must Cancel Order & Place New Order. DO NOT ATTEMPT TO MARKDOWN BECAUSE OUR SYSTEM ONLY ALLOWS ONE CHANGE FOR THESE ORDERS. IF YOU DO THEY WON'T BE ABLE TO ADD THINGS THEY MIGHT NEED (I.E. INSTALL KITS, ETC.).</p>
+          <p>&gt; If POST-DELIVERY: Complete in ESVS, Process refund in SPOS & Record in the Markdown Tracking Form.</p>
+          <h2>&gt; MARKDOWN TRACKING FORMS (POLICY REQUIRES THESE TO BE FILLED OUT)</h2>
+          <p>&gt; Agent: LDAP</p>
+          <p>&gt; $ Amount of Markdown: Dollar Amount</p>
+          <p>&gt; STORE #: ...</p>
+          <p>&gt; Markdown Approver: Last Name, First Name</p>
+          <p>&gt; </p>
+          <h2>&gt; THD WILL NOT OFFER MARKDOWNS FOR THE FOLLOWING REASONS:</h2>
+          <p>&gt; Missed time at work</p>
+          <p>&gt; Contractor / Labor fees</p>
+          <p>&gt; Installation fees</p>
+          <p>&gt; Property damage</p>
+          <p>&gt; Personal Injury</p>
+          <h2>WE CANNOT DO MARKDOWNS FOR 'DEFECTIVE' PRODUCTS:</h2>
+          <p>&gt; These must be returned due to safety concerns.</p>
+          <h2>REASON CODES</h2>
+          <p>&gt; 5: Customer Satisfation (CSAT)</p>
+          <p>&gt; 33: Post Purchase Competitor or Online Competitor Price Match / Store/Online Discrepancy / Post Purchase Lower Price within 30 days / Competitor or Online Competitor Price Match</p>
+          <p>&gt; 45: Damage Allowance / Online Associate Error / Post Promotion - failed orders</p>
+          <h2>
+            FOR <span className="border-text">STH</span> AND <span className="border-text">BOSS</span> FULFILLMENT
+          </h2>
+          <p>&gt; We can do price matches for these.</p>
+          <h2>
+            FOR <span className="border-text">BODFS</span> AND <span className="border-text">BOPIS</span> FULFILLMENT
+          </h2>
+          <p>&gt; Only stores can do price matches.</p>
+          <h2>FOR SHIPPING DISCOUNTS</h2>
+          <p>&gt; Can only be made for full shipping price. NOTE: Very rarely you will have to do this. Usually only happens if doing a re-order that had free shipping and it's trying to charge shipping.</p>
+          <p>&gt; </p>
           {/* WAYS A CUSTOMER CAN ACCESS THEIR ORDER ////////// */}
           <h1>THREE WAYS A CUSTOMER CAN LOCATE THEIR ORDER</h1>
           <p>&gt; Login to their account. Track order page.</p>
           <p>&gt; Have their order #.</p>
           <p>&gt; Tracking Email.</p>
+          <p>&gt; </p>
+        </div>
+
+        {/* DAMAGE ALLOWANCES ////////////////// */}
+        <div id="damageAllowances" className="thd-notes-section">
+          <h1>ORDERS - DAMAGE ALLOWANCES</h1>
+          <h2>OCC Owns ALL Major Appliance damage allowance calls</h2>
+          <p>&gt; If the driver or customer is calling in within 48 hours of delivery, PLEASE MAKE SURE TO OWN THE CALL.</p>
+          <p>&gt; ONLY USE REASON CODE 45 FOR DAMAGE ALLOWANCES</p>
+          <p>&gt; Markdowns above 25% will be declined by the vendor.</p>
           <p>&gt; </p>
         </div>
 
@@ -175,7 +238,9 @@ export function Orders() {
           <p>&gt; If adding small item (i.e. hoses, small accessories) just add it and notate in DMP. No need to do in 'ESVS'.</p>
           <p>&gt; STICKER SHOCK - Things like tracktors and large ticket items may appear to be a much lower price, however, once in the cart and hidden fees applied it may be closer or over our price.</p>
           <p>&gt; </p>
+          <p>&gt; </p>
         </div>
+        <span className="border-text"></span>
       </div>
     </div>
   );
