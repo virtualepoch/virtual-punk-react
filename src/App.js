@@ -6,6 +6,7 @@ import { WireBoxUnderlay } from "./components/WireBoxUnderlay";
 import "./App.css";
 import { Home } from "./pages/Home";
 import { Orders } from "./pages/Orders";
+import { Canceling } from "./pages/Canceling";
 
 function useScrollToTop() {
   const { pathname } = useLocation();
@@ -26,6 +27,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/orders" element={<Orders />} />
+          <Route path="/canceling" element={<Canceling />} />
         </Routes>
       </section>
     </div>
