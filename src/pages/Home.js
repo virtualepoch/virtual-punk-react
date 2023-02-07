@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { MainOverlay } from "../components/MainOverlay";
+import { WireBoxUnderlay } from "../components/WireBoxUnderlay";
 import "../pages/main-content.css";
 
 export function Home() {
@@ -39,6 +40,7 @@ export function Home() {
   return (
     <>
       <MainOverlay />
+      <WireBoxUnderlay />
       <section className="page">
         <div className="heading">
           <div className="hero-section-container">

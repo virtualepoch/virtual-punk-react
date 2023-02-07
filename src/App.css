@@ -2,6 +2,17 @@
   color: black;
 }
 
+.page-heading {
+  width: 100%;
+  font: 800 30px Raleway;
+  color: white;
+  border: solid aqua;
+  border-left: 10px solid aqua;
+  border-right: 10px solid aqua;
+  padding: 20px;
+  text-align: center;
+}
+
 .thd-notes {
   padding: 20px;
   color: white;
@@ -12,7 +23,7 @@
   gap: 10px;
 }
 
-.hash-links{
+.hash-links {
   border: 1px solid aqua;
   padding: 20px 10px;
   display: flex;
@@ -21,14 +32,15 @@
   gap: 15px;
 }
 
-.hash-link{
+.hash-link {
   width: fit-content;
   border: solid white;
+  border-radius: 10px;
   color: white;
   padding: 10px;
 }
 
-.thd-notes-section{
+.thd-notes-section {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -40,16 +52,16 @@
   width: 100%;
   margin: 70px 0 20px 0;
   padding: 20px 10px;
-  border: 3px solid red;
-  border-left: 5px solid red;
-  border-right: 5px solid red;
+  border: 2px solid red;
+  border-left: 10px solid red;
+  border-right: 10px solid red;
   text-align: center;
 }
 .thd-notes h2 {
   width: fit-content;
   margin: 20px 0;
   padding: 10px;
-  border-left: 2px solid red;
+  border-left: 5px solid red;
   border-bottom: 1px solid red;
 }
 
@@ -57,6 +69,7 @@
   width: fit-content;
   padding: 10px;
   border: 1px solid aqua;
+  border-left: 3px solid aqua;
 }
 
 .border-text {

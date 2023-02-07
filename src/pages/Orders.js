@@ -1,6 +1,7 @@
 export function Orders() {
   return (
     <div className="page">
+      <h1 className="page-heading">ORDERS</h1>
       <div className="banner thd-notes">
         <h1>ORDERS - SECTION LINKS</h1>
         <div className="hash-links">
@@ -71,6 +72,7 @@ export function Orders() {
           <p>&gt; </p>
           <h2>&gt; THD WILL NOT OFFER MARKDOWNS FOR THE FOLLOWING REASONS:</h2>
           <p>&gt; Missed time at work</p>
+          <p>&gt; NOTE FOR ABOVE: If we dropped the ball (i.e. late delivery) we will offer compensation</p>
           <p>&gt; Contractor / Labor fees</p>
           <p>&gt; Installation fees</p>
           <p>&gt; Property damage</p>
@@ -107,6 +109,17 @@ export function Orders() {
           <p>&gt; If the driver or customer is calling in within 48 hours of delivery, PLEASE MAKE SURE TO OWN THE CALL.</p>
           <p>&gt; ONLY USE REASON CODE 45 FOR DAMAGE ALLOWANCES</p>
           <p>&gt; Markdowns above 25% will be declined by the vendor.</p>
+          <h2>GM ORDERS</h2>
+          <p>&gt; Start off with a lower amount (i.e. 5% - 10% off).</p>
+          <p>&gt; Gauge the customers response then proceed.</p>
+          <p>&gt; If they counter offer you should try to meet in the middle.</p>
+          <p>&gt; Usually you will propose 15%-20% off.</p>
+          <p>&gt; Always propose a dollar amount because it's tangible.</p>
+          <p>&gt; BE SURE TO ALSO OFFER RETURN.</p>
+          <p>&gt; ASK THEM: "Does this sound good to you?"</p>
+          <h2>&gt; IF THE CUSTOMER HAS NO HISTORY OF ABUSE OR TRYING TO GET THINGS FOR FREE:</h2>
+          <p>&gt; TRY TO FIGURE OUT A WAY TO SAY 'YES'.</p>
+          <p>&gt; If item hasn't been delivered yet you can negotiate a MARKDOWN, however, you will just put this in the call notes then they will have to call back after delivery to get the MARKDOWN.</p>
           <p>&gt; </p>
         </div>
 

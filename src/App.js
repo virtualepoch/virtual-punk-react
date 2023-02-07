@@ -2,7 +2,6 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Header } from "./components/Header";
 import { ButtonToTop } from "./components/ButtonToTop";
-import { WireBoxUnderlay } from "./components/WireBoxUnderlay";
 import "./App.css";
 import { Home } from "./pages/Home";
 import { Orders } from "./pages/Orders";
@@ -23,7 +22,6 @@ function App() {
     <div className="App">
       <Header />
       <ButtonToTop />
-      <WireBoxUnderlay />
       <section className="page-container">
         <Routes>
           <Route path="/" element={<Home />} />
