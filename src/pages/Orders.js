@@ -6,34 +6,31 @@ export function Orders() {
         <h1>ORDERS - SECTION LINKS</h1>
         <div className="hash-links">
           <a className="hash-link" href="#general">
-            ORDERS - GENERAL
+            GENERAL
           </a>
           <a className="hash-link" href="#markdowns">
-            ORDERS - MARKDOWNS
+            MARKDOWNS
           </a>
           <a className="hash-link" href="#damageAllowances">
-            ORDERS - DAMAGE ALLOWANCES
+            DAMAGE ALLOWANCES
           </a>
           <a className="hash-link" href="#addPartsServices">
-            ORDERS - ADDING PARTS & SERVICES
+            ADDING PARTS & SERVICES
           </a>
           <a className="hash-link" href="#canceling">
-            ORDERS - CANCELING
+            CANCELING
           </a>
           <a className="hash-link" href="#osofc">
-            ORDERS - OSOFC (OPEN SOLD ORDER FOR CHANGE)
+            OSOFC (OPEN SOLD ORDER FOR CHANGE)
           </a>
           <a className="hash-link" href="#giftCards">
-            ORDERS - GIFT CARDS
+            GIFT CARDS
           </a>
           <a className="hash-link" href="#postDelivery">
-            ORDERS - POST DELIVERY
-          </a>
-          <a className="hash-link" href="#returns">
-            ORDERS - RETURNS
+            POST DELIVERY
           </a>
           <a className="hash-link" href="#coupons">
-            ORDERS - COUPONS
+            COUPONS
           </a>
         </div>
         {/* GENERAL ORDERS ///////////// */}
@@ -200,36 +197,6 @@ export function Orders() {
           <p>&gt; Plants have a 1 year guarantee. If purchased online and notified within 3 days of delivery we will reship free of charge.</p>
           <p>&gt; All 'FURNITURE', 'AREA RUGS', and 'ELECTRONICS (I.E. LAPTOPS, TVS)' have a 30 day return period.</p>
           <p>&gt; </p>
-          <p>&gt; </p>
-        </div>
-
-        {/* ORDERS - RETURN METHODS ////////////////// */}
-        <div id="returns" className="thd-notes-section">
-          <h1>ORDERS - RETURN METHODS</h1>
-          <h2>RETURN TO STORE: VALUE</h2>
-          <p>&gt; Convenient - Return to any local store.</p>
-          <p>&gt; Timely - Credit or refund issued at time of return.</p>
-          <p>&gt; Value - No return shipping charges.</p>
-          <h2>&gt; TO RETURN TO STORE THEY NEED:</h2>
-          <p>&gt; Copy of original receipt or bar coded shipping confirmation email. (IF NO RECEIPT THEY ONLY GET AN IN-STORE GIFT CARD)</p>
-          <p>&gt; Credit Card used to make the purchase.</p>
-          <p>&gt; Valid license or ID card.</p>
-          <p>&gt; </p>
-          <h2>&gt; RETURN BY MAIL: VALUE</h2>
-          <p>&gt; Easy - Request a shipping label online and receive in an email within 24 hours to print and attach.</p>
-          <p>&gt; Convenient - Return your items to nearest UPS store/drop-box.</p>
-          <p>&gt; Timely - Credit or refund issued 3-5 business days from time item is picked up.</p>
-          <p>&gt; No return shipping charges.</p>
-          <p>&gt; HAZARDOUS MATERIALS CANNOT BE RETURNED BY MAIL.</p>
-          <p>&gt; </p>
-          <h2>&gt; RETURN BY CARRIER</h2>
-          <p>&gt; Exceptions:</p>
-          <p>&gt; No orders under $25 value.</p>
-          <p>&gt; No glass, light bulbs, or mirrors.</p>
-          <p>&gt; No paint, stains, or other liquids, THESE ARE CONSIDERED HAZARDOUS.</p>
-          <h2>&gt; PRICE MATCH EXCLUSIONS</h2>
-          <p>&gt; No one time only promotions.</p>
-          <p>&gt; Third Party items.</p>
           <p>&gt; </p>
         </div>
         {/* ORDERS - COUPONS ////////////////// */}

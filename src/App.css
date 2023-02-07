@@ -26,9 +26,8 @@
 .hash-links {
   border: 1px solid aqua;
   padding: 20px 10px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: auto auto;
   gap: 15px;
 }
 
