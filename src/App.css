@@ -5,7 +5,7 @@
 .thd-notes {
   padding: 20px;
   color: white;
-  font: 700 clamp(0.5rem, 2vw, 1.5rem) Raleway;
+  font: 700 clamp(0.8rem, 2vw, 1.3rem) Raleway;
   letter-spacing: 1px;
   display: flex;
   flex-direction: column;

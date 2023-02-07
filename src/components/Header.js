@@ -125,13 +125,13 @@ export function Header() {
             </CustomLink>
           </li>
           <li>
-            <CustomLink className="link" onClick={openCloseNavMenu} to={"/canceling"}>
-              CANCELING
+            <CustomLink className="link" onClick={openCloseNavMenu} to={"/orders-2"}>
+              ORDERS 2
             </CustomLink>
           </li>
           <li>
-            <CustomLink className="link" onClick={openCloseNavMenu} to={"/canceling"}>
-              CANCELING
+            <CustomLink className="link" onClick={openCloseNavMenu} to={"/general"}>
+              GENERAL
             </CustomLink>
           </li>
         </ul>

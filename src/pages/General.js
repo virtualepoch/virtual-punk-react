@@ -2,13 +2,12 @@ import React, { useRef } from "react";
 import { MainOverlay } from "../components/MainOverlay";
 import "../pages/main-content.css";
 
-export function Canceling() {
+export function General() {
   return (
     <>
       <MainOverlay />
       <section className="page">
         <div className="banner thd-notes">
-          <p>&gt; </p>
           {/* AMPLIFY ////////////////////////////// */}
           <h1>Amplify</h1>
           <p>&gt; THIS IS WHERE WE SEE OUR STATS AND ACKNOWLEDGE SUPERVISOR MESSAGES.</p>

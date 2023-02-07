@@ -3,13 +3,13 @@ import React, { useRef } from "react";
 export function ButtonToTop() {
   const buttonToTop = useRef(null);
 
-  window.onscroll = function () {
+  window.addEventListener("scroll", function () {
     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
       buttonToTop.current.classList.add("open");
     } else {
       buttonToTop.current.classList.remove("open");
     }
-  };
+  });
 
   function scrollToTop() {
     document.documentElement.scrollTo({ top: 0, behavior: "smooth" });

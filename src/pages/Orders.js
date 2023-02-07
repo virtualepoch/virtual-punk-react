@@ -31,6 +31,9 @@ export function Orders() {
           <a className="hash-link" href="#returns">
             ORDERS - RETURNS
           </a>
+          <a className="hash-link" href="#coupons">
+            ORDERS - COUPONS
+          </a>
         </div>
         {/* GENERAL ORDERS ///////////// */}
         <div id="general" className="thd-notes-section">
@@ -216,9 +219,9 @@ export function Orders() {
           <p>&gt; Third Party items.</p>
           <p>&gt; </p>
         </div>
-        {/* NOTES ////////////////// */}
-        <div className="thd-notes-section">
-          <h1>NOTES</h1>
+        {/* ORDERS - COUPONS ////////////////// */}
+        <div id="coupons" className="thd-notes-section">
+          <h1>ORDERS - COUPONS</h1>
           <p>&gt; Coupons valid for HD products online will have a category # (i.e. home20, outdoor45, etc.)</p>
           <p>&gt; If coupon is all numbers it's an in-store coupon.</p>
           <p>&gt; Coupons are IN-STORE and ONLINE specific.</p>

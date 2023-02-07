@@ -14,7 +14,7 @@ export function Home() {
   const contentContainer1 = useRef(null);
   const contentContainer2 = useRef(null);
 
-  window.onscroll = function () {
+  window.addEventListener("scroll", function () {
     if (isInViewPort(contentContainer1.current)) {
       contentContainer1.current.classList.add("open");
     } else {
@@ -34,7 +34,7 @@ export function Home() {
     //     contentContainer.current[i].classList.remove("open");
     //   }
     // }
-  };
+  });
 
   return (
     <>
@@ -48,9 +48,7 @@ export function Home() {
                 My name is <span className="word-pop">Craig</span>
               </p>
               <p className="text">Who do I have the pleasure of speaking with?</p>
-              <p className="text">
-              Hi John, how can I help you today?
-              </p>
+              <p className="text">Hi John, how can I help you today?</p>
             </div>
           </div>
         </div>
