@@ -17,6 +17,12 @@
   background: linear-gradient(to bottom right, rgb(37, 37, 37, 0.7), rgb(0, 70, 70, 0.7), rgb(37, 37, 37, 0.7), rgb(0, 70, 70, 0.7), rgb(37, 37, 37, 0.7));
 }
 
+@media (max-width: 700px) {
+  .thd-script{
+    font-size: 20px;
+  }
+}
+
 .thd-script h1{
   border: 1px solid red;
   border-left: 3px solid aqua;
