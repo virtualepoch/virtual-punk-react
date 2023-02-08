@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { MainOverlay } from "../components/MainOverlay";
 import { WireBoxUnderlay } from "../components/WireBoxUnderlay";
 import "../pages/main-content.css";
@@ -15,26 +15,28 @@ export function Home() {
   const contentContainer1 = useRef(null);
   const contentContainer2 = useRef(null);
 
-  window.addEventListener("scroll", function () {
-    if (isInViewPort(contentContainer1.current)) {
-      contentContainer1.current.classList.add("open");
-    } else {
-      contentContainer1.current.classList.remove("open");
-    }
+  useEffect(() => {
+    window.addEventListener("scroll", function () {
+      if (isInViewPort(contentContainer1.current)) {
+        contentContainer1.current.classList.add("open");
+      } else {
+        contentContainer1.current.classList.remove("open");
+      }
 
-    if (isInViewPort(contentContainer2.current)) {
-      contentContainer2.current.classList.add("open");
-    } else {
-      contentContainer2.current.classList.remove("open");
-    }
+      if (isInViewPort(contentContainer2.current)) {
+        contentContainer2.current.classList.add("open");
+      } else {
+        contentContainer2.current.classList.remove("open");
+      }
 
-    // for (let i = 0; i < contentContainer.current.length; i++) {
-    //   if (isInViewPort(contentContainer.current[i])) {
-    //     contentContainer.current[i].classList.add("open");
-    //   } else if (!isInViewPort(contentContainer.current[i])) {
-    //     contentContainer.current[i].classList.remove("open");
-    //   }
-    // }
+      // for (let i = 0; i < contentContainer.current.length; i++) {
+      //   if (isInViewPort(contentContainer.current[i])) {
+      //     contentContainer.current[i].classList.add("open");
+      //   } else if (!isInViewPort(contentContainer.current[i])) {
+      //     contentContainer.current[i].classList.remove("open");
+      //   }
+      // }
+    });
   });
 
   return (
@@ -43,7 +45,20 @@ export function Home() {
       <WireBoxUnderlay />
       <section className="page">
         <div className="heading">
-          <div className="hero-section-container">
+          <div className="thd-script">
+            <h1> Hi, Welcome to the Home Depot.</h1>
+            <h1> My name is Craig. How can I help you today?</h1>
+            <h1> I can get that ordered for you.</h1>
+            <h1 className="border-text"> Ask them how they're doing while you're looking up the order.</h1>
+            <h1> ON EXIT</h1>
+            <h1> Today we were able to get that item ordered for you.</h1>
+            <h1> Is there anything else I can assist with?</h1>
+            <h1> Alright, well thanks for reaching out today.</h1>
+            <h1> Please stay on the line for our quick three question survey, and</h1>
+            <h1> Enjoy the rest of your day!</h1>
+            <h1> Thanks, Bye.</h1>
+          </div>
+          {/* <div className="hero-section-container">
             <div className="hero-section">
               <p className="text">Hi, Welcome to the Home Depot</p>
               <p className="text">
@@ -52,7 +67,7 @@ export function Home() {
               <p className="text">Who do I have the pleasure of speaking with?</p>
               <p className="text">Hi John, how can I help you today?</p>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <div className="banner banner-1"></div>

@@ -1,14 +1,16 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 
 export function ButtonToTop() {
   const buttonToTop = useRef(null);
 
-  window.addEventListener("scroll", function () {
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-      buttonToTop.current.classList.add("open");
-    } else {
-      buttonToTop.current.classList.remove("open");
-    }
+  useEffect(() => {
+    window.addEventListener("scroll", function () {
+      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        buttonToTop.current.classList.add("open");
+      } else {
+        buttonToTop.current.classList.remove("open");
+      }
+    });
   });
 
   function scrollToTop() {
