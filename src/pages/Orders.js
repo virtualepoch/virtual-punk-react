@@ -2,14 +2,19 @@ export function Orders() {
   return (
     <div className="page">
       <h1 className="page-heading">ORDERS</h1>
+
       <div className="banner thd-notes">
-        <h1>ORDERS - SECTION LINKS</h1>
+        {/* HASH LINKS //////////////////// */}
+        <h1 className="section-links-text">&lt; SECTION LINKS &gt;</h1>
         <div className="hash-links">
           <a className="hash-link" href="#general">
             GENERAL
           </a>
+          <a className="hash-link" href="#customerAccess">
+            CUSTOMER ORDER ACCESS
+          </a>
           <a className="hash-link" href="#markdowns">
-            MARKDOWNS
+            PRICE MATCHING / MARKDOWNS
           </a>
           <a className="hash-link" href="#damageAllowances">
             DAMAGE ALLOWANCES
@@ -32,10 +37,14 @@ export function Orders() {
           <a className="hash-link" href="#coupons">
             COUPONS
           </a>
+          <a className="hash-link" href="#notes">
+            NOTES
+          </a>
         </div>
+
         {/* GENERAL ORDERS ///////////// */}
         <div id="general" className="thd-notes-section">
-          <h1>ORDERS - GENERAL</h1>
+          <h1>&lt; GENERAL &gt;</h1>
           <p>If the Order # starts with:</p>
           <p>&gt; - W - WEBSITE orders.</p>
           <p>&gt; - C - GM or MA orders placed through 'HOME'.</p>
@@ -46,13 +55,16 @@ export function Orders() {
 
         {/* MARKDOWNS ////////////////// */}
         <div id="markdowns" className="thd-notes-section">
-          <h1>ORDERS - MARKDOWNS</h1>
-          <h2>&gt; SHOULD ONLY BE CONSIDERED AS A LAST RESORT, FIRST GOAL IS RESOLVE THE CUSTOMER'S ISSUE.</h2>
-          <h2>&gt; WE SHOULD NEVER INITIATE THE CONVERSATION.</h2>
-          <h2>&gt; COMPETING PRICE MUST COME FROM COMPARABLE RETAILER.</h2>
-          <h2>&gt; MUST BE THE EXACT ITEM. USE PRODUCT MODEL NUMBERS.</h2>
+          <h1>&lt; PRICE MATCHING / MARKDOWNS &gt;</h1>
+          <h2>SHOULD ONLY BE CONSIDERED AS A LAST RESORT, FIRST GOAL IS RESOLVE THE CUSTOMER'S ISSUE.</h2>
+          <h2>WE SHOULD NEVER INITIATE THE CONVERSATION.</h2>
+          <h2>COMPETING PRICE MUST COME FROM COMPARABLE RETAILER.</h2>
+          <h2>MUST BE THE EXACT ITEM. USE PRODUCT MODEL NUMBERS.</h2>
           <p>&gt; PRICE OVERRIDE - If not charged.</p>
           <p>&gt; PRICE MARKDOWN - If already charged.</p>
+          <h2>&gt; PRICE MATCH / MARKDOWN EXCLUSIONS</h2>
+          <p>&gt; No one time only promotions.</p>
+          <p>&gt; Third Party items.</p>
           <h2>&gt; We can do a PRICE OVERRIDE or PRICE MARKDOWN up to $150. If over:</h2>
           <p>&gt; $151 - $500 - Supervisor Required</p>
           <p>&gt; $500 - $1000 - Manager Required</p>
@@ -61,12 +73,11 @@ export function Orders() {
           <h2>&gt; MA markdowns are honored within 30 days of purchase.</h2>
           <p>&gt; If PRE-DELIVERY: Must Cancel Order & Place New Order. DO NOT ATTEMPT TO MARKDOWN BECAUSE OUR SYSTEM ONLY ALLOWS ONE CHANGE FOR THESE ORDERS. IF YOU DO THEY WON'T BE ABLE TO ADD THINGS THEY MIGHT NEED (I.E. INSTALL KITS, ETC.).</p>
           <p>&gt; If POST-DELIVERY: Complete in ESVS, Process refund in SPOS & Record in the Markdown Tracking Form.</p>
-          <h2>&gt; MARKDOWN TRACKING FORMS (POLICY REQUIRES THESE TO BE FILLED OUT)</h2>
+          <h2>MARKDOWN TRACKING FORMS (POLICY REQUIRES THESE TO BE FILLED OUT)</h2>
           <p>&gt; Agent: LDAP</p>
           <p>&gt; $ Amount of Markdown: Dollar Amount</p>
           <p>&gt; STORE #: ...</p>
           <p>&gt; Markdown Approver: Last Name, First Name</p>
-          <p>&gt; </p>
           <h2>&gt; THD WILL NOT OFFER MARKDOWNS FOR THE FOLLOWING REASONS:</h2>
           <p>&gt; Missed time at work</p>
           <p>&gt; NOTE FOR ABOVE: If we dropped the ball (i.e. late delivery) we will offer compensation</p>
@@ -90,18 +101,19 @@ export function Orders() {
           <p>&gt; Only stores can do price matches.</p>
           <h2>FOR SHIPPING DISCOUNTS</h2>
           <p>&gt; Can only be made for full shipping price. NOTE: Very rarely you will have to do this. Usually only happens if doing a re-order that had free shipping and it's trying to charge shipping.</p>
-          <p>&gt; </p>
-          {/* WAYS A CUSTOMER CAN ACCESS THEIR ORDER ////////// */}
-          <h1>THREE WAYS A CUSTOMER CAN LOCATE THEIR ORDER</h1>
+        </div>
+
+        {/* WAYS A CUSTOMER CAN ACCESS THEIR ORDER ////////// */}
+        <div id="customerAccess" className="thd-notes-section">
+          <h1>&lt; THREE WAYS A CUSTOMER CAN LOCATE THEIR ORDER &gt;</h1>
           <p>&gt; Login to their account. Track order page.</p>
           <p>&gt; Have their order #.</p>
           <p>&gt; Tracking Email.</p>
-          <p>&gt; </p>
         </div>
 
         {/* DAMAGE ALLOWANCES ////////////////// */}
         <div id="damageAllowances" className="thd-notes-section">
-          <h1>ORDERS - DAMAGE ALLOWANCES</h1>
+          <h1>&lt; DAMAGE ALLOWANCES &gt;</h1>
           <h2>OCC Owns ALL Major Appliance damage allowance calls</h2>
           <p>&gt; If the driver or customer is calling in within 48 hours of delivery, PLEASE MAKE SURE TO OWN THE CALL.</p>
           <p>&gt; ONLY USE REASON CODE 45 FOR DAMAGE ALLOWANCES</p>
@@ -122,7 +134,7 @@ export function Orders() {
 
         {/* ADDING PARTS AND SERVICES ////////////////// */}
         <div id="addPartsServices" className="thd-notes-section">
-          <h1>ORDERS - ADDING PARTS AND SERVICES</h1>
+          <h1>&lt; ADDING PARTS AND SERVICES &gt;</h1>
           <p>&gt; ** If customer asks to 'ADD' a part to their order: ASK IF IT'S ALREADY BEEN DELIVERED.</p>
           <p>&gt; </p>
           <p>&gt; </p>
@@ -130,7 +142,7 @@ export function Orders() {
 
         {/* ORDERS - CANCELING /////////////////// */}
         <div id="canceling" className="thd-notes-section">
-          <h1>ORDERS - CANCELING</h1>
+          <h1>&lt; CANCELING &gt;</h1>
           <p>&gt; For MA orders we use the 'ORDER-UP' app.</p>
           <p>&gt; If no cancel button then usually can't be cancelled.</p>
           <p>&gt; NOTE: If there's no ship term in the fulfillment acronym then the item is charged when pulled from shelf.</p>
@@ -143,7 +155,7 @@ export function Orders() {
 
         {/* OSOFC (OPEN SOLD ORDER FOR CHANGE) //////////// */}
         <div id="osofc" className="thd-notes-section">
-          <h1>OSOFC (OPEN SOLD ORDER FOR CHANGE)</h1>
+          <h1>&lt; OSOFC (OPEN SOLD ORDER FOR CHANGE) &gt;</h1>
           <p>&gt; CUSTOMER CAN ADD THE FOLLOWING:</p>
           <p>&gt; Installation Kits</p>
           <p>&gt; Installation Service</p>
@@ -161,9 +173,10 @@ export function Orders() {
           <p>&gt; Additional Appliances</p>
           <p>&gt; </p>
         </div>
+
         {/* GIFT CARDS ////////////////// */}
         <div id="giftCards" className="thd-notes-section">
-          <h1>GIFT CARDS</h1>
+          <h1>&lt; GIFT CARDS &gt;</h1>
           <p>&gt; FOR MA ORDERS:</p>
           <p>&gt; Fastest way is go back to store and get new gift card for refund amount.</p>
           <p>&gt; If customer angry then send them to Resolutions</p>
@@ -178,7 +191,7 @@ export function Orders() {
 
         {/* ORDERS - POST-DELIVERY ////////////////// */}
         <div id="postDelivery" className="thd-notes-section">
-          <h1>ORDERS - POST-DELIVERY</h1>
+          <h1>&lt; POST-DELIVERY &gt;</h1>
           <p>&gt; RETURN POLICY - usually 90 days from purchase date to return unless noted in 'RETURN POLICY EXCEPTIONS'.</p>
           <p>&gt; NOTE: If purchased with HD credit card they have 365 days for full refund, unless otherwise indicated.</p>
           <p>&gt; Refunds issued back to original form of payment.</p>
@@ -199,28 +212,29 @@ export function Orders() {
           <p>&gt; </p>
           <p>&gt; </p>
         </div>
+
         {/* ORDERS - COUPONS ////////////////// */}
         <div id="coupons" className="thd-notes-section">
-          <h1>ORDERS - COUPONS</h1>
+          <h1>&lt; COUPONS &gt;</h1>
           <p>&gt; Coupons valid for HD products online will have a category # (i.e. home20, outdoor45, etc.)</p>
           <p>&gt; If coupon is all numbers it's an in-store coupon.</p>
           <p>&gt; Coupons are IN-STORE and ONLINE specific.</p>
           <p>&gt; Customers can use coupons from other Retailers</p>
           <p>&gt; IF YOU DO THIS YOU MUST ADD COUPON IN CHECK-OUT PROCESS AT HD OR OTHER RETAILER.</p>
         </div>
+
         {/* NOTES ////////////////// */}
-        <div className="thd-notes-section">
-          <h1>NOTES</h1>
-          <p>&gt; </p>
-          <p>&gt; </p>
-        </div>
-        {/* NOTES ////////////////// */}
-        <div className="thd-notes-section">
+        <div id="notes" className="thd-notes-section">
           <h1>NOTES</h1>
           <p>&gt; If can't find receipts in 'HOME' you might have to use 'ESVS' but make sure you take a partner.</p>
           <p>&gt; If adding small item (i.e. hoses, small accessories) just add it and notate in DMP. No need to do in 'ESVS'.</p>
           <p>&gt; STICKER SHOCK - Things like tracktors and large ticket items may appear to be a much lower price, however, once in the cart and hidden fees applied it may be closer or over our price.</p>
           <p>&gt; </p>
+        </div>
+
+        {/* NOTES ////////////////// */}
+        <div className="thd-notes-section">
+          <h1>NOTES</h1>
           <p>&gt; </p>
         </div>
         <span className="border-text"></span>

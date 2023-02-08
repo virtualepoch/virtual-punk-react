@@ -5,13 +5,17 @@ export function OrdersTwo() {
     <section className="page">
       <h1 className="page-heading">ORDERS 2</h1>
       <div className="banner thd-notes">
-        <h1>ORDERS 2 - SECTION LINKS</h1>
+        {/* HASH LINKS ////////////////////////////////// */}
+        <h1>&lt; SECTION LINKS &gt;</h1>
         <div className="hash-links">
           <a className="hash-link" href="#lifecycle">
             LIFECYCLE OF AN ORDER
           </a>
-          <a className="hash-link" href="#returns">
-            RETURNS
+          <a className="hash-link" href="#returnMethods">
+            RETURN METHODS
+          </a>
+          <a className="hash-link" href="#maOrders">
+            MA RETURNS
           </a>
         </div>
 
@@ -39,8 +43,8 @@ export function OrdersTwo() {
           <p>&gt; </p>
         </div>
         {/* ORDERS - RETURN METHODS ////////////////// */}
-        <div id="returns" className="thd-notes-section">
-          <h1>ORDERS - RETURN METHODS</h1>
+        <div id="returnMethods" className="thd-notes-section">
+          <h1>RETURN METHODS</h1>
           <h2>RETURN TO STORE: VALUE</h2>
           <p>&gt; Convenient - Return to any local store.</p>
           <p>&gt; Timely - Credit or refund issued at time of return.</p>
@@ -62,13 +66,12 @@ export function OrdersTwo() {
           <p>&gt; No orders under $25 value.</p>
           <p>&gt; No glass, light bulbs, or mirrors.</p>
           <p>&gt; No paint, stains, or other liquids, THESE ARE CONSIDERED HAZARDOUS.</p>
-          <h2>&gt; PRICE MATCH EXCLUSIONS</h2>
-          <p>&gt; No one time only promotions.</p>
-          <p>&gt; Third Party items.</p>
-          <p>&gt; </p>
+        </div>
 
+        {/* MA ORDERS ///////////////////////// */}
+        <div id="maOrders" className="thd-notes-section">
           {/* RETURNS CONTINUED//////////////////////////////// */}
-          <h1>RETURNS Continued</h1>
+          <h1>MA (MAJOR APPLIANCE) ORDERS</h1>
           <h2>MA RETURNS</h2>
           <p>&gt; First Question to Ask: WHY RETURNING?</p>
           <p>&gt; "For documentation purposes can I ask why you want to return the item?" </p>
@@ -98,10 +101,12 @@ export function OrdersTwo() {
           <p>&gt; FIRST, we will contact the vendor.</p>
           <p>&gt; </p>
         </div>
+
+        {/* NEW NOTES //////////////////// */}
         <div className="thd-notes-section">
           <h1>NEW NOTES</h1>
           <h2>NEW NOTES</h2>
-          <p>&gt; </p>
+          <p>&gt; NEW NOTE</p>
           <p>&gt; </p>
         </div>
       </div>
