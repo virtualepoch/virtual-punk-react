@@ -114,26 +114,18 @@ export function Header() {
       </div>
       <nav className="nav-menu" ref={navMenu}>
         <ul className="nav-link-container">
-          <li>
-            <CustomLink className="link" onClick={openCloseNavMenu} to={"/"}>
-              HOME
-            </CustomLink>
-          </li>
-          <li>
-            <CustomLink className="link" onClick={openCloseNavMenu} to={"/orders"}>
-              ORDERS
-            </CustomLink>
-          </li>
-          <li>
-            <CustomLink className="link" onClick={openCloseNavMenu} to={"/orders-2"}>
-              ORDERS 2
-            </CustomLink>
-          </li>
-          <li>
-            <CustomLink className="link" onClick={openCloseNavMenu} to={"/general"}>
-              GENERAL
-            </CustomLink>
-          </li>
+          <CustomLink className="link" onClick={openCloseNavMenu} to={"/"}>
+            HOME
+          </CustomLink>
+          <CustomLink className="link" onClick={openCloseNavMenu} to={"/orders"}>
+            ORDERS
+          </CustomLink>
+          <CustomLink className="link" onClick={openCloseNavMenu} to={"/orders-2"}>
+            ORDERS 2
+          </CustomLink>
+          <CustomLink className="link" onClick={openCloseNavMenu} to={"/general"}>
+            GENERAL
+          </CustomLink>
         </ul>
       </nav>
     </header>

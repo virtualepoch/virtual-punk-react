@@ -3,37 +3,68 @@
 }
 
 .thd-script {
+  width: 100%;
+  max-width: 1200px;
   border: 1px solid aqua;
   border-radius: 15px;
   box-shadow: inset -3px 3px 5px 1px rgb(0, 255, 255, 0.3), inset 3px -3px 5px 1px rgba(0, 50, 50, 0.9);
   backdrop-filter: blur(4px);
   color: white;
-  font: 800 25px Raleway;
-  padding: 50px 20px;
+  font-family: Raleway;
+  padding: 20px;
   margin: 0 15px;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 7px;
   background: linear-gradient(to bottom right, rgb(37, 37, 37, 0.7), rgb(0, 70, 70, 0.7), rgb(37, 37, 37, 0.7), rgb(0, 70, 70, 0.7), rgb(37, 37, 37, 0.7));
 }
 
-@media (max-width: 700px) {
-  .thd-script{
-    font-size: 20px;
-  }
+.thd-script h1 {
+  width: fit-content;
+  border-inline: 3px solid aqua;
+  border-block: 1px solid red;
+  padding: 10px;
+  font-size: clamp(0.7rem, -0.0143rem + 2.2857vw, 1.7rem);
+  line-height: 22px;
+  line-height: 15px;
+  line-height: clamp(1rem, 0.7321rem + 0.8571vw, 1.375rem);}
+
+h1.border-text-2 {
+  border: solid aqua;
+  border-left: solid red;
+  border-right: solid red;
+  padding: 5px;
+  text-align: center;
 }
 
-.thd-script h1{
-  border: 1px solid red;
-  border-left: 3px solid aqua;
-  border-right: 3px solid aqua;
-  padding: 10px;
+.border-number {
+  border: solid aqua;
+  padding: 2px 5px;
+  margin-right: 5px;
 }
+
+span.separator {
+  padding: 0 10px;
+  background: aqua;
+}
+
+h1.prompt {
+  width: fit-content;
+  border: solid aqua;
+  margin: 0 auto;
+}
+
+h1.block-red {
+  border-block: solid red;
+}
+
+.line-height-lg{
+  line-height: clamp(2rem, 0.7143rem + 4.1143vw, 3.8rem);}
 
 .page-heading {
   width: 100%;
   color: white;
-  font: 700 clamp(1.5rem, 2vw, 2.5rem) Raleway;
+  font: 700 clamp(1.5rem, 2vw, 2rem) Raleway;
   letter-spacing: 1px;
   border: solid aqua;
   border-left: 10px solid aqua;
@@ -45,7 +76,7 @@
 .thd-notes {
   padding: 10px;
   color: white;
-  font: 700 clamp(0.8rem, 2vw, 1.3rem) Raleway;
+  font-family: Raleway;
   letter-spacing: 1px;
   display: flex;
   flex-direction: column;
@@ -98,7 +129,7 @@
   padding: 15px;
 }
 
-.thd-notes h1 {
+.thd-notes-section h1 {
   width: 100%;
   margin: 70px 0 20px 0;
   padding: 20px 10px;
@@ -106,18 +137,20 @@
   border-left: 10px solid red;
   border-right: 10px solid red;
   text-align: center;
+  font-size: clamp(0.7rem, -0.1667rem + 3.4667vw, 1.5rem);
   background: linear-gradient(black, rgb(0, 75, 75));
 }
-.thd-notes h2 {
-  width: fit-content;
+.thd-notes-section h2 {
+  width: 100%;
   margin: 20px 0;
   padding: 10px;
   border-left: 5px solid red;
   border-bottom: 1px solid red;
+  font-size: clamp(0.5rem, -0.1667rem + 3.4667vw, 1.2rem);
   background: linear-gradient(to bottom left, transparent 50%, rgb(0, 142, 142));
 }
 
-.thd-notes p {
+.thd-notes-section p {
   width: fit-content;
   padding: 10px;
   border: 1px solid aqua;
