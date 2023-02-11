@@ -2,6 +2,7 @@
   color: black;
 }
 
+/* THD CALL SCRIPTING SECTION ///////////////////// */
 .thd-script {
   width: 100%;
   max-width: 1200px;
@@ -24,10 +25,9 @@
   border-inline: 3px solid aqua;
   border-block: 1px solid red;
   padding: 10px;
-  font-size: clamp(0.7rem, -0.0143rem + 2.2857vw, 1.7rem);
-  line-height: 22px;
-  line-height: 15px;
-  line-height: clamp(1rem, 0.7321rem + 0.8571vw, 1.375rem);}
+  font-size: clamp(0.9rem, 0.4rem + 1.6vw, 1.4rem);
+  line-height: clamp(1.2rem, 0.9036rem + 0.6286vw, 1.375rem);
+}
 
 h1.border-text-2 {
   border: solid aqua;
@@ -51,6 +51,7 @@ span.separator {
 h1.prompt {
   width: fit-content;
   border: solid aqua;
+  border-radius: 10px;
   margin: 0 auto;
 }
 
@@ -58,13 +59,15 @@ h1.block-red {
   border-block: solid red;
 }
 
-.line-height-lg{
-  line-height: clamp(2rem, 0.7143rem + 4.1143vw, 3.8rem);}
+.line-height-lg {
+  line-height: clamp(2rem, 0.7143rem + 4.1143vw, 3.8rem);
+}
 
+/* THD MAIN STUDY CONTENT /////////////////// */
 .page-heading {
   width: 100%;
   color: white;
-  font: 700 clamp(1.5rem, 2vw, 2rem) Raleway;
+  font: 700 clamp(1.25rem, 1.0714rem + 0.5714vw, 1.5rem) Raleway;
   letter-spacing: 1px;
   border: solid aqua;
   border-left: 10px solid aqua;
@@ -84,9 +87,10 @@ h1.block-red {
 }
 
 .thd-notes h1.section-links-text {
-  margin-top: 50px;
+  margin: 50px auto 0 auto;
   border: none;
   background: none;
+  font-size: clamp(1rem, 0.8214rem + 0.5714vw, 1.25rem);
 }
 
 .hash-links {
@@ -96,6 +100,7 @@ h1.block-red {
   display: grid;
   grid-template-columns: auto auto;
   gap: 15px;
+  font-size: clamp(0.8rem, 0.5857rem + 0.6857vw, 1.1rem);
 }
 
 .hash-link {
@@ -109,9 +114,10 @@ h1.block-red {
 
 .hash-link:visited {
   color: gray;
+  /* ***FIGURE OUT WHILE THE BELOW MARKUP DOESN'T WORK!!!
   text-decoration: line-through;
   text-decoration-thickness: 4px;
-  text-decoration-color: white;
+  text-decoration-color: white; */
 }
 
 .hash-link:hover {
@@ -137,7 +143,7 @@ h1.block-red {
   border-left: 10px solid red;
   border-right: 10px solid red;
   text-align: center;
-  font-size: clamp(0.7rem, -0.1667rem + 3.4667vw, 1.5rem);
+  font: 700 clamp(1.25rem, 1.0714rem + 0.5714vw, 1.5rem) Raleway;
   background: linear-gradient(black, rgb(0, 75, 75));
 }
 .thd-notes-section h2 {
@@ -146,7 +152,7 @@ h1.block-red {
   padding: 10px;
   border-left: 5px solid red;
   border-bottom: 1px solid red;
-  font-size: clamp(0.5rem, -0.1667rem + 3.4667vw, 1.2rem);
+  font-size: clamp(1rem, 0.8214rem + 0.5714vw, 1.25rem);
   background: linear-gradient(to bottom left, transparent 50%, rgb(0, 142, 142));
 }
 
@@ -155,6 +161,7 @@ h1.block-red {
   padding: 10px;
   border: 1px solid aqua;
   border-left: 3px solid aqua;
+  font-size: clamp(0.8rem, 0.5857rem + 0.6857vw, 1.1rem);
 }
 
 .border-text {

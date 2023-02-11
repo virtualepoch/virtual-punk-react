@@ -77,7 +77,7 @@ export function Home() {
               <span className="border-number">7</span> 'Is there anything else I can assist with?'
             </h1>
             <h1>
-              <span className="border-number">8</span> 'Alright, well thanks for again reaching out today.'
+              <span className="border-number">8</span> 'Alright, well thanks again for reaching out today.'
             </h1>
             <h1>
               <span className="border-number line-height-lg">9</span> 'Please stay on the line for our quick three question survey, and Enjoy the rest of your day!'

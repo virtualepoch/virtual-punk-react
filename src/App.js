@@ -7,6 +7,7 @@ import { Home } from "./pages/Home";
 import { Orders } from "./pages/Orders";
 import { OrdersTwo } from "./pages/OrdersTwo";
 import { General } from "./pages/General";
+import { Testing } from "./pages/Testing";
 
 function useScrollToTop() {
   const { pathname } = useLocation();
@@ -28,6 +29,7 @@ function App() {
           <Route path="/orders" element={<Orders />} />
           <Route path="/orders-2" element={<OrdersTwo />} />
           <Route path="/general" element={<General />} />
+          <Route path="/testing" element={<Testing />} />
         </Routes>
       </section>
     </div>

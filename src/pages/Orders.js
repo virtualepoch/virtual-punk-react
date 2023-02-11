@@ -50,7 +50,7 @@ export function Orders() {
           <p>&gt; - C - GM or MA orders placed through 'HOME'.</p>
           <p>&gt; - H - STORE SPECIAL'S or GM returns.</p>
           <p>&gt; ** ALL 'MA' WILL START WITH AN 'H'</p>
-          <p>&gt; DO NOT create Order Verification cases for authorization failures. These are PAYMENT DELINES.</p>
+          <p>&gt; DO NOT create Order Verification cases for authorization failures. These are PAYMENT DECLINES.</p>
         </div>
 
         {/* MARKDOWNS ////////////////// */}

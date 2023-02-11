@@ -296,7 +296,7 @@
 
 .responsive-project.test {
   background: none;
-  -webkit-box-reflect: below -13% linear-gradient(to top, rgb(255, 255, 255, 0.5), transparent);
+  -webkit-box-reflect: below -13% linear-gradient(to top, rgb(255, 255, 255, 0.3), transparent);
 }
 
 .responsive-computer {
