@@ -1,9 +1,10 @@
 #threeJsCanvas {
-  width: 90%;
-  position: absolute;
+  width: 100%;
+  position: fixed;
+  top: 75px;
   left: 0;
   right: 0;
   margin: 0 auto;
-  overflow: hidden;
   background: white;
+  border: solid white;
 }
