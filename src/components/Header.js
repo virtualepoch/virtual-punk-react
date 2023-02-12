@@ -72,7 +72,7 @@ export function Header() {
       },
       false
     );
-  }, false); // end window.onload
+  }); // end window.onload
 
   function CustomLink({ to, children, ...props }) {
     const resolvedPath = useResolvedPath(to);
