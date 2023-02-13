@@ -13,17 +13,23 @@
 /* MAIN PAGE CONTENT /////////////////////////////////////// */
 .heading {
   height: fit-content;
-  /* margin: 100px auto; */
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  border: solid blue;
+}
+:root {
+  --bg-blur: 0.9;
 }
 .banner {
   width: 100%;
   min-height: 300px;
-  background-image: linear-gradient(to bottom right, rgb(37, 37, 37), rgb(0, 70, 70), rgb(37, 37, 37), rgb(0, 70, 70), rgb(37, 37, 37));
+  background-image: linear-gradient(to bottom right, rgb(37, 37, 37, var(--bg-blur)), rgb(0, 70, 70, var(--bg-blur)), rgb(37, 37, 37, var(--bg-blur)), rgb(0, 70, 70, var(--bg-blur)), rgb(37, 37, 37, var(--bg-blur)));
+  backdrop-filter: blur(5px);
 }
+
 .banner-1 {
   background-image: linear-gradient(transparent, rgb(37, 37, 37));
 }
@@ -32,8 +38,9 @@
   width: 100%;
   min-width: 300px;
   height: 100%;
-  min-height: 300px;
+  min-height: 100vh;
   color: red;
+  border: solid white;
   font: 500 50px Ailerons;
   filter: drop-shadow(0 0 3px red);
   padding: 20px;

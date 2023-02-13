@@ -42,9 +42,26 @@ export function Home() {
   return (
     <>
       <MainOverlay />
-      <WireBoxUnderlay />
+      {/* <WireBoxUnderlay /> */}
       <div className="page">
         <div className="heading">
+          <div class="hero-section-container">
+            <div class="hero-section">
+              <p class="text">Customizable Themes</p>
+              <p class="text">
+                To make your content <span class="word-pop">POP!</span>
+              </p>
+              <p class="text">
+                Check out our other themes at{" "}
+                <a class="text-link" href="/">
+                  VirtualEpoch.com
+                </a>
+              </p>
+              <p class="text">
+                or click <span class="text-link button-open-contact-overlay">contact</span> to inquire.
+              </p>
+            </div>
+          </div>
           <div className="thd-script">
             {/* OPENING SCRIPT /////////////// */}
             <h1>

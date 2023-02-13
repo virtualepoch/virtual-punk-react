@@ -8,6 +8,7 @@ import { Orders } from "./pages/Orders";
 import { OrdersTwo } from "./pages/OrdersTwo";
 import { General } from "./pages/General";
 import { Testing } from "./pages/Testing";
+import { ThreeCanvas } from "./components/ThreeCanvas";
 
 function useScrollToTop() {
   const { pathname } = useLocation();
@@ -21,6 +22,7 @@ function App() {
   useScrollToTop();
   return (
     <div className="App">
+      <ThreeCanvas />
       <Header />
       <ButtonToTop />
       <section className="page-container">
