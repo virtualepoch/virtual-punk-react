@@ -1,4 +1,5 @@
 import "../pages/main-content.css";
+import "../pages/general.css";
 
 export function General() {
   return (
@@ -6,6 +7,9 @@ export function General() {
       <h1 className="page-heading">&lt; GENERAL &gt;</h1>
       <div className="banner thd-notes">
         <div className="hash-links">
+          <a className="hash-link" href="#maTimeline">
+            MA TIMELINE
+          </a>
           <a className="hash-link" href="#amplify">
             AMPLIFY
           </a>
@@ -18,6 +22,61 @@ export function General() {
           <a className="hash-link" href="#notes">
             NOTES
           </a>
+        </div>
+
+        {/* AMPLIFY ////////////////////////////// */}
+        <div id="maTimeline" className="thd-notes-section">
+          <h1>MAJOR APPLIANCE TIMELINE</h1>
+          <div className="flex-box-container">
+            <div className="flex-box">
+              <h2>#1- Order Placed</h2>
+              <p>Up to 24 hrs. for PO to populate in Depot Direct/DMP</p>
+              <ul>
+                <li>Charged immediately</li>
+                <li>1,2,3 Notes Created</li>
+                <li>ESVS system payment</li>
+              </ul>
+            </div>
+            <div className="flex-box">
+              <h2>#2- PO populates in system</h2>
+              <p>Delivery is scheduled 3-90 days out</p>
+              <ul>
+                <li>Vendors, store associates, Delivery agents and the OCC access to DMP.</li>
+              </ul>
+            </div>
+            <div className="flex-box">
+              <h2>#3- PO/Order shipped</h2>
+              <p>48-72 hours for OEM/Vendor to ship to delivery agent</p>
+              <ul>
+                <li>In route to delivery agent</li>
+                <li>Can no longer move delivery date closer</li>
+              </ul>
+            </div>
+            <div className="flex-box">
+              <h2>#4- Pre-Delivery with DA</h2>
+              <p>24 hours prior to delivery date, loaded on truck</p>
+              <ul>
+                <li>Pre-delivery call 7pm local time night prior</li>
+                <li>Delivery route created</li>
+                <li>Can still change delivery date further out in HOME, up to 30 days</li>
+              </ul>
+            </div>
+            <div className="flex-box">
+              <h2>#5- Delivery Date</h2>
+              <p>Delivery date up to 48 hr. post delivery window</p>
+              <ul>
+                <li>Delivery date can no longer be changed in HOME</li>
+                <li>Customer must inspect appliances for any damages or defects.</li>
+                <li>If any, they must refuse the item and a new unit will be sent</li>
+                <li>If customer signs, and notices damages/defects, they must report them within 48 hour window.</li>
+                <li>If customer calls on a Sunday notate the order, OEM is closed</li>
+              </ul>
+            </div>
+            <div className="flex-box">
+              <h2>#6- Post-Delivery</h2>
+              <p>Post 48 hr. window; Partner with Store Manager</p>
+            </div>
+          </div>
         </div>
 
         {/* AMPLIFY ////////////////////////////// */}

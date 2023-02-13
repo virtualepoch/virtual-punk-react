@@ -1,15 +1,18 @@
-import { useEffect } from "react";
+import { useRef, useEffect } from "react";
 import * as THREE from "three";
 import "../pages/testing.css";
 
 export function Testing() {
+  const threeJsCanvasRef = useRef(null);
+  const canvasPageRef = useRef(null);
+
   useEffect(() => {
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 70;
 
-    const canvas = document.getElementById("threeJsCanvas");
+    const canvas = threeJsCanvasRef.current;
     const renderer = new THREE.WebGLRenderer({
       canvas,
       antialias: true,
@@ -17,7 +20,7 @@ export function Testing() {
 
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth - 4, window.innerHeight - 100);
-    document.body.appendChild(renderer.domElement);
+    canvasPageRef.current.appendChild(renderer.domElement);
 
     const ambientLight = new THREE.AmbientLight(0xff0000, 0.5);
     ambientLight.castShadow = true;
@@ -61,8 +64,8 @@ export function Testing() {
   });
 
   return (
-    <section className="page">
-      <canvas id="threeJsCanvas"></canvas>
+    <section className="page" ref={canvasPageRef}>
+      <canvas className="three-js-canvas" ref={threeJsCanvasRef}></canvas>
     </section>
   );
 }
