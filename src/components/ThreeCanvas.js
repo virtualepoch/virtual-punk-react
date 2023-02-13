@@ -18,7 +18,7 @@ export function ThreeCanvas() {
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 70;
+    camera.position.z = 60;
 
     const canvas = threeJsCanvasRef.current;
     const renderer = new THREE.WebGLRenderer({
@@ -61,10 +61,10 @@ export function ThreeCanvas() {
     scene.add(boxMesh4);
 
     const animate = () => {
-      boxMesh.rotation.x += 0.02;
-      boxMesh2.rotation.x += -0.04;
-      boxMesh3.rotation.y += 0.04;
-      boxMesh4.rotation.y += -0.04;
+      boxMesh.rotation.x += 0.005;
+      boxMesh2.rotation.x += -0.01;
+      boxMesh3.rotation.y += 0.005;
+      boxMesh4.rotation.y += -0.01;
       renderer.render(scene, camera);
       window.requestAnimationFrame(animate);
     };
