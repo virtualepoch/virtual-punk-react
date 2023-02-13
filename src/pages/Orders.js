@@ -2,6 +2,7 @@ export function Orders() {
   return (
     <div className="page">
       <h1 className="page-heading">ORDERS</h1>
+      <div className="banner"></div>
 
       <div className="banner thd-notes">
         {/* HASH LINKS //////////////////// */}

@@ -40,22 +40,22 @@ export function ThreeCanvas() {
     scene.add(spotLight);
 
     // CUBE OBJECT ///////////
-    const boxGeometry = new THREE.TorusGeometry(25, 2, 16, 50);
+    const boxGeometry = new THREE.TorusGeometry(25, 2, 10, 25);
     const boxMaterial = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true });
     const boxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
     scene.add(boxMesh);
 
-    const boxGeometry2 = new THREE.TorusGeometry(20, 2, 16, 50);
+    const boxGeometry2 = new THREE.TorusGeometry(20, 2, 10, 25);
     const boxMaterial2 = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
     const boxMesh2 = new THREE.Mesh(boxGeometry2, boxMaterial2);
     scene.add(boxMesh2);
 
-    const boxGeometry3 = new THREE.TorusGeometry(15, 1, 8, 40);
+    const boxGeometry3 = new THREE.TorusGeometry(15, 1, 8, 20);
     const boxMaterial3 = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true });
     const boxMesh3 = new THREE.Mesh(boxGeometry3, boxMaterial3);
     scene.add(boxMesh3);
 
-    const boxGeometry4 = new THREE.TorusGeometry(12, 1, 8, 40);
+    const boxGeometry4 = new THREE.TorusGeometry(12, 1, 8, 20);
     const boxMaterial4 = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
     const boxMesh4 = new THREE.Mesh(boxGeometry4, boxMaterial4);
     scene.add(boxMesh4);
