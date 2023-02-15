@@ -1,5 +1,7 @@
 import { useRef, useEffect } from "react";
 import * as THREE from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import sunPurpleImage from "../images/pexels-mudassir-ali-5362479.jpg";
 
 export function ThreeCanvas() {
   const style = {
@@ -15,10 +17,12 @@ export function ThreeCanvas() {
   const threeJsCanvasRef = useRef(null);
 
   useEffect(() => {
+    // SCENE, CAMERA, CANVAS, AND RENDERER ////////////
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 35;
+    camera.position.y = 10;
 
     const canvas = threeJsCanvasRef.current;
     const renderer = new THREE.WebGLRenderer({
@@ -30,42 +34,70 @@ export function ThreeCanvas() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     document.body.appendChild(renderer.domElement);
 
+    // LIGHTING /////////////////
     const ambientLight = new THREE.AmbientLight(0xff0000, 0.5);
     ambientLight.castShadow = true;
-    scene.add(ambientLight);
 
     const spotLight = new THREE.SpotLight(0xff0000, 1);
     spotLight.castShadow = true;
     spotLight.position.set(0, 64, 32);
-    scene.add(spotLight);
 
-    // CUBE OBJECT ///////////
-    const boxGeometry = new THREE.TorusGeometry(25, 2, 10, 20);
-    const boxMaterial = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true });
-    const boxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
-    scene.add(boxMesh);
+    scene.add(ambientLight, spotLight);
+
+    const lightHelper = new THREE.SpotLightHelper(spotLight);
+    const gridHelper = new THREE.GridHelper(200, 50);
+
+    scene.add(lightHelper, gridHelper);
+
+    const controls = new OrbitControls(camera, renderer.domElement);
+
+    // CUBE OBJECTS ///////////
+    const boxGeometry1 = new THREE.TorusGeometry(25, 2, 10, 20);
+    const boxMaterial1 = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true });
+    const boxMesh1 = new THREE.Mesh(boxGeometry1, boxMaterial1);
 
     const boxGeometry2 = new THREE.TorusGeometry(20, 2, 10, 20);
     const boxMaterial2 = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
     const boxMesh2 = new THREE.Mesh(boxGeometry2, boxMaterial2);
-    scene.add(boxMesh2);
 
     const boxGeometry3 = new THREE.TorusGeometry(15, 1, 8, 15);
     const boxMaterial3 = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true });
     const boxMesh3 = new THREE.Mesh(boxGeometry3, boxMaterial3);
-    scene.add(boxMesh3);
 
     const boxGeometry4 = new THREE.TorusGeometry(12, 1, 8, 15);
     const boxMaterial4 = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
     const boxMesh4 = new THREE.Mesh(boxGeometry4, boxMaterial4);
-    scene.add(boxMesh4);
 
+    scene.add(boxMesh1, boxMesh2, boxMesh3, boxMesh4);
+
+    // STAR OBJECTS /////////////////
+    function addStar() {
+      const starGeometry = new THREE.SphereGeometry(0.25, 24, 24);
+      const starMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
+      const starMesh = new THREE.Mesh(starGeometry, starMaterial);
+
+      const [x, y, z] = Array(3)
+        .fill()
+        .map(() => THREE.MathUtils.randFloatSpread(100));
+
+      starMesh.position.set(x, y, z);
+      scene.add(starMesh);
+    }
+
+    Array(200).fill().forEach(addStar);
+
+    // BACKGROUND /////////////////////
+    const sunPurpleBg = new THREE.TextureLoader().load(sunPurpleImage);
+    scene.background = sunPurpleBg;
+
+    // ANIMATION FUNCTION ///////////////
     const animate = () => {
-      boxMesh.rotation.x += 0.005;
+      boxMesh1.rotation.x += 0.005;
       boxMesh2.rotation.x += -0.01;
       boxMesh3.rotation.y += 0.005;
       boxMesh4.rotation.y += -0.01;
       renderer.render(scene, camera);
+      controls.update();
       window.requestAnimationFrame(animate);
     };
     animate();
