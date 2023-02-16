@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import sunPurpleImage from "../images/pexels-mudassir-ali-5362479.jpg";
+import sunPurpleImage from "../images/sunpurple.jpg";
 
 export function ThreeCanvas() {
   const style = {
@@ -21,7 +21,7 @@ export function ThreeCanvas() {
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 35;
+    camera.position.z = 400;
     camera.position.y = 10;
 
     const canvas = threeJsCanvasRef.current;
@@ -44,19 +44,19 @@ export function ThreeCanvas() {
 
     scene.add(ambientLight, spotLight);
 
-    const lightHelper = new THREE.SpotLightHelper(spotLight);
-    const gridHelper = new THREE.GridHelper(200, 50);
+    // const lightHelper = new THREE.SpotLightHelper(spotLight);
+    // const gridHelper = new THREE.GridHelper(200, 50);
 
-    scene.add(lightHelper, gridHelper);
+    // scene.add(gridHelper);
 
     const controls = new OrbitControls(camera, renderer.domElement);
 
     // CUBE OBJECTS ///////////
-    const boxGeometry1 = new THREE.TorusGeometry(25, 2, 10, 20);
+    const boxGeometry1 = new THREE.TorusGeometry(25, 0.5, 10, 20);
     const boxMaterial1 = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true });
     const boxMesh1 = new THREE.Mesh(boxGeometry1, boxMaterial1);
 
-    const boxGeometry2 = new THREE.TorusGeometry(20, 2, 10, 20);
+    const boxGeometry2 = new THREE.TorusGeometry(20, 1, 10, 20);
     const boxMaterial2 = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
     const boxMesh2 = new THREE.Mesh(boxGeometry2, boxMaterial2);
 
@@ -73,7 +73,7 @@ export function ThreeCanvas() {
     // STAR OBJECTS /////////////////
     function addStar() {
       const starGeometry = new THREE.SphereGeometry(0.25, 24, 24);
-      const starMaterial = new THREE.MeshStandardMaterial({ color: 0xffffff });
+      const starMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
       const starMesh = new THREE.Mesh(starGeometry, starMaterial);
 
       const [x, y, z] = Array(3)
@@ -91,7 +91,23 @@ export function ThreeCanvas() {
     scene.background = sunPurpleBg;
 
     // ANIMATION FUNCTION ///////////////
+    // const start = Date.now();
+
     const animate = () => {
+      // CAMERA MOVEMENT //////
+      // if(camera.position.x < 30){
+      //   camera.position.x += 0.1;
+      // }
+
+      // var millisElapsed = Date.now() - start;
+      // var secondsElapsed = Math.floor(millisElapsed / 1000);
+
+      // if (secondsElapsed > 2 && camera.position.z > 35) {
+      if (camera.position.z > 35) {
+        camera.position.z -= 1;
+      }
+
+      // OBJECTS /////////
       boxMesh1.rotation.x += 0.005;
       boxMesh2.rotation.x += -0.01;
       boxMesh3.rotation.y += 0.005;
