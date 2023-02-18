@@ -31,7 +31,7 @@ export function ThreeCanvas() {
     });
 
     renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(window.innerWidth, window.innerHeight + 56);
     document.body.appendChild(renderer.domElement);
 
     // LIGHTING /////////////////
@@ -117,6 +117,10 @@ export function ThreeCanvas() {
       window.requestAnimationFrame(animate);
     };
     animate();
+
+    window.addEventListener("resize", function () {
+      renderer.setSize(window.innerWidth, window.innerHeight + 56);
+    });
   });
 
   return <canvas style={style.threeJsCanvas} ref={threeJsCanvasRef}></canvas>;
