@@ -119,7 +119,9 @@ export function ThreeCanvas() {
     animate();
 
     window.addEventListener("resize", function () {
-      renderer.setSize(window.innerWidth, window.innerHeight + 56);
+      if (window.innerWidth > 700) {
+        renderer.setSize(window.innerWidth, window.innerHeight + 56);
+      }
     });
   });
 
