@@ -21,7 +21,7 @@ export function ThreeCanvas() {
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 400;
+    camera.position.z = 40;
     camera.position.y = 10;
 
     const canvas = threeJsCanvasRef.current;
@@ -103,15 +103,15 @@ export function ThreeCanvas() {
       // var secondsElapsed = Math.floor(millisElapsed / 1000);
 
       // if (secondsElapsed > 2 && camera.position.z > 35) {
-      if (camera.position.z > 35) {
-        camera.position.z -= 1;
-      }
+      // if (camera.position.z > 35) {
+      //   camera.position.z -= 1;
+      // }
 
       // OBJECTS /////////
-      boxMesh1.rotation.x += 0.005;
-      boxMesh2.rotation.x += -0.01;
-      boxMesh3.rotation.y += 0.005;
-      boxMesh4.rotation.y += -0.01;
+      boxMesh1.rotation.x += 0.002;
+      boxMesh2.rotation.x += -0.004;
+      boxMesh3.rotation.y += 0.002;
+      boxMesh4.rotation.y += -0.004;
       renderer.render(scene, camera);
       controls.update();
       window.requestAnimationFrame(animate);

@@ -7,6 +7,9 @@ export function General() {
       <h1 className="page-heading">&lt; GENERAL &gt;</h1>
       <div className="banner thd-notes">
         <div className="hash-links">
+          <a className="hash-link" href="#resolutions">
+            RESOLUTIONS
+          </a>
           <a className="hash-link" href="#maTimeline">
             MA TIMELINE
           </a>
@@ -22,6 +25,21 @@ export function General() {
           <a className="hash-link" href="#notes">
             NOTES
           </a>
+        </div>
+
+        {/* RESOLUTIONS ////////////////////////////// */}
+        <div id="resolutions" className="thd-notes-section">
+          <h1>Resolutions</h1>
+          <p>&gt; To support front-line associates.</p>
+          <p>&gt; THREE LINES OF BUSINESS</p>
+          <p>&gt; 1- Duel Associates - </p>
+          <p>&gt; 2- GM Associates - </p>
+          <p>&gt; 3- Cases - </p>
+          <p>&gt; OREEC - Online Resolutions Executive Email Level</p>
+          <p>&gt; Resolutions associates will generally complete about 45 cases per day.</p>
+          <h2>WHEN IN NEED OF HELP</h2>
+          <p>&gt; Instead of saying: "Let me check with my SUPERVISOR" say: "Let me check with my RESOURCES."</p>
+          <p>&gt; </p>
         </div>
 
         {/* AMPLIFY ////////////////////////////// */}
