@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import sunPurpleImage from "../images/sunpurple.jpg";
+// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+// import sunPurpleImage from "../images/sunpurple.jpg";
 
 export function ThreeCanvas() {
   const style = {
@@ -10,7 +10,8 @@ export function ThreeCanvas() {
       height: "100%",
       position: "fixed",
       top: 0,
-      zIndex: "-1",
+      zIndex: "-2",
+      background: "linear-gradient(aqua, red, aqua)",
     },
   };
 
@@ -19,19 +20,25 @@ export function ThreeCanvas() {
   useEffect(() => {
     // SCENE, CAMERA, CANVAS, AND RENDERER ////////////
     const scene = new THREE.Scene();
+    // BACKGROUND /////////////////////
+    // const sunPurpleBg = new THREE.TextureLoader().load(sunPurpleImage);
+    // scene.background = sunPurpleBg;
+    // scene.background = new THREE.Color(0xff0000, 0.1)
 
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 40;
-    camera.position.y = 10;
+    // camera.position.y = 10;
 
     const canvas = threeJsCanvasRef.current;
     const renderer = new THREE.WebGLRenderer({
       canvas,
       antialias: true,
+      alpha: true,
     });
 
     renderer.setPixelRatio(window.devicePixelRatio);
     renderer.setSize(window.innerWidth, window.innerHeight + 56);
+    renderer.setClearColor(0xffffff, 0);
     document.body.appendChild(renderer.domElement);
 
     // LIGHTING /////////////////
@@ -46,29 +53,28 @@ export function ThreeCanvas() {
 
     // const lightHelper = new THREE.SpotLightHelper(spotLight);
     // const gridHelper = new THREE.GridHelper(200, 50);
-
     // scene.add(gridHelper);
 
-    const controls = new OrbitControls(camera, renderer.domElement);
+    // const controls = new OrbitControls(camera, renderer.domElement);
 
     // CUBE OBJECTS ///////////
-    const boxGeometry1 = new THREE.TorusGeometry(25, 0.5, 10, 20);
-    const boxMaterial1 = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true });
+    const boxGeometry1 = new THREE.TorusGeometry(20, 1, 4, 4);
+    const boxMaterial1 = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: false });
     const boxMesh1 = new THREE.Mesh(boxGeometry1, boxMaterial1);
 
-    const boxGeometry2 = new THREE.TorusGeometry(20, 1, 10, 20);
-    const boxMaterial2 = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
+    const boxGeometry2 = new THREE.TorusGeometry(20, 1, 4, 4);
+    const boxMaterial2 = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: false });
     const boxMesh2 = new THREE.Mesh(boxGeometry2, boxMaterial2);
 
-    const boxGeometry3 = new THREE.TorusGeometry(15, 1, 8, 15);
-    const boxMaterial3 = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true });
-    const boxMesh3 = new THREE.Mesh(boxGeometry3, boxMaterial3);
+    // const boxGeometry3 = new THREE.TorusGeometry(15, 1, 8, 15);
+    // const boxMaterial3 = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true });
+    // const boxMesh3 = new THREE.Mesh(boxGeometry3, boxMaterial3);
 
-    const boxGeometry4 = new THREE.TorusGeometry(12, 1, 8, 15);
-    const boxMaterial4 = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
-    const boxMesh4 = new THREE.Mesh(boxGeometry4, boxMaterial4);
+    // const boxGeometry4 = new THREE.TorusGeometry(12, 1, 8, 15);
+    // const boxMaterial4 = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
+    // const boxMesh4 = new THREE.Mesh(boxGeometry4, boxMaterial4);
 
-    scene.add(boxMesh1, boxMesh2, boxMesh3, boxMesh4);
+    scene.add(boxMesh1, boxMesh2);
 
     // STAR OBJECTS /////////////////
     function addStar() {
@@ -85,10 +91,6 @@ export function ThreeCanvas() {
     }
 
     Array(200).fill().forEach(addStar);
-
-    // BACKGROUND /////////////////////
-    const sunPurpleBg = new THREE.TextureLoader().load(sunPurpleImage);
-    scene.background = sunPurpleBg;
 
     // ANIMATION FUNCTION ///////////////
     // const start = Date.now();
@@ -108,12 +110,12 @@ export function ThreeCanvas() {
       // }
 
       // OBJECTS /////////
-      boxMesh1.rotation.x += 0.002;
-      boxMesh2.rotation.x += -0.004;
-      boxMesh3.rotation.y += 0.002;
-      boxMesh4.rotation.y += -0.004;
+      boxMesh1.rotation.x += 0.013;
+      boxMesh2.rotation.y += 0.013;
+      // boxMesh3.rotation.y += 0.002;
+      // boxMesh4.rotation.y += -0.004;
       renderer.render(scene, camera);
-      controls.update();
+      // controls.update();
       window.requestAnimationFrame(animate);
     };
     animate();
@@ -123,7 +125,7 @@ export function ThreeCanvas() {
         renderer.setSize(window.innerWidth, window.innerHeight + 56);
       }
     });
-  });
+  }, []);
 
   return <canvas style={style.threeJsCanvas} ref={threeJsCanvasRef}></canvas>;
 }

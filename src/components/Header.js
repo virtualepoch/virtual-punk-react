@@ -126,8 +126,11 @@ export function Header() {
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/general"}>
             GENERAL
           </CustomLink>
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/testing"}>
-            TESTING
+          <CustomLink className="link" onClick={openCloseNavMenu} to={"/add-parts-services"}>
+            ADD PARTS & SERVICES
+          </CustomLink>
+          <CustomLink className="link" onClick={openCloseNavMenu} to={"/ma-damage-reported"}>
+            MA Damage Reported
           </CustomLink>
         </ul>
       </nav>

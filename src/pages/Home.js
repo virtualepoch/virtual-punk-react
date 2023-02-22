@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { MainOverlay } from "../components/MainOverlay";
-import { WireBoxUnderlay } from "../components/WireBoxUnderlay";
+// import { WireBoxUnderlay } from "../components/WireBoxUnderlay";
 import "../pages/main-content.css";
 
 export function Home() {

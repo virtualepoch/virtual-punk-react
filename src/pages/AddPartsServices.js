@@ -1,4 +1,4 @@
-export function Testing() {
+export function AddPartsServices() {
   return (
     <section className="page">
       <h1 className="page-heading">&lt; ADDING PARTS & SERVICES &gt;</h1>
