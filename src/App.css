@@ -16,7 +16,8 @@
   margin: 0 15px;
   display: flex;
   flex-direction: column;
-  gap: 7px;
+  align-items: center;
+  gap: 17px;
   background: linear-gradient(to bottom right, rgb(37, 37, 37, 0.7), rgb(0, 70, 70, 0.7), rgb(37, 37, 37, 0.7), rgb(0, 70, 70, 0.7), rgb(37, 37, 37, 0.7));
 }
 

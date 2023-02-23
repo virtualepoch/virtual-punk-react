@@ -129,8 +129,11 @@ export function Header() {
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/add-parts-services"}>
             ADD PARTS & SERVICES
           </CustomLink>
+          <CustomLink className="link" onClick={openCloseNavMenu} to={"/address-change"}>
+            ADDRESS CHANGE
+          </CustomLink>
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/ma-damage-reported"}>
-            MA Damage Reported
+            MA DAMAGE REPORTED
           </CustomLink>
         </ul>
       </nav>

@@ -9,6 +9,7 @@ import { Orders } from "./pages/Orders";
 import { OrdersTwo } from "./pages/OrdersTwo";
 import { General } from "./pages/General";
 import { AddPartsServices } from "./pages/AddPartsServices";
+import { AddressChange } from "./pages/AddressChange";
 import { MADamageReported } from "./pages/MADamageReported";
 
 function useScrollToTop() {
@@ -33,6 +34,7 @@ function App() {
           <Route path="/orders-2" element={<OrdersTwo />} />
           <Route path="/general" element={<General />} />
           <Route path="/add-parts-services" element={<AddPartsServices />} />
+          <Route path="/address-change" element={<AddressChange />} />
           <Route path="/ma-damage-reported" element={<MADamageReported />} />
         </Routes>
       </section>

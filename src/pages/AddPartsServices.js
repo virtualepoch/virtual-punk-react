@@ -1,8 +1,8 @@
 export function AddPartsServices() {
   return (
     <section className="page">
-      <h1 className="page-heading">&lt; ADDING PARTS & SERVICES &gt;</h1>
-      <div className="banner thd-notes">
+      <h1 className="page-heading">&lt; ADDING PARTS & SERVICES (11394) &gt;</h1>
+      <div className="banner thd-notes thd-notes-section">
         <h1>Adding Parts and Services in Order Up</h1>
         <p>&gt; Customer wants to add parts and services to an existing Major Appliance Order.</p>
         <h1>Step #1:</h1>
@@ -11,7 +11,7 @@ export function AddPartsServices() {
         <p>&gt; Enter store # then click select.</p>
         <h1>Step #3:</h1>
         <p>&gt; Click the Add Parts & Services option from the Modify Order dropdown menu. Note: Option to Add Parts and Services will be available if:</p>
-        <p>&gt; It is an Order Up created MA orderStep</p>
+        <p>&gt; It is an Order Up created MA order</p>
         <p>&gt; Status is not in Done</p>
         <p>&gt; It is not the day of the delivery date</p>
         <p>&gt; Order is not processing refund due to post-sale markdown</p>

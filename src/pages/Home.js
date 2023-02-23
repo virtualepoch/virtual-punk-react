@@ -63,10 +63,7 @@ export function Home() {
             </div>
           </div>
           <div className="thd-script">
-            {/* OPENING SCRIPT /////////////// */}
-            <h1>
-              <span className="border-number">1</span>- 'Hi, Thank you for calling the Home Depot.'
-            </h1>
+            <h1>OCC # 1-877-961-6683</h1>
             <h1>
               <span className="border-number">2</span>- 'My name is Craig and who do I have the pleasure of speaking with?'
             </h1>

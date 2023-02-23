@@ -62,8 +62,8 @@ export function ThreeCanvas() {
     const boxMaterial1 = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: false });
     const boxMesh1 = new THREE.Mesh(boxGeometry1, boxMaterial1);
 
-    const boxGeometry2 = new THREE.TorusGeometry(20, 1, 4, 4);
-    const boxMaterial2 = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: false });
+    const boxGeometry2 = new THREE.TorusGeometry(18, 1, 4, 4);
+    const boxMaterial2 = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: false });
     const boxMesh2 = new THREE.Mesh(boxGeometry2, boxMaterial2);
 
     // const boxGeometry3 = new THREE.TorusGeometry(15, 1, 8, 15);
