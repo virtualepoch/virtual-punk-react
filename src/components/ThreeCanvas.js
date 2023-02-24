@@ -66,15 +66,15 @@ export function ThreeCanvas() {
     const boxMaterial2 = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: false });
     const boxMesh2 = new THREE.Mesh(boxGeometry2, boxMaterial2);
 
-    // const boxGeometry3 = new THREE.TorusGeometry(15, 1, 8, 15);
-    // const boxMaterial3 = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true });
-    // const boxMesh3 = new THREE.Mesh(boxGeometry3, boxMaterial3);
+    const boxGeometry3 = new THREE.TorusGeometry(16, 1, 4, 4);
+    const boxMaterial3 = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: false });
+    const boxMesh3 = new THREE.Mesh(boxGeometry3, boxMaterial3);
 
-    // const boxGeometry4 = new THREE.TorusGeometry(12, 1, 8, 15);
-    // const boxMaterial4 = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: true });
-    // const boxMesh4 = new THREE.Mesh(boxGeometry4, boxMaterial4);
+    const boxGeometry4 = new THREE.TorusGeometry(14, 1, 4, 4);
+    const boxMaterial4 = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: false });
+    const boxMesh4 = new THREE.Mesh(boxGeometry4, boxMaterial4);
 
-    scene.add(boxMesh1, boxMesh2);
+    scene.add(boxMesh1, boxMesh2, boxMesh3, boxMesh4);
 
     // STAR OBJECTS /////////////////
     function addStar() {
@@ -110,10 +110,10 @@ export function ThreeCanvas() {
       // }
 
       // OBJECTS /////////
-      boxMesh1.rotation.x += 0.013;
-      boxMesh2.rotation.y += 0.013;
-      // boxMesh3.rotation.y += 0.002;
-      // boxMesh4.rotation.y += -0.004;
+      boxMesh1.rotation.x += 0.01;
+      boxMesh2.rotation.y += 0.01;
+      boxMesh3.rotation.x -= 0.01;
+      boxMesh4.rotation.y += -0.01;
       renderer.render(scene, camera);
       // controls.update();
       window.requestAnimationFrame(animate);
