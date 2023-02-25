@@ -49,7 +49,13 @@ export function ThreeCanvas() {
     spotLight.castShadow = true;
     spotLight.position.set(0, 64, 32);
 
-    scene.add(ambientLight, spotLight);
+    const directionalLight = new THREE.DirectionalLight();
+    directionalLight.position.set(0, 0, 20);
+ 
+    const directionalLight2 = new THREE.DirectionalLight();
+    directionalLight2.position.set(0, 0, -20);
+
+    scene.add(ambientLight, directionalLight,directionalLight2);
 
     // const lightHelper = new THREE.SpotLightHelper(spotLight);
     // const gridHelper = new THREE.GridHelper(200, 50);
@@ -58,20 +64,22 @@ export function ThreeCanvas() {
     // const controls = new OrbitControls(camera, renderer.domElement);
 
     // CUBE OBJECTS ///////////
+    const aquaColor = new THREE.Color(0x00ffff);
+
     const boxGeometry1 = new THREE.TorusGeometry(20, 1, 4, 4);
-    const boxMaterial1 = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: false });
+    const boxMaterial1 = new THREE.MeshStandardMaterial({ color: aquaColor, wireframe: false });
     const boxMesh1 = new THREE.Mesh(boxGeometry1, boxMaterial1);
 
     const boxGeometry2 = new THREE.TorusGeometry(18, 1, 4, 4);
-    const boxMaterial2 = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: false });
+    const boxMaterial2 = new THREE.MeshStandardMaterial({ color: 0xff0000, wireframe: false });
     const boxMesh2 = new THREE.Mesh(boxGeometry2, boxMaterial2);
 
     const boxGeometry3 = new THREE.TorusGeometry(16, 1, 4, 4);
-    const boxMaterial3 = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: false });
+    const boxMaterial3 = new THREE.MeshStandardMaterial({ color: 0x00ffff, wireframe: false });
     const boxMesh3 = new THREE.Mesh(boxGeometry3, boxMaterial3);
 
     const boxGeometry4 = new THREE.TorusGeometry(14, 1, 4, 4);
-    const boxMaterial4 = new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: false });
+    const boxMaterial4 = new THREE.MeshStandardMaterial({ color: 0xff0000, wireframe: false });
     const boxMesh4 = new THREE.Mesh(boxGeometry4, boxMaterial4);
 
     scene.add(boxMesh1, boxMesh2, boxMesh3, boxMesh4);
