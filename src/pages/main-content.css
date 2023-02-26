@@ -20,7 +20,7 @@
   flex-wrap: wrap;
 }
 :root {
-  --bg-blur: 0.9;
+  --bg-blur: 0.5;
 }
 .banner {
   width: 100%;

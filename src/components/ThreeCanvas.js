@@ -23,6 +23,7 @@ export function ThreeCanvas() {
 
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 80;
+    camera.position.y = 10;
 
     const canvas = threeJsCanvasRef.current;
     const renderer = new THREE.WebGLRenderer({
@@ -56,12 +57,13 @@ export function ThreeCanvas() {
     // const controls = new OrbitControls(camera, renderer.domElement);
 
     // SCENE OBJECTS ///////////
-    const torus1 = new THREE.Mesh(new THREE.TorusGeometry(16, 1, 4, 4), new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: false }));
-    const torus2 = new THREE.Mesh(new THREE.TorusGeometry(14, 1, 4, 4), new THREE.MeshBasicMaterial({ color: 0xff0000, wireframe: false }));
-    const sunTexture = new THREE.TextureLoader().load(sunPurpleImage);
-    const sun = new THREE.Mesh(new THREE.SphereGeometry(5, 16, 16), new THREE.MeshBasicMaterial({ map: sunTexture, wireframe: false }));
+    const torus1 = new THREE.Mesh(new THREE.TorusGeometry(16, 0.5, 4, 4), new THREE.MeshBasicMaterial({ color: 0x00ffff }));
+    const torus2 = new THREE.Mesh(new THREE.TorusGeometry(14, 0.5, 4, 4), new THREE.MeshBasicMaterial({ color: 0xff0000 }));
+    // const sunTexture = new THREE.TextureLoader().load(sunPurpleImage);
+    const pyramid = new THREE.Mesh(new THREE.ConeGeometry(5, 5, 4), new THREE.MeshBasicMaterial({ color: 0x00ffff }));
+    // const sun = new THREE.Mesh(new THREE.SphereGeometry(5, 16, 16), new THREE.MeshBasicMaterial({ map: sunTexture, wireframe: false }));
 
-    scene.add(torus1, torus2);
+    scene.add(torus1, torus2, pyramid);
 
     // STAR OBJECTS /////////////////
     function addStar() {
@@ -99,7 +101,7 @@ export function ThreeCanvas() {
       // OBJECTS /////////
       torus1.rotation.y += 0.005;
       torus2.rotation.y += -0.005;
-      // sun.rotation.y += -0.001;
+      pyramid.rotation.y += -0.005;
       renderer.render(scene, camera);
       // controls.update();
       window.requestAnimationFrame(animate);
@@ -108,9 +110,9 @@ export function ThreeCanvas() {
 
     function moveCamera() {
       const t = document.body.getBoundingClientRect().top;
-      torus1.rotation.y += 0.5;
-      torus2.rotation.y += -0.5;
-      camera.position.z = 80 + t * 0.01;
+      torus1.rotation.y += 0.05;
+      torus2.rotation.y += -0.05;
+      camera.position.z = 100 + t * 0.02;
     }
 
     window.addEventListener("scroll", moveCamera);

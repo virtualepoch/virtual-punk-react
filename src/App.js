@@ -11,6 +11,7 @@ import { General } from "./pages/General";
 import { AddPartsServices } from "./pages/AddPartsServices";
 import { AddressChange } from "./pages/AddressChange";
 import { MADamageReported } from "./pages/MADamageReported";
+import { ThreeJsTesting } from "./pages/ThreeJsTesting";
 
 function useScrollToTop() {
   const { pathname } = useLocation();
@@ -36,6 +37,7 @@ function App() {
           <Route path="/add-parts-services" element={<AddPartsServices />} />
           <Route path="/address-change" element={<AddressChange />} />
           <Route path="/ma-damage-reported" element={<MADamageReported />} />
+          <Route path="/three-js-testing" element={<ThreeJsTesting />} />
         </Routes>
       </section>
     </div>

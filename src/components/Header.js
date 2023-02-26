@@ -135,6 +135,9 @@ export function Header() {
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/ma-damage-reported"}>
             MA DAMAGE REPORTED
           </CustomLink>
+          <CustomLink className="link" onClick={openCloseNavMenu} to={"/three-js-testing"}>
+            THREE.JS TESTING
+          </CustomLink>
         </ul>
       </nav>
     </header>
