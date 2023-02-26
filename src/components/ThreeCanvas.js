@@ -51,11 +51,11 @@ export function ThreeCanvas() {
 
     const directionalLight = new THREE.DirectionalLight();
     directionalLight.position.set(0, 0, 20);
- 
+
     const directionalLight2 = new THREE.DirectionalLight();
     directionalLight2.position.set(0, 0, -20);
 
-    scene.add(ambientLight, directionalLight,directionalLight2);
+    scene.add(ambientLight, directionalLight, directionalLight2);
 
     // const lightHelper = new THREE.SpotLightHelper(spotLight);
     // const gridHelper = new THREE.GridHelper(200, 50);
