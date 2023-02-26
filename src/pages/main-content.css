@@ -4,6 +4,7 @@
   margin: 60px auto 0 auto;
   padding: 20px 0;
 }
+
 @media (max-width: 700px) {
   .page {
     margin-top: 65px;
@@ -19,12 +20,14 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
 :root {
   --bg-blur: 0.5;
 }
+
 .banner {
   width: 100%;
-  min-height: 300px;
+  min-height: 100px;
   background-image: linear-gradient(to bottom right, rgb(37, 37, 37, var(--bg-blur)), rgb(0, 70, 70, var(--bg-blur)), rgb(37, 37, 37, var(--bg-blur)), rgb(0, 70, 70, var(--bg-blur)), rgb(37, 37, 37, var(--bg-blur)));
   backdrop-filter: blur(5px);
 }
@@ -32,9 +35,11 @@
 .banner-1 {
   background-image: linear-gradient(transparent, rgb(37, 37, 37));
 }
+
 :root {
   --hero-text-color: white;
 }
+
 .hero-section-container {
   width: 100%;
   min-width: 300px;
@@ -51,6 +56,7 @@
   clip-path: polygon(100% 0, 100% 25%, 95% 30%, 95% 70%, 100% 75%, 100% 100%, 0 100%, 0 75% 5% 70%, 5% 30%, 0 25%, 0 0);
   overflow: hidden;
 }
+
 @media (max-width: 700px) {
   .hero-section-container {
     font-size: 30px;
@@ -64,6 +70,7 @@
   justify-content: center;
   transform: translateZ(0);
 }
+
 .hero-section .text {
   width: fit-content;
   position: absolute;
@@ -71,13 +78,16 @@
   filter: drop-shadow(-3px 0 1px red) drop-shadow(-3px 0 4px aqua);
   opacity: 0;
 }
+
 :root {
   --hero-section-anim-duration: 20s;
 }
+
 .hero-section .text:nth-child(1) {
   animation: hero-anim-1 var(--hero-section-anim-duration) ease infinite;
   animation-delay: 2s;
 }
+
 @keyframes hero-anim-1 {
   5% {
     opacity: 1;
@@ -100,10 +110,12 @@
     opacity: 0;
   }
 }
+
 .hero-section .text:nth-child(2) {
   animation: hero-anim-2 var(--hero-section-anim-duration) ease infinite;
   animation-delay: 2s;
 }
+
 @keyframes hero-anim-2 {
   18% {
     opacity: 0;
@@ -129,10 +141,12 @@
     opacity: 0;
   }
 }
+
 .hero-section .text:nth-child(3) {
   animation: hero-anim-3 var(--hero-section-anim-duration) ease infinite;
   animation-delay: 2s;
 }
+
 @keyframes hero-anim-3 {
   38% {
     opacity: 0;
@@ -158,10 +172,12 @@
     opacity: 0;
   }
 }
+
 .hero-section .text:nth-child(4) {
   animation: hero-anim-4 var(--hero-section-anim-duration) ease infinite;
   animation-delay: 2s;
 }
+
 @keyframes hero-anim-4 {
   68% {
     opacity: 0;

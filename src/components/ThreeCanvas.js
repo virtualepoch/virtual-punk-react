@@ -22,8 +22,8 @@ export function ThreeCanvas() {
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 80;
-    camera.position.y = 10;
+    camera.position.z = 200;
+    camera.position.y = 8;
 
     const canvas = threeJsCanvasRef.current;
     const renderer = new THREE.WebGLRenderer({
@@ -82,7 +82,7 @@ export function ThreeCanvas() {
     Array(200).fill().forEach(addStar);
 
     // ANIMATION FUNCTION ///////////////
-    // const start = Date.now();
+    const start = Date.now();
 
     const animate = () => {
       // CAMERA MOVEMENT //////
@@ -90,18 +90,16 @@ export function ThreeCanvas() {
       //   camera.position.x += 0.1;
       // }
 
-      // var millisElapsed = Date.now() - start;
-      // var secondsElapsed = Math.floor(millisElapsed / 1000);
+      var millisElapsed = Date.now() - start;
+      var secondsElapsed = Math.floor(millisElapsed / 1000);
 
-      // if (secondsElapsed > 2 && camera.position.z > 35) {
-      // if (camera.position.z > 35) {
-      //   camera.position.z -= 1;
-      // }
-
+      if (secondsElapsed > 1 && camera.position.z > 40) {
+        camera.position.z -= 3;
+      }
       // OBJECTS /////////
       torus1.rotation.y += 0.005;
       torus2.rotation.y += -0.005;
-      pyramid.rotation.y += -0.005;
+      pyramid.rotation.y += -0.01;
       renderer.render(scene, camera);
       // controls.update();
       window.requestAnimationFrame(animate);
@@ -109,10 +107,8 @@ export function ThreeCanvas() {
     animate();
 
     function moveCamera() {
-      const t = document.body.getBoundingClientRect().top;
-      torus1.rotation.y += 0.05;
-      torus2.rotation.y += -0.05;
-      camera.position.z = 100 + t * 0.02;
+      torus1.rotation.y += 0.1;
+      torus2.rotation.y += -0.1;
     }
 
     window.addEventListener("scroll", moveCamera);
