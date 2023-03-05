@@ -22,8 +22,8 @@ export function ThreeCanvas() {
     const scene = new THREE.Scene();
 
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 200;
-    camera.position.y = 8;
+    camera.position.z = 20;
+    camera.position.y = 0;
 
     const canvas = threeJsCanvasRef.current;
     const renderer = new THREE.WebGLRenderer({
@@ -57,13 +57,28 @@ export function ThreeCanvas() {
     // const controls = new OrbitControls(camera, renderer.domElement);
 
     // SCENE OBJECTS ///////////
-    const torus1 = new THREE.Mesh(new THREE.TorusGeometry(16, 0.5, 4, 4), new THREE.MeshBasicMaterial({ color: 0x00ffff }));
-    const torus2 = new THREE.Mesh(new THREE.TorusGeometry(14, 0.5, 4, 4), new THREE.MeshBasicMaterial({ color: 0xff0000 }));
-    // const sunTexture = new THREE.TextureLoader().load(sunPurpleImage);
-    const pyramid = new THREE.Mesh(new THREE.ConeGeometry(5, 5, 4), new THREE.MeshBasicMaterial({ color: 0x00ffff }));
+    const torusCenter1 = new THREE.Mesh(new THREE.TorusGeometry(2, 0.1, 4, 4), new THREE.MeshBasicMaterial({ color: 0x00ffff }));
+    torusCenter1.position.y = 12;
+
+    const torusLeft1 = new THREE.Mesh(new THREE.TorusGeometry(1.5, 0.1, 4, 4), new THREE.MeshBasicMaterial({ color: 0xff0000 }));
+    torusLeft1.position.x = -1;
+    torusLeft1.position.y = 12;
+
+    const torusRight1 = new THREE.Mesh(new THREE.TorusGeometry(1.5, 0.1, 4, 4), new THREE.MeshBasicMaterial({ color: 0xff0000 }));
+    torusRight1.position.x = 1;
+    torusRight1.position.y = 12;
+
+    const torusLeft2 = new THREE.Mesh(new THREE.TorusGeometry(1, 0.1, 4, 4), new THREE.MeshBasicMaterial({ color: 0x00ffff }));
+    torusLeft2.position.x = -2;
+    torusLeft2.position.y = 12;
+
+    const torusRight2 = new THREE.Mesh(new THREE.TorusGeometry(1, 0.1, 4, 4), new THREE.MeshBasicMaterial({ color: 0x00ffff }));
+    torusRight2.position.x = 2;
+    torusRight2.position.y = 12;
+
     // const sun = new THREE.Mesh(new THREE.SphereGeometry(5, 16, 16), new THREE.MeshBasicMaterial({ map: sunTexture, wireframe: false }));
 
-    scene.add(torus1, torus2, pyramid);
+    scene.add(torusCenter1, torusLeft1, torusRight1, torusLeft2, torusRight2);
 
     // STAR OBJECTS /////////////////
     function addStar() {
@@ -90,28 +105,28 @@ export function ThreeCanvas() {
       //   camera.position.x += 0.1;
       // }
 
-      var millisElapsed = Date.now() - start;
-      var secondsElapsed = Math.floor(millisElapsed / 1000);
+      // var millisElapsed = Date.now() - start;
+      // var secondsElapsed = Math.floor(millisElapsed / 1000);
 
-      if (secondsElapsed > 1 && camera.position.z > 40) {
-        camera.position.z -= 3;
-      }
+      // if (secondsElapsed > 1 && camera.position.z > 40) {
+      //   camera.position.z -= 3;
+      // }
       // OBJECTS /////////
-      torus1.rotation.y += 0.005;
-      torus2.rotation.y += -0.005;
-      pyramid.rotation.y += -0.01;
       renderer.render(scene, camera);
       // controls.update();
       window.requestAnimationFrame(animate);
     };
     animate();
 
-    function moveCamera() {
-      torus1.rotation.y += 0.1;
-      torus2.rotation.y += -0.1;
+    function scrollAnim() {
+      torusCenter1.rotation.x += 0.1;
+      torusLeft1.rotation.x += -0.1;
+      torusRight1.rotation.x += -0.1;
+      torusLeft2.rotation.x += -0.2;
+      torusRight2.rotation.x += -0.2;
     }
 
-    window.addEventListener("scroll", moveCamera);
+    window.addEventListener("scroll", scrollAnim);
 
     window.addEventListener("resize", function () {
       if (window.innerWidth > 700) {
