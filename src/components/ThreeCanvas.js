@@ -24,7 +24,6 @@ export function ThreeCanvas() {
 
     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
     camera.position.z = 20;
-    camera.position.y = 0;
 
     const canvas = threeJsCanvasRef.current;
     const renderer = new THREE.WebGLRenderer({
@@ -46,10 +45,10 @@ export function ThreeCanvas() {
     spotLight.castShadow = true;
     spotLight.position.set(0, 64, 32);
 
-    // const directionalLight = new THREE.DirectionalLight();
-    // directionalLight.position.set(0, 0, 20);
+    const directionalLight = new THREE.DirectionalLight();
+    directionalLight.position.set(0, 0, 20);
 
-    scene.add(ambientLight, spotLight);
+    scene.add(directionalLight);
 
     // const lightHelper = new THREE.SpotLightHelper(spotLight);
     // const gridHelper = new THREE.GridHelper(200, 50);
@@ -58,28 +57,36 @@ export function ThreeCanvas() {
     // const controls = new OrbitControls(camera, renderer.domElement);
 
     // SCENE OBJECTS ///////////
-    const torusCenter1 = new THREE.Mesh(new THREE.TorusGeometry(2, 0.1, 4, 4), new THREE.MeshBasicMaterial({ color: 0x00ffff }));
-    torusCenter1.position.y = 12;
+    const torusCenter = new THREE.Mesh(new THREE.TorusGeometry(2, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "aqua" }));
+    torusCenter.position.y = 13;
 
-    const torusLeft1 = new THREE.Mesh(new THREE.TorusGeometry(1.5, 0.1, 4, 4), new THREE.MeshBasicMaterial({ color: 0xff0000 }));
+    const torusLeft1 = new THREE.Mesh(new THREE.TorusGeometry(1.5, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "red" }));
     torusLeft1.position.x = -1;
-    torusLeft1.position.y = 12;
+    torusLeft1.position.y = 13;
 
-    const torusRight1 = new THREE.Mesh(new THREE.TorusGeometry(1.5, 0.1, 4, 4), new THREE.MeshBasicMaterial({ color: 0xff0000 }));
+    const torusRight1 = new THREE.Mesh(new THREE.TorusGeometry(1.5, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "red" }));
     torusRight1.position.x = 1;
-    torusRight1.position.y = 12;
+    torusRight1.position.y = 13;
 
-    const torusLeft2 = new THREE.Mesh(new THREE.TorusGeometry(1, 0.1, 4, 4), new THREE.MeshBasicMaterial({ color: 0x00ffff }));
+    const torusLeft2 = new THREE.Mesh(new THREE.TorusGeometry(1, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "aqua" }));
     torusLeft2.position.x = -2;
-    torusLeft2.position.y = 12;
+    torusLeft2.position.y = 13;
 
-    const torusRight2 = new THREE.Mesh(new THREE.TorusGeometry(1, 0.1, 4, 4), new THREE.MeshBasicMaterial({ color: 0x00ffff }));
+    const torusRight2 = new THREE.Mesh(new THREE.TorusGeometry(1, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "aqua" }));
     torusRight2.position.x = 2;
-    torusRight2.position.y = 12;
+    torusRight2.position.y = 13;
+
+    const torusLeft3 = new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "red" }));
+    torusLeft3.position.x = -3;
+    torusLeft3.position.y = 13;
+
+    const torusRight3 = new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "red" }));
+    torusRight3.position.x = 3;
+    torusRight3.position.y = 13;
 
     // const sun = new THREE.Mesh(new THREE.SphereGeometry(5, 16, 16), new THREE.MeshBasicMaterial({ map: sunTexture, wireframe: false }));
 
-    scene.add(torusCenter1, torusLeft1, torusRight1, torusLeft2, torusRight2);
+    scene.add(torusCenter, torusLeft1, torusRight1, torusLeft2, torusRight2, torusLeft3, torusRight3);
 
     // STAR OBJECTS /////////////////
     // function addStar() {
@@ -98,7 +105,7 @@ export function ThreeCanvas() {
     // Array(200).fill().forEach(addStar);
 
     // ANIMATION FUNCTION ///////////////
-    const start = Date.now();
+    // const start = Date.now();
 
     const animate = () => {
       // CAMERA MOVEMENT //////
@@ -120,11 +127,13 @@ export function ThreeCanvas() {
     animate();
 
     function scrollAnim() {
-      torusCenter1.rotation.x += 0.1;
+      torusCenter.rotation.x += 0.1;
       torusLeft1.rotation.x += -0.1;
       torusRight1.rotation.x += -0.1;
       torusLeft2.rotation.x += -0.2;
       torusRight2.rotation.x += -0.2;
+      torusLeft3.rotation.x += -0.4;
+      torusRight3.rotation.x += -0.4;
     }
 
     window.addEventListener("scroll", scrollAnim);
