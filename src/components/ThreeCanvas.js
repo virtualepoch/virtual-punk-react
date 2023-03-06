@@ -138,9 +138,19 @@ export function ThreeCanvas() {
 
     window.addEventListener("scroll", scrollAnim);
 
+    const threeJsObjects = [torusCenter, torusLeft1, torusRight1, torusLeft2, torusRight2, torusLeft3, torusRight3];
+
     window.addEventListener("resize", function () {
-      if (window.innerWidth > 700) {
-        renderer.setSize(window.innerWidth, window.innerHeight + 56);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight + 56);
+
+      for (let i = 0; i < threeJsObjects.length; i++) {
+        if (window.innerWidth < 700) {
+          threeJsObjects[i].position.y = 12;
+        } else {
+          threeJsObjects[i].position.y = 13;
+        }
       }
     });
   }, []);
