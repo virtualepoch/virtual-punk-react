@@ -10,7 +10,7 @@ export function ThreeCanvas() {
       height: "100%",
       position: "fixed",
       top: 0,
-      zIndex: "2",
+      zIndex: "222222",
       // background: "linear-gradient(aqua, black, aqua)",
       pointerEvents: "none",
     },
@@ -58,15 +58,12 @@ export function ThreeCanvas() {
 
     // SCENE OBJECTS ///////////
     const torusCenter = new THREE.Mesh(new THREE.TorusGeometry(2, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "aqua" }));
-    torusCenter.position.y = 13;
 
     const torusLeft1 = new THREE.Mesh(new THREE.TorusGeometry(1.5, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "red" }));
     torusLeft1.position.x = -1;
-    torusLeft1.position.y = 13;
 
     const torusRight1 = new THREE.Mesh(new THREE.TorusGeometry(1.5, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "red" }));
     torusRight1.position.x = 1;
-    torusRight1.position.y = 13;
 
     const torusLeft2 = new THREE.Mesh(new THREE.TorusGeometry(1, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "aqua" }));
     torusLeft2.position.x = -2;
@@ -74,19 +71,28 @@ export function ThreeCanvas() {
 
     const torusRight2 = new THREE.Mesh(new THREE.TorusGeometry(1, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "aqua" }));
     torusRight2.position.x = 2;
-    torusRight2.position.y = 13;
 
     const torusLeft3 = new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "red" }));
     torusLeft3.position.x = -3;
-    torusLeft3.position.y = 13;
 
     const torusRight3 = new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "red" }));
     torusRight3.position.x = 3;
-    torusRight3.position.y = 13;
 
     // const sun = new THREE.Mesh(new THREE.SphereGeometry(5, 16, 16), new THREE.MeshBasicMaterial({ map: sunTexture, wireframe: false }));
+    const threeJsObjects = [torusCenter, torusLeft1, torusRight1, torusLeft2, torusRight2, torusLeft3, torusRight3];
 
-    scene.add(torusCenter, torusLeft1, torusRight1, torusLeft2, torusRight2, torusLeft3, torusRight3);
+    const silverGlobe = new THREE.Mesh(new THREE.SphereGeometry(2, 16, 8), new THREE.MeshBasicMaterial({ color: "red", wireframe: true }));
+    const height = window.innerHeight / 2;
+    silverGlobe.position.y = -11;
+
+    for (let i = 0; i < threeJsObjects.length; i++) {
+      scene.add(silverGlobe, threeJsObjects[i]);
+      if (window.innerWidth < 700) {
+        threeJsObjects[i].position.y = 12;
+      } else {
+        threeJsObjects[i].position.y = 13;
+      }
+    }
 
     // STAR OBJECTS /////////////////
     // function addStar() {
@@ -134,11 +140,10 @@ export function ThreeCanvas() {
       torusRight2.rotation.x += -0.2;
       torusLeft3.rotation.x += -0.4;
       torusRight3.rotation.x += -0.4;
+      silverGlobe.rotation.y += 0.01;
     }
 
     window.addEventListener("scroll", scrollAnim);
-
-    const threeJsObjects = [torusCenter, torusLeft1, torusRight1, torusLeft2, torusRight2, torusLeft3, torusRight3];
 
     window.addEventListener("resize", function () {
       camera.aspect = window.innerWidth / window.innerHeight;
