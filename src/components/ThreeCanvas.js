@@ -1,7 +1,7 @@
 import { useRef, useEffect } from "react";
 import * as THREE from "three";
 // import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import sunPurpleImage from "../images/sunpurple2.jpg";
+// import sunPurpleImage from "../images/sunpurple2.jpg";
 
 export function ThreeCanvas() {
   const style = {
@@ -10,8 +10,9 @@ export function ThreeCanvas() {
       height: "100%",
       position: "fixed",
       top: 0,
-      zIndex: "-2",
-      background: "linear-gradient(aqua, black, aqua)",
+      zIndex: "2",
+      // background: "linear-gradient(aqua, black, aqua)",
+      pointerEvents: "none",
     },
   };
 
@@ -81,20 +82,20 @@ export function ThreeCanvas() {
     scene.add(torusCenter1, torusLeft1, torusRight1, torusLeft2, torusRight2);
 
     // STAR OBJECTS /////////////////
-    function addStar() {
-      const starGeometry = new THREE.SphereGeometry(0.25, 24, 24);
-      const starMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-      const starMesh = new THREE.Mesh(starGeometry, starMaterial);
+    // function addStar() {
+    //   const starGeometry = new THREE.SphereGeometry(0.25, 24, 24);
+    //   const starMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+    //   const starMesh = new THREE.Mesh(starGeometry, starMaterial);
 
-      const [x, y, z] = Array(3)
-        .fill()
-        .map(() => THREE.MathUtils.randFloatSpread(100));
+    //   const [x, y, z] = Array(3)
+    //     .fill()
+    //     .map(() => THREE.MathUtils.randFloatSpread(100));
 
-      starMesh.position.set(x, y, z);
-      scene.add(starMesh);
-    }
+    //   starMesh.position.set(x, y, z);
+    //   scene.add(starMesh);
+    // }
 
-    Array(200).fill().forEach(addStar);
+    // Array(200).fill().forEach(addStar);
 
     // ANIMATION FUNCTION ///////////////
     const start = Date.now();

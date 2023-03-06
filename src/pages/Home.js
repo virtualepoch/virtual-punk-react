@@ -64,7 +64,7 @@ export function Home() {
           </div>
           <div className="thd-script">
             <h1>STORE #: 9100</h1>
-            <h1>OCC #: 1-877-961-6683</h1>
+            <h1>OCC #: 1-877-466-3337</h1>
             <h1>HD Installation Services #: 1-855-403-5388</h1>
             <h1>
               <span className="border-number">3</span>- 'Hi, <span className="border-text">________</span> how can I help you today?' <span className="border-number">4</span>- 'I can surely assist with that.'
