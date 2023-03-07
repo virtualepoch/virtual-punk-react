@@ -42,6 +42,7 @@ export function Home() {
   return (
     <>
       <MainOverlay />
+      {/* <div className="background-test"></div> */}
       {/* <WireBoxUnderlay /> */}
       <div className="page">
         <div className="heading">

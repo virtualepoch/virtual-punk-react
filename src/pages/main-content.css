@@ -1,4 +1,12 @@
 /* GENERAL PAGE CONTENT /////////////////////////////////////// */
+.background-test{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  z-index: -99999999;
+}
+
 .page {
   max-width: 1200px;
   margin: 60px auto 0 auto;
