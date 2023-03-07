@@ -26,7 +26,7 @@ export function ThreeCanvas() {
     // CANVAS, CAMERAS, SCENES, AND RENDERER ////////////
     let width, height, canvas, camera, scene, renderer;
 
-    let torusCenter, torusLeft1, torusRight1, torusLeft2, torusRight2, torusLeft3, torusRight3;
+    let torusCenter, torusLeft1, torusRight1, torusLeft2, torusRight2, torusLeft3, torusRight3, sphere, sphereTorus1, sphereTorus2, sphereTorus3, sphereTorus4;
 
     width = window.innerWidth;
     height = window.innerHeight;
@@ -55,49 +55,54 @@ export function ThreeCanvas() {
     scene.add(directionalLight);
 
     // SCENE OBJECTS ///////////
-    torusCenter = new THREE.Mesh(new THREE.TorusGeometry(2, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "aqua" }));
-    torusCenter.position.y = 1;
+    function createTorusObjects() {
+      torusCenter = new THREE.Mesh(new THREE.TorusGeometry(2, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "aqua" }));
+      torusCenter.position.y = 1;
 
-    torusLeft1 = new THREE.Mesh(new THREE.TorusGeometry(1.5, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "red" }));
-    torusLeft1.position.x = -1;
+      torusLeft1 = new THREE.Mesh(new THREE.TorusGeometry(1.5, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "red" }));
+      torusLeft1.position.x = -1;
 
-    torusRight1 = new THREE.Mesh(new THREE.TorusGeometry(1.5, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "red" }));
-    torusRight1.position.x = 1;
+      torusRight1 = new THREE.Mesh(new THREE.TorusGeometry(1.5, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "red" }));
+      torusRight1.position.x = 1;
 
-    torusLeft2 = new THREE.Mesh(new THREE.TorusGeometry(1, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "aqua" }));
-    torusLeft2.position.x = -2;
+      torusLeft2 = new THREE.Mesh(new THREE.TorusGeometry(1, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "aqua" }));
+      torusLeft2.position.x = -2;
 
-    torusRight2 = new THREE.Mesh(new THREE.TorusGeometry(1, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "aqua" }));
-    torusRight2.position.x = 2;
+      torusRight2 = new THREE.Mesh(new THREE.TorusGeometry(1, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "aqua" }));
+      torusRight2.position.x = 2;
 
-    torusLeft3 = new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "red" }));
-    torusLeft3.position.x = -3;
+      torusLeft3 = new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "red" }));
+      torusLeft3.position.x = -3;
 
-    torusRight3 = new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "red" }));
-    torusRight3.position.x = 3;
+      torusRight3 = new THREE.Mesh(new THREE.TorusGeometry(0.5, 0.1, 3, 4), new THREE.MeshStandardMaterial({ color: "red" }));
+      torusRight3.position.x = 3;
+    }
+    createTorusObjects();
 
     const torusObjects = [torusCenter, torusLeft1, torusRight1, torusLeft2, torusRight2, torusLeft3, torusRight3];
 
     for (let i = 0; i < torusObjects.length; i++) {
       scene.add(torusObjects[i]);
       if (window.innerWidth < 700) {
-        torusObjects[i].position.y = 12;
+        torusObjects[i].position.y = 12.5;
       } else {
         torusObjects[i].position.y = 13;
       }
     }
 
-    const sphere = new THREE.Mesh(new THREE.SphereGeometry(4, 32, 16), new THREE.MeshStandardMaterial({ map: sphereTexture }));
-    sphere.rotation.y = -1.5;
+    function createSphereObjects() {
+      sphere = new THREE.Mesh(new THREE.SphereGeometry(4, 32, 16), new THREE.MeshStandardMaterial({ map: sphereTexture }));
+      sphere.rotation.y = -1.5;
 
-    const sphereTorus1 = new THREE.Mesh(new THREE.TorusGeometry(5, 0.6, 3, 32), new THREE.MeshStandardMaterial({ map: sphereTorusTexture }));
+      sphereTorus1 = new THREE.Mesh(new THREE.TorusGeometry(5, 0.6, 3, 32), new THREE.MeshStandardMaterial({ map: sphereTorusTexture }));
 
-    const sphereTorus2 = new THREE.Mesh(new THREE.TorusGeometry(6, 0.6, 3, 32), new THREE.MeshStandardMaterial({ color: "red" }));
+      sphereTorus2 = new THREE.Mesh(new THREE.TorusGeometry(6, 0.6, 3, 32), new THREE.MeshStandardMaterial({ color: "red" }));
 
-    const sphereTorus3 = new THREE.Mesh(new THREE.TorusGeometry(7, 0.6, 3, 32), new THREE.MeshStandardMaterial({ map: sphereTorusTexture }));
+      sphereTorus3 = new THREE.Mesh(new THREE.TorusGeometry(7, 0.6, 3, 32), new THREE.MeshStandardMaterial({ map: sphereTorusTexture }));
 
-    const sphereTorus4 = new THREE.Mesh(new THREE.TorusGeometry(8, 0.6, 3, 32), new THREE.MeshStandardMaterial({ color: "red" }));
-
+      sphereTorus4 = new THREE.Mesh(new THREE.TorusGeometry(8, 0.6, 3, 32), new THREE.MeshStandardMaterial({ color: "red" }));
+    }
+    createSphereObjects();
     scene.add(sphere, sphereTorus1, sphereTorus2, sphereTorus3, sphereTorus4);
 
     const animate = () => {
@@ -134,7 +139,7 @@ export function ThreeCanvas() {
 
       for (let i = 0; i < torusObjects.length; i++) {
         if (window.innerWidth < 700) {
-          torusObjects[i].position.y = 12;
+          torusObjects[i].position.y = 12.5;
         } else {
           torusObjects[i].position.y = 13;
         }
