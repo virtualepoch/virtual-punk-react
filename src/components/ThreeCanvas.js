@@ -19,9 +19,6 @@ export function ThreeCanvas() {
 
   const threeJsCanvasRef = useRef(null);
 
-  const sphereTexture = new THREE.TextureLoader().load(sphereImage);
-  const sphereTorusTexture = new THREE.TextureLoader().load(sphereTorus);
-
   useEffect(() => {
     // CANVAS, CAMERAS, SCENES, AND RENDERER ////////////
     let width, height, canvas, camera, scene, renderer;
@@ -91,29 +88,32 @@ export function ThreeCanvas() {
     }
 
     function createSphereObjects() {
-      sphere = new THREE.Mesh(new THREE.SphereGeometry(4, 32, 16), new THREE.MeshStandardMaterial({ map: sphereTexture }));
+      sphere = new THREE.Mesh(new THREE.SphereGeometry(4, 32, 16), new THREE.MeshStandardMaterial({ map: new THREE.TextureLoader().load(sphereImage) }));
       sphere.rotation.y = -1.5;
 
-      sphereTorus1 = new THREE.Mesh(new THREE.TorusGeometry(5, 0.6, 3, 32), new THREE.MeshStandardMaterial({ map: sphereTorusTexture }));
+      const sphereTorusTexture = new THREE.TextureLoader().load(sphereTorus);
 
-      sphereTorus2 = new THREE.Mesh(new THREE.TorusGeometry(6, 0.6, 3, 32), new THREE.MeshStandardMaterial({ color: "red" }));
+      sphereTorus1 = new THREE.Mesh(new THREE.TorusGeometry(4.4, 0.5, 3, 32), new THREE.MeshStandardMaterial({ map: sphereTorusTexture }));
 
-      sphereTorus3 = new THREE.Mesh(new THREE.TorusGeometry(7, 0.6, 3, 32), new THREE.MeshStandardMaterial({ map: sphereTorusTexture }));
+      sphereTorus2 = new THREE.Mesh(new THREE.TorusGeometry(5.2, 0.5, 3, 32), new THREE.MeshStandardMaterial({ color: "red" }));
 
-      sphereTorus4 = new THREE.Mesh(new THREE.TorusGeometry(8, 0.6, 3, 32), new THREE.MeshStandardMaterial({ color: "red" }));
+      sphereTorus3 = new THREE.Mesh(new THREE.TorusGeometry(6, 0.5, 3, 32), new THREE.MeshStandardMaterial({ map: sphereTorusTexture }));
+
+      sphereTorus4 = new THREE.Mesh(new THREE.TorusGeometry(6.7, 0.5, 3, 32), new THREE.MeshStandardMaterial({ color: "red" }));
     }
     createSphereObjects();
     scene.add(sphere, sphereTorus1, sphereTorus2, sphereTorus3, sphereTorus4);
 
     const animate = () => {
-      sphere.rotation.y += 0.01;
-      sphere.rotation.x += 0.01;
-      sphereTorus1.rotation.x += 0.01;
-      sphereTorus2.rotation.y += -0.01;
-      sphereTorus2.rotation.x += -0.01;
-      sphereTorus3.rotation.x += -0.01;
-      sphereTorus4.rotation.y += 0.01;
-      sphereTorus4.rotation.x += 0.01;
+      let rotateVar = 0.005;
+      sphere.rotation.y += rotateVar;
+      sphere.rotation.x += rotateVar;
+      sphereTorus1.rotation.x += rotateVar;
+      sphereTorus2.rotation.y += -rotateVar;
+      sphereTorus2.rotation.x += -rotateVar;
+      sphereTorus3.rotation.x += -rotateVar;
+      sphereTorus4.rotation.y += rotateVar;
+      sphereTorus4.rotation.x += rotateVar;
       renderer.render(scene, camera);
       // controls.update();
       window.requestAnimationFrame(animate);
