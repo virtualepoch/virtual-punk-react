@@ -1,6 +1,7 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { ThreeCanvas } from "./components/ThreeCanvas";
+// import { ThreeCanvas } from "./components/ThreeCanvas";
+import { ThreeFiberCanvas } from "./components/ThreeFiberCanvas";
 import { Header } from "./components/Header";
 import { ButtonToTop } from "./components/ButtonToTop";
 import "./App.css";
@@ -25,7 +26,7 @@ function App() {
   useScrollToTop();
   return (
     <div className="App">
-      <ThreeCanvas />
+      <ThreeFiberCanvas />
       <Header />
       <ButtonToTop />
       <section className="page-container">

@@ -104,6 +104,10 @@ export function ThreeCanvas() {
     createSphereObjects();
     scene.add(sphere, sphereTorus1, sphereTorus2, sphereTorus3, sphereTorus4);
 
+    const pyramid = new THREE.Mesh(new THREE.ConeGeometry(4, 4, 4), new THREE.MeshStandardMaterial({ color: "aqua" }));
+    scene.add(pyramid);
+    pyramid.position.y = -8;
+
     const animate = () => {
       let rotateVar = 0.005;
       sphere.rotation.y += rotateVar;
@@ -114,6 +118,7 @@ export function ThreeCanvas() {
       sphereTorus3.rotation.x += -rotateVar;
       sphereTorus4.rotation.y += rotateVar;
       sphereTorus4.rotation.x += rotateVar;
+      pyramid.rotation.y += -0.01;
       renderer.render(scene, camera);
       // controls.update();
       window.requestAnimationFrame(animate);
