@@ -1,11 +1,11 @@
 /* FONTS ////////////////////////////////////////////////////// */
 @font-face {
   font-family: Anurati;
-  src: url(./fonts/Anurati-Regular.otf);
+  src: url(./assets/fonts/Anurati-Regular.otf);
 }
 @font-face {
   font-family: Ailerons;
-  src: url(./fonts/Ailerons-TrialVersion.otf);
+  src: url(./assets/fonts/Ailerons-TrialVersion.otf);
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
@@ -41,104 +41,4 @@ button:focus {
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
-}
-/* PAGE OVERLAY & ANIMATION //////////////////////////// */
-.main-overlay {
-  width: 100%;
-  height: 100%;
-  position: fixed;
-  top: 0;
-  z-index: 88888;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 5px solid aqua;
-  border-top: 2px solid red;
-  border-bottom: 12px solid red;
-  background: black;
-  transition: transform 500ms ease-in 1s;
-}
-.main-overlay .logo-container {
-  width: 200px;
-  height: 200px;
-  border: none;
-  box-shadow: none;
-  clip-path: none;
-}
-.main-overlay .logo,
-.main-overlay .logo:nth-child(2) {
-  animation: logo-pulse 1s ease-in-out;
-}
-@keyframes logo-pulse {
-  50% {
-    box-shadow: 0 0 10px 1px aqua;
-  }
-}
-.main-overlay .logo:nth-child(4),
-.main-overlay .logo:nth-child(5) {
-  animation: logo-pulse-2 1.2s ease-in-out;
-}
-@keyframes logo-pulse-2 {
-  50% {
-    box-shadow: 0 0 10px 1px red;
-  }
-}
-
-/* SCROLL TO TOP BUTTON /////////////////////////////////////// */
-.button-to-top {
-  width: 80px;
-  height: 50px;
-  border: 1px solid red;
-  border-bottom: none;
-  background: rgb(37, 37, 37);
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 888;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  transition: transform 300ms ease-in-out;
-  cursor: pointer;
-  transform: translateY(60px);
-}
-.button-to-top:hover {
-  background: rgb(74, 74, 74);
-}
-.button-to-top.open {
-  transform: none;
-}
-.button-to-top-bars {
-  width: 40%;
-  height: 7%;
-  margin: auto;
-  position: relative;
-  display: flex;
-}
-.button-to-top-bars::before,
-.button-to-top-bars::after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  background: aqua;
-  position: absolute;
-  filter: drop-shadow(0 0 3px aqua);
-}
-.button-to-top-bars::before {
-  transform: translateX(-38%) rotate(-35deg);
-}
-.button-to-top-bars::after {
-  transform: translateX(39%) rotate(35deg);
-}
-@media (max-width: 700px) {
-  .button-to-top {
-    width: 50px;
-    height: 30px;
-    background: rgb(37, 37, 37);
-  }
-  .button-to-top:hover {
-    background: rgb(37, 37, 37);
-  }
 }

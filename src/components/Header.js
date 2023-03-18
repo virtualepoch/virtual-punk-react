@@ -117,26 +117,11 @@ export function Header() {
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/"}>
             HOME
           </CustomLink>
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/orders"}>
-            ORDERS
-          </CustomLink>
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/orders-2"}>
-            ORDERS 2
-          </CustomLink>
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/general"}>
-            GENERAL
-          </CustomLink>
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/add-parts-services"}>
-            ADD PARTS & SERVICES
-          </CustomLink>
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/address-change"}>
-            ADDRESS CHANGE
-          </CustomLink>
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/ma-damage-reported"}>
-            MA DAMAGE REPORTED
-          </CustomLink>
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/three-js-testing"}>
             THREE.JS TESTING
+          </CustomLink>
+          <CustomLink className="link" onClick={openCloseNavMenu} to={"/three-fiber-testing"}>
+            THREE FIBER TESTING
           </CustomLink>
         </ul>
       </nav>

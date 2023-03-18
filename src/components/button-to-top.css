@@ -1,0 +1,58 @@
+.button-to-top {
+    width: 80px;
+    height: 50px;
+    border: 1px solid red;
+    border-bottom: none;
+    background: rgb(37, 37, 37);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 888;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    transition: transform 300ms ease-in-out;
+    cursor: pointer;
+    transform: translateY(60px);
+  }
+  .button-to-top:hover {
+    background: rgb(74, 74, 74);
+  }
+  .button-to-top.open {
+    transform: none;
+  }
+  .button-to-top-bars {
+    width: 40%;
+    height: 7%;
+    margin: auto;
+    position: relative;
+    display: flex;
+  }
+  .button-to-top-bars::before,
+  .button-to-top-bars::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: aqua;
+    position: absolute;
+    filter: drop-shadow(0 0 3px aqua);
+  }
+  .button-to-top-bars::before {
+    transform: translateX(-38%) rotate(-35deg);
+  }
+  .button-to-top-bars::after {
+    transform: translateX(39%) rotate(35deg);
+  }
+  @media (max-width: 700px) {
+    .button-to-top {
+      width: 50px;
+      height: 30px;
+      background: rgb(37, 37, 37);
+    }
+    .button-to-top:hover {
+      background: rgb(37, 37, 37);
+    }
+  }
+  

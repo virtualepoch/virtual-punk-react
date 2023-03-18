@@ -4,15 +4,12 @@ import { useEffect } from "react";
 import { ThreeFiberCanvas } from "./components/ThreeFiberCanvas";
 import { Header } from "./components/Header";
 import { ButtonToTop } from "./components/ButtonToTop";
-import "./App.css";
+import "./components/button-to-top.css";
 import { Home } from "./pages/Home";
-import { Orders } from "./pages/Orders";
-import { OrdersTwo } from "./pages/OrdersTwo";
-import { General } from "./pages/General";
-import { AddPartsServices } from "./pages/AddPartsServices";
-import { AddressChange } from "./pages/AddressChange";
-import { MADamageReported } from "./pages/MADamageReported";
+import "./pages/home.css";
 import { ThreeJsTesting } from "./pages/ThreeJsTesting";
+import { ThreeFiberTesting } from "./pages/ThreeFiberTesting";
+import "./App.css";
 
 function useScrollToTop() {
   const { pathname } = useLocation();
@@ -32,13 +29,8 @@ function App() {
       <section className="page-container">
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/orders-2" element={<OrdersTwo />} />
-          <Route path="/general" element={<General />} />
-          <Route path="/add-parts-services" element={<AddPartsServices />} />
-          <Route path="/address-change" element={<AddressChange />} />
-          <Route path="/ma-damage-reported" element={<MADamageReported />} />
           <Route path="/three-js-testing" element={<ThreeJsTesting />} />
+          <Route path="/three-fiber-testing" element={<ThreeFiberTesting />} />
         </Routes>
       </section>
     </div>

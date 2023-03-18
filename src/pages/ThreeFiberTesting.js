@@ -1,4 +1,4 @@
-export function ThreeJsTesting() {
+export function ThreeFiberTesting() {
   const style = {
     threeJsTestSection: {
       width: "100vw",
@@ -14,7 +14,7 @@ export function ThreeJsTesting() {
   };
   return (
     <div style={style.threeJsTestSection}>
-      <h1 style={style.h1}>THREE.JS TESTING PAGE</h1>
+      <h1 style={style.h1}>REACT THREE FIBER TESTING PAGE</h1>
     </div>
   );
 }
