@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import "./button-to-top.css";
 
 export function ButtonToTop() {
   const buttonToTop = useRef(null);

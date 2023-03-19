@@ -10,8 +10,7 @@ const style = {
     top: 0,
     zIndex: "-2",
     border: "solid red",
-    background: "linear-gradient(to right, rgb(0,100,100), black, rgb(0,100,100))",
-      pointerEvents: "none",
+    background: "linear-gradient(to right, rgb(0,50,50), black, rgb(0,50,50))",
   },
 };
 
@@ -27,7 +26,7 @@ function Sphere() {
   });
 
   return (
-    <mesh ref={meshRef} rotation={[0, -1.6, 0]}>
+    <mesh ref={meshRef} rotation={[0, -1.6, 0]} position={[0, 0, -20]}>
       <sphereGeometry args={[1, 16, 16]} />
       <meshStandardMaterial {...props} />
     </mesh>
@@ -54,20 +53,19 @@ function TorusGroup() {
 
   return (
     <>
-      {" "}
-      <mesh ref={meshRef1}>
+      <mesh ref={meshRef1} position={[0, 0, -20]}>
         <torusGeometry args={[1.1, 0.1, 3, 32]} />
         <meshStandardMaterial color={"aqua"} />
       </mesh>
-      <mesh ref={meshRef2}>
+      <mesh ref={meshRef2} position={[0, 0, -20]}>
         <torusGeometry args={[1.3, 0.1, 3, 32]} />
         <meshStandardMaterial color={"red"} />
       </mesh>
-      <mesh ref={meshRef3}>
+      <mesh ref={meshRef3} position={[0, 0, -20]}>
         <torusGeometry args={[1.5, 0.1, 3, 32]} />
         <meshStandardMaterial color={"aqua"} />
       </mesh>
-      <mesh ref={meshRef4}>
+      <mesh ref={meshRef4} position={[0, 0, -20]}>
         <torusGeometry args={[1.7, 0.1, 3, 32]} />
         <meshStandardMaterial color={"red"} />
       </mesh>
@@ -81,14 +79,14 @@ function StarsAnim() {
     if (!starsRef.current) {
       return;
     }
-    starsRef.current.rotation.y += 0.0005;
+    starsRef.current.rotation.y += 0.003;
   });
   return <Stars ref={starsRef} />;
 }
 
 export function ThreeFiberCanvas() {
   return (
-    <Canvas style={style.threeJsCanvas} camera={{ position: [0, 0, 5] }}>
+    <Canvas style={style.threeJsCanvas} camera={{ position: [0, 0, -25] }}>
       <OrbitControls />
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 15, 10]} angle={0.3} />

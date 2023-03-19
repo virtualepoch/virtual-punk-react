@@ -1,14 +1,13 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-// import { ThreeCanvas } from "./components/ThreeCanvas";
-import { ThreeFiberCanvas } from "./components/ThreeFiberCanvas";
+import { MainOverlay } from "./components/MainOverlay";
 import { Header } from "./components/Header";
 import { ButtonToTop } from "./components/ButtonToTop";
-import "./components/button-to-top.css";
+import { ThreeFiberCanvas } from "./components/ThreeFiberCanvas";
 import { Home } from "./pages/Home";
-import "./pages/home.css";
 import { ThreeJsTesting } from "./pages/ThreeJsTesting";
 import { ThreeFiberTesting } from "./pages/ThreeFiberTesting";
+import "./pages/_pages.css";
 import "./App.css";
 
 function useScrollToTop() {
@@ -23,9 +22,10 @@ function App() {
   useScrollToTop();
   return (
     <div className="App">
-      <ThreeFiberCanvas />
+      <MainOverlay />
       <Header />
       <ButtonToTop />
+      <ThreeFiberCanvas />
       <section className="page-container">
         <Routes>
           <Route path="/" element={<Home />} />

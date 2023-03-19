@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import "./main-overlay.css"
 
 export function MainOverlay() {
   // CLOSE MAIN OVERLAY
