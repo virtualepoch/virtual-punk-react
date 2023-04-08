@@ -1,4 +1,5 @@
 import React, { useRef, useEffect } from "react";
+import { ThreeFiberCanvas } from "../components/ThreeFiberCanvas";
 import "./home.css";
 
 export function Home() {
@@ -39,25 +40,24 @@ export function Home() {
 
   return (
     <>
-      <div className="heading">
-        <div class="hero-section-container">
-          <div class="hero-section">
-            <p class="text">Customizable Themes</p>
-            <p class="text">
-              To make your content <span class="word-pop">POP!</span>
-            </p>
-            <p class="text">
-              Check out our other themes at{" "}
-              <a class="text-link" href="/">
-                VirtualEpoch.com
-              </a>
-            </p>
-            <p class="text">
-              or click <span class="text-link button-open-contact-overlay">contact</span> to inquire.
-            </p>
-          </div>
+    <ThreeFiberCanvas />
+      <header className="page-content-header">
+        <div class="hero-section">
+          <p class="text">Customizable Themes</p>
+          <p class="text">
+            To make your content <span class="word-pop">POP!</span>
+          </p>
+          <p class="text">
+            Check out our other themes at{" "}
+            <a class="text-link" href="/">
+              VirtualEpoch.com
+            </a>
+          </p>
+          <p class="text">
+            or click <span class="text-link button-open-contact-overlay">contact</span> to inquire.
+          </p>
         </div>
-      </div>
+      </header>
 
       <section className="content-container color-bg" ref={contentContainer1}>
         <div className="content-row row-1">

@@ -1,3 +1,5 @@
+import ThreeScene from "../components/three-scene";
+
 export function ThreeJsTesting() {
   const style = {
     threeJsTestSection: {
@@ -14,7 +16,7 @@ export function ThreeJsTesting() {
   };
   return (
     <div style={style.threeJsTestSection}>
-      <h1 style={style.h1}>THREE.JS TESTING PAGE</h1>
+      <ThreeScene/>
     </div>
   );
 }

@@ -25,7 +25,7 @@ function App() {
       <MainOverlay />
       <Header />
       <ButtonToTop />
-      <ThreeFiberCanvas />
+      
       <section className="page-container">
         <Routes>
           <Route path="/" element={<Home />} />

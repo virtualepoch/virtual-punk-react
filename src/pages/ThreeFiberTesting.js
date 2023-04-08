@@ -1,3 +1,5 @@
+import { ThreeFiberCanvas2 } from "../components/ThreeFiberCanvas2";
+
 export function ThreeFiberTesting() {
   const style = {
     threeJsTestSection: {
@@ -10,11 +12,13 @@ export function ThreeFiberTesting() {
     h1: {
       color: "white",
       padding: "10px",
-    }
+    },
   };
   return (
-    <div style={style.threeJsTestSection}>
-      <h1 style={style.h1}>REACT THREE FIBER TESTING PAGE</h1>
-    </div>
+      <div style={style.threeJsTestSection}>
+        <h1 style={style.h1}>REACT THREE FIBER TESTING PAGE</h1>
+        {/* <div className="test"></div> */}
+        <ThreeFiberCanvas2 />
+      </div>
   );
 }

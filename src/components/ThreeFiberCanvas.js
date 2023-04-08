@@ -8,6 +8,7 @@ const style = {
     height: "100%",
     position: "fixed",
     top: 0,
+    left: 0,
     zIndex: "-2",
     border: "solid red",
     background: "linear-gradient(to right, rgb(0,50,50), black, rgb(0,50,50))",
@@ -15,7 +16,7 @@ const style = {
 };
 
 function Sphere() {
-  const props = useTexture({ map: "images/red-cyber.jpg" });
+  const props = useTexture({ map: "images/pexels-irina-iriser.jpg" });
   const meshRef = useRef(null);
 
   useFrame(() => {
@@ -79,7 +80,7 @@ function StarsAnim() {
     if (!starsRef.current) {
       return;
     }
-    starsRef.current.rotation.y += 0.003;
+    starsRef.current.rotation.y += 0.001;
   });
   return <Stars ref={starsRef} />;
 }

@@ -3,6 +3,19 @@
 }
 
 .page-container {
-  max-width: 1200px;
-  margin: 80px auto;
+  max-width: 1400px;
+  margin: 70px auto;
+  display: flex;
+  flex-direction: column;
+  border: 5px solid red;
 }
+
+/* .test {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999999999999999;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(white 20%, black 20% 40%, white 40% 60%, black 60% 80%, white 80%);
+} */
