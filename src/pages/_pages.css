@@ -24,10 +24,6 @@
   transform: scale(0);
 }
 
-.testing {
-  height: 200vh;
-}
-
 .content-row.test {
   padding-bottom: 200px;
   overflow: hidden;

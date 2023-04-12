@@ -117,11 +117,11 @@ export function Header() {
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/"}>
             HOME
           </CustomLink>
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/three-js-testing"}>
-            THREE.JS TESTING
+          <CustomLink className="link" onClick={openCloseNavMenu} to={"/three-fiber-pyramid"}>
+            THREE FIBER PYRAMID
           </CustomLink>
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/three-fiber-testing"}>
-            THREE FIBER TESTING
+          <CustomLink className="link" onClick={openCloseNavMenu} to={"/three-fiber-scroll-anim"}>
+            THREE FIBER SCROLL ANIM
           </CustomLink>
         </ul>
       </nav>

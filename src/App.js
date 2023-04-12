@@ -1,12 +1,10 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { MainOverlay } from "./components/MainOverlay";
 import { Header } from "./components/Header";
 import { ButtonToTop } from "./components/ButtonToTop";
-import { ThreeFiberCanvas } from "./components/ThreeFiberCanvas";
-import { Home } from "./pages/Home";
-import { ThreeJsTesting } from "./pages/ThreeJsTesting";
-import { ThreeFiberTesting } from "./pages/ThreeFiberTesting";
+import { HomePage } from "./pages/HomePage";
+import { PyramidPage } from "./pages/PyramidPage";
+import { ScrollAnimPage } from "./pages/ScrollAnimPage";
 import "./pages/_pages.css";
 import "./App.css";
 
@@ -22,15 +20,13 @@ function App() {
   useScrollToTop();
   return (
     <div className="App">
-      <MainOverlay />
       <Header />
       <ButtonToTop />
-      
       <section className="page-container">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/three-js-testing" element={<ThreeJsTesting />} />
-          <Route path="/three-fiber-testing" element={<ThreeFiberTesting />} />
+          <Route path="/" element={<HomePage />} />
+          <Route path="/three-fiber-pyramid" element={<PyramidPage />} />
+          <Route path="/three-fiber-scroll-anim" element={<ScrollAnimPage />} />
         </Routes>
       </section>
     </div>
