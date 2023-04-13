@@ -43,26 +43,26 @@ export function HomePage() {
     <>
       <MainOverlay />
       <CanvasHome />
-      <header className="page-content-header">
-        <div class="hero-section">
-          <p class="text">Customizable Themes</p>
-          <p class="text">
-            To make your content <span class="word-pop">POP!</span>
-          </p>
-          <p class="text">
-            Check out our other themes at{" "}
-            <a class="text-link" href="/">
-              VirtualEpoch.com
-            </a>
-          </p>
-          <p class="text">
-            or click <span class="text-link button-open-contact-overlay">contact</span> to inquire.
-          </p>
-        </div>
+      <header className="hero-section">
+        <p className="hero-text">Customizable Themes</p>
+        <p className="hero-text">
+          To make your content <span className="word-pop">POP!</span>
+        </p>
+        <p className="hero-text">
+          Check out our other themes at<br></br>
+          <a className="text-link" href="/">
+            hrVirtualEpoch.com
+          </a>
+        </p>
+        <p className="hero-text">
+          or click <span className="text-link button-open-contact-overlay">contact</span> to inquire.
+        </p>
       </header>
 
+      <hr className="banner"></hr>
+
       <section className="content-container color-bg" ref={contentContainer1}>
-        <div className="content-row row-1">
+        <div className="content-row">
           <div className="column">
             <h2 className="content-heading">All Themes are Responsive</h2>
             <p className="content-content">Everything will look great and function properly on any device.</p>
@@ -78,7 +78,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <div className="banner"></div>
+      <hr className="banner"></hr>
 
       <section className="content-container transparent-bg" ref={contentContainer2}>
         <div className="content-row test">
@@ -97,7 +97,7 @@ export function HomePage() {
         </div>
       </section>
 
-      <div className="banner"></div>
+      <hr className="banner"></hr>
     </>
   );
 }

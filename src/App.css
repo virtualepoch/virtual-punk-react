@@ -8,6 +8,7 @@
 }
 
 .page-container {
+  max-width: 1400px;
   margin: 70px auto;
   display: flex;
   flex-direction: column;

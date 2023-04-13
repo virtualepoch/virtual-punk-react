@@ -2,14 +2,16 @@
   border-top: 2px solid red;
   border-bottom: 2px solid red;
   width: 100%;
-  padding: 50px 20px;
+  padding: 30px 20px;
   position: relative;
 }
-.content-container.transparent-bg {
-  background: none;
-}
+
 .content-container.color-bg {
   background: rgb(37, 37, 37);
+}
+
+.content-container.transparent-bg {
+  background: none;
 }
 
 .content-row {
@@ -49,12 +51,6 @@
   }
 }
 
-.content-row .image {
-  width: 100%;
-  margin: auto;
-  padding: 10px;
-}
-
 .content-heading {
   font: 500 25px Ailerons;
   padding: 10px 0;
@@ -62,7 +58,7 @@
 }
 
 .content-heading.test {
-  filter: drop-shadow(0 0 5px red);
+  filter: drop-shadow(0 0 3px red);
 }
 
 .content-content {
@@ -72,7 +68,7 @@
 }
 
 .content-content.test {
-  filter: drop-shadow(0 0 5px aqua);
+  filter: drop-shadow(0 0 3px aqua);
 }
 
 .responsive-project {
