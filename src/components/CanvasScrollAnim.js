@@ -1,6 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, ScrollControls } from "@react-three/drei";
 import { Office } from "./Office";
+import { CanvasScrollAnimOverlay } from "./CanvasScrollAnimOverlay";
 
 const style = {
   width: "100%",
@@ -21,6 +22,7 @@ export function CanvasScrollAnim() {
       <ambientLight intensity={1} />
       <ScrollControls pages={3} damping={0.25}>
         <Office />
+        <CanvasScrollAnimOverlay/>
       </ScrollControls>
     </Canvas>
   );
