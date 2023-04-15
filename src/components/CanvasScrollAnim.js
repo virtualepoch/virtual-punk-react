@@ -18,7 +18,7 @@ const style = {
 export function CanvasScrollAnim() {
   return (
     <Canvas style={style} camera={{ position: [2.3, 1.5, 2.3], fov: 64 }}>
-      <OrbitControls enableZoom={false} />
+      {/* <OrbitControls enableZoom={false} /> */}
       <ambientLight intensity={1} />
       <ScrollControls pages={3} damping={0.25}>
         <Office />
