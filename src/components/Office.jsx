@@ -32,7 +32,7 @@ export function Office(props) {
 
     // Office Rotation
     tl.current.to(ref.current.rotation, { duration: 1, x: 0, y: Math.PI / 6, z: 0 }, 0);
-    tl.current.to(ref.current.rotation, { duration: 1, x: 0, y: Math.PI / 6, z: 0 }, 1);
+    tl.current.to(ref.current.rotation, { duration: 1, x: 0, y: -Math.PI / 6, z: 0 }, 1);
 
     // Office movement
     tl.current.to(ref.current.position, { duration: 1, x: -1, z: 2 }, 0);
