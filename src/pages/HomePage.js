@@ -51,7 +51,7 @@ export function HomePage() {
         <p className="hero-text">
           Check out our other themes at<br></br>
           <a className="text-link" href="/">
-            hrVirtualEpoch.com
+            VirtualEpoch.com
           </a>
         </p>
         <p className="hero-text">

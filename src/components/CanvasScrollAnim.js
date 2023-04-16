@@ -1,6 +1,6 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, ScrollControls } from "@react-three/drei";
-import { Office } from "./Office";
+import { Office } from "./models/Office";
 import { CanvasScrollAnimOverlay } from "./CanvasScrollAnimOverlay";
 
 const style = {

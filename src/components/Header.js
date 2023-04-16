@@ -123,6 +123,9 @@ export function Header() {
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/three-fiber-scroll-anim"}>
             THREE FIBER SCROLL ANIM
           </CustomLink>
+          <CustomLink className="link" onClick={openCloseNavMenu} to={"/three-fiber-torus-anim"}>
+            THREE FIBER TORUS ANIM
+          </CustomLink>
         </ul>
       </nav>
     </header>

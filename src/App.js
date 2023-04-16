@@ -5,6 +5,7 @@ import { ButtonToTop } from "./components/ButtonToTop";
 import { HomePage } from "./pages/HomePage";
 import { PyramidPage } from "./pages/PyramidPage";
 import { ScrollAnimPage } from "./pages/ScrollAnimPage";
+import { TorusPage } from "./pages/TorusPage";
 import "./pages/_pages.css";
 import "./App.css";
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/three-fiber-pyramid" element={<PyramidPage />} />
           <Route path="/three-fiber-scroll-anim" element={<ScrollAnimPage />} />
+          <Route path="/three-fiber-torus-anim" element={<TorusPage />} />
         </Routes>
       </section>
     </div>
