@@ -44,19 +44,17 @@ export function HomePage() {
       <MainOverlay />
       <CanvasHome />
       <header className="hero-section">
-        <p className="hero-text">Customizable Themes</p>
+        <p className="hero-text">Welcome!</p>
         <p className="hero-text">
-          To make your content <span className="word-pop">POP!</span>
+          My name is Craig <span className="word-pop">Kaufman</span>
         </p>
         <p className="hero-text">
-          Check out our other themes at<br></br>
+          This is my portfolio of<br></br>
           <a className="text-link" href="/">
-            VirtualEpoch.com
+            3D
           </a>
         </p>
-        <p className="hero-text">
-          or click <span className="text-link button-open-contact-overlay">contact</span> to inquire.
-        </p>
+        <p className="hero-text">I hope you enjoy!</p>
       </header>
 
       <hr className="banner"></hr>

@@ -32,7 +32,9 @@
 }
 
 .text-link {
+  width: fit-content;
   display: flex;
+  margin: auto;
   color: white;
   filter: drop-shadow(0 0 5px aqua);
   cursor: pointer;
