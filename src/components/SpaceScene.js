@@ -36,7 +36,7 @@ export const SpaceScene = () => {
 
   return (
     <>
-      <OrbitControls enableZoom={false} />
+      {/* <OrbitControls enableZoom={false} /> */}
       <group ref={cameraGroup}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 15, 10]} angle={0.3} />
@@ -62,9 +62,11 @@ export const SpaceScene = () => {
           <meshStandardMaterial color={"white"} opacity={0.7} transparent />
         </mesh>
       </group>
-      <LavaPlanet scale={[0.3, 0.3, 0.3]} position={[-2, 1, -3]} />
-      <LavaPlanet scale={[0.3, 0.3, 0.3]} position={[-2, -1, -1]} />
-      <LavaPlanet scale={[0.5, 0.5, 0.5]} position={[2, 1, -15]} />
+      <LavaPlanet scale={[1, 1, 1]} position={[-1, 1, -10]} />
+      <LavaPlanet scale={[0.3, 0.3, 0.3]} position={[-2, -1, -15]} />
+      <LavaPlanet scale={[0.5, 0.5, 0.5]} position={[1, 1, -25]} />
+      <LavaPlanet scale={[1.5, 1.5, 1.5]} position={[0, 1, -35]} />
+      <LavaPlanet scale={[3.5, 3.5, 3.5]} position={[0, 0, -115]} />
     </>
   );
 };
