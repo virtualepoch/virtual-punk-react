@@ -28,7 +28,7 @@ export function PyramidPage() {
   };
   return (
     <div style={style.threeJsTestSection}>
-      <h1 style={style.h1}>React Three Fiber Pyramid</h1>
+      <h1 style={style.h1}>Space Journey</h1>
       {/* <div className="test"></div> */}
       <Canvas style={style.canvas}>
         <ScrollControls pages={5} damping={0.3}>
