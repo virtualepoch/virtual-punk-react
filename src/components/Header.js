@@ -115,16 +115,16 @@ export function Header() {
       <nav className="nav-menu" ref={navMenu}>
         <ul className="nav-link-container">
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/"}>
-            HOME
+            Home - Rabbit Hole
           </CustomLink>
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/three-fiber-pyramid"}>
-            THREE FIBER PYRAMID
+            Space Journey
           </CustomLink>
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/three-fiber-scroll-anim"}>
-            THREE FIBER SCROLL ANIM
+            Scroll Animation
           </CustomLink>
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/three-fiber-torus-anim"}>
-            THREE FIBER TORUS ANIM
+            Torus Animation
           </CustomLink>
         </ul>
       </nav>

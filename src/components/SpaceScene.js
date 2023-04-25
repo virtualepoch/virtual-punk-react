@@ -5,7 +5,7 @@ import { Spacecraft } from "./models/Spacecraft";
 import { LavaPlanet } from "./models/LavaPlanet";
 import * as THREE from "three";
 
-const LINE_NB_POINTS = 2000;
+const LINE_NB_POINTS = 12000;
 
 export const SpaceScene = () => {
   const curve = useMemo(() => {
@@ -30,9 +30,23 @@ export const SpaceScene = () => {
   useFrame((_state, delta) => {
     const curPointIndex = Math.min(Math.round(scroll.offset * linePoints.length), linePoints.length - 1);
     const curPoint = linePoints[curPointIndex];
+    const pointAhead = linePoints[Math.min(curPointIndex + 1, linePoints.length - 1)];
+
+    const xDisplacement = (pointAhead.x - curPoint.x) * 80;
+
+    const angleRotation = (xDisplacement < 0 ? 1 : -1) * Math.min(Math.abs(xDisplacement), Math.PI / 3);
+
+    const targetSpacecraftQuaternion = new THREE.Quaternion().setFromEuler(new THREE.Euler(spacecraft.current.rotation.x, spacecraft.current.rotation.y, angleRotation));
+
+    const targetCameraQuaternion = new THREE.Quaternion().setFromEuler(new THREE.Euler(cameraGroup.current.rotation.x, cameraGroup.current.rotation.z, angleRotation));
+
+    spacecraft.current.quaternion.slerp(targetSpacecraftQuaternion, delta * 2);
+    cameraGroup.current.quaternion.slerp(targetCameraQuaternion, delta * 2);
 
     cameraGroup.current.position.lerp(curPoint, delta * 24);
   });
+
+  const spacecraft = useRef();
 
   return (
     <>
@@ -41,10 +55,12 @@ export const SpaceScene = () => {
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 15, 10]} angle={0.3} />
         <Stars />
-        <PerspectiveCamera position={[0, 0, 5]} fov={30} makeDefault />
-        <Float floatIntensity={2} speed={2}>
-          <Spacecraft />
-        </Float>
+        <PerspectiveCamera position={[0, 0, 5]} fov={40} makeDefault />
+        <group ref={spacecraft}>
+          <Float floatIntensity={2} speed={2}>
+            <Spacecraft />
+          </Float>
+        </group>
       </group>
       <group position-y={-2}>
         <Line points={linePoints} color={"white"} opacity={0.7} transparent lineWidth={16} />
@@ -62,10 +78,6 @@ export const SpaceScene = () => {
           <meshStandardMaterial color={"white"} opacity={0.7} transparent />
         </mesh>
       </group>
-      <LavaPlanet scale={[1, 1, 1]} position={[-1, 1, -10]} />
-      <LavaPlanet scale={[0.3, 0.3, 0.3]} position={[-2, -1, -15]} />
-      <LavaPlanet scale={[0.5, 0.5, 0.5]} position={[1, 1, -25]} />
-      <LavaPlanet scale={[1.5, 1.5, 1.5]} position={[0, 1, -35]} />
       <LavaPlanet scale={[3.5, 3.5, 3.5]} position={[0, 0, -115]} />
     </>
   );
