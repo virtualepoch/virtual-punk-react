@@ -5,6 +5,7 @@ import { HomePage } from "./pages/HomePage";
 import { SpacePage } from "./pages/SpacePage";
 import { ScrollAnimPage } from "./pages/ScrollAnimPage";
 import { TorusPage } from "./pages/TorusPage";
+import { GearsOfTime } from "./pages/GearsOfTime";
 import "./pages/_pages.css";
 import "./App.css";
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/three-fiber-pyramid" element={<SpacePage />} />
           <Route path="/three-fiber-scroll-anim" element={<ScrollAnimPage />} />
           <Route path="/three-fiber-torus-anim" element={<TorusPage />} />
+          <Route path="/gears-of-time" element={<GearsOfTime />} />
         </Routes>
       </section>
     </div>

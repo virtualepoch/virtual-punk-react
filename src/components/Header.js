@@ -126,6 +126,9 @@ export function Header() {
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/three-fiber-torus-anim"}>
             Torus Animation
           </CustomLink>
+          <CustomLink className="link" onClick={openCloseNavMenu} to={"/gears-of-time"}>
+            Gears of Time
+          </CustomLink>
         </ul>
       </nav>
     </header>
