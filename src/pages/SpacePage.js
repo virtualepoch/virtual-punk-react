@@ -10,7 +10,7 @@ export function SpacePage() {
     top: 0,
     left: 0,
     zIndex: "2",
-    background: "linear-gradient(to right, black, aqua, black",
+    background: "linear-gradient(to right, black, rgb(0,100,100),aqua,rgb(0,100,100), black",
   };
   return (
     <Canvas style={style}>

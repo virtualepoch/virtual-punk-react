@@ -1,5 +1,5 @@
 import { useMemo, useRef } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, Sphere } from "@react-three/fiber";
 import { OrbitControls, Stars, Float, Line, PerspectiveCamera, useScroll } from "@react-three/drei";
 import { Spacecraft } from "./models/Spacecraft";
 import { LavaPlanet } from "./models/LavaPlanet";
@@ -48,6 +48,24 @@ export const SpaceScene = () => {
 
   const spacecraft = useRef();
 
+  function Sphere() {
+    const meshRef = useRef(null);
+
+    useFrame(() => {
+      if (!meshRef.current) {
+        return;
+      }
+      meshRef.current.rotation.y += 0.005;
+    });
+
+    return (
+      <mesh ref={meshRef} scale={[4, 4, 4]} position={[0, 0, -115]}>
+        <sphereGeometry args={[0.5, 11, 11]} />
+        <meshStandardMaterial color={"red"} wireframe={true} />
+      </mesh>
+    );
+  }
+
   return (
     <>
       {/* <OrbitControls enableZoom={false} /> */}
@@ -78,7 +96,7 @@ export const SpaceScene = () => {
           <meshStandardMaterial color={"white"} opacity={0.7} transparent />
         </mesh>
       </group>
-      <LavaPlanet scale={[10, 10, 10]} position={[0, 0, -115]} />
+      <Sphere />
     </>
   );
 };
