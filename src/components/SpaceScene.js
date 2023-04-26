@@ -5,7 +5,7 @@ import { Spacecraft } from "./models/Spacecraft";
 import { LavaPlanet } from "./models/LavaPlanet";
 import * as THREE from "three";
 
-const LINE_NB_POINTS = 200;
+const LINE_NB_POINTS = 12000;
 
 export const SpaceScene = () => {
   const curve = useMemo(() => {
@@ -38,10 +38,10 @@ export const SpaceScene = () => {
 
     const targetSpacecraftQuaternion = new THREE.Quaternion().setFromEuler(new THREE.Euler(spacecraft.current.rotation.x, spacecraft.current.rotation.y, angleRotation));
 
-    // const targetCameraQuaternion = new THREE.Quaternion().setFromEuler(new THREE.Euler(cameraGroup.current.rotation.x, cameraGroup.current.rotation.z, angleRotation));
+    const targetCameraQuaternion = new THREE.Quaternion().setFromEuler(new THREE.Euler(cameraGroup.current.rotation.x, cameraGroup.current.rotation.z, angleRotation));
 
     spacecraft.current.quaternion.slerp(targetSpacecraftQuaternion, delta * 2);
-    // cameraGroup.current.quaternion.slerp(targetCameraQuaternion, delta * 2);
+    cameraGroup.current.quaternion.slerp(targetCameraQuaternion, delta * 2);
 
     cameraGroup.current.position.lerp(curPoint, delta * 24);
   });
