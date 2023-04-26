@@ -75,8 +75,29 @@ export function GearsOfTime() {
       {/* <OrbitControls /> */}
       <ambientLight intensity={0.5} />
       <directionalLight position={[0, 15, 10]} angle={0.3} />
+      <group position={[0, -2, 2]}>
+        <CubeGroup />
+      </group>
+      <group position={[0, -1, 1]}>
+        <CubeGroup />
+      </group>
       <Sphere />
       <CubeGroup />
+      <group position={[0, 1, -2]}>
+        <CubeGroup />
+      </group>
+      <group position={[0, 2, -3]}>
+        <CubeGroup />
+      </group>
+      <group position={[0, 3, -4]}>
+        <CubeGroup />
+      </group>
+      <group position={[0, 4, -5]}>
+        <CubeGroup />
+      </group>
+      <group position={[0, 5, -6]}>
+        <CubeGroup />
+      </group>
     </Canvas>
   );
 }
