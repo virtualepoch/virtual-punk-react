@@ -1,9 +1,8 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Header } from "./components/Header";
-import { ButtonToTop } from "./components/ButtonToTop";
 import { HomePage } from "./pages/HomePage";
-import { PyramidPage } from "./pages/PyramidPage";
+import { SpacePage } from "./pages/SpacePage";
 import { ScrollAnimPage } from "./pages/ScrollAnimPage";
 import { TorusPage } from "./pages/TorusPage";
 import "./pages/_pages.css";
@@ -22,11 +21,10 @@ function App() {
   return (
     <div className="App">
       <Header />
-      <ButtonToTop />
       <section className="page-container">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/three-fiber-pyramid" element={<PyramidPage />} />
+          <Route path="/three-fiber-pyramid" element={<SpacePage />} />
           <Route path="/three-fiber-scroll-anim" element={<ScrollAnimPage />} />
           <Route path="/three-fiber-torus-anim" element={<TorusPage />} />
         </Routes>

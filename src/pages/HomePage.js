@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { MainOverlay } from "../components/MainOverlay";
+import { ButtonToTop } from "../components/ButtonToTop";
 import { CanvasHome } from "../components/CanvasHome";
 import "./home.css";
 
@@ -42,6 +43,7 @@ export function HomePage() {
   return (
     <>
       <MainOverlay />
+      <ButtonToTop />
       <CanvasHome />
       <header className="hero-section">
         <p className="hero-text">Welcome!</p>
