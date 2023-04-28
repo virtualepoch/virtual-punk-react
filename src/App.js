@@ -6,6 +6,7 @@ import { SpacePage } from "./pages/SpacePage";
 import { ScrollAnimPage } from "./pages/ScrollAnimPage";
 import { TorusPage } from "./pages/TorusPage";
 import { GearsOfTime } from "./pages/GearsOfTime";
+import { StarPunk } from "./pages/StarPunk";
 import "./pages/_pages.css";
 import "./App.css";
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/three-fiber-scroll-anim" element={<ScrollAnimPage />} />
           <Route path="/three-fiber-torus-anim" element={<TorusPage />} />
           <Route path="/gears-of-time" element={<GearsOfTime />} />
+          <Route path="/star-punk" element={<StarPunk />} />
         </Routes>
       </section>
     </div>
