@@ -1,24 +1,15 @@
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { OrbitControls, PerspectiveCamera, Float } from "@react-three/drei";
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 
-export const Starship = () => {
-  function StarshipGroup() {
-    // const meshRef1 = useRef(null);
-    // const meshRef2 = useRef(null);
-    // const meshRef3 = useRef(null);
-    // const meshRef4 = useRef(null);
+export function StarshipLightsCamera() {
+  const cameraGroup = useRef();
 
-    // useFrame(() => {
-    //   if (!meshRef1.current || !meshRef2.current || !meshRef3.current || !meshRef4.current) {
-    //     return;
-    //   }
-    //   meshRef1.current.rotation.x += 0.02;
-    //   meshRef2.current.rotation.x -= 0.02;
-    //   meshRef3.current.rotation.y -= 0.02;
-    //   meshRef4.current.rotation.y += 0.02;
-    // });
+  useFrame(() => {
+    cameraGroup.current.position.z -= 1;
+  });
 
+  function Starship() {
     return (
       <>
         {/* NOSE */}
@@ -60,23 +51,17 @@ export const Starship = () => {
     );
   }
 
-  const cameraGroup = useRef();
-
-  useFrame(() => {
-    cameraGroup.current.position.z -= 0.2;
-  });
-
   return (
     <>
-      <OrbitControls />
+      {/* <OrbitControls /> */}
       <group ref={cameraGroup}>
         <ambientLight intensity={0.5} />
-        <directionalLight position={[0, 15, 10]} angle={0.3} />
-        <PerspectiveCamera position={[0, 0, 15]} fov={40} makeDefault />
-        <Float floatIntensity={2} speed={2}>
-          <StarshipGroup />
-        </Float>
+        <directionalLight position={[10, 15, 10]} angle={0.3} />
+        
+        <PerspectiveCamera position={[0, 10, 25]} rotation={[-0.1, 0, 0]} fov={40} makeDefault />
+
+        <Starship />
       </group>
     </>
   );
-};
+}

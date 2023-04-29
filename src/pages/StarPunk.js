@@ -1,4 +1,4 @@
-import { Starship } from "../components/Starship";
+import { StarshipLightsCamera } from "../components/StarshipLightsCamera";
 import { Canvas } from "@react-three/fiber";
 
 export function StarPunk() {
@@ -24,19 +24,10 @@ export function StarPunk() {
   };
 
   function ExtendingWalls() {
-    const ref = useRef(null);
-
-    // useFrame(() => {
-    //   if (ref.current.position.z < 104) {
-    //     ref.current.position.z += 0.008;
-    //   } else {
-    //     ref.current.position.z -= 124;
-    //   }
-    // });
 
     return (
-      <mesh ref={ref} position={[0, 0, -20]} rotation={[Math.PI / -2, Math.PI / 4, 0]}>
-        <cylinderGeometry args={[55, 55, 1120, 4, 500]} />
+      <mesh position={[0, 0, -1500]} rotation={[Math.PI / -2, Math.PI / 4, 0]}>
+        <cylinderGeometry args={[55, 55, 3000, 4, 200]} />
         <meshBasicMaterial color={"aqua"} wireframe={true} />
       </mesh>
     );
@@ -46,9 +37,8 @@ export function StarPunk() {
     <>
       <h1 style={style.h1}>Star Punk</h1>
       <Canvas style={style.canvas}>
-        <OrbitControls />
         <ExtendingWalls />
-        <Starship />
+        <StarshipLightsCamera />
       </Canvas>
     </>
   );
