@@ -30,15 +30,15 @@ export function CanvasScrollAnimOverlay() {
     <Scroll html>
       <Section opacity={opacityFirstSection}>
         <h1>Hello</h1>
-        <p> Lorem50 blaaha lasdjflka dsjlkfaj dflkdas daslk fjdlks fjalkdsf dlkasf jldkjf dlksafj dlksaf jdsalkf jdsalkf jdaslkfd jsflkd jfalksdf jlfdks</p>
+        <p> Welcome to this scroll animation. It features code by the brilliant YouTuber who goes by the name of Wawa Sensei. You can find the tutorial for this animation <a style={{color: "blue", textDecoration: "underline"}} href="https://www.youtube.com/watch?v=pXpckHDDNYo&t=1s" target="_blank" rel="noreferrer">here</a>. The 3d model used was created by another brilliant artist by the name of Thayu Miko. You can connect with her twitter @thaymiko or her instagram @madeingrae.</p>
       </Section>
       <Section right opacity={opacitySecondSection}>
-        <h1>Hello</h1>
-        <p> Lorem50 blaaha lasdjflka dsjlkfaj dflkdas daslk fjdlks fjalkdsf dlkasf jldkjf dlksafj dlksaf jdsalkf jdsalkf jdaslkfd jsflkd jfalksdf jlfdks</p>
+        <h1>Inspiration</h1>
+        <p> This scroll animation was a lot of fun to copy. It provided inspiration and ideas on many other things I plan to do in the future.</p>
       </Section>
       <Section opacity={opacityThirdSection}>
-        <h1>Hello</h1>
-        <p> Lorem50 blaaha lasdjflka dsjlkfaj dflkdas daslk fjdlks fjalkdsf dlkasf jldkjf dlksafj dlksaf jdsalkf jdsalkf jdaslkfd jsflkd jfalksdf jlfdks</p>
+        <h1>Conclusion</h1>
+        <p> Things like this are the future of the web and I am determined to be part of it.</p>
       </Section>
     </Scroll>
   );

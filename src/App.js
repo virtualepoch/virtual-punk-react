@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Header } from "./components/Header";
 import { HomePage } from "./pages/HomePage";
 import { SpacePage } from "./pages/SpacePage";
+import { ShoePage } from "./pages/ShoePage";
 import { ScrollAnimPage } from "./pages/ScrollAnimPage";
 import { TorusPage } from "./pages/TorusPage";
 import { GearsOfTime } from "./pages/GearsOfTime";
@@ -26,9 +27,10 @@ function App() {
       <section className="page-container">
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/three-fiber-pyramid" element={<SpacePage />} />
-          <Route path="/three-fiber-scroll-anim" element={<ScrollAnimPage />} />
-          <Route path="/three-fiber-torus-anim" element={<TorusPage />} />
+          <Route path="/space" element={<SpacePage />} />
+          <Route path="/shoe" element={<ShoePage />} />
+          <Route path="/scroll-anim" element={<ScrollAnimPage />} />
+          <Route path="/torus-anim" element={<TorusPage />} />
           <Route path="/gears-of-time" element={<GearsOfTime />} />
           <Route path="/star-punk" element={<StarPunk />} />
         </Routes>

@@ -117,13 +117,16 @@ export function Header() {
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/"}>
             Home - Rabbit Hole
           </CustomLink>
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/three-fiber-pyramid"}>
+          <CustomLink className="link" onClick={openCloseNavMenu} to={"/space"}>
             Space Journey
           </CustomLink>
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/three-fiber-scroll-anim"}>
+          <CustomLink className="link" onClick={openCloseNavMenu} to={"/shoe"}>
+            Shoe
+          </CustomLink>
+          <CustomLink className="link" onClick={openCloseNavMenu} to={"/scroll-anim"}>
             Scroll Animation
           </CustomLink>
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/three-fiber-torus-anim"}>
+          <CustomLink className="link" onClick={openCloseNavMenu} to={"/torus-anim"}>
             Torus Animation
           </CustomLink>
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/gears-of-time"}>
