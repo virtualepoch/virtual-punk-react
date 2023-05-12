@@ -8,9 +8,9 @@ const style = {
   canvas: {
     width: "100%",
     height: "100vh",
-    background: "aqua",
+    background: "linear-gradient(to left, aqua, black, aqua)",
     position: "fixed",
-    top: "70px",
+    top: "60px",
   },
   picker: {
     position: "fixed",
@@ -86,10 +86,10 @@ export function ShoePage() {
     <>
       <Canvas style={style.canvas} shadows camera={{ position: [0, 0, 4], fov: 50 }}>
         <ambientLight intensity={0.7} />
-        <spotLight intensity={0.5} angle={0.1} penumbra={1} position={[10, 15, 10]} castShadow />
+        {/* <spotLight intensity={0.5} angle={0.1} penumbra={1} position={[10, 15, 10]} castShadow /> */}
         <Shoe />
         {/* <Environment preset="city" /> */}
-        <ContactShadows position={[0, -0.8, 0]} opacity={0.55} scale={10} blur={1} far={0.8} />
+        {/* <ContactShadows position={[0, -0.8, 0]} opacity={0.55} scale={10} blur={1} far={0.8} /> */}
         <OrbitControls minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} enableZoom={true} enablePan={false} />
       </Canvas>
       <Picker style={style.picker} />
