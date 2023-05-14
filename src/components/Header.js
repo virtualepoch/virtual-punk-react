@@ -117,6 +117,9 @@ export function Header() {
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/"}>
             Home - Rabbit Hole
           </CustomLink>
+          <CustomLink className="link" onClick={openCloseNavMenu} to={"/vr"}>
+            VR
+          </CustomLink>
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/space"}>
             Space Journey
           </CustomLink>

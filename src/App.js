@@ -2,6 +2,7 @@ import { Route, Routes, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { Header } from "./components/Header";
 import { HomePage } from "./pages/HomePage";
+import { VR } from "./pages/VR.js";
 import { SpacePage } from "./pages/SpacePage";
 import { ShoePage } from "./pages/ShoePage";
 import { ScrollAnimPage } from "./pages/ScrollAnimPage";
@@ -27,6 +28,7 @@ function App() {
       <section className="page-container">
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/vr" element={<VR />} />
           <Route path="/space" element={<SpacePage />} />
           <Route path="/shoe" element={<ShoePage />} />
           <Route path="/scroll-anim" element={<ScrollAnimPage />} />
