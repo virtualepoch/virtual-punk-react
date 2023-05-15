@@ -6,7 +6,7 @@ export function StarshipLightsCamera() {
   const cameraGroup = useRef();
 
   useFrame(() => {
-    cameraGroup.current.position.z -= 1;
+    cameraGroup.current.position.z -= 0.4;
   });
 
   function Starship() {
@@ -53,12 +53,12 @@ export function StarshipLightsCamera() {
 
   return (
     <>
-      {/* <OrbitControls /> */}
       <group ref={cameraGroup}>
+        {/* <OrbitControls target={[0, 10, 10]} /> */}
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 15, 10]} angle={0.3} />
-        
-        <PerspectiveCamera position={[0, 10, 25]} rotation={[-0.1, 0, 0]} fov={40} makeDefault />
+
+        <PerspectiveCamera position={[0, 10, 25]} rotation={[-0.1, 0, 0]} fov={50} makeDefault />
 
         <Starship />
       </group>
