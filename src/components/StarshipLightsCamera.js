@@ -9,6 +9,8 @@ export function StarshipLightsCamera() {
     cameraGroup.current.position.z -= 0.4;
   });
 
+  const starship = useRef();
+
   function Starship() {
     return (
       <>
@@ -51,6 +53,21 @@ export function StarshipLightsCamera() {
     );
   }
 
+  document.onkeydown = function (e) {
+    if (e.key === "ArrowLeft") {
+      starship.current.position.x -= 1;
+    }
+    if (e.key === "ArrowRight") {
+      starship.current.position.x += 1;
+    }
+    if (e.key === "ArrowUp") {
+      starship.current.position.y += 1;
+    }
+    if (e.key === "ArrowDown") {
+      starship.current.position.y -= 1;
+    } 
+  };
+
   return (
     <>
       <group ref={cameraGroup}>
@@ -60,7 +77,9 @@ export function StarshipLightsCamera() {
 
         <PerspectiveCamera position={[0, 10, 25]} rotation={[-0.1, 0, 0]} fov={50} makeDefault />
 
-        <Starship />
+        <group ref={starship}>
+          <Starship />
+        </group>
       </group>
     </>
   );
