@@ -1,8 +1,8 @@
-import { useRef } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 
-export function StarshipLightsCamera() {
+export const StarshipLightsCamera = forwardRef((props, ref) => {
   const cameraGroup = useRef();
 
   useFrame(() => {
@@ -53,25 +53,35 @@ export function StarshipLightsCamera() {
     );
   }
 
+  // useEffect(() => {
+  //   if (leftBtnClicked) {
+  //     starship.current.position.x -= 1;
+  //     if (starship.current.rotation.z < 0.7) {
+  //       starship.current.rotation.z += 0.1;
+  //     }
+  //   }
+  // }, [leftBtnClicked]);
+
+  // KEYBOARD CONTROLS
   document.onkeydown = function (e) {
     if (e.key === "ArrowLeft") {
       starship.current.position.x -= 1;
-      if(starship.current.rotation.z < 0.7){
-      starship.current.rotation.z += 0.1;
+      if (starship.current.rotation.z < 0.7) {
+        starship.current.rotation.z += 0.1;
       }
     }
     if (e.key === "ArrowRight") {
       starship.current.position.x += 1;
-      if(starship.current.rotation.z > -0.7){
+      if (starship.current.rotation.z > -0.7) {
         starship.current.rotation.z -= 0.1;
-        }
+      }
     }
     if (e.key === "ArrowUp") {
       starship.current.position.y += 1;
     }
     if (e.key === "ArrowDown") {
       starship.current.position.y -= 1;
-    } 
+    }
   };
 
   document.onkeyup = function (e) {
@@ -83,6 +93,27 @@ export function StarshipLightsCamera() {
     }
   };
 
+  // MOBILE CONTROLS
+  useImperativeHandle(ref, () => ({
+    moveLeft() {
+      starship.current.position.x -= 1;
+      if (starship.current.rotation.z < 0.3) {
+        starship.current.rotation.z += 0.1;
+      } else {
+        starship.current.rotation.z = 0;
+      }
+    },
+
+    moveRight() {
+      starship.current.position.x += 1;
+      if (starship.current.rotation.z > -0.3) {
+        starship.current.rotation.z -= 0.1;
+      } else {
+        starship.current.rotation.z = 0;
+      }
+    },
+  }));
+
   return (
     <>
       <group ref={cameraGroup}>
@@ -92,10 +123,10 @@ export function StarshipLightsCamera() {
 
         <PerspectiveCamera position={[0, 10, 25]} rotation={[-0.1, 0, 0]} fov={50} makeDefault />
 
-        <group ref={starship} rotation={[0,0,0]}>
+        <group ref={starship} rotation={[0, 0, 0]}>
           <Starship />
         </group>
       </group>
     </>
   );
-}
+});

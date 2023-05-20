@@ -1,3 +1,4 @@
+import React, { useState, useEffect, forwardRef, useImperativeHandle, useRef } from "react";
 import { StarshipLightsCamera } from "../components/StarshipLightsCamera";
 import { Canvas } from "@react-three/fiber";
 
@@ -23,8 +24,10 @@ export function StarPunk() {
     },
   };
 
-  function ExtendingWalls() {
+  const ref = useRef();
+  // const [leftBtnClick, setLeftBtnClick] = useState(0);
 
+  function ExtendingWalls() {
     return (
       <mesh position={[0, 0, -1500]} rotation={[Math.PI / -2, Math.PI / 4, 0]}>
         <cylinderGeometry args={[55, 55, 3000, 4, 200]} />
@@ -36,9 +39,25 @@ export function StarPunk() {
   return (
     <>
       <h1 style={style.h1}>Star Punk</h1>
+      <button
+        className="left-btn"
+        onClick={() => {
+          ref.current.moveLeft();
+        }}
+      >
+        &lt;
+      </button>
+      <button
+        className="right-btn"
+        onClick={() => {
+          ref.current.moveRight();
+        }}
+      >
+        &gt;
+      </button>
       <Canvas style={style.canvas}>
         <ExtendingWalls />
-        <StarshipLightsCamera />
+        <StarshipLightsCamera ref={ref} />
       </Canvas>
     </>
   );
