@@ -17,8 +17,9 @@ function ExtendingWalls() {
   const ref = useRef(null);
 
   useFrame(() => {
-    if (ref.current.position.z < 104) {
+    if (ref.current.position.z < 105) {
       ref.current.position.z += 0.008;
+      ref.current.rotateY(-0.002);
     } else {
       ref.current.position.z -= 124;
     }
@@ -26,7 +27,7 @@ function ExtendingWalls() {
 
   return (
     <mesh ref={ref} position={[0, 0, -20]} rotation={[Math.PI / -2, Math.PI / 4, 0]}>
-      <cylinderGeometry args={[0, 5, 120, 4, 100]} />
+      <cylinderGeometry args={[0, 5, 120, 8, 100]} />
       <meshBasicMaterial color={"aqua"} wireframe={true} />
     </mesh>
   );

@@ -1,6 +1,6 @@
 .hero-section {
   width: 100%;
-  height: calc(100vh - 80px);
+  height: calc(100vh - 140px);
   padding: 20px;
   position: relative;
   display: flex;
@@ -31,18 +31,14 @@
   filter: drop-shadow(0 0 5px aqua);
 }
 
-.text-link {
+.three-d-text {
   width: fit-content;
   display: flex;
   margin: auto;
-  color: white;
-  filter: drop-shadow(0 0 5px aqua);
+  color: red;
+  filter: drop-shadow(0 0 5px aqua) drop-shadow(-5px -5px 1px aqua);
   cursor: pointer;
   border: solid red;
-}
-
-.text-link:hover {
-  text-decoration: underline;
 }
 
 :root {
@@ -168,14 +164,4 @@
   100% {
     opacity: 0;
   }
-}
-
-.banner {
-  width: 100%;
-  min-height: 100px;
-  margin: 20px auto;
-  border: 1px solid aqua;
-  border-radius: 5px;
-  background-image: linear-gradient(to bottom right, rgb(37, 37, 37, var(--bg-blur)), rgb(0, 70, 70, var(--bg-blur)), rgb(37, 37, 37, var(--bg-blur)), rgb(0, 70, 70, var(--bg-blur)), rgb(37, 37, 37, var(--bg-blur)));
-  backdrop-filter: blur(5px);
 }

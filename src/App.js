@@ -9,7 +9,6 @@ import { ScrollAnimPage } from "./pages/ScrollAnimPage";
 import { TorusPage } from "./pages/TorusPage";
 import { GearsOfTime } from "./pages/GearsOfTime";
 import { StarPunk } from "./pages/StarPunk";
-import "./pages/_pages.css";
 import "./App.css";
 
 function useScrollToTop() {
