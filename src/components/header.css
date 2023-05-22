@@ -306,7 +306,7 @@
 
 .nav-menu .link.active,
 .nav-menu .link:hover {
-  background: linear-gradient(15deg, red, transparent 50%);
+  background: linear-gradient(15deg, red, transparent 50%, aqua);
   text-decoration: underline;
 }
 

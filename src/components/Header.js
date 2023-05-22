@@ -78,8 +78,8 @@ export function Header() {
     const resolvedPath = useResolvedPath(to);
     const isActive = useMatch({ path: resolvedPath.pathname, end: true });
     return (
-      <li className={isActive ? "active" : ""}>
-        <Link to={to} {...props} className="link">
+      <li>
+        <Link to={to} {...props} className={isActive ? "active link" : "link"}>
           {children}
         </Link>
       </li>
@@ -113,9 +113,9 @@ export function Header() {
         </div>
       </div>
       <nav className="nav-menu" ref={navMenu}>
-        <ul className="nav-link-container">
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/"}>
-            Home - Rabbit Hole
+        <ul>
+          <CustomLink onClick={openCloseNavMenu} to={"/"}>
+            Rabbit Hole
           </CustomLink>
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/vr"}>
             VR
