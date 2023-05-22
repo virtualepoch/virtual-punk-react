@@ -1,6 +1,7 @@
 import { MainOverlay } from "../components/MainOverlay";
 import { CanvasHome } from "../components/CanvasHome";
 import "./home.css";
+import { Link } from "react-router-dom";
 
 export function HomePage() {
   return (
@@ -18,6 +19,8 @@ export function HomePage() {
         </p>
         <p className="hero-text">Hope you enjoy!</p>
       </header>
+
+      <Link className="red-pill" to={"/torus"}></Link>
     </>
   );
 }

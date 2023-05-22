@@ -31,7 +31,7 @@ function App() {
           <Route path="/space" element={<SpacePage />} />
           <Route path="/shoe" element={<ShoePage />} />
           <Route path="/scroll-anim" element={<ScrollAnimPage />} />
-          <Route path="/torus-anim" element={<TorusPage />} />
+          <Route path="/torus" element={<TorusPage />} />
           <Route path="/gears-of-time" element={<GearsOfTime />} />
           <Route path="/star-punk" element={<StarPunk />} />
         </Routes>
