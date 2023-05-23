@@ -117,6 +117,9 @@ export function Header() {
           <CustomLink onClick={openCloseNavMenu} to={"/"}>
             Rabbit Hole
           </CustomLink>
+          <CustomLink className="link" onClick={openCloseNavMenu} to={"/torus"}>
+            Torus
+          </CustomLink>
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/vr"}>
             VR
           </CustomLink>
@@ -128,9 +131,6 @@ export function Header() {
           </CustomLink>
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/scroll-anim"}>
             Scroll Animation
-          </CustomLink>
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/torus"}>
-            Torus Animation
           </CustomLink>
           <CustomLink className="link" onClick={openCloseNavMenu} to={"/gears-of-time"}>
             Gears of Time

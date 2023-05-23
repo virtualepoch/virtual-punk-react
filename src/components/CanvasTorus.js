@@ -31,20 +31,20 @@ function TorusGroup() {
   return (
     <>
       <mesh ref={meshRef1} position={[0, 0, 0]}>
-        <torusGeometry args={[1.1, 0.05, 3, 4]} />
-        <meshStandardMaterial color={"red"} wireframe={false} />
+        <torusGeometry args={[0.9, 0.1, 8, 33]} />
+        <meshStandardMaterial color={"red"} wireframe={true} />
       </mesh>
       <mesh ref={meshRef2} position={[0, 0, 0]}>
-        <torusGeometry args={[1.1, 0.05, 3, 4]} />
-        <meshStandardMaterial color={"aqua"} wireframe={false} />
+        <torusGeometry args={[1.1, 0.1, 8, 33]} />
+        <meshStandardMaterial color={"aqua"} wireframe={true} />
       </mesh>
       <mesh ref={meshRef3} position={[0, 0, 0]}>
-        <torusGeometry args={[1.5, 0.05, 3, 4]} />
-        <meshStandardMaterial color={"red"} wireframe={false} />
+        <torusGeometry args={[1.3, 0.1, 8, 33]} />
+        <meshStandardMaterial color={"red"} wireframe={true} />
       </mesh>
       <mesh ref={meshRef4} position={[0, 0, 0]}>
-        <torusGeometry args={[1.5, 0.05, 3, 4]} />
-        <meshStandardMaterial color={"aqua"} wireframe={false} />
+        <torusGeometry args={[1.5, 0.1, 8, 33]} />
+        <meshStandardMaterial color={"aqua"} wireframe={true} />
       </mesh>
     </>
   );

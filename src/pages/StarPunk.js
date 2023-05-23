@@ -25,7 +25,6 @@ export function StarPunk() {
   };
 
   const ref = useRef();
-  // const [leftBtnClick, setLeftBtnClick] = useState(0);
 
   function ExtendingWalls() {
     return (

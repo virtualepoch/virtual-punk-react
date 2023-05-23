@@ -1,47 +1,61 @@
-import { useRef } from "react";
+import { forwardRef, useImperativeHandle, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 
-const style = {
-  width: "100%",
-  height: "100%",
-  position: "fixed",
-  top: 0,
-  left: 0,
-  zIndex: "-2",
-  border: "solid aqua",
-  background: "linear-gradient(to right, rgb(0, 50, 50), black, rgb(0, 50, 50))",
-};
+export const CanvasHome = forwardRef((props, ref) => {
+  const style = {
+    width: "100%",
+    height: "100%",
+    position: "fixed",
+    top: 0,
+    left: 0,
+    zIndex: "-2",
+    border: "solid aqua",
+    background: "linear-gradient(to right, rgb(0, 50, 50), black, rgb(0, 50, 50))",
+  };
 
-function ExtendingWalls() {
-  const ref = useRef(null);
+  var zPosition = 0.008;
+  var yRotation = -0.002;
 
-  useFrame(() => {
-    if (ref.current.position.z < 105) {
-      ref.current.position.z += 0.008;
-      ref.current.rotateY(-0.002);
-    } else {
-      ref.current.position.z -= 124;
-    }
-  });
+  function ExtendingWalls() {
+    const ref = useRef(null);
 
-  return (
-    <mesh ref={ref} position={[0, 0, -20]} rotation={[Math.PI / -2, Math.PI / 4, 0]}>
-      <cylinderGeometry args={[0, 5, 120, 8, 100]} />
-      <meshBasicMaterial color={"aqua"} wireframe={true} />
-    </mesh>
-  );
-}
+    useFrame(() => {
+      if (ref.current.position.z < 105) {
+        ref.current.position.z += zPosition;
+        ref.current.rotateY(yRotation);
+      } else {
+        ref.current.position.z -= 124;
+      }
+    });
 
-const cameraZ = 45;
+    return (
+      <mesh ref={ref} position={[0, 0, -20]} rotation={[Math.PI / -2, Math.PI / 4, 0]}>
+        <cylinderGeometry args={[0, 5, 120, 8, 100]} />
+        <meshBasicMaterial color={"aqua"} wireframe={true} />
+      </mesh>
+    );
+  }
 
-export function CanvasHome() {
+  const cameraZ = 45;
+
+  const rabbitHole = useRef();
+
+  useImperativeHandle(ref, () => ({
+    fastForward() {
+      zPosition = 0.2;
+      yRotation = -0.008;
+    },
+  }));
+
   return (
     <Canvas style={style} camera={{ position: [0, 0, cameraZ] }}>
       <OrbitControls />
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 15, 10]} angle={0.3} />
-      <ExtendingWalls />
+      <group ref={rabbitHole}>
+        <ExtendingWalls />
+      </group>
     </Canvas>
   );
-}
+});

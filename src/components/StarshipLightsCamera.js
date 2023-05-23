@@ -9,8 +9,6 @@ export const StarshipLightsCamera = forwardRef((props, ref) => {
     cameraGroup.current.position.z -= 0.4;
   });
 
-  const starship = useRef();
-
   function Starship() {
     return (
       <>
@@ -53,14 +51,7 @@ export const StarshipLightsCamera = forwardRef((props, ref) => {
     );
   }
 
-  // useEffect(() => {
-  //   if (leftBtnClicked) {
-  //     starship.current.position.x -= 1;
-  //     if (starship.current.rotation.z < 0.7) {
-  //       starship.current.rotation.z += 0.1;
-  //     }
-  //   }
-  // }, [leftBtnClicked]);
+  const starship = useRef();
 
   // KEYBOARD CONTROLS
   document.onkeydown = function (e) {
