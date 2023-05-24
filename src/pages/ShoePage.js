@@ -11,7 +11,7 @@ const style = {
     height: "100vh",
     background: "linear-gradient(to left, aqua, black, aqua)",
     position: "fixed",
-    top: "60px",
+    top: 0,
   },
   picker: {
     position: "fixed",
@@ -85,7 +85,7 @@ function Picker() {
 export function ShoePage() {
   return (
     <>
-      <VRButton />
+      {/* <VRButton /> */}
       <Canvas style={style.canvas} shadows camera={{ position: [0, 0, 4], fov: 50 }}>
         <XR>
           <ambientLight intensity={0.7} />
@@ -93,7 +93,7 @@ export function ShoePage() {
           <Shoe />
           {/* <Environment preset="city" /> */}
           {/* <ContactShadows position={[0, -0.8, 0]} opacity={0.55} scale={10} blur={1} far={0.8} /> */}
-          {/* <OrbitControls minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} enableZoom={true} enablePan={false} /> */}
+          <OrbitControls minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} enableZoom={true} enablePan={false} />
         </XR>
       </Canvas>
       <Picker style={style.picker} />

@@ -43,7 +43,7 @@ export const CanvasHome = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     fastForward() {
-      zPosition = 0.2;
+      zPosition = 0.4;
       yRotation = -0.008;
     },
   }));

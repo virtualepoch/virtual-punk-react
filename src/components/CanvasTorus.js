@@ -9,7 +9,7 @@ const style = {
   top: 0,
   left: 0,
   border: "solid aqua",
-  background: "linear-gradient(to right, rgb(0, 50, 50), black, rgb(0, 50, 50))",
+  background: "linear-gradient(to right, black, aqua, black, aqua, black",
 };
 
 function TorusGroup() {
@@ -22,28 +22,28 @@ function TorusGroup() {
     if (!meshRef1.current || !meshRef2.current || !meshRef3.current || !meshRef4.current) {
       return;
     }
-    meshRef1.current.rotation.x += 0.02;
-    meshRef2.current.rotation.x -= 0.02;
-    meshRef3.current.rotation.y -= 0.02;
-    meshRef4.current.rotation.y += 0.02;
+    meshRef1.current.rotation.x += 0.01;
+    meshRef2.current.rotation.x -= 0.01;
+    meshRef3.current.rotation.y -= 0.01;
+    meshRef4.current.rotation.y += 0.01;
   });
 
   return (
     <>
       <mesh ref={meshRef1} position={[0, 0, 0]}>
-        <torusGeometry args={[0.9, 0.1, 8, 33]} />
+        <torusGeometry args={[0.9, 0.1, 4, 33]} />
         <meshStandardMaterial color={"red"} wireframe={true} />
       </mesh>
       <mesh ref={meshRef2} position={[0, 0, 0]}>
-        <torusGeometry args={[1.1, 0.1, 8, 33]} />
+        <torusGeometry args={[1.1, 0.1, 4, 33]} />
         <meshStandardMaterial color={"aqua"} wireframe={true} />
       </mesh>
       <mesh ref={meshRef3} position={[0, 0, 0]}>
-        <torusGeometry args={[1.3, 0.1, 8, 33]} />
+        <torusGeometry args={[1.3, 0.1, 4, 33]} />
         <meshStandardMaterial color={"red"} wireframe={true} />
       </mesh>
       <mesh ref={meshRef4} position={[0, 0, 0]}>
-        <torusGeometry args={[1.5, 0.1, 8, 33]} />
+        <torusGeometry args={[1.5, 0.1, 4, 33]} />
         <meshStandardMaterial color={"aqua"} wireframe={true} />
       </mesh>
     </>
