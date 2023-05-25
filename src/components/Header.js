@@ -1,24 +1,8 @@
-import React, { useRef, useEffect } from "react";
-import { Link, useMatch, useResolvedPath } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { CSSTransition } from "react-transition-group";
 import "./header.css";
 
-export function Header() {
-  const navMenu = useRef(null);
-  const buttonNavMenu = useRef(null);
-
-  function openCloseNavMenu() {
-    navMenu.current.classList.toggle("open");
-    buttonNavMenu.current.classList.toggle("open");
-  }
-
-  // MUST HAVE: When 'SITE-LOGO' or 'SITE-TITLE' are clicked this CLOSES the 'NAV-MENU' (if open) and prevents it from opening (if closed).
-  function closeNavMenu() {
-    if (navMenu.current.classList.contains("open")) {
-      navMenu.current.classList.remove("open");
-      buttonNavMenu.current.classList.remove("open");
-    }
-  }
-
+export function Header({ setNavMenuOpen, navMenuOpen }) {
   // SWIPE TO CLOSE NAVIGATION MENU //////////////////
   // useEffect(() => {
   //   var touchSurface = navMenu.current,
@@ -74,72 +58,74 @@ export function Header() {
   //   );
   // }); // end window.onload
 
-  function CustomLink({ to, children, ...props }) {
-    const resolvedPath = useResolvedPath(to);
-    const isActive = useMatch({ path: resolvedPath.pathname, end: true });
+  function SiteLogo() {
     return (
-      <li>
-        <Link to={to} {...props} className={isActive ? "active link" : "link"}>
-          {children}
-        </Link>
-      </li>
+      <Link
+        className="logo-container"
+        to={"/"}
+        aria-label="link to home page"
+        onClick={() => {
+          setNavMenuOpen(false);
+        }}
+      >
+        <div className="logo"></div>
+        <div className="logo"></div>
+        <div className="logo"></div>
+        <div className="logo"></div>
+        <div className="logo"></div>
+      </Link>
+    );
+  }
+
+  function SiteTitle() {
+    return (
+      <Link
+        className="site-title-container"
+        to={"/"}
+        onClick={() => {
+          setNavMenuOpen(false);
+        }}
+      >
+        <div className="title-side-border"></div>
+        <h1 className="site-title">
+          Virtual <span className="site-title-word">Punk</span>
+        </h1>
+        <div className="title-side-border"></div>
+      </Link>
+    );
+  }
+
+  function NavMenuButton(props) {
+    return (
+      <button
+        className="button-nav-menu"
+        aria-label="navigation menu"
+        onClick={() => {
+          setNavMenuOpen(!navMenuOpen);
+        }}
+      >
+        {props.children}
+      </button>
     );
   }
 
   return (
-    <header className="header">
-      <div className="top-header">
-        <div className="side">
-          <Link className="logo-container" to={"/"} onClick={closeNavMenu}>
-            <div className="logo"></div>
-            <div className="logo"></div>
-            <div className="logo"></div>
-            <div className="logo"></div>
-            <div className="logo"></div>
-          </Link>
-        </div>
-        <Link className="site-title-container" to={"/"} onClick={closeNavMenu}>
-          <div className="title-border"></div>
-          <h1 className="site-title">
-            Virtual <span className="site-title-word">Punk</span>
-          </h1>
-          <div className="title-border"></div>
-        </Link>
-        <div className="side">
-          <button className="button-nav-menu" ref={buttonNavMenu} onClick={openCloseNavMenu}>
-            <div className="open-bars"></div>
-            <div className="close-bars"></div>
-          </button>
-        </div>
-      </div>
-      <nav className="nav-menu" ref={navMenu}>
-        <ul>
-          <CustomLink onClick={openCloseNavMenu} to={"/"}>
-            Rabbit Hole
-          </CustomLink>
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/torus"}>
-            Torus
-          </CustomLink>
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/vr"}>
-            VR
-          </CustomLink>
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/space"}>
-            Space Journey
-          </CustomLink>
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/shoe"}>
-            Shoe
-          </CustomLink>
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/scroll-anim"}>
-            Scroll Animation
-          </CustomLink>
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/gears-of-time"}>
-            Gears of Time
-          </CustomLink>
-          <CustomLink className="link" onClick={openCloseNavMenu} to={"/star-punk"}>
-            Star Punk
-          </CustomLink>
-        </ul>
-      </nav>
+    <header className="main-site-header">
+      <SiteLogo />
+
+      <div className="header-trapezoid"></div>
+      
+      <SiteTitle />
+
+      <NavMenuButton>
+        <CSSTransition in={navMenuOpen === false} unmountOnExit timeout={500} classNames={"open-bars"}>
+          <div className="open-bars"></div>
+        </CSSTransition>
+
+        <CSSTransition in={navMenuOpen} unmountOnExit timeout={500} classNames={"close-bars"}>
+          <div className="close-bars"></div>
+        </CSSTransition>
+      </NavMenuButton>
     </header>
   );
 }

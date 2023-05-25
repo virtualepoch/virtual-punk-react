@@ -9,7 +9,7 @@ const style = {
   canvas: {
     width: "100%",
     height: "100vh",
-    background: "linear-gradient(to left, aqua, black, aqua)",
+    background: "linear-gradient(to right, black, aqua, black, aqua, black)",
     position: "fixed",
     top: 0,
   },

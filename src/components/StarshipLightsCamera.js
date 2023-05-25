@@ -1,6 +1,6 @@
 import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { OrbitControls, Stars, PerspectiveCamera } from "@react-three/drei";
 
 export const StarshipLightsCamera = forwardRef((props, ref) => {
   const cameraGroup = useRef();
@@ -111,6 +111,7 @@ export const StarshipLightsCamera = forwardRef((props, ref) => {
         {/* <OrbitControls target={[0, 10, 10]} /> */}
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 15, 10]} angle={0.3} />
+        <Stars />
 
         <PerspectiveCamera position={[0, 10, 25]} rotation={[-0.1, 0, 0]} fov={50} makeDefault />
 

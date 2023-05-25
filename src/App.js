@@ -1,6 +1,9 @@
 import { Route, Routes, useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+
 import { Header } from "./components/Header";
+import { NavMenu } from "./components/NavMenu";
+
 import { HomePage } from "./pages/HomePage";
 import { VR } from "./pages/VR.js";
 import { SpacePage } from "./pages/SpacePage";
@@ -9,6 +12,7 @@ import { ScrollAnimPage } from "./pages/ScrollAnimPage";
 import { TorusPage } from "./pages/TorusPage";
 import { GearsOfTime } from "./pages/GearsOfTime";
 import { StarPunk } from "./pages/StarPunk";
+
 import "./App.css";
 
 function useScrollToTop() {
@@ -20,10 +24,13 @@ function useScrollToTop() {
 }
 
 function App() {
+const [navMenuOpen, setNavMenuOpen] = useState(false);
+
   useScrollToTop();
   return (
     <div className="App">
-      <Header />
+      <Header setNavMenuOpen={setNavMenuOpen} navMenuOpen={navMenuOpen} />
+      <NavMenu setNavMenuOpen={setNavMenuOpen} navMenuOpen={navMenuOpen} />
       <section className="page-container">
         <Routes>
           <Route path="/" element={<HomePage />} />

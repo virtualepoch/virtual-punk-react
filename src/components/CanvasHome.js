@@ -10,7 +10,6 @@ export const CanvasHome = forwardRef((props, ref) => {
     top: 0,
     left: 0,
     zIndex: "-2",
-    border: "solid aqua",
     background: "linear-gradient(to right, rgb(0, 50, 50), black, rgb(0, 50, 50))",
   };
 

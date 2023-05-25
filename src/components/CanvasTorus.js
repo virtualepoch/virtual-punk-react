@@ -8,7 +8,6 @@ const style = {
   position: "fixed",
   top: 0,
   left: 0,
-  border: "solid aqua",
   background: "linear-gradient(to right, black, aqua, black, aqua, black",
 };
 

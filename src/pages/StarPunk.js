@@ -11,7 +11,6 @@ export function StarPunk() {
       zIndex: 4,
       color: "white",
       padding: "10px",
-      border: "solid aqua",
     },
     canvas: {
       width: "100%",
@@ -19,7 +18,6 @@ export function StarPunk() {
       position: "fixed",
       top: 0,
       left: 0,
-      border: "solid aqua",
       background: "linear-gradient(to right, rgb(0, 50, 50), black, rgb(0, 50, 50))",
     },
   };
