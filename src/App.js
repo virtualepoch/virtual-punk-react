@@ -4,13 +4,13 @@ import { useEffect, useState } from "react";
 import { Header } from "./components/Header";
 import { NavMenu } from "./components/NavMenu";
 
-import { HomePage } from "./pages/HomePage";
+import { Home } from "./pages/Home";
+import { Torus } from "./pages/Torus";
 import { VR } from "./pages/VR.js";
-import { SpacePage } from "./pages/SpacePage";
-import { ShoePage } from "./pages/ShoePage";
-import { ScrollAnimPage } from "./pages/ScrollAnimPage";
-import { TorusPage } from "./pages/TorusPage";
-import { GearsOfTime } from "./pages/GearsOfTime";
+import { Space } from "./pages/Space";
+import { ShoeColors } from "./pages/ShoeColors";
+import { ScrollAnim } from "./pages/ScrollAnim";
+import { Time } from "./pages/Time";
 import { StarPunk } from "./pages/StarPunk";
 
 import "./App.css";
@@ -31,18 +31,16 @@ const [navMenuOpen, setNavMenuOpen] = useState(false);
     <div className="App">
       <Header setNavMenuOpen={setNavMenuOpen} navMenuOpen={navMenuOpen} />
       <NavMenu setNavMenuOpen={setNavMenuOpen} navMenuOpen={navMenuOpen} />
-      <section className="page-container">
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/torus" element={<Torus />} />
           <Route path="/vr" element={<VR />} />
-          <Route path="/space" element={<SpacePage />} />
-          <Route path="/shoe" element={<ShoePage />} />
-          <Route path="/scroll-anim" element={<ScrollAnimPage />} />
-          <Route path="/torus" element={<TorusPage />} />
-          <Route path="/gears-of-time" element={<GearsOfTime />} />
+          <Route path="/space" element={<Space />} />
+          <Route path="/shoe" element={<ShoeColors />} />
+          <Route path="/scroll-anim" element={<ScrollAnim />} />
+          <Route path="/gears-of-time" element={<Time />} />
           <Route path="/star-punk" element={<StarPunk />} />
         </Routes>
-      </section>
     </div>
   );
 }

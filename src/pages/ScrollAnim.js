@@ -1,7 +1,7 @@
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, ScrollControls } from "@react-three/drei";
-import { Office } from "./models/Office";
-import { CanvasScrollAnimOverlay } from "./CanvasScrollAnimOverlay";
+import { Office } from "../components/models/Office";
+import { CanvasScrollAnimOverlay } from "./ScrollAnimOverlay";
 
 const style = {
   width: "100%",
@@ -15,14 +15,14 @@ const style = {
   backgroundImage: "linear-gradient(0deg, #d9afd9 0%, #97d9e1 100%)",
 };
 
-export function CanvasScrollAnim() {
+export function ScrollAnim() {
   return (
     <Canvas style={style} camera={{ position: [2.3, 1.5, 2.3], fov: 64 }}>
       {/* <OrbitControls enableZoom={false} /> */}
       <ambientLight intensity={1} />
       <ScrollControls pages={3} damping={0.25}>
         <Office />
-        <CanvasScrollAnimOverlay/>
+        <CanvasScrollAnimOverlay />
       </ScrollControls>
     </Canvas>
   );

@@ -28,16 +28,16 @@ export function NavMenu({ setNavMenuOpen, navMenuOpen }) {
       <nav className="nav-menu">
         <ul>
           <CustomLink to={"/"}>
-            Rabbit Hole
+            Home
           </CustomLink>
           <CustomLink to={"/torus"}>
             Torus
           </CustomLink>
-          <CustomLink to={"/vr"}>
-            VR
-          </CustomLink>
           <CustomLink to={"/space"}>
-            Space Journey
+            Space
+          </CustomLink>
+          <CustomLink to={"/gears-of-time"}>
+            Time
           </CustomLink>
           <CustomLink to={"/shoe"}>
             Shoe
@@ -45,11 +45,11 @@ export function NavMenu({ setNavMenuOpen, navMenuOpen }) {
           <CustomLink to={"/scroll-anim"}>
             Scroll Animation
           </CustomLink>
-          <CustomLink to={"/gears-of-time"}>
-            Gears of Time
-          </CustomLink>
           <CustomLink to={"/star-punk"}>
             Star Punk
+          </CustomLink>
+          <CustomLink to={"/vr"}>
+            VR
           </CustomLink>
         </ul>
       </nav>

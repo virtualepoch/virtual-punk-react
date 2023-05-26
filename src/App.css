@@ -4,14 +4,31 @@
 }
 
 .App {
-  color: black;
+  width: 100%;
+  height: 100vh;
 }
 
-.page-container {
-  max-width: 1400px;
-  margin: 70px auto;
-  display: flex;
-  flex-direction: column;
+.canvas {
+  background: linear-gradient(to right, black, rgb(0, 170, 170), black);
+}
+.canvas.torus {
+  background: 
+  linear-gradient(transparent 40%, aqua, transparent 60%), 
+  linear-gradient(to right, transparent 40%, aqua, transparent 60%),
+  linear-gradient(transparent, rgb(0, 155, 155), transparent),
+  linear-gradient(to right, transparent, rgb(0, 155, 155), transparent);
+}
+
+.page-title {
+  width: 100%;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  text-align: center;
+  z-index: 4;
+  padding: 10px;
+  color: aqua;
+  filter: drop-shadow(0 0 5px red);
 }
 
 .canvas-section {
@@ -45,7 +62,8 @@
   padding: 12px 8px;
 }
 
-.left-btn, .right-btn {
+.left-btn,
+.right-btn {
   width: 100px;
   height: 70px;
   position: fixed;
@@ -58,12 +76,12 @@
   cursor: pointer;
 }
 
-.left-btn{
+.left-btn {
   left: 0;
   border-top-right-radius: 20px;
 }
 
-.right-btn{
+.right-btn {
   right: 0;
   border-top-left-radius: 20px;
   box-shadow: inset 5px 5px 10px 1px red, -5px -5px 10px 1px rgba(0, 0, 0, 0.5);

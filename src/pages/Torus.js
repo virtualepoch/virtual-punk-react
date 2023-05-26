@@ -2,15 +2,6 @@ import { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 
-const style = {
-  width: "100%",
-  height: "100%",
-  position: "fixed",
-  top: 0,
-  left: 0,
-  background: "linear-gradient(to right, black, aqua, black, aqua, black",
-};
-
 function TorusGroup() {
   const meshRef1 = useRef(null);
   const meshRef2 = useRef(null);
@@ -49,13 +40,16 @@ function TorusGroup() {
   );
 }
 
-export function CanvasTorus() {
+export function Torus() {
   return (
-    <Canvas style={style} camera={{ position: [0, 0, 3] }}>
-      <OrbitControls />
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[0, 15, 10]} angle={0.3} />
-      <TorusGroup />
-    </Canvas>
+    <>
+      <h1 className="page-title">Torus</h1>
+      <Canvas className="canvas torus" camera={{ position: [0, 0, 3] }}>
+        <OrbitControls />
+        <ambientLight intensity={0.5} />
+        <directionalLight position={[0, 15, 10]} angle={0.3} />
+        <TorusGroup />
+      </Canvas>
+    </>
   );
 }

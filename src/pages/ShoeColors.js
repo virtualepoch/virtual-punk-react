@@ -82,7 +82,7 @@ function Picker() {
   );
 }
 
-export function ShoePage() {
+export function ShoeColors() {
   return (
     <>
       {/* <VRButton /> */}

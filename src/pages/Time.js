@@ -68,7 +68,7 @@ function Sphere() {
   );
 }
 
-export function GearsOfTime() {
+export function Time() {
   return (
     <Canvas style={style} camera={{ position: [0, 0, 5] }}>
       {/* <OrbitControls /> */}
