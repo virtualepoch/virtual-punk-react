@@ -24,23 +24,23 @@ function useScrollToTop() {
 }
 
 function App() {
-const [navMenuOpen, setNavMenuOpen] = useState(false);
+  const [navMenuOpen, setNavMenuOpen] = useState(false);
 
   useScrollToTop();
   return (
     <div className="App">
       <Header setNavMenuOpen={setNavMenuOpen} navMenuOpen={navMenuOpen} />
       <NavMenu setNavMenuOpen={setNavMenuOpen} navMenuOpen={navMenuOpen} />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/torus" element={<Torus />} />
-          <Route path="/vr" element={<VR />} />
-          <Route path="/space" element={<Space />} />
-          <Route path="/shoe" element={<ShoeColors />} />
-          <Route path="/scroll-anim" element={<ScrollAnim />} />
-          <Route path="/gears-of-time" element={<Time />} />
-          <Route path="/star-punk" element={<StarPunk />} />
-        </Routes>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/torus" element={<Torus />} />
+        <Route path="/vr" element={<VR />} />
+        <Route path="/space" element={<Space />} />
+        <Route path="/shoe" element={<ShoeColors />} />
+        <Route path="/scroll-anim" element={<ScrollAnim />} />
+        <Route path="/time" element={<Time />} />
+        <Route path="/star-punk" element={<StarPunk />} />
+      </Routes>
     </div>
   );
 }
