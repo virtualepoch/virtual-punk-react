@@ -32,7 +32,8 @@ export function Home() {
       </header>
 
       <div className="pill-container">
-        <Link className="pill red" to={"/torus"} onClick={(e) => delayAndGo(e, "/torus")}></Link>
+        <Link className="pill red" to={"/torus"} onClick={(e) => delayAndGo(e, "/torus")}>torus</Link>
+        <Link className="pill blue" to={"/testing"}/>
       </div>
     </>
   );

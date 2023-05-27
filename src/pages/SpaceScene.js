@@ -2,7 +2,6 @@ import { useMemo, useRef } from "react";
 import { useFrame, Sphere } from "@react-three/fiber";
 import { OrbitControls, Stars, Float, Line, PerspectiveCamera, useScroll } from "@react-three/drei";
 import { Spacecraft } from "../components/models/Spacecraft";
-import { LavaPlanet } from "../components/models/LavaPlanet";
 import * as THREE from "three";
 
 const LINE_NB_POINTS = 200;

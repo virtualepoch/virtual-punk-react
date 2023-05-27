@@ -6,12 +6,13 @@ import { PillLinks } from "../components/PillLinks";
 export function Space() {
   return (
     <>
-      <Canvas className="canvas">
+      <h1 className="page-title">Space</h1>
+      <Canvas className="canvas space">
         <ScrollControls pages={5} damping={0.3}>
           <SpaceScene />
         </ScrollControls>
       </Canvas>
-      <PillLinks backTo="/torus" forwardTo="/time" />
+      <PillLinks backTo={"/torus"} backName={"torus"} forwardTo={"/time"} forwardName={"time"} />
     </>
   );
 }

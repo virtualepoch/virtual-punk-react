@@ -4,6 +4,7 @@ import { useGLTF, ContactShadows, Environment, OrbitControls } from "@react-thre
 import { HexColorPicker } from "react-colorful";
 import { proxy, useSnapshot } from "valtio";
 import { VRButton, XR } from "@react-three/xr";
+import { PillLinks } from "../components/PillLinks";
 
 const style = {
   canvas: {
@@ -86,6 +87,7 @@ export function ShoeColors() {
   return (
     <>
       {/* <VRButton /> */}
+      <h1 className="page-title">shoe</h1>
       <Canvas style={style.canvas} shadows camera={{ position: [0, 0, 4], fov: 50 }}>
         <XR>
           <ambientLight intensity={0.7} />
@@ -97,6 +99,6 @@ export function ShoeColors() {
         </XR>
       </Canvas>
       <Picker style={style.picker} />
-    </>
+      <PillLinks backTo={"/time"} backName={"time"} forwardTo={"/scroll-anim"} forwardName={"scroll"} />    </>
   );
 }

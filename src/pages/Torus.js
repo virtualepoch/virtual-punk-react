@@ -1,5 +1,7 @@
+import * as THREE from "three";
 import { useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import star from "../assets/images/red-star.png";
 import { PillLinks } from "../components/PillLinks";
 
 export function Torus() {
@@ -43,14 +45,25 @@ export function Torus() {
     );
   }
 
+  function Image() {
+    const texture = useLoader(THREE.TextureLoader, star);
+    return (
+      <mesh>
+        <planeBufferGeometry attach="geometry" args={[1, 1]} />
+        <meshPhongMaterial attach="material" map={texture} transparent />
+      </mesh>
+    );
+  }
+
   return (
     <>
       <h1 className="page-title">Torus</h1>
       <Canvas className="canvas torus" camera={{ position: [0, 0, 3] }}>
         <ambientLight intensity={1} />
         <TorusGroup />
+        <Image />
       </Canvas>
-        <PillLinks backTo="/" forwardTo="/space" />
+      <PillLinks backTo={"/"} backName={"home"} forwardTo={"/space"} forwardName={"space"} />
     </>
   );
 }

@@ -1,13 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 
-export function PillLinks({ backTo, forwardTo }) {
-//   const navigate = useNavigate();
+export function PillLinks({ backTo, backName, forwardTo, forwardName }) {
+  //   const navigate = useNavigate();
 
-//   function delayAndGoBack(e, path) {
-//     e.preventDefault();
+  //   function delayAndGoBack(e, path) {
+  //     e.preventDefault();
 
-//     setTimeout(() => navigate(path), 3000);
-//   }
+  //     setTimeout(() => navigate(path), 3000);
+  //   }
 
   //   function delayAndGo(e, path) {
   //     e.preventDefault();
@@ -17,8 +17,12 @@ export function PillLinks({ backTo, forwardTo }) {
 
   return (
     <div className="pill-container">
-      <Link className="pill blue" to={backTo}></Link>
-      <Link className="pill red" to={forwardTo}></Link>
+      <Link className="pill blue" to={backTo}>
+        {backName}
+      </Link>
+      <Link className="pill red" to={forwardTo}>
+        {forwardName}
+      </Link>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, ScrollControls } from "@react-three/drei";
 import { Office } from "../components/models/Office";
 import { CanvasScrollAnimOverlay } from "./ScrollAnimOverlay";
+import { PillLinks } from "../components/PillLinks";
 
 const style = {
   width: "100%",
@@ -17,13 +18,17 @@ const style = {
 
 export function ScrollAnim() {
   return (
-    <Canvas style={style} camera={{ position: [2.3, 1.5, 2.3], fov: 64 }}>
-      {/* <OrbitControls enableZoom={false} /> */}
-      <ambientLight intensity={1} />
-      <ScrollControls pages={3} damping={0.25}>
-        <Office />
-        <CanvasScrollAnimOverlay />
-      </ScrollControls>
-    </Canvas>
+    <>
+    <h1 className="page-title">scroll</h1>
+      <Canvas style={style} camera={{ position: [2.3, 1.5, 2.3], fov: 64 }}>
+        {/* <OrbitControls enableZoom={false} /> */}
+        <ambientLight intensity={1} />
+        <ScrollControls pages={3} damping={0.25}>
+          <Office />
+          <CanvasScrollAnimOverlay />
+        </ScrollControls>
+      </Canvas>
+      <PillLinks backTo={"/shoe"} backName={"shoe"} forwardTo={"/star-punk"} forwardName={"star-punk"} />
+    </>
   );
 }

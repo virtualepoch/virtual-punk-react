@@ -12,11 +12,16 @@
   background: linear-gradient(to right, black, rgb(0, 170, 170), black);
 }
 .canvas.torus {
-  background: 
-  linear-gradient(transparent 40%, aqua, transparent 60%), 
-  linear-gradient(to right, transparent 40%, aqua, transparent 60%),
-  linear-gradient(transparent, rgb(0, 155, 155), transparent),
-  linear-gradient(to right, transparent, rgb(0, 155, 155), transparent);
+  background: linear-gradient(transparent 40%, aqua, transparent 60%), linear-gradient(to right, transparent 40%, aqua, transparent 60%), linear-gradient(transparent, rgb(0, 155, 155), transparent), linear-gradient(to right, transparent, rgb(0, 155, 155), transparent);
+}
+
+.canvas.space {
+  background: black;
+  box-shadow: inset 0 0 50px 1px aqua;
+}
+
+.canvas.testing {
+  background: linear-gradient(white, gray, white);
 }
 
 .page-title {
@@ -27,6 +32,7 @@
   text-align: center;
   z-index: 4;
   padding: 10px;
+  font: 100 33px Ailerons;
   color: aqua;
   filter: drop-shadow(0 0 5px red);
 }
@@ -63,13 +69,14 @@
 }
 
 /* NAVIGATION PILLS -- RED PILL AND BLUE PILL */
-.pill-container{
+.pill-container {
   width: 100%;
   max-width: 500px;
   position: fixed;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 98;
   display: flex;
   justify-content: space-around;
 }
@@ -78,16 +85,22 @@
   min-width: 110px;
   height: 50px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(2px);
+  font: 100 25px Ailerons;
+  color: rgba(0, 255, 255, 0.5);
 }
 
 .pill.red {
   background: radial-gradient(ellipse at 60% 30%, rgba(255, 255, 255, 0.7) 5%, rgba(255, 0, 0, 0.5) 40%);
-  box-shadow: inset 0 0 11px 1px red, 0 2px 10px 1px rgb(0, 255, 255, 0.5);
+  box-shadow: inset 0 0 11px 1px red, 0 2px 10px 1px aqua;
 }
 
 .pill.blue {
   background: radial-gradient(ellipse at 60% 30%, rgba(255, 255, 255, 0.7) 5%, rgba(0, 0, 255, 0.5) 40%);
-  box-shadow: inset 0 0 11px 1px blue, 0 2px 10px 1px rgb(255, 255, 0, 0.5);
+  box-shadow: inset 0 0 11px 1px blue, 0 2px 10px 1px aqua;
 }
 
 .left-btn,
