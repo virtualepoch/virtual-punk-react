@@ -1,9 +1,8 @@
 import { useRef } from "react";
-import * as THREE from "three";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, OrbitControls, PerspectiveCamera, Stars } from "@react-three/drei";
+import { OrbitControls, PerspectiveCamera, Stars } from "@react-three/drei";
 import { JetConcept } from "../components/models/Jet_concept";
-import { Earth4K } from "../components/models/Earth_4k_air";
+import { Earth1K } from "../components/models/Earth_1k_air";
 import { PillLinks } from "../components/PillLinks";
 
 export function Testing() {
@@ -16,7 +15,7 @@ export function Testing() {
 
     return (
       <mesh ref={earth} position={[0, -80, -70]}>
-        <Earth4K scale={1} rotation={[0, 3, 0]} />
+        <Earth1K scale={1} rotation={[0, 3, 0]} />
       </mesh>
     );
   }
