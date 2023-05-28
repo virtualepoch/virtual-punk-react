@@ -1,21 +1,35 @@
+import * as THREE from "three";
 import { useRef } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera, Stars } from "@react-three/drei";
 import { JetConcept } from "../components/models/Jet_concept";
-import { Earth1K } from "../components/models/Earth_1k_air";
+import earth500 from "../assets/images/earth_clouds_1k.jpg";
+import earth8k from "../assets/images/earth_clouds_4k.jpg";
 import { PillLinks } from "../components/PillLinks";
 
 export function Testing() {
-  function EarthMesh() {
-    const earth = useRef(null);
+  function Earth() {
+
+    function textureChanger() {
+      if (window.innerWidth < 700) {
+        return earth500;
+      } else {
+        return earth8k;
+      }
+    }
+
+    const texture = useLoader(THREE.TextureLoader, textureChanger());
+
+    const earthRef = useRef(null);
 
     useFrame(() => {
-      earth.current.rotation.x += 0.0002;
+      earthRef.current.rotation.x += 0.0002;
     });
 
     return (
-      <mesh ref={earth} position={[0, -80, -70]}>
-        <Earth1K scale={1} rotation={[0, 3, 0]} />
+      <mesh ref={earthRef} position={[0, -80, -70]}>
+        <sphereGeometry args={[100, 110, 110]} />
+        <meshPhongMaterial map={texture} />
       </mesh>
     );
   }
@@ -23,13 +37,14 @@ export function Testing() {
   function JetMesh() {
     const jet = useRef(null);
 
-    useFrame(() => {
-      jet.current.rotation.z += 0.01;
-    });
+    // useFrame(() => {
+    //   jet.current.rotation.x += 0.01;
+    //   jet.current.position.y += 0.01;
+    // });
 
     return (
       <mesh ref={jet} position={[0, -2, 0]}>
-        <JetConcept scale={1} rotation={[0, Math.PI / -2, 0]} />
+        <JetConcept scale={1} rotation={[0.6, Math.PI / -2, 0]} />
       </mesh>
     );
   }
@@ -42,7 +57,7 @@ export function Testing() {
         <OrbitControls />
         <PerspectiveCamera position={[0, 0, 12]} rotation={[0, 0, 0]} fov={50} makeDefault far={5000} />
         <JetMesh />
-        <EarthMesh />
+        <Earth />
         <Stars />
       </Canvas>
       <PillLinks backTo={"/"} backName={"home"} forwardTo={"/torus"} forwardName={"torus"} />
