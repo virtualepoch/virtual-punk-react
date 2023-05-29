@@ -29,23 +29,31 @@ export function NavMenu({ setNavMenuOpen, navMenuOpen }) {
         <nav className="nav-menu">
           <ul>
             <CustomLink to={"/"}>Home</CustomLink>
-            <CustomLink to={"/testing"}>Testing</CustomLink>
             <CustomLink to={"/torus"}>Torus</CustomLink>
             <CustomLink to={"/space"}>Space</CustomLink>
-            <CustomLink to={"/gears-of-time"}>Time</CustomLink>
+            <CustomLink to={"/time"}>Time</CustomLink>
+            <CustomLink to={"/scroll"}>Scroll</CustomLink>
             <CustomLink to={"/shoe"}>Shoe</CustomLink>
             <CustomLink to={"/mach"}>Mach</CustomLink>
-            <CustomLink to={"/scroll-anim"}>Scroll</CustomLink>
             <CustomLink to={"/star-punk"}>Star Punk</CustomLink>
             <CustomLink to={"/vr"}>VR</CustomLink>
+            <CustomLink to={"/testing"}>Testing</CustomLink>
           </ul>
         </nav>
       </CSSTransition>
       <CSSTransition in={navMenuOpen} unmountOnExit timeout={500} classNames={"nav-menu-bg-left"}>
-        <div className="nav-menu-bg-left"></div>
+        <div className="nav-menu-bg-left">
+          <hr className="hr top"/>
+          <hr className="hr middle"/>
+          <hr className="hr bottom"/>
+        </div>
       </CSSTransition>
       <CSSTransition in={navMenuOpen} unmountOnExit timeout={500} classNames={"nav-menu-bg-right"}>
-        <div className="nav-menu-bg-right"></div>
+        <div className="nav-menu-bg-right">
+          <hr className="hr top"/>
+          <hr className="hr middle"/>
+          <hr className="hr bottom"/>
+        </div>
       </CSSTransition>
     </>
   );

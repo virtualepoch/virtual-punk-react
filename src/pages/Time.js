@@ -100,7 +100,7 @@ export function Time() {
           <CubeGroup />
         </group>
       </Canvas>
-      <PillLinks backTo={"/space"} backName={"space"} forwardTo={"/shoe"} forwardName={"shoe"} />
+      <PillLinks backTo={"/space"} backName={"space"} forwardTo={"/scroll"} forwardName={"scroll"} />
     </>
   );
 }

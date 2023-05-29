@@ -14,7 +14,7 @@ const Section = (props) => {
   );
 };
 
-export function CanvasScrollAnimOverlay() {
+export function ScrollOverlay() {
   const scroll = useScroll();
   const [opacityFirstSection, setOpacityFirstSection] = useState(1);
   const [opacitySecondSection, setOpacitySecondSection] = useState(1);

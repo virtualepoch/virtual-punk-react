@@ -50,7 +50,7 @@ export function Mach() {
   }
   return (
     <>
-      <h1 className="page-title">Testing</h1>
+      <h1 className="page-title">Mach</h1>
       <Canvas>
         <ambientLight intensity={1} />
         <directionalLight position={[10, 15, 10]} angle={0.3} />
@@ -60,7 +60,7 @@ export function Mach() {
         <Earth />
         <Stars />
       </Canvas>
-      <PillLinks backTo={"/scroll"} backName={"home"} forwardTo={"/star-punk"} forwardName={"star-punk"} />
+      <PillLinks backTo={"/shoe"} backName={"shoe"} forwardTo={"/star-punk"} forwardName={"star-punk"} />
     </>
   );
 }

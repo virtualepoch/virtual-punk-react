@@ -8,9 +8,11 @@
   height: 100vh;
 }
 
+/* CANVAS STYLING */
 .canvas {
   background: linear-gradient(to right, black, rgb(0, 170, 170), black);
 }
+
 .canvas.torus {
   background: linear-gradient(transparent 40%, aqua, transparent 60%), linear-gradient(to right, transparent 40%, aqua, transparent 60%), linear-gradient(transparent, rgb(0, 155, 155), transparent), linear-gradient(to right, transparent, rgb(0, 155, 155), transparent);
 }
@@ -21,6 +23,23 @@
 
 .canvas.testing {
   background: linear-gradient(white, gray, white);
+}
+
+.shoe-color-picker {
+  position: fixed;
+  top: 70px;
+  left: 0;
+  display: flex;
+}
+
+.current-shoe-mesh {
+  color: white;
+  filter: drop-shadow(0 0 3px black);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -50px;
+  text-align: center;
 }
 
 .page-title {

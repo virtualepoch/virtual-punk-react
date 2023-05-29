@@ -6,22 +6,6 @@ import { proxy, useSnapshot } from "valtio";
 import { VRButton, XR } from "@react-three/xr";
 import { PillLinks } from "../components/PillLinks";
 
-const style = {
-  canvas: {
-    width: "100%",
-    height: "100vh",
-    background: "linear-gradient(to right, black, aqua, black, aqua, black)",
-    position: "fixed",
-    top: 0,
-  },
-  picker: {
-    position: "fixed",
-    top: "70px",
-    left: "0",
-    border: "solid aqua",
-  },
-};
-
 const state = proxy({
   current: null,
   items: {
@@ -36,7 +20,7 @@ const state = proxy({
   },
 });
 
-function Shoe() {
+function ShoeMesh() {
   const ref = useRef();
   const snap = useSnapshot(state);
   const { nodes, materials } = useGLTF("models/shoe-draco.glb");
@@ -76,29 +60,30 @@ function Shoe() {
 function Picker() {
   const snap = useSnapshot(state);
   return (
-    <div style={{ display: snap.current ? "block" : "none" }}>
-      <HexColorPicker style={style.picker} className="picker" color={snap.items[snap.current]} onChange={(color) => (state.items[snap.current] = color)} />
-      <h1>{snap.current}</h1>
+    <div style={{ display: snap.current ? "flex" : "none" }} className="shoe-color-picker">
+      <HexColorPicker color={snap.items[snap.current]} onChange={(color) => (state.items[snap.current] = color)} />
+      <h1 className="current-shoe-mesh" >{snap.current}</h1>
     </div>
   );
 }
 
-export function ShoeColors() {
+export function Shoe() {
   return (
     <>
       {/* <VRButton /> */}
       <h1 className="page-title">shoe</h1>
-      <Canvas style={style.canvas} shadows camera={{ position: [0, 0, 4], fov: 50 }}>
+      <Canvas className="canvas" shadows camera={{ position: [0, 0, 4], fov: 50 }}>
         <XR>
           <ambientLight intensity={0.7} />
           {/* <spotLight intensity={0.5} angle={0.1} penumbra={1} position={[10, 15, 10]} castShadow /> */}
-          <Shoe />
+          <ShoeMesh />
           {/* <Environment preset="city" /> */}
           {/* <ContactShadows position={[0, -0.8, 0]} opacity={0.55} scale={10} blur={1} far={0.8} /> */}
           <OrbitControls minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} enableZoom={true} enablePan={false} />
         </XR>
       </Canvas>
-      <Picker style={style.picker} />
-      <PillLinks backTo={"/time"} backName={"time"} forwardTo={"/scroll"} forwardName={"scroll"} />    </>
+      <Picker />
+      <PillLinks backTo={"/scroll"} backName={"scroll"} forwardTo={"/mach"} forwardName={"mach"} />{" "}
+    </>
   );
 }

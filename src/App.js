@@ -8,8 +8,8 @@ import { Home } from "./pages/Home";
 import { Torus } from "./pages/Torus";
 import { Space } from "./pages/Space";
 import { Time } from "./pages/Time";
-import { ShoeColors } from "./pages/ShoeColors";
-import { ScrollAnim } from "./pages/ScrollAnim";
+import { Shoe } from "./pages/Shoe";
+import { Scroll } from "./pages/Scroll";
 import { Mach } from "./pages/Mach.js";
 import { StarPunk } from "./pages/StarPunk";
 import { VR } from "./pages/VR.js";
@@ -38,8 +38,8 @@ function App() {
         <Route path="/torus" element={<Torus />} />
         <Route path="/space" element={<Space />} />
         <Route path="/time" element={<Time />} />
-        <Route path="/shoe" element={<ShoeColors />} />
-        <Route path="/scroll" element={<ScrollAnim />} />
+        <Route path="/scroll" element={<Scroll />} />
+        <Route path="/shoe" element={<Shoe />} />
         <Route path="/mach" element={<Mach />} />
         <Route path="/star-punk" element={<StarPunk />} />
         <Route path="/vr" element={<VR />} />
