@@ -99,6 +99,6 @@ export function ShoeColors() {
         </XR>
       </Canvas>
       <Picker style={style.picker} />
-      <PillLinks backTo={"/time"} backName={"time"} forwardTo={"/scroll-anim"} forwardName={"scroll"} />    </>
+      <PillLinks backTo={"/time"} backName={"time"} forwardTo={"/scroll"} forwardName={"scroll"} />    </>
   );
 }

@@ -28,7 +28,7 @@ export function ScrollAnim() {
           <CanvasScrollAnimOverlay />
         </ScrollControls>
       </Canvas>
-      <PillLinks backTo={"/shoe"} backName={"shoe"} forwardTo={"/star-punk"} forwardName={"star-punk"} />
+      <PillLinks backTo={"/shoe"} backName={"shoe"} forwardTo={"/moch"} forwardName={"moch"} />
     </>
   );
 }

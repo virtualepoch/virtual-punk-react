@@ -24,20 +24,29 @@ export function NavMenu({ setNavMenuOpen, navMenuOpen }) {
   }
 
   return (
-    <CSSTransition in={navMenuOpen} unmountOnExit timeout={500} classNames="nav-menu">
-      <nav className="nav-menu">
-        <ul>
-          <CustomLink to={"/"}>Home</CustomLink>
-          <CustomLink to={"/testing"}>Testing</CustomLink>
-          <CustomLink to={"/torus"}>Torus</CustomLink>
-          <CustomLink to={"/space"}>Space</CustomLink>
-          <CustomLink to={"/gears-of-time"}>Time</CustomLink>
-          <CustomLink to={"/shoe"}>Shoe</CustomLink>
-          <CustomLink to={"/scroll-anim"}>Scroll Animation</CustomLink>
-          <CustomLink to={"/star-punk"}>Star Punk</CustomLink>
-          <CustomLink to={"/vr"}>VR</CustomLink>
-        </ul>
-      </nav>
-    </CSSTransition>
+    <>
+      <CSSTransition in={navMenuOpen} unmountOnExit timeout={700} classNames="nav-menu">
+        <nav className="nav-menu">
+          <ul>
+            <CustomLink to={"/"}>Home</CustomLink>
+            <CustomLink to={"/testing"}>Testing</CustomLink>
+            <CustomLink to={"/torus"}>Torus</CustomLink>
+            <CustomLink to={"/space"}>Space</CustomLink>
+            <CustomLink to={"/gears-of-time"}>Time</CustomLink>
+            <CustomLink to={"/shoe"}>Shoe</CustomLink>
+            <CustomLink to={"/mach"}>Mach</CustomLink>
+            <CustomLink to={"/scroll-anim"}>Scroll Animation</CustomLink>
+            <CustomLink to={"/star-punk"}>Star Punk</CustomLink>
+            <CustomLink to={"/vr"}>VR</CustomLink>
+          </ul>
+        </nav>
+      </CSSTransition>
+      <CSSTransition in={navMenuOpen} unmountOnExit timeout={500} classNames={"nav-menu-bg-left"}>
+        <div className="nav-menu-bg-left"></div>
+      </CSSTransition>
+      <CSSTransition in={navMenuOpen} unmountOnExit timeout={500} classNames={"nav-menu-bg-right"}>
+        <div className="nav-menu-bg-right"></div>
+      </CSSTransition>
+    </>
   );
 }

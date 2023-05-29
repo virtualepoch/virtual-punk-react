@@ -10,6 +10,7 @@ import { Space } from "./pages/Space";
 import { Time } from "./pages/Time";
 import { ShoeColors } from "./pages/ShoeColors";
 import { ScrollAnim } from "./pages/ScrollAnim";
+import { Mach } from "./pages/Mach.js";
 import { StarPunk } from "./pages/StarPunk";
 import { VR } from "./pages/VR.js";
 import { Testing } from "./pages/Testing.js";
@@ -38,7 +39,8 @@ function App() {
         <Route path="/space" element={<Space />} />
         <Route path="/time" element={<Time />} />
         <Route path="/shoe" element={<ShoeColors />} />
-        <Route path="/scroll-anim" element={<ScrollAnim />} />
+        <Route path="/scroll" element={<ScrollAnim />} />
+        <Route path="/mach" element={<Mach />} />
         <Route path="/star-punk" element={<StarPunk />} />
         <Route path="/vr" element={<VR />} />
         <Route path="/testing" element={<Testing />} />
