@@ -60,10 +60,10 @@
 }
 
 @media (max-width: 700px) {
-  .nav-menu {
-    background: rgb(37, 37, 37);
+  .nav-menu-bg-left,
+  .nav-menu-bg-right {
+    background: black;
     backdrop-filter: none;
-    box-shadow: none;
   }
 }
 
@@ -153,7 +153,6 @@
 
 @media (max-width: 700px) {
   .nav-menu .link {
-    max-width: 200px;
     height: 50px;
     min-height: 50px;
   }
