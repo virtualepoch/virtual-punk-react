@@ -12,7 +12,7 @@ export function Space() {
           <SpaceScene />
         </ScrollControls>
       </Canvas>
-      <PillLinks backTo={"/torus"} backName={"torus"} forwardTo={"/time"} forwardName={"time"} />
+      <PillLinks backTo="/torus" backName="torus" forwardTo="/time" forwardName="time" />
     </>
   );
 }

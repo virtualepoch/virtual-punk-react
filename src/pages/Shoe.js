@@ -62,7 +62,7 @@ function Picker() {
   return (
     <div style={{ display: snap.current ? "flex" : "none" }} className="shoe-color-picker">
       <HexColorPicker color={snap.items[snap.current]} onChange={(color) => (state.items[snap.current] = color)} />
-      <h1 className="current-shoe-mesh" >{snap.current}</h1>
+      <h1 className="current-shoe-mesh">{snap.current}</h1>
     </div>
   );
 }
@@ -83,7 +83,7 @@ export function Shoe() {
         </XR>
       </Canvas>
       <Picker />
-      <PillLinks backTo={"/scroll"} backName={"scroll"} forwardTo={"/mach"} forwardName={"mach"} />{" "}
+      <PillLinks backTo="/scroll" backName="scroll" forwardTo="/mach" forwardName="mach" />
     </>
   );
 }

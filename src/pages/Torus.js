@@ -1,7 +1,5 @@
-import * as THREE from "three";
 import { useRef } from "react";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import star from "../assets/images/red-star.png";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { PillLinks } from "../components/PillLinks";
 
 export function Torus() {
@@ -27,19 +25,19 @@ export function Torus() {
       <>
         <mesh ref={meshRef1} position={[0, 0, 0]}>
           <torusGeometry args={[0.9, 0.1, 4, 33]} />
-          <meshStandardMaterial color={"red"} wireframe={true} />
+          <meshStandardMaterial color="red" wireframe={true} />
         </mesh>
         <mesh ref={meshRef2} position={[0, 0, 0]}>
           <torusGeometry args={[1.1, 0.1, 4, 33]} />
-          <meshStandardMaterial color={"aqua"} wireframe={true} />
+          <meshStandardMaterial color="aqua" wireframe={true} />
         </mesh>
         <mesh ref={meshRef3} position={[0, 0, 0]}>
           <torusGeometry args={[1.3, 0.1, 4, 33]} />
-          <meshStandardMaterial color={"red"} wireframe={true} />
+          <meshStandardMaterial color="red" wireframe={true} />
         </mesh>
         <mesh ref={meshRef4} position={[0, 0, 0]}>
           <torusGeometry args={[1.5, 0.1, 4, 33]} />
-          <meshStandardMaterial color={"aqua"} wireframe={true} />
+          <meshStandardMaterial color="aqua" wireframe={true} />
         </mesh>
       </>
     );
@@ -54,7 +52,7 @@ export function Torus() {
     return (
       <mesh ref={sphere}>
         <sphereGeometry args={[0.2, 4, 2]} />
-        <meshBasicMaterial color={"white"} wireframe={true} />
+        <meshBasicMaterial color="red" wireframe={true} />
       </mesh>
     );
   }
@@ -67,7 +65,7 @@ export function Torus() {
         <TorusGroup />
         <Sphere />
       </Canvas>
-      <PillLinks backTo={"/"} backName={"home"} forwardTo={"/space"} forwardName={"space"} />
+      <PillLinks backTo="/" backName="home" forwardTo="/space" forwardName="space" />
     </>
   );
 }

@@ -60,7 +60,7 @@ export const SpaceScene = () => {
     return (
       <mesh ref={meshRef} scale={[4, 4, 4]} position={[0, 0, -115]}>
         <sphereGeometry args={[0.5, 11, 11]} />
-        <meshStandardMaterial color={"red"} wireframe={true} />
+        <meshStandardMaterial color="red" wireframe={true} />
       </mesh>
     );
   }
@@ -80,7 +80,7 @@ export const SpaceScene = () => {
         </group>
       </group>
       <group position-y={-2}>
-        <Line points={linePoints} color={"white"} opacity={0.7} transparent lineWidth={16} />
+        <Line points={linePoints} color="white" opacity={0.7} transparent lineWidth={16} />
         <mesh>
           <extrudeGeometry
             args={[
@@ -92,7 +92,7 @@ export const SpaceScene = () => {
               },
             ]}
           />
-          <meshStandardMaterial color={"white"} opacity={0.7} transparent />
+          <meshStandardMaterial color="white" opacity={0.7} transparent />
         </mesh>
       </group>
       <Sphere />

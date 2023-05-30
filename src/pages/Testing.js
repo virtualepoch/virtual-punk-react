@@ -4,7 +4,8 @@ import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { MeshReflectorMaterial, OrbitControls, PerspectiveCamera, Stars } from "@react-three/drei";
 import earth500 from "../assets/images/earth_clouds_1k.jpg";
 import earth8k from "../assets/images/earth_clouds_4k.jpg";
-import marble from "../assets/images/marble.jpg";
+import marbleLarge from "../assets/images/marble_large.jpg";
+import marbleSmall from "../assets/images/marble_small.jpg";
 import { PillLinks } from "../components/PillLinks";
 
 export function Testing() {
@@ -20,6 +21,7 @@ export function Testing() {
   }
 
   function Earth() {
+    // !!!!!!!!!!!! SEE IF YOU CAN CREATE A GLOBAL TEXTURE CHANGER THAT WILL CHANGE FOR ALL FUNCTIONS BASED ON VARIABLES SET IN THOSE FUNCTIONS
     function textureChanger() {
       if (window.innerWidth < 700) {
         return earth500;
@@ -44,7 +46,14 @@ export function Testing() {
   }
 
   function EarthPedestal() {
-    const texture = useLoader(THREE.TextureLoader, marble);
+    function textureChanger() {
+      if (window.innerWidth < 700) {
+        return marbleSmall;
+      } else {
+        return marbleLarge;
+      }
+    }
+    const texture = useLoader(THREE.TextureLoader, textureChanger());
     return (
       <mesh position={[0, 2.4, 0]}>
         <cylinderGeometry args={[2, 5, 8, 3, 1]} />
@@ -56,8 +65,8 @@ export function Testing() {
   function PictureFrame() {
     const shape = new THREE.Shape();
 
-    let sizeX = 5;
-    let sizeY = 3;
+    let sizeX = 6;
+    let sizeY = 6;
     let radius = 0.5;
 
     let halfX = sizeX * 0.5 - radius;
@@ -68,10 +77,18 @@ export function Testing() {
     shape.absarc(-halfX, -halfY, radius, baseAngle * 2, baseAngle * 2 + baseAngle);
     shape.absarc(halfX, -halfY, radius, baseAngle * 3, baseAngle * 3 + baseAngle);
 
-    const texture = useLoader(THREE.TextureLoader, marble);
+    function textureChanger() {
+      if (window.innerWidth < 700) {
+        return marbleSmall;
+      } else {
+        return marbleLarge;
+      }
+    }
+
+    const texture = useLoader(THREE.TextureLoader, textureChanger());
 
     return (
-      <mesh position={[-7, 2, 11]} rotation={[0,1,0]}>
+      <mesh position={[-7, 2, 11]} rotation={[0, 1, 0]}>
         <extrudeGeometry args={[shape, { bevelEnabled: false, depth: 1 }]} />
         <meshBasicMaterial map={texture} />
       </mesh>
@@ -84,7 +101,7 @@ export function Testing() {
       <Canvas className="canvas" shadows>
         <OrbitControls />
         <ambientLight intensity={1} />
-        <directionalLight position={[10, 15, 10]} angle={0.3} intensity={0.8} castShadow color={"red"} />
+        <directionalLight position={[10, 15, 10]} angle={0.3} intensity={0.8} castShadow color="red" />
         <PerspectiveCamera position={[0, 0, 22]} rotation={[0, 0, 0]} fov={80} makeDefault far={1000} />
         <Floor />
         <Earth />
@@ -92,7 +109,7 @@ export function Testing() {
         <PictureFrame />
         <Stars />
       </Canvas>
-      <PillLinks backTo={"/"} backName={"home"} forwardTo={"/torus"} forwardName={"torus"} />
+      <PillLinks backTo="/" backName="home" forwardTo="/torus" forwardName="torus" />
     </>
   );
 }

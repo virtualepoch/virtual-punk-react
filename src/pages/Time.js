@@ -32,40 +32,21 @@ function CubeGroup() {
     <>
       <mesh ref={meshRef1} position={[-2, 0, 0]}>
         <boxBufferGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color={"red"} wireframe={false} />
+        <meshStandardMaterial color="red" wireframe={false} />
       </mesh>
       <mesh ref={meshRef2} position={[-1, 0, 0]}>
         <boxBufferGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color={"aqua"} wireframe={false} />
+        <meshStandardMaterial color="aqua" wireframe={false} />
       </mesh>
       <mesh ref={meshRef3} position={[1, 0, 0]}>
         <boxBufferGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color={"red"} wireframe={false} />
+        <meshStandardMaterial color="red" wireframe={false} />
       </mesh>
       <mesh ref={meshRef4} position={[2, 0, 0]}>
         <boxBufferGeometry args={[1, 1, 1]} />
-        <meshStandardMaterial color={"aqua"} wireframe={false} />
+        <meshStandardMaterial color="aqua" wireframe={false} />
       </mesh>
     </>
-  );
-}
-
-function Sphere() {
-  const meshRef = useRef(null);
-
-  useFrame(() => {
-    if (!meshRef.current) {
-      return;
-    }
-    meshRef.current.rotation.y += 0.1;
-    meshRef.current.rotation.x += 1;
-  });
-
-  return (
-    <mesh ref={meshRef} rotation={[Math.PI / 2, 0, 0]} position={[0, 0, 0]}>
-      <sphereGeometry args={[0.5, 11, 2]} />
-      <meshStandardMaterial color={"aqua"} wireframe={true} />
-    </mesh>
   );
 }
 
@@ -75,7 +56,7 @@ export function Time() {
       <h1 className="page-title">Time</h1>
       <Canvas style={style} camera={{ position: [0, 0, 5] }}>
         {/* <OrbitControls /> */}
-        <ambientLight intensity={0.5} />
+        {/* <ambientLight intensity={0.5} /> */}
         <directionalLight position={[0, 15, 10]} angle={0.3} />
         <group position={[0, -2, 2]}>
           <CubeGroup />
@@ -100,7 +81,7 @@ export function Time() {
           <CubeGroup />
         </group>
       </Canvas>
-      <PillLinks backTo={"/space"} backName={"space"} forwardTo={"/scroll"} forwardName={"scroll"} />
+      <PillLinks backTo="/space" backName="space" forwardTo="/scroll" forwardName="scroll" />
     </>
   );
 }

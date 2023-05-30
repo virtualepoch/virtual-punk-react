@@ -60,7 +60,7 @@ export function Mach() {
         <Earth />
         <Stars />
       </Canvas>
-      <PillLinks backTo={"/shoe"} backName={"shoe"} forwardTo={"/star-punk"} forwardName={"star-punk"} />
+      <PillLinks backTo="/shoe" backName="shoe" forwardTo="/star-punk" forwardName="star-punk" />
     </>
   );
 }
