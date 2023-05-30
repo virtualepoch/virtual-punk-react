@@ -45,12 +45,16 @@ export function Torus() {
     );
   }
 
-  function Image() {
-    const texture = useLoader(THREE.TextureLoader, star);
+  function Sphere() {
+    const sphere = useRef(null);
+
+    useFrame(() => {
+      sphere.current.rotation.y += 0.5;
+    });
     return (
-      <mesh>
-        <planeBufferGeometry attach="geometry" args={[1, 1]} />
-        <meshPhongMaterial attach="material" map={texture} transparent />
+      <mesh ref={sphere}>
+        <sphereGeometry args={[0.2, 4, 2]} />
+        <meshBasicMaterial color={"white"} wireframe={true} />
       </mesh>
     );
   }
@@ -61,7 +65,7 @@ export function Torus() {
       <Canvas className="canvas torus" camera={{ position: [0, 0, 3] }}>
         <ambientLight intensity={1} />
         <TorusGroup />
-        <Image />
+        <Sphere />
       </Canvas>
       <PillLinks backTo={"/"} backName={"home"} forwardTo={"/space"} forwardName={"space"} />
     </>

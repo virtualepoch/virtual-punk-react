@@ -7,11 +7,11 @@ Source: https://sketchfab.com/3d-models/ftm-0970f30574d047b1976ba0aa6f2ef855
 Title: Ftm
 */
 
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import React, { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
 
-export function Model(props) {
-  const { nodes, materials } = useGLTF('/models/ftmLow.glb')
+export function FtmLow(props) {
+  const { nodes, materials } = useGLTF("/models/ftmLow.glb");
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]} scale={1.25}>
@@ -30,7 +30,7 @@ export function Model(props) {
         <mesh geometry={nodes.eyes002_0.geometry} material={materials.eyes002} rotation={[Math.PI / 2, 0, 0]} />
       </group>
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/models/ftmLow.glb')
+useGLTF.preload("/models/ftmLow.glb");
