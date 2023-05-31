@@ -2,7 +2,8 @@
 import { OrbitControls, Cylinder, MeshReflectorMaterial, Text3D } from "@react-three/drei";
 import { RigidBody, CylinderCollider } from "@react-three/rapier";
 import { Mushrooms } from "../components/models/Mushrooms";
-import { alphabet } from "./game/constants";
+import { alphabet } from "./game/letters";
+import { words } from "./game/words";
 
 export const Game = () => {
   function Floor() {
@@ -38,11 +39,12 @@ export const Game = () => {
           </Cylinder>
         </RigidBody>
 
-        <Text3D font={"./fonts/Roboto_Bold.json"}
-        size={0.82}>
-          {alphabet[0].letter}
-          <meshNormalMaterial />
-        </Text3D>
+        <group position={[-1,1,0]}>
+          <Text3D font={"./fonts/Roboto_Bold.json"} size={0.92}>
+            {words[0].dog}
+            <meshNormalMaterial />
+          </Text3D>
+        </group>
       </group>
     </>
   );
