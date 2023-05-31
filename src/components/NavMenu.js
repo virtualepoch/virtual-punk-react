@@ -38,6 +38,7 @@ export function NavMenu({ setNavMenuOpen, navMenuOpen }) {
             <CustomLink to={"/star-punk"}>Star Punk</CustomLink>
             <CustomLink to={"/vr"}>VR</CustomLink>
             <CustomLink to={"/testing"}>Testing</CustomLink>
+            <CustomLink to={"/testing-2"}>Testing-2</CustomLink>
           </ul>
         </nav>
       </CSSTransition>
