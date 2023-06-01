@@ -5,6 +5,7 @@ import { KeyboardControls, Stars } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import { Game } from "./Testing2Game";
 import { PillLinks } from "../components/PillLinks";
+import { MobileController } from "./game/MobileController";
 
 export const Controls = {
   forward: "forward",
@@ -40,6 +41,7 @@ export function Testing2() {
           <Stars />
         </Canvas>
       </KeyboardControls>
+      <MobileController/>
       <PillLinks backTo="/" backName="home" forwardTo="/torus" forwardName="torus" />
     </>
   );

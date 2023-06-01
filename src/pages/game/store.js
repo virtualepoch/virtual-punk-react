@@ -1,5 +1,5 @@
 import { letters } from "./letters";
-import { create } from "zustand";
+import create from "zustand";
 
 export const generateGameLevel = ({ nbStages }) => {
   const level = [];

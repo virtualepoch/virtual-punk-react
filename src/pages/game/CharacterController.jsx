@@ -4,6 +4,7 @@ import { Ayanami } from "./Ayanami";
 import { useFrame } from "@react-three/fiber";
 import { useKeyboardControls } from "@react-three/drei";
 import { Controls } from "../Testing2";
+import { MobileController } from "./MobileController";
 
 const JUMP_FORCE = 0.5;
 const MOVEMENT_SPEED = 0.1;
@@ -56,21 +57,23 @@ export const CharacterController = () => {
   const character = useRef();
 
   return (
-    <group>
-      <RigidBody
-        ref={rigidbody}
-        colliders={false}
-        scale={[0.5, 0.5, 0.5]}
-        enabledRotations={[false, false, false]}
-        onCollisionEnter={() => {
-          isOnFloor.current = true;
-        }}
-      >
-        <CapsuleCollider args={[0.8, 0.4]} position={[0, 1.2, 0]} />
-        <group ref={character}>
-          <Ayanami />
-        </group>
-      </RigidBody>
-    </group>
+    <>
+      <group>
+        <RigidBody
+          ref={rigidbody}
+          colliders={false}
+          scale={[0.5, 0.5, 0.5]}
+          enabledRotations={[false, false, false]}
+          onCollisionEnter={() => {
+            isOnFloor.current = true;
+          }}
+        >
+          <CapsuleCollider args={[0.8, 0.4]} position={[0, 1.2, 0]} />
+          <group ref={character}>
+            <Ayanami />
+          </group>
+        </RigidBody>
+      </group>
+    </>
   );
 };
