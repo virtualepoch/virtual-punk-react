@@ -1,11 +1,21 @@
 // import { CylinderCollider } from "@react-three/fiber";
-import { OrbitControls, Cylinder, MeshReflectorMaterial, Text3D } from "@react-three/drei";
+import { OrbitControls, Cylinder, MeshReflectorMaterial } from "@react-three/drei";
 import { RigidBody, CylinderCollider } from "@react-three/rapier";
 import { Mushrooms } from "../components/models/Mushrooms";
-import { alphabet } from "./game/letters";
+
 import { words } from "./game/words";
+import { useGameStore } from "./game/store";
+import { useEffect } from "react";
+import { LetterSpots } from "./game/LetterSpots";
+import { CharacterController } from "./game/CharacterController";
 
 export const Game = () => {
+  const startGame = useGameStore((state) => state.startGame);
+
+  useEffect(() => {
+    startGame();
+  }, []);
+
   function Floor() {
     return (
       <>
@@ -32,19 +42,18 @@ export const Game = () => {
 
       <group position-y={-1}>
         {/* STAGE */}
-        <RigidBody colliders={false} type="fixed" position-y={-0.5}>
+        <RigidBody colliders={false} type="fixed" position-y={-0.5} friction={2}>
           <CylinderCollider args={[1 / 2, 5]} />
           <Cylinder scale={[5, 1, 5]} receiveShadow>
             <meshStandardMaterial color="white" />
           </Cylinder>
         </RigidBody>
 
-        <group position={[-1,1,0]}>
-          <Text3D font={"./fonts/Roboto_Bold.json"} size={0.92}>
-            {words[0].dog}
-            <meshNormalMaterial />
-          </Text3D>
-        </group>
+        {/* CHARACTER */}
+        <CharacterController />
+
+        {/* LETTERS */}
+        <LetterSpots />
       </group>
     </>
   );
