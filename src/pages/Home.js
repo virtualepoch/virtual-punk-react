@@ -34,7 +34,7 @@ export function Home() {
       <div className="pill-container">
         <Link className="pill red" to="/torus" onClick={(e) => delayAndGo(e, "/torus")}>torus</Link>
         <Link className="pill blue" to="/testing">testing</Link>
-        <Link className="pill blue" to="/testing-2">testing-2</Link>
+        <Link className="pill blue" to="/moto-game">moto-game</Link>
       </div>
     </>
   );

@@ -14,7 +14,8 @@ import { Mach } from "./pages/Mach.js";
 import { StarPunk } from "./pages/StarPunk";
 import { VR } from "./pages/VR.js";
 import { Testing } from "./pages/Testing.js";
-import { Testing2 } from "./pages/Testing2.js";
+import { MotoGame } from "./pages/moto-game/MotoGame.js";
+import { LetterGame } from "./pages/letter-game/LetterGame.js";
 
 import "./App.css";
 
@@ -46,7 +47,8 @@ function App() {
         <Route path="/star-punk" element={<StarPunk />} />
         <Route path="/vr" element={<VR />} />
         <Route path="/testing" element={<Testing />} />
-        <Route path="/testing-2" element={<Testing2 />} />
+        <Route path="/moto-game" element={<MotoGame />} />
+        <Route path="/letter-game" element={<LetterGame />} />
       </Routes>
     </div>
   );
