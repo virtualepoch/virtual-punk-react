@@ -1,7 +1,7 @@
 // import { CylinderCollider } from "@react-three/fiber";
+import { useRef } from "react";
 import { OrbitControls, Cylinder, MeshReflectorMaterial, PerspectiveCamera } from "@react-three/drei";
 import { RigidBody, CuboidCollider } from "@react-three/rapier";
-import { Mushrooms } from "../../components/models/Mushrooms";
 import { useGameStore } from "./components/store";
 import { useEffect } from "react";
 import { CharacterController } from "./components/CharacterController";
@@ -29,11 +29,6 @@ export const Game = () => {
     <>
       <OrbitControls />
       {/* LIGHTS */}
-
-      {/* BACKGROUND */}
-      {/* <Mushrooms scale={[1, 1, 1]} position={[-3, -1.5, -11]} rotation={[0, -1, 0]} />
-      <Mushrooms scale={[2, 2, 2]} position={[0, -1.5, -14]} />
-      <Mushrooms scale={[1, 1, 1]} position={[3, -1.5, -11]} rotation={[0, -1, 0]} /> */}
 
       <group position-y={-1}>
         {/* STAGE */}
