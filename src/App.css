@@ -17,7 +17,7 @@
 }
 
 .canvas.moto {
-  background: linear-gradient(white,gray,white);
+  background: linear-gradient(white, gray, white);
 }
 
 .shoe-color-picker {
@@ -49,6 +49,10 @@
   color: aqua;
   filter: drop-shadow(0 0 5px red);
   pointer-events: none;
+}
+
+.page-title.animoto {
+  top: 20px;
 }
 
 .canvas-section {
@@ -233,4 +237,3 @@
 .fire-btn.pressing {
   background: red;
 }
-

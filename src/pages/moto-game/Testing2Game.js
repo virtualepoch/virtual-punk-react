@@ -2,17 +2,11 @@
 import { useRef } from "react";
 import { OrbitControls, Cylinder, MeshReflectorMaterial, PerspectiveCamera } from "@react-three/drei";
 import { RigidBody, CuboidCollider } from "@react-three/rapier";
-import { useGameStore } from "./components/store";
 import { useEffect } from "react";
 import { CharacterController } from "./components/CharacterController";
 import { CityBlock } from "./components/Modern_city_block";
 
 export const Game = () => {
-  const startGame = useGameStore((state) => state.startGame);
-
-  useEffect(() => {
-    startGame();
-  }, []);
 
   function Floor() {
     return (

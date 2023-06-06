@@ -1,8 +1,27 @@
-import { forwardRef, useEffect, useImperativeHandle, useRef } from "react";
+import { forwardRef, useEffect, useImperativeHandle, useRef, useMemo } from "react";
 import { useFrame } from "@react-three/fiber";
-import { OrbitControls, Stars, PerspectiveCamera } from "@react-three/drei";
+import { useKeyboardControls, KeyboardControls, Stars, PerspectiveCamera } from "@react-three/drei";
+
+const Controls = {
+  up: "up",
+  down: "down",
+  left: "left",
+  right: "right",
+};
+
+const MOVEMENT_SPEED = 1;
+const MAX_VEL = 3;
 
 export const StarshipLightsCamera = forwardRef((props, ref) => {
+  // const map = useMemo(
+  //   () => [
+  //     { name: Controls.up, keys: ["ArrowUp", "KeyW"] },
+  //     { name: Controls.down, keys: ["ArrowDown", "KeyS"] },
+  //     { name: Controls.left, keys: ["ArrowLeft", "KeyA"] },
+  //     { name: Controls.right, keys: ["ArrowRight", "KeyD"] },
+  //   ],
+  //   []
+  // );
   const cameraGroup = useRef();
 
   useFrame(() => {
@@ -51,38 +70,23 @@ export const StarshipLightsCamera = forwardRef((props, ref) => {
     );
   }
 
+  // const upPressed = useKeyboardControls((state) => state[Controls.up]);
+  // const downPressed = useKeyboardControls((state) => state[Controls.down]);
+  // const leftPressed = useKeyboardControls((state) => state[Controls.left]);
+  // const rightPressed = useKeyboardControls((state) => state[Controls.right]);
+
   const starship = useRef();
 
   // KEYBOARD CONTROLS
-  document.onkeydown = function (e) {
-    if (e.key === "ArrowLeft") {
-      starship.current.position.x -= 1;
-      if (starship.current.rotation.z < 0.7) {
-        starship.current.rotation.z += 0.1;
-      }
-    }
-    if (e.key === "ArrowRight") {
-      starship.current.position.x += 1;
-      if (starship.current.rotation.z > -0.7) {
-        starship.current.rotation.z -= 0.1;
-      }
-    }
-    if (e.key === "ArrowUp") {
-      starship.current.position.y += 1;
-    }
-    if (e.key === "ArrowDown") {
-      starship.current.position.y -= 1;
-    }
-  };
 
-  document.onkeyup = function (e) {
-    if (e.key === "ArrowLeft") {
-      starship.current.rotation.z = 0;
-    }
-    if (e.key === "ArrowRight") {
-      starship.current.rotation.z = 0;
-    }
-  };
+  // useFrame(() => {
+  //   const impulse = { x: 0, y: 0, z: 0 };
+  //   const linvel = starship.current.linvel();
+
+  //   if (leftPressed && linvel.x > -MAX_VEL) {
+  //     impulse.x -= MOVEMENT_SPEED;
+  //   }
+  // });
 
   // MOBILE CONTROLS
   useImperativeHandle(ref, () => ({
@@ -107,6 +111,7 @@ export const StarshipLightsCamera = forwardRef((props, ref) => {
 
   return (
     <>
+      {/* <KeyboardControls map={map}> */}
       <group ref={cameraGroup}>
         {/* <OrbitControls target={[0, 10, 10]} /> */}
         <ambientLight intensity={0.5} />
@@ -119,6 +124,7 @@ export const StarshipLightsCamera = forwardRef((props, ref) => {
           <Starship />
         </group>
       </group>
+      {/* </KeyboardControls> */}
     </>
   );
 });

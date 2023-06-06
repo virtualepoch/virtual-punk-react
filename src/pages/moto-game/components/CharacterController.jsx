@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { RigidBody, CapsuleCollider } from "@react-three/rapier";
 import { useFrame } from "@react-three/fiber";
 import { useKeyboardControls, PerspectiveCamera } from "@react-three/drei";
-import { Controls } from "../MotoGame";
+import { Controls } from "../AniMoto";
 import { AkiraMotorcycle } from "./AkiraMotorcycle";
 
 const MOVEMENT_SPEED = 0.1;
@@ -19,10 +19,9 @@ export const CharacterController = () => {
 
   useFrame(() => {
     const impulse = { x: 0, y: 0, z: 0 };
-
     const linvel = rigidbody.current.linvel();
     let changeRotation = false;
-    
+
     if (acceleratePressed && linvel.z > -MAX_VEL) {
       impulse.z -= MOVEMENT_SPEED;
       changeRotation = true;
@@ -37,7 +36,7 @@ export const CharacterController = () => {
       impulse.x -= MOVEMENT_SPEED;
       changeRotation = true;
     }
-    
+
     if (backPressed && linvel.z < MAX_VEL) {
       impulse.z += MOVEMENT_SPEED;
       changeRotation = true;
@@ -56,16 +55,11 @@ export const CharacterController = () => {
     <>
       <group>
         <PerspectiveCamera ref={camera} position={[0, 10, 25]} rotation={[0, 0, 0]} fov={30} makeDefault />
-        <RigidBody
-          ref={rigidbody}
-          colliders={false}
-          scale={[0.5, 0.5, 0.5]}
-          enabledRotations={[false, false, false]}
-        >
+        <RigidBody ref={rigidbody} colliders={false} scale={[0.5, 0.5, 0.5]} enabledRotations={[false, false, false]}>
           <ambientLight intensity={1} />
           <directionalLight position={[5, 5, 5]} angle={0.3} intensity={0.8} castShadow color={"#9e69da"} />
           <CapsuleCollider args={[0.8, 0.4]} position={[0, 1.2, 0]} />
-          <group ref={character}>
+          <group ref={character} rotation-y={Math.PI}>
             <AkiraMotorcycle />
           </group>
         </RigidBody>

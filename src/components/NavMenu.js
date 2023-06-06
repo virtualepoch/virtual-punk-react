@@ -38,23 +38,23 @@ export function NavMenu({ setNavMenuOpen, navMenuOpen }) {
             <CustomLink to={"/star-punk"}>Star Punk</CustomLink>
             <CustomLink to={"/vr"}>VR</CustomLink>
             <CustomLink to={"/testing"}>Testing</CustomLink>
-            <CustomLink to={"/moto-game"}>Moto Game</CustomLink>
+            <CustomLink to={"/animoto"}>Animoto</CustomLink>
             <CustomLink to={"/letter-game"}>Letter Game</CustomLink>
           </ul>
         </nav>
       </CSSTransition>
       <CSSTransition in={navMenuOpen} unmountOnExit timeout={500} classNames={"nav-menu-bg-left"}>
         <div className="nav-menu-bg-left">
-          <hr className="hr top"/>
-          <hr className="hr middle"/>
-          <hr className="hr bottom"/>
+          <hr className="hr top" />
+          <hr className="hr middle" />
+          <hr className="hr bottom" />
         </div>
       </CSSTransition>
       <CSSTransition in={navMenuOpen} unmountOnExit timeout={500} classNames={"nav-menu-bg-right"}>
         <div className="nav-menu-bg-right">
-          <hr className="hr top"/>
-          <hr className="hr middle"/>
-          <hr className="hr bottom"/>
+          <hr className="hr top" />
+          <hr className="hr middle" />
+          <hr className="hr bottom" />
         </div>
       </CSSTransition>
     </>

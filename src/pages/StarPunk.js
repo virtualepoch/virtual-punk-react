@@ -1,4 +1,4 @@
-import React, { useState, useEffect, forwardRef, useImperativeHandle, useRef } from "react";
+import React, { useState, useEffect, forwardRef, useImperativeHandle, useRef, useMemo } from "react";
 import { StarshipLightsCamera } from "./StarshipLightsCamera";
 import { Canvas } from "@react-three/fiber";
 
@@ -33,6 +33,7 @@ export function StarPunk() {
       >
         &gt;
       </button>
+
       <Canvas>
         <ExtendingWalls />
         <StarshipLightsCamera ref={ref} />

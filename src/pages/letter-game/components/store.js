@@ -1,5 +1,5 @@
 import { letters } from "./letters";
-import create from "zustand";
+import { create } from "zustand";
 
 export const generateGameLevel = ({ nbStages }) => {
   const level = [];
@@ -21,23 +21,20 @@ export const generateGameLevel = ({ nbStages }) => {
 };
 
 export const useGameStore = create((set) => ({
-    level: null,
-    currentStage: 0,
-    currentLetter: null,
-    mode: "letter",
-    startGame: () => {
-        const level = generateGameLevel({ nbStages: 5});
-        const currentLetter = level[0].find((letter) => letter.correct)
-        set({ level, currentStage: 0, currentLetter})
-
-    },
-    nextStage: () => {
-        set((state) => {
-            const currentStage = state.currentStage + 1;
-            const currentLetter = state.level[currentStage].find(
-                (letter) => letter.correct
-            )
-            return { currentStage, currentLetter}
-        })
-    }
-}))
+  level: null,
+  currentStage: 0,
+  currentLetter: null,
+  mode: "letter",
+  startGame: () => {
+    const level = generateGameLevel({ nbStages: 5 });
+    const currentLetter = level[0].find((letter) => letter.correct);
+    set({ level, currentStage: 0, currentLetter });
+  },
+  nextStage: () => {
+    set((state) => {
+      const currentStage = state.currentStage + 1;
+      const currentLetter = state.level[currentStage].find((letter) => letter.correct);
+      return { currentStage, currentLetter };
+    });
+  },
+}));

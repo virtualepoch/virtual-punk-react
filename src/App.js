@@ -1,5 +1,5 @@
-import { Route, Routes, useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import { useState } from "react";
 
 import { Header } from "./components/Header";
 import { NavMenu } from "./components/NavMenu";
@@ -14,24 +14,14 @@ import { Mach } from "./pages/Mach.js";
 import { StarPunk } from "./pages/StarPunk";
 import { VR } from "./pages/VR.js";
 import { Testing } from "./pages/Testing.js";
-import { MotoGame } from "./pages/moto-game/MotoGame.js";
+import { AniMoto } from "./pages/moto-game/AniMoto.js";
 import { LetterGame } from "./pages/letter-game/LetterGame.js";
 
 import "./App.css";
 
-
-function useScrollToTop() {
-  const { pathname } = useLocation();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-}
-
 function App() {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
 
-  useScrollToTop();
   return (
     <div className="App">
       <Header setNavMenuOpen={setNavMenuOpen} navMenuOpen={navMenuOpen} />
@@ -47,7 +37,7 @@ function App() {
         <Route path="/star-punk" element={<StarPunk />} />
         <Route path="/vr" element={<VR />} />
         <Route path="/testing" element={<Testing />} />
-        <Route path="/moto-game" element={<MotoGame />} />
+        <Route path="/animoto" element={<AniMoto />} />
         <Route path="/letter-game" element={<LetterGame />} />
       </Routes>
     </div>

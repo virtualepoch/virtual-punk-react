@@ -15,7 +15,7 @@ export const Controls = {
   boost: "boost",
 };
 
-export function MotoGame() {
+export function AniMoto() {
   const map = useMemo(
     () => [
       { name: Controls.accelerate, keys: ["Space"] },
@@ -26,9 +26,10 @@ export function MotoGame() {
     ],
     []
   );
+  
   return (
     <>
-      <h1 className="page-title">Moto-Game</h1>
+      <h1 className="page-title animoto">AniMoto</h1>
       <KeyboardControls map={map}>
         <Canvas className="canvas moto" shadows camera={{ position: [0, 6, 14], fov: 42 }}>
           {/* <color attach="background" args={["#dbedfb"]} /> */}
