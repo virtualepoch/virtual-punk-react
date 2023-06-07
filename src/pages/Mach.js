@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { useRef } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { OrbitControls, PerspectiveCamera, Stars } from "@react-three/drei";
+import { OrbitControls, Stars } from "@react-three/drei";
 import { JetConcept } from "../components/models/Jet_concept";
 import earth500 from "../assets/images/earth_clouds_1k.jpg";
 import earth8k from "../assets/images/earth_clouds_4k.jpg";
@@ -9,7 +9,6 @@ import { PillLinks } from "../components/PillLinks";
 
 export function Mach() {
   function Earth() {
-
     function textureChanger() {
       if (window.innerWidth < 700) {
         return earth500;
@@ -51,11 +50,10 @@ export function Mach() {
   return (
     <>
       <h1 className="page-title">Mach</h1>
-      <Canvas>
+      <Canvas camera={{ position: [0, 10, 12], rotation: [0, 0, 0], fov: 50 }}>
         <ambientLight intensity={1} />
         <directionalLight position={[10, 15, 10]} angle={0.3} />
-        <OrbitControls />
-        <PerspectiveCamera position={[0, 0, 12]} rotation={[0, 0, 0]} fov={50} makeDefault far={5000} />
+        <OrbitControls autoRotate={true} />
         <JetMesh />
         <Earth />
         <Stars />
