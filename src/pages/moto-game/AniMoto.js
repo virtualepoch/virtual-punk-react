@@ -43,8 +43,8 @@ export function AniMoto() {
       </KeyboardControls>
       <MobileController />
       <div className="pill-container">
-        <Link className="pill blue" to="/">
-          home
+        <Link className="pill trans" to="/">
+          exit
         </Link>
       </div>
     </>
