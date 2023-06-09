@@ -1,10 +1,7 @@
 // import { CylinderCollider } from "@react-three/fiber";
-import { useRef } from "react";
-import { OrbitControls, Cylinder, MeshReflectorMaterial, PerspectiveCamera } from "@react-three/drei";
+import { OrbitControls, Cylinder, MeshReflectorMaterial } from "@react-three/drei";
 import { RigidBody, CuboidCollider } from "@react-three/rapier";
-import { useEffect } from "react";
 import { CharacterController } from "./components/CharacterController";
-import { CityBlock } from "./components/Modern_city_block";
 
 export const Game = () => {
 
@@ -13,7 +10,7 @@ export const Game = () => {
       <>
         <mesh position={[0, -1.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
           <planeGeometry args={[55, 55]} />
-          <MeshReflectorMaterial blur={[400, 400]} resolution={1024} mixBlur={0.9} mixStrength={15} depthScale={1} minDepthThreshold={0.85} color="#dbecfb" metalness={0.6} />
+          {/* <MeshReflectorMaterial blur={[400, 400]} resolution={1024} mixBlur={0.9} mixStrength={15} depthScale={1} minDepthThreshold={0.85} color="#dbecfb" metalness={0.6} /> */}
         </mesh>
       </>
     );
