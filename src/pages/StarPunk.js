@@ -10,7 +10,7 @@ export function StarPunk() {
 
     useFrame(() => {
       if (walls.current.position.z < 1700) {
-        walls.current.position.z += 0.7;
+        walls.current.position.z += 0.4;
       } else {
         walls.current.position.z -= 1500;
       }
