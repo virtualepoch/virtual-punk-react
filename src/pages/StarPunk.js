@@ -30,7 +30,7 @@ export function StarPunk() {
       <Canvas camera={{ position: [0, 8, 15], rotation: [0, 0, 0], fov: 50 }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 15, 10]} angle={0.3} />
-        <OrbitControls target={[0, 0, 0]} autoRotate={true} />
+        <OrbitControls target={[0, 0, 0]} autoRotate={true} autoRotateSpeed={2} />
         <Stars />
         <StarPunkShip />
         <ExtendingWalls />
