@@ -27,7 +27,7 @@ export function StarPunkShip() {
       {/* TOP-LEFT */}
       <mesh position={[-0.5, 0.7, 1.2]} rotation={[0.6, Math.PI / 3, 0.4]}>
         <coneGeometry args={[0.5, 3, 3]} />
-        <MeshReflectorMaterial blur={[400, 400]} resolution={100} mixBlur={0.9} mixStrength={15} depthScale={1} minDepthThreshold={0.85} color="red" metalness={3} />
+        <MeshReflectorMaterial blur={[400, 400]} resolution={100} mixBlur={0.9} mixStrength={15} depthScale={1} minDepthThreshold={0.85} color="blue" metalness={3} />
       </mesh>
 
       {/* TOP-RIGHT */}
