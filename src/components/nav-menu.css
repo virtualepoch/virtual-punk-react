@@ -87,7 +87,7 @@
 
 /* NavMenu CSSTransition */
 .nav-menu-enter {
-  transform: translateY(calc(-130% - 50px));
+  transform: translateY(-130%);
 }
 
 .nav-menu-enter-active {
@@ -100,13 +100,13 @@
 }
 
 .nav-menu-exit-active {
-  transform: translateY(calc(-130%));
+  transform: translateY(-130%);
   transition: transform 700ms ease;
 }
 
 /* NavMenu Bg Left CSSTransition */
 .nav-menu-bg-left-enter {
-  transform: translateX(calc(-170%));
+  transform: translateX(-170%);
 }
 
 .nav-menu-bg-left-enter-active {
@@ -119,13 +119,13 @@
 }
 
 .nav-menu-bg-left-exit-active {
-  transform: translateX(calc(-170%));
+  transform: translateX(-170%);
   transition: transform 500ms ease;
 }
 
 /* NavMenu Bg Right CSSTransition */
 .nav-menu-bg-right-enter {
-  transform: translateX(calc(170%));
+  transform: translateX(170%);
 }
 
 .nav-menu-bg-right-enter-active {
@@ -138,7 +138,7 @@
 }
 
 .nav-menu-bg-right-exit-active {
-  transform: translateX(calc(170%));
+  transform: translateX(170%);
   transition: transform 500ms ease;
 }
 
