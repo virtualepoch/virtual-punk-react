@@ -12,6 +12,7 @@
   border: 1px solid red;
   border-radius: 10px;
   box-shadow: inset 0 0 5px 1px aqua;
+  backdrop-filter: blur(10px);
 }
 
 .credits-modal-enter {
@@ -30,16 +31,21 @@
 }
 
 .credits-header {
-    margin: 20px;
-    text-align: center;
-    color: aqua;
+  margin: 20px;
+  text-align: center;
+  color: aqua;
 }
 
 .credits-info {
-    margin: 20px;
-    text-align: center;
-    color: aqua;
-    font-size: 20px;
+  margin: 20px;
+  text-align: center;
+  color: aqua;
+  font-size: 20px;
+  word-wrap: break-word;
+}
+
+.credits-info.link {
+  text-decoration: underline;
 }
 
 .btn-close-modal {
@@ -56,4 +62,22 @@
   color: red;
   font-weight: bold;
   cursor: pointer;
+}
+
+.btn-open-credits {
+  width: 100px;
+  height: 30px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  margin: 0 auto;
+  background: rgba(0, 255, 255, 0.3);
+  border: none;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  color: red;
+  cursor: pointer;
+  text-transform: uppercase;
 }

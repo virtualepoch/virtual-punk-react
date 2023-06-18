@@ -49,14 +49,17 @@ export function Mach() {
     );
   }
 
-  const credits = `Credits for the jet model on this page go to:
-  "Jet Concept" (https://skfb.ly/oAEKN) by markkingsnorth is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+  const model = "jet";
+  const title = '"Jet Concept"';
+  const link = "https://skfb.ly/oAEKN";
+
+  const credits = `by markkingsnorth is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
   `;
 
   return (
     <>
       <h1 className="page-title">Mach</h1>
-      <CreditsModal creditsInfo={credits} />
+      <CreditsModal model={model} title={title} link={link} credits={credits} />
       <Canvas camera={{ position: [0, 10, 12], rotation: [0, 0, 0], fov: 50 }}>
         <ambientLight intensity={1} />
         <directionalLight position={[10, 15, 10]} angle={0.3} />
