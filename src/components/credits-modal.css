@@ -1,3 +1,15 @@
+:root {
+  --clip-left: 15px;
+  --clip-right: calc(100% - 15px);
+}
+
+@media (max-width: 700px) {
+  :root {
+    --clip-left: 10px;
+    --clip-right: calc(100% - 10px);
+  }
+}
+
 .credits-modal {
   width: calc(100% - 20px);
   max-width: 700px;
@@ -6,15 +18,17 @@
   top: 80px;
   left: 0;
   right: 0;
-  z-index: 999;
+  z-index: 97;
   margin: 0 auto;
   background: rgba(0, 0, 0, 0.9);
-  border: 1px solid red;
+  border: 2px solid red;
   border-radius: 10px;
   box-shadow: inset 0 0 5px 1px aqua;
   backdrop-filter: blur(10px);
+  clip-path: polygon(100% 0, 100% 20%, var(--clip-right) 25%, var(--clip-right) 75%, 100% 80%, 100% 100%, 0 100%, 0 80%, var(--clip-left) 75%, var(--clip-left) 25%, 0 20%, 0 0);
 }
 
+/* CSSTransition Styling */
 .credits-modal-enter {
   transform: translateY(-150%);
 }
@@ -30,6 +44,7 @@
   transition: transform 700ms ease;
 }
 
+/* CONTENT & BUTTONS */
 .credits-header {
   margin: 20px;
   text-align: center;
@@ -53,7 +68,7 @@
   height: 50px;
   background: aqua;
   border: 1px solid red;
-  border-radius: 999px;
+  clip-path: polygon(20% 0, 25% 5%, 75% 5%, 80% 0, 100% 0, 100% 100%, 80% 100%, 75% 95%, 25% 95%, 20% 100%, 0 100%, 0 0);
   position: absolute;
   bottom: 30px;
   left: 0;
@@ -64,14 +79,14 @@
   cursor: pointer;
 }
 
-.btn-open-credits {
+.btn-open-modal {
   width: 100px;
   height: 30px;
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 99;
+  z-index: 96;
   margin: 0 auto;
   background: rgba(0, 255, 255, 0.3);
   border: none;

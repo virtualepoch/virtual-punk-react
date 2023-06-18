@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { useRef } from "react";
+import { useState, useRef } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
 import { JetConcept } from "../components/models/Jet_concept";
@@ -9,6 +9,8 @@ import { PillLinks } from "../components/PillLinks";
 import { CreditsModal } from "../components/CreditsModal";
 
 export function Mach() {
+  const [modalOpen, setModalOpen] = useState(false);
+
   function Earth() {
     function textureChanger() {
       if (window.innerWidth < 700) {
@@ -23,7 +25,9 @@ export function Mach() {
     const earthRef = useRef(null);
 
     useFrame(() => {
-      earthRef.current.rotation.x += 0.0002;
+      if (modalOpen === true) {
+        earthRef.current.rotation.x += 0;
+      } else earthRef.current.rotation.x += 0.0002;
     });
 
     return (
@@ -49,21 +53,21 @@ export function Mach() {
     );
   }
 
+  // CreditsModal info-
   const model = "jet";
   const title = '"Jet Concept"';
   const link = "https://skfb.ly/oAEKN";
-
   const credits = `by markkingsnorth is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
   `;
 
   return (
     <>
       <h1 className="page-title">Mach</h1>
-      <CreditsModal model={model} title={title} link={link} credits={credits} />
+      <CreditsModal modalOpen={modalOpen} setModalOpen={setModalOpen} model={model} title={title} link={link} credits={credits} />
       <Canvas camera={{ position: [0, 10, 12], rotation: [0, 0, 0], fov: 50 }}>
         <ambientLight intensity={1} />
         <directionalLight position={[10, 15, 10]} angle={0.3} />
-        <OrbitControls autoRotate={true} />
+        <OrbitControls autoRotate={modalOpen ? false : true} />
         <JetMesh />
         <Earth />
         <Stars />

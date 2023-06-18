@@ -24,8 +24,8 @@ function App() {
 
   return (
     <div className="App">
-      <Header setNavMenuOpen={setNavMenuOpen} navMenuOpen={navMenuOpen} />
-      <NavMenu setNavMenuOpen={setNavMenuOpen} navMenuOpen={navMenuOpen} />
+      <Header navMenuOpen={navMenuOpen} setNavMenuOpen={setNavMenuOpen} />
+      <NavMenu navMenuOpen={navMenuOpen} setNavMenuOpen={setNavMenuOpen} />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/torus" element={<Torus />} />

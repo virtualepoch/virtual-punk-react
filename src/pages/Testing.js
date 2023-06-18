@@ -88,7 +88,7 @@ export function Testing() {
     const texture = useLoader(THREE.TextureLoader, textureChanger());
 
     return (
-      <mesh position={[-7, 2, 11]} rotation={[0, 1, 0]}>
+      <mesh position={[-8, 2, 1]} rotation={[0, 0.3, 0]}>
         <extrudeGeometry args={[shape, { bevelEnabled: false, depth: 1 }]} />
         <meshBasicMaterial map={texture} />
       </mesh>
@@ -99,10 +99,10 @@ export function Testing() {
     <>
       <h1 className="page-title">Testing</h1>
       <Canvas className="canvas" shadows>
-        <OrbitControls />
+        <OrbitControls maxPolarAngle={Math.PI / 2} />
         <ambientLight intensity={1} />
         <directionalLight position={[10, 15, 10]} angle={0.3} intensity={0.8} castShadow color="red" />
-        <PerspectiveCamera position={[0, 0, 22]} rotation={[0, 0, 0]} fov={80} makeDefault far={1000} />
+        <PerspectiveCamera position={[0, 0, 20]} rotation={[0, 0, 0]} fov={60} makeDefault far={1000} />
         <Floor />
         <Earth />
         <EarthPedestal />

@@ -2,12 +2,10 @@ import { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import "./credits-modal.css";
 
-export function CreditsModal({ model, title, link, credits }) {
-  const [modalOpen, setModalOpen] = useState(false);
-
+export function CreditsModal({ modalOpen, setModalOpen, model, title, link, credits }) {
   useEffect(() => {
     setModalOpen(true);
-  }, []);
+  }, [setModalOpen]);
 
   return (
     <>
@@ -31,7 +29,7 @@ export function CreditsModal({ model, title, link, credits }) {
         </div>
       </CSSTransition>
       <button
-        className="btn-open-credits"
+        className="btn-open-modal"
         onClick={() => {
           setModalOpen(true);
         }}

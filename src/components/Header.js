@@ -2,7 +2,7 @@ import { Link, useMatch } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import "./header.css";
 
-export function Header({ setNavMenuOpen, navMenuOpen }) {
+export function Header({ navMenuOpen, setNavMenuOpen }) {
   // SWIPE TO CLOSE NAVIGATION MENU //////////////////
   // useEffect(() => {
   //   var touchSurface = navMenu.current,
