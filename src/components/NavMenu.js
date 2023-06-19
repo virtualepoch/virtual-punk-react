@@ -36,10 +36,6 @@ export function NavMenu({ navMenuOpen, setNavMenuOpen }) {
             <CustomLink to={"/shoe"}>Shoe</CustomLink>
             <CustomLink to={"/mach"}>Mach</CustomLink>
             <CustomLink to={"/star-punk"}>Star Punk</CustomLink>
-            <CustomLink to={"/vr"}>VR</CustomLink>
-            <CustomLink to={"/testing"}>Testing</CustomLink>
-            <CustomLink to={"/animoto"}>Animoto</CustomLink>
-            <CustomLink to={"/letter-game"}>Letter Game</CustomLink>
           </ul>
         </nav>
       </CSSTransition>

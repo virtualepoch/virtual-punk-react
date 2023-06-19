@@ -94,7 +94,7 @@
 .site-title {
   height: fit-content;
   padding: 5px 10px;
-  font: 100 40px Ailerons;
+  font: 100 40px Ailerons, "Oswald", sans-serif;
   text-transform: uppercase;
   color: aqua;
   filter: drop-shadow(-2px -1px 2px red);

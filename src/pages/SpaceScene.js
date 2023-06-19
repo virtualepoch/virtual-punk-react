@@ -1,12 +1,14 @@
 import { useMemo, useRef } from "react";
 import { useFrame, Sphere } from "@react-three/fiber";
-import { OrbitControls, Stars, Float, Line, PerspectiveCamera, useScroll } from "@react-three/drei";
+import { Stars, Float, Line, PerspectiveCamera, useScroll } from "@react-three/drei";
 import { Spacecraft } from "../components/models/Spacecraft";
 import * as THREE from "three";
 
 const LINE_NB_POINTS = 200;
 
 export const SpaceScene = () => {
+
+
   const curve = useMemo(() => {
     return new THREE.CatmullRomCurve3([new THREE.Vector3(0, 0, 0), new THREE.Vector3(0, 0, -10), new THREE.Vector3(-2, 0, -20), new THREE.Vector3(-3, 0, -30), new THREE.Vector3(0, 0, -40), new THREE.Vector3(5, 0, -50), new THREE.Vector3(7, 0, -60), new THREE.Vector3(5, 0, -70), new THREE.Vector3(0, 0, -80), new THREE.Vector3(0, 0, -90), new THREE.Vector3(0, 0, -100)], false, "catmullrom", 0.5);
   }, []);
@@ -65,9 +67,11 @@ export const SpaceScene = () => {
     );
   }
 
+
+
   return (
     <>
-      {/* <OrbitControls enableZoom={false} /> */}
+  
       <group ref={cameraGroup}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 15, 10]} angle={0.3} />

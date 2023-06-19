@@ -10,7 +10,9 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
 
-:root{
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap");
+
+:root {
   --bg-blur: 0.5;
   --hero-text-color: white;
 }

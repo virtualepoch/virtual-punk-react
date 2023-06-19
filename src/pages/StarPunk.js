@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
 import { StarPunkShip } from "./StarPunkShip";
-import { PillLinks } from "../components/PillLinks";
+// import { PillLinks } from "../components/PillLinks";
 
 export function StarPunk() {
   function ExtendingWalls() {
@@ -35,7 +36,11 @@ export function StarPunk() {
         <StarPunkShip />
         <ExtendingWalls />
       </Canvas>
-      <PillLinks backTo="/mach" backName="mach" forwardTo="/vr" forwardName="vr" />
+      <div className="pill-container">
+        <Link className="pill blue" to="/mach">
+          mach
+        </Link>
+      </div>
     </>
   );
 }
