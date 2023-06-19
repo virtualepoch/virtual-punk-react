@@ -16,7 +16,7 @@ export function Scroll() {
           <ScrollOverlay />
         </ScrollControls>
       </Canvas>
-      <PillLinks backTo="/time" backName="time" forwardTo="/shoe" forwardName="shoe" />
+      <PillLinks backTo="/time" backName="time" forwardTo="/mach" forwardName="mach" />
     </>
   );
 }

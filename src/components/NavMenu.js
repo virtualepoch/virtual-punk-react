@@ -33,7 +33,7 @@ export function NavMenu({ navMenuOpen, setNavMenuOpen }) {
             <CustomLink to={"/space"}>Space</CustomLink>
             <CustomLink to={"/time"}>Time</CustomLink>
             <CustomLink to={"/scroll"}>Scroll</CustomLink>
-            <CustomLink to={"/shoe"}>Shoe</CustomLink>
+            {/* <CustomLink to={"/shoe"}>Shoe</CustomLink> */}
             <CustomLink to={"/mach"}>Mach</CustomLink>
             <CustomLink to={"/star-punk"}>Star Punk</CustomLink>
           </ul>
