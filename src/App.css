@@ -213,3 +213,8 @@
 .fire-btn.pressing {
   background: red;
 }
+
+.flow-canvas {
+  background: red;
+  position: absolute;
+}

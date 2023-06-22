@@ -16,6 +16,7 @@ import { VR } from "./pages/VR.js";
 import { Testing } from "./pages/Testing.js";
 import { AniMoto } from "./pages/moto-game/AniMoto.js";
 import { LetterGame } from "./pages/letter-game/LetterGame.js";
+import { Flow } from "./pages/Flow";
 
 import "./App.css";
 
@@ -39,6 +40,7 @@ function App() {
         <Route path="/testing" element={<Testing />} />
         <Route path="/animoto" element={<AniMoto />} />
         <Route path="/letter-game" element={<LetterGame />} />
+        <Route path="/flow" element={<Flow />} />
       </Routes>
     </div>
   );

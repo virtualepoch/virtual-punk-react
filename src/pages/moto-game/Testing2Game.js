@@ -1,10 +1,9 @@
 // import { CylinderCollider } from "@react-three/fiber";
 import { OrbitControls, Cylinder, MeshReflectorMaterial } from "@react-three/drei";
 import { RigidBody, CuboidCollider } from "@react-three/rapier";
-import { CharacterController } from "./components/CharacterController";
+import { CharacterController } from "./CharacterController";
 
 export const Game = () => {
-
   function Floor() {
     return (
       <>

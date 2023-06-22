@@ -2,8 +2,8 @@ import { useRef } from "react";
 import { RigidBody, CapsuleCollider } from "@react-three/rapier";
 import { useFrame } from "@react-three/fiber";
 import { useKeyboardControls, PerspectiveCamera } from "@react-three/drei";
-import { Controls } from "../AniMoto";
-import { AkiraMotorcycle } from "./AkiraMotorcycle";
+import { Controls } from "./AniMoto";
+import { AkiraMotorcycle } from "./components/AkiraMotorcycle";
 
 const MOVEMENT_SPEED = 0.1;
 const MAX_VEL = 3;

@@ -5,7 +5,7 @@ import { Canvas } from "@react-three/fiber";
 import { KeyboardControls } from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import { Game } from "./Testing2Game";
-import { MobileController } from "./components/MobileController";
+import { MobileController } from "./MobileController";
 
 export const Controls = {
   accelerate: "accelerate",
