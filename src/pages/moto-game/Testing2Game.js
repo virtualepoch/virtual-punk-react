@@ -25,9 +25,6 @@ export const Game = () => {
         <RigidBody colliders={false} type="fixed" position-y={-1} friction={1}>
           <CuboidCollider args={[55, 0.1, 55]} position={-1.6} />
           <Floor />
-          {/* <group position={[-14, -1.3, 8]} rotation-y={Math.PI}>
-            <CityBlock />
-          </group> */}
           {/* <Cylinder scale={[5, 1, 5]} receiveShadow>
             <meshStandardMaterial color="white" />
           </Cylinder> */}

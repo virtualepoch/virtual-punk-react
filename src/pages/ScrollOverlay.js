@@ -34,11 +34,11 @@ export function ScrollOverlay() {
       </Section>
       <Section right opacity={opacitySecondSection}>
         <h1>Inspiration</h1>
-        <p> This scroll animation was a lot of fun to copy. It provided inspiration and ideas on many other things I plan to do in the future.</p>
+        <p> The tutorial for this scroll animation was very informative, and a lot of fun to follow along with. It provided inspiration and ideas on many other things I plan to do in the future.</p>
       </Section>
       <Section opacity={opacityThirdSection}>
         <h1>Conclusion</h1>
-        <p> Things like this are the future of the web and I am determined to be part of it.</p>
+        <p> Things like this are the future of the web and I hope to be part of it.</p>
       </Section>
     </Scroll>
   );
