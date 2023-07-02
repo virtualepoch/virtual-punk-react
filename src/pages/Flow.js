@@ -1,16 +1,23 @@
-import { useEffect, useRef } from "react";
+import { useState, useRef } from "react";
+import { useFrameLoop } from "../utils/FrameLoop";
 
 export function Flow() {
+  const [time, setTime] = useState(0);
+  const [deltaTime, setDeltaTime] = useState(0);
   const canvasRef = useRef();
-  useEffect(() => {
+  useFrameLoop((time, deltaTime) => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
     // canvas settings
-    ctx.fillStyle = "white";
-    ctx.strokeStyle = "white";
+    let gradient = ctx.createLinearGradient(canvas.width / 10, 0, canvas.width, 0);
+    gradient.addColorStop(0, "cyan");
+    gradient.addColorStop(0.5, "blue");
+    gradient.addColorStop(1, "cyan");
+    ctx.fillStyle = gradient;
+    ctx.strokeStyle = "red";
     ctx.lineWidth = 1;
     // ctx.lineCap = "round";
 
@@ -30,8 +37,8 @@ export function Flow() {
         this.speedX = 1;
         this.speedY = 1;
       }
-      draw(context) {
-        context.fillRect(this.x, this.y, 50, 50);
+      draw(ctx) {
+        ctx.fillRect(this.x, this.y, 20, 10);
       }
       update() {
         this.x = this.speedX;
@@ -44,7 +51,7 @@ export function Flow() {
         this.width = width;
         this.height = height;
         this.particles = [];
-        this.numberOfParticles = 50;
+        this.numberOfParticles = 100;
         this.init();
       }
       init() {
@@ -62,13 +69,10 @@ export function Flow() {
 
     const effect = new Effect(canvas.width, canvas.height);
 
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      effect.render(ctx);
-      requestAnimationFrame(animate);
-    }
-    animate();
-  }, []);
+    setTime(time);
+    setDeltaTime(deltaTime);
+    effect.render(ctx);
+  });
 
   return <canvas className="flow-canvas" ref={canvasRef}></canvas>;
 }

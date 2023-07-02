@@ -20,10 +20,11 @@
   right: 0;
   z-index: 97;
   margin: 0 auto;
+  padding: 20px;
   background: rgba(0, 0, 0, 0.9);
   border: 2px solid red;
   border-radius: 10px;
-  box-shadow: inset 0 0 5px 1px aqua;
+  box-shadow: inset 0 0 5px 1px cyan;
   backdrop-filter: blur(10px);
   clip-path: polygon(100% 0, 100% 20%, var(--clip-right) 25%, var(--clip-right) 75%, 100% 80%, 100% 100%, 0 100%, 0 80%, var(--clip-left) 75%, var(--clip-left) 25%, 0 20%, 0 0);
 }
@@ -45,31 +46,58 @@
 }
 
 /* CONTENT & BUTTONS */
+.text-container{
+  height: 100%;
+  padding-bottom: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: auto;
+}
 .credits-header {
   margin: 20px;
-  text-align: center;
-  color: aqua;
+  color: cyan;
 }
 
 .credits-info {
   margin: 20px;
   text-align: center;
-  color: aqua;
+  color: cyan;
   font-size: 20px;
   word-wrap: break-word;
 }
 
 .credits-info.link {
   text-decoration: underline;
+  text-shadow: -2px -2px 5px  red;
+}
+
+.credits-hr {
+  width: 80%;
+  margin: 20px auto;
+  border: 1px solid cyan;
+  border-radius: 100px;
+  background: cyan;
+  box-shadow: 0 0 10px 1px cyan;
+}
+
+.credits-hr-sm {
+  width: 40%;
+  margin: 20px auto;
+  border: 1px solid cyan;
+  border-radius: 100px;
+  background: cyan;
+  box-shadow: 0 0 10px 1px cyan;
 }
 
 .btn-close-modal {
   width: 200px;
   height: 50px;
-  background: aqua;
+  background: cyan;
   border: 1px solid red;
+  border-radius: 7px;
   clip-path: polygon(20% 0, 25% 5%, 75% 5%, 80% 0, 100% 0, 100% 100%, 80% 100%, 75% 95%, 25% 95%, 20% 100%, 0 100%, 0 0);
-  position: absolute;
+  position: fixed;
   bottom: 30px;
   left: 0;
   right: 0;
