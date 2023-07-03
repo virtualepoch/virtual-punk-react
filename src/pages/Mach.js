@@ -54,16 +54,21 @@ export function Mach() {
   }
 
   // CreditsModal info-
-  const model = "jet";
-  const title = '"Jet Concept"';
-  const link = "https://skfb.ly/oAEKN";
-  const credits = `by markkingsnorth is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
-  `;
+  const creditsInfo = [
+    {
+      id: "00",
+      title: "Jet Concept",
+      link: "https://skfb.ly/oAEKN",
+      credits: `by markkingsnorth is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+    },
+  ];
 
   return (
     <>
       <h1 className="page-title">Mach</h1>
-      <CreditsModal modalOpen={modalOpen} setModalOpen={setModalOpen} model={model} title={title} link={link} credits={credits} />
+      {creditsInfo.map((item) => (
+        <CreditsModal modalOpen={modalOpen} setModalOpen={setModalOpen} key={item.id} info={item} />
+      ))}
       <Canvas camera={{ position: [0, 10, 12], rotation: [0, 0, 0], fov: 50 }}>
         <ambientLight intensity={1} />
         <directionalLight position={[10, 15, 10]} angle={0.3} />
@@ -72,7 +77,7 @@ export function Mach() {
         <Earth />
         <Stars />
       </Canvas>
-      <PillLinks backTo="/scroll" backName="scroll" forwardTo="/star-punk" forwardName="star-punk" />
+      <PillLinks backTo="/scroll" backName="scroll" forwardTo="/portal" forwardName="portal" />
     </>
   );
 }

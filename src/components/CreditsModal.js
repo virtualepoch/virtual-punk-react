@@ -13,7 +13,7 @@ export function CreditsModal({ modalOpen, setModalOpen, ...props }) {
         <div className="credits-modal">
           <div className="text-container">
             <h2 className="credits-header">PAGE CREDITS</h2>
-            <p className="credits-info">The '{props.info.title}' model:</p>
+            <p className="credits-info">{props.info.title}</p>
             <a href={props.info.link}>
               <p className="credits-info link">{props.info.link}</p>
             </a>
@@ -22,7 +22,7 @@ export function CreditsModal({ modalOpen, setModalOpen, ...props }) {
             <hr className="credits-hr-sm" />
             <hr className="credits-hr" />
             <hr className="credits-hr-sm" />
-            <p className="credits-info">The '{props.info.title2}' model:</p>
+            <p className="credits-info">{props.info.title2}</p>
             <a href={props.info.link2}>
               <p className="credits-info link">{props.info.link2}</p>
             </a>
@@ -31,7 +31,7 @@ export function CreditsModal({ modalOpen, setModalOpen, ...props }) {
             <hr className="credits-hr-sm" />
             <hr className="credits-hr" />
             <hr className="credits-hr-sm" />
-            <p className="credits-info">The '{props.info.title3}' model:</p>
+            <p className="credits-info">{props.info.title3}</p>
             <a href={props.info.link3}>
               <p className="credits-info link">{props.info.link3}</p>
             </a>

@@ -12,7 +12,7 @@ import { Shoe } from "./pages/Shoe";
 import { Scroll } from "./pages/Scroll";
 import { Mach } from "./pages/Mach.js";
 import { StarPunk } from "./pages/StarPunk";
-import { Portal } from "./pages/Portal";
+import { Portal } from "./pages/portal/Portal";
 import { VR } from "./pages/VR.js";
 import { Testing } from "./pages/Testing.js";
 import { AniMoto } from "./pages/moto-game/AniMoto.js";
