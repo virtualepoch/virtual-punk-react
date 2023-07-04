@@ -11,15 +11,15 @@ export function Portal() {
   const creditsInfo = [
     {
       id: "00",
-      title: "Great White Shark",
-      link: "https://skfb.ly/6ADoX",
-      credits: `by BlueMesh is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
-      title2: "Otodus Megalodon",
-      link2: "https://skfb.ly/ooByU",
-      credits2: `by CanYuTsai is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
-      title3: "Head",
-      link3: "https://skfb.ly/oI8BX",
-      credits3: `by Shedmon is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+      title: "PBR Velociraptor (Animated)",
+      link: "https://skfb.ly/oHoUE",
+      credits: `by Ferocious Industries is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+      title2: "High detailed rex animation",
+      link2: "https://skfb.ly/oGBPT",
+      credits2: `by Al-Deezel is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+      title3: "Otodus Megalodon",
+      link3: "https://skfb.ly/ooByU",
+      credits3: `by CanYuTsai is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
     },
   ];
 
