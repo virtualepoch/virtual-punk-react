@@ -10,14 +10,17 @@ Title: PBR Velociraptor (Animated)
 import React, { useEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 
-export function Raptor(props) {
+export function Raptor({hovered, ...props}) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/pbr_velociraptor_animated.glb");
   const { actions } = useAnimations(animations, group);
+
   useEffect(() => {
-    actions["Roar_01"].reset().fadeIn(0.5).play();
-    return () => actions["Roar_01"].fadeOut(0.5);
-  });
+    const anim = hovered ? "Roar_01" : "Idle_02";
+    actions[anim].reset().fadeIn(0.5).play();
+    return () => actions[anim].fadeOut(0.5);
+  },[hovered, actions]);
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">

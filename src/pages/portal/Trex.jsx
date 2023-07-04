@@ -14,10 +14,12 @@ export function Trex(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/high_detailed_rex_animation.glb");
   const { actions } = useAnimations(animations, group);
+
   useEffect(() => {
     actions["roar"].reset().fadeIn(0.5).play();
     return () => actions["roar"].fadeOut(0.5);
   });
+  
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">

@@ -17,6 +17,7 @@ import { easing } from "maath";
 
 export function PortalScene() {
   const [active, setActive] = useState(null);
+  const [hovered, setHovered] = useState(null);
   const controlsRef = useRef();
   const scene = useThree((state) => state.scene);
 
@@ -34,9 +35,9 @@ export function PortalScene() {
     <>
       <ambientLight intensity={1} />
 
-      <CameraControls ref={controlsRef} />
-      <CreatureCard width={2} height={3} texture={scenicJungle} position={[-2.7, 0, 0.5]} rotation-y={Math.PI / 8} textY={-1.4} name={"Velociraptor"} fontSize={0.3} active={active} setActive={setActive}>
-        <Raptor position={[0, -1, 0]} />
+      <CameraControls ref={controlsRef} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 3} />
+      <CreatureCard width={2} height={3} texture={scenicJungle} position={[-2.7, 0, 0.5]} rotation-y={Math.PI / 8} textY={-1.4} name={"Velociraptor"} fontSize={0.3} active={active} setActive={setActive} hovered={hovered} setHovered={setHovered}>
+        <Raptor position={[0, -1, 0]} hovered={hovered === "Velociraptor"} />
       </CreatureCard>
       <CreatureCard width={4} height={6} texture={realisticJungle} textY={-2.7} name={"Tyranosaurus Rex"} fontSize={0.5} active={active} setActive={setActive}>
         <Trex position-y={-3} scale={3} />
@@ -44,12 +45,11 @@ export function PortalScene() {
       <CreatureCard width={2} height={3} texture={scenicWater} position={[2.7, 0, 0.5]} rotation-y={Math.PI / -8} textY={-1.4} name={"Megalodon"} fontSize={0.3} active={active} setActive={setActive}>
         <Megalodon position={[0, -0.8, 0]} scale={1.5} />
       </CreatureCard>
-      <Stars />
     </>
   );
 }
 
-const CreatureCard = ({ width, height, children, texture, textY, fontSize, name, active, setActive, ...props }) => {
+const CreatureCard = ({ width, height, children, texture, textY, fontSize, name, active, setActive, hovered, setHovered, ...props }) => {
   const map = useLoader(THREE.TextureLoader, texture);
   const portalRef = useRef();
 
@@ -63,7 +63,7 @@ const CreatureCard = ({ width, height, children, texture, textY, fontSize, name,
       <Text font="fonts/Ailerons-TrialVersion.otf" fontSize={fontSize} position={[0, textY, 0.051]} anchorY="bottom" color={"red"}>
         {name}
       </Text>
-      <RoundedBox args={[width, height, 0.1]} onClick={() => setActive(active === name ? null : name)} name={name}>
+      <RoundedBox args={[width, height, 0.1]} onClick={() => setActive(active === name ? null : name)} name={name} onPointerEnter={() => setHovered(name)} onPointerLeave={() => setHovered(null)}>
         <MeshPortalMaterial ref={portalRef}>
           <ambientLight intensity={1} />
           <directionalLight position={[10, 15, 10]} angle={0.3} />
