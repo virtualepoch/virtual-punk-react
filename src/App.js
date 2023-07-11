@@ -13,6 +13,7 @@ import { Scroll } from "./pages/Scroll";
 import { Mach } from "./pages/Mach.js";
 import { StarPunk } from "./pages/StarPunk";
 import { Portal } from "./pages/portal/Portal";
+import { Dragon } from "./pages/dragon/Dragon";
 import { VR } from "./pages/VR.js";
 import { Testing } from "./pages/Testing.js";
 import { AniMoto } from "./pages/moto-game/AniMoto.js";
@@ -38,6 +39,7 @@ function App() {
         <Route path="/mach" element={<Mach />} />
         <Route path="/star-punk" element={<StarPunk />} />
         <Route path="/portal" element={<Portal />} />
+        <Route path="/dragon" element={<Dragon />} />
         <Route path="/vr" element={<VR />} />
         <Route path="/testing" element={<Testing />} />
         <Route path="/animoto" element={<AniMoto />} />
