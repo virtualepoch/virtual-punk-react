@@ -30,9 +30,10 @@ export function Dragon() {
         <CreditsModal modalOpen={modalOpen} setModalOpen={setModalOpen} key={item.id} info={item} />
       ))}
       <Canvas shadows camera={{ position: [-5, 3, 5], rotation: [0, 0, 0], fov: 50 }}>
+        <fog attach="fog" args={["gray", 1, 40]}/>
         <DragonScene />
       </Canvas>
-      <PillLinks backTo="/mach" backName="mach" forwardTo="/star-punk" forwardName="star-punk" />
+      <PillLinks backTo="/portal" backName="portal" forwardTo="/star-punk" forwardName="star-punk" />
     </>
   );
 }
