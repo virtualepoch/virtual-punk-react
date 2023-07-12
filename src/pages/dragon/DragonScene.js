@@ -117,7 +117,7 @@ export function DragonScene() {
       <pointLight intensity={1} />
       <BackDrop />
       <Ground />
-      <CameraControls ref={controlsRef} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 3} />
+      <CameraControls ref={controlsRef} minAzimuthAngle={-Math.PI / 4} maxAzimuthAngle={Math.PI / 4} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 3} minDistance={2} maxDistance={15}/>
 
       <Background />
       <DragonRunning position={[0, -1.5, 0]} rotation={[0, 1.5, 0]} />

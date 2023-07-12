@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { DragonScene } from "./DragonScene";
 import { CreditsModal } from "../../components/CreditsModal";
 import { PillLinks } from "../../components/PillLinks";
+import { Loader } from "@react-three/drei";
 
 export function Dragon() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -30,9 +31,12 @@ export function Dragon() {
         <CreditsModal modalOpen={modalOpen} setModalOpen={setModalOpen} key={item.id} info={item} />
       ))}
       <Canvas shadows camera={{ position: [-5, 3, 5], rotation: [0, 0, 0], fov: 50 }}>
-        <fog attach="fog" args={["gray", 1, 40]}/>
-        <DragonScene />
+        <fog attach="fog" args={["gray", 1, 50]} />
+        <Suspense fallback={null}>
+          <DragonScene />
+        </Suspense>
       </Canvas>
+      <Loader />
       <PillLinks backTo="/portal" backName="portal" forwardTo="/star-punk" forwardName="star-punk" />
     </>
   );

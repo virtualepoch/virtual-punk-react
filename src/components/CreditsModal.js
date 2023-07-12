@@ -1,8 +1,12 @@
 import { useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 import "./credits-modal.css";
+import { useProgress } from "@react-three/drei";
+import { LoadingPanel } from "./LoadingPanel";
 
 export function CreditsModal({ modalOpen, setModalOpen, ...props }) {
+  const { progress } = useProgress();
+
   useEffect(() => {
     setModalOpen(true);
   }, [setModalOpen]);
@@ -11,6 +15,7 @@ export function CreditsModal({ modalOpen, setModalOpen, ...props }) {
     <>
       <CSSTransition in={modalOpen} unmountOnExit timeout={700} classNames={"credits-modal"}>
         <div className="credits-modal">
+          <LoadingPanel progress={progress} />
           <div className="text-container">
             <h2 className="credits-header">PAGE CREDITS</h2>
             <p className="credits-info">{props.info.title}</p>
@@ -43,6 +48,7 @@ export function CreditsModal({ modalOpen, setModalOpen, ...props }) {
             onClick={() => {
               setModalOpen(false);
             }}
+            disabled={progress < 100}
           >
             CLOSE
           </button>
