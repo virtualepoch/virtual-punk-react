@@ -1,7 +1,10 @@
 export const LoadingPanel = (progress) => {
   return (
-    <div className="loading-panel">
-      <div className="loading-progress-value" style={{ width: `${progress}%` }}></div>
+    <div className="loadingScreen">
+      <div className="loadingScreen__progress" >
+        <div className="loadingScreen__progress__value" style={{ width: `${progress}%` }}></div>
+        <p className="loadMessage">LOADING {`${progress}%`}</p>
+      </div>
     </div>
   );
 };

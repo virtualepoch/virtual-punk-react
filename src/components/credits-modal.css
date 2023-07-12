@@ -45,23 +45,58 @@
   transition: transform 700ms ease;
 }
 
-.loading-panel {
+.loadingScreen {
   width: 100%;
-  height: 20px;
+  height: 33px;
   border: 1px solid cyan;
   border-radius: 5px;
   margin: 0 0 10px 0;
   position: relative;
 }
 
-.loading-progress-value {
+.loadingScreen__progress {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.loadingScreen__progress__value {
+  width: 50%;
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
   background-color: cyan;
   border: 1px solid red;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  text-align: center;
   transition: width 0.5s;
+}
+
+.loadMessage {
+  width: fit-content;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: cyan;
+  mix-blend-mode: difference;
+  opacity: 1;
+}
+
+.loading-anim {
+  animation: load-message-flash 2s ease infinite;
+}
+
+@keyframes load-message-flash {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 /* CONTENT & BUTTONS */
@@ -96,7 +131,7 @@
 
 .credits-hr {
   width: 80%;
-  margin: 20px auto;
+  margin: 10px auto;
   border: 1px solid cyan;
   border-radius: 100px;
   background: cyan;
@@ -105,7 +140,7 @@
 
 .credits-hr-sm {
   width: 40%;
-  margin: 20px auto;
+  margin: 10px auto;
   border: 1px solid cyan;
   border-radius: 100px;
   background: cyan;

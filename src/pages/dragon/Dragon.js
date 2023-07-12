@@ -3,7 +3,6 @@ import { Canvas } from "@react-three/fiber";
 import { DragonScene } from "./DragonScene";
 import { CreditsModal } from "../../components/CreditsModal";
 import { PillLinks } from "../../components/PillLinks";
-import { Loader } from "@react-three/drei";
 
 export function Dragon() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -36,7 +35,6 @@ export function Dragon() {
           <DragonScene />
         </Suspense>
       </Canvas>
-      <Loader />
       <PillLinks backTo="/portal" backName="portal" forwardTo="/star-punk" forwardName="star-punk" />
     </>
   );
