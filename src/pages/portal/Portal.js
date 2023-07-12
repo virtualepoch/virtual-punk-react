@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { PortalScene } from "./PortalScene";
 import { CreditsModal } from "../../components/CreditsModal";
@@ -30,9 +30,11 @@ export function Portal() {
         <CreditsModal modalOpen={modalOpen} setModalOpen={setModalOpen} key={item.id} info={item} />
       ))}
       <Canvas camera={{ position: [0, 0, 10], rotation: [0, 0, 0], fov: 70 }}>
-        <PortalScene />
+        <Suspense fallback={null}>
+          <PortalScene />
+        </Suspense>
       </Canvas>
-      <PillLinks backTo="/mach" backName="mach" forwardTo="/star-punk" forwardName="star-punk" />
+      <PillLinks backTo="/mach" backName="mach" forwardTo="/dragon" forwardName="dragon" />
     </>
   );
 }
