@@ -12,15 +12,15 @@ export function Dragon() {
   const creditsInfo = [
     {
       id: "00",
-      title: "PBR Velociraptor (Animated)",
-      link: "https://skfb.ly/oHoUE",
-      credits: `by Ferocious Industries is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
-      title2: "High detailed rex animation",
-      link2: "https://skfb.ly/oGBPT",
-      credits2: `by Al-Deezel is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
-      title3: "Otodus Megalodon",
-      link3: "https://skfb.ly/ooByU",
-      credits3: `by CanYuTsai is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+      title: "High detailed Dragon Animation running",
+      link: "https://skfb.ly/oGzXx",
+      credits: `by Al-Deezel is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+      title2: "CLOUD",
+      link2: "https://skfb.ly/orUHI",
+      credits2: `by asimchitrakar is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+      title3: "Pine Tree - PS1 Low Poly",
+      link3: "https://skfb.ly/oFnRn",
+      credits3: `by Wersaus33 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
     },
   ];
 
