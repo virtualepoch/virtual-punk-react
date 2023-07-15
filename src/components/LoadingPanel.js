@@ -1,10 +1,8 @@
 export const LoadingPanel = (progress) => {
   return (
-    <div className="loadingScreen">
-      <div className="loadingScreen__progress" >
-        <div className="loadingScreen__progress__value" style={{ width: `${progress}%` }}></div>
-        <p className="loadMessage">LOADING {`${progress}%`}</p>
-      </div>
+    <div className="loading-section" style={{ display: `${progress === 100 ? "none" : "flex"}` }}>
+      <div className="loading-progress" style={{ width: `${progress}%` }}></div>
+      <p className={`${progress === 100 ? "loadMessage" : "loadMessage loading-anim"}`}>{`${progress === 100 ? "Loading Finished" : `Loading ${Math.floor(progress)}%`}`}</p>
     </div>
   );
 };

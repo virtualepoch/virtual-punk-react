@@ -13,9 +13,9 @@
 .credits-modal {
   width: calc(100% - 20px);
   max-width: 700px;
-  height: calc(100% - 100px);
+  height: calc(100% - 80px);
   position: fixed;
-  top: 80px;
+  top: 70px;
   left: 0;
   right: 0;
   z-index: 97;
@@ -45,34 +45,20 @@
   transition: transform 700ms ease;
 }
 
-.loadingScreen {
+.loading-section {
   width: 100%;
-  height: 33px;
-  border: 1px solid cyan;
-  border-radius: 5px;
-  margin: 0 0 10px 0;
+  height: 25px;
+  border: 1px solid red;
   position: relative;
+  clip-path: polygon(15% 0, 18% 50%, 27% 50%, 30% 0, 70% 0, 73% 50%, 82% 50%, 85% 0, 100% 0, 100% 50%, 85% 50%,82% 100%, 18% 100%, 15% 50%, 0 50%, 0 0);
 }
 
-.loadingScreen__progress {
-  width: 100%;
+.loading-progress {
   height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.loadingScreen__progress__value {
-  width: 50%;
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
   background-color: cyan;
-  border: 1px solid red;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  text-align: center;
   transition: width 0.5s;
 }
 
