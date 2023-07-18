@@ -49,6 +49,7 @@
   width: 100%;
   height: 25px;
   position: relative;
+  /* clip-path: polygon(15% 0, calc(15% + 16px) 50%, calc(30% - 16px) 50%, 30% 0, 70% 0, calc(70% + 16px) 50%, calc(85% - 16px) 50%, 85% 0, 100% 0, calc(100% - 16px) 50%, 85% 50%, calc(85% - 16px) 100%, calc(70% + 16px) 100%, 70% 50%, calc(70% - 16px) 100%, calc(30% + 16px) 100%, 30% 50%, calc(30% - 16px) 100%, calc(15% + 16px) 100%, 15% 50%, 0 50%, 16px 0); */
   clip-path: polygon(15% 0, calc(15% + 16px) 50%, calc(30% - 16px) 50%, 30% 0, 70% 0, calc(70% + 16px) 50%, calc(85% - 16px) 50%, 85% 0, 100% 0, calc(100% - 16px) 50%, 85% 50%, calc(85% - 16px) 100%, calc(70% + 16px) 100%, 70% 50%, calc(70% - 16px) 100%, calc(30% + 16px) 100%, 30% 50%, calc(30% - 16px) 100%, calc(15% + 16px) 100%, 15% 50%, 0 50%, 16px 0);
 }
 
@@ -62,7 +63,7 @@
   transition: width 0.5s;
 }
 
-.loading-progress::after {
+/* .loading-progress::after {
   content: "";
   width: 100%;
   height: 100%;
@@ -70,9 +71,9 @@
   position: absolute;
   clip-path: polygon(15% 15%, calc(15% + 16px) 65%, calc(30% - 16px) 65%, 30% 15%, calc(30% + 18px) 70%, calc(30% + 18px) 70%, 35% 15%, 40% 70%, 45% 15%, 50% 70%, 55% 15%, 60% 70%, 65% 15%, calc(70% - 18px) 70%, 70% 15%, calc(70% + 16px) 65%, calc(85% - 16px) 65%, 85% 15%, calc(100% - 8px) 15%, calc(100% - 16px) 35%, 85% 35%, calc(85% - 16px) 85%, calc(70% + 16px) 85%, 70% 35%, calc(70% - 18px) 85%, 65% 30%, 60% 85%, 55% 30%, 50% 85%, 45% 30%, 40% 85%, 35% 30%, calc(30% + 18px) 85%, 30% 35%, calc(30% - 16px) 85%, calc(15% + 16px) 85%, 15% 35%, 8px 35%, 16px 15%);
   animation: electro 1s ease infinite;
-}
+} */
 
-@keyframes electro {
+/* @keyframes electro {
   5% {
     opacity: 0;
   }
@@ -90,7 +91,7 @@
   60% {
     opacity: 0;
   }
-}
+} */
 
 .loadMessage {
   width: fit-content;

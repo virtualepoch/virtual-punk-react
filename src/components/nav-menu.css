@@ -45,14 +45,16 @@
 
 .nav-menu-bg-left {
   left: calc(50% - 600px);
-  border-right: 1px solid aqua;
+  border-right: 1px solid cyan;
   align-items: flex-end;
+  box-shadow: inset -10px 0 20px 1px cyan;
 }
 
 .nav-menu-bg-right {
   right: calc(50% - 600px);
-  border-left: 1px solid aqua;
+  border-left: 1px solid cyan;
   align-items: flex-start;
+  box-shadow: inset 10px 0 20px 1px cyan;
 }
 
 @media (max-width: 1200px) {
@@ -71,18 +73,6 @@
     background: black;
     backdrop-filter: none;
   }
-}
-
-.hr {
-  width: 80%;
-  height: 2px;
-  background: aqua;
-  border: none;
-}
-
-.hr.top,
-.hr.bottom {
-  width: 60%;
 }
 
 /* NavMenu CSSTransition */
@@ -148,8 +138,9 @@
   height: 70px;
   margin: 20px auto;
   border: 3px solid aqua;
-  border-radius: 5px;
-  box-shadow: 0 2px 7px 1px rgb(0, 0, 0, 0.7);
+  border-top-right-radius: 222px;
+  border-bottom-left-radius: 222px;
+  box-shadow: 0 2px 10px 1px rgb(0, 255, 255, 0.7);
   background: black;
   overflow: hidden;
   display: flex;
@@ -159,14 +150,37 @@
   letter-spacing: 4px;
   text-align: center;
   color: white;
-  transition: all 500ms ease-in-out;
+  transition: all 300ms ease-in-out;
   text-decoration: none;
+  position: relative;
+  overflow: visible;
 }
 
 .nav-menu .link.active,
 .nav-menu .link:hover {
   background: red;
-  text-decoration: underline;
+  color: cyan;
+}
+
+.link::before,
+.link::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  border-radius: 20px;
+  background: linear-gradient(to right, red, aqua, red);
+  position: absolute;
+  box-shadow: 0 2px 20px 1px cyan;
+}
+
+.link::before {
+  top: -3px;
+  left: -60px;
+}
+
+.link::after {
+  bottom: -3px;
+  right: -60px;
 }
 
 @media (max-width: 700px) {

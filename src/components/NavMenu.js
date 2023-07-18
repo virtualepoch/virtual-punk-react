@@ -8,7 +8,7 @@ export function NavMenu({ navMenuOpen, setNavMenuOpen }) {
     const isActive = useMatch({ path: resolvedPath.pathname, end: true });
 
     return (
-      <li>
+      <li className="link-li">
         <Link
           to={to}
           {...props}
@@ -31,7 +31,7 @@ export function NavMenu({ navMenuOpen, setNavMenuOpen }) {
             <CustomLink to={"/"}>Home</CustomLink>
             <CustomLink to={"/torus"}>Torus</CustomLink>
             <CustomLink to={"/space"}>Space</CustomLink>
-            <CustomLink to={"/time"}>Time</CustomLink>
+            {/* <CustomLink to={"/time"}>Time</CustomLink> */}
             <CustomLink to={"/scroll"}>Scroll</CustomLink>
             {/* <CustomLink to={"/shoe"}>Shoe</CustomLink> */}
             <CustomLink to={"/mach"}>Mach</CustomLink>
@@ -42,18 +42,10 @@ export function NavMenu({ navMenuOpen, setNavMenuOpen }) {
         </nav>
       </CSSTransition>
       <CSSTransition in={navMenuOpen} unmountOnExit timeout={500} classNames={"nav-menu-bg-left"}>
-        <div className="nav-menu-bg-left">
-          <hr className="hr top" />
-          <hr className="hr middle" />
-          <hr className="hr bottom" />
-        </div>
+        <div className="nav-menu-bg-left"></div>
       </CSSTransition>
       <CSSTransition in={navMenuOpen} unmountOnExit timeout={500} classNames={"nav-menu-bg-right"}>
-        <div className="nav-menu-bg-right">
-          <hr className="hr top" />
-          <hr className="hr middle" />
-          <hr className="hr bottom" />
-        </div>
+        <div className="nav-menu-bg-right"></div>
       </CSSTransition>
     </>
   );

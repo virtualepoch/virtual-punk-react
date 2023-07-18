@@ -9,9 +9,8 @@ function CubeGroup() {
   const meshRef4 = useRef(null);
   const meshRef5 = useRef(null);
 
-  const rotateSpeed = 0.015;
-
   useFrame(() => {
+    const rotateSpeed = 0.015;
     if (!meshRef1.current || !meshRef2.current || !meshRef3.current || !meshRef4.current || !meshRef4.current) {
       return;
     }
@@ -21,7 +20,7 @@ function CubeGroup() {
     meshRef3.current.rotation.x += rotateSpeed;
     meshRef4.current.rotation.x -= rotateSpeed;
     meshRef5.current.rotation.x += rotateSpeed;
-  });
+  },[]);
 
   return (
     <>
