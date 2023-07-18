@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@react-three/cannon": "^6.5.2",
-    "@react-three/drei": "^9.77.10",
+    "@react-three/drei": "^9.78.2",
     "@react-three/fiber": "^8.13.4",
     "@react-three/rapier": "^1.0.0",
     "@react-three/xr": "^5.5.0",
@@ -21,7 +21,7 @@
     "react-scripts": "5.0.1",
     "react-transition-group": "^4.4.5",
     "three": "^0.154.0",
-    "valtio": "^1.10.6",
+    "valtio": "^1.10.7",
     "zustand": "^4.3.8"
   },
   "scripts": {
