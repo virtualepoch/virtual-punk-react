@@ -3,6 +3,7 @@ import { CreditsModal } from "../../components/CreditsModal";
 import { Canvas } from "@react-three/fiber";
 import { DissolveScene } from "./DissolveScene";
 import { PillLinks } from "../../components/PillLinks";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
 
 export function Dissolve() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -26,15 +27,18 @@ export function Dissolve() {
   return (
     <>
       <h1 className="page-title">Dissolve</h1>
-      {creditsInfo.map((item) => (
+      {/* {creditsInfo.map((item) => (
         <CreditsModal modalOpen={modalOpen} setModalOpen={setModalOpen} key={item.id} info={item} />
-      ))}
+      ))} */}
       <Canvas shadows camera={{ position: [-5, 3, 5], rotation: [0, 0, 0], fov: 50 }}>
         <Suspense fallback={null}>
           <DissolveScene />
         </Suspense>
+        <EffectComposer>
+          <Bloom luminanceThreshold={1} intensity={1.25} mipmapBlur/>
+        </EffectComposer>
       </Canvas>
-      <PillLinks backTo="/portal" backName="portal" forwardTo="/star-punk" forwardName="star-punk" />
+      <PillLinks backTo="/dragon" backName="dragon" forwardTo="/star-punk" forwardName="star-punk" />
     </>
   );
 }

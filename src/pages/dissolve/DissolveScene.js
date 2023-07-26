@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { CameraControls, ContactShadows, Environment } from "@react-three/drei";
 
@@ -44,10 +44,13 @@ export function DissolveScene() {
 
   const { itemsDisplayed } = useControls({
     itemsDisplayed: {
-      value: "box",
-      options: ["box", "sphere"],
+      value: "rei",
+      options: ["box", "sphere", "rei"],
     },
   });
+
+  const [visibleItem, setVisibleItem] = useState(itemsDisplayed);
+  const onFadeOut = () => setVisibleItem(itemsDisplayed);
 
   return (
     <>
@@ -55,17 +58,23 @@ export function DissolveScene() {
       <pointLight intensity={1} />
       <BackDrop />
       <CameraControls ref={controlsRef} minAzimuthAngle={-Math.PI / 1} maxAzimuthAngle={Math.PI / 1} maxPolarAngle={Math.PI / 1.5} minPolarAngle={Math.PI / 4} minDistance={2} maxDistance={15} />
-      {/* <Ayanami position={[0, -1.7, 0]} rotation={[0, -0.6, 0]} scale={[0.03,0.03,0.03]} /> */}
+      {visibleItem === "box" && (
+        <mesh>
+          <boxGeometry />
+          <DissolveMaterial baseMaterial={boxMaterial} visible={itemsDisplayed === "box"} onFadeOut={onFadeOut} color="#0082b2" />
+        </mesh>
+      )}
+
+      {visibleItem === "sphere" && (
+        <mesh scale={0.5}>
+          <sphereGeometry />
+          <DissolveMaterial baseMaterial={sphereMaterial} visible={itemsDisplayed === "sphere"} onFadeOut={onFadeOut} color="#ff0000" />
+        </mesh>
+      )}
+      {visibleItem === "rei" && <Ayanami position={[0, -1.5, 0]} rotation={[0, -0.6, 0]} scale={[0.03, 0.03, 0.03]} dissolveVisible= {itemsDisplayed === "rei"} onFadeOut={onFadeOut}/>}
       <Environment preset="sunset" />
-      <mesh>
-        <boxGeometry />
-        <DissolveMaterial baseMaterial={boxMaterial} visible={itemsDisplayed === "box"} />
-      </mesh>
-      <mesh scale={0.5}>
-        <sphereGeometry />
-        <DissolveMaterial baseMaterial={sphereMaterial} visible={itemsDisplayed === "sphere"} />
-      </mesh>
-      <ContactShadows scale={[16, 16]} opacity={0.5} />
+      <Ground position-y={-1}/>
+      <ContactShadows opacity={0.7} position={[0, -1.49, 0]} />
     </>
   );
 }

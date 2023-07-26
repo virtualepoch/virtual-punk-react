@@ -1,10 +1,10 @@
 import * as THREE from "three";
 import * as React from "react";
-import CSM from "three-custom-shader-material";
 import { patchShaders } from "gl-noise";
 import { PivotControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { easing } from "maath";
+import CSM from "three-custom-shader-material";
 
 const vertexShader = /* glsl */ `
   varying vec2 vUv;
@@ -33,7 +33,7 @@ const fragmentShader = patchShaders(/* glsl */ `
     csm_DiffuseColor.rgb = mix(csm_DiffuseColor.rgb, uColor, border);
   }`);
 
-export function DissolveMaterial({ baseMaterial, thickness = 0.1, color = "#eb5a13", intensity = 50, duration = 1.2, visible = true }) {
+export function DissolveMaterial({ baseMaterial, thickness = 0.1, color = "#eb5a13", intensity = 50, duration = 1.2, visible = true, onFadeOut = () => {} }) {
   const uniforms = React.useRef({
     uThickness: { value: 0.1 },
     uColor: { value: new THREE.Color("#eb5a13").multiplyScalar(20) },
@@ -47,6 +47,9 @@ export function DissolveMaterial({ baseMaterial, thickness = 0.1, color = "#eb5a
 
   useFrame((_state, delta) => {
     easing.damp(uniforms.current.uProgress, "value", visible ? 1 : 0, duration, delta);
+    if (uniforms.current.uProgress.value < 0.1 && onFadeOut) {
+      onFadeOut();
+    }
   });
 
   return (
