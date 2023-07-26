@@ -1,10 +1,10 @@
 import { Suspense, useState } from "react";
 import { CreditsModal } from "../../components/CreditsModal";
 import { Canvas } from "@react-three/fiber";
-import { DragonScene } from "./DragonScene";
+import { DissolveScene } from "./DissolveScene";
 import { PillLinks } from "../../components/PillLinks";
 
-export function Dragon() {
+export function Dissolve() {
   const [modalOpen, setModalOpen] = useState(false);
 
   // CreditsModal info-
@@ -25,14 +25,13 @@ export function Dragon() {
 
   return (
     <>
-      <h1 className="page-title">Dragon</h1>
+      <h1 className="page-title">Dissolve</h1>
       {creditsInfo.map((item) => (
         <CreditsModal modalOpen={modalOpen} setModalOpen={setModalOpen} key={item.id} info={item} />
       ))}
       <Canvas shadows camera={{ position: [-5, 3, 5], rotation: [0, 0, 0], fov: 50 }}>
-        <fog attach="fog" args={["gray", 1, 50]} />
         <Suspense fallback={null}>
-          <DragonScene />
+          <DissolveScene />
         </Suspense>
       </Canvas>
       <PillLinks backTo="/portal" backName="portal" forwardTo="/star-punk" forwardName="star-punk" />

@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, ContactShadows, Environment, OrbitControls } from "@react-three/drei";
 import { HexColorPicker } from "react-colorful";
-import { proxy, useSnapshot } from "valtio";
+// import { proxy, useSnapshot } from "valtio";
 import { VRButton, XR } from "@react-three/xr";
 import { PillLinks } from "../components/PillLinks";
 
