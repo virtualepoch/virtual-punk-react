@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 
 import bg from "../assets/images/dreamlike_sunset.jpg";
 import { OrbitControls } from "@react-three/drei";
+import { Ayanami } from "./dissolve/Ayanami";
 
 const BackDrop = () => {
   const map = useLoader(THREE.TextureLoader, bg);
@@ -51,6 +52,7 @@ export function VR() {
           </mesh>
           <BackDrop />
           <Ground />
+          <Ayanami position={[0, -1.5, -4]} rotation={[0, -0.6, 0]} scale={[0.03, 0.03, 0.03]} />
         </XR>
       </Canvas>
     </>
