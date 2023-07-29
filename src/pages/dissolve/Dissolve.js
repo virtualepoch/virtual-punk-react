@@ -1,3 +1,4 @@
+import * as THREE from "three";
 import { Suspense, useState } from "react";
 import { CreditsModal } from "../../components/CreditsModal";
 import { Canvas } from "@react-three/fiber";
@@ -36,15 +37,18 @@ export function Dissolve() {
           <Controllers />
           <Hands />
           <Suspense fallback={null}>
-            <DissolveScene />
+            <mesh>
+              <DissolveScene />
+            </mesh>
           </Suspense>
           <EffectComposer>
             <Bloom luminanceThreshold={1} intensity={1.25} mipmapBlur />
           </EffectComposer>
+          <primitive object={new THREE.AxesHelper(2)} />
+          <primitive object={new THREE.GridHelper(20, 20)} />
         </XR>
       </Canvas>
       <VRButton />
-      <PillLinks backTo="/dragon" backName="dragon" forwardTo="/star-punk" forwardName="star-punk" />
     </>
   );
 }
