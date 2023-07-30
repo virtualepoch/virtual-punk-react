@@ -4,8 +4,8 @@ import { useFrame, useLoader } from "@react-three/fiber";
 import * as THREE from "three";
 import { useEffect, useRef, useState } from "react";
 
-import bg from "../assets/images/dreamlike_sunset.jpg";
-import { OrbitControls } from "@react-three/drei";
+import bg from "../assets/images/realistic_wireframe_matrix.jpg";
+import { ContactShadows, MeshReflectorMaterial, OrbitControls } from "@react-three/drei";
 import { Ayanami } from "./dissolve/Ayanami";
 import { DissolveMaterial } from "./dissolve/DissolveMaterial";
 import { useControls } from "leva";
@@ -18,12 +18,12 @@ const BackDrop = () => {
   const ref = useRef();
 
   useFrame(() => {
-    ref.current.rotation.y += 0.0003;
+    ref.current.rotation.y += 0.000;
   });
 
   return (
-    <mesh position={[0, 0, 0]} rotation={[0, 1.6, 0]} ref={ref}>
-      <sphereGeometry args={[27, 20, 4]} />
+    <mesh position={[0, 3, 0]} rotation={[0, 1.6, 0]} ref={ref}>
+      <sphereGeometry args={[20, 20, 20]} />
       <meshStandardMaterial map={map} side={THREE.BackSide} />
     </mesh>
   );
@@ -32,15 +32,15 @@ const BackDrop = () => {
 function Ground() {
   return (
     <>
-      <mesh position={[0, -1.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <planeGeometry args={[55, 55]} />
-        <meshBasicMaterial color="#dbecfb" />
+      <mesh position={[0, -1.3, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <planeGeometry args={[5, 5]} />
+        <MeshReflectorMaterial blur={[400, 400]} resolution={1024} mixBlur={0.3} mixStrength={15} depthScale={1} minDepthThreshold={0.85} color="#dbecfb" metalness={0.9} />
       </mesh>
     </>
   );
 }
 
-const reiBaseScale = 0.025;
+const reiBaseScale = 0.016;
 
 export function VR() {
   const { itemsDisplayed } = useControls({
@@ -56,7 +56,7 @@ export function VR() {
   return (
     <>
       <VRButton />
-      <Canvas>
+      <Canvas shadows camera={{ position: [0, 0, 2], rotation: [0, 0, 0], fov: 50 }}>
         <OrbitControls />
         <ambientLight intensity={1} />
         <pointLight intensity={1} />
@@ -64,8 +64,8 @@ export function VR() {
           <Controllers />
           <Hands />
           <mesh>
-            <sphereGeometry args={[0.3, 8, 8]} />
-            <meshBasicMaterial color="blue" />
+            <sphereGeometry args={[0.05, 8, 8]} />
+            <meshBasicMaterial color="magenta" />
           </mesh>
           <BackDrop />
           <Ground />
@@ -85,8 +85,11 @@ export function VR() {
               </mesh>
             )}
 
-            {visibleItem === "rei" && <Ayanami position={[0, -1.5, 0]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "rei"} onFadeOut={onFadeOut} />}
+            {visibleItem === "rei" && <Ayanami position={[0, -1.3, 0]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "rei"} onFadeOut={onFadeOut} />}
           </mesh>
+          <ContactShadows opacity={0.7} position={[0, -1.29, 0]} />
+          <primitive object={new THREE.AxesHelper(2)} />
+          <primitive object={new THREE.GridHelper(20, 20)} />
         </XR>
       </Canvas>
     </>
