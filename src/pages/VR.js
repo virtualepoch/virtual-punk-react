@@ -43,15 +43,15 @@ function Ground() {
 const reiBaseScale = 0.016;
 
 export function VR() {
-  // const { itemsDisplayed } = useControls({
-  //   itemsDisplayed: {
-  //     value: "rei",
-  //     options: ["box", "sphere", "rei"],
-  //   },
-  // });
+  const { itemsDisplayed } = useControls({
+    itemsDisplayed: {
+      value: "rei",
+      options: ["box", "sphere", "rei"],
+    },
+  });
 
-  // const [visibleItem, setVisibleItem] = useState(itemsDisplayed);
-  // const onFadeOut = () => setVisibleItem(itemsDisplayed);
+  const [visibleItem, setVisibleItem] = useState(itemsDisplayed);
+  const onFadeOut = () => setVisibleItem(itemsDisplayed);
 
   return (
     <>
@@ -65,13 +65,13 @@ export function VR() {
           <Hands />
           <mesh>
             <sphereGeometry args={[0.05, 8, 8]} />
-            <meshBasicMaterial color="red" />
+            <meshBasicMaterial color="magenta" />
           </mesh>
           <BackDrop />
           <Ground />
 
           <mesh position-z={-1}>
-            {/* {visibleItem === "box" && (
+            {visibleItem === "box" && (
               <mesh>
                 <boxGeometry />
                 <DissolveMaterial baseMaterial={boxMaterial} visible={itemsDisplayed === "box"} onFadeOut={onFadeOut} color="#0082b2" />
@@ -85,9 +85,7 @@ export function VR() {
               </mesh>
             )}
 
-            {visibleItem === "rei" && <Ayanami position={[0, -1.3, 0]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "rei"} onFadeOut={onFadeOut} />} */}
-
-            <Ayanami position={[0, -1.3, 0]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} />
+            {visibleItem === "rei" && <Ayanami position={[0, -1.3, 0]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "rei"} onFadeOut={onFadeOut} />}
           </mesh>
           <ContactShadows opacity={0.7} position={[0, -1.29, 0]} />
         </XR>
