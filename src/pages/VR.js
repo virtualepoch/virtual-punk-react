@@ -7,6 +7,11 @@ import { useEffect, useRef, useState } from "react";
 import bg from "../assets/images/dreamlike_sunset.jpg";
 import { OrbitControls } from "@react-three/drei";
 import { Ayanami } from "./dissolve/Ayanami";
+import { DissolveMaterial } from "./dissolve/DissolveMaterial";
+import { useControls } from "leva";
+
+const boxMaterial = new THREE.MeshStandardMaterial({ color: "white" });
+const sphereMaterial = new THREE.MeshStandardMaterial({ color: "white" });
 
 const BackDrop = () => {
   const map = useLoader(THREE.TextureLoader, bg);
@@ -35,7 +40,19 @@ function Ground() {
   );
 }
 
+const reiBaseScale = 0.025;
+
 export function VR() {
+  const { itemsDisplayed } = useControls({
+    itemsDisplayed: {
+      value: "rei",
+      options: ["box", "sphere", "rei"],
+    },
+  });
+
+  const [visibleItem, setVisibleItem] = useState(itemsDisplayed);
+  const onFadeOut = () => setVisibleItem(itemsDisplayed);
+
   return (
     <>
       <VRButton />
@@ -47,12 +64,29 @@ export function VR() {
           <Controllers />
           <Hands />
           <mesh>
-            <boxGeometry />
+            <sphereGeometry args={[0.3, 8, 8]} />
             <meshBasicMaterial color="blue" />
           </mesh>
           <BackDrop />
           <Ground />
-          <Ayanami position={[0, -1.5, -4]} rotation={[0, -0.6, 0]} scale={[0.03, 0.03, 0.03]} />
+
+          <mesh position-z={-1}>
+            {visibleItem === "box" && (
+              <mesh>
+                <boxGeometry />
+                <DissolveMaterial baseMaterial={boxMaterial} visible={itemsDisplayed === "box"} onFadeOut={onFadeOut} color="#0082b2" />
+              </mesh>
+            )}
+
+            {visibleItem === "sphere" && (
+              <mesh scale={0.5}>
+                <sphereGeometry />
+                <DissolveMaterial baseMaterial={sphereMaterial} visible={itemsDisplayed === "sphere"} onFadeOut={onFadeOut} color="#ff0000" />
+              </mesh>
+            )}
+
+            {visibleItem === "rei" && <Ayanami position={[0, -1.5, 0]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "rei"} onFadeOut={onFadeOut} />}
+          </mesh>
         </XR>
       </Canvas>
     </>
