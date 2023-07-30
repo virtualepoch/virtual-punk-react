@@ -40,7 +40,7 @@ function Ground() {
   );
 }
 
-const reiBaseScale = 0.025;
+const reiBaseScale = 0.016;
 
 export function VR() {
   const { itemsDisplayed } = useControls({
