@@ -88,8 +88,6 @@ export function VR() {
             {visibleItem === "rei" && <Ayanami position={[0, -1.3, 0]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "rei"} onFadeOut={onFadeOut} />}
           </mesh>
           <ContactShadows opacity={0.7} position={[0, -1.29, 0]} />
-          <primitive object={new THREE.AxesHelper(2)} />
-          <primitive object={new THREE.GridHelper(20, 20)} />
         </XR>
       </Canvas>
     </>
