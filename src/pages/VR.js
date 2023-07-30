@@ -18,7 +18,7 @@ const BackDrop = () => {
   const ref = useRef();
 
   useFrame(() => {
-    ref.current.rotation.y += 0.000;
+    ref.current.rotation.y += 0.0;
   });
 
   return (
@@ -56,7 +56,7 @@ export function VR() {
   return (
     <>
       <VRButton />
-      <Canvas shadows camera={{ position: [0, 0, 2], rotation: [0, 0, 0], fov: 50 }}>
+      <Canvas>
         <OrbitControls />
         <ambientLight intensity={1} />
         <pointLight intensity={1} />
