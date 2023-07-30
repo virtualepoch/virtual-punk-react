@@ -9,10 +9,8 @@ import { OrbitControls } from "@react-three/drei";
 import { Ayanami } from "./dissolve/Ayanami";
 import { DissolveMaterial } from "./dissolve/DissolveMaterial";
 import { useControls } from "leva";
-import { Marie } from "./Marie";
 
 const boxMaterial = new THREE.MeshStandardMaterial({ color: "white" });
-const sphereMaterial = new THREE.MeshStandardMaterial({ color: "white" });
 
 const BackDrop = () => {
   const map = useLoader(THREE.TextureLoader, bg);
@@ -47,7 +45,7 @@ export function VR() {
   const { itemsDisplayed } = useControls({
     itemsDisplayed: {
       value: "rei",
-      options: ["box", "marie", "rei"],
+      options: ["box", "mod2", "rei"],
     },
   });
 
@@ -79,7 +77,7 @@ export function VR() {
               </mesh>
             )}
 
-            {visibleItem === "marie" && <Marie position={[0, 0, 0.4]} scale={[0.7, 0.7, 0.6]} dissolveVisible={itemsDisplayed === "marie"} onFadeOut={onFadeOut} />}
+            {visibleItem === "mod2" && <Ayanami position={[0, 0, 0.4]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "mod2"} onFadeOut={onFadeOut} />}
 
             {visibleItem === "rei" && <Ayanami position={[0, 0, 0.4]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "rei"} onFadeOut={onFadeOut} />}
           </mesh>
