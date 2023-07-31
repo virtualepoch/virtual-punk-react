@@ -15,7 +15,7 @@ import { StarPunk } from "./pages/StarPunk";
 import { Portal } from "./pages/portal/Portal";
 import { Dragon } from "./pages/dragon/Dragon";
 import { Dissolve } from "./pages/dissolve/Dissolve";
-import { VR } from "./pages/VR.js";
+import { VR } from "./pages/vr/VR.js";
 import { Testing } from "./pages/Testing.js";
 import { AniMoto } from "./pages/moto-game/AniMoto.js";
 import { LetterGame } from "./pages/letter-game/LetterGame.js";
