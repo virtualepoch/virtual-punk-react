@@ -7,16 +7,15 @@ import { useEffect, useRef, useState } from "react";
 import bg from "../../assets/images/realistic_wireframe_matrix.jpg";
 import { OrbitControls, useTexture } from "@react-three/drei";
 import { Ayanami } from "../dissolve/Ayanami";
-import { Xuxa } from "./Xuxa";
-import { Witch, WitchDaphne } from "./Witch";
+import { Witch } from "./Witch";
 import { DissolveMaterial } from "../dissolve/DissolveMaterial";
 import { useControls } from "leva";
 
 import floorTexture1 from "../../assets/images/brick-textures/Brick_Wall_015_OCC.jpg";
 import floorTexture2 from "../../assets/images/brick-textures/Brick_Wall_015_COLOR.jpg";
 import { Godzilla } from "./Godzilla";
-
-const boxMaterial = new THREE.MeshStandardMaterial({ color: "white" });
+import { Ayanami4K } from "./Ayanami4K";
+import { Trex } from "../portal/Trex";
 
 const BackDrop = () => {
   const map = useLoader(THREE.TextureLoader, bg);
@@ -39,7 +38,7 @@ function Ground() {
   return (
     <>
       <mesh position={[0, 0, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <planeGeometry args={[5, 5]} />
+        <planeGeometry args={[22, 22]} />
         <meshStandardMaterial map={textures} />
       </mesh>
     </>
@@ -52,7 +51,7 @@ export function VR() {
   const { itemsDisplayed } = useControls({
     itemsDisplayed: {
       value: "rei",
-      options: ["zilla", "xuxa", "rei", "witch"],
+      options: ["zilla", "t-rex", "rei", "rei-4k", "witch"],
     },
   });
 
@@ -79,11 +78,13 @@ export function VR() {
           <mesh position-z={-1}>
             {visibleItem === "zilla" && <Godzilla position={[0, 0, -7]} rotation={[0, -0.6, 0]} scale={0.02} dissolveVisible={itemsDisplayed === "zilla"} onFadeOut={onFadeOut} />}
 
-            {visibleItem === "xuxa" && <Xuxa position={[0, 0, 0.4]} rotation={[0, -0.6, 0]} scale={0.7} dissolveVisible={itemsDisplayed === "xuxa"} onFadeOut={onFadeOut} />}
+            {visibleItem === "t-rex" && <Trex position={[5, 0, -7]} rotation={[0, -0.6, 0]} scale={6} dissolveVisible={itemsDisplayed === "t-rex"} onFadeOut={onFadeOut} />}
 
             {visibleItem === "rei" && <Ayanami position={[0, 0, 0.4]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "rei"} onFadeOut={onFadeOut} />}
 
-            {visibleItem === "witch" && <Witch position={[0, 1.2, 0.4]} rotation={[0, 0, 0]} scale={0.05} dissolveVisible={itemsDisplayed === "witch"} onFadeOut={onFadeOut} />}
+            {visibleItem === "rei-4k" && <Ayanami4K position={[0, 0, 0.4]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "rei-4k"} onFadeOut={onFadeOut} />}
+
+            {visibleItem === "witch" && <Witch position={[0, 0.6, 0.2]} rotation={[0, 0, 0]} scale={0.05} dissolveVisible={itemsDisplayed === "witch"} onFadeOut={onFadeOut} />}
           </mesh>
         </XR>
       </Canvas>

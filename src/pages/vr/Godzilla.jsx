@@ -7,13 +7,14 @@ Source: https://sketchfab.com/3d-models/godzilla-first-walk-animationscrunchy322
 Title: Godzilla First Walk Animation(scrunchy32205 alt)
 */
 
-import React, { useRef } from 'react'
-import { useGLTF, useAnimations } from '@react-three/drei'
+import React, { useRef } from "react";
+import { useGLTF, useAnimations } from "@react-three/drei";
+import { DissolveMaterial } from "../dissolve/DissolveMaterial";
 
 export function Godzilla(props) {
-  const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/models/godzilla_walk.glb')
-  const { actions } = useAnimations(animations, group)
+  const group = useRef();
+  const { nodes, materials, animations } = useGLTF("/models/godzilla_walk.glb");
+  const { actions } = useAnimations(animations, group);
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
@@ -25,9 +26,15 @@ export function Godzilla(props) {
                   <group name="Object_5">
                     <primitive object={nodes._rootJoint} />
                     <group name="Object_161" position={[-2.58, -3.94, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={200} />
-                    <skinnedMesh name="Object_162" geometry={nodes.Object_162.geometry} material={materials['GZ_Body.001']} skeleton={nodes.Object_162.skeleton} />
-                    <skinnedMesh name="Object_163" geometry={nodes.Object_163.geometry} material={materials['GZ_ArmsLegs.001']} skeleton={nodes.Object_163.skeleton} />
-                    <skinnedMesh name="Object_164" geometry={nodes.Object_164.geometry} material={materials['GZ_Scales.001']} skeleton={nodes.Object_164.skeleton} />
+                    <skinnedMesh name="Object_162" geometry={nodes.Object_162.geometry} skeleton={nodes.Object_162.skeleton}>
+                      <DissolveMaterial baseMaterial={materials["GZ_Body.001"]} visible={props.dissolveVisible} onFadeOut={props.onFadeOut} color="#0082b2" />
+                    </skinnedMesh>
+                    <skinnedMesh name="Object_163" geometry={nodes.Object_163.geometry} skeleton={nodes.Object_163.skeleton}>
+                      <DissolveMaterial baseMaterial={materials["GZ_ArmsLegs.001"]} visible={props.dissolveVisible} onFadeOut={props.onFadeOut} color="#0082b2" />
+                    </skinnedMesh>
+                    <skinnedMesh name="Object_164" geometry={nodes.Object_164.geometry} skeleton={nodes.Object_164.skeleton}>
+                      <DissolveMaterial baseMaterial={materials["GZ_Scales.001"]} visible={props.dissolveVisible} onFadeOut={props.onFadeOut} color="#0082b2" />
+                    </skinnedMesh>
                   </group>
                 </group>
                 <group name="Godzilla" position={[-2.58, -3.94, 0]} rotation={[-Math.PI / 2, 0, 0]} scale={200} />
@@ -37,7 +44,7 @@ export function Godzilla(props) {
         </group>
       </group>
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/models/godzilla_walk.glb')
+useGLTF.preload("/models/godzilla_walk.glb");

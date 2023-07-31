@@ -9,6 +9,7 @@ Title: High detailed rex animation
 
 import React, { useEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
+import { DissolveMaterial } from "../dissolve/DissolveMaterial";
 
 export function Trex(props) {
   const group = useRef();
@@ -19,7 +20,7 @@ export function Trex(props) {
     actions["roar"].reset().fadeIn(0.5).play();
     return () => actions["roar"].fadeOut(0.5);
   });
-  
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
@@ -33,7 +34,9 @@ export function Trex(props) {
                     <group name="TRex2_2_correction">
                       <group name="TRex2_2" />
                     </group>
-                    <skinnedMesh name="Object_80" geometry={nodes.Object_80.geometry} material={materials.material_0} skeleton={nodes.Object_80.skeleton} />
+                    <skinnedMesh name="Object_80" geometry={nodes.Object_80.geometry} skeleton={nodes.Object_80.skeleton}>
+                      <DissolveMaterial baseMaterial={materials.material_0} visible={props.dissolveVisible} onFadeOut={props.onFadeOut} color="#0082b2" />
+                    </skinnedMesh>
                   </group>
                 </group>
               </group>
