@@ -2,7 +2,7 @@ import { VRButton, ARButton, XR, Controllers, Hands } from "@react-three/xr";
 import { Canvas } from "@react-three/fiber";
 import { useFrame, useLoader } from "@react-three/fiber";
 import * as THREE from "three";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, Suspense } from "react";
 
 import bg from "../../assets/images/realistic_wireframe_matrix.jpg";
 import { OrbitControls, useTexture } from "@react-three/drei";
@@ -16,6 +16,7 @@ import floorTexture2 from "../../assets/images/brick-textures/Brick_Wall_015_COL
 import { Godzilla } from "./Godzilla";
 import { Ayanami4K } from "./Ayanami4K";
 import { Trex } from "../portal/Trex";
+import { CreditsModal } from "../../components/CreditsModal";
 
 const BackDrop = () => {
   const map = useLoader(THREE.TextureLoader, bg);
@@ -58,35 +59,59 @@ export function VR() {
   const [visibleItem, setVisibleItem] = useState(itemsDisplayed);
   const onFadeOut = () => setVisibleItem(itemsDisplayed);
 
+  const [modalOpen, setModalOpen] = useState(false);
+
+  // CreditsModal info-
+  const creditsInfo = [
+    {
+      id: "00",
+      title: "PBR Velociraptor (Animated)",
+      link: "https://skfb.ly/oHoUE",
+      credits: `by Ferocious Industries is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+      title2: "High detailed rex animation",
+      link2: "https://skfb.ly/oGBPT",
+      credits2: `by Al-Deezel is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+      title3: "Otodus Megalodon",
+      link3: "https://skfb.ly/ooByU",
+      credits3: `by CanYuTsai is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
+    },
+  ];
+
   return (
     <>
+      <h1 className="page-title">VR Test</h1>
+      {creditsInfo.map((item) => (
+        <CreditsModal modalOpen={modalOpen} setModalOpen={setModalOpen} key={item.id} info={item} />
+      ))}
       <VRButton />
       <Canvas shadows camera={{ position: [0, 2, 5], rotation: [0, 5, 0], fov: 60 }}>
-        <OrbitControls />
-        <ambientLight intensity={1} />
-        <pointLight intensity={1} />
-        <XR>
-          <Controllers />
-          <Hands />
-          <mesh>
-            <sphereGeometry args={[0.2, 8, 8]} />
-            <meshBasicMaterial color="blue" />
-          </mesh>
-          <BackDrop />
-          <Ground />
+        <Suspense fallback={null}>
+          <OrbitControls />
+          <ambientLight intensity={1} />
+          <pointLight intensity={1} />
+          <XR>
+            <Controllers />
+            <Hands />
+            <mesh>
+              <sphereGeometry args={[0.2, 8, 8]} />
+              <meshBasicMaterial color="blue" />
+            </mesh>
+            <BackDrop />
+            <Ground />
 
-          <mesh position-z={-1}>
-            {visibleItem === "zilla" && <Godzilla position={[0, 0, -7]} rotation={[0, -0.6, 0]} scale={0.02} dissolveVisible={itemsDisplayed === "zilla"} onFadeOut={onFadeOut} />}
+            <mesh position-z={-1}>
+              {visibleItem === "zilla" && <Godzilla position={[0, 0, -7]} rotation={[0, -0.6, 0]} scale={0.02} dissolveVisible={itemsDisplayed === "zilla"} onFadeOut={onFadeOut} />}
 
-            {visibleItem === "t-rex" && <Trex position={[5, 0, -7]} rotation={[0, -0.6, 0]} scale={6} dissolveVisible={itemsDisplayed === "t-rex"} onFadeOut={onFadeOut} />}
+              {visibleItem === "t-rex" && <Trex position={[5, 0, -7]} rotation={[0, -0.6, 0]} scale={6} dissolveVisible={itemsDisplayed === "t-rex"} onFadeOut={onFadeOut} />}
 
-            {visibleItem === "rei" && <Ayanami position={[0, 0, 0.4]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "rei"} onFadeOut={onFadeOut} />}
+              {visibleItem === "rei" && <Ayanami position={[0, 0, 0.4]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "rei"} onFadeOut={onFadeOut} />}
 
-            {visibleItem === "rei-4k" && <Ayanami4K position={[0, 0, 0.4]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "rei-4k"} onFadeOut={onFadeOut} />}
+              {visibleItem === "rei-4k" && <Ayanami4K position={[0, 0, 0.4]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "rei-4k"} onFadeOut={onFadeOut} />}
 
-            {visibleItem === "witch" && <Witch position={[0, 0.6, 0.2]} rotation={[0, 0, 0]} scale={0.05} dissolveVisible={itemsDisplayed === "witch"} onFadeOut={onFadeOut} />}
-          </mesh>
-        </XR>
+              {visibleItem === "witch" && <Witch position={[0, 0.6, 0.2]} rotation={[0, 0, 0]} scale={0.05} dissolveVisible={itemsDisplayed === "witch"} onFadeOut={onFadeOut} />}
+            </mesh>
+          </XR>
+        </Suspense>
       </Canvas>
     </>
   );
