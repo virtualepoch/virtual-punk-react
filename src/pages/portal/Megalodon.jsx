@@ -20,6 +20,8 @@ export function Megalodon(props) {
     return () => actions["Swim"].fadeOut(0.5);
   });
 
+  console.log(actions);
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">

@@ -5,7 +5,7 @@ import * as THREE from "three";
 import { useEffect, useRef, useState, Suspense } from "react";
 
 import bg from "../../assets/images/realistic_wireframe_matrix.jpg";
-import { OrbitControls, useTexture } from "@react-three/drei";
+import { OrbitControls, SpotLight, useTexture } from "@react-three/drei";
 import { Ayanami } from "../dissolve/Ayanami";
 import { Witch } from "./Witch";
 import { DissolveMaterial } from "../dissolve/DissolveMaterial";
@@ -16,6 +16,9 @@ import floorTexture2 from "../../assets/images/brick-textures/Brick_Wall_015_COL
 import { Godzilla } from "./Godzilla";
 import { Ayanami4K } from "./Ayanami4K";
 import { Trex } from "../portal/Trex";
+import { Pan } from "./Pan";
+import { Elf } from "./OdinElfFemale2";
+import { GirlBlob } from "./GirlBlob";
 import { CreditsModal } from "../../components/CreditsModal";
 
 const BackDrop = () => {
@@ -52,7 +55,7 @@ export function VR() {
   const { itemsDisplayed } = useControls({
     itemsDisplayed: {
       value: "rei",
-      options: ["zilla", "t-rex", "rei", "rei-4k", "witch"],
+      options: ["zilla", "t-rex", "rei", "rei-4k", "witch","pan", "elf", "girl-blob"],
     },
   });
 
@@ -100,15 +103,22 @@ export function VR() {
             <Ground />
 
             <mesh position-z={-1}>
-              {visibleItem === "zilla" && <Godzilla position={[0, 0, -7]} rotation={[0, -0.6, 0]} scale={0.02} dissolveVisible={itemsDisplayed === "zilla"} onFadeOut={onFadeOut} />}
+              {visibleItem === "zilla" && <Godzilla position={[0, 0, -11]} rotation={[0, -0.6, 0]} scale={0.02} dissolveVisible={itemsDisplayed === "zilla"} onFadeOut={onFadeOut} />}
 
-              {visibleItem === "t-rex" && <Trex position={[5, 0, -7]} rotation={[0, -0.6, 0]} scale={6} dissolveVisible={itemsDisplayed === "t-rex"} onFadeOut={onFadeOut} />}
+              {visibleItem === "t-rex" && <Trex position={[5, 0, -11]} rotation={[0, -0.6, 0]} scale={6} dissolveVisible={itemsDisplayed === "t-rex"} onFadeOut={onFadeOut} />}
 
               {visibleItem === "rei" && <Ayanami position={[0, 0, 0.4]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "rei"} onFadeOut={onFadeOut} />}
 
               {visibleItem === "rei-4k" && <Ayanami4K position={[0, 0, 0.4]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "rei-4k"} onFadeOut={onFadeOut} />}
 
-              {visibleItem === "witch" && <Witch position={[0, 0.6, 0.2]} rotation={[0, 0, 0]} scale={0.05} dissolveVisible={itemsDisplayed === "witch"} onFadeOut={onFadeOut} />}
+              {visibleItem === "witch" && <Witch position={[0, 1.3, 0]} rotation={[0.3, 0, 0]} scale={0.08} dissolveVisible={itemsDisplayed === "witch"} onFadeOut={onFadeOut} />}
+
+              {visibleItem === "pan" && <Pan position={[0, 0, 0.2]} rotation={[0, 0, 0]} scale={0.43} dissolveVisible={itemsDisplayed === "pan"} onFadeOut={onFadeOut} />}
+              
+              {visibleItem === "elf" && <Elf position={[0, 0, 0.2]} rotation={[0, 0, 0]} scale={0.3} dissolveVisible={itemsDisplayed === "elf"} onFadeOut={onFadeOut} />}
+
+              {visibleItem === "girl-blob" && <GirlBlob position={[0, 0.04, 0.2]} rotation={[0, 0, 0]} scale={0.7} dissolveVisible={itemsDisplayed === "girl-blob"} onFadeOut={onFadeOut} />}
+              
             </mesh>
           </XR>
         </Suspense>

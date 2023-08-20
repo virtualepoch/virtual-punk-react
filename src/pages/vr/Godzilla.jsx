@@ -7,7 +7,7 @@ Source: https://sketchfab.com/3d-models/godzilla-first-walk-animationscrunchy322
 Title: Godzilla First Walk Animation(scrunchy32205 alt)
 */
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { DissolveMaterial } from "../dissolve/DissolveMaterial";
 
@@ -15,6 +15,7 @@ export function Godzilla(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/godzilla_walk.glb");
   const { actions } = useAnimations(animations, group);
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
