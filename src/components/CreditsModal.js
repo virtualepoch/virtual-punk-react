@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { CSSTransition } from "react-transition-group";
 import "./credits-modal.css";
 import { useProgress } from "@react-three/drei";
-import { LoadingPanel } from "./LoadingPanel";
+// import { LoadingPanel } from "./LoadingPanel";
 
 export function CreditsModal({ modalOpen, setModalOpen, ...props }) {
   const { progress } = useProgress();
@@ -52,9 +52,7 @@ export function CreditsModal({ modalOpen, setModalOpen, ...props }) {
               setModalOpen(false);
             }}
             disabled={progress < 100}
-          >
-            CLOSE
-          </button>
+          />
         </div>
       </CSSTransition>
       <button

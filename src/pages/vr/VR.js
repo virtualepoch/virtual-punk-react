@@ -55,7 +55,7 @@ export function VR() {
   const { itemsDisplayed } = useControls({
     itemsDisplayed: {
       value: "rei",
-      options: ["zilla", "t-rex", "rei", "rei-4k", "witch","pan", "elf", "girl-blob"],
+      options: ["zilla", "t-rex", "rei", "pan", "elf"],
     },
   });
 
@@ -109,16 +109,15 @@ export function VR() {
 
               {visibleItem === "rei" && <Ayanami position={[0, 0, 0.4]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "rei"} onFadeOut={onFadeOut} />}
 
-              {visibleItem === "rei-4k" && <Ayanami4K position={[0, 0, 0.4]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "rei-4k"} onFadeOut={onFadeOut} />}
+              {/* {visibleItem === "rei-4k" && <Ayanami4K position={[0, 0, 0.4]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "rei-4k"} onFadeOut={onFadeOut} />} */}
 
-              {visibleItem === "witch" && <Witch position={[0, 1.3, 0]} rotation={[0.3, 0, 0]} scale={0.08} dissolveVisible={itemsDisplayed === "witch"} onFadeOut={onFadeOut} />}
+              {/* {visibleItem === "witch" && <Witch position={[0, 1.3, 0]} rotation={[0.3, 0, 0]} scale={0.08} dissolveVisible={itemsDisplayed === "witch"} onFadeOut={onFadeOut} />} */}
 
               {visibleItem === "pan" && <Pan position={[0, 0, 0.2]} rotation={[0, 0, 0]} scale={0.43} dissolveVisible={itemsDisplayed === "pan"} onFadeOut={onFadeOut} />}
-              
+
               {visibleItem === "elf" && <Elf position={[0, 0, 0.2]} rotation={[0, 0, 0]} scale={0.3} dissolveVisible={itemsDisplayed === "elf"} onFadeOut={onFadeOut} />}
 
-              {visibleItem === "girl-blob" && <GirlBlob position={[0, 0.04, 0.2]} rotation={[0, 0, 0]} scale={0.7} dissolveVisible={itemsDisplayed === "girl-blob"} onFadeOut={onFadeOut} />}
-              
+              {/* {visibleItem === "girl-blob" && <GirlBlob position={[0, 0.04, 0.2]} rotation={[0, 0, 0]} scale={0.7} dissolveVisible={itemsDisplayed === "girl-blob"} onFadeOut={onFadeOut} />} */}
             </mesh>
           </XR>
         </Suspense>
