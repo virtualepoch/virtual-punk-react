@@ -2,23 +2,23 @@ import { VRButton, ARButton, XR, Controllers, Hands } from "@react-three/xr";
 import { Canvas } from "@react-three/fiber";
 import { useFrame, useLoader } from "@react-three/fiber";
 import * as THREE from "three";
-import { useEffect, useRef, useState, Suspense } from "react";
+import { useRef, useState, Suspense } from "react";
 
 import bg from "../../assets/images/realistic_wireframe_matrix.jpg";
-import { OrbitControls, SpotLight, useTexture } from "@react-three/drei";
+import { OrbitControls } from "@react-three/drei";
 import { Ayanami } from "../dissolve/Ayanami";
-import { Witch } from "./Witch";
-import { DissolveMaterial } from "../dissolve/DissolveMaterial";
+// import { Witch } from "./Witch";
+// import { DissolveMaterial } from "../dissolve/DissolveMaterial";
 import { useControls } from "leva";
 
-import floorTexture1 from "../../assets/images/brick-textures/Brick_Wall_015_OCC.jpg";
+// import floorTexture1 from "../../assets/images/brick-textures/Brick_Wall_015_OCC.jpg";
 import floorTexture2 from "../../assets/images/brick-textures/Brick_Wall_015_COLOR.jpg";
-import { Godzilla } from "./Godzilla";
-import { Ayanami4K } from "./Ayanami4K";
+// import { Godzilla } from "./Godzilla";
+// import { Ayanami4K } from "./Ayanami4K";
 import { Trex } from "../portal/Trex";
-import { Pan } from "./Pan";
+// import { Pan } from "./Pan";
 import { Elf } from "./OdinElfFemale2";
-import { GirlBlob } from "./GirlBlob";
+// import { GirlBlob } from "./GirlBlob";
 import { CreditsModal } from "../../components/CreditsModal";
 
 const BackDrop = () => {
@@ -55,7 +55,7 @@ export function VR() {
   const { itemsDisplayed } = useControls({
     itemsDisplayed: {
       value: "rei",
-      options: ["zilla", "t-rex", "rei", "pan", "elf"],
+      options: ["t-rex", "rei", "elf"],
     },
   });
 
@@ -103,7 +103,7 @@ export function VR() {
             <Ground />
 
             <mesh position-z={-1}>
-              {visibleItem === "zilla" && <Godzilla position={[0, 0, -11]} rotation={[0, -0.6, 0]} scale={0.02} dissolveVisible={itemsDisplayed === "zilla"} onFadeOut={onFadeOut} />}
+              {/* {visibleItem === "zilla" && <Godzilla position={[0, 0, -11]} rotation={[0, -0.6, 0]} scale={0.02} dissolveVisible={itemsDisplayed === "zilla"} onFadeOut={onFadeOut} />} */}
 
               {visibleItem === "t-rex" && <Trex position={[5, 0, -11]} rotation={[0, -0.6, 0]} scale={6} dissolveVisible={itemsDisplayed === "t-rex"} onFadeOut={onFadeOut} />}
 
@@ -113,7 +113,7 @@ export function VR() {
 
               {/* {visibleItem === "witch" && <Witch position={[0, 1.3, 0]} rotation={[0.3, 0, 0]} scale={0.08} dissolveVisible={itemsDisplayed === "witch"} onFadeOut={onFadeOut} />} */}
 
-              {visibleItem === "pan" && <Pan position={[0, 0, 0.2]} rotation={[0, 0, 0]} scale={0.43} dissolveVisible={itemsDisplayed === "pan"} onFadeOut={onFadeOut} />}
+              {/* {visibleItem === "pan" && <Pan position={[0, 0, 0.2]} rotation={[0, 0, 0]} scale={0.43} dissolveVisible={itemsDisplayed === "pan"} onFadeOut={onFadeOut} />} */}
 
               {visibleItem === "elf" && <Elf position={[0, 0, 0.2]} rotation={[0, 0, 0]} scale={0.3} dissolveVisible={itemsDisplayed === "elf"} onFadeOut={onFadeOut} />}
 
