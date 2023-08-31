@@ -20,6 +20,8 @@ import { Trex } from "../portal/Trex";
 import { Elf } from "./OdinElfFemale2";
 // import { GirlBlob } from "./GirlBlob";
 import { CreditsModal } from "../../components/CreditsModal";
+import { Angel } from "./Angel";
+import { Head } from "./Head";
 
 const BackDrop = () => {
   const map = useLoader(THREE.TextureLoader, bg);
@@ -55,7 +57,7 @@ export function VR() {
   const { itemsDisplayed } = useControls({
     itemsDisplayed: {
       value: "rei",
-      options: ["t-rex", "rei", "elf"],
+      options: ["woman-demon", "rei", "elf", "head"],
     },
   });
 
@@ -105,11 +107,11 @@ export function VR() {
             <mesh position-z={-1}>
               {/* {visibleItem === "zilla" && <Godzilla position={[0, 0, -11]} rotation={[0, -0.6, 0]} scale={0.02} dissolveVisible={itemsDisplayed === "zilla"} onFadeOut={onFadeOut} />} */}
 
-              {visibleItem === "t-rex" && <Trex position={[5, 0, -11]} rotation={[0, -0.6, 0]} scale={6} dissolveVisible={itemsDisplayed === "t-rex"} onFadeOut={onFadeOut} />}
+              {visibleItem === "woman-demon" && <Angel position={[0, 1, 0.3]} rotation={[0, 0, 0]} scale={0.0005} dissolveVisible={itemsDisplayed === "woman-demon"} onFadeOut={onFadeOut} />}
 
               {visibleItem === "rei" && <Ayanami position={[0, 0, 0.4]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "rei"} onFadeOut={onFadeOut} />}
 
-              {/* {visibleItem === "rei-4k" && <Ayanami4K position={[0, 0, 0.4]} rotation={[0, -0.6, 0]} scale={[reiBaseScale, reiBaseScale, reiBaseScale]} dissolveVisible={itemsDisplayed === "rei-4k"} onFadeOut={onFadeOut} />} */}
+              {visibleItem === "head" && <Head position={[0, 0, -0.8]} rotation={[0, 0, 0]} scale={0.2} dissolveVisible={itemsDisplayed === "head"} onFadeOut={onFadeOut} />}
 
               {/* {visibleItem === "witch" && <Witch position={[0, 1.3, 0]} rotation={[0.3, 0, 0]} scale={0.08} dissolveVisible={itemsDisplayed === "witch"} onFadeOut={onFadeOut} />} */}
 
