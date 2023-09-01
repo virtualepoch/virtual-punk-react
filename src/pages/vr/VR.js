@@ -22,6 +22,7 @@ import { Elf } from "./OdinElfFemale2";
 import { CreditsModal } from "../../components/CreditsModal";
 import { Angel } from "./Angel";
 import { Head } from "./Head";
+import { Coridor1K } from "./Coridor1K";
 
 const BackDrop = () => {
   const map = useLoader(THREE.TextureLoader, bg);
@@ -33,7 +34,7 @@ const BackDrop = () => {
 
   return (
     <mesh position={[0, 5, 0]} rotation={[0, 1.6, 0]} ref={ref}>
-      <sphereGeometry args={[27, 20, 4]} />
+      <sphereGeometry args={[57, 4, 4]} />
       <meshStandardMaterial map={map} side={THREE.BackSide} />
     </mesh>
   );
@@ -103,6 +104,7 @@ export function VR() {
             </mesh>
             <BackDrop />
             <Ground />
+            
 
             <mesh position-z={-1}>
               {/* {visibleItem === "zilla" && <Godzilla position={[0, 0, -11]} rotation={[0, -0.6, 0]} scale={0.02} dissolveVisible={itemsDisplayed === "zilla"} onFadeOut={onFadeOut} />} */}

@@ -7,29 +7,39 @@ Source: https://sketchfab.com/3d-models/head-8247d788d8e6403f8fc71d2709ff5c7b
 Title: Head
 */
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { DissolveMaterial } from "../dissolve/DissolveMaterial";
+import { Coridor1K } from "./Coridor1K";
 
 export function Head(props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/head.glb");
-  const { actions } = useAnimations(animations, group);
+  const { actions, mixer } = useAnimations(animations, group);
+
+  useEffect(() => {
+    actions["Idle"].play();
+    mixer.timeScale = 2;
+  }, [actions, mixer]);
   return (
-    <group ref={group} {...props} dispose={null}>
-      <group name="Sketchfab_Scene">
-        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
-          <group name="420e4c6a72bb49dea2c0b4ad7488ebc3fbx" rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
-            <group name="Object_2">
-              <group name="RootNode">
-                <group name="Head" scale={55.08} />
-                <group name="Armature" position={[0, 414.86, -54.81]} rotation={[-1.25, 0, 0]} scale={100}>
-                  <group name="Object_6">
-                    <primitive object={nodes._rootJoint} />
-                    <group name="Object_8" scale={55.08} />
-                    <skinnedMesh name="Object_9" geometry={nodes.Object_9.geometry} skeleton={nodes.Object_9.skeleton}>
-                      <DissolveMaterial baseMaterial={materials.Head} visible={props.dissolveVisible} onFadeOut={props.onFadeOut} color="#0082b2" />
-                    </skinnedMesh>
+    <>
+      <Coridor1K position={[0, 3.06, 8]} scale={0.7} />
+
+      <group ref={group} {...props} dispose={null}>
+        <group name="Sketchfab_Scene">
+          <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
+            <group name="420e4c6a72bb49dea2c0b4ad7488ebc3fbx" rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+              <group name="Object_2">
+                <group name="RootNode">
+                  <group name="Head" scale={55.08} />
+                  <group name="Armature" position={[0, 414.86, -54.81]} rotation={[-1.25, 0, 0]} scale={100}>
+                    <group name="Object_6">
+                      <primitive object={nodes._rootJoint} />
+                      <group name="Object_8" scale={55.08} />
+                      <skinnedMesh name="Object_9" geometry={nodes.Object_9.geometry} skeleton={nodes.Object_9.skeleton}>
+                        <DissolveMaterial baseMaterial={materials.Head} visible={props.dissolveVisible} onFadeOut={props.onFadeOut} color="#0082b2" />
+                      </skinnedMesh>
+                    </group>
                   </group>
                 </group>
               </group>
@@ -37,7 +47,7 @@ export function Head(props) {
           </group>
         </group>
       </group>
-    </group>
+    </>
   );
 }
 
