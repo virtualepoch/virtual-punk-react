@@ -10,6 +10,7 @@
     "@react-three/rapier": "^1.1.1",
     "@react-three/xr": "^5.6.1",
     "@types/three": "^0.154.0",
+    "@types/webfontloader": "^1.6.36",
     "eslint-config-react-app": "^7.0.1",
     "fs": "^0.0.1-security",
     "gl-noise": "^1.6.1",
@@ -30,6 +31,7 @@
     "three": "^0.154.0",
     "three-custom-shader-material": "^5.4.0",
     "valtio": "^1.11.0",
+    "webfontloader": "^1.6.28",
     "webpack": "^5.88.2",
     "zustand": "^4.3.9"
   },

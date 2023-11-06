@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { Link, useMatch } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
+import WebFont from "webfontloader";
 import "./header.css";
 
 export function Header({ navMenuOpen, setNavMenuOpen }) {
@@ -58,6 +60,16 @@ export function Header({ navMenuOpen, setNavMenuOpen }) {
   //   );
   // }); // end window.onload
 
+  var WebFont = require("webfontloader");
+
+  useEffect(() => {
+    WebFont.load({
+      custom: {
+        families: ["Ailerons"],
+      },
+    });
+  }, [WebFont]);
+
   const isActive = useMatch({ path: "/animoto", end: true });
 
   function SiteLogo() {
@@ -112,7 +124,9 @@ export function Header({ navMenuOpen, setNavMenuOpen }) {
   }
 
   return (
-    <header className={isActive ? "main-site-header game-open" : "main-site-header"}>
+    <header
+      className={isActive ? "main-site-header game-open" : "main-site-header"}
+    >
       <SiteLogo />
 
       <div className="header-trapezoid"></div>
@@ -120,11 +134,21 @@ export function Header({ navMenuOpen, setNavMenuOpen }) {
       <SiteTitle />
 
       <NavMenuButton>
-        <CSSTransition in={navMenuOpen === false} unmountOnExit timeout={500} classNames="open-bars">
+        <CSSTransition
+          in={navMenuOpen === false}
+          unmountOnExit
+          timeout={500}
+          classNames="open-bars"
+        >
           <div className="open-bars"></div>
         </CSSTransition>
 
-        <CSSTransition in={navMenuOpen} unmountOnExit timeout={500} classNames="close-bars">
+        <CSSTransition
+          in={navMenuOpen}
+          unmountOnExit
+          timeout={500}
+          classNames="close-bars"
+        >
           <div className="close-bars"></div>
         </CSSTransition>
       </NavMenuButton>
