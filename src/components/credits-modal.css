@@ -130,7 +130,9 @@
 
 .credits-header {
   margin: 20px;
-  color: cyan;
+  color: yellow;
+  font: 40px cyberpunk;
+  text-shadow: -2px -2px 5px red;
 }
 
 .credits-info {

@@ -3,9 +3,15 @@
   font-family: Anurati;
   src: url(./assets/fonts/Anurati-Regular.otf);
 }
+
 @font-face {
   font-family: Ailerons;
   src: url(./assets/fonts/Ailerons-TrialVersion.otf);
+}
+
+@font-face {
+  font-family: cyberpunk;
+  src: url(../public/fonts/Cyberpunk-Regular.ttf);
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
