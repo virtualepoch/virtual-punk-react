@@ -3,6 +3,7 @@ import * as THREE from "three";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import bg from "../../assets/images/balloons_cgi.jpg";
 import { StrawCake } from "./StrawCake";
+import "./bday.css"
 
 export function SandyBday() {
   const BackDrop = () => {
@@ -79,6 +80,17 @@ export function SandyBday() {
   return (
     <>
       <h1 className="page-title happy-bday">Happy Birthday Sandy!</h1>
+      <header className="bday-section">
+        <p className="bday-text">Happy Birthday Sandy!</p>
+        <p className="bday-text">
+          Hope your day is a <span className="word-pop">Blast!</span>
+        </p>
+        <p className="bday-text">
+          And next year brings you<br></br>
+          <span className="three-d-text">Joy</span>
+        </p>
+        <p className="bday-text">Love,<br/>Your brother,<br/>Craig</p>
+      </header>
       <Canvas className="canvas torus" camera={{ position: [0, 0, 3] }}>
         <ambientLight intensity={1} />
         <pointLight intensity={1} />
