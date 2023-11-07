@@ -70,7 +70,15 @@ export function Header({ navMenuOpen, setNavMenuOpen }) {
     });
   }, [WebFont]);
 
-  const isActive = useMatch({ path: "/animoto", end: true });
+  const isActive = useMatch({
+    path: "/happy-bday-sandy",
+    end: true,
+  });
+  
+  const isActive2 = useMatch({
+    path: "/animoto",
+    end: true,
+  });
 
   function SiteLogo() {
     return (
@@ -125,7 +133,11 @@ export function Header({ navMenuOpen, setNavMenuOpen }) {
 
   return (
     <header
-      className={isActive ? "main-site-header game-open" : "main-site-header"}
+      className={
+        isActive || isActive2
+          ? "main-site-header game-open"
+          : "main-site-header"
+      }
     >
       <SiteLogo />
 

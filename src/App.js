@@ -22,6 +22,7 @@ import { LetterGame } from "./pages/letter-game/LetterGame";
 import { Flow } from "./pages/Flow";
 
 import "./App.css";
+import { SandyBday } from "./pages/bday-cards/SandyBday";
 
 function App() {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
@@ -48,6 +49,7 @@ function App() {
         <Route path="/animoto" element={<AniMoto />} />
         <Route path="/letter-game" element={<LetterGame />} />
         <Route path="/flow" element={<Flow />} />
+        <Route path="/happy-bday-sandy" element={<SandyBday />} />
       </Routes>
     </div>
   );
