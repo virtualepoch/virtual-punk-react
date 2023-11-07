@@ -11,13 +11,13 @@
   justify-content: center;
   flex-wrap: wrap;
   color: var(--bday-text-color);
-  font: 500 50px Everleigh;
+  font: 500 40px Everleigh;
   text-align: center;
 }
 
 @media (max-width: 700px) {
   .bday-section {
-    font-size: 30px;
+    font-size: 35px;
   }
 }
 
@@ -38,10 +38,10 @@
   width: fit-content;
   display: flex;
   margin: auto;
-  color: magenta;
+  color: white;
   filter: drop-shadow(0 0 5px aqua) drop-shadow(-5px -5px 1px aqua);
   cursor: pointer;
-  border: solid magenta;
+  border: solid hotpink;
   border-radius: 100%;
 }
 

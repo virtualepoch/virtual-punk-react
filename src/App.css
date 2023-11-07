@@ -19,6 +19,9 @@
 .canvas.moto {
   background: linear-gradient(white, gray, white);
 }
+.canvas.bday {
+  background: linear-gradient(pink, white, pink);
+}
 
 .shoe-color-picker {
   position: fixed;
