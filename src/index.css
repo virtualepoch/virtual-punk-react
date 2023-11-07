@@ -8,6 +8,11 @@
   src: url(../public/fonts/Cyberpunk-Regular.ttf);
 }
 
+@font-face {
+  font-family: Everleigh;
+  src: url(../public/fonts/Everleigh.otf);
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
 
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap");
