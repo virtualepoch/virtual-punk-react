@@ -21,11 +21,25 @@
   }
 }
 
+.bday-title {
+  width: 100%;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  text-align: center;
+  z-index: 4;
+  padding: 10px;
+  font: 100 35px Everleigh;
+  color: aqua;
+  filter: drop-shadow(0 0 5px crimson);
+  pointer-events: none;
+}
+
 .bday-text {
   max-width: 400px;
   position: absolute;
   padding: 20px;
-  filter: drop-shadow(-3px 0 1px red) drop-shadow(-3px 0 4px aqua);
+  filter: drop-shadow(-3px 0 1px crimson) drop-shadow(-3px 0 4px aqua);
   opacity: 0;
 }
 

@@ -79,7 +79,7 @@ export function SandyBday() {
 
   return (
     <>
-      <h1 className="page-title happy-bday">Happy Birthday!</h1>
+      <h1 className="bday-title happy-bday">Happy Birthday!</h1>
       <header className="bday-section">
         <p className="bday-text">Happy Birthday Sandy!</p>
         <p className="bday-text">
