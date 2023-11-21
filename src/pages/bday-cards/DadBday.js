@@ -1,11 +1,21 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { PositionalAudio } from "@react-three/drei";
 import bg from "../../assets/images/balloons_cgi.jpg";
 import "./bday.css";
 import { Groot } from "./Groot";
 
 export function DadBday() {
+  const playAudio = () => {
+    const audio = new Audio("/audios/stayin.mp3");
+    audio.volume = 0.5;
+    audio.play();
+    audio.addEventListener("ended", () => {
+      audio.currentTime = 0;
+      audio.play();
+    });
+  };
   const BackDrop = () => {
     const map = useLoader(THREE.TextureLoader, bg);
     const ref = useRef();
@@ -97,11 +107,14 @@ export function DadBday() {
           Craig
         </p>
       </header>
+      <button className="play-audio" onClick={() => playAudio()}>
+        Let's Dance
+      </button>
       <Canvas className="canvas bday-dad" camera={{ position: [0, 0, 3] }}>
         <ambientLight intensity={1} />
         <pointLight intensity={1} />
         <BackDrop />
-        <TorusGroup />
+        {/* <TorusGroup /> */}
         <CakeSpin />
       </Canvas>
     </>

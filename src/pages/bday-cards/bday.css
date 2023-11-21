@@ -16,6 +16,21 @@
   font-family: Ailerons;
 }
 
+.play-audio {
+  background: cyan;
+  width: 200px;
+  height: 60px;
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  z-index: 11111;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px 1px black;
+}
+
 .bday-section {
   width: 100%;
   height: calc(100vh - 140px);
