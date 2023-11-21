@@ -70,12 +70,17 @@ export function Header({ navMenuOpen, setNavMenuOpen }) {
     });
   }, [WebFont]);
 
-  const isActive = useMatch({
+  const isSandyBdayPageActive = useMatch({
     path: "/happy-bday-sandy",
     end: true,
   });
-  
-  const isActive2 = useMatch({
+
+  const isDadBdayPageActive = useMatch({
+    path: "/happy-bday-dad",
+    end: true,
+  });
+
+  const isAnimotoPageActive = useMatch({
     path: "/animoto",
     end: true,
   });
@@ -134,7 +139,7 @@ export function Header({ navMenuOpen, setNavMenuOpen }) {
   return (
     <header
       className={
-        isActive || isActive2
+        isSandyBdayPageActive || isDadBdayPageActive || isAnimotoPageActive
           ? "main-site-header game-open"
           : "main-site-header"
       }

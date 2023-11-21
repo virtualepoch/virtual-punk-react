@@ -1,7 +1,12 @@
 import * as THREE from "three";
 import { useRef } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { MeshReflectorMaterial, OrbitControls, PerspectiveCamera, Stars } from "@react-three/drei";
+import {
+  MeshReflectorMaterial,
+  OrbitControls,
+  PerspectiveCamera,
+  Stars,
+} from "@react-three/drei";
 import earth500 from "../assets/images/earth_clouds_1k.jpg";
 import earth8k from "../assets/images/earth_clouds_4k.jpg";
 import marbleLarge from "../assets/images/marble_large.jpg";
@@ -11,12 +16,19 @@ import { PillLinks } from "../components/PillLinks";
 export function Testing() {
   function Floor() {
     return (
-      <>
-        <mesh position={[0, -1.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-          <planeGeometry args={[50, 50]} />
-          <MeshReflectorMaterial blur={[400, 400]} resolution={1024} mixBlur={0.9} mixStrength={15} depthScale={1} minDepthThreshold={0.85} color="#dbecfb" metalness={0.6} />
-        </mesh>
-      </>
+      <mesh position={[0, -1.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+        <planeGeometry args={[50, 50]} />
+        <MeshReflectorMaterial
+          blur={[400, 400]}
+          resolution={1024}
+          mixBlur={0.9}
+          mixStrength={15}
+          depthScale={1}
+          minDepthThreshold={0.85}
+          color="#dbecfb"
+          metalness={0.6}
+        />
+      </mesh>
     );
   }
 
@@ -72,10 +84,34 @@ export function Testing() {
     let halfX = sizeX * 0.5 - radius;
     let halfY = sizeY * 0.5 - radius;
     let baseAngle = Math.PI * 0.5;
-    shape.absarc(halfX, halfY, radius, baseAngle * 0, baseAngle * 0 + baseAngle);
-    shape.absarc(-halfX, halfY, radius, baseAngle * 1, baseAngle * 1 + baseAngle);
-    shape.absarc(-halfX, -halfY, radius, baseAngle * 2, baseAngle * 2 + baseAngle);
-    shape.absarc(halfX, -halfY, radius, baseAngle * 3, baseAngle * 3 + baseAngle);
+    shape.absarc(
+      halfX,
+      halfY,
+      radius,
+      baseAngle * 0,
+      baseAngle * 0 + baseAngle
+    );
+    shape.absarc(
+      -halfX,
+      halfY,
+      radius,
+      baseAngle * 1,
+      baseAngle * 1 + baseAngle
+    );
+    shape.absarc(
+      -halfX,
+      -halfY,
+      radius,
+      baseAngle * 2,
+      baseAngle * 2 + baseAngle
+    );
+    shape.absarc(
+      halfX,
+      -halfY,
+      radius,
+      baseAngle * 3,
+      baseAngle * 3 + baseAngle
+    );
 
     function textureChanger() {
       if (window.innerWidth < 700) {
@@ -101,15 +137,32 @@ export function Testing() {
       <Canvas className="canvas" shadows>
         <OrbitControls maxPolarAngle={Math.PI / 2} />
         <ambientLight intensity={1} />
-        <directionalLight position={[10, 15, 10]} angle={0.3} intensity={0.8} castShadow color="red" />
-        <PerspectiveCamera position={[0, 0, 20]} rotation={[0, 0, 0]} fov={60} makeDefault far={1000} />
+        <directionalLight
+          position={[10, 15, 10]}
+          angle={0.3}
+          intensity={0.8}
+          castShadow
+          color="red"
+        />
+        <PerspectiveCamera
+          position={[0, 0, 20]}
+          rotation={[0, 0, 0]}
+          fov={60}
+          makeDefault
+          far={1000}
+        />
         <Floor />
         <Earth />
         <EarthPedestal />
         <PictureFrame />
         <Stars />
       </Canvas>
-      <PillLinks backTo="/" backName="home" forwardTo="/torus" forwardName="torus" />
+      <PillLinks
+        backTo="/"
+        backName="home"
+        forwardTo="/torus"
+        forwardName="torus"
+      />
     </>
   );
 }

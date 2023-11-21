@@ -1,3 +1,21 @@
+.bday-title {
+  width: 100%;
+  position: absolute;
+  top: 80px;
+  left: 0;
+  text-align: center;
+  z-index: 4;
+  padding: 10px;
+  font: 100 35px Everleigh;
+  color: aqua;
+  filter: drop-shadow(0 0 5px crimson);
+  pointer-events: none;
+}
+
+.bday-title.dad {
+  font-family: Ailerons;
+}
+
 .bday-section {
   width: 100%;
   height: calc(100vh - 140px);
@@ -15,24 +33,14 @@
   text-align: center;
 }
 
+.bday-section.dad {
+  font-family: Ailerons;
+}
+
 @media (max-width: 700px) {
   .bday-section {
     font-size: 35px;
   }
-}
-
-.bday-title {
-  width: 100%;
-  position: absolute;
-  top: 80px;
-  left: 0;
-  text-align: center;
-  z-index: 4;
-  padding: 10px;
-  font: 100 35px Everleigh;
-  color: aqua;
-  filter: drop-shadow(0 0 5px crimson);
-  pointer-events: none;
 }
 
 .bday-text {
@@ -61,7 +69,7 @@
 
 :root {
   --bday-section-anim-duration: 20s;
-  --bday-text-color: magenta;
+  --bday-text-color: cyan;
 }
 
 .bday-text:nth-child(1) {

@@ -23,6 +23,7 @@ import { Flow } from "./pages/Flow";
 
 import "./App.css";
 import { SandyBday } from "./pages/bday-cards/SandyBday";
+import { DadBday } from "./pages/bday-cards/DadBday";
 
 function App() {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
@@ -50,6 +51,7 @@ function App() {
         <Route path="/letter-game" element={<LetterGame />} />
         <Route path="/flow" element={<Flow />} />
         <Route path="/happy-bday-sandy" element={<SandyBday />} />
+        <Route path="/happy-bday-dad" element={<DadBday />} />
       </Routes>
     </div>
   );

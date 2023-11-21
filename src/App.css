@@ -9,7 +9,10 @@
 }
 
 .canvas.torus {
-  background: linear-gradient(transparent 40%, aqua, transparent 60%), linear-gradient(to right, transparent 40%, aqua, transparent 60%), linear-gradient(transparent, rgb(0, 155, 155), transparent), linear-gradient(to right, transparent, rgb(0, 155, 155), transparent);
+  background: linear-gradient(transparent 40%, aqua, transparent 60%),
+    linear-gradient(to right, transparent 40%, aqua, transparent 60%),
+    linear-gradient(transparent, rgb(0, 155, 155), transparent),
+    linear-gradient(to right, transparent, rgb(0, 155, 155), transparent);
 }
 
 .canvas.space {
@@ -19,8 +22,13 @@
 .canvas.moto {
   background: linear-gradient(white, gray, white);
 }
+
 .canvas.bday {
   background: linear-gradient(pink, white, pink);
+}
+
+.canvas.bday-dad {
+  background: linear-gradient(aqua, white, aqua);
 }
 
 .shoe-color-picker {
@@ -56,11 +64,6 @@
 
 .page-title.animoto {
   top: 20px;
-}
-
-.page-title.happy-bday{
-  font-family: Everleigh;
-  font-size: 55px;
 }
 
 .canvas-section {
@@ -120,12 +123,20 @@
 }
 
 .pill.red {
-  background: radial-gradient(ellipse at 60% 30%, rgba(255, 255, 255, 0.7) 5%, rgba(255, 0, 0, 0.5) 40%);
+  background: radial-gradient(
+    ellipse at 60% 30%,
+    rgba(255, 255, 255, 0.7) 5%,
+    rgba(255, 0, 0, 0.5) 40%
+  );
   box-shadow: inset 0 0 11px 1px red, 0 2px 10px 1px aqua;
 }
 
 .pill.blue {
-  background: radial-gradient(ellipse at 60% 30%, rgba(255, 255, 255, 0.7) 5%, rgba(0, 0, 255, 0.5) 40%);
+  background: radial-gradient(
+    ellipse at 60% 30%,
+    rgba(255, 255, 255, 0.7) 5%,
+    rgba(0, 0, 255, 0.5) 40%
+  );
   box-shadow: inset 0 0 11px 1px blue, 0 2px 10px 1px aqua;
 }
 
@@ -133,8 +144,13 @@
   width: 80px;
   min-width: 80px;
   height: 50px;
-  background: radial-gradient(ellipse at 60% 30%, rgba(255, 255, 255, 0.7) 5%, rgba(0, 0, 255, 0.2) 40%);
-  box-shadow: inset 0 0 11px 1px rgba(0, 0, 255, 0.5), 0 2px 10px 1px rgba(0, 255, 255, 0.5);
+  background: radial-gradient(
+    ellipse at 60% 30%,
+    rgba(255, 255, 255, 0.7) 5%,
+    rgba(0, 0, 255, 0.2) 40%
+  );
+  box-shadow: inset 0 0 11px 1px rgba(0, 0, 255, 0.5),
+    0 2px 10px 1px rgba(0, 255, 255, 0.5);
   position: fixed;
   top: 20px;
   right: 30px;
