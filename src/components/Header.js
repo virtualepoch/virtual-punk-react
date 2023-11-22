@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { Link, useMatch } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
-import WebFont from "webfontloader";
+// import WebFont from "webfontloader";
 import "./header.css";
 
 export function Header({ navMenuOpen, setNavMenuOpen }) {
@@ -60,15 +60,15 @@ export function Header({ navMenuOpen, setNavMenuOpen }) {
   //   );
   // }); // end window.onload
 
-  var WebFont = require("webfontloader");
+  // var WebFont = require("webfontloader");
 
-  useEffect(() => {
-    WebFont.load({
-      custom: {
-        families: ["Ailerons"],
-      },
-    });
-  }, [WebFont]);
+  // useEffect(() => {
+  //   WebFont.load({
+  //     custom: {
+  //       families: ["Ailerons"],
+  //     },
+  //   });
+  // }, [WebFont]);
 
   const isSandyBdayPageActive = useMatch({
     path: "/happy-bday-sandy",

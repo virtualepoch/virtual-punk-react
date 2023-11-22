@@ -10,15 +10,15 @@ Title: Groot dancing
 import React, { useEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 
-export function Groot(props) {
+export function Groot(playAudio, props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/groot_dancing.glb");
   const { actions, mixer } = useAnimations(animations, group);
 
   useEffect(() => {
-    actions["mixamo.com"].play();
-    mixer.timeScale = 1;
-  }, [actions, mixer]);
+   if(playAudio) {actions["mixamo.com"].play();
+    mixer.timeScale = 1;}
+  }, [actions, mixer, playAudio]);
 
   return (
     <group ref={group} {...props} dispose={null}>

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { PositionalAudio } from "@react-three/drei";
@@ -7,7 +7,9 @@ import "./bday.css";
 import { Groot } from "./Groot";
 
 export function DadBday() {
-  const playAudio = () => {
+  const [playAudio, setPlayAudio] = useState(false);
+
+  if (playAudio) {
     const audio = new Audio("/audios/stayin.mp3");
     audio.volume = 0.5;
     audio.play();
@@ -15,7 +17,8 @@ export function DadBday() {
       audio.currentTime = 0;
       audio.play();
     });
-  };
+  }
+
   const BackDrop = () => {
     const map = useLoader(THREE.TextureLoader, bg);
     const ref = useRef();
@@ -40,12 +43,7 @@ export function DadBday() {
     const meshRef4 = useRef(null);
 
     useFrame(() => {
-      if (
-        !meshRef1.current ||
-        !meshRef2.current ||
-        !meshRef3.current ||
-        !meshRef4.current
-      ) {
+      if (!meshRef1.current || !meshRef2.current || !meshRef3.current || !meshRef4.current) {
         return;
       }
       meshRef1.current.rotation.z += torusRotSpeed;
@@ -82,7 +80,7 @@ export function DadBday() {
     });
     return (
       <mesh ref={cake} position={[0, -1.5, 0]}>
-        <Groot />
+        <Groot playAudio={playAudio} />
       </mesh>
     );
   }
@@ -92,11 +90,9 @@ export function DadBday() {
       <h1 className="bday-title dad">Happy Birthday!</h1>
       <header className="bday-section dad">
         <p className="bday-text dad">Happy Birthday Dad!</p>
+        <p className="bday-text dad">I'm so pround of all you did for Mom</p>
         <p className="bday-text dad">
-          I think you should <span className="word-pop">Dance!</span>
-        </p>
-        <p className="bday-text dad">
-          Hope this card makes you<br></br>
+          Hope you have a great day and this card makes you<br></br>
           <span className="three-d-text">Laugh</span>
         </p>
         <p className="bday-text dad">
@@ -107,8 +103,8 @@ export function DadBday() {
           Craig
         </p>
       </header>
-      <button className="play-audio" onClick={() => playAudio()}>
-        Let's Dance
+      <button className="play-audio" onClick={() => setPlayAudio(!playAudio)}>
+        Let's Go
       </button>
       <Canvas className="canvas bday-dad" camera={{ position: [0, 0, 3] }}>
         <ambientLight intensity={1} />
