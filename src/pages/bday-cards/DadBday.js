@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { PositionalAudio } from "@react-three/drei";
@@ -7,15 +7,25 @@ import "./bday.css";
 import { Groot } from "./Groot";
 
 export function DadBday() {
-  const playAudio = () => {
+  const [playAudio, setPlayAudio] = useState(false);
+
+  function playPause() {
     const audio = new Audio("/audios/stayin.mp3");
-    audio.volume = 0.5;
-    audio.play();
-    audio.addEventListener("ended", () => {
-      audio.currentTime = 0;
+    if ((!audio.currentTime > 0 || audio.paused) && !playAudio) {
+      audio.volume = 0.5;
       audio.play();
-    });
-  };
+      audio.addEventListener("ended", () => {
+        audio.currentTime = 0;
+        audio.play();
+      });
+      setPlayAudio(true);
+    }
+    if ((audio.currentTime > 0 || !audio.paused) && playAudio) {
+      audio.pause();
+      setPlayAudio(false);
+    }
+  }
+
   const BackDrop = () => {
     const map = useLoader(THREE.TextureLoader, bg);
     const ref = useRef();
@@ -107,7 +117,7 @@ export function DadBday() {
           Craig
         </p>
       </header>
-      <button className="play-audio" onClick={() => playAudio()}>
+      <button className="play-audio" onClick={() => playPause()}>
         Let's Dance
       </button>
       <Canvas className="canvas bday-dad" camera={{ position: [0, 0, 3] }}>
