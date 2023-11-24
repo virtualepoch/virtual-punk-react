@@ -8,12 +8,26 @@ Title: Groot dancing
 */
 
 import React, { useEffect, useRef } from "react";
+// import * as THREE from "three";
 import { useGLTF, useAnimations } from "@react-three/drei";
+// import { useLoader } from "@react-three/fiber";
+// import dadHead from "./images/dad.png";
 
-export function Groot(props) {
+export function Groot(animate, props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/groot_dancing.glb");
   const { actions, mixer } = useAnimations(animations, group);
+
+  // function DadHead() {
+  //   const texture = useLoader(THREE.TextureLoader, dadHead);
+
+  //   return (
+  //     <mesh position={[0, 45.5, 0]}>
+  //       <sphereGeometry args={[55.5, 10, 10]} />
+  //       <meshPhongMaterial map={texture} />
+  //     </mesh>
+  //   );
+  // }
 
   useEffect(() => {
     actions["mixamo.com"].play();
@@ -23,23 +37,17 @@ export function Groot(props) {
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
-        <group
-          name="Sketchfab_model"
-          rotation={[-Math.PI / 2, 0, 0]}
-          scale={0.004}
-        >
+        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]} scale={0.004}>
           <group name="Wave_Hip_Hop_Dancefbx" rotation={[Math.PI / 2, 0, 0]}>
             <group name="Object_2">
               <group name="RootNode">
                 <group name="Object_4">
                   <primitive object={nodes._rootJoint} />
                   <group name="RetopoGroup1" />
-                  <skinnedMesh
-                    name="Object_6"
-                    geometry={nodes.Object_6.geometry}
-                    material={materials["Scene_-_Root"]}
-                    skeleton={nodes.Object_6.skeleton}
-                  />
+                  {/* <group> */}
+                  {/* <DadHead /> */}
+                  <skinnedMesh name="Object_6" geometry={nodes.Object_6.geometry} material={materials["Scene_-_Root"]} skeleton={nodes.Object_6.skeleton} />
+                  {/* </group> */}
                 </group>
               </group>
             </group>

@@ -8,6 +8,10 @@ import { Groot } from "./Groot";
 
 export function DadBday() {
   const [playAudio, setPlayAudio] = useState(false);
+  const animate = useRef(true);
+  const setAnimate = () => {
+    animate.current = !animate.current
+  }
 
   function playPause() {
     const audio = new Audio("/audios/stayin.mp3");
@@ -50,12 +54,7 @@ export function DadBday() {
     const meshRef4 = useRef(null);
 
     useFrame(() => {
-      if (
-        !meshRef1.current ||
-        !meshRef2.current ||
-        !meshRef3.current ||
-        !meshRef4.current
-      ) {
+      if (!meshRef1.current || !meshRef2.current || !meshRef3.current || !meshRef4.current) {
         return;
       }
       meshRef1.current.rotation.z += torusRotSpeed;
@@ -92,7 +91,7 @@ export function DadBday() {
     });
     return (
       <mesh ref={cake} position={[0, -1.5, 0]}>
-        <Groot />
+        <Groot animate={animate} />
       </mesh>
     );
   }
