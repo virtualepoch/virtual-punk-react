@@ -16,7 +16,7 @@ import { Portal } from "./pages/portal/Portal";
 import { Dragon } from "./pages/dragon/Dragon";
 import { Dissolve } from "./pages/dissolve/Dissolve";
 import { VR } from "./pages/vr/VR";
-import { Testing } from "./pages/Testing";
+import { Testing } from "./a1-testing/Testing";
 import { AniMoto } from "./pages/moto-game/AniMoto";
 import { LetterGame } from "./pages/letter-game/LetterGame";
 import { Flow } from "./pages/Flow";

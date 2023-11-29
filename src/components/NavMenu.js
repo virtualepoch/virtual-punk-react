@@ -1,6 +1,7 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import "./nav-menu.css";
+import { useState } from "react";
 
 export function NavMenu({ navMenuOpen, setNavMenuOpen }) {
   function CustomLink({ to, children, ...props }) {
@@ -16,6 +17,9 @@ export function NavMenu({ navMenuOpen, setNavMenuOpen }) {
           onClick={() => {
             setNavMenuOpen(false);
           }}
+          style={{
+            boxShadow: test ? "none" : "",
+          }}
         >
           {children}
         </Link>
@@ -23,9 +27,23 @@ export function NavMenu({ navMenuOpen, setNavMenuOpen }) {
     );
   }
 
+  const [test, setTest] = useState(false);
   return (
     <>
-      <CSSTransition in={navMenuOpen} unmountOnExit timeout={700} classNames="nav-menu">
+      <button
+        className="test-btn"
+        onClick={() => {
+          setTest(!test);
+        }}
+      >
+        TESTING
+      </button>
+      <CSSTransition
+        in={navMenuOpen}
+        unmountOnExit
+        timeout={700}
+        classNames="nav-menu"
+      >
         <nav className="nav-menu">
           <ul>
             <CustomLink to={"/"}>Home</CustomLink>
@@ -42,11 +60,31 @@ export function NavMenu({ navMenuOpen, setNavMenuOpen }) {
           </ul>
         </nav>
       </CSSTransition>
-      <CSSTransition in={navMenuOpen} unmountOnExit timeout={500} classNames={"nav-menu-bg-left"}>
-        <div className="nav-menu-bg-left"></div>
+      <CSSTransition
+        in={navMenuOpen}
+        unmountOnExit
+        timeout={500}
+        classNames={"nav-menu-bg-left"}
+      >
+        <div
+          className="nav-menu-bg-left"
+          style={{
+            boxShadow: test ? "none" : "",
+          }}
+        ></div>
       </CSSTransition>
-      <CSSTransition in={navMenuOpen} unmountOnExit timeout={500} classNames={"nav-menu-bg-right"}>
-        <div className="nav-menu-bg-right"></div>
+      <CSSTransition
+        in={navMenuOpen}
+        unmountOnExit
+        timeout={500}
+        classNames={"nav-menu-bg-right"}
+      >
+        <div
+          className="nav-menu-bg-right"
+          style={{
+            boxShadow: test ? "none" : "",
+          }}
+        ></div>
       </CSSTransition>
     </>
   );
