@@ -25,11 +25,14 @@ import "./App.css";
 import { SandyBday } from "./pages/bday-cards/SandyBday";
 import { DadBday } from "./pages/bday-cards/DadBday";
 
+import { FpsView } from "react-fps";
+
 function App() {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
 
   return (
     <div className="App">
+      <FpsView left={"auto"} right={0} top={"auto"} bottom={0} />
       <Header navMenuOpen={navMenuOpen} setNavMenuOpen={setNavMenuOpen} />
       <NavMenu navMenuOpen={navMenuOpen} setNavMenuOpen={setNavMenuOpen} />
       <Routes>
