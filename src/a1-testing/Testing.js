@@ -141,41 +141,39 @@ export function Testing() {
     );
   };
 
-  const TestHead = () => {
-    const testRef = useRef(null);
-    const texture = useTexture("/images/dad.png");
+  // const TestHead = () => {
+  //   const testRef = useRef(null);
+  //   const texture = useTexture("/images/dad.png");
 
-    // useFrame(() => {
-    //   testRef.current.rotation.y += 0.002;
-    // });
+  //   // useFrame(() => {
+  //   //   testRef.current.rotation.y += 0.002;
+  //   // });
 
-    return (
-      <>
-        <mesh ref={testRef} position={[0, 0, 0]}>
-          <sphereGeometry args={[3, 20, 20]} />
-          <meshStandardMaterial castShadow />
-          <Decal
-            debug // Makes "bounding box" of the decal visible
-            position={[0, 0, 2]}
-            rotation={[0, 0, 0]} // (can be vector or degree in radians)
-            scale={[6, 7, 4]}
-            polygonOffset
-            polygonOffsetFactor={-1} // The mesh should take precedence over the original
-          >
-            <meshStandardMaterial map={texture} />
-          </Decal>
-        </mesh>
-        <Groot2 position={[-7, -2, 0]} />
-      </>
-    );
-  };
+  //   return (
+  //     <>
+  //       <mesh ref={testRef} position={[0, 0, 0]}>
+  //         <sphereGeometry args={[3, 20, 20]} />
+  //         <meshStandardMaterial castShadow />
+  //         <Decal
+  //           debug // Makes "bounding box" of the decal visible
+  //           position={[0, 0, 2]}
+  //           rotation={[0, 0, 0]} // (can be vector or degree in radians)
+  //           scale={[6, 7, 4]}
+  //           polygonOffset
+  //           polygonOffsetFactor={-1} // The mesh should take precedence over the original
+  //         >
+  //           <meshStandardMaterial map={texture} />
+  //         </Decal>
+  //       </mesh>
+  //       <Groot2 position={[-7, -2, 0]} />
+  //     </>
+  //   );
+  // };
 
   const light = useRef();
   if (light.current) {
     light.current.useHelper(light, DirectionalLightHelper, 1, "red");
   }
-
-  console.log(light);
 
   return (
     <>
@@ -217,7 +215,7 @@ export function Testing() {
           )}
         </CubeCamera>
         <Floor shadows />
-        <TestHead castShadow />
+        {/* <TestHead castShadow /> */}
         {/* <Earth /> */}
         {/*  <EarthPedestal /> */}
         {/* <PictureFrame /> */}

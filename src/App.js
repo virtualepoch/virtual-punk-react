@@ -20,21 +20,28 @@ import { Testing } from "./a1-testing/Testing";
 import { AniMoto } from "./pages/moto-game/AniMoto";
 import { LetterGame } from "./pages/letter-game/LetterGame";
 import { Flow } from "./pages/Flow";
-
 import "./App.css";
+
 import { SandyBday } from "./pages/bday-cards/SandyBday";
 import { DadBday } from "./pages/bday-cards/DadBday";
 
-import { FpsView } from "react-fps";
+import { FpsMeter } from "./components/FpsMeter";
 
 function App() {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
+  const [fpsOpen, setFpsOpen] = useState(false);
 
   return (
     <div className="App">
-      <FpsView left={"auto"} right={0} top={"auto"} bottom={0} />
       <Header navMenuOpen={navMenuOpen} setNavMenuOpen={setNavMenuOpen} />
-      <NavMenu navMenuOpen={navMenuOpen} setNavMenuOpen={setNavMenuOpen} />
+
+      <NavMenu
+        navMenuOpen={navMenuOpen}
+        setNavMenuOpen={setNavMenuOpen}
+        fpsOpen={fpsOpen}
+        setFpsOpen={setFpsOpen}
+      />
+
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/torus" element={<Torus />} />
@@ -56,6 +63,8 @@ function App() {
         <Route path="/happy-bday-sandy" element={<SandyBday />} />
         <Route path="/happy-bday-dad" element={<DadBday />} />
       </Routes>
+
+      <FpsMeter fpsOpen={fpsOpen} setFpsOpen={setFpsOpen} />
     </div>
   );
 }

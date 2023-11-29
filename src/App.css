@@ -3,6 +3,69 @@
   height: 100vh;
 }
 
+.fps {
+  width: 200px;
+  height: 20px;
+  position: fixed;
+  bottom: 0;
+  left: calc(50% - 100px);
+  z-index: 1111111;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 3px 15px 0 15px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  clip-path: polygon(
+    40px 0,
+    45px 3px,
+    calc(100% - 45px) 3px,
+    calc(100% - 40px) 0,
+    calc(100% - 20px) 0,
+    100% 100%,
+    0 100%,
+    20px 0
+  );
+  color: white;
+  font: 15px Ailerons;
+  letter-spacing: 2px;
+}
+
+/* CSS Transition */
+.fps-enter {
+  transform: translateY(100%);
+}
+.fps-enter-active {
+  transform: translateY(0%);
+  transition: transform 500ms ease;
+}
+.fps-exit {
+  transform: translateY(0%);
+}
+.fps-exit-active {
+  transform: translateY(100%);
+  transition: transform 500ms ease;
+}
+
+.btn-fps {
+  width: 100px;
+  height: 40px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-right-radius: 222px;
+  border-top-left-radius: 222px;
+  box-shadow: inset -2px 2px 10px 1px rgb(0, 255, 255, 0.6),
+    inset 2px -2px 5px 1px rgba(255, 0, 0, 0.7), 0 2px 5px 1px rgb(0, 0, 0, 0.7);
+  background: black;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 0 5px 0;
+}
+
 /* CANVAS STYLING */
 .canvas {
   background: linear-gradient(to right, black, rgb(0, 170, 170), black);

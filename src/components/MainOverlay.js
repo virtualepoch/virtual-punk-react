@@ -5,13 +5,11 @@ import { CSSTransition } from "react-transition-group";
 export const MainOverlay = () => {
   const [overlayOpen, setOverlayOpen] = useState(true);
 
-  useEffect(()=>{
-    setTimeout(()=>{
-      setOverlayOpen(false)
-    },2000)
-  },[overlayOpen])
-
-  console.log(overlayOpen)
+  useEffect(() => {
+    setTimeout(() => {
+      setOverlayOpen(false);
+    }, 2000);
+  }, [overlayOpen]);
 
   return (
     <CSSTransition
@@ -31,4 +29,4 @@ export const MainOverlay = () => {
       </div>
     </CSSTransition>
   );
-}
+};

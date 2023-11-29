@@ -3,7 +3,12 @@ import { CSSTransition } from "react-transition-group";
 import "./nav-menu.css";
 import { useState } from "react";
 
-export function NavMenu({ navMenuOpen, setNavMenuOpen }) {
+export function NavMenu({
+  navMenuOpen,
+  setNavMenuOpen,
+  fpsOpen,
+  setFpsOpen,
+}) {
   function CustomLink({ to, children, ...props }) {
     const resolvedPath = useResolvedPath(to);
     const isActive = useMatch({ path: resolvedPath.pathname, end: true });
@@ -58,16 +63,24 @@ export function NavMenu({ navMenuOpen, setNavMenuOpen }) {
             <CustomLink to={"/star-punk"}>Star Punk</CustomLink>
             <CustomLink to={"/dissolve"}>Dissolve</CustomLink>
           </ul>
+          <button
+            className="btn-fps"
+            onClick={() => {
+              setFpsOpen(!fpsOpen);
+            }}
+          >
+            FPS METER
+          </button>
         </nav>
       </CSSTransition>
       <CSSTransition
         in={navMenuOpen}
         unmountOnExit
-        timeout={500}
-        classNames={"nav-menu-bg-left"}
+        timeout={700}
+        classNames={"left"}
       >
         <div
-          className="nav-menu-bg-left"
+          className="bg left"
           style={{
             boxShadow: test ? "none" : "",
           }}
@@ -76,11 +89,11 @@ export function NavMenu({ navMenuOpen, setNavMenuOpen }) {
       <CSSTransition
         in={navMenuOpen}
         unmountOnExit
-        timeout={500}
-        classNames={"nav-menu-bg-right"}
+        timeout={700}
+        classNames={"right"}
       >
         <div
-          className="nav-menu-bg-right"
+          className="bg right"
           style={{
             boxShadow: test ? "none" : "",
           }}

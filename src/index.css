@@ -40,7 +40,9 @@ body {
 }
 
 button {
-  background: none;
+  border: none;
+  background: cyan;
+  cursor: pointer;
 }
 
 a:focus,
