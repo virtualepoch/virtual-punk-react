@@ -1,34 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { PositionalAudio } from "@react-three/drei";
 import bg from "../../assets/images/balloons_cgi.jpg";
 import "./bday.css";
 import { Groot } from "./Groot";
+import AudioPlayer from "./AudioPlayer";
 
 export function DadBday() {
-  const [playAudio, setPlayAudio] = useState(false);
-  const animate = useRef(true);
-  const setAnimate = () => {
-    animate.current = !animate.current
-  }
-
-  function playPause() {
-    const audio = new Audio("/audios/stayin.mp3");
-    if ((!audio.currentTime > 0 || audio.paused) && !playAudio) {
-      audio.volume = 0.5;
-      audio.play();
-      audio.addEventListener("ended", () => {
-        audio.currentTime = 0;
-        audio.play();
-      });
-      setPlayAudio(true);
-    }
-    if ((audio.currentTime > 0 || !audio.paused) && playAudio) {
-      audio.pause();
-      setPlayAudio(false);
-    }
-  }
 
   const BackDrop = () => {
     const map = useLoader(THREE.TextureLoader, bg);
@@ -45,43 +23,6 @@ export function DadBday() {
       </mesh>
     );
   };
-  var torusRotSpeed = 0.001;
-
-  function TorusGroup() {
-    const meshRef1 = useRef(null);
-    const meshRef2 = useRef(null);
-    const meshRef3 = useRef(null);
-    const meshRef4 = useRef(null);
-
-    useFrame(() => {
-      if (!meshRef1.current || !meshRef2.current || !meshRef3.current || !meshRef4.current) {
-        return;
-      }
-      meshRef1.current.rotation.z += torusRotSpeed;
-      meshRef2.current.rotation.z -= torusRotSpeed;
-    });
-
-    return (
-      <mesh position-z={-1}>
-        <mesh ref={meshRef1} position={[0, 0, 0]}>
-          <torusGeometry args={[0.9, 0.03, 4, 33]} />
-          <meshStandardMaterial color="hotpink" wireframe={true} />
-        </mesh>
-        <mesh ref={meshRef2} position={[0, 0, 0.5]}>
-          <torusGeometry args={[1.1, 0.03, 4, 33]} />
-          <meshStandardMaterial color="aqua" wireframe={true} />
-        </mesh>
-        <mesh ref={meshRef3} position={[0, 0, 1.75]}>
-          <torusGeometry args={[1.3, 0.1, 4, 33]} />
-          <meshStandardMaterial color="hotpink" wireframe={false} />
-        </mesh>
-        <mesh ref={meshRef4} position={[0, 0, 2.1]}>
-          <torusGeometry args={[1.5, 0.15, 4, 33]} />
-          <meshStandardMaterial color="aqua" wireframe={false} />
-        </mesh>
-      </mesh>
-    );
-  }
 
   function CakeSpin() {
     const cake = useRef(null);
@@ -91,7 +32,7 @@ export function DadBday() {
     });
     return (
       <mesh ref={cake} position={[0, -1.5, 0]}>
-        <Groot animate={animate} />
+        <Groot />
       </mesh>
     );
   }
@@ -116,14 +57,13 @@ export function DadBday() {
           Craig
         </p>
       </header>
-      <button className="play-audio" onClick={() => playPause()}>
-        Let's Dance
-      </button>
+
+      <AudioPlayer />
+
       <Canvas className="canvas bday-dad" camera={{ position: [0, 0, 3] }}>
         <ambientLight intensity={1} />
         <pointLight intensity={1} />
         <BackDrop />
-        {/* <TorusGroup /> */}
         <CakeSpin />
       </Canvas>
     </>

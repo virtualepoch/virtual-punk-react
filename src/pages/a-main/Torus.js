@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { PillLinks } from "../components/PillLinks";
+import { PillLinks } from "../../components/PillLinks";
 
 export function Torus() {
   var torusRotSpeed = 0.01;
@@ -12,7 +12,12 @@ export function Torus() {
     const meshRef4 = useRef(null);
 
     useFrame(() => {
-      if (!meshRef1.current || !meshRef2.current || !meshRef3.current || !meshRef4.current) {
+      if (
+        !meshRef1.current ||
+        !meshRef2.current ||
+        !meshRef3.current ||
+        !meshRef4.current
+      ) {
         return;
       }
       meshRef1.current.rotation.x += torusRotSpeed;
@@ -65,7 +70,12 @@ export function Torus() {
         <TorusGroup />
         <Sphere />
       </Canvas>
-      <PillLinks backTo="/" backName="home" forwardTo="/space" forwardName="space" />
+      <PillLinks
+        backTo="/"
+        backName="home"
+        forwardTo="/space"
+        forwardName="space"
+      />
     </>
   );
 }

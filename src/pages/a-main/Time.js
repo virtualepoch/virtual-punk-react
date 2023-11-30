@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { PillLinks } from "../components/PillLinks";
+import { PillLinks } from "../../components/PillLinks";
 
 function CubeGroup() {
   const meshRef1 = useRef(null);
@@ -11,7 +11,13 @@ function CubeGroup() {
 
   useFrame(() => {
     const rotateSpeed = 0.015;
-    if (!meshRef1.current || !meshRef2.current || !meshRef3.current || !meshRef4.current || !meshRef4.current) {
+    if (
+      !meshRef1.current ||
+      !meshRef2.current ||
+      !meshRef3.current ||
+      !meshRef4.current ||
+      !meshRef4.current
+    ) {
       return;
     }
 
@@ -20,7 +26,7 @@ function CubeGroup() {
     meshRef3.current.rotation.x += rotateSpeed;
     meshRef4.current.rotation.x -= rotateSpeed;
     meshRef5.current.rotation.x += rotateSpeed;
-  },[]);
+  }, []);
 
   return (
     <>
@@ -77,7 +83,12 @@ export function Time() {
           <CubeGroup />
         </group>
       </Canvas>
-      <PillLinks backTo="/space" backName="space" forwardTo="/scroll" forwardName="scroll" />
+      <PillLinks
+        backTo="/space"
+        backName="space"
+        forwardTo="/scroll"
+        forwardName="scroll"
+      />
     </>
   );
 }

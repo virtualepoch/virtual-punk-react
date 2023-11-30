@@ -1,14 +1,8 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import "./nav-menu.css";
-import { useState } from "react";
 
-export function NavMenu({
-  navMenuOpen,
-  setNavMenuOpen,
-  fpsOpen,
-  setFpsOpen,
-}) {
+export function NavMenu({ navMenuOpen, setNavMenuOpen, fpsOpen, setFpsOpen }) {
   function CustomLink({ to, children, ...props }) {
     const resolvedPath = useResolvedPath(to);
     const isActive = useMatch({ path: resolvedPath.pathname, end: true });
@@ -22,9 +16,6 @@ export function NavMenu({
           onClick={() => {
             setNavMenuOpen(false);
           }}
-          style={{
-            boxShadow: test ? "none" : "",
-          }}
         >
           {children}
         </Link>
@@ -32,17 +23,8 @@ export function NavMenu({
     );
   }
 
-  const [test, setTest] = useState(false);
   return (
     <>
-      <button
-        className="test-btn"
-        onClick={() => {
-          setTest(!test);
-        }}
-      >
-        TESTING
-      </button>
       <CSSTransition
         in={navMenuOpen}
         unmountOnExit
@@ -73,31 +55,23 @@ export function NavMenu({
           </button>
         </nav>
       </CSSTransition>
+
       <CSSTransition
         in={navMenuOpen}
         unmountOnExit
         timeout={700}
         classNames={"left"}
       >
-        <div
-          className="bg left"
-          style={{
-            boxShadow: test ? "none" : "",
-          }}
-        ></div>
+        <div className="bg left"></div>
       </CSSTransition>
+
       <CSSTransition
         in={navMenuOpen}
         unmountOnExit
         timeout={700}
         classNames={"right"}
       >
-        <div
-          className="bg right"
-          style={{
-            boxShadow: test ? "none" : "",
-          }}
-        ></div>
+        <div className="bg right"></div>
       </CSSTransition>
     </>
   );

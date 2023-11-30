@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { MainOverlay } from "../components/MainOverlay";
+import { MainOverlay } from "../../components/MainOverlay";
 import { HomeCanvas } from "./HomeCanvas";
 import "./home.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -32,7 +32,11 @@ export function Home() {
       </header>
 
       <div className="pill-container">
-        <Link className="pill red" to="/torus" onClick={(e) => delayAndGo(e, "/torus")}>
+        <Link
+          className="pill red"
+          to="/torus"
+          onClick={(e) => delayAndGo(e, "/torus")}
+        >
           torus
         </Link>
       </div>

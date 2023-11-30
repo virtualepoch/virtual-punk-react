@@ -2,11 +2,11 @@ import * as THREE from "three";
 import { useState, useRef } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
-import { JetConcept } from "../components/models/Jet_concept";
-import earth500 from "../assets/images/earth_clouds_1k.jpg";
-import earth8k from "../assets/images/earth_clouds_4k.jpg";
-import { PillLinks } from "../components/PillLinks";
-import { CreditsModal } from "../components/CreditsModal";
+import { JetConcept } from "../../components/models/Jet_concept";
+import earth500 from "../../assets/images/earth_clouds_1k.jpg";
+import earth8k from "../../assets/images/earth_clouds_4k.jpg";
+import { PillLinks } from "../../components/PillLinks";
+import { CreditsModal } from "../../components/CreditsModal";
 
 export function Mach() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -67,7 +67,12 @@ export function Mach() {
     <>
       <h1 className="page-title">Mach</h1>
       {creditsInfo.map((item) => (
-        <CreditsModal modalOpen={modalOpen} setModalOpen={setModalOpen} key={item.id} info={item} />
+        <CreditsModal
+          modalOpen={modalOpen}
+          setModalOpen={setModalOpen}
+          key={item.id}
+          info={item}
+        />
       ))}
       <Canvas camera={{ position: [0, 10, 12], rotation: [0, 0, 0], fov: 50 }}>
         <ambientLight intensity={1} />
@@ -77,7 +82,12 @@ export function Mach() {
         <Earth />
         <Stars />
       </Canvas>
-      <PillLinks backTo="/scroll" backName="scroll" forwardTo="/portal" forwardName="portal" />
+      <PillLinks
+        backTo="/scroll"
+        backName="scroll"
+        forwardTo="/portal"
+        forwardName="portal"
+      />
     </>
   );
 }

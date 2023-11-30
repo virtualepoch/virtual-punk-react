@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { useEffect, useRef } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import {
+  ContactShadows,
   CubeCamera,
   Decal,
   Environment,
@@ -141,35 +142,6 @@ export function Testing() {
     );
   };
 
-  // const TestHead = () => {
-  //   const testRef = useRef(null);
-  //   const texture = useTexture("/images/dad.png");
-
-  //   // useFrame(() => {
-  //   //   testRef.current.rotation.y += 0.002;
-  //   // });
-
-  //   return (
-  //     <>
-  //       <mesh ref={testRef} position={[0, 0, 0]}>
-  //         <sphereGeometry args={[3, 20, 20]} />
-  //         <meshStandardMaterial castShadow />
-  //         <Decal
-  //           debug // Makes "bounding box" of the decal visible
-  //           position={[0, 0, 2]}
-  //           rotation={[0, 0, 0]} // (can be vector or degree in radians)
-  //           scale={[6, 7, 4]}
-  //           polygonOffset
-  //           polygonOffsetFactor={-1} // The mesh should take precedence over the original
-  //         >
-  //           <meshStandardMaterial map={texture} />
-  //         </Decal>
-  //       </mesh>
-  //       <Groot2 position={[-7, -2, 0]} />
-  //     </>
-  //   );
-  // };
-
   const light = useRef();
   if (light.current) {
     light.current.useHelper(light, DirectionalLightHelper, 1, "red");
@@ -178,10 +150,10 @@ export function Testing() {
   return (
     <>
       <h1 className="page-title">Testing</h1>
-      <Canvas className="canvas" shadows>
+      <Canvas className="canvas">
         <OrbitControls maxPolarAngle={Math.PI / 2} />
         <Environment preset="city" />
-        {/* <ambientLight intensity={1} /> */}
+        <ambientLight intensity={1} />
         <directionalLight
           ref={light}
           position={[0, 15, 10]}
@@ -200,26 +172,15 @@ export function Testing() {
           shadow-bias={-0.0001}
         />
         <PerspectiveCamera
-          position={[0, 0, 40]}
+          position={[0, 0, 20]}
           rotation={[0, 0, 0]}
           fov={60}
           makeDefault
           far={1000}
         />
-        <CubeCamera position={[5, 0, 0]}>
-          {(texture) => (
-            <mesh>
-              <sphereGeometry />
-              <meshStandardMaterial envMap={texture} />
-            </mesh>
-          )}
-        </CubeCamera>
-        <Floor shadows />
-        {/* <TestHead castShadow /> */}
-        {/* <Earth /> */}
-        {/*  <EarthPedestal /> */}
-        {/* <PictureFrame /> */}
-        {/* <Model /> */}
+        <ContactShadows position-y={0} opacity={0.4} />
+        <Floor receiveShadow/>
+        <Groot2 />
         <Stars />
       </Canvas>
       <PillLinks
