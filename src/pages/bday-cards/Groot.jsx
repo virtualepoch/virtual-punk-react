@@ -7,13 +7,13 @@ Source: https://sketchfab.com/3d-models/groot-dancing-5d7c5687bba747aa8a1ebeb3af
 Title: Groot dancing
 */
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // import * as THREE from "three";
 import { useGLTF, useAnimations } from "@react-three/drei";
 // import { useLoader } from "@react-three/fiber";
 // import dadHead from "./images/dad.png";
 
-export function Groot(animate, props) {
+export function Groot(startEx, props) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/groot_dancing.glb");
   const { actions, mixer } = useAnimations(animations, group);
@@ -30,14 +30,21 @@ export function Groot(animate, props) {
   // }
 
   useEffect(() => {
-    actions["mixamo.com"].play();
-    mixer.timeScale = 1;
-  }, [actions, mixer]);
+    const action = actions["mixamo.com"];
+    action.timeScale = startEx ? 1 : 0;
+    action.play();
+
+    // console.log(actions["mixamo.com"]);
+  }, [actions, mixer, startEx]);
 
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
-        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]} scale={0.004}>
+        <group
+          name="Sketchfab_model"
+          rotation={[-Math.PI / 2, 0, 0]}
+          scale={0.004}
+        >
           <group name="Wave_Hip_Hop_Dancefbx" rotation={[Math.PI / 2, 0, 0]}>
             <group name="Object_2">
               <group name="RootNode">
@@ -46,7 +53,12 @@ export function Groot(animate, props) {
                   <group name="RetopoGroup1" />
                   {/* <group> */}
                   {/* <DadHead /> */}
-                  <skinnedMesh name="Object_6" geometry={nodes.Object_6.geometry} material={materials["Scene_-_Root"]} skeleton={nodes.Object_6.skeleton} />
+                  <skinnedMesh
+                    name="Object_6"
+                    geometry={nodes.Object_6.geometry}
+                    material={materials["Scene_-_Root"]}
+                    skeleton={nodes.Object_6.skeleton}
+                  />
                   {/* </group> */}
                 </group>
               </group>

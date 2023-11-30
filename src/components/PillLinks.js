@@ -18,10 +18,10 @@ export function PillLinks({ backTo, backName, forwardTo, forwardName }) {
   return (
     <div className="pill-container">
       <Link className="pill blue" to={backTo}>
-        {backName}
+      ◃{backName}
       </Link>
       <Link className="pill red" to={forwardTo}>
-        {forwardName}
+        {forwardName}▹
       </Link>
     </div>
   );

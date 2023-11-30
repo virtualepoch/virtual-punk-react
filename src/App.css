@@ -66,6 +66,29 @@
   padding: 0 0 5px 0;
 }
 
+.btn-fullscreen {
+  width: 60px;
+  height: 50px;
+  margin: 5px 10px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 1111111;
+  background: url(../public/icons/expand-cyan.svg) center / 40% no-repeat;
+  filter: drop-shadow(0 0 5px cyan);
+  /* border: solid; */
+}
+
+.btn-fullscreen.clicked {
+  background: url(../public/icons/compress-cyan.svg) center / 40% no-repeat;
+}
+
+@media (max-width: 700px) {
+  .btn-fullscreen {
+    margin: 0;
+  }
+}
+
 /* CANVAS STYLING */
 .canvas {
   background: linear-gradient(to right, black, rgb(0, 170, 170), black);
@@ -162,62 +185,45 @@
 
 /* NAVIGATION PILLS -- RED PILL AND BLUE PILL */
 .pill-container {
-  width: 100%;
+  width: fit-content;
   max-width: 500px;
   position: fixed;
-  bottom: 20px;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 96;
   display: flex;
-  justify-content: space-around;
+  gap: 20px;
 }
 
 .pill {
-  min-width: 110px;
-  height: 50px;
-  border-radius: 50%;
+  min-width: 90px;
+  height: 40px;
+  border-radius: 50px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(2px);
   font: 100 25px Ailerons;
-  color: rgba(0, 255, 255, 0.5);
+  color: cyan;
+}
+
+.pill.blue {
+  justify-content: flex-start;
+  background: radial-gradient(
+    ellipse at 60% 30%,
+    rgba(255, 255, 255, 0.5) 5%,
+    rgba(0, 0, 255, 0.3) 40%
+  );
+  box-shadow: inset 0 -4px 10px 1px indigo, 0 2px 10px 1px rgba(0, 0, 0, 0.7);
 }
 
 .pill.red {
+  justify-content: flex-end;
   background: radial-gradient(
     ellipse at 60% 30%,
     rgba(255, 255, 255, 0.7) 5%,
     rgba(255, 0, 0, 0.5) 40%
   );
-  box-shadow: inset 0 0 11px 1px red, 0 2px 10px 1px aqua;
-}
-
-.pill.blue {
-  background: radial-gradient(
-    ellipse at 60% 30%,
-    rgba(255, 255, 255, 0.7) 5%,
-    rgba(0, 0, 255, 0.5) 40%
-  );
-  box-shadow: inset 0 0 11px 1px blue, 0 2px 10px 1px aqua;
-}
-
-.pill.trans {
-  width: 80px;
-  min-width: 80px;
-  height: 50px;
-  background: radial-gradient(
-    ellipse at 60% 30%,
-    rgba(255, 255, 255, 0.7) 5%,
-    rgba(0, 0, 255, 0.2) 40%
-  );
-  box-shadow: inset 0 0 11px 1px rgba(0, 0, 255, 0.5),
-    0 2px 10px 1px rgba(0, 255, 255, 0.5);
-  position: fixed;
-  top: 20px;
-  right: 30px;
-  z-index: 111;
+  box-shadow: inset 0 -4px 10px 1px crimson, 0 2px 10px 1px rgba(0, 0, 0, 0.7);
 }
 
 /* MOBILE CONTROLS FOR GAMES */

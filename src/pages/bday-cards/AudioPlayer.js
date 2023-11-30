@@ -8,26 +8,29 @@ const useAudio = () => {
 
   useEffect(() => {
     playing ? audio.play() : audio.pause();
-  }, [playing]);
+  }, [playing, audio]);
 
   useEffect(() => {
     audio.addEventListener("ended", () => setPlaying(false));
     return () => {
       audio.removeEventListener("ended", () => setPlaying(false));
     };
-  }, []);
+  }, [audio]);
 
   return [playing, toggle];
 };
 
-const AudioPlayer = ({ url }) => {
+const AudioPlayer = ({ url, startEx, setStartEx }) => {
   const [playing, toggle] = useAudio(url);
 
   return (
     <div>
       <button
         className={playing ? "btn-audio pause" : "btn-audio play"}
-        onClick={toggle}
+        onClick={() => {
+          setStartEx(!startEx);
+          toggle();
+        }}
       ></button>
     </div>
   );

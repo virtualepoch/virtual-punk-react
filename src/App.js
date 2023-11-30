@@ -24,6 +24,7 @@ import { SandyBday } from "./pages/bday-cards/SandyBday";
 import { DadBday } from "./pages/bday-cards/DadBday";
 
 import { FpsMeter } from "./components/FpsMeter";
+import { BtnFullScreen } from "./components/BtnFullScreen.js";
 
 function App() {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
@@ -39,6 +40,8 @@ function App() {
         fpsOpen={fpsOpen}
         setFpsOpen={setFpsOpen}
       />
+
+      <BtnFullScreen />
 
       <Routes>
         <Route path="/" element={<Home />} />
