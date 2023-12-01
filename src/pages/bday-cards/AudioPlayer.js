@@ -34,13 +34,7 @@ const AudioPlayer = ({ url, startEx, setStartEx }) => {
         }}
       />
       <button
-        className={
-          pressed
-            ? "btn-audio pressed"
-            : playing
-            ? "btn-audio pause"
-            : "btn-audio play"
-        }
+        className={playing ? "btn-audio pause" : "btn-audio play"}
         onClick={() => {
           setStartEx(!startEx);
           toggle();
@@ -49,6 +43,9 @@ const AudioPlayer = ({ url, startEx, setStartEx }) => {
         onMouseUp={() => setPressed(false)}
         onTouchStart={() => setPressed(true)}
         onTouchEnd={() => setPressed(false)}
+        style={{
+          border: pressed ? "solid aqua" : "",
+        }}
       />
     </>
   );
