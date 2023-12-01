@@ -27,20 +27,20 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  background: cyan;
-  border-radius: 333px;
-  box-shadow: 0 2px 10px 1px black;
-  backdrop-filter: blur(5px);
+  filter: drop-shadow(0 0 4px cyan);
+  opacity: 0;
+  transition: all 500ms ease-out;
 }
 
 .btn-audio.play {
-  background: url(../../../public/icons/play-solid.svg) 60% 50% / 50% no-repeat,
-    rgba(255, 255, 255, 0.2);
+  opacity: 1;
+  background: url(../../../public/icons/play-solid.svg) center / 40% no-repeat;
+  filter: drop-shadow(0 0 10px cyan);
 }
 
 .btn-audio.pause {
-  background: url(../../../public/icons/pause-solid.svg) center / 50% no-repeat,
-    rgba(255, 255, 255, 0.2);
+  opacity: 1;
+  background: url(../../../public/icons/pause-solid.svg) center / 40% no-repeat;
 }
 
 .bday-section {

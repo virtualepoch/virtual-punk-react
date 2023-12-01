@@ -7,17 +7,16 @@ Source: https://sketchfab.com/3d-models/groot-dancing-5d7c5687bba747aa8a1ebeb3af
 Title: Groot dancing
 */
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 // import * as THREE from "three";
 import { useGLTF, useAnimations } from "@react-three/drei";
 // import { useLoader } from "@react-three/fiber";
 // import dadHead from "./images/dad.png";
 
-export function Groot(startEx, props) {
+export function Groot({ startEx, props }) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/groot_dancing.glb");
   const { actions, mixer } = useAnimations(animations, group);
-
   // function DadHead() {
   //   const texture = useLoader(THREE.TextureLoader, dadHead);
 
@@ -31,10 +30,10 @@ export function Groot(startEx, props) {
 
   useEffect(() => {
     const action = actions["mixamo.com"];
-    action.timeScale = startEx ? 1 : 0;
-    action.play();
 
-    // console.log(actions["mixamo.com"]);
+    startEx ? action.fadeIn(1).play() : action.play().fadeOut(1);
+
+    // console.log(action);
   }, [actions, mixer, startEx]);
 
   return (

@@ -7,28 +7,38 @@ Source: https://sketchfab.com/3d-models/pbr-velociraptor-animated-8f1744af7b0847
 Title: PBR Velociraptor (Animated)
 */
 
-import React, { useEffect, useRef } from "react"
-import { useGLTF, useAnimations } from "@react-three/drei"
+import React, { useEffect, useRef } from "react";
+import { useGLTF, useAnimations } from "@react-three/drei";
 
 export function Raptor({ hovered, ...props }) {
-  const group = useRef()
-  const { nodes, materials, animations } = useGLTF("/models/pbr_velociraptor_animated.glb")
-  const { actions } = useAnimations(animations, group)
+  const group = useRef();
+  const { nodes, materials, animations } = useGLTF(
+    "/models/pbr_velociraptor_animated.glb"
+  );
+  const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
-    const anim = hovered ? "Roar_01" : "Idle_02"
-    actions[anim].reset().fadeIn(0.5).play()
-    return () => actions[anim].fadeOut(0.5)
-  }, [hovered, actions])
+    const anim = hovered ? "Roar_01" : "Idle_02";
+    actions[anim].reset().fadeIn(0.5).play();
+    return () => actions[anim].fadeOut(0.5);
+  }, [hovered, actions]);
 
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
         <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
-          <group name="Raptor_Animated_FBXfbx" rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
+          <group
+            name="Raptor_Animated_FBXfbx"
+            rotation={[Math.PI / 2, 0, 0]}
+            scale={0.01}
+          >
             <group name="Object_2">
               <group name="RootNode">
-                <group name="RaptorArmature" rotation={[-Math.PI / 2, 0, 0]} scale={24.96}>
+                <group
+                  name="RaptorArmature"
+                  rotation={[-Math.PI / 2, 0, 0]}
+                  scale={24.96}
+                >
                   <group name="Object_5">
                     <primitive object={nodes._rootJoint} />
                     <group name="Object_143" />
@@ -37,16 +47,24 @@ export function Raptor({ hovered, ...props }) {
                       geometry={nodes.Object_144.geometry}
                       material={materials.Body_Mat}
                       skeleton={nodes.Object_144.skeleton}
-                      morphTargetDictionary={nodes.Object_144.morphTargetDictionary}
-                      morphTargetInfluences={nodes.Object_144.morphTargetInfluences}
+                      morphTargetDictionary={
+                        nodes.Object_144.morphTargetDictionary
+                      }
+                      morphTargetInfluences={
+                        nodes.Object_144.morphTargetInfluences
+                      }
                     />
                     <skinnedMesh
                       name="Object_145"
                       geometry={nodes.Object_145.geometry}
                       material={materials.Other_Mat}
                       skeleton={nodes.Object_145.skeleton}
-                      morphTargetDictionary={nodes.Object_145.morphTargetDictionary}
-                      morphTargetInfluences={nodes.Object_145.morphTargetInfluences}
+                      morphTargetDictionary={
+                        nodes.Object_145.morphTargetDictionary
+                      }
+                      morphTargetInfluences={
+                        nodes.Object_145.morphTargetInfluences
+                      }
                     />
                   </group>
                 </group>
@@ -57,7 +75,7 @@ export function Raptor({ hovered, ...props }) {
         </group>
       </group>
     </group>
-  )
+  );
 }
 
-useGLTF.preload("/models/pbr_velociraptor_animated.glb")
+useGLTF.preload("/models/pbr_velociraptor_animated.glb");
