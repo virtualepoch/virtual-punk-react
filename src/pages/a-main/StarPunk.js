@@ -27,7 +27,7 @@ export function StarPunk() {
 
   return (
     <>
-      <h1 className="page-title">Star Punk</h1>
+      <h1 className="page-title">Star</h1>
       <Canvas camera={{ position: [0, 8, 15], rotation: [0, 0, 0], fov: 50 }}>
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 15, 10]} angle={0.3} />
@@ -37,8 +37,8 @@ export function StarPunk() {
         <ExtendingWalls />
       </Canvas>
       <div className="pill-container">
-        <Link className="pill blue" to="/dragon">
-          dragon
+        <Link className="pill blue home" to="/dragon">
+          ◃dragon
         </Link>
       </div>
     </>

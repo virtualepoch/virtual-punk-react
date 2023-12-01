@@ -10,15 +10,10 @@ export const HeaderLogo = ({ setNavMenuOpen }) => {
         className="logo-container"
         to={"/"}
         aria-label="link to home page"
-        onMouseDown={() => {
-          setPressed(true);
-          setNavMenuOpen(false);
-        }}
+        onClick={() => setNavMenuOpen(false)}
+        onMouseDown={() => setPressed(true)}
         onMouseUp={() => setPressed(false)}
-        onTouchStart={() => {
-          setPressed(true);
-          setNavMenuOpen(false);
-        }}
+        onTouchStart={() => setPressed(true)}
         onTouchEnd={() => setPressed(false)}
       >
         <div className="logo"></div>
@@ -28,7 +23,10 @@ export const HeaderLogo = ({ setNavMenuOpen }) => {
         <div className="logo"></div>
       </Link>
       <div
-        className={pressed ? "logo-box-shadow pressed" : "logo-box-shadow"}
+        className="logo-box-shadow"
+        style={{
+          boxShadow: pressed ? "none" : "2px 2px 15px 1px black",
+        }}
       ></div>
     </>
   );

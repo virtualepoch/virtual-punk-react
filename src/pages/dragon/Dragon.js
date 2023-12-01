@@ -35,7 +35,7 @@ export function Dragon() {
           <DragonScene />
         </Suspense>
       </Canvas>
-      <PillLinks backTo="/portal" backName="portal" forwardTo="/star-punk" forwardName="star-punk" />
+      <PillLinks backTo="/portal" backName="portal" forwardTo="/star-punk" forwardName="star" />
     </>
   );
 }

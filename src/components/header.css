@@ -42,12 +42,8 @@
   gap: 9%;
   position: relative;
   z-index: 5;
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.5), transparent);
-  backdrop-filter: blur(5px);
-}
-
-.logo-container:hover {
-  border: 1px solid cyan;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.2), transparent);
+  backdrop-filter: blur(2px);
 }
 
 .logo-box-shadow {
@@ -56,11 +52,6 @@
   position: absolute;
   top: 3px;
   left: 0;
-  box-shadow: 2px 2px 15px 1px black;
-}
-
-.logo-box-shadow.pressed {
-  box-shadow: none;
 }
 
 .logo {
@@ -196,12 +187,8 @@
     0 25%,
     0 0
   );
-  background: radial-gradient(circle, rgba(0, 0, 0, 0.5), transparent);
-  backdrop-filter: blur(5px);
-}
-
-.btn-nav-menu:hover {
-  border: 1px solid cyan;
+  background: radial-gradient(circle, rgba(0, 0, 0, 0.2), transparent);
+  backdrop-filter: blur(2px);
 }
 
 .btn-nav-box-shadow {
@@ -210,11 +197,6 @@
   position: absolute;
   top: 0;
   right: 0;
-  box-shadow: -2px 2px 15px 1px black;
-}
-
-.btn-nav-box-shadow.pressed {
-  box-shadow: none;
 }
 
 @media (max-width: 700px) {
