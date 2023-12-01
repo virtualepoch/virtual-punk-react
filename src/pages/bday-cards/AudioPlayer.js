@@ -8,6 +8,7 @@ const useAudio = () => {
 
   useEffect(() => {
     playing ? audio.play() : audio.pause();
+    audio.volume = 0.5;
   }, [playing, audio]);
 
   useEffect(() => {
@@ -22,17 +23,34 @@ const useAudio = () => {
 
 const AudioPlayer = ({ url, startEx, setStartEx }) => {
   const [playing, toggle] = useAudio(url);
+  const [pressed, setPressed] = useState(false);
 
   return (
-    <div>
+    <>
       <button
-        className={playing ? "btn-audio pause" : "btn-audio play"}
+        className="btn-audio reload"
+        onClick={() => {
+          setStartEx(!startEx);
+        }}
+      />
+      <button
+        className={
+          pressed
+            ? "btn-audio pressed"
+            : playing
+            ? "btn-audio pause"
+            : "btn-audio play"
+        }
         onClick={() => {
           setStartEx(!startEx);
           toggle();
         }}
-      ></button>
-    </div>
+        onMouseDown={() => setPressed(true)}
+        onMouseUp={() => setPressed(false)}
+        onTouchStart={() => setPressed(true)}
+        onTouchEnd={() => setPressed(false)}
+      />
+    </>
   );
 };
 

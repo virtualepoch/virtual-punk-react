@@ -18,10 +18,10 @@
 
 .btn-audio {
   width: 60px;
-  height: 60px;
+  height: 50px;
   position: fixed;
-  bottom: 20px;
-  left: 20px;
+  bottom: 0px;
+  left: calc(50% - 25px);
   z-index: 1111;
   display: flex;
   align-items: center;
@@ -29,18 +29,40 @@
   gap: 20px;
   filter: drop-shadow(0 0 4px cyan);
   opacity: 0;
-  transition: all 500ms ease-out;
+  transition: background opacity filter 500ms ease-out;
+  margin: 5px 10px;
+  border-radius: 10px;
+}
+
+@media (max-width: 700px) {
+  .btn-audio {
+    margin: 0;
+  }
 }
 
 .btn-audio.play {
   opacity: 1;
-  background: url(../../../public/icons/play-solid.svg) center / 40% no-repeat;
+  background: url(../../../public/icons/play-solid.svg) center / 35% no-repeat;
   filter: drop-shadow(0 0 10px cyan);
 }
 
 .btn-audio.pause {
   opacity: 1;
-  background: url(../../../public/icons/pause-solid.svg) center / 40% no-repeat;
+  background: url(../../../public/icons/pause-solid.svg) center / 35% no-repeat;
+}
+
+.btn-audio.reload {
+  left: 0;
+  opacity: 1;
+  background: url(../../../public/icons/rotate-right-solid.svg) center / 40%
+    no-repeat;
+}
+
+.btn-audio.play.pressed{
+  background: magenta;
+}
+.btn-audio.pause.pressed{
+  background: magenta;
 }
 
 .bday-section {
