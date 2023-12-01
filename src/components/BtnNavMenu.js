@@ -26,7 +26,7 @@ export const BtnNavMenu = ({ navMenuOpen, setNavMenuOpen }) => {
       <div
         className="btn-nav-box-shadow"
         style={{
-          boxShadow: pressed ? "none" : "-2px 2px 15px 1px black",
+          boxShadow: pressed ? "none" : "-2px 2px 10px 1px rgba(0,0,0,0.5)",
         }}
       ></div>
     </>

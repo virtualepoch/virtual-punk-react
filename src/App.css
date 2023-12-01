@@ -122,6 +122,28 @@
     linear-gradient(to right, transparent, #a5cc82, transparent);
 }
 
+.btn-torus-test {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 777;
+  background: transparent;
+  color: white;
+  border: 1px solid;
+  border-radius: 10px;
+  font-size: 33px;
+}
+.btn-torus-test.num {
+  left: 50px;
+  text-align: center;
+  border: none;
+}
+.btn-torus-test.b {
+  left: 100px;
+}
+
 .canvas.space {
   background: black;
 }
@@ -330,11 +352,4 @@
 
 .fire-btn.pressing {
   background: red;
-}
-
-.flow-canvas {
-  border: 5px solid blue;
-  position: absolute;
-  width: 100%;
-  height: 100%;
 }
