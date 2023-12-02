@@ -122,26 +122,37 @@
     linear-gradient(to right, transparent, #a5cc82, transparent);
 }
 
-.btn-torus-test {
-  width: 50px;
-  height: 50px;
+.torus-btn-wrap {
   position: fixed;
   left: 0;
   bottom: 0;
   z-index: 777;
-  background: transparent;
-  color: white;
-  border: 1px solid;
-  border-radius: 10px;
-  font-size: 33px;
-}
-.btn-torus-test.num {
-  left: 50px;
+  border-radius: 100px;
+  box-shadow: 0 0 5px 1px white;
+  display: flex;
+  flex-direction: column;
   text-align: center;
-  border: none;
+  color: white;
+  font-size: 15px;
 }
-.btn-torus-test.b {
-  left: 100px;
+
+.wrap-x {
+  bottom: 160px;
+}
+
+.wrap-y {
+  bottom: 160px;
+  left: 60px;
+}
+
+.torus-btn-wrap .btn {
+  width: 50px;
+  height: 50px;
+  background: url(../public/icons/chevron-up-cyan.svg) center / 50% no-repeat;
+}
+
+.torus-btn-wrap .btn.down {
+  background: url(../public/icons/chevron-down-cyan.svg) center / 50% no-repeat;
 }
 
 .canvas.space {
