@@ -9,7 +9,7 @@ import {
 import { HexColorPicker } from "react-colorful";
 // import { proxy, useSnapshot } from "valtio";
 import { VRButton, XR } from "@react-three/xr";
-import { PillLinks } from "../../components/PillLinks";
+import { FooterLinks } from "../../components/FooterLinks";
 
 const state = proxy({
   current: null,
@@ -148,7 +148,7 @@ export function Shoe() {
         </XR>
       </Canvas>
       <Picker />
-      <PillLinks
+      <FooterLinks
         backTo="/scroll"
         backName="scroll"
         forwardTo="/mach"

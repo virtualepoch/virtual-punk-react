@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { PillLinks } from "../../components/PillLinks";
+import { FooterLinks } from "../../components/FooterLinks";
 
 function CubeGroup() {
   const meshRef1 = useRef(null);
@@ -83,7 +83,7 @@ export function Time() {
           <CubeGroup />
         </group>
       </Canvas>
-      <PillLinks
+      <FooterLinks
         backTo="/space"
         backName="space"
         forwardTo="/scroll"

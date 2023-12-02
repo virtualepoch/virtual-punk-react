@@ -31,9 +31,9 @@ export function Home() {
         <p className="hero-text">Hope you enjoy!</p>
       </header>
 
-      <div className="pill-container">
+      <div className="footer-link-container">
         <Link
-          className="pill red home"
+          className="footer-link forward"
           to="/torus"
           onClick={(e) => delayAndGo(e, "/torus")}
         >

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { PillLinks } from "../../components/PillLinks";
+import { FooterLinks } from "../../components/FooterLinks";
 import { TorusScene } from "./TorusScene";
 import { OmniControls } from "../../components/OmniControls";
 
@@ -49,7 +49,7 @@ export function Torus() {
         />
       </Canvas>
 
-      <PillLinks
+      <FooterLinks
         backTo="/"
         backName="home"
         forwardTo="/space"

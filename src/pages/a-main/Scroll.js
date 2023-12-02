@@ -2,7 +2,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, ScrollControls } from "@react-three/drei";
 import { Office } from "../../components/models/Office";
 import { ScrollOverlay } from "./ScrollOverlay";
-import { PillLinks } from "../../components/PillLinks";
+import { FooterLinks } from "../../components/FooterLinks";
 
 export function Scroll() {
   return (
@@ -19,7 +19,7 @@ export function Scroll() {
           <ScrollOverlay />
         </ScrollControls>
       </Canvas>
-      <PillLinks
+      <FooterLinks
         backTo="/space"
         backName="space"
         forwardTo="/mach"

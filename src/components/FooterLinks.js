@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export function PillLinks({ backTo, backName, forwardTo, forwardName }) {
+export function FooterLinks({ backTo, backName, forwardTo, forwardName }) {
   //   const navigate = useNavigate();
 
   //   function delayAndGoBack(e, path) {
@@ -16,12 +16,12 @@ export function PillLinks({ backTo, backName, forwardTo, forwardName }) {
   //   }
 
   return (
-    <div className="pill-container">
-      <Link className="pill blue" to={backTo}>
-      ◃{backName}
+    <div className="footer-link-container">
+      <Link className="footer-link back" to={backTo}>
+      {backName}
       </Link>
-      <Link className="pill red" to={forwardTo}>
-        {forwardName}▹
+      <Link className="footer-link forward" to={forwardTo}>
+        {forwardName}
       </Link>
     </div>
   );

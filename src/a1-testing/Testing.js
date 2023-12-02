@@ -17,7 +17,7 @@ import earth500 from "../assets/images/earth_clouds_1k.jpg";
 import earth8k from "../assets/images/earth_clouds_4k.jpg";
 import marbleLarge from "../assets/images/marble_large.jpg";
 import marbleSmall from "../assets/images/marble_small.jpg";
-import { PillLinks } from "../components/PillLinks";
+import { FooterLinks } from "../components/FooterLinks";
 import { Model } from "./Offworld";
 import dad from "./dad.jpg";
 import { Groot2 } from "./Groot2";
@@ -183,7 +183,7 @@ export function Testing() {
         <Groot2 />
         <Stars />
       </Canvas>
-      <PillLinks
+      <FooterLinks
         backTo="/"
         backName="home"
         forwardTo="/torus"

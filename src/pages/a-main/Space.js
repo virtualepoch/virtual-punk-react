@@ -2,7 +2,7 @@ import { useState } from "react";
 import { SpaceScene } from "./SpaceScene";
 import { Canvas } from "@react-three/fiber";
 import { ScrollControls } from "@react-three/drei";
-import { PillLinks } from "../../components/PillLinks";
+import { FooterLinks } from "../../components/FooterLinks";
 import { CreditsModal } from "../../components/CreditsModal";
 
 export function Space() {
@@ -34,7 +34,7 @@ export function Space() {
           <SpaceScene />
         </ScrollControls>
       </Canvas>
-      <PillLinks
+      <FooterLinks
         backTo="/torus"
         backName="torus"
         forwardTo="/scroll"

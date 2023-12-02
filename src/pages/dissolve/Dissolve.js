@@ -3,7 +3,7 @@ import { Suspense, useState } from "react";
 import { CreditsModal } from "../../components/CreditsModal";
 import { Canvas } from "@react-three/fiber";
 import { DissolveScene } from "./DissolveScene";
-import { PillLinks } from "../../components/PillLinks";
+import { FooterLinks } from "../../components/FooterLinks";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { Controllers, Hands, VRButton, XR } from "@react-three/xr";
 

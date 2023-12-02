@@ -2,7 +2,7 @@ import { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { PortalScene } from "./PortalScene";
 import { CreditsModal } from "../../components/CreditsModal";
-import { PillLinks } from "../../components/PillLinks";
+import { FooterLinks } from "../../components/FooterLinks";
 
 export function Portal() {
   const [modalOpen, setModalOpen] = useState(false);
@@ -34,7 +34,7 @@ export function Portal() {
           <PortalScene />
         </Suspense>
       </Canvas>
-      <PillLinks backTo="/mach" backName="mach" forwardTo="/dragon" forwardName="dragon" />
+      <FooterLinks backTo="/mach" backName="mach" forwardTo="/dragon" forwardName="dragon" />
     </>
   );
 }

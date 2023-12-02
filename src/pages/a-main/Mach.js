@@ -5,7 +5,7 @@ import { OrbitControls, Stars } from "@react-three/drei";
 import { JetConcept } from "../../components/models/Jet_concept";
 import earth500 from "../../assets/images/earth_clouds_1k.jpg";
 import earth8k from "../../assets/images/earth_clouds_4k.jpg";
-import { PillLinks } from "../../components/PillLinks";
+import { FooterLinks } from "../../components/FooterLinks";
 import { CreditsModal } from "../../components/CreditsModal";
 
 export function Mach() {
@@ -82,7 +82,7 @@ export function Mach() {
         <Earth />
         <Stars />
       </Canvas>
-      <PillLinks
+      <FooterLinks
         backTo="/scroll"
         backName="scroll"
         forwardTo="/portal"
