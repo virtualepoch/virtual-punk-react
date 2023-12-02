@@ -1,29 +1,22 @@
 import { useFrame, useLoader } from "@react-three/fiber";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import * as THREE from "three";
 import a1 from "./images/Abstract_512x512-75.png";
 import a2 from "./images/Metal_03-128x128.png";
-import a3 from "./images/Stone_05-128x128.png";
-import a4 from "./images/Stone_14-128x128.png";
-import a5 from "./images/Tile_02-128x128.png";
+import a3 from "./images/Metal_03-512x512.png";
+
+import a4 from "./images/Tile_02-128x128.png";
+import a5 from "./images/Tile_02-512x512.png";
 import a6 from "./images/Tile_04-128x128.png";
-import a7 from "./images/Tile_06-128x128.png";
+import a7 from "./images/Tile_04-512x512.png";
 import a8 from "./images/Tile_11-128x128.png";
-import a9 from "./images/Tile_12-128x128.png";
+import a9 from "./images/Tile_11-512x512.png";
 import a10 from "./images/Tile_20-128x128.png";
-import { CamControls } from "../../components/CamControls";
+import a11 from "./images/Tile_20-512x512.png";
+
 import { buttonGroup, useControls } from "leva";
 
-export const TorusScene = ({
-  texture,
-  setTexture,
-  wrapX,
-  setWrapX,
-  wrapY,
-  setWrapY,
-}) => {
-  var torusRotSpeed = 0.01;
-
+export const TorusScene = ({ texture, wrapX, wrapY }) => {
   function TorusGroup() {
     // function textureChanger() {
     //   if (window.innerWidth < 700) {
@@ -33,25 +26,83 @@ export const TorusScene = ({
     //   }
     // }
 
-    const { radialSegments } = useControls("radialSegments", {
-      radialSegments: {
-        value: 8,
-        min: 2,
-        max: 16,
-        step: 1,
+    const {
+      radialSegments,
+      tubularSegments,
+      radius1,
+      radius2,
+      radius3,
+      radius4,
+      rot1,
+      rot2,
+      rot3,
+      rot4,
+    } = useControls(
+      "Torus Dimension/Rotation",
+      {
+        radialSegs: {
+          value: 8,
+          min: 2,
+          max: 16,
+          step: 1,
+        },
+        tubularSegs: {
+          value: 16,
+          min: 3,
+          max: 64,
+          step: 1,
+        },
+        radius1: {
+          value: 0.1,
+          min: 0.02,
+          max: 0.1,
+          step: 0.01,
+        },
+        radius2: {
+          value: 0.1,
+          min: 0.02,
+          max: 0.1,
+          step: 0.01,
+        },
+        radius3: {
+          value: 0.1,
+          min: 0.02,
+          max: 0.1,
+          step: 0.01,
+        },
+        radius4: {
+          value: 0.1,
+          min: 0.02,
+          max: 0.1,
+          step: 0.01,
+        },
+        rot1: {
+          value: 0.01,
+          min: 0.001,
+          max: 0.1,
+          step: 0.001,
+        },
+        rot2: {
+          value: 0.01,
+          min: 0.001,
+          max: 0.1,
+          step: 0.001,
+        },
+        rot3: {
+          value: 0.01,
+          min: 0.001,
+          max: 0.1,
+          step: 0.001,
+        },
+        rot4: {
+          value: 0.01,
+          min: 0.001,
+          max: 0.1,
+          step: 0.001,
+        },
       },
-    });
-
-    const { tubularSegments } = useControls("tubularSegments", {
-      tubularSegments: {
-        value: 16,
-        min: 3,
-        max: 64,
-        step: 1,
-      },
-    });
-
-    console.log(texture);
+      { collapsed: true }
+    );
 
     const meshTexture = useLoader(
       THREE.TextureLoader,
@@ -73,7 +124,9 @@ export const TorusScene = ({
         ? a8
         : texture === 9
         ? a9
-        : a10
+        : texture === 10
+        ? a10
+        : a11
     );
 
     meshTexture.repeat.set(wrapY, wrapX);
@@ -93,24 +146,28 @@ export const TorusScene = ({
       ) {
         return;
       }
-      meshRef1.current.rotation.x += torusRotSpeed;
-      meshRef2.current.rotation.x -= torusRotSpeed;
-      meshRef3.current.rotation.y -= torusRotSpeed;
-      meshRef4.current.rotation.y += torusRotSpeed;
+      meshRef1.current.rotation.x += rot1;
+      meshRef2.current.rotation.x -= rot2;
+      meshRef3.current.rotation.y -= rot3;
+      meshRef4.current.rotation.y += rot4;
     });
 
     return (
       <>
         <mesh ref={meshRef1} position={[0, 0, 0]}>
-          <torusGeometry args={[0.9, 0.1, radialSegments, tubularSegments]} />
+          <torusGeometry
+            args={[0.9, radius1, radialSegments, tubularSegments]}
+          />
           {texture > 0 ? (
-            <meshStandardMaterial map={meshTexture} />
+            <meshStandardMaterial map={meshTexture} side={THREE.BackSide} />
           ) : (
             <meshStandardMaterial color="red" wireframe={true} />
           )}
         </mesh>
         <mesh ref={meshRef2} position={[0, 0, 0]}>
-          <torusGeometry args={[1.1, 0.1, radialSegments, tubularSegments]} />
+          <torusGeometry
+            args={[1.1, radius2, radialSegments, tubularSegments]}
+          />
           {texture > 0 ? (
             <meshStandardMaterial map={meshTexture} />
           ) : (
@@ -118,7 +175,9 @@ export const TorusScene = ({
           )}
         </mesh>
         <mesh ref={meshRef3} position={[0, 0, 0]}>
-          <torusGeometry args={[1.3, 0.1, radialSegments, tubularSegments]} />
+          <torusGeometry
+            args={[1.3, radius3, radialSegments, tubularSegments]}
+          />
           {texture > 0 ? (
             <meshStandardMaterial map={meshTexture} />
           ) : (
@@ -126,7 +185,9 @@ export const TorusScene = ({
           )}
         </mesh>
         <mesh ref={meshRef4} position={[0, 0, 0]}>
-          <torusGeometry args={[1.5, 0.1, radialSegments, tubularSegments]} />
+          <torusGeometry
+            args={[1.5, radius4, radialSegments, tubularSegments]}
+          />
           {texture > 0 ? (
             <meshStandardMaterial map={meshTexture} />
           ) : (
@@ -154,6 +215,7 @@ export const TorusScene = ({
   return (
     <group>
       <ambientLight intensity={1} />
+      {/* <directionalLight /> */}
       <TorusGroup />
       <Sphere />
     </group>
