@@ -122,18 +122,29 @@
     linear-gradient(to right, transparent, #a5cc82, transparent);
 }
 
-.torus-btn-wrap {
+.torus-btn-container {
   position: fixed;
   left: 0;
   bottom: 0;
   z-index: 777;
-  border-radius: 100px;
-  box-shadow: 0 0 5px 1px white;
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  padding: 5px;
   text-align: center;
   color: white;
   font-size: 15px;
+}
+
+.torus-btn-container p {
+  box-shadow: inset 0 0 10px 1px rgba(255, 255, 255, 0.2);
+  width: 50px;
+}
+
+.torus-btn-wrap {
+  border-radius: 100px;
+  box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.2);
+  display: flex;
 }
 
 .wrap-x {
@@ -145,14 +156,18 @@
   left: 60px;
 }
 
+.torus-bg {
+  left: 60px;
+}
+
 .torus-btn-wrap .btn {
   width: 50px;
   height: 50px;
-  background: url(../public/icons/chevron-up-cyan.svg) center / 50% no-repeat;
+  background: url(../public/icons/chevron-right-cyan.svg) center / 20% no-repeat;
 }
 
 .torus-btn-wrap .btn.down {
-  background: url(../public/icons/chevron-down-cyan.svg) center / 50% no-repeat;
+  background: url(../public/icons/chevron-left-cyan.svg) center / 20% no-repeat;
 }
 
 .canvas.space {

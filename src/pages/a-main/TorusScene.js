@@ -2,21 +2,24 @@ import { useFrame, useLoader } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
 import a1 from "./images/Abstract_512x512-75.png";
-import a2 from "./images/Metal_03-128x128.png";
-import a3 from "./images/Metal_03-512x512.png";
-
-import a4 from "./images/Tile_02-128x128.png";
-import a5 from "./images/Tile_02-512x512.png";
-import a6 from "./images/Tile_04-128x128.png";
-import a7 from "./images/Tile_04-512x512.png";
-import a8 from "./images/Tile_11-128x128.png";
-import a9 from "./images/Tile_11-512x512.png";
-import a10 from "./images/Tile_20-128x128.png";
-import a11 from "./images/Tile_20-512x512.png";
+import a2 from "./images/future-machine-512.jpg";
+import a3 from "./images/sci-metal-512.jpg";
+import a4 from "./images/sci-metal-1200.jpg";
+import a5 from "./images/sci-metal-2-512.jpg";
+import a6 from "./images/sci-metal-2-1024.jpg";
+import a7 from "./images/space-cruiser-512.png";
+import a8 from "./images/space-cruiser-1024.png";
+import a9 from "./images/Tile_02-512x512.png";
+import a10 from "./images/Tile_04-512x512.png";
+import a11 from "./images/Tile_11-512x512.png";
+import bg1 from "./images/bg/Blue_Nebula_01-1024x1024.png";
+import bg2 from "./images/bg/Blue_Nebula_02-1024x1024.png";
+import bg3 from "./images/bg/Blue_Nebula_03-1024x1024.png";
 
 import { buttonGroup, useControls } from "leva";
+import { OrbitControls } from "@react-three/drei";
 
-export const TorusScene = ({ texture, wrapX, wrapY }) => {
+export const TorusScene = ({ bg, bgWrapX, bgWrapY, texture, wrapX, wrapY }) => {
   function TorusGroup() {
     // function textureChanger() {
     //   if (window.innerWidth < 700) {
@@ -223,11 +226,12 @@ export const TorusScene = ({ texture, wrapX, wrapY }) => {
             args={[0.9, radius1, radialSegments, tubularSegments]}
           />
           {texture > 0 ? (
-            <meshStandardMaterial map={meshTexture} side={THREE.BackSide} />
+            <meshStandardMaterial map={meshTexture} />
           ) : (
             <meshStandardMaterial color="red" wireframe={true} />
           )}
         </mesh>
+
         <mesh ref={meshRef2} position={[0, 0, 0]}>
           <torusGeometry
             args={[1.1, radius2, radialSegments, tubularSegments]}
@@ -238,6 +242,7 @@ export const TorusScene = ({ texture, wrapX, wrapY }) => {
             <meshStandardMaterial color="aqua" wireframe={true} />
           )}
         </mesh>
+
         <mesh ref={meshRef3} position={[0, 0, 0]}>
           <torusGeometry
             args={[1.3, radius3, radialSegments, tubularSegments]}
@@ -248,6 +253,7 @@ export const TorusScene = ({ texture, wrapX, wrapY }) => {
             <meshStandardMaterial color="red" wireframe={true} />
           )}
         </mesh>
+
         <mesh ref={meshRef4} position={[0, 0, 0]}>
           <torusGeometry
             args={[1.5, radius4, radialSegments, tubularSegments]}
@@ -276,12 +282,33 @@ export const TorusScene = ({ texture, wrapX, wrapY }) => {
     );
   }
 
+  const Background = () => {
+    const bgTexture = useLoader(
+      THREE.TextureLoader,
+      bg === 1 ? bg1 : bg === 2 ? bg2 : bg3
+    );
+    bgTexture.repeat.set(bgWrapY, bgWrapX);
+    bgTexture.wrapS = bgTexture.wrapT = THREE.RepeatWrapping;
+    return (
+      <mesh position={[0, 0, 0]} rotation={[0, 1.6, 0]}>
+        <sphereGeometry args={[10, 40, 20]} />
+        {bg === 0 ? (
+          <meshStandardMaterial wireframe color={"red"} />
+        ) : (
+          <meshStandardMaterial map={bgTexture} side={THREE.BackSide} />
+        )}
+      </mesh>
+    );
+  };
+
   return (
     <group>
       <ambientLight intensity={1} />
       {/* <directionalLight /> */}
+      <OrbitControls />
       <TorusGroup />
       <Sphere />
+      <Background />
     </group>
   );
 };

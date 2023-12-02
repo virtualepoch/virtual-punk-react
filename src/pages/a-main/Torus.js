@@ -5,6 +5,10 @@ import { TorusScene } from "./TorusScene";
 import { OmniControls } from "../../components/OmniControls";
 
 export function Torus() {
+  const [bg, setBg] = useState(1);
+  const [bgWrapX, setBgWrapX] = useState(3);
+  const [bgWrapY, setBgWrapY] = useState(3);
+
   const [texture, setTexture] = useState(0);
   const [wrapX, setWrapX] = useState(3);
   const [wrapY, setWrapY] = useState(22);
@@ -12,6 +16,12 @@ export function Torus() {
   return (
     <>
       <OmniControls
+        bg={bg}
+        setBg={setBg}
+        bgWrapX={bgWrapX}
+        setBgWrapX={setBgWrapX}
+        bgWrapY={bgWrapY}
+        setBgWrapY={setBgWrapY}
         texture={texture}
         setTexture={setTexture}
         wrapX={wrapX}
@@ -24,6 +34,12 @@ export function Torus() {
 
       <Canvas className="canvas torus" camera={{ position: [0, 0, 3] }}>
         <TorusScene
+          bg={bg}
+          setBg={setBg}
+          bgWrapX={bgWrapX}
+          setBgWrapX={setBgWrapX}
+          bgWrapY={bgWrapY}
+          setBgWrapY={setBgWrapY}
           texture={texture}
           setTexture={setTexture}
           wrapX={wrapX}
