@@ -33,10 +33,18 @@ export const TorusScene = ({ texture, wrapX, wrapY }) => {
       radius2,
       radius3,
       radius4,
-      rot1,
-      rot2,
-      rot3,
-      rot4,
+      mesh1RotX,
+      mesh1RotY,
+      mesh1RotZ,
+      mesh2RotX,
+      mesh2RotY,
+      mesh2RotZ,
+      mesh3RotX,
+      mesh3RotY,
+      mesh3RotZ,
+      mesh4RotX,
+      mesh4RotY,
+      mesh4RotZ,
     } = useControls(
       "Torus Dimension/Rotation",
       {
@@ -76,29 +84,77 @@ export const TorusScene = ({ texture, wrapX, wrapY }) => {
           max: 0.1,
           step: 0.01,
         },
-        rot1: {
-          value: 0.01,
-          min: 0.001,
+        mesh1RotX: {
+          value: 0,
+          min: 0,
           max: 0.1,
-          step: 0.001,
+          step: 0.01,
         },
-        rot2: {
-          value: 0.01,
-          min: 0.001,
+        mesh1RotY: {
+          value: 0,
+          min: 0,
           max: 0.1,
-          step: 0.001,
+          step: 0.01,
         },
-        rot3: {
-          value: 0.01,
-          min: 0.001,
+        mesh1RotZ: {
+          value: 0,
+          min: 0,
           max: 0.1,
-          step: 0.001,
+          step: 0.01,
         },
-        rot4: {
-          value: 0.01,
-          min: 0.001,
+        mesh2RotX: {
+          value: 0,
+          min: 0,
           max: 0.1,
-          step: 0.001,
+          step: 0.01,
+        },
+        mesh2RotY: {
+          value: 0,
+          min: 0,
+          max: 0.1,
+          step: 0.01,
+        },
+        mesh2RotZ: {
+          value: 0,
+          min: 0,
+          max: 0.1,
+          step: 0.01,
+        },
+        mesh3RotX: {
+          value: 0,
+          min: 0,
+          max: 0.1,
+          step: 0.01,
+        },
+        mesh3RotY: {
+          value: 0,
+          min: 0,
+          max: 0.1,
+          step: 0.01,
+        },
+        mesh3RotZ: {
+          value: 0,
+          min: 0,
+          max: 0.1,
+          step: 0.01,
+        },
+        mesh4RotX: {
+          value: 0,
+          min: 0,
+          max: 0.1,
+          step: 0.01,
+        },
+        mesh4RotY: {
+          value: 0,
+          min: 0,
+          max: 0.1,
+          step: 0.01,
+        },
+        mesh4RotZ: {
+          value: 0,
+          min: 0,
+          max: 0.1,
+          step: 0.01,
         },
       },
       { collapsed: true }
@@ -146,10 +202,18 @@ export const TorusScene = ({ texture, wrapX, wrapY }) => {
       ) {
         return;
       }
-      meshRef1.current.rotation.x += rot1;
-      meshRef2.current.rotation.x -= rot2;
-      meshRef3.current.rotation.y -= rot3;
-      meshRef4.current.rotation.y += rot4;
+      meshRef1.current.rotation.x += mesh1RotX;
+      meshRef1.current.rotation.y += mesh1RotY;
+      meshRef1.current.rotation.z += mesh1RotZ;
+      meshRef2.current.rotation.x += mesh2RotX;
+      meshRef2.current.rotation.y += mesh2RotY;
+      meshRef2.current.rotation.z += mesh2RotZ;
+      meshRef3.current.rotation.x += mesh3RotX;
+      meshRef3.current.rotation.y += mesh3RotY;
+      meshRef3.current.rotation.z += mesh3RotZ;
+      meshRef4.current.rotation.x += mesh4RotX;
+      meshRef4.current.rotation.y += mesh4RotY;
+      meshRef4.current.rotation.z += mesh4RotZ;
     });
 
     return (
