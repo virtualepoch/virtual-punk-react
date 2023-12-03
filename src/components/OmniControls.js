@@ -14,9 +14,11 @@ export const OmniControls = ({
   setWrapX,
   wrapY,
   setWrapY,
+  intensity,
+  setIntensity,
 }) => {
   const [omniOpen, setOmniOpen] = useState(false);
-  
+
   return (
     <>
       <button
@@ -30,6 +32,25 @@ export const OmniControls = ({
         classNames="omni"
       >
         <div className="omni">
+          {/* LIGHT INTENSITY CONTROLS ////////////////////////////////////// */}
+          <div className="torus-btn-wrap">
+            <button
+              className="btn down"
+              onClick={() => {
+                setIntensity(intensity >= 0.1 ? intensity - 0.1 : 0);
+              }}
+            ></button>
+            <p>
+              intensity:
+              <br />
+              {intensity.toFixed(1)}
+            </p>
+            <button
+              className="btn"
+              onClick={() => setIntensity(intensity + 0.1)}
+            ></button>
+          </div>
+
           {/* TEXTURE CONTROLS ////////////////////////////////////// */}
           <div className="torus-btn-wrap">
             <button

@@ -9,9 +9,11 @@ export function Torus() {
   const [bgWrapX, setBgWrapX] = useState(3);
   const [bgWrapY, setBgWrapY] = useState(3);
 
-  const [texture, setTexture] = useState(0);
+  const [texture, setTexture] = useState(1);
   const [wrapX, setWrapX] = useState(3);
   const [wrapY, setWrapY] = useState(22);
+
+  const [intensity, setIntensity] = useState(1);
 
   return (
     <>
@@ -28,6 +30,8 @@ export function Torus() {
         setWrapX={setWrapX}
         wrapY={wrapY}
         setWrapY={setWrapY}
+        intensity={intensity}
+        setIntensity={setIntensity}
       />
 
       <h1 className="page-title">Torus</h1>
@@ -48,6 +52,7 @@ export function Torus() {
           setWrapX={setWrapX}
           wrapY={wrapY}
           setWrapY={setWrapY}
+          intensity={intensity}
         />
       </Canvas>
 

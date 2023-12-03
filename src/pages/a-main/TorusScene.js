@@ -17,9 +17,17 @@ import bg2 from "./images/bg/Blue_Nebula_02-1024x1024.png";
 import bg3 from "./images/bg/Blue_Nebula_03-1024x1024.png";
 
 import { buttonGroup, useControls } from "leva";
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, useHelper } from "@react-three/drei";
 
-export const TorusScene = ({ bg, bgWrapX, bgWrapY, texture, wrapX, wrapY }) => {
+export const TorusScene = ({
+  bg,
+  bgWrapX,
+  bgWrapY,
+  texture,
+  wrapX,
+  wrapY,
+  intensity,
+}) => {
   function TorusGroup() {
     // function textureChanger() {
     //   if (window.innerWidth < 700) {
@@ -225,44 +233,28 @@ export const TorusScene = ({ bg, bgWrapX, bgWrapY, texture, wrapX, wrapY }) => {
           <torusGeometry
             args={[0.9, radius1, radialSegments, tubularSegments]}
           />
-          {texture > 0 ? (
-            <meshStandardMaterial map={meshTexture} />
-          ) : (
-            <meshStandardMaterial color="red" wireframe={true} />
-          )}
+          <meshStandardMaterial map={meshTexture} />
         </mesh>
 
         <mesh ref={meshRef2} position={[0, 0, 0]}>
           <torusGeometry
             args={[1.1, radius2, radialSegments, tubularSegments]}
           />
-          {texture > 0 ? (
-            <meshStandardMaterial map={meshTexture} />
-          ) : (
-            <meshStandardMaterial color="aqua" wireframe={true} />
-          )}
+          <meshStandardMaterial map={meshTexture} />
         </mesh>
 
         <mesh ref={meshRef3} position={[0, 0, 0]}>
           <torusGeometry
             args={[1.3, radius3, radialSegments, tubularSegments]}
           />
-          {texture > 0 ? (
-            <meshStandardMaterial map={meshTexture} />
-          ) : (
-            <meshStandardMaterial color="red" wireframe={true} />
-          )}
+          <meshStandardMaterial map={meshTexture} />
         </mesh>
 
         <mesh ref={meshRef4} position={[0, 0, 0]}>
           <torusGeometry
             args={[1.5, radius4, radialSegments, tubularSegments]}
           />
-          {texture > 0 ? (
-            <meshStandardMaterial map={meshTexture} />
-          ) : (
-            <meshStandardMaterial color="aqua" wireframe={true} />
-          )}
+          <meshStandardMaterial map={meshTexture} />
         </mesh>
       </>
     );
@@ -301,10 +293,17 @@ export const TorusScene = ({ bg, bgWrapX, bgWrapY, texture, wrapX, wrapY }) => {
     );
   };
 
+  const directionalLight = useRef();
+  useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
+
   return (
     <group>
-      <ambientLight intensity={1} />
-      {/* <directionalLight /> */}
+      <ambientLight intensity={intensity} />
+      <directionalLight
+        ref={directionalLight}
+        position={[4, 15, 10]}
+        angle={0.3}
+      />
       <OrbitControls />
       <TorusGroup />
       <Sphere />

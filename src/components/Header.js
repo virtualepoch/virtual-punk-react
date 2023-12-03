@@ -31,7 +31,7 @@ export function Header({ navMenuOpen, setNavMenuOpen }) {
     >
       <HeaderLogo setNavMenuOpen={setNavMenuOpen} />
 
-      <div className="header-trapezoid"></div>
+      {/* <div className="header-trapezoid"></div> */}
 
       <HeaderTitle setNavMenuOpen={setNavMenuOpen} />
 

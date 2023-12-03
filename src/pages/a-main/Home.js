@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { MainOverlay } from "../../components/MainOverlay";
 import { HomeCanvas } from "./HomeCanvas";
 import "./home.css";
+import { FooterLink } from "../../components/FooterLink";
 
 export function Home() {
   const rabbitHole = useRef();
@@ -12,13 +13,13 @@ export function Home() {
     e.preventDefault();
     rabbitHole.current.fastForward();
 
-    setTimeout(() => navigate(path), 3000);
+    setTimeout(() => navigate(path), 2000);
   }
 
   return (
     <>
       <MainOverlay />
-      <HomeCanvas ref={rabbitHole} />
+
       <header className="hero-section">
         <p className="hero-text">Welcome!</p>
         <p className="hero-text">
@@ -31,15 +32,13 @@ export function Home() {
         <p className="hero-text">Hope you enjoy!</p>
       </header>
 
-      <div className="footer-link-container">
-        <Link
-          className="footer-link home"
-          to="/torus"
-          onClick={(e) => delayAndGo(e, "/torus")}
-        >
-          torus
-        </Link>
-      </div>
+      <HomeCanvas ref={rabbitHole} />
+
+      <FooterLink
+        forwardTo="/torus"
+        forwardName="torus"
+        onClick={(e) => delayAndGo(e, "/torus")}
+      />
     </>
   );
 }

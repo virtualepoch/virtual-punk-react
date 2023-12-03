@@ -18,7 +18,11 @@ export const HomeCanvas = forwardRef((props, ref) => {
     });
 
     return (
-      <mesh ref={rabbitHole} position={[0, 0, -20]} rotation={[Math.PI / -2, Math.PI / 4, 0]}>
+      <mesh
+        ref={rabbitHole}
+        position={[0, 0, -20]}
+        rotation={[Math.PI / -2, Math.PI / 4, 0]}
+      >
         <cylinderGeometry args={[0, 5, 120, 8, 100]} />
         <meshBasicMaterial color={"aqua"} wireframe={true} />
       </mesh>
@@ -29,7 +33,7 @@ export const HomeCanvas = forwardRef((props, ref) => {
 
   useImperativeHandle(ref, () => ({
     fastForward() {
-      zPosition = 0.4;
+      zPosition = 0.3;
       yRotation = -0.008;
     },
   }));

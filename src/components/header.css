@@ -107,7 +107,9 @@
 
 /* HEADER CENTER: SITE TITLE /////////// */
 .site-title-container {
+  height: 40px;
   display: flex;
+  align-items: center;
 }
 
 .site-title {
