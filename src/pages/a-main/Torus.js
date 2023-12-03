@@ -32,6 +32,8 @@ export function Torus() {
 
       <h1 className="page-title">Torus</h1>
 
+      {/* <div className="test"></div> */}
+
       <Canvas className="canvas torus" camera={{ position: [0, 0, 3] }}>
         <TorusScene
           bg={bg}
