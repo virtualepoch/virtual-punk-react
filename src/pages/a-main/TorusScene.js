@@ -293,7 +293,7 @@ export const TorusScene = ({ bg, bgWrapX, bgWrapY, texture, wrapX, wrapY }) => {
       <mesh position={[0, 0, 0]} rotation={[0, 1.6, 0]}>
         <sphereGeometry args={[10, 40, 20]} />
         {bg === 0 ? (
-          <meshStandardMaterial wireframe color={"red"} />
+          <meshStandardMaterial />
         ) : (
           <meshStandardMaterial map={bgTexture} side={THREE.BackSide} />
         )}

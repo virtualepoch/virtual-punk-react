@@ -88,40 +88,7 @@
   }
 }
 
-/* CANVAS STYLING */
-.canvas {
-  /* background: linear-gradient(to right, #536976, #bbd2c5, #536976); */
-  background: linear-gradient(to right, #00467f, #a5cc82, #00467f);
-  background: linear-gradient(to right, #00467f, #cbcaa5, #00467f);
-  /* background: linear-gradient(to right, #334d50, #cbcaa5, #334d50); */
-  /* background: linear-gradient(to right, #2c3e50, #bdc3c7, #2c3e50); */
-  /* background: linear-gradient(to right, #0f2027, #203a43, #2c5364, #203a43, #0f2027); */
-  background: linear-gradient(
-    to right,
-    #2980b9,
-    #203a43 10%,
-    #6dd5fa,
-    #203a43 90%,
-    #2980b9
-  );
-}
-
-.canvas.torus {
-  background: linear-gradient(
-      transparent 20%,
-      rgba(255, 255, 255, 0.3),
-      transparent 80%
-    ),
-    linear-gradient(
-      to right,
-      transparent 30%,
-      rgba(255, 255, 255, 0.3),
-      transparent 70%
-    ),
-    linear-gradient(transparent, rgb(0, 155, 155), transparent),
-    linear-gradient(to right, transparent, #a5cc82, transparent);
-}
-
+/* BUTTON FOR OMNI CONTROLS ///////////////////////// */
 .btn-omni {
   width: 40px;
   height: 40px;
@@ -192,6 +159,37 @@
 
 .torus-btn-wrap .btn.down {
   background: url(../public/icons/chevron-left-cyan.svg) center / 20% no-repeat;
+}
+
+/* CANVAS STYLING */
+.canvas {
+  /* background: linear-gradient(to right, #536976, #bbd2c5, #536976); */
+  background: linear-gradient(to right, #00467f, #a5cc82, #00467f);
+  background: linear-gradient(to right, #00467f, #cbcaa5, #00467f);
+  /* background: linear-gradient(to right, #334d50, #cbcaa5, #334d50); */
+  /* background: linear-gradient(to right, #2c3e50, #bdc3c7, #2c3e50); */
+  /* background: linear-gradient(to right, #0f2027, #203a43, #2c5364, #203a43, #0f2027); */
+  background: linear-gradient(to right, #203a43, #6dd5fa, #203a43);
+  background: linear-gradient(to right, #020024, #6dd5fa, #020024);
+  background: linear-gradient(to right, #020024, #00d4ff, #020024);
+  background: linear-gradient(to right, #240000, #00d4ff, #240000);
+  background: linear-gradient(to right, #00d4ff, #240000, #00d4ff);
+}
+
+.canvas.torus {
+  background: linear-gradient(
+      transparent 20%,
+      rgba(255, 255, 255, 0.3),
+      transparent 80%
+    ),
+    linear-gradient(
+      to right,
+      transparent 30%,
+      rgba(255, 255, 255, 0.3),
+      transparent 70%
+    ),
+    linear-gradient(transparent, rgb(0, 155, 155), transparent),
+    linear-gradient(to right, transparent, #a5cc82, transparent);
 }
 
 .canvas.space {

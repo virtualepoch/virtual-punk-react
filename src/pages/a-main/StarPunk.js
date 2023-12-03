@@ -36,8 +36,8 @@ export function StarPunk() {
         <StarPunkShip />
         <ExtendingWalls />
       </Canvas>
-      <div className="pill-container">
-        <Link className="pill blue home" to="/dragon">
+      <div className="footer-link-container">
+        <Link className="footer-link back" to="/dragon">
           ◃dragon
         </Link>
       </div>

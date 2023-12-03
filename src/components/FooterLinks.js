@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-
 export function FooterLinks({ backTo, backName, forwardTo, forwardName }) {
   //   const navigate = useNavigate();
 
@@ -24,7 +23,9 @@ export function FooterLinks({ backTo, backName, forwardTo, forwardName }) {
     <div className="footer-link-container">
       {/* BACK LINK ///////////////////////////////////// */}
       <Link
-        className="footer-link back"
+        className={
+          backPressed ? "footer-link back pressed" : "footer-link back"
+        }
         to={backTo}
         onMouseDown={() => setBackPressed(true)}
         onTouchStart={() => setBackPressed(true)}
@@ -32,17 +33,24 @@ export function FooterLinks({ backTo, backName, forwardTo, forwardName }) {
         {backName}
       </Link>
 
-      {/* LINK EFFECT ////////////////////////////// */}
+      {/* LINK EFFECTS ////////////////////////////// */}
       <div className="effect back"></div>
+      <div className="effect-2 back"></div>
+      <div className="effect-3 back"></div>
 
       {/* LINK SHADOW /////////////////////////////////////////// */}
       <div
         className={backPressed ? "shadow  back pressed" : "shadow back"}
       ></div>
 
+      {/* CENTER ICON //////////////////////// */}
+      <div className="center-icon"></div>
+
       {/* FORWARD LINK ////////////////////////////////////////// */}
       <Link
-        className="footer-link forward"
+        className={
+          forwardPressed ? "footer-link forward pressed" : "footer-link forward"
+        }
         to={forwardTo}
         onMouseDown={() => setForwardPressed(true)}
         onTouchStart={() => setForwardPressed(true)}
@@ -57,8 +65,10 @@ export function FooterLinks({ backTo, backName, forwardTo, forwardName }) {
         }
       ></div>
 
-      {/* LINK EFFECT ////////////////////////////// */}
+      {/* LINK EFFECTS ////////////////////////////// */}
       <div className="effect forward"></div>
+      <div className="effect-2 forward"></div>
+      <div className="effect-3 forward"></div>
     </div>
   );
 }
