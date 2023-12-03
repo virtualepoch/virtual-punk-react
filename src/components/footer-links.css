@@ -1,0 +1,124 @@
+.footer-link-container {
+  width: fit-content;
+  max-width: 500px;
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 96;
+  display: flex;
+  gap: 20px;
+}
+
+.test {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 11111;
+  /* background-image: radial-gradient(transparent, black 100%),
+      repeating-conic-gradient(
+        from 45deg,
+        rgb(192, 192, 192) 0deg 90deg,
+        rgb(255, 255, 255) 90deg 180deg
+      ); */
+  /* background-image: repeating-conic-gradient(
+        from 3deg at 25% 25%,
+        hsl(200, 100%, 50%) 0deg 15deg,
+        hsl(200, 100%, 60%) 10deg 30deg
+      ); */
+  background-image: var(--hex-bg-image);
+  background-size: 10% 10%;
+}
+
+:root {
+  --hex-bg-size: 10px;
+}
+
+.footer-link {
+  width: 100px;
+  min-width: 100px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: 100 25px Ailerons;
+  color: cyan;
+  text-shadow: 2px 0 2px red, -2px 0 2px red, 0 2px 2px red, 0 -2px 2px red;
+  border: 1px solid red;
+  background-image: var(--hex-bg-image);
+  background-size: var(--hex-bg-size) var(--hex-bg-size);
+  box-shadow: inset 0 -4px 10px 1px rgba(200, 0, 0, 0.5);
+  position: relative;
+}
+
+.footer-link:hover {
+  filter: drop-shadow(0 0 4px cyan);
+}
+
+.footer-link.back {
+  clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 20px, 20px 0);
+  border-right: 1px solid red;
+  border-left: none;
+}
+
+.footer-link.forward {
+  clip-path: polygon(calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%, 0 0);
+  border-left: 1px solid red;
+  border-right: none;
+}
+
+.footer-link.home {
+  border-left: 1px solid red;
+  border-right: 1px solid red;
+  clip-path: polygon(
+    calc(100% - 20px) 0,
+    100% 20px,
+    100% 100%,
+    0 100%,
+    0 20px,
+    20px 0
+  );
+}
+
+.footer-link-container .shadow {
+  width: 100px;
+  height: 40px;
+  background: rgba(0, 0, 0, 0.35);
+  position: absolute;
+  left: 0;
+  z-index: -1;
+  box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.8);
+}
+
+.footer-link-container .shadow.pressed {
+  background: none;
+  box-shadow: none;
+}
+
+.footer-link-container .shadow.back {
+  border-top-left-radius: 35px;
+}
+
+.footer-link-container .shadow.forward {
+  left: calc(50% + 10px);
+  border-top-right-radius: 35px;
+}
+
+.effect {
+  width: 106px;
+  height: 2px;
+  background: red;
+  position: absolute;
+  bottom: -6px;
+  left: -6px;
+  z-index: 111111;
+  box-shadow: 0 0 5px 1px cyan;
+  align-self: flex-end;
+}
+
+.effect.forward {
+  left: auto;
+  right: -6px;
+}

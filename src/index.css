@@ -21,8 +21,8 @@
   --bg-blur: 0.5;
   --hero-text-color: white;
   --hex-color: rgba(0, 255, 255, 0.7);
-  --hex-line: .5px;
-  --trans-line: .5px;
+  --hex-line: 0.5px;
+  --trans-line: 0.5px;
   --hex-bg-image: linear-gradient(
       var(--hex-color) var(--hex-line),
       transparent var(--trans-line) calc(100% - var(--trans-line)),

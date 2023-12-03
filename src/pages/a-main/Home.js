@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { MainOverlay } from "../../components/MainOverlay";
 import { HomeCanvas } from "./HomeCanvas";
 import "./home.css";
-import { Link, useNavigate } from "react-router-dom";
 
 export function Home() {
   const rabbitHole = useRef();
@@ -33,7 +33,7 @@ export function Home() {
 
       <div className="footer-link-container">
         <Link
-          className="footer-link forward"
+          className="footer-link home"
           to="/torus"
           onClick={(e) => delayAndGo(e, "/torus")}
         >

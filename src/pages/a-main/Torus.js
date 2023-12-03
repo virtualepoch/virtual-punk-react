@@ -5,7 +5,7 @@ import { TorusScene } from "./TorusScene";
 import { OmniControls } from "../../components/OmniControls";
 
 export function Torus() {
-  const [bg, setBg] = useState(1);
+  const [bg, setBg] = useState(0);
   const [bgWrapX, setBgWrapX] = useState(3);
   const [bgWrapY, setBgWrapY] = useState(3);
 

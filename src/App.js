@@ -19,6 +19,7 @@ import { Testing } from "./a1-testing/Testing";
 import { AniMoto } from "./pages/moto-game/AniMoto";
 import { LetterGame } from "./pages/letter-game/LetterGame";
 import "./App.css";
+import "./components/footer-links.css";
 
 import { SandyBday } from "./pages/bday-cards/SandyBday";
 import { DadBday } from "./pages/bday-cards/DadBday";
