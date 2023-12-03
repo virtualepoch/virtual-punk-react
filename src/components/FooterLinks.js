@@ -48,8 +48,13 @@ export function FooterLinks({ backTo, backName, forwardTo, forwardName }) {
         className={backPressed ? "shadow back pressed" : "shadow back"}
       ></div>
 
-      {/* CENTER ICON //////////////////////// */}
+      {/* CENTER ICONS //////////////////////// */}
       <div className="center-icon"></div>
+      <div className="center-icon-2">
+        <div className="bar"></div>
+        <div className="bar center"></div>
+        <div className="bar bottom"></div>
+      </div>
 
       {/* FORWARD LINK ////////////////////////////////////////// */}
       <Link

@@ -67,6 +67,54 @@
   filter: drop-shadow(0 0 2px cyan);
 }
 
+.center-icon-2 {
+  width: 60px;
+  height: 20px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10101;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+.center-icon-2 .bar {
+  width: 30%;
+  height: 2px;
+  background: radial-gradient(ellipse, cyan, red);
+  border-radius: 100%;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.8);
+  filter: drop-shadow(0 0 1px cyan);
+  animation: scale-link-icon 6s ease-in-out infinite;
+}
+
+@keyframes scale-link-icon {
+  0%,
+  100%,
+  45%,
+  55% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0);
+  }
+}
+
+.center-icon-2 .bar.center {
+  width: 100%;
+  height: 3px;
+  filter: drop-shadow(0 0 3px cyan);
+  animation-delay: 200ms;
+}
+
+.center-icon-2 .bar.bottom {
+  animation-delay: 400ms;
+}
+
 .footer-link {
   width: 100px;
   min-width: 100px;
@@ -155,9 +203,11 @@
   z-index: 111111;
   box-shadow: 0 0 5px 1px cyan;
   border-radius: 1010px;
-  transform: scaleX(0);
-  transform-origin: 100% 50%;
-  transition: transform 100ms ease-out;
+}
+
+.effect.forward {
+  left: auto;
+  right: -2px;
 }
 
 .effect-4 {
@@ -169,41 +219,13 @@
   position: absolute;
   left: -2px;
   bottom: -2px;
-  transform: scaleY(0);
   transform-origin: 50% 100%;
   transition: transform 100ms ease-out 100ms;
-  animation: effect-4 4s ease infinite;
-}
-
-@keyframes effect-4 {
-  0%,
-  40%,
-  60%,
-  100% {
-    transform: scaleY(0);
-  }
-  50% {
-    transform: scaleY(1);
-  }
 }
 
 .effect-4.forward {
   left: auto;
   right: -2px;
-}
-
-.effect-4.pressed {
-  transform: scaleY(1);
-}
-
-.effect.pressed {
-  transform: scaleX(1);
-}
-
-.effect.forward {
-  left: auto;
-  right: -2px;
-  transform-origin: 0 50%;
 }
 
 .effect-2,
@@ -234,16 +256,4 @@
   left: auto;
   right: 9.5px;
   transform: rotate(-45deg);
-}
-
-@keyframes pulse {
-  0% {
-    transform: scaleX(0);
-  }
-  50% {
-    transform: scaleX(1);
-  }
-  100% {
-    transform: scaleX(0);
-  }
 }
