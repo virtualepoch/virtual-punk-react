@@ -34,13 +34,18 @@ export function FooterLinks({ backTo, backName, forwardTo, forwardName }) {
       </Link>
 
       {/* LINK EFFECTS ////////////////////////////// */}
-      <div className="effect back"></div>
+      <div
+        className={backPressed ? "effect back pressed" : "effect back"}
+      ></div>
       <div className="effect-2 back"></div>
       <div className="effect-3 back"></div>
+      <div
+        className={backPressed ? "effect-4 back pressed" : "effect-4 back"}
+      ></div>
 
       {/* LINK SHADOW /////////////////////////////////////////// */}
       <div
-        className={backPressed ? "shadow  back pressed" : "shadow back"}
+        className={backPressed ? "shadow back pressed" : "shadow back"}
       ></div>
 
       {/* CENTER ICON //////////////////////// */}
@@ -66,9 +71,16 @@ export function FooterLinks({ backTo, backName, forwardTo, forwardName }) {
       ></div>
 
       {/* LINK EFFECTS ////////////////////////////// */}
-      <div className="effect forward"></div>
+      <div
+        className={forwardPressed ? "effect forward pressed" : "effect forward"}
+      ></div>
       <div className="effect-2 forward"></div>
       <div className="effect-3 forward"></div>
+      <div
+        className={
+          forwardPressed ? "effect-4 forward pressed" : "effect-4 forward"
+        }
+      ></div>
     </div>
   );
 }
