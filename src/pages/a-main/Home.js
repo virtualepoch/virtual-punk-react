@@ -4,6 +4,7 @@ import { MainOverlay } from "../../components/MainOverlay";
 import { HomeCanvas } from "./HomeCanvas";
 import "./home.css";
 import { FooterLink } from "../../components/FooterLink";
+import { FooterLinks } from "../../components/FooterLinks";
 
 export function Home() {
   const rabbitHole = useRef();
@@ -34,7 +35,8 @@ export function Home() {
 
       <HomeCanvas ref={rabbitHole} />
 
-      <FooterLink
+      <FooterLinks
+        single
         forwardTo="/torus"
         forwardName="torus"
         onClick={(e) => delayAndGo(e, "/torus")}

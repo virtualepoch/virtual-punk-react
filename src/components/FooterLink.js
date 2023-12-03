@@ -1,38 +1,40 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export const FooterLink = ({ forwardTo, forwardName, onClick }) => {
+export const FooterLink = ({ to, name, onClick, side }) => {
   const [pressed, setPressed] = useState(false);
 
   return (
-    <div className="footer-link-container">
+    <>
       <Link
         className={
-          pressed ? "footer-link single pressed" : "footer-link single"
+          pressed ? `footer-link ${side} pressed` : `footer-link ${side}`
         }
-        to={forwardTo}
+        to={to}
         onClick={onClick}
         onMouseDown={() => setPressed(true)}
         onTouchStart={() => setPressed(true)}
       >
-        {forwardName}
+        {name}
       </Link>
       {/* LINK EFFECTS ////////////////////////////// */}
-      <div className="effect single "></div>
-      <div className="effect-2 single"></div>
-      <div className="effect-3 single"></div>
-      <div className="effect-4 single "></div>
+      <div className={`effect ${side}`}></div>
+      <div className={`effect-2 ${side}`}></div>
+      <div className={`effect-3 ${side}`}></div>
+      <div className={`effect-4 ${side}`}></div>
 
       {/* LINK ICON //////////////////////////////////// */}
-      <div className="center-icon-2 single">
-        <div className="bar"></div>
-        <div className="bar center"></div>
-      </div>
+      {side === "center" && (
+        <div className={`center-icon-2 ${side}`}>
+          <div className="bar"></div>
+          <div className="bar center"></div>
+        </div>
+      )}
 
       {/* LINK SHADOW /////////////////////////////////////////// */}
       <div
-        className={pressed ? "shadow single pressed" : "shadow single"}
+        className={pressed ? `shadow ${side} pressed` : `shadow ${side}`}
       ></div>
-    </div>
+    </>
   );
 };
