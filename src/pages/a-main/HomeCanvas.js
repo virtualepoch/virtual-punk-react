@@ -3,7 +3,7 @@ import { Canvas, useFrame } from "@react-three/fiber";
 
 export const HomeCanvas = forwardRef((props, ref) => {
   var zPosition = 0.008;
-  var yRotation = -0.002;
+  // var yRotation = -0.002;
 
   function ExtendingWalls() {
     const rabbitHole = useRef(null);
@@ -11,7 +11,7 @@ export const HomeCanvas = forwardRef((props, ref) => {
     useFrame(() => {
       if (rabbitHole.current.position.z < 105) {
         rabbitHole.current.position.z += zPosition;
-        rabbitHole.current.rotateY(yRotation);
+        // rabbitHole.current.rotateY(yRotation);
       } else {
         rabbitHole.current.position.z -= 124;
       }
@@ -23,7 +23,7 @@ export const HomeCanvas = forwardRef((props, ref) => {
         position={[0, 0, -20]}
         rotation={[Math.PI / -2, Math.PI / 4, 0]}
       >
-        <cylinderGeometry args={[0, 5, 120, 8, 100]} />
+        <cylinderGeometry args={[0, 5, 120, 4, 100]} />
         <meshBasicMaterial color={"aqua"} wireframe={true} />
       </mesh>
     );
@@ -34,7 +34,7 @@ export const HomeCanvas = forwardRef((props, ref) => {
   useImperativeHandle(ref, () => ({
     fastForward() {
       zPosition = 0.3;
-      yRotation = -0.008;
+      // yRotation = -0.008;
     },
   }));
 

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { CSSTransition } from "react-transition-group";
 import "./credits-modal.css";
 import { useProgress } from "@react-three/drei";
@@ -6,6 +6,7 @@ import { useProgress } from "@react-three/drei";
 
 export function CreditsModal({ modalOpen, setModalOpen, ...props }) {
   const { progress } = useProgress();
+  const [pressed, setPressed] = useState(false);
 
   useEffect(() => {
     setModalOpen(true);
@@ -13,11 +14,43 @@ export function CreditsModal({ modalOpen, setModalOpen, ...props }) {
 
   return (
     <>
-      <CSSTransition in={modalOpen} unmountOnExit timeout={700} classNames={"credits-modal"}>
+      <button
+        className={pressed ? "btn-open-modal pressed" : "btn-open-modal"}
+        onClick={() => {
+          setModalOpen(true);
+        }}
+        onMouseDown={() => setPressed(true)}
+        onMouseUp={() => setPressed(false)}
+        onTouchStart={() => setPressed(true)}
+        onTouchEnd={() => setPressed(false)}
+      >
+        <div className="info-icon center" />
+      </button>
+
+      <CSSTransition
+        in={modalOpen}
+        unmountOnExit
+        timeout={700}
+        classNames={"credits-modal"}
+      >
         <div className="credits-modal">
-          <div className="loading-section" style={{ display: `${progress === 100 ? "none" : "flex"}` }}>
-            <div className="loading-progress" style={{ width: `${progress}%` }}></div>
-            <p className={`${progress === 100 ? "loadMessage" : "loadMessage loading-anim"}`}>{`${progress === 100 ? "Loading Finished" : `Loading ${Math.floor(progress)}%`}`}</p>
+          <div
+            className="loading-section"
+            style={{ display: `${progress === 100 ? "none" : "flex"}` }}
+          >
+            <div
+              className="loading-progress"
+              style={{ width: `${progress}%` }}
+            ></div>
+            <p
+              className={`${
+                progress === 100 ? "loadMessage" : "loadMessage loading-anim"
+              }`}
+            >{`${
+              progress === 100
+                ? "Loading Finished"
+                : `Loading ${Math.floor(progress)}%`
+            }`}</p>
           </div>
           <div className="text-container">
             <h2 className="credits-header">PAGE CREDITS</h2>
@@ -55,14 +88,6 @@ export function CreditsModal({ modalOpen, setModalOpen, ...props }) {
           />
         </div>
       </CSSTransition>
-      <button
-        className="btn-open-modal"
-        onClick={() => {
-          setModalOpen(true);
-        }}
-      >
-        credits
-      </button>
     </>
   );
 }

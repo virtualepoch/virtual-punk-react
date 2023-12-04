@@ -15,7 +15,7 @@ import { Portal } from "./pages/portal/Portal";
 import { Dragon } from "./pages/dragon/Dragon";
 import { Dissolve } from "./pages/dissolve/Dissolve";
 import { VR } from "./pages/vr/VR";
-import { Testing } from "./a1-testing/Testing";
+import { TestingWater } from "./a1-testing/TestingWater";
 import { AniMoto } from "./pages/moto-game/AniMoto";
 import { LetterGame } from "./pages/letter-game/LetterGame";
 import "./App.css";
@@ -58,7 +58,7 @@ function App() {
         <Route path="/dissolve" element={<Dissolve />} />
         <Route path="/vr" element={<VR />} />
         {/* <Route path="/vr2" element={<VR2 />} /> */}
-        <Route path="/testing" element={<Testing />} />
+        <Route path="/testing" element={<TestingWater />} />
         <Route path="/animoto" element={<AniMoto />} />
         <Route path="/letter-game" element={<LetterGame />} />
         <Route path="/happy-bday-sandy" element={<SandyBday />} />

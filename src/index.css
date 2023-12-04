@@ -18,6 +18,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap");
 
 :root {
+  --cyan-0: cyan;
+  --cyan-rgb: rgb(0, 255, 255);
+  --cyan-hex: #00ffff;
+  --cyan-1: #83d3ef;
+  --cyan-2: rgb(51, 223, 250);
+  --cyan-3: #44b9bf;
+  --red-1: #f73368;
+  --red-2: #ea0047;
+  --red-3: #e70346;
+  --red-4: #810025;
   --bg-blur: 0.5;
   --hero-text-color: white;
   --hex-color: rgba(0, 255, 255, 0.7);
@@ -69,11 +79,30 @@ body {
 
 button {
   border: none;
-  background: cyan;
+  background: transparent;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button.pressed {
+  box-shadow: none;
 }
 
 a:focus,
 button:focus {
   outline-color: aqua;
+}
+
+.info-icon {
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid cyan;
+  border-radius: 100%;
+  filter: drop-shadow(0 0 4px cyan);
+  background: url(../public/icons/info-solid.svg) center / 22% no-repeat;
 }

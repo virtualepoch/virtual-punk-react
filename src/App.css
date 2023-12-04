@@ -67,15 +67,14 @@
 }
 
 .btn-fullscreen {
-  width: 60px;
-  height: 50px;
-  margin: 5px 10px;
+  width: 40px;
+  height: 40px;
   position: fixed;
   bottom: 0;
   right: 0;
   z-index: 1111111;
-  background: url(../public/icons/expand-cyan.svg) center / 40% no-repeat;
-  filter: drop-shadow(0 0 5px cyan);
+  background: url(../public/icons/expand-cyan.svg) center / 35% no-repeat;
+  filter: drop-shadow(0 0 4px cyan);
 }
 
 .btn-fullscreen.clicked {

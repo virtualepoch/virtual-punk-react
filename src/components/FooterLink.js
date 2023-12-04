@@ -13,7 +13,9 @@ export const FooterLink = ({ to, name, onClick, side }) => {
         to={to}
         onClick={onClick}
         onMouseDown={() => setPressed(true)}
+        onMouseUp={() => setPressed(false)}
         onTouchStart={() => setPressed(true)}
+        onTouchEnd={() => setPressed(false)}
       >
         {name}
       </Link>

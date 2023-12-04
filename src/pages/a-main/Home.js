@@ -21,6 +21,8 @@ export function Home() {
     <>
       <MainOverlay />
 
+      <HomeCanvas ref={rabbitHole} />
+
       <header className="hero-section">
         <p className="hero-text">Welcome!</p>
         <p className="hero-text">
@@ -30,10 +32,8 @@ export function Home() {
           This is my portfolio of<br></br>
           <span className="three-d-text">3D</span>
         </p>
-        <p className="hero-text">Hope you enjoy!</p>
+        <p className="hero-text">Please stand by</p>
       </header>
-
-      <HomeCanvas ref={rabbitHole} />
 
       <FooterLinks
         single
