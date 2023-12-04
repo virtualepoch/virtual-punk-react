@@ -33,7 +33,7 @@ import { Water } from "three-stdlib";
 
 extend({ Water });
 
-export function TestingWater() {
+export const TestingWater = () => {
   function Ocean() {
     const ref = useRef();
     const gl = useThree((state) => state.gl);
@@ -163,10 +163,10 @@ export function TestingWater() {
     );
   };
 
-  const light = useRef();
-  if (light.current) {
-    light.current.useHelper(light, DirectionalLightHelper, 1, "red");
-  }
+  // FOR SOME REASON THE ACTIVATING THE LIGHT HELPER ON THIS PAGE CAUSES THE TypeError:
+  // !!! 'light.useHelper is not a function' !!!!!
+  // const light = useRef();
+  // if (light.current) light.useHelper(light, DirectionalLightHelper, 1, "red");
 
   return (
     <>
@@ -175,23 +175,7 @@ export function TestingWater() {
         <OrbitControls maxPolarAngle={Math.PI / 2} />
         <Environment preset="city" />
         <ambientLight intensity={1} />
-        <directionalLight
-          ref={light}
-          position={[0, 15, 10]}
-          // angle={0.3}
-          intensity={1}
-          color="white"
-          castShadow
-          shadow-camera-near={0}
-          shadow-camera-far={100}
-          shadow-camera-left={-20}
-          shadow-camera-right={20}
-          shadow-camera-top={20}
-          shadow-camera-bottom={-20}
-          shadow-mapSize-width={2048}
-          shadow-mapSize-height={2048}
-          shadow-bias={-0.0001}
-        />
+
         <PerspectiveCamera
           position={[0, 0, 20]}
           rotation={[0, 0, 0]}
@@ -201,6 +185,23 @@ export function TestingWater() {
         />
         <ContactShadows position-y={0} opacity={0.4} />
         <Suspense>
+          <directionalLight
+            // ref={light}
+            position={[0, 15, 10]}
+            // angle={0.3}
+            intensity={1}
+            color="white"
+            castShadow
+            shadow-camera-near={0}
+            shadow-camera-far={100}
+            shadow-camera-left={-20}
+            shadow-camera-right={20}
+            shadow-camera-top={20}
+            shadow-camera-bottom={-20}
+            shadow-mapSize-width={2048}
+            shadow-mapSize-height={2048}
+            shadow-bias={-0.0001}
+          />
           <group position={[0, -10, 0]}>
             <Ocean />
           </group>
@@ -218,7 +219,7 @@ export function TestingWater() {
       />
     </>
   );
-}
+};
 
 // function Ground() {
 //   const gridConfig = {

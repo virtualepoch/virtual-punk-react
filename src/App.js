@@ -58,7 +58,7 @@ function App() {
         <Route path="/dissolve" element={<Dissolve />} />
         <Route path="/vr" element={<VR />} />
         {/* <Route path="/vr2" element={<VR2 />} /> */}
-        <Route path="/testing" element={<TestingWater />} />
+        <Route path="/test" element={<TestingWater />} />
         <Route path="/animoto" element={<AniMoto />} />
         <Route path="/letter-game" element={<LetterGame />} />
         <Route path="/happy-bday-sandy" element={<SandyBday />} />
