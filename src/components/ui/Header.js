@@ -35,7 +35,15 @@ export const Header = ({
     >
       <HeaderLogo setNavMenuOpen={setNavMenuOpen} />
 
-      <SceneTitle intro={intro} torus={torus} space={space} scroll={scroll} mach={mach} star={star} />
+      <SceneTitle
+        intro={intro}
+        torus={torus}
+        space={space}
+        scroll={scroll}
+        mach={mach}
+        star={star}
+      />
+
       <BtnNavMenu navMenuOpen={navMenuOpen} setNavMenuOpen={setNavMenuOpen} />
     </header>
   );

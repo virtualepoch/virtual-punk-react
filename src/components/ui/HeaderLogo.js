@@ -7,7 +7,7 @@ export const HeaderLogo = ({ setNavMenuOpen }) => {
   return (
     <>
       <Link
-        className="logo-container"
+        className={pressed ? "logo-container pressed" : "logo-container"}
         to={"/"}
         aria-label="link to home page"
         onClick={() => setNavMenuOpen(false)}
@@ -22,12 +22,6 @@ export const HeaderLogo = ({ setNavMenuOpen }) => {
         <div className="logo"></div>
         <div className="logo"></div>
       </Link>
-      {/* <div
-        className="logo-box-shadow"
-        style={{
-          boxShadow: pressed ? "none" : "2px 2px 10px 1px rgba(0,0,0,0.5)",
-        }}
-      ></div> */}
     </>
   );
 };

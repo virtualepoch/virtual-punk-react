@@ -2,7 +2,14 @@ import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import "./nav-menu.css";
 
-export function NavMenu({ navMenuOpen, setNavMenuOpen, fpsOpen, setFpsOpen }) {
+export function NavMenu({
+  navMenuOpen,
+  setNavMenuOpen,
+  controls,
+  setControls,
+  fpsMeter,
+  setFpsMeter,
+}) {
   function CustomLink({ to, children, ...props }) {
     const resolvedPath = useResolvedPath(to);
     const isActive = useMatch({ path: resolvedPath.pathname, end: true });
@@ -45,13 +52,19 @@ export function NavMenu({ navMenuOpen, setNavMenuOpen, fpsOpen, setFpsOpen }) {
             <CustomLink to={"/star-punk"}>Star Punk</CustomLink>
             {/* <CustomLink to={"/dissolve"}>Dissolve</CustomLink> */}
           </ul>
+
+          <button
+            className="btn-use-controls"
+            onClick={() => setControls(!controls)}
+          />
+
           <button
             className="btn-fps"
             onClick={() => {
-              setFpsOpen(!fpsOpen);
+              setFpsMeter(!fpsMeter);
             }}
           >
-            FPS METER
+            FPS
           </button>
         </nav>
       </CSSTransition>

@@ -81,9 +81,7 @@ body {
 
 button {
   width: 50px;
-  min-width: 50px;
   height: 50px;
-  min-height: 50px;
   border: none;
   background: transparent;
   cursor: pointer;
@@ -99,16 +97,4 @@ button.pressed {
 a:focus,
 button:focus {
   outline-color: aqua;
-}
-
-.info-icon {
-  width: 18px;
-  height: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid cyan;
-  border-radius: 100%;
-  filter: drop-shadow(0 0 4px cyan);
-  background: url(../public/icons/info-solid.svg) center / 22% no-repeat;
 }

@@ -2,66 +2,8 @@
   width: 100%;
   height: 100vh;
 }
-/* BUTTON - FULLSCREEN //////////////// */
-.btn-fullscreen {
-  width: 40px;
-  height: 40px;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  z-index: 1111111;
-  background: url(../public/icons/expand-cyan.svg) center / 40% no-repeat;
-  filter: drop-shadow(0 0 2px black);
-}
 
-.btn-fullscreen.clicked {
-  background: url(../public/icons/compress-cyan.svg) center / 40% no-repeat;
-}
-
-/* BUTTON - USE CONTROLS ///////////////////////// */
-.btn-use-controls {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 101010;
-  background: url(../public/icons/gamepad-solid.svg) center / 70% no-repeat;
-  filter: drop-shadow(0 0 2px black);
-}
-
-.btn-info {
-  width: 25px;
-  min-width: 25px;
-  height: 25px;
-  min-height: 25px;
-  position: fixed;
-  left: 10px;
-  bottom: 10px;
-  z-index: 101010;
-  border: 1px solid cyan;
-  border-radius: 100%;
-  background: url(../public/icons/info-solid.svg) center / 25% no-repeat;
-}
-
-/* BUTTON - FPS BAR //////////////////////// */
-.btn-fps {
-  width: 100px;
-  height: 40px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  border-top-right-radius: 222px;
-  border-top-left-radius: 222px;
-  box-shadow: inset -2px 2px 10px 1px rgb(0, 255, 255, 0.6),
-    inset 2px -2px 5px 1px rgba(255, 0, 0, 0.7), 0 2px 5px 1px rgb(0, 0, 0, 0.7);
-  background: black;
-  color: white;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 0 0 5px 0;
-}
-
+/* FPS METER */
 .fps {
   width: 200px;
   height: 20px;
@@ -90,7 +32,8 @@
   font: 15px Ailerons;
   letter-spacing: 2px;
 }
-/* CSS Transition */
+
+/* CSSTransition */
 .fps-enter {
   transform: translateY(100%);
 }
@@ -106,25 +49,7 @@
   transition: transform 500ms ease;
 }
 
-/* BUTTON - OMNI CONTROLS ///////////////////////// */
-.btn-omni {
-  width: 40px;
-  height: 40px;
-  position: fixed;
-  top: calc(50% - 20px);
-  left: 0;
-  z-index: 1111;
-  transition: transform 500ms ease-in-out;
-  border-radius: 100px;
-  box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.5);
-  background: url(../public/icons/chevron-right-cyan.svg) center/20% no-repeat;
-}
-
-.btn-omni.omni-open {
-  transform: translateX(170px);
-  background: url(../public/icons/chevron-left-cyan.svg) center/20% no-repeat;
-}
-
+/* OMNI CONTROLS */
 .omni {
   height: calc(100% -120px);
   position: fixed;
@@ -142,7 +67,7 @@
   overflow: auto;
 }
 
-/* OMNI CSS TRANSITION /////////////////////////// */
+/* CSSTransition */
 .omni-enter {
   transform: translateX(-100%);
 }
@@ -179,7 +104,7 @@
   background: url(../public/icons/chevron-left-cyan.svg) center / 20% no-repeat;
 }
 
-/* CANVAS STYLING */
+/* CANVAS */
 .canvas {
   background: linear-gradient(
       transparent 20%,

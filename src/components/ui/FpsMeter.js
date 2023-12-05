@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 
-export const FpsMeter = ({ fpsOpen }) => {
+export const FpsMeter = ({ fpsMeter }) => {
   const lastFpsValues = useRef([]);
   const frames = useRef(0);
   const prevTime = useRef(performance.now());
@@ -53,7 +53,7 @@ export const FpsMeter = ({ fpsOpen }) => {
   const currentFps = fps[fps.length - 1];
 
   return (
-    <CSSTransition in={fpsOpen} unmountOnExit timeout={500} classNames="fps">
+    <CSSTransition in={fpsMeter} unmountOnExit timeout={500} classNames="fps">
       <div className="fps">
         FPS/AVG※{currentFps}/{avgFps}
       </div>

@@ -1,7 +1,6 @@
 import { Route, Routes, useMatch } from "react-router-dom";
 import { useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { CameraControls, OrbitControls } from "@react-three/drei";
 
 // COMPONENTS
 import { Header } from "./components/ui/Header.js";
@@ -9,25 +8,26 @@ import { NavMenu } from "./components/ui/NavMenu.js";
 import { BtnFullScreen } from "./components/ui/BtnFullScreen.js";
 import { FpsMeter } from "./components/ui/FpsMeter.js";
 import { OmniControls } from "./components/OmniControls.js";
+import { MyCamControls } from "./components/three/MyCamControls.js";
 
 // SCENES
 import { IntroScene } from "./scenes/_IntroScene.js";
 import { TorusScene } from "./scenes/TorusScene.js";
 import { SpaceScene } from "./scenes/SpaceScene.js";
 import { ScrollScene } from "./scenes/ScrollScene.js";
+import { MachScene } from "./scenes/MachScene.js";
+import { StarPunkScene } from "./scenes/StarPunkScene.js";
 
 import { SandyBday } from "./scenes/bday-cards/SandyBday";
 import { DadBday } from "./scenes/bday-cards/DadBday";
 
 // CSS
 import "./App.css";
-import { MachScene } from "./scenes/MachScene.js";
-import { StarPunkScene } from "./scenes/StarPunkScene.js";
-import { MyCamControls } from "./components/three/CamControls.js";
+import "./buttons.css";
 
 function App() {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
-  const [fpsOpen, setFpsOpen] = useState(false);
+  const [fpsMeter, setFpsMeter] = useState(false);
   const canvas = useRef();
 
   // TORUS CONTROLS ///////
@@ -63,23 +63,22 @@ function App() {
         mach={mach}
         star={star}
       />
+
       <NavMenu
         navMenuOpen={navMenuOpen}
         setNavMenuOpen={setNavMenuOpen}
-        fpsOpen={fpsOpen}
-        setFpsOpen={setFpsOpen}
+        controls={controls}
+        setControls={setControls}
+        fpsMeter={fpsMeter}
+        setFpsMeter={setFpsMeter}
       />
 
       <BtnFullScreen />
-      <FpsMeter fpsOpen={fpsOpen} setFpsOpen={setFpsOpen} />
+      <FpsMeter fpsMeter={fpsMeter} setFpsMeter={setFpsMeter} />
 
-      <button
-        className="btn-use-controls"
-        onClick={() => setControls(!controls)}
-      />
-      <button
-        className="btn-info"
-      />
+      <button className="btn-info">
+        <div className="info-icon"></div>
+      </button>
 
       {torus ? <OmniControls /> : <></>}
 
