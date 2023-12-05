@@ -1,7 +1,7 @@
 import { Route, Routes, useMatch } from "react-router-dom";
 import { useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
-import { OrbitControls } from "@react-three/drei";
+import { CameraControls, OrbitControls } from "@react-three/drei";
 
 // COMPONENTS
 import { Header } from "./components/ui/Header.js";
@@ -76,19 +76,11 @@ function App() {
         ref={canvas}
         className="canvas"
         camera={{
-          position: torus
-            ? [0, 0, 10]
-            : scroll
-            ? [2.3, 1.5, 2.3]
-            : mach
-            ? [0, 10, 12]
-            : star
-            ? [0, 8, 15]
-            : [0, 0, 20],
-          fov: scroll ? 64 : mach || star ? 50 : 20,
+          position: [0, 0, 20],
+          fov: 30,
         }}
       >
-        {torus ? <OrbitControls /> : <></>}
+        {/* {torus ? <OrbitControls /> : <></>} */}
 
         <Routes>
           <Route index element={<IntroScene />} />

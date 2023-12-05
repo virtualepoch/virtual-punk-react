@@ -1,7 +1,7 @@
 import * as THREE from "three";
 import { useState, useRef } from "react";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { OrbitControls, Stars } from "@react-three/drei";
+import { OrbitControls, Stars, useHelper } from "@react-three/drei";
 import { JetConcept } from "../components/models/Jet_concept";
 import earth500 from "../assets/images/earth_clouds_1k.jpg";
 import earth8k from "../assets/images/earth_clouds_4k.jpg";
@@ -41,17 +41,24 @@ export function MachScene() {
     // });
 
     return (
-      <mesh ref={jet} position={[0, -2, 0]}>
-        <JetConcept scale={1} rotation={[0.6, Math.PI / -2, 0]} />
+      <mesh ref={jet} position={[0, 0, 0]}>
+        <JetConcept scale={1} rotation={[0.6, Math.PI / -2, 0.2]} />
       </mesh>
     );
   }
 
+  const directionalLight = useRef();
+  useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
+
   return (
     <>
       <ambientLight intensity={1} />
-      <directionalLight position={[10, 15, 10]} angle={0.3} />
-      <OrbitControls autoRotate={true} />
+      <directionalLight
+        ref={directionalLight}
+        position={[1, 2, -2]}
+        angle={1}
+      />
+      {/* <OrbitControls autoRotate={true} /> */}
       <JetMesh />
       <Earth />
       <Stars />

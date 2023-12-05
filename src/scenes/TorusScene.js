@@ -1,4 +1,4 @@
-import { useFrame, useLoader } from "@react-three/fiber";
+import { useFrame, useLoader, useThree } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
 import a1 from "../assets/images/torus/Abstract_512x512-75.png";
@@ -16,9 +16,10 @@ import bg1 from "../assets/images/torus/bg/Blue_Nebula_01-1024x1024.png";
 import bg2 from "../assets/images/torus/bg/Blue_Nebula_02-1024x1024.png";
 import bg3 from "../assets/images/torus/bg/Blue_Nebula_03-1024x1024.png";
 
-import { buttonGroup, useControls } from "leva";
+import { button, buttonGroup, folder, useControls } from "leva";
 import { CameraControls, OrbitControls, useHelper } from "@react-three/drei";
 import { TorusMesh } from "../components/three/TorusMesh";
+import { DEG2RAD } from "three/src/math/MathUtils";
 
 export const TorusScene = ({
   bg,
@@ -268,27 +269,138 @@ export const TorusScene = ({
     );
   }
 
-  const Background = () => {
-    const bgTexture = useLoader(
-      THREE.TextureLoader,
-      bg === 1 ? bg1 : bg === 2 ? bg2 : bg3
-    );
-    bgTexture.repeat.set(bgWrapY, bgWrapX);
-    bgTexture.wrapS = bgTexture.wrapT = THREE.RepeatWrapping;
-    return (
-      <mesh position={[0, 0, 0]} rotation={[0, 1.6, 0]}>
-        <sphereGeometry args={[10, 40, 20]} />
-        {bg === 0 ? (
-          <meshStandardMaterial />
-        ) : (
-          <meshStandardMaterial map={bgTexture} side={THREE.BackSide} />
-        )}
-      </mesh>
-    );
-  };
-
   const directionalLight = useRef();
   useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
+
+  const meshRef = useRef();
+  const cameraControlsRef = useRef();
+
+  const { camera } = useThree();
+
+  // All same options as the original "basic" example: https://yomotsu.github.io/camera-controls/examples/basic.html
+  // const {
+  //   minDistance,
+  //   enabled,
+  //   verticalDragToForward,
+  //   dollyToCursor,
+  //   infinityDolly,
+  // } = useControls({
+  //   thetaGrp: buttonGroup({
+  //     label: "rotate theta",
+  //     opts: {
+  //       "+45º": () => cameraControlsRef.current?.rotate(45 * DEG2RAD, 0, true),
+  //       "-90º": () => cameraControlsRef.current?.rotate(-90 * DEG2RAD, 0, true),
+  //       "+360º": () =>
+  //         cameraControlsRef.current?.rotate(360 * DEG2RAD, 0, true),
+  //     },
+  //   }),
+  //   phiGrp: buttonGroup({
+  //     label: "rotate phi",
+  //     opts: {
+  //       "+20º": () => cameraControlsRef.current?.rotate(0, 20 * DEG2RAD, true),
+  //       "-40º": () => cameraControlsRef.current?.rotate(0, -40 * DEG2RAD, true),
+  //     },
+  //   }),
+  //   truckGrp: buttonGroup({
+  //     label: "truck",
+  //     opts: {
+  //       "(1,0)": () => cameraControlsRef.current?.truck(1, 0, true),
+  //       "(0,1)": () => cameraControlsRef.current?.truck(0, 1, true),
+  //       "(-1,-1)": () => cameraControlsRef.current?.truck(-1, -1, true),
+  //     },
+  //   }),
+  //   dollyGrp: buttonGroup({
+  //     label: "dolly",
+  //     opts: {
+  //       1: () => cameraControlsRef.current?.dolly(1, true),
+  //       "-1": () => cameraControlsRef.current?.dolly(-1, true),
+  //     },
+  //   }),
+  //   zoomGrp: buttonGroup({
+  //     label: "zoom",
+  //     opts: {
+  //       "/2": () => cameraControlsRef.current?.zoom(camera.zoom / 2, true),
+  //       "/-2": () => cameraControlsRef.current?.zoom(-camera.zoom / 2, true),
+  //     },
+  //   }),
+  //   minDistance: { value: 0 },
+  //   moveTo: folder(
+  //     {
+  //       vec1: { value: [3, 5, 2], label: "vec" },
+  //       "moveTo(…vec)": button((get) =>
+  //         cameraControlsRef.current?.moveTo(...get("moveTo.vec1"), true)
+  //       ),
+  //     },
+  //     { collapsed: true }
+  //   ),
+  //   "fitToBox(mesh)": button(() =>
+  //     cameraControlsRef.current?.fitToBox(meshRef.current, true)
+  //   ),
+  //   setPosition: folder(
+  //     {
+  //       vec2: { value: [-5, 2, 1], label: "vec" },
+  //       "setPosition(…vec)": button((get) =>
+  //         cameraControlsRef.current?.setPosition(
+  //           ...get("setPosition.vec2"),
+  //           true
+  //         )
+  //       ),
+  //     },
+  //     { collapsed: true }
+  //   ),
+  //   setTarget: folder(
+  //     {
+  //       vec3: { value: [3, 0, -3], label: "vec" },
+  //       "setTarget(…vec)": button((get) =>
+  //         cameraControlsRef.current?.setTarget(...get("setTarget.vec3"), true)
+  //       ),
+  //     },
+  //     { collapsed: true }
+  //   ),
+  //   setLookAt: folder(
+  //     {
+  //       vec4: { value: [1, 2, 3], label: "position" },
+  //       vec5: { value: [1, 1, 0], label: "target" },
+  //       "setLookAt(…position, …target)": button((get) =>
+  //         cameraControlsRef.current?.setLookAt(
+  //           ...get("setLookAt.vec4"),
+  //           ...get("setLookAt.vec5"),
+  //           true
+  //         )
+  //       ),
+  //     },
+  //     { collapsed: true }
+  //   ),
+  //   lerpLookAt: folder(
+  //     {
+  //       vec6: { value: [-2, 0, 0], label: "posA" },
+  //       vec7: { value: [1, 1, 0], label: "tgtA" },
+  //       vec8: { value: [0, 2, 5], label: "posB" },
+  //       vec9: { value: [-1, 0, 0], label: "tgtB" },
+  //       t: { value: Math.random(), label: "t", min: 0, max: 1 },
+  //       "f(…posA,…tgtA,…posB,…tgtB,t)": button((get) => {
+  //         return cameraControlsRef.current?.lerpLookAt(
+  //           ...get("lerpLookAt.vec6"),
+  //           ...get("lerpLookAt.vec7"),
+  //           ...get("lerpLookAt.vec8"),
+  //           ...get("lerpLookAt.vec9"),
+  //           get("lerpLookAt.t"),
+  //           true
+  //         );
+  //       }),
+  //     },
+  //     { collapsed: true }
+  //   ),
+  //   saveState: button(() => cameraControlsRef.current?.saveState()),
+  //   reset: button(() => cameraControlsRef.current?.reset(true)),
+  //   enabled: { value: true, label: "controls on" },
+  //   verticalDragToForward: {
+  //     value: false,
+  //     label: "vert. drag to move forward",
+  //   },
+  //   dollyToCursor: { value: false, label: "dolly to cursor" },
+  //   infinityDolly: { value: false, label: "infinity dolly" },
+  // });
 
   return (
     <group>
@@ -299,8 +411,15 @@ export const TorusScene = ({
         angle={0.3}
       />
       <TorusGroup />
+      {/* <CameraControls
+        ref={cameraControlsRef}
+        minDistance={minDistance}
+        enabled={enabled}
+        verticalDragToForward={verticalDragToForward}
+        dollyToCursor={dollyToCursor}
+        infinityDolly={infinityDolly}
+      /> */}
       <Sphere />
-      <Background />
     </group>
   );
 };

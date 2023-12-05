@@ -31,9 +31,11 @@ export function StarPunkScene() {
     <>
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 15, 10]} angle={0.3} />
-      <OrbitControls target={[0, 0, 0]} autoRotate={true} autoRotateSpeed={2} />
+      {/* <OrbitControls target={[0, 0, 0]} autoRotate={true} autoRotateSpeed={2} /> */}
       <Stars />
-      <StarPunkShip />
+
+      <StarPunkShip position={[0, -3, 0]} />
+
       <ExtendingWalls />
     </>
   );
