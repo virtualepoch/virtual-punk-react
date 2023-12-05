@@ -1,6 +1,8 @@
 import { forwardRef, useImperativeHandle, useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { CameraControls, OrbitControls } from "@react-three/drei";
+import { CameraControls, OrbitControls, useHelper } from "@react-three/drei";
+import { WarpTunnel } from "../components/models/WarpTunnel";
+import * as THREE from "three";
 
 export const IntroScene = forwardRef((props, ref) => {
   var zPosition = 0.008;
@@ -39,11 +41,22 @@ export const IntroScene = forwardRef((props, ref) => {
     },
   }));
 
+  const directionalLight = useRef();
+  useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
+
   return (
     <>
       {/* <CameraControls /> */}
+      <OrbitControls />
+      <ambientLight intensity={1} position={[0, 0, 0]} />
+      <directionalLight
+        ref={directionalLight}
+        position={[1, 1, 1]}
+        angle={0.3}
+      />
       <group ref={rabbitHole}>
         <ExtendingWalls />
+        {/* <WarpTunnel /> */}
       </group>
     </>
   );

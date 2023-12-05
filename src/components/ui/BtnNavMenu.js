@@ -23,12 +23,12 @@ export const BtnNavMenu = ({ navMenuOpen, setNavMenuOpen }) => {
         <div className={navMenuOpen ? "bar close" : "bar close scale-x"}></div>
         <div className={navMenuOpen ? "bar close" : "bar close scale-x"}></div>
       </button>
-      <div
+      {/* <div
         className="btn-nav-box-shadow"
         style={{
           boxShadow: pressed ? "none" : "-2px 2px 10px 1px rgba(0,0,0,0.5)",
         }}
-      ></div>
+      ></div> */}
     </>
   );
 };

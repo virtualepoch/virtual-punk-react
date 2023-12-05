@@ -2,6 +2,65 @@
   width: 100%;
   height: 100vh;
 }
+/* BUTTON - FULLSCREEN //////////////// */
+.btn-fullscreen {
+  width: 40px;
+  height: 40px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  z-index: 1111111;
+  background: url(../public/icons/expand-cyan.svg) center / 40% no-repeat;
+  filter: drop-shadow(0 0 2px black);
+}
+
+.btn-fullscreen.clicked {
+  background: url(../public/icons/compress-cyan.svg) center / 40% no-repeat;
+}
+
+/* BUTTON - USE CONTROLS ///////////////////////// */
+.btn-use-controls {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 101010;
+  background: url(../public/icons/gamepad-solid.svg) center / 70% no-repeat;
+  filter: drop-shadow(0 0 2px black);
+}
+
+.btn-info {
+  width: 25px;
+  min-width: 25px;
+  height: 25px;
+  min-height: 25px;
+  position: fixed;
+  left: 10px;
+  bottom: 10px;
+  z-index: 101010;
+  border: 1px solid cyan;
+  border-radius: 100%;
+  background: url(../public/icons/info-solid.svg) center / 25% no-repeat;
+}
+
+/* BUTTON - FPS BAR //////////////////////// */
+.btn-fps {
+  width: 100px;
+  height: 40px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-right-radius: 222px;
+  border-top-left-radius: 222px;
+  box-shadow: inset -2px 2px 10px 1px rgb(0, 255, 255, 0.6),
+    inset 2px -2px 5px 1px rgba(255, 0, 0, 0.7), 0 2px 5px 1px rgb(0, 0, 0, 0.7);
+  background: black;
+  color: white;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 0 5px 0;
+}
 
 .fps {
   width: 200px;
@@ -31,7 +90,6 @@
   font: 15px Ailerons;
   letter-spacing: 2px;
 }
-
 /* CSS Transition */
 .fps-enter {
   transform: translateY(100%);
@@ -48,46 +106,7 @@
   transition: transform 500ms ease;
 }
 
-.btn-fps {
-  width: 100px;
-  height: 40px;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  border-top-right-radius: 222px;
-  border-top-left-radius: 222px;
-  box-shadow: inset -2px 2px 10px 1px rgb(0, 255, 255, 0.6),
-    inset 2px -2px 5px 1px rgba(255, 0, 0, 0.7), 0 2px 5px 1px rgb(0, 0, 0, 0.7);
-  background: black;
-  color: white;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  padding: 0 0 5px 0;
-}
-
-.btn-fullscreen {
-  width: 40px;
-  height: 40px;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  z-index: 1111111;
-  background: url(../public/icons/expand-cyan.svg) center / 35% no-repeat;
-  filter: drop-shadow(0 0 4px cyan);
-}
-
-.btn-fullscreen.clicked {
-  background: url(../public/icons/compress-cyan.svg) center / 40% no-repeat;
-}
-
-@media (max-width: 700px) {
-  .btn-fullscreen {
-    margin: 0;
-  }
-}
-
-/* BUTTON FOR OMNI CONTROLS ///////////////////////// */
+/* BUTTON - OMNI CONTROLS ///////////////////////// */
 .btn-omni {
   width: 40px;
   height: 40px;
@@ -162,17 +181,6 @@
 
 /* CANVAS STYLING */
 .canvas {
-  /* background: linear-gradient(to right, #536976, #bbd2c5, #536976); */
-  /* background: linear-gradient(to right, #00467f, #a5cc82, #00467f); */
-  /* background: linear-gradient(to right, #00467f, #cbcaa5, #00467f); */
-  /* background: linear-gradient(to right, #334d50, #cbcaa5, #334d50); */
-  /* background: linear-gradient(to right, #2c3e50, #bdc3c7, #2c3e50); */
-  /* background: linear-gradient(to right, #0f2027, #203a43, #2c5364, #203a43, #0f2027); */
-  /* background: linear-gradient(to right, #203a43, #6dd5fa, #203a43); */
-  /* background: linear-gradient(to right, #020024, #6dd5fa, #020024); */
-  /* background: linear-gradient(to right, #020024, #00d4ff, #020024); */
-  /* background: linear-gradient(to right, #240000, #00d4ff, #240000); */
-  /* background: linear-gradient(to right, #00d4ff, #240000, #00d4ff); */
   background: linear-gradient(
       transparent 20%,
       rgba(255, 255, 255, 0.3),

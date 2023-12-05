@@ -23,6 +23,7 @@ import { DadBday } from "./scenes/bday-cards/DadBday";
 import "./App.css";
 import { MachScene } from "./scenes/MachScene.js";
 import { StarPunkScene } from "./scenes/StarPunkScene.js";
+import { MyCamControls } from "./components/three/CamControls.js";
 
 function App() {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
@@ -39,6 +40,8 @@ function App() {
   const [wrapY, setWrapY] = useState(22);
 
   const [intensity, setIntensity] = useState(1);
+
+  const [controls, setControls] = useState(false);
 
   // useMatch hook constants
   const intro = useMatch("/");
@@ -70,17 +73,27 @@ function App() {
       <BtnFullScreen />
       <FpsMeter fpsOpen={fpsOpen} setFpsOpen={setFpsOpen} />
 
+      <button
+        className="btn-use-controls"
+        onClick={() => setControls(!controls)}
+      />
+      <button
+        className="btn-info"
+      />
+
       {torus ? <OmniControls /> : <></>}
 
       <Canvas
         ref={canvas}
         className="canvas"
         camera={{
-          position: [0, 0, 20],
+          position: [0, 10, 20],
           fov: 30,
         }}
       >
         {/* {torus ? <OrbitControls /> : <></>} */}
+
+        {controls && <MyCamControls />}
 
         <Routes>
           <Route index element={<IntroScene />} />
