@@ -30,7 +30,7 @@ function App() {
   // useState hooks
   const [navMenuOpen, setNavMenuOpen] = useState(false);
   const [fpsMeter, setFpsMeter] = useState(false);
-  const [infoModalOpen, setInfoModalOpen] = useState(false);
+  const [infoModalOpen, setInfoModalOpen] = useState(true);
 
   // State for Torus Controls
   const [bg, setBg] = useState(0);
@@ -61,12 +61,17 @@ function App() {
       title: "title",
       link: "link",
       credits: `credits`,
+      changes: `changes`,
+
       title2: "title2",
       link2: "link2",
       credits2: `credits2`,
+      changes2: `changes2`,
+
       title3: "title3",
       link3: "link3",
       credits3: `credits3`,
+      changes3: `changes3`,
     },
   ];
 
