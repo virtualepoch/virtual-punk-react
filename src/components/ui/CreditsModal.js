@@ -3,6 +3,7 @@ import { useProgress } from "@react-three/drei";
 // import { LoadingPanel } from "./LoadingPanel";
 
 import "./credits-modal.css";
+import { StyledBorder } from "./StyledBorder";
 
 export function CreditsModal({ infoModalOpen, setInfoModalOpen, ...props }) {
   const { progress } = useProgress();
@@ -19,6 +20,16 @@ export function CreditsModal({ infoModalOpen, setInfoModalOpen, ...props }) {
       classNames={"credits-modal"}
     >
       <div className="credits-modal">
+        <button
+          className="btn-close-modal"
+          onClick={() => {
+            setInfoModalOpen(false);
+          }}
+          // disabled={progress < 100}
+        />
+
+        <StyledBorder />
+
         <div
           className="loading-section"
           style={{ display: `${progress === 100 ? "none" : "flex"}` }}
@@ -70,13 +81,6 @@ export function CreditsModal({ infoModalOpen, setInfoModalOpen, ...props }) {
             <p className="credits-info">{props.info.changes3}</p>
           </div>
         </div>
-        <button
-          className="btn-close-modal"
-          onClick={() => {
-            setInfoModalOpen(false);
-          }}
-          // disabled={progress < 100}
-        />
       </div>
     </CSSTransition>
   );

@@ -9,6 +9,7 @@ import { BtnFullScreen } from "./components/ui/BtnFullScreen.js";
 import { FpsMeter } from "./components/ui/FpsMeter.js";
 import { OmniControls } from "./components/OmniControls.js";
 import { MyCamControls } from "./components/three/MyCamControls.js";
+import { CreditsModal } from "./components/ui/CreditsModal.js";
 
 // SCENES
 import { IntroScene } from "./scenes/_IntroScene.js";
@@ -24,13 +25,13 @@ import { DadBday } from "./scenes/bday-cards/DadBday";
 // CSS
 import "./App.css";
 import "./buttons.css";
-import { CreditsModal } from "./components/ui/CreditsModal.js";
+import "./_temp.css";
 
 function App() {
   // useState hooks
   const [navMenuOpen, setNavMenuOpen] = useState(false);
   const [fpsMeter, setFpsMeter] = useState(false);
-  const [infoModalOpen, setInfoModalOpen] = useState(true);
+  const [infoModalOpen, setInfoModalOpen] = useState(false);
 
   // State for Torus Controls
   const [bg, setBg] = useState(0);
