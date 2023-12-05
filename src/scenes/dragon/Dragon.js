@@ -6,21 +6,7 @@ import { DragonScene } from "./DragonScene";
 export function Dragon() {
   const [modalOpen, setModalOpen] = useState(false);
 
-  // CreditsModal info-
-  const creditsInfo = [
-    {
-      id: "00",
-      title: "High detailed Dragon Animation running",
-      link: "https://skfb.ly/oGzXx",
-      credits: `by Al-Deezel is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
-      title2: "CLOUD",
-      link2: "https://skfb.ly/orUHI",
-      credits2: `by asimchitrakar is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
-      title3: "Pine Tree - PS1 Low Poly",
-      link3: "https://skfb.ly/oFnRn",
-      credits3: `by Wersaus33 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).`,
-    },
-  ];
+  
 
   return (
     <>

@@ -24,32 +24,51 @@ import { DadBday } from "./scenes/bday-cards/DadBday";
 // CSS
 import "./App.css";
 import "./buttons.css";
+import { CreditsModal } from "./components/ui/CreditsModal.js";
 
 function App() {
+  // useState hooks
   const [navMenuOpen, setNavMenuOpen] = useState(false);
   const [fpsMeter, setFpsMeter] = useState(false);
-  const canvas = useRef();
+  const [infoModalOpen, setInfoModalOpen] = useState(false);
 
-  // TORUS CONTROLS ///////
+  // State for Torus Controls
   const [bg, setBg] = useState(0);
   const [bgWrapX, setBgWrapX] = useState(3);
   const [bgWrapY, setBgWrapY] = useState(3);
-
   const [texture, setTexture] = useState(1);
   const [wrapX, setWrapX] = useState(3);
   const [wrapY, setWrapY] = useState(22);
-
   const [intensity, setIntensity] = useState(1);
 
-  const [controls, setControls] = useState(false);
+  const [myCamControls, setMyCamControls] = useState(false);
 
-  // useMatch hook constants
+  // useMatch hooks
   const intro = useMatch("/");
   const torus = useMatch("/torus");
   const space = useMatch("/space");
   const scroll = useMatch("/scroll");
   const mach = useMatch("/mach");
   const star = useMatch("/star-punk");
+
+  // useRef hooks
+  const canvas = useRef();
+
+  // CreditsModal info-
+  const creditsInfo = [
+    {
+      id: "00",
+      title: "title",
+      link: "link",
+      credits: `credits`,
+      title2: "title2",
+      link2: "link2",
+      credits2: `credits2`,
+      title3: "title3",
+      link3: "link3",
+      credits3: `credits3`,
+    },
+  ];
 
   return (
     <div className="App">
@@ -67,8 +86,8 @@ function App() {
       <NavMenu
         navMenuOpen={navMenuOpen}
         setNavMenuOpen={setNavMenuOpen}
-        controls={controls}
-        setControls={setControls}
+        myCamControls={myCamControls}
+        setMyCamControls={setMyCamControls}
         fpsMeter={fpsMeter}
         setFpsMeter={setFpsMeter}
       />
@@ -76,9 +95,21 @@ function App() {
       <BtnFullScreen />
       <FpsMeter fpsMeter={fpsMeter} setFpsMeter={setFpsMeter} />
 
-      <button className="btn-info">
+      <button
+        className="btn-info"
+        onClick={() => setInfoModalOpen(!infoModalOpen)}
+      >
         <div className="info-icon"></div>
       </button>
+
+      {creditsInfo.map((item) => (
+        <CreditsModal
+          infoModalOpen={infoModalOpen}
+          setInfoModalOpen={setInfoModalOpen}
+          key={item.id}
+          info={item}
+        />
+      ))}
 
       {torus ? <OmniControls /> : <></>}
 
@@ -86,13 +117,13 @@ function App() {
         ref={canvas}
         className="canvas"
         camera={{
-          position: [0, 10, 20],
+          position: [0, 0, 20],
           fov: 30,
         }}
       >
         {/* {torus ? <OrbitControls /> : <></>} */}
 
-        {controls && <MyCamControls />}
+        {myCamControls && <MyCamControls />}
 
         <Routes>
           <Route index element={<IntroScene />} />

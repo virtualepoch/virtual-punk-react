@@ -5,8 +5,8 @@ import "./nav-menu.css";
 export function NavMenu({
   navMenuOpen,
   setNavMenuOpen,
-  controls,
-  setControls,
+  myCamControls,
+  setMyCamControls,
   fpsMeter,
   setFpsMeter,
 }) {
@@ -55,7 +55,7 @@ export function NavMenu({
 
           <button
             className="btn-use-controls"
-            onClick={() => setControls(!controls)}
+            onClick={() => setMyCamControls(!myCamControls)}
           />
 
           <button

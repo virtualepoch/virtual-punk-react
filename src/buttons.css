@@ -127,7 +127,6 @@
 .info-icon {
   width: 15px;
   height: 15px;
-  /* border: 1px solid cyan; */
   border-radius: 100%;
   filter: drop-shadow(0 0 4px cyan);
   background: url(../public/icons/info-solid.svg) center / 22% no-repeat;
