@@ -28,6 +28,8 @@
   --red-2: #ea0047;
   --red-3: #e70346;
   --red-4: #810025;
+  --neon-pink-hsl: hsl(317 100% 54%);
+  --neon-pink: rgb(255, 20, 189);
   --bg-blur: 0.5;
   --hero-text-color: white;
   --hex-color: rgba(0, 255, 255, 0.7);

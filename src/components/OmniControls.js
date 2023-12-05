@@ -43,7 +43,7 @@ export const OmniControls = ({
             <p>
               intensity:
               <br />
-              {intensity.toFixed(1)}
+              {intensity}
             </p>
             <button
               className="btn"
