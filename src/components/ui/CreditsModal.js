@@ -4,10 +4,11 @@ import { useProgress } from "@react-three/drei";
 
 import "./credits-modal.css";
 import { StyledBorder } from "./StyledBorder";
+import { useState } from "react";
 
 export function CreditsModal({ infoModalOpen, setInfoModalOpen, ...props }) {
   const { progress } = useProgress();
-
+ 
   // useEffect(() => {
   //   setInfoModalOpen(true);
   // }, [setInfoModalOpen]);
@@ -28,7 +29,7 @@ export function CreditsModal({ infoModalOpen, setInfoModalOpen, ...props }) {
           // disabled={progress < 100}
         />
 
-        <StyledBorder />
+        <StyledBorder infoModalOpen={infoModalOpen}/>
 
         <div
           className="loading-section"

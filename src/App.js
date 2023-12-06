@@ -3,6 +3,8 @@ import { useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 
 // COMPONENTS
+import { MainOverlay } from "./components/ui/MainOverlay.js";
+import { HeroSection } from "./components/ui/HeroSection.js";
 import { Header } from "./components/ui/Header.js";
 import { NavMenu } from "./components/ui/NavMenu.js";
 import { BtnFullScreen } from "./components/ui/BtnFullScreen.js";
@@ -19,12 +21,14 @@ import { ScrollScene } from "./scenes/ScrollScene.js";
 import { MachScene } from "./scenes/MachScene.js";
 import { StarPunkScene } from "./scenes/StarPunkScene.js";
 
+// VIRTUAL B-DAY CARDS
 import { SandyBday } from "./scenes/bday-cards/SandyBday";
 import { DadBday } from "./scenes/bday-cards/DadBday";
 
 // CSS
 import "./App.css";
 import "./buttons.css";
+import "../src/scenes/_intro.css";
 import "./_temp.css";
 
 function App() {
@@ -78,6 +82,13 @@ function App() {
 
   return (
     <div className="App">
+      {intro && (
+        <>
+          <MainOverlay />
+          <HeroSection />
+        </>
+      )}
+
       <Header
         navMenuOpen={navMenuOpen}
         setNavMenuOpen={setNavMenuOpen}

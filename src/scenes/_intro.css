@@ -1,34 +1,24 @@
-.btn-look-right{
-  width: 30px;
-  height: 60px;
-  border: solid red;
-  position: fixed;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 101010101;
-}
-
 .hero-section {
   width: 100%;
-  height: calc(100vh - 140px);
-  margin: 70px auto;
+  height: calc(100% - 100px);
   padding: 20px;
   position: fixed;
-  top: 0;
+  z-index: 10;
+  top: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  color: var(--hero-text-color);
-  font: 500 50px Ailerons;
+  color: cyan;
+  font: 500 40px Ailerons;
+  letter-spacing: 3px;
   text-align: center;
   pointer-events: none;
 }
 
 @media (max-width: 700px) {
   .hero-section {
-    font-size: 30px;
+    font-size: 25px;
   }
 }
 
@@ -36,7 +26,8 @@
   max-width: 400px;
   position: absolute;
   padding: 20px;
-  filter: drop-shadow(-3px 0 1px red) drop-shadow(-3px 0 4px aqua);
+  text-shadow: 2px 1px 3px red;
+  filter: drop-shadow(3px 0 4px aqua);
   opacity: 0;
 }
 
