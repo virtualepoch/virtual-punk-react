@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export const HeaderLogo = ({ setNavMenuOpen }) => {
+export const HeaderLogo = ({ setNavMenuOpen, setLinkClicked }) => {
   const [pressed, setPressed] = useState(false);
 
   return (
@@ -10,7 +10,10 @@ export const HeaderLogo = ({ setNavMenuOpen }) => {
         className={pressed ? "logo-container pressed" : "logo-container"}
         to={"/"}
         aria-label="link to home page"
-        onClick={() => setNavMenuOpen(false)}
+        onClick={() => {
+          setNavMenuOpen(false);
+          setLinkClicked(true);
+        }}
         onMouseDown={() => setPressed(true)}
         onMouseUp={() => setPressed(false)}
         onTouchStart={() => setPressed(true)}

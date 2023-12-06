@@ -1,5 +1,5 @@
 import { Route, Routes, useMatch } from "react-router-dom";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 
 // COMPONENTS
@@ -34,6 +34,7 @@ import "./_temp.css";
 function App() {
   // useState hooks
   const [navMenuOpen, setNavMenuOpen] = useState(false);
+  const [linkClicked, setLinkClicked] = useState(false);
   const [fpsMeter, setFpsMeter] = useState(false);
   const [infoModalOpen, setInfoModalOpen] = useState(false);
 
@@ -58,6 +59,13 @@ function App() {
 
   // useRef hooks
   const canvas = useRef();
+
+  // My functions
+  useEffect(() => {
+    setTimeout(() => {
+      if (linkClicked) setLinkClicked(false);
+    }, 1);
+  }, [linkClicked]);
 
   // CreditsModal info-
   const creditsInfo = [
@@ -85,13 +93,14 @@ function App() {
       {intro && (
         <>
           <MainOverlay />
-          <HeroSection />
+          {/* <HeroSection /> */}
         </>
       )}
 
       <Header
         navMenuOpen={navMenuOpen}
         setNavMenuOpen={setNavMenuOpen}
+        setLinkClicked={setLinkClicked}
         intro={intro}
         torus={torus}
         space={space}
@@ -103,6 +112,7 @@ function App() {
       <NavMenu
         navMenuOpen={navMenuOpen}
         setNavMenuOpen={setNavMenuOpen}
+        setLinkClicked={setLinkClicked}
         myCamControls={myCamControls}
         setMyCamControls={setMyCamControls}
         fpsMeter={fpsMeter}
@@ -140,7 +150,7 @@ function App() {
       >
         {/* {torus ? <OrbitControls /> : <></>} */}
 
-        {myCamControls && <MyCamControls />}
+        {myCamControls && <MyCamControls linkClicked={linkClicked} />}
 
         <Routes>
           <Route index element={<IntroScene />} />

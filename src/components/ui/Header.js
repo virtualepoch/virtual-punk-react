@@ -8,6 +8,7 @@ import { SceneTitle } from "./SceneTitle";
 export const Header = ({
   navMenuOpen,
   setNavMenuOpen,
+  setLinkClicked,
   intro,
   torus,
   space,
@@ -33,7 +34,10 @@ export const Header = ({
           : "main-site-header"
       }
     >
-      <HeaderLogo setNavMenuOpen={setNavMenuOpen} />
+      <HeaderLogo
+        setNavMenuOpen={setNavMenuOpen}
+        setLinkClicked={setLinkClicked}
+      />
 
       <SceneTitle
         intro={intro}

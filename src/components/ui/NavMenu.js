@@ -5,6 +5,7 @@ import "./nav-menu.css";
 export function NavMenu({
   navMenuOpen,
   setNavMenuOpen,
+  setLinkClicked,
   myCamControls,
   setMyCamControls,
   fpsMeter,
@@ -22,6 +23,7 @@ export function NavMenu({
           className={isActive ? "active link" : "link"}
           onClick={() => {
             setNavMenuOpen(false);
+            setLinkClicked(true);
           }}
         >
           {children}

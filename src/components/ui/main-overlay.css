@@ -53,10 +53,15 @@
 
 .main-overlay .logo:nth-child(4),
 .main-overlay .logo:nth-child(5) {
+  box-shadow: none;
   animation: logo-pulse-2 1.4s ease-in-out;
 }
 
 @keyframes logo-pulse-2 {
+  0%,
+  100% {
+    box-shadow: none;
+  }
   50% {
     box-shadow: 0 0 10px 1px red;
   }
