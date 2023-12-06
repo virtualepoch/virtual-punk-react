@@ -6,8 +6,8 @@ export function NavMenu({
   navMenuOpen,
   setNavMenuOpen,
   setLinkClicked,
-  myCamControls,
-  setMyCamControls,
+  hideLeva,
+  setHideLeva,
   fpsMeter,
   setFpsMeter,
 }) {
@@ -56,8 +56,10 @@ export function NavMenu({
           </ul>
 
           <button
-            className="btn-use-controls"
-            onClick={() => setMyCamControls(!myCamControls)}
+            className={
+              hideLeva ? "btn-leva-controls " : "btn-leva-controls leva"
+            }
+            onClick={() => setHideLeva(!hideLeva)}
           />
 
           <button

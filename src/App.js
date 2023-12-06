@@ -30,6 +30,7 @@ import "./App.css";
 import "./buttons.css";
 import "../src/scenes/_intro.css";
 import "./_temp.css";
+import { Leva } from "leva";
 
 function App() {
   // useState hooks
@@ -47,7 +48,8 @@ function App() {
   const [wrapY, setWrapY] = useState(22);
   const [intensity, setIntensity] = useState(1);
 
-  const [myCamControls, setMyCamControls] = useState(false);
+  const [hideLeva, setHideLeva] = useState(true);
+  // const [enableLeva, setEnableLeva] = useState(true);
 
   // useMatch hooks
   const intro = useMatch("/");
@@ -113,8 +115,8 @@ function App() {
         navMenuOpen={navMenuOpen}
         setNavMenuOpen={setNavMenuOpen}
         setLinkClicked={setLinkClicked}
-        myCamControls={myCamControls}
-        setMyCamControls={setMyCamControls}
+        hideLeva={hideLeva}
+        setHideLeva={setHideLeva}
         fpsMeter={fpsMeter}
         setFpsMeter={setFpsMeter}
       />
@@ -138,6 +140,7 @@ function App() {
         />
       ))}
 
+      <Leva hidden={hideLeva ? true : false} />
       {torus ? <OmniControls /> : <></>}
 
       <Canvas
@@ -150,7 +153,7 @@ function App() {
       >
         {/* {torus ? <OrbitControls /> : <></>} */}
 
-        {myCamControls && <MyCamControls linkClicked={linkClicked} />}
+        <MyCamControls linkClicked={linkClicked} />
 
         <Routes>
           <Route index element={<IntroScene />} />

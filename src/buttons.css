@@ -98,13 +98,19 @@
 }
 
 /* CONTROLS  */
-.btn-use-controls {
+.btn-leva-controls {
   min-height: 50px;
-  border: 1px solid cyan;
+  border: 1px solid gray;
   border-radius: 10px;
   margin: 20px auto;
-  background: url(../public/icons/gamepad-solid.svg) center / 70% no-repeat;
+  background: url(../public/icons/video-white-o.svg) center / 50% no-repeat;
   filter: drop-shadow(0 0 2px black);
+}
+
+.btn-leva-controls.leva {
+  border: 1px solid cyan;
+  background: url(../public/icons/video-cyan.svg) center / 50% no-repeat;
+  filter: drop-shadow(0 0 2px cyan);
 }
 
 /* INFO */
