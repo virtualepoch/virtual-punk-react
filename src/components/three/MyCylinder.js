@@ -26,8 +26,8 @@ export const MyCylinder = () => {
       <meshBasicMaterial
         map={map}
         side={THREE.BackSide}
-        transparent
-        opacity={0.4}
+        // transparent
+        // opacity={0.7}
       />
     </mesh>
   );

@@ -1,10 +1,32 @@
-.btn-test {
-  width: 100px;
-  height: 50px;
-  border: 1px solid cyan;
+:root {
+  --btn-hub-height: 40px;
+  --clip-inset: 4px;
+}
+
+.btn-hub-shadow{
+  width: 100%;
+  max-width: 169px;
+  height: 35px;
   position: fixed;
-  left: 20px;
-  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  z-index: 11110;
+  background: transparent;
+  border-top-right-radius: 100px;
+  border-top-left-radius: 100px;
+  box-shadow: inset 0 0 5px 1px red, 0 10px 10px 10px black;
+  animation: shadow-pulse 4s ease infinite;
+}
+
+.btn-hub {
+  width: 100%;
+  max-width: 200px;
+  height: var(--btn-hub-height);
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
   z-index: 11111;
   display: flex;
   align-items: center;
@@ -12,24 +34,46 @@
   background: rgba(0, 0, 0, 0.5);
   backdrop-filter: blur(5px);
   clip-path: polygon(
-    20% 0,
-    25% 4%,
-    75% 4%,
-    80% 0,
-    100% 0,
-    100% 20%,
-    98% 25%,
-    98% 75%,
-    100% 80%,
+    40% 0,
+    calc(40% + var(--clip-inset)) var(--clip-inset),
+    calc(60% - var(--clip-inset)) var(--clip-inset),
+    60% 0,
+    calc(100% - var(--btn-hub-height)) 0,
     100% 100%,
-    /* 80% 100%,
-      75% 95%,
-      25% 95%,
-      20% 100%, */ 0 100%,
-    0 0
+    calc(100% - 35px) 100%,
+    calc(100% - 40px) calc(100% - var(--clip-inset)),
+    60% calc(100% - var(--clip-inset)),
+    calc(60% - var(--clip-inset)) 100%,
+    calc(40% + var(--clip-inset)) 100%,
+    40% calc(100% - var(--clip-inset)),
+    40px calc(100% - var(--clip-inset)),
+    35px 100%,
+    0 100%,
+    40px 0
   );
   color: white;
   box-shadow: inset 0 0 5px 1px cyan;
+  animation: hub-btn-pulse 4s ease infinite;
+}
+
+@keyframes hub-btn-pulse {
+  0%,
+  100% {
+    filter: none;
+  }
+  50% {
+    filter: drop-shadow(0 0 5px cyan);
+  }
+}
+
+@keyframes shadow-pulse {
+  0%,
+  100% {
+    box-shadow: inset 0 0 5px 1px red, 0 10px 10px 10px black;
+  }
+  50% {
+    box-shadow: inset 0 0 10px 5px red, 0 10px 10px 10px cyan;
+  }
 }
 
 /* OPEN/CLOSE NAVIGATION MENU */

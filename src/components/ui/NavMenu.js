@@ -37,7 +37,7 @@ export function NavMenu({
       <CSSTransition
         in={navMenuOpen}
         unmountOnExit
-        timeout={700}
+        timeout={800}
         classNames="nav-menu"
       >
         <nav className="nav-menu">
@@ -77,7 +77,7 @@ export function NavMenu({
       <CSSTransition
         in={navMenuOpen}
         unmountOnExit
-        timeout={700}
+        timeout={800}
         classNames={"left"}
       >
         <div className="bg left"></div>
@@ -86,7 +86,7 @@ export function NavMenu({
       <CSSTransition
         in={navMenuOpen}
         unmountOnExit
-        timeout={700}
+        timeout={800}
         classNames={"right"}
       >
         <div className="bg right"></div>

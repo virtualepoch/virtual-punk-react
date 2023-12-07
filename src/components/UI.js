@@ -7,6 +7,7 @@ import { CreditsModal } from "./ui/CreditsModal";
 import { Leva } from "leva";
 import { OmniControls } from "./ui/OmniControls";
 import { MainOverlay } from "./ui/MainOverlay";
+import { HeroSection } from "./ui/HeroSection";
 
 export const UI = ({
   setLinkClicked,
@@ -45,7 +46,12 @@ export const UI = ({
 
   return (
     <>
-      {intro && <MainOverlay />}
+      {intro && (
+        <>
+          <MainOverlay />
+          <HeroSection />
+        </>
+      )}
       <Header
         navMenuOpen={navMenuOpen}
         setNavMenuOpen={setNavMenuOpen}
@@ -68,12 +74,17 @@ export const UI = ({
       />
       <BtnFullScreen />
       <FpsMeter fpsMeter={fpsMeter} setFpsMeter={setFpsMeter} />
+
       <button
         className="btn-info"
         onClick={() => setInfoModalOpen(!infoModalOpen)}
       >
         <div className="info-icon"></div>
       </button>
+
+      <button className="btn-hub">Let's go!</button>
+      <div className="btn-hub-shadow" />
+
       {creditsInfo.map((item) => (
         <CreditsModal
           infoModalOpen={infoModalOpen}
