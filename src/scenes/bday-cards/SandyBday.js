@@ -3,7 +3,6 @@ import * as THREE from "three";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import bg from "../../assets/images/balloons_cgi.jpg";
 import { StrawCake } from "./StrawCake";
-import "./bday.css";
 
 export function SandyBday() {
   const BackDrop = () => {

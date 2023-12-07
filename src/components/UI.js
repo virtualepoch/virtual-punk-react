@@ -23,6 +23,8 @@ export const UI = ({
   const [infoModalOpen, setInfoModalOpen] = useState(false);
   const [hideLeva, setHideLeva] = useState(true);
 
+  const [hideStart, setHideStart] = useState(false);
+
   // CreditsModal info-
   const creditsInfo = [
     {
@@ -82,8 +84,17 @@ export const UI = ({
         <div className="info-icon"></div>
       </button>
 
-      <button className="btn-hub">Let's go!</button>
-      <div className="btn-hub-shadow" />
+      <button
+        className={hideStart ? "btn-start opacity-0" : "btn-start"}
+        onClick={() => setHideStart(!hideStart)}
+      >
+        Start
+      </button>
+      <div
+        className={
+          hideStart ? "btn-start-shadow opacity-0" : "btn-start-shadow"
+        }
+      />
 
       {creditsInfo.map((item) => (
         <CreditsModal

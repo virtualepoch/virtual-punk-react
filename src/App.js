@@ -6,7 +6,6 @@ import { Canvas } from "@react-three/fiber";
 import { UI } from "./components/UI.js";
 import { MyCamControls } from "./components/MyCamControls.js";
 
-
 // SCENES
 import { IntroScene } from "./scenes/_IntroScene.js";
 import { TorusScene } from "./scenes/TorusScene.js";
@@ -14,18 +13,18 @@ import { SpaceScene } from "./scenes/SpaceScene.js";
 import { ScrollScene } from "./scenes/ScrollScene.js";
 import { MachScene } from "./scenes/MachScene.js";
 import { StarPunkScene } from "./scenes/StarPunkScene.js";
+import { WaterScene } from "./scenes/WaterScene.js";
 
 // VIRTUAL B-DAY CARDS
-import { SandyBday } from "./scenes/bday-cards/SandyBday";
-import { DadBday } from "./scenes/bday-cards/DadBday";
+// import { SandyBday } from "./scenes/bday-cards/SandyBday";
+// import { DadBday } from "./scenes/bday-cards/DadBday";
 
 // CSS
 import "./App.css";
 import "./buttons.css";
-import "../src/scenes/_intro.css";
+import "./_intro.css";
 import "./_temp.css";
-import { WaterScene } from "./scenes/WaterScene.js";
-
+// import "./bday.css";
 
 function App() {
   // useState hooks

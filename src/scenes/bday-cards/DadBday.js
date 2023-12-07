@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import bg from "../../assets/images/balloons_cgi.jpg";
-import "./bday.css";
 import { Groot } from "./Groot";
 import AudioPlayer from "./AudioPlayer";
 

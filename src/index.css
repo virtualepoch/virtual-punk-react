@@ -4,13 +4,12 @@
 }
 
 @font-face {
-  font-family: cyberpunk;
-  src: url(../public/fonts/Cyberpunk-Regular.ttf);
+  font-family: Arcade;
+  src: url(../public/fonts/ARCADE.TTF);
 }
-
 @font-face {
-  font-family: Everleigh;
-  src: url(../public/fonts/Everleigh.otf);
+  font-family: Blox;
+  src: url(../public/fonts/Blox2.ttf);
 }
 
 @import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
