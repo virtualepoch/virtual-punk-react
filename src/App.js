@@ -3,15 +3,9 @@ import { useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 
 // COMPONENTS
-import { MainOverlay } from "./components/ui/MainOverlay.js";
-import { HeroSection } from "./components/ui/HeroSection.js";
-import { Header } from "./components/ui/Header.js";
-import { NavMenu } from "./components/ui/NavMenu.js";
-import { BtnFullScreen } from "./components/ui/BtnFullScreen.js";
-import { FpsMeter } from "./components/ui/FpsMeter.js";
-import { OmniControls } from "./components/OmniControls.js";
-import { MyCamControls } from "./components/three/MyCamControls.js";
-import { CreditsModal } from "./components/ui/CreditsModal.js";
+import { UI } from "./components/UI.js";
+import { MyCamControls } from "./components/MyCamControls.js";
+
 
 // SCENES
 import { IntroScene } from "./scenes/_IntroScene.js";
@@ -30,14 +24,11 @@ import "./App.css";
 import "./buttons.css";
 import "../src/scenes/_intro.css";
 import "./_temp.css";
-import { Leva } from "leva";
+
 
 function App() {
   // useState hooks
-  const [navMenuOpen, setNavMenuOpen] = useState(false);
   const [linkClicked, setLinkClicked] = useState(false);
-  const [fpsMeter, setFpsMeter] = useState(false);
-  const [infoModalOpen, setInfoModalOpen] = useState(false);
 
   // State for Torus Controls
   const [bg, setBg] = useState(0);
@@ -47,9 +38,6 @@ function App() {
   const [wrapX, setWrapX] = useState(3);
   const [wrapY, setWrapY] = useState(22);
   const [intensity, setIntensity] = useState(1);
-
-  const [hideLeva, setHideLeva] = useState(true);
-  // const [enableLeva, setEnableLeva] = useState(true);
 
   // useMatch hooks
   const intro = useMatch("/");
@@ -69,39 +57,9 @@ function App() {
     }, 1);
   }, [linkClicked]);
 
-  // CreditsModal info-
-  const creditsInfo = [
-    {
-      id: "00",
-      title: "title",
-      link: "link",
-      credits: `credits`,
-      changes: `changes`,
-
-      title2: "title2",
-      link2: "link2",
-      credits2: `credits2`,
-      changes2: `changes2`,
-
-      title3: "title3",
-      link3: "link3",
-      credits3: `credits3`,
-      changes3: `changes3`,
-    },
-  ];
-
   return (
     <div className="App">
-      {intro && (
-        <>
-          <MainOverlay />
-          {/* <HeroSection /> */}
-        </>
-      )}
-
-      <Header
-        navMenuOpen={navMenuOpen}
-        setNavMenuOpen={setNavMenuOpen}
+      <UI
         setLinkClicked={setLinkClicked}
         intro={intro}
         torus={torus}
@@ -110,39 +68,6 @@ function App() {
         mach={mach}
         star={star}
       />
-
-      <NavMenu
-        navMenuOpen={navMenuOpen}
-        setNavMenuOpen={setNavMenuOpen}
-        setLinkClicked={setLinkClicked}
-        hideLeva={hideLeva}
-        setHideLeva={setHideLeva}
-        fpsMeter={fpsMeter}
-        setFpsMeter={setFpsMeter}
-      />
-
-      <BtnFullScreen />
-      <FpsMeter fpsMeter={fpsMeter} setFpsMeter={setFpsMeter} />
-
-      <button
-        className="btn-info"
-        onClick={() => setInfoModalOpen(!infoModalOpen)}
-      >
-        <div className="info-icon"></div>
-      </button>
-
-      {creditsInfo.map((item) => (
-        <CreditsModal
-          infoModalOpen={infoModalOpen}
-          setInfoModalOpen={setInfoModalOpen}
-          key={item.id}
-          info={item}
-        />
-      ))}
-
-      <Leva hidden={hideLeva ? true : false} />
-      {torus ? <OmniControls /> : <></>}
-
       <Canvas
         ref={canvas}
         className="canvas"
@@ -153,7 +78,7 @@ function App() {
       >
         {/* {torus ? <OrbitControls /> : <></>} */}
 
-        <MyCamControls linkClicked={linkClicked} />
+        <MyCamControls linkClicked={linkClicked} intro={intro} />
 
         <Routes>
           <Route index element={<IntroScene />} />

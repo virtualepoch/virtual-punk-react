@@ -1,14 +1,16 @@
 import { CameraControls } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { button, buttonGroup, folder, useControls } from "leva";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { DEG2RAD } from "three/src/math/MathUtils";
 
-export const MyCamControls = ({ centerMeshRef, linkClicked, enableLeva }) => {
+export const MyCamControls = ({ centerMeshRef, linkClicked }) => {
   const { camera } = useThree();
   const cameraControlsRef = useRef();
 
-  if (linkClicked ) cameraControlsRef.current?.reset(true);
+  useEffect(() => {
+    if (linkClicked) cameraControlsRef.current?.reset(true);
+  },[linkClicked]);
 
   // All same options as the original "basic" example:
   // https://yomotsu.github.io/camera-controls/examples/basic.html
