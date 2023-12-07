@@ -20,10 +20,9 @@ import { WaterScene } from "./scenes/WaterScene.js";
 // import { DadBday } from "./scenes/bday-cards/DadBday";
 
 // CSS
+import "./_intro.css";
 import "./App.css";
 import "./buttons.css";
-import "./_intro.css";
-import "./_temp.css";
 // import "./bday.css";
 
 function App() {
@@ -45,6 +44,7 @@ function App() {
   const space = useMatch("/space");
   const scroll = useMatch("/scroll");
   const mach = useMatch("/mach");
+  const water = useMatch("/water");
   const star = useMatch("/star-punk");
 
   // useRef hooks
@@ -66,6 +66,7 @@ function App() {
         space={space}
         scroll={scroll}
         mach={mach}
+        water={water}
         star={star}
       />
       <Canvas
@@ -76,8 +77,6 @@ function App() {
           fov: 30,
         }}
       >
-        {/* {torus ? <OrbitControls /> : <></>} */}
-
         <MyCamControls linkClicked={linkClicked} intro={intro} />
 
         <Routes>

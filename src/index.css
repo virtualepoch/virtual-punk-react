@@ -2,7 +2,6 @@
   font-family: Ailerons;
   src: url(./assets/fonts/Ailerons-TrialVersion.otf);
 }
-
 @font-face {
   font-family: Arcade;
   src: url(../public/fonts/ARCADE.TTF);
@@ -11,9 +10,7 @@
   font-family: Blox;
   src: url(../public/fonts/Blox2.ttf);
 }
-
 @import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
-
 @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap");
 
 :root {

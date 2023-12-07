@@ -16,6 +16,11 @@
   pointer-events: none;
 }
 
+.hero-section-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease;
+}
+
 @media (max-width: 700px) {
   .hero-section {
     font-size: 25px;
@@ -35,8 +40,8 @@
   width: fit-content;
   display: flex;
   margin: auto;
-  color: red;
-  filter: drop-shadow(2px 0 0.5px aqua) drop-shadow(5px 1px 1px aqua);
+  color: cyan;
+  filter: drop-shadow(5px -5px 1px aqua);
   cursor: pointer;
   border: solid red;
   border-radius: 2px;

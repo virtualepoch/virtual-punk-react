@@ -8,6 +8,7 @@ import { Leva } from "leva";
 import { OmniControls } from "./ui/OmniControls";
 import { MainOverlay } from "./ui/MainOverlay";
 import { HeroSection } from "./ui/HeroSection";
+import { BtnStart } from "./ui/BtnStart";
 
 export const UI = ({
   setLinkClicked,
@@ -16,6 +17,7 @@ export const UI = ({
   space,
   scroll,
   mach,
+  water,
   star,
 }) => {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
@@ -23,7 +25,7 @@ export const UI = ({
   const [infoModalOpen, setInfoModalOpen] = useState(false);
   const [hideLeva, setHideLeva] = useState(true);
 
-  const [hideStart, setHideStart] = useState(false);
+  const [hidden, setHidden] = useState(false);
 
   // CreditsModal info-
   const creditsInfo = [
@@ -51,9 +53,11 @@ export const UI = ({
       {intro && (
         <>
           <MainOverlay />
-          <HeroSection />
+          <HeroSection hidden={hidden} />
+          <BtnStart hidden={hidden} setHidden={setHidden} />
         </>
       )}
+
       <Header
         navMenuOpen={navMenuOpen}
         setNavMenuOpen={setNavMenuOpen}
@@ -63,8 +67,10 @@ export const UI = ({
         space={space}
         scroll={scroll}
         mach={mach}
+        water={water}
         star={star}
       />
+
       <NavMenu
         navMenuOpen={navMenuOpen}
         setNavMenuOpen={setNavMenuOpen}
@@ -74,7 +80,9 @@ export const UI = ({
         fpsMeter={fpsMeter}
         setFpsMeter={setFpsMeter}
       />
+
       <BtnFullScreen />
+
       <FpsMeter fpsMeter={fpsMeter} setFpsMeter={setFpsMeter} />
 
       <button
@@ -84,18 +92,6 @@ export const UI = ({
         <div className="info-icon"></div>
       </button>
 
-      <button
-        className={hideStart ? "btn-start opacity-0" : "btn-start"}
-        onClick={() => setHideStart(!hideStart)}
-      >
-        Start
-      </button>
-      <div
-        className={
-          hideStart ? "btn-start-shadow opacity-0" : "btn-start-shadow"
-        }
-      />
-
       {creditsInfo.map((item) => (
         <CreditsModal
           infoModalOpen={infoModalOpen}
@@ -104,6 +100,7 @@ export const UI = ({
           info={item}
         />
       ))}
+      
       <Leva hidden={hideLeva ? true : false} />
       {torus ? <OmniControls /> : <></>}
     </>

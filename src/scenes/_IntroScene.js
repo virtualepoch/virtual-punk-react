@@ -1,8 +1,6 @@
-import { useRef } from "react";
-import * as THREE from "three";
-import { useHelper } from "@react-three/drei";
-
 import { RabbitHole } from "../components/three/RabbitHole";
+import { TorusGroup } from "../components/three/TorusGroup";
+// import { WormHole } from "../components/three/WormHole";
 
 export const IntroScene = () => {
   // const directionalLight = useRef();
@@ -17,6 +15,7 @@ export const IntroScene = () => {
         angle={0.3}
       />
       <RabbitHole />
+      <TorusGroup position={[0, 0, -80]} />
     </>
   );
 };

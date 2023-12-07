@@ -60,5 +60,8 @@
   },
   "browser": {
     "fs": false
+  },
+  "devDependencies": {
+    "threejs-meshline": "^2.0.12"
   }
 }

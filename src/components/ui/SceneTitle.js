@@ -1,4 +1,4 @@
-export const SceneTitle = ({ intro, torus, space, scroll, mach, star }) => {
+export const SceneTitle = ({ intro, torus, space, scroll, mach,water, star }) => {
   return (
     <h1 className="scene-title">
       {torus
@@ -9,6 +9,8 @@ export const SceneTitle = ({ intro, torus, space, scroll, mach, star }) => {
         ? "Space"
         : mach
         ? "Mach"
+        : water
+        ? "Water"
         : star
         ? "Star Punk"
         : "Virtual Punk"}

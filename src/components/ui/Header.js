@@ -14,6 +14,7 @@ export const Header = ({
   space,
   scroll,
   mach,
+  water,
   star,
 }) => {
   const isSandyBdayPageActive = useMatch({
@@ -45,6 +46,7 @@ export const Header = ({
         space={space}
         scroll={scroll}
         mach={mach}
+        water={water}
         star={star}
       />
 

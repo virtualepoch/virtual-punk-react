@@ -14,19 +14,7 @@
   background: black;
 }
 
-/* NavMenu Bg Right CSSTransition */
-.main-overlay-enter {
-  transform: translateY(-170%);
-}
-
-.main-overlay-enter-active {
-  transform: translateY(0%);
-}
-
-.main-overlay-exit {
-  transform: translateY(0%);
-}
-
+/* CSSTransition */
 .main-overlay-exit-active {
   transform: translateY(-170%);
   transition: transform 1000ms ease;
