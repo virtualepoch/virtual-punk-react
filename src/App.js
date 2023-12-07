@@ -24,6 +24,7 @@ import "./App.css";
 import "./buttons.css";
 import "../src/scenes/_intro.css";
 import "./_temp.css";
+import { WaterScene } from "./scenes/WaterScene.js";
 
 
 function App() {
@@ -105,6 +106,7 @@ function App() {
           <Route path="/space" element={<SpaceScene />} />
           <Route path="/scroll" element={<ScrollScene />} />
           <Route path="/mach" element={<MachScene />} />
+          <Route path="/water" element={<WaterScene />} />
           <Route path="/star-punk" element={<StarPunkScene />} />
         </Routes>
       </Canvas>
