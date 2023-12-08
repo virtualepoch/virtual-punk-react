@@ -58,13 +58,13 @@ export function NavMenu({
 
           <button
             className={
-              hideLeva ? "btn-leva-controls " : "btn-leva-controls leva"
+              hideLeva ? "btn-leva-controls" : "btn-leva-controls leva-open"
             }
             onClick={() => setHideLeva(!hideLeva)}
           />
 
           <button
-            className="btn-fps"
+            className={fpsMeter ? "btn-fps meter-open" : "btn-fps"}
             onClick={() => {
               setFpsMeter(!fpsMeter);
             }}

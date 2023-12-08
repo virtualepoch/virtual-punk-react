@@ -15,6 +15,13 @@
   box-shadow: -1px 1px 10px 1px rgba(0, 0, 0, 0.6);
 }
 
+@media (max-width: 700px) {
+  .credits-modal {
+    background: rgba(0, 0, 0, 0.99);
+    backdrop-filter: none;
+  }
+}
+
 /* CSSTransition Styling */
 .credits-modal-enter {
   transform: translateX(-100%);
@@ -222,11 +229,10 @@
 .credits-hr {
   min-width: 200px;
   max-width: 40%;
+  height: 1px;
   margin: 10px auto;
-  border: 1px solid cyan;
-  border-radius: 100px;
+  border: none;
   background: cyan;
-  box-shadow: 0 0 5px 1px cyan;
 }
 
 /* STYLED BORDER  */
@@ -258,10 +264,15 @@
   flex-direction: column;
   align-items: center;
   filter: drop-shadow(0 0 2px cyan);
-  box-shadow: -1px -1px 2px 1px rgba(0, 255, 255, 0.2);
   transform-origin: 50% 0;
   transform: scaleY(0);
   transition: 500ms ease;
+}
+
+@media (max-width: 700px) {
+  .bar-wrapper {
+    filter: none;
+  }
 }
 
 .bar-wrapper.scale-y {
@@ -283,7 +294,6 @@
 .bar-wrapper .bar {
   width: 100%;
   background: radial-gradient(white, cyan);
-  box-shadow: inset 0 0 5px 1px cyan;
 }
 
 .bar.bottom {
@@ -341,6 +351,7 @@
   width: 5px;
   height: calc(100% - 30px);
   right: 15px;
+  background: transparent;
   box-shadow: 0 0 4px 1px red, inset 0 0 5px 1px red;
   filter: drop-shadow(0 0 2px white);
   border-bottom-right-radius: 20px;
@@ -348,6 +359,14 @@
   transform-origin: 50% 0;
   transform: scaleY(0);
   transition: 500ms ease-in;
+}
+
+@media (max-width: 700px) {
+  .red-bar {
+    background: red;
+    box-shadow: none;
+    filter: none;
+  }
 }
 
 .red-bar.scale-y {
