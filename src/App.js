@@ -1,6 +1,7 @@
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Route, Routes, useMatch } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
 import { Canvas } from "@react-three/fiber";
+import { Loader } from "@react-three/drei";
 
 // COMPONENTS
 import { UI } from "./components/UI.js";
@@ -14,6 +15,7 @@ import { ScrollScene } from "./scenes/ScrollScene.js";
 import { MachScene } from "./scenes/MachScene.js";
 import { StarPunkScene } from "./scenes/StarPunkScene.js";
 import { WaterScene } from "./scenes/WaterScene.js";
+import { Testing } from "./_testing/Testing.js";
 
 // VIRTUAL B-DAY CARDS
 // import { SandyBday } from "./scenes/bday-cards/SandyBday";
@@ -59,6 +61,7 @@ function App() {
 
   return (
     <div className="App">
+      <Loader />
       <UI
         setLinkClicked={setLinkClicked}
         intro={intro}
@@ -77,36 +80,39 @@ function App() {
           fov: 30,
         }}
       >
-        <MyCamControls linkClicked={linkClicked} intro={intro} />
+        <Suspense>
+          <MyCamControls linkClicked={linkClicked} intro={intro} />
 
-        <Routes>
-          <Route index element={<IntroScene />} />
-          <Route
-            path="/torus"
-            element={
-              <TorusScene
-                bg={bg}
-                setBg={setBg}
-                bgWrapX={bgWrapX}
-                setBgWrapX={setBgWrapX}
-                bgWrapY={bgWrapY}
-                setBgWrapY={setBgWrapY}
-                texture={texture}
-                setTexture={setTexture}
-                wrapX={wrapX}
-                setWrapX={setWrapX}
-                wrapY={wrapY}
-                setWrapY={setWrapY}
-                intensity={intensity}
-              />
-            }
-          />
-          <Route path="/space" element={<SpaceScene />} />
-          <Route path="/scroll" element={<ScrollScene />} />
-          <Route path="/mach" element={<MachScene />} />
-          <Route path="/water" element={<WaterScene />} />
-          <Route path="/star-punk" element={<StarPunkScene />} />
-        </Routes>
+          <Routes>
+            <Route index element={<IntroScene />} />
+            <Route
+              path="/torus"
+              element={
+                <TorusScene
+                  bg={bg}
+                  setBg={setBg}
+                  bgWrapX={bgWrapX}
+                  setBgWrapX={setBgWrapX}
+                  bgWrapY={bgWrapY}
+                  setBgWrapY={setBgWrapY}
+                  texture={texture}
+                  setTexture={setTexture}
+                  wrapX={wrapX}
+                  setWrapX={setWrapX}
+                  wrapY={wrapY}
+                  setWrapY={setWrapY}
+                  intensity={intensity}
+                />
+              }
+            />
+            <Route path="/space" element={<SpaceScene />} />
+            <Route path="/scroll" element={<ScrollScene />} />
+            <Route path="/mach" element={<MachScene />} />
+            <Route path="/water" element={<WaterScene />} />
+            <Route path="/star-punk" element={<StarPunkScene />} />
+            <Route path="/test" element={<Testing />} />
+          </Routes>
+        </Suspense>
       </Canvas>
     </div>
   );

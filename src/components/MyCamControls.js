@@ -4,13 +4,13 @@ import { button, buttonGroup, folder, useControls } from "leva";
 import { useEffect, useRef } from "react";
 import { DEG2RAD } from "three/src/math/MathUtils";
 
-export const MyCamControls = ({ centerMeshRef, linkClicked }) => {
+export const MyCamControls = ({ centerMeshRef, linkClicked, intro }) => {
   const { camera } = useThree();
   const cameraControlsRef = useRef();
 
   useEffect(() => {
     if (linkClicked) cameraControlsRef.current?.reset(true);
-  },[linkClicked]);
+  }, [linkClicked]);
 
   // All same options as the original "basic" example:
   // https://yomotsu.github.io/camera-controls/examples/basic.html
@@ -135,7 +135,7 @@ export const MyCamControls = ({ centerMeshRef, linkClicked }) => {
       ),
       saveState: button(() => cameraControlsRef.current?.saveState()),
       reset: button(() => cameraControlsRef.current?.reset(true)),
-      enabled: { value: true, label: "controls on" },
+      enabled: { value: intro ? false : true, label: "controls on" },
       verticalDragToForward: {
         value: false,
         label: "vert. drag to move forward",

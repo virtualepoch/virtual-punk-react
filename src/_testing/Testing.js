@@ -1,143 +1,54 @@
 import * as THREE from "three";
-import { useEffect, useRef } from "react";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { useRef } from "react";
+import { useFrame, useLoader } from "@react-three/fiber";
 import {
   ContactShadows,
-  CubeCamera,
-  Decal,
   Environment,
   MeshReflectorMaterial,
-  OrbitControls,
-  PerspectiveCamera,
   Stars,
-  useHelper,
-  useTexture,
 } from "@react-three/drei";
-import earth500 from "../assets/images/earth_clouds_1k.jpg";
-import earth8k from "../assets/images/earth_clouds_4k.jpg";
-import marbleLarge from "../assets/images/marble_large.jpg";
-import marbleSmall from "../assets/images/marble_small.jpg";
-import { FooterLinks } from "../components/FooterLinks";
-import { Model } from "./Offworld";
-import dad from "./dad.jpg";
-import { Groot2 } from "./Groot2";
 import { DirectionalLightHelper } from "three";
+// import { UnstableAntimatter } from "../components/models/UnstableAntimatter";
+// import { LightBeam } from "../components/models/LightBeam";
+// import { TheGreatMorpheus } from "../components/models/TheGreatMorpheus";
+import { PcSpider } from "../components/models/PcSpider1k";
+import { ExtraSoundPro } from "../components/models/ExtraSoundPro";
+import { HubScenes } from "../components/three/HubScenes";
 
 export function Testing() {
   const Floor = () => {
     return (
-      <mesh position={[0, -4, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+      <mesh position={[0, -3, 0]} rotation={[-Math.PI / 1.95, 0, 0]}>
         <planeGeometry args={[50, 50]} />
-        {/* <MeshReflectorMaterial
-          blur={[400, 400]}
-          resolution={1024}
-          mixBlur={0.9}
-          mixStrength={15}
-          depthScale={1}
-          minDepthThreshold={0.85}
-          color="#dbecfb"
-          metalness={0.6}
-        /> */}
-        <meshStandardMaterial receiveShadow />
-      </mesh>
-    );
-  };
-
-  const Earth = () => {
-    // !!!!!!!!!!!! SEE IF YOU CAN CREATE A GLOBAL TEXTURE CHANGER THAT WILL CHANGE FOR ALL FUNCTIONS BASED ON VARIABLES SET IN THOSE FUNCTIONS
-    function textureChanger() {
-      if (window.innerWidth < 700) {
-        return earth500;
-      } else {
-        return earth8k;
-      }
-    }
-
-    const texture = useLoader(THREE.TextureLoader, textureChanger());
-    const earthRef = useRef(null);
-
-    useFrame(() => {
-      earthRef.current.rotation.y += 0.002;
-    });
-
-    return (
-      <mesh ref={earthRef} position={[0, 9.3, 0]}>
-        <sphereGeometry args={[3, 10, 10]} />
-        <meshPhongMaterial map={texture} />
-      </mesh>
-    );
-  };
-
-  const EarthPedestal = () => {
-    function textureChanger() {
-      if (window.innerWidth < 700) {
-        return marbleSmall;
-      } else {
-        return marbleLarge;
-      }
-    }
-    const texture = useLoader(THREE.TextureLoader, textureChanger());
-    return (
-      <mesh position={[0, 2.4, 0]}>
-        <cylinderGeometry args={[2, 5, 8, 3, 1]} />
-        <meshBasicMaterial map={texture} />
-      </mesh>
-    );
-  };
-
-  const PictureFrame = () => {
-    const shape = new THREE.Shape();
-
-    let sizeX = 6;
-    let sizeY = 6;
-    let radius = 0.5;
-
-    let halfX = sizeX * 0.5 - radius;
-    let halfY = sizeY * 0.5 - radius;
-    let baseAngle = Math.PI * 0.5;
-    shape.absarc(
-      halfX,
-      halfY,
-      radius,
-      baseAngle * 0,
-      baseAngle * 0 + baseAngle
-    );
-    shape.absarc(
-      -halfX,
-      halfY,
-      radius,
-      baseAngle * 1,
-      baseAngle * 1 + baseAngle
-    );
-    shape.absarc(
-      -halfX,
-      -halfY,
-      radius,
-      baseAngle * 2,
-      baseAngle * 2 + baseAngle
-    );
-    shape.absarc(
-      halfX,
-      -halfY,
-      radius,
-      baseAngle * 3,
-      baseAngle * 3 + baseAngle
-    );
-
-    function textureChanger() {
-      if (window.innerWidth < 700) {
-        return marbleSmall;
-      } else {
-        return marbleLarge;
-      }
-    }
-
-    const texture = useLoader(THREE.TextureLoader, textureChanger());
-
-    return (
-      <mesh position={[-8, 2, 1]} rotation={[0, 0.3, 0]}>
-        <extrudeGeometry args={[shape, { bevelEnabled: false, depth: 1 }]} />
-        <meshBasicMaterial map={texture} />
+        <MeshReflectorMaterial
+          blur={[0, 0]} // Blur ground reflections (width, height), 0 skips blur
+          mixBlur={0} // How much blur mixes with surface roughness (default = 1)
+          mixStrength={1} // Strength of the reflections
+          mixContrast={1} // Contrast of the reflections
+          resolution={256} // Off-buffer resolution, lower=faster, higher=better quality, slower
+          mirror={0} // Mirror environment, 0 = texture colors, 1 = pick up env colors
+          depthScale={0} // Scale the depth factor (0 = no depth, default = 0)
+          minDepthThreshold={0.9} // Lower edge for the depthTexture interpolation (default = 0)
+          maxDepthThreshold={1} // Upper edge for the depthTexture interpolation (default = 0)
+          depthToBlurRatioBias={0.25} // Adds a bias factor to the depthTexture before calculating the blur amount [blurFactor = blurTexture * (depthTexture + bias)]. It accepts values between 0 and 1, default is 0.25. An amount > 0 of bias makes sure that the blurTexture is not too sharp because of the multiplication with the depthTexture
+          distortion={1} // Amount of distortion based on the distortionMap texture
+          distortionMap={
+            null
+            // distortionTexture
+          } // The red channel of this texture is used as the distortion map. Default is null
+          debug={
+            1
+          } /* Depending on the assigned value, one of the following channels is shown:
+      0 = no debug
+      1 = depth channel
+      2 = base channel
+      3 = distortion channel
+      4 = lod channel (based on the roughness)
+    */
+          reflectorOffset={0.2} // Offsets the virtual camera that projects the reflection. Useful when the reflective surface is some distance from the object's origin (default = 0)
+          color={"#15ffff"}
+        />
+        {/* <meshStandardMaterial receiveShadow /> */}
       </mesh>
     );
   };
@@ -149,61 +60,35 @@ export function Testing() {
 
   return (
     <>
-      <h1 className="page-title">Testing</h1>
-      <Canvas className="canvas">
-        <OrbitControls maxPolarAngle={Math.PI / 2} />
-        <Environment preset="city" />
-        <ambientLight intensity={1} />
-        <directionalLight
-          ref={light}
-          position={[0, 15, 10]}
-          // angle={0.3}
-          intensity={1}
-          color="white"
-          castShadow
-          shadow-camera-near={0}
-          shadow-camera-far={100}
-          shadow-camera-left={-20}
-          shadow-camera-right={20}
-          shadow-camera-top={20}
-          shadow-camera-bottom={-20}
-          shadow-mapSize-width={2048}
-          shadow-mapSize-height={2048}
-          shadow-bias={-0.0001}
-        />
-        <PerspectiveCamera
-          position={[0, 0, 20]}
-          rotation={[0, 0, 0]}
-          fov={60}
-          makeDefault
-          far={1000}
-        />
-        <ContactShadows position-y={0} opacity={0.4} />
-        <Floor receiveShadow/>
-        <Groot2 />
-        <Stars />
-      </Canvas>
-   
+      <HubScenes
+        panelDistance={3}
+        panelSize={[8, 8, 1]}
+        panelsPosition={[0, 0, -0]}
+        panelsRotationX={0}
+        panelsRotationYSpeed={-0.01}
+        panelsColor="cyan"
+      />
+      {/* <TheGreatMorpheus /> */}
+      {/* <LightBeam /> */}
+      {/* <Oyes /> */}
+      {/* <PcSpider position={[0, -1, 0]} scale={0.4} rotation={[2, Math.PI, 0]} /> */}
+      <Stars />
+      <Floor receiveShadow />
+      <ExtraSoundPro />
+      <Environment preset="city" />
+      <ambientLight intensity={1} />
+      <directionalLight
+        ref={light}
+        position={[0, 15, 10]}
+        // angle={0.3}
+        intensity={1}
+        color="white"
+        castShadow
+      />
+      <ContactShadows position-y={0} opacity={1} />
     </>
   );
 }
-
-
-// function Ground() {
-//   const gridConfig = {
-//     cellSize: 0.5,
-//     cellThickness: 0.5,
-//     cellColor: '#6f6f6f',
-//     sectionSize: 3,
-//     sectionThickness: 1,
-//     sectionColor: '#9d4b4b',
-//     fadeDistance: 30,
-//     fadeStrength: 1,
-//     followCamera: false,
-//     infiniteGrid: true
-//   }
-//   return <Grid position={[0, -0.01, 0]} args={[10.5, 10.5]} {...gridConfig} />
-// }
 
 // const Shadows = memo(() => (
 //   <AccumulativeShadows temporal frames={100} color="#9d4b4b" colorBlend={0.5} alphaTest={0.9} scale={20}>
