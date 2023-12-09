@@ -1,14 +1,14 @@
-export const BtnStart = ({ hidden, setHidden }) => {
+export const BtnStart = ({ start, setStart }) => {
   return (
     <>
       <button
-        className={hidden ? "btn-start opacity-0" : "btn-start"}
-        onClick={() => setHidden(!hidden)}
+        className={start ? "btn-start opacity-0" : "btn-start"}
+        onClick={() => setStart(!start)}
       >
         Start
       </button>
       <div
-        className={hidden ? "btn-start-shadow opacity-0" : "btn-start-shadow"}
+        className={start ? "btn-start-shadow opacity-0" : "btn-start-shadow"}
       />
     </>
   );

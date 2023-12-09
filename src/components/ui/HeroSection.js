@@ -1,9 +1,9 @@
 import { CSSTransition } from "react-transition-group";
 
-export const HeroSection = ({ hidden }) => {
+export const HeroSection = ({ start }) => {
   return (
     <CSSTransition
-      in={hidden === false}
+      in={start === false}
       timeout={500}
       unmountOnExit
       classNames="hero-section"

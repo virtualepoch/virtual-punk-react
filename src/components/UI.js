@@ -11,6 +11,8 @@ import { HeroSection } from "./ui/HeroSection";
 import { BtnStart } from "./ui/BtnStart";
 
 export const UI = ({
+  start,
+  setStart,
   setLinkClicked,
   intro,
   torus,
@@ -24,8 +26,6 @@ export const UI = ({
   const [fpsMeter, setFpsMeter] = useState(false);
   const [infoModalOpen, setInfoModalOpen] = useState(false);
   const [hideLeva, setHideLeva] = useState(true);
-
-  const [hidden, setHidden] = useState(false);
 
   // CreditsModal info-
   const creditsInfo = [
@@ -53,8 +53,8 @@ export const UI = ({
       {intro && (
         <>
           <MainOverlay />
-          <HeroSection hidden={hidden} />
-          <BtnStart hidden={hidden} setHidden={setHidden} />
+          <HeroSection start={start} />
+          <BtnStart start={start} setStart={setStart} />
         </>
       )}
 
@@ -100,7 +100,7 @@ export const UI = ({
           info={item}
         />
       ))}
-      
+
       <Leva hidden={hideLeva ? true : false} />
       {torus ? <OmniControls /> : <></>}
     </>

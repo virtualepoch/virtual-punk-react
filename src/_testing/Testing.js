@@ -63,7 +63,7 @@ export function Testing() {
       <HubScenes
         panelDistance={3}
         panelSize={[8, 8, 1]}
-        panelsPosition={[0, 0, -0]}
+        panelsPosition={[0, 0, 0]}
         panelsRotationX={0}
         panelsRotationYSpeed={-0.01}
         panelsColor="cyan"

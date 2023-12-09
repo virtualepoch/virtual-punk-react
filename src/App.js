@@ -29,6 +29,7 @@ import "./buttons.css";
 
 function App() {
   // useState hooks
+  const [start, setStart] = useState(false);
   const [linkClicked, setLinkClicked] = useState(false);
 
   // State for Torus Controls
@@ -63,6 +64,8 @@ function App() {
     <div className="App">
       <Loader />
       <UI
+        start={start}
+        setStart={setStart}
         setLinkClicked={setLinkClicked}
         intro={intro}
         torus={torus}
@@ -84,7 +87,7 @@ function App() {
           <MyCamControls linkClicked={linkClicked} intro={intro} />
 
           <Routes>
-            <Route index element={<IntroScene />} />
+            <Route index element={<IntroScene start={start} />} />
             <Route
               path="/torus"
               element={

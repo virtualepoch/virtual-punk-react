@@ -5,7 +5,12 @@ import { Water } from "three-stdlib";
 
 extend({ Water });
 
-export const Ocean = ({ position, sunColor, waterColor }) => {
+export const Ocean = ({
+  position,
+  rotation,
+  sunColor,
+  waterColor = "#005477",
+}) => {
   const ref = useRef();
   const gl = useThree((state) => state.gl);
   const waterNormals = useLoader(
@@ -34,7 +39,7 @@ export const Ocean = ({ position, sunColor, waterColor }) => {
     (state, delta) => (ref.current.material.uniforms.time.value += delta)
   );
   return (
-    <group position={position}>
+    <group position={position} rotation={rotation}>
       <water ref={ref} args={[geom, config]} rotation-x={-Math.PI / 2} />
     </group>
   );
