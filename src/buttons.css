@@ -74,7 +74,7 @@
   position: fixed;
   left: 0;
   bottom: 0;
-  z-index: 101;
+  z-index: 100001;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,7 +97,7 @@
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 5px;
+  bottom: 98px;
   z-index: 95;
   border-radius: 200px;
   border: 1px solid cyan;
@@ -116,7 +116,7 @@
   position: fixed;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 5px;
+  bottom: 98px;
   z-index: 96;
   display: flex;
   align-items: center;

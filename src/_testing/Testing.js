@@ -14,6 +14,7 @@ import { DirectionalLightHelper } from "three";
 import { PcSpider } from "../components/models/PcSpider1k";
 import { ExtraSoundPro } from "../components/models/ExtraSoundPro";
 import { HubScenes } from "../components/three/HubScenes";
+// import { RampagingTRex } from "../components/models/RampagingTRex";
 
 export function Testing() {
   const Floor = () => {
@@ -60,6 +61,7 @@ export function Testing() {
 
   return (
     <>
+      {/* <RampagingTRex /> */}
       <HubScenes
         panelDistance={3}
         panelSize={[8, 8, 1]}
