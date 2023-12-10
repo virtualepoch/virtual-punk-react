@@ -29,6 +29,7 @@
     "react-transition-group": "^4.4.5",
     "three": "^0.158.0",
     "three-custom-shader-material": "^5.4.0",
+    "three-mesh-ui": "^6.5.4",
     "valtio": "^1.12.1",
     "webfontloader": "^1.6.28",
     "webpack": "^5.89.0",

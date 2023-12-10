@@ -135,7 +135,7 @@ export const MyCamControls = ({ centerMeshRef, linkClicked, intro }) => {
       ),
       saveState: button(() => cameraControlsRef.current?.saveState()),
       reset: button(() => cameraControlsRef.current?.reset(true)),
-      enabled: { value: intro ? false : true, label: "controls on" },
+      enabled: { value: intro ? true : true, label: "controls on" },
       verticalDragToForward: {
         value: false,
         label: "vert. drag to move forward",

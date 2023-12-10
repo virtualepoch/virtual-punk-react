@@ -41,7 +41,7 @@
   display: flex;
   margin: auto;
   color: cyan;
-  filter: drop-shadow(0 -5px 1px aqua);
+  filter: drop-shadow(0 -3px 1px aqua);
   cursor: pointer;
   border: solid red;
   border-radius: 2px;

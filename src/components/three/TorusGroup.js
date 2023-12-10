@@ -5,7 +5,7 @@ import { TorusMesh } from "./TorusMesh";
 
 import a1 from "../../assets/images/torus/Abstract_512x512-75.png";
 
-export const TorusGroup = ({ position }) => {
+export const TorusGroup = ({ position, rotation }) => {
   function textureChanger() {
     if (window.innerWidth < 700) {
       return a1;
@@ -48,7 +48,7 @@ export const TorusGroup = ({ position }) => {
   });
 
   return (
-    <mesh position={position}>
+    <mesh position={position} rotation={rotation}>
       <TorusMesh
         args={[0.9, 0.1, 6, 32]}
         map={meshTexture}

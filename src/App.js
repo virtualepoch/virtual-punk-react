@@ -32,6 +32,7 @@ function App() {
   // useState hooks
   const [start, setStart] = useState(false);
   const [linkClicked, setLinkClicked] = useState(false);
+  const [camZ, setCamZ] = useState(false);
 
   // State for Torus Controls
   const [bg, setBg] = useState(0);
@@ -76,12 +77,40 @@ function App() {
         water={water}
         star={star}
       />
-      <VRButton />
+
+      <VRButton
+        style={{
+          position: "fixed",
+          bottom: "10px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          zIndex: 101010,
+          width: "100px",
+          height: "35px",
+          border: "1px solid cyan",
+          borderRadius: "10px",
+          color: "white",
+          background: "rgba(0,0,0,0.5)",
+          clipPath: `polygon(
+            100% 0,
+            100% 100%,
+            calc(100% - 35px) 100%,
+            calc(100% - 38px) calc(100% - 3px),
+            38px calc(100% - 3px),
+            35px 100%,
+            0 100%,
+            0 0
+          )`,
+          boxShadow: "inset 0 0 3px 1px cyan",
+          textShadow: "0 1px 1px red, 0 2px 2px cyan",
+        }}
+      />
+
       <Canvas
         ref={canvas}
         className="canvas"
         camera={{
-          position: [0, 0, 20],
+          position: [0, 0, 1],
           fov: 30,
         }}
       >

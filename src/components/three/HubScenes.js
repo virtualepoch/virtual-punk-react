@@ -1,7 +1,9 @@
-import { RoundedBox } from "@react-three/drei";
+import { Decal, RoundedBox, useTexture } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { MeshPhongMaterial } from "three";
+import { HubScene } from "./HubScene";
+// import decalImg from "../../../public/images/spaceScene.jpg"
 
 export const HubScenes = ({
   panelDistance,
@@ -17,6 +19,7 @@ export const HubScenes = ({
   panelsRotationYSpeed,
   panelsColor,
 }) => {
+  // const texture = useTexture("/images/spaceScene.jpg");
   const panelMaterial = new MeshPhongMaterial({
     color: panelsColor,
     toneMapped: false,
@@ -36,66 +39,57 @@ export const HubScenes = ({
       rotation={[panelsRotationX, 0, 0]}
       position={panelsPosition}
     >
-      <mesh
-        position={[0, panelYPos, -panelDistance]}
-        rotation={[0, 0, 0]}
-        scale={panelMeshScale}
-      >
-        <RoundedBox
-          args={panelSize} // Width, height, depth. Default is [1, 1, 1]
-          radius={panelRadius} // Radius of the rounded corners. Default is 0.05
-          smoothness={panelSmoothness} // The number of curve segments. Default is 4
-          bevelSegments={panelBevelSegments} // The number of bevel segments. Default is 4, setting it to 0 removes the bevel, as a result the texture is applied to the whole geometry.
-          creaseAngle={panelCreaseAngle} // Smooth normals everywhere except faces that meet at an angle greater than the crease angle
-          //   {...meshProps} // All THREE.Mesh props are valid
-          material={panelMaterial}
-        ></RoundedBox>
-      </mesh>
-      <mesh
+      <HubScene
+        panelColor={panelsColor}
+        panelMeshScale={panelMeshScale}
+        panelYPos={panelYPos}
+        panelDistance={-panelDistance}
+        panelRotation={[0, 0, 0]}
+        panelSize={panelSize}
+        panelRadius={panelRadius}
+        panelSmoothness={panelSmoothness}
+        panelBevelSegments={panelBevelSegments}
+        panelCreaseAngle={panelCreaseAngle}
+      />
+
+      <RoundedBox
         position={[0, panelYPos, panelDistance]}
         rotation={[0, 0, 0]}
         scale={panelMeshScale}
-      >
-        <RoundedBox
-          args={panelSize} // Width, height, depth. Default is [1, 1, 1]
-          radius={panelRadius} // Radius of the rounded corners. Default is 0.05
-          smoothness={panelSmoothness} // The number of curve segments. Default is 4
-          bevelSegments={panelBevelSegments} // The number of bevel segments. Default is 4, setting it to 0 removes the bevel, as a result the texture is applied to the whole geometry.
-          creaseAngle={panelCreaseAngle} // Smooth normals everywhere except faces that meet at an angle greater than the crease angle
-          //   {...meshProps} // All THREE.Mesh props are valid
-          material={panelMaterial}
-        ></RoundedBox>
-      </mesh>
-      <mesh
+        args={panelSize} // Width, height, depth. Default is [1, 1, 1]
+        radius={panelRadius} // Radius of the rounded corners. Default is 0.05
+        smoothness={panelSmoothness} // The number of curve segments. Default is 4
+        bevelSegments={panelBevelSegments} // The number of bevel segments. Default is 4, setting it to 0 removes the bevel, as a result the texture is applied to the whole geometry.
+        creaseAngle={panelCreaseAngle} // Smooth normals everywhere except faces that meet at an angle greater than the crease angle
+        //   {...meshProps} // All THREE.Mesh props are valid
+        material={panelMaterial}
+      />
+
+      <RoundedBox
         position={[-panelDistance, panelYPos, 0]}
         rotation={[0, Math.PI / 2, 0]}
         scale={panelMeshScale}
-      >
-        <RoundedBox
-          args={panelSize} // Width, height, depth. Default is [1, 1, 1]
-          radius={panelRadius} // Radius of the rounded corners. Default is 0.05
-          smoothness={panelSmoothness} // The number of curve segments. Default is 4
-          bevelSegments={panelBevelSegments} // The number of bevel segments. Default is 4, setting it to 0 removes the bevel, as a result the texture is applied to the whole geometry.
-          creaseAngle={panelCreaseAngle} // Smooth normals everywhere except faces that meet at an angle greater than the crease angle
-          //   {...meshProps} // All THREE.Mesh props are valid
-          material={panelMaterial}
-        ></RoundedBox>
-      </mesh>
-      <mesh
+        args={panelSize} // Width, height, depth. Default is [1, 1, 1]
+        radius={panelRadius} // Radius of the rounded corners. Default is 0.05
+        smoothness={panelSmoothness} // The number of curve segments. Default is 4
+        bevelSegments={panelBevelSegments} // The number of bevel segments. Default is 4, setting it to 0 removes the bevel, as a result the texture is applied to the whole geometry.
+        creaseAngle={panelCreaseAngle} // Smooth normals everywhere except faces that meet at an angle greater than the crease angle
+        //   {...meshProps} // All THREE.Mesh props are valid
+        material={panelMaterial}
+      />
+
+      <RoundedBox
         position={[panelDistance, panelYPos, 0]}
         rotation={[0, -Math.PI / 2, 0]}
         scale={panelMeshScale}
-      >
-        <RoundedBox
-          args={panelSize} // Width, height, depth. Default is [1, 1, 1]
-          radius={panelRadius} // Radius of the rounded corners. Default is 0.05
-          smoothness={panelSmoothness} // The number of curve segments. Default is 4
-          bevelSegments={panelBevelSegments} // The number of bevel segments. Default is 4, setting it to 0 removes the bevel, as a result the texture is applied to the whole geometry.
-          creaseAngle={panelCreaseAngle} // Smooth normals everywhere except faces that meet at an angle greater than the crease angle
-          //   {...meshProps} // All THREE.Mesh props are valid
-          material={panelMaterial}
-        ></RoundedBox>
-      </mesh>
+        args={panelSize} // Width, height, depth. Default is [1, 1, 1]
+        radius={panelRadius} // Radius of the rounded corners. Default is 0.05
+        smoothness={panelSmoothness} // The number of curve segments. Default is 4
+        bevelSegments={panelBevelSegments} // The number of bevel segments. Default is 4, setting it to 0 removes the bevel, as a result the texture is applied to the whole geometry.
+        creaseAngle={panelCreaseAngle} // Smooth normals everywhere except faces that meet at an angle greater than the crease angle
+        //   {...meshProps} // All THREE.Mesh props are valid
+        material={panelMaterial}
+      />
     </mesh>
   );
 };

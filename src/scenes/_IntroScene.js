@@ -36,19 +36,22 @@ export const IntroScene = ({ start }) => {
         <Bloom />
       </EffectComposer> */}
       <mesh ref={sceneObjects} position={[0, 0, 0]}>
-        {hub === false && <RabbitHole position={[0, 0, -20]} />}
+        {hub === false && <RabbitHole position={[0, 0, -28]} />}
         <HubScenes
-          panelDistance={hub ? 7 : 3}
-          panelSize={[hub ? 16 : 8, 8, 0.5]}
-          panelsPosition={[0, hub ? -3 : 0, hub ? 13 : -77]}
+          panelDistance={hub ? 10 : 3}
+          panelSize={[hub ? 12 : 8, 8, 0.5]}
+          panelsPosition={[0, hub ? -3 : 0, hub ? 0 : -85]}
           panelsRotationX={hub ? 0 : Math.PI / 2}
-          panelsRotationYSpeed={hub ? -0.001 : -0.01}
+          panelsRotationYSpeed={hub ? -0.00 : -0.01}
           panelsColor="cyan"
         />
-        <TorusGroup position={[0, hub ? -20 : 0, hub ? -75 : -80]} />
+        <TorusGroup
+          position={[0, hub ? -10 : 0, hub ? 0 : -88]}
+          rotation={[hub ? Math.PI / 2 : 0, 0, 0]}
+        />
       </mesh>
       <Ocean
-        position={[0, -100, 0]}
+        position={[0, -140, 0]}
         rotation={[hub ? 0 : Math.PI / 4, 0, 0]}
         waterColor={0x00ffff}
         sunColor={0xffffff}

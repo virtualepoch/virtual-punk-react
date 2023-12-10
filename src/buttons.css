@@ -153,6 +153,13 @@
   transition: opacity 500ms ease;
 }
 
+@media (max-height: 500px) {
+  .btn-start,
+  .btn-start-shadow {
+    bottom: 68px;
+  }
+}
+
 .btn-start.opacity-0 {
   opacity: 0;
 }

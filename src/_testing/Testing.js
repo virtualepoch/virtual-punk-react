@@ -14,6 +14,9 @@ import { DirectionalLightHelper } from "three";
 import { PcSpider } from "../components/models/PcSpider1k";
 import { ExtraSoundPro } from "../components/models/ExtraSoundPro";
 import { HubScenes } from "../components/three/HubScenes";
+import { MyVRButton } from "../components/three/MyVRButton";
+import { MeshUIPanel } from "../components/three/MeshUIPanel";
+import { HubScene } from "../components/three/HubScene";
 // import { RampagingTRex } from "../components/models/RampagingTRex";
 
 export function Testing() {
@@ -61,15 +64,17 @@ export function Testing() {
 
   return (
     <>
+      {/* <MeshUIPanel /> */}
+      {/* <MyVRButton /> */}
       {/* <RampagingTRex /> */}
       <HubScenes
-        panelDistance={3}
-        panelSize={[8, 8, 1]}
-        panelsPosition={[0, 0, 0]}
-        panelsRotationX={0}
-        panelsRotationYSpeed={-0.01}
-        panelsColor="cyan"
-      />
+          panelDistance={10}
+          panelSize={[8, 8, 0.5]}
+          panelsPosition={[0,-3, 0]}
+          panelsRotationX={0}
+          panelsRotationYSpeed={0}
+          panelsColor="cyan"
+        />
       {/* <TheGreatMorpheus /> */}
       {/* <LightBeam /> */}
       {/* <Oyes /> */}
