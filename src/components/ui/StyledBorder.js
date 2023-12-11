@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
-export const StyledBorder = ({ infoModalOpen }) => {
+export const StyledBorder = ({ modalInfoOpen }) => {
   const [borderOpen, setBorderOpen] = useState(false);
 
   useEffect(() => {
     setTimeout(() => {
-      infoModalOpen ? setBorderOpen(true) : setBorderOpen(false);
+      modalInfoOpen ? setBorderOpen(true) : setBorderOpen(false);
     }, 500);
-  }, [infoModalOpen]);
+  }, [modalInfoOpen]);
 
   return (
     <div className="styled-border">
@@ -20,14 +20,18 @@ export const StyledBorder = ({ infoModalOpen }) => {
         <div className="bar bottom"></div>
         <div className="bar bottom"></div>
       </div>
-      <div className={borderOpen ? "bar-wrapper med scale-y" : "bar-wrapper med"}>
+      <div
+        className={borderOpen ? "bar-wrapper med scale-y" : "bar-wrapper med"}
+      >
         <div className="bar top"></div>
         <div className="bar bottom"></div>
         <div className="bar middle"></div>
         <div className="bar bottom"></div>
       </div>
       <div
-        className={borderOpen ? "bar-wrapper short scale-y" : "bar-wrapper short"}
+        className={
+          borderOpen ? "bar-wrapper short scale-y" : "bar-wrapper short"
+        }
       >
         <div className="bar top"></div>
         <div className="bar bottom"></div>

@@ -7,7 +7,7 @@
   position: fixed;
   bottom: 0;
   right: 0;
-  z-index: 10101;
+  z-index: 888;
   background: url(../public/icons/expand-cyan.svg) center / 30% no-repeat;
   filter: drop-shadow(0 0 2px black);
 }
@@ -16,13 +16,7 @@
   background: url(../public/icons/compress-cyan.svg) center / 30% no-repeat;
 }
 
-/* OPEN/CLOSE NAVIGATION MENU */
-.btn-nav-menu {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
+/* OPEN/CLOSE NAVIGATION MENU BARS*/
 .btn-nav-menu .bar {
   width: 50%;
   height: 2px;
@@ -74,7 +68,7 @@
   position: fixed;
   left: 0;
   bottom: 0;
-  z-index: 100001;
+  z-index: 555;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,7 +91,7 @@
   bottom: 5px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 10101;
+  z-index: 444;
   border-radius: 20px;
   color: white;
   font: 100 25px Ailerons;

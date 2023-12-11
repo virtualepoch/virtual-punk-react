@@ -1,17 +1,17 @@
 import { VRButton } from "@react-three/xr";
 import { CSSTransition } from "react-transition-group";
-import "./vr-modal.css";
+import "./modal-vr.css";
 
-export const VRModal = ({
-  vrModalOpen,
-  setVRModalOpen,
+export const ModalVR = ({
+  modalVROpen,
+  setModalVROpen,
   foveation,
   setFoveation,
   setFrameRate,
 }) => {
   return (
     <CSSTransition
-      in={vrModalOpen}
+      in={modalVROpen}
       timeout={500}
       classNames="vr-modal"
       unmountOnExit
@@ -19,7 +19,7 @@ export const VRModal = ({
       <div className="vr-modal">
         <button
           className="btn-close-modal vr"
-          onClick={() => setVRModalOpen(!vrModalOpen)}
+          onClick={() => setModalVROpen(!modalVROpen)}
         />
         <h1 className="header">WebXR</h1>
 

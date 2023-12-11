@@ -1,21 +1,19 @@
 import { CSSTransition } from "react-transition-group";
 import { useProgress } from "@react-three/drei";
 // import { LoadingPanel } from "./LoadingPanel";
-
-import "./credits-modal.css";
 import { StyledBorder } from "./StyledBorder";
-import { useState } from "react";
+import "./modal-info.css";
 
-export function CreditsModal({ infoModalOpen, setInfoModalOpen, ...props }) {
+export const ModalInfo = ({ modalInfoOpen, setModalInfoOpen, ...props }) => {
   const { progress } = useProgress();
- 
+
   // useEffect(() => {
-  //   setInfoModalOpen(true);
-  // }, [setInfoModalOpen]);
+  //   setModalInfoOpen(true);
+  // }, [setModalInfoOpen]);
 
   return (
     <CSSTransition
-      in={infoModalOpen}
+      in={modalInfoOpen}
       unmountOnExit
       timeout={700}
       classNames={"credits-modal"}
@@ -24,12 +22,12 @@ export function CreditsModal({ infoModalOpen, setInfoModalOpen, ...props }) {
         <button
           className="btn-close-modal"
           onClick={() => {
-            setInfoModalOpen(false);
+            setModalInfoOpen(false);
           }}
           // disabled={progress < 100}
         />
 
-        <StyledBorder infoModalOpen={infoModalOpen}/>
+        <StyledBorder modalInfoOpen={modalInfoOpen} />
 
         <div
           className="loading-section"
@@ -85,4 +83,4 @@ export function CreditsModal({ infoModalOpen, setInfoModalOpen, ...props }) {
       </div>
     </CSSTransition>
   );
-}
+};

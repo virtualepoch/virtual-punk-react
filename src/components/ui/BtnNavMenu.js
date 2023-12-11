@@ -6,7 +6,7 @@ export const BtnNavMenu = ({ navMenuOpen, setNavMenuOpen }) => {
   return (
     <>
       <button
-        className="btn-nav-menu"
+        className="btn-nav-menu flex-center"
         aria-label="navigation menu button"
         onClick={() => setNavMenuOpen(!navMenuOpen)}
         onMouseDown={() => setPressed(true)}
