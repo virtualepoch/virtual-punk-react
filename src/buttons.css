@@ -89,6 +89,18 @@
   background: url(../public/icons/info-solid.svg) center / 22% no-repeat;
 }
 
+.btn-vr::after {
+  content: "";
+  width: 31px;
+  height: 4px;
+  /* border: 1px solid cyan; */
+  border-top-right-radius: 100px;
+  border-top-left-radius: 100px;
+  position: absolute;
+  bottom: 0;
+  background: cyan;
+}
+
 /* START BTN ON INTRO SCENE  */
 .btn-start-shadow {
   width: 100%;

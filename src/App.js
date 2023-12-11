@@ -79,6 +79,7 @@ function App() {
       />
 
       <VRButton
+        className="btn-vr"
         style={{
           position: "fixed",
           bottom: "10px",
@@ -86,9 +87,9 @@ function App() {
           transform: "translateX(-50%)",
           zIndex: 101010,
           width: "100px",
-          height: "35px",
-          border: "1px solid cyan",
-          borderRadius: "10px",
+          height: "40px",
+          // border: "1px solid cyan",
+          borderRadius: "20px",
           color: "white",
           background: "rgba(0,0,0,0.5)",
           clipPath: `polygon(
@@ -101,7 +102,7 @@ function App() {
             0 100%,
             0 0
           )`,
-          boxShadow: "inset 0 0 3px 1px cyan",
+          boxShadow: "inset 0 0 1px 1px cyan",
           textShadow: "0 1px 1px red, 0 1px 2px cyan",
         }}
       />
@@ -121,7 +122,10 @@ function App() {
             <MyCamControls linkClicked={linkClicked} intro={intro} />
 
             <Routes>
-              <Route index element={<IntroScene start={start} setStart={setStart} />} />
+              <Route
+                index
+                element={<IntroScene start={start} setStart={setStart} />}
+              />
               <Route
                 path="/torus"
                 element={
