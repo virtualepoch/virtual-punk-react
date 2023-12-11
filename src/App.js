@@ -31,8 +31,9 @@ import "./buttons.css";
 function App() {
   // useState hooks
   const [start, setStart] = useState(false);
+  const [foveation, setFoveation] = useState(0);
+  const [vrFrameRate, setVrFrameRate] = useState(null);
   const [linkClicked, setLinkClicked] = useState(false);
-  const [camZ, setCamZ] = useState(false);
 
   // State for Torus Controls
   const [bg, setBg] = useState(0);
@@ -68,6 +69,9 @@ function App() {
       <UI
         start={start}
         setStart={setStart}
+        foveation={foveation}
+        setFoveation={setFoveation}
+        setVrFrameRate={setVrFrameRate}
         setLinkClicked={setLinkClicked}
         intro={intro}
         torus={torus}
@@ -76,35 +80,6 @@ function App() {
         mach={mach}
         water={water}
         star={star}
-      />
-
-      <VRButton
-        className="btn-vr"
-        style={{
-          position: "fixed",
-          bottom: "10px",
-          left: "50%",
-          transform: "translateX(-50%)",
-          zIndex: 101010,
-          width: "100px",
-          height: "40px",
-          // border: "1px solid cyan",
-          borderRadius: "20px",
-          color: "white",
-          background: "rgba(0,0,0,0.5)",
-          clipPath: `polygon(
-            100% 0,
-            100% 100%,
-            calc(100% - 35px) 100%,
-            calc(100% - 38px) calc(100% - 3px),
-            38px calc(100% - 3px),
-            35px 100%,
-            0 100%,
-            0 0
-          )`,
-          boxShadow: "inset 0 0 1px 1px cyan",
-          textShadow: "0 1px 1px red, 0 1px 2px cyan",
-        }}
       />
 
       <Canvas
@@ -116,7 +91,31 @@ function App() {
         }}
       >
         <Suspense>
-          <XR>
+          <XR
+            /**
+             * Enables foveated rendering. Default is `0`
+             * 0 = no foveation, full resolution
+             * 1 = maximum foveation, the edges render at lower resolution
+             */
+            foveation={foveation}
+            /**
+             * The target framerate for the XRSystem. Smaller rates give more CPU headroom at the cost of responsiveness.
+             * Recommended range is `72`-`120`. Default is unset and left to the device.
+             * @note If your experience cannot effectively reach the target framerate, it will be subject to frame reprojection
+             * which will halve the effective framerate. Choose a conservative estimate that balances responsiveness and
+             * headroom based on your experience.
+             * @see https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API/Rendering#refresh_rate_and_frame_rate
+             */
+            frameRate={
+              vrFrameRate === 72
+                ? 72
+                : vrFrameRate === 90
+                ? 90
+                : vrFrameRate === 120
+                ? 120
+                : null
+            }
+          >
             <Controllers />
             <Hands />
             <MyCamControls linkClicked={linkClicked} intro={intro} />

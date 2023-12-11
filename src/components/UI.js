@@ -9,10 +9,13 @@ import { OmniControls } from "./ui/OmniControls";
 import { MainOverlay } from "./ui/MainOverlay";
 import { HeroSection } from "./ui/HeroSection";
 import { BtnStart } from "./ui/BtnStart";
+import { VRModal } from "./ui/VRModal";
 
 export const UI = ({
   start,
   setStart,
+  foveation,
+  setFoveation,
   setLinkClicked,
   intro,
   torus,
@@ -23,9 +26,10 @@ export const UI = ({
   star,
 }) => {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
-  const [fpsMeter, setFpsMeter] = useState(false);
+  const [vrModalOpen, setVRModalOpen] = useState(true);
   const [infoModalOpen, setInfoModalOpen] = useState(false);
   const [hideLeva, setHideLeva] = useState(true);
+  const [fpsMeter, setFpsMeter] = useState(false);
 
   // CreditsModal info-
   const creditsInfo = [
@@ -50,13 +54,7 @@ export const UI = ({
 
   return (
     <>
-      {intro && (
-        <>
-          <MainOverlay />
-          <HeroSection start={start} />
-          <BtnStart start={start} setStart={setStart} />
-        </>
-      )}
+      <BtnFullScreen />
 
       <Header
         navMenuOpen={navMenuOpen}
@@ -81,10 +79,23 @@ export const UI = ({
         setFpsMeter={setFpsMeter}
       />
 
-      <BtnFullScreen />
-
       <FpsMeter fpsMeter={fpsMeter} setFpsMeter={setFpsMeter} />
 
+      {/* VR STUFF //////////////////////// */}
+      <button
+        className={vrModalOpen ? "btn-vr-modal open" : "btn-vr-modal"}
+        onClick={() => setVRModalOpen(!vrModalOpen)}
+      >
+        VR
+      </button>
+      <VRModal
+        vrModalOpen={vrModalOpen}
+        setVRModalOpen={setVRModalOpen}
+        foveation={foveation}
+        setFoveation={setFoveation}
+      />
+
+      {/* INFO STUFF /////////////////////// */}
       <button
         className="btn-info"
         onClick={() => setInfoModalOpen(!infoModalOpen)}
@@ -101,8 +112,18 @@ export const UI = ({
         />
       ))}
 
+      {/* CONTROLS /////// */}
       <Leva hidden={hideLeva ? true : false} />
       {torus ? <OmniControls /> : <></>}
+
+      {/* INTRO SCENE STUFF /////////////////////// */}
+      {intro && (
+        <>
+          <MainOverlay />
+          <HeroSection start={start} />
+          <BtnStart start={start} setStart={setStart} />
+        </>
+      )}
     </>
   );
 };
