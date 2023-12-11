@@ -6,6 +6,7 @@ import { HubScene } from "./HubScene";
 // import decalImg from "../../../public/images/spaceScene.jpg"
 
 export const HubScenes = ({
+  hub,
   panelDistance,
   panelYPos = 3,
   panelMeshScale = 0.4,
@@ -40,10 +41,10 @@ export const HubScenes = ({
       position={panelsPosition}
     >
       <HubScene
+        hub={hub}
         panelColor={panelsColor}
         panelMeshScale={panelMeshScale}
-        panelYPos={panelYPos}
-        panelDistance={-panelDistance}
+        position={[0, panelYPos, -panelDistance]}
         panelRotation={[0, 0, 0]}
         panelSize={panelSize}
         panelRadius={panelRadius}

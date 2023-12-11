@@ -2,10 +2,13 @@ import * as THREE from "three";
 import { useRef } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
 import {
+  Box,
   ContactShadows,
+  Decal,
   Environment,
   MeshReflectorMaterial,
   Stars,
+  useTexture,
 } from "@react-three/drei";
 import { DirectionalLightHelper } from "three";
 // import { UnstableAntimatter } from "../components/models/UnstableAntimatter";
@@ -57,6 +60,28 @@ export function Testing() {
     );
   };
 
+  const texture = useTexture("/images/spaceScene.jpg");
+  const DecalBox = () => {
+    return (
+      <mesh>
+        <Box args={[1.2, 1.2, 0.1]}>
+          <Decal
+            debug
+            position={[0, 0, 0.05]}
+            rotation={[0, 0, 0]}
+            scale={[1, 1, 0.1]}
+          >
+            <meshBasicMaterial
+              map={texture}
+              polygonOffset
+              polygonOffsetFactor={-1}
+            />
+          </Decal>
+        </Box>
+      </mesh>
+    );
+  };
+
   const light = useRef();
   if (light.current) {
     light.current.useHelper(light, DirectionalLightHelper, 1, "red");
@@ -64,9 +89,10 @@ export function Testing() {
 
   return (
     <>
+      {/* <DecalBox /> */}
       {/* <MeshUIPanel /> */}
-      {/* <MyVRButton /> */}
-      {/* <RampagingTRex /> */}
+      <MyVRButton>Start</MyVRButton>
+
       <HubScenes
           panelDistance={10}
           panelSize={[8, 8, 0.5]}
@@ -75,10 +101,7 @@ export function Testing() {
           panelsRotationYSpeed={0}
           panelsColor="cyan"
         />
-      {/* <TheGreatMorpheus /> */}
-      {/* <LightBeam /> */}
-      {/* <Oyes /> */}
-      {/* <PcSpider position={[0, -1, 0]} scale={0.4} rotation={[2, Math.PI, 0]} /> */}
+
       <Stars />
       <Floor receiveShadow />
       <ExtraSoundPro />

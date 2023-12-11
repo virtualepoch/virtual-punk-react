@@ -102,7 +102,7 @@ function App() {
             0 0
           )`,
           boxShadow: "inset 0 0 3px 1px cyan",
-          textShadow: "0 1px 1px red, 0 2px 2px cyan",
+          textShadow: "0 1px 1px red, 0 1px 2px cyan",
         }}
       />
 
@@ -121,7 +121,7 @@ function App() {
             <MyCamControls linkClicked={linkClicked} intro={intro} />
 
             <Routes>
-              <Route index element={<IntroScene start={start} />} />
+              <Route index element={<IntroScene start={start} setStart={setStart} />} />
               <Route
                 path="/torus"
                 element={

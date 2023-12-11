@@ -2,12 +2,13 @@ import { Text } from "@react-three/drei";
 import { Interactive } from "@react-three/xr";
 import { useState } from "react";
 
-export const MyVRButton = ({ children }) => {
+export const MyVRButton = ({ setStart, children }) => {
   const [hover, setHover] = useState(false);
   const [color, setColor] = useState(0x123456);
 
   const onSelect = () => {
     setColor((Math.random() * 0xffffff) | 0);
+    setStart(true);
   };
 
   const Box = ({ color, size, scale, children, ...rest }) => {
@@ -28,7 +29,9 @@ export const MyVRButton = ({ children }) => {
       <Box
         color={color}
         scale={hover ? [1.5, 1.5, 1.5] : [1, 1, 1]}
-        size={[0.4, 0.1, 0.1]}
+        size={[0.2, 0.1, 0.01]}
+        position={[-0.5, -0.2, 0]}
+        rotation={[0, 0.8, 0]}
       >
         <Text
           position={[0, 0, 0.06]}

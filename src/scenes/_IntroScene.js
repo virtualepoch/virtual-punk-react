@@ -5,9 +5,10 @@ import { TorusGroup } from "../components/three/TorusGroup";
 // import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { useFrame } from "@react-three/fiber";
 import { Ocean } from "../components/three/Ocean";
+import { MyVRButton } from "../components/three/MyVRButton";
 // import { WormHole } from "../components/three/WormHole";
 
-export const IntroScene = ({ start }) => {
+export const IntroScene = ({ start, setStart }) => {
   // const directionalLight = useRef();
   // useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
 
@@ -35,14 +36,16 @@ export const IntroScene = ({ start }) => {
       {/* <EffectComposer>
         <Bloom />
       </EffectComposer> */}
+      <MyVRButton start={start} setStart={setStart} />
       <mesh ref={sceneObjects} position={[0, 0, 0]}>
         {hub === false && <RabbitHole position={[0, 0, -28]} />}
         <HubScenes
+          hub={hub}
           panelDistance={hub ? 10 : 3}
-          panelSize={[hub ? 12 : 8, 8, 0.5]}
+          panelSize={[hub ? 16 : 4, hub ? 10 : 12, hub ? 1 : 0.5]}
           panelsPosition={[0, hub ? -3 : 0, hub ? 0 : -85]}
           panelsRotationX={hub ? 0 : Math.PI / 2}
-          panelsRotationYSpeed={hub ? -0.00 : -0.01}
+          panelsRotationYSpeed={hub ? -0.0 : -0.01}
           panelsColor="cyan"
         />
         <TorusGroup
