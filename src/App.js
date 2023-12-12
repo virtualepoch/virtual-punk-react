@@ -36,6 +36,7 @@ function App() {
   const [vrFrameRate, setVrFrameRate] = useState(null);
   const [linkClicked, setLinkClicked] = useState(false);
   const [downgradedPerformance, setDowngradedPerformance] = useState(false);
+  const [rabbitHoleTexture, setRabbitHoleTexture] = useState("lg");
 
   // State for Torus Controls
   const [bg, setBg] = useState(0);
@@ -65,14 +66,8 @@ function App() {
     }, 1);
   }, [linkClicked]);
 
-  const [rabbitHoleTexture, setRabbitHoleTexture] = useState(1024);
   return (
     <div className="App">
-      <div className="texture-btns flex-col">
-        <button onClick={() => setRabbitHoleTexture(2048)}>2048</button>
-        <button onClick={() => setRabbitHoleTexture(1024)}>1024</button>
-        <button onClick={() => setRabbitHoleTexture(512)}>512</button>
-      </div>
       <Loader />
       <UI
         start={start}
@@ -101,6 +96,7 @@ function App() {
         <PerformanceMonitor
           onDecline={(fps) => {
             setDowngradedPerformance(true);
+            setRabbitHoleTexture("med");
           }}
         />
 

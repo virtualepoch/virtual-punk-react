@@ -2,21 +2,6 @@
   --clip-inset: 5px;
 }
 
-.texture-btns {
-  position: fixed;
-  left: 0;
-  bottom: 50%;
-  z-index: 1010;
-  border: 1px solid;
-  border-radius: 10px;
-  color: cyan;
-}
-.texture-btns button {
-  border: 1px solid;
-  border-radius: 10px;
-  color: cyan;
-}
-
 /* FULLSCREEN */
 .btn-fullscreen {
   position: fixed;

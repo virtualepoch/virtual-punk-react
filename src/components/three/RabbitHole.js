@@ -1,19 +1,19 @@
 import { useLoader } from "@react-three/fiber";
 import * as THREE from "three";
-import texture2048 from "../../assets/images/torus/future-machine-2048.jpg";
-import texture1024 from "../../assets/images/torus/future-machine-1024.jpg";
-import texture512 from "../../assets/images/torus/future-machine-512.jpg";
+import textureLg from "../../assets/images/torus/future-machine-4096.jpg";
+import textureMed from "../../assets/images/torus/future-machine-2048.jpg";
+import textureSm from "../../assets/images/torus/future-machine-1024.jpg";
 
 export const RabbitHole = ({ position, rabbitHoleTexture }) => {
   const map = useLoader(
     THREE.TextureLoader,
-    rabbitHoleTexture === 512
-      ? texture512
-      : rabbitHoleTexture === 2048
-      ? texture2048
-      : texture1024
+    rabbitHoleTexture === "lg"
+      ? textureLg
+      : rabbitHoleTexture === "med"
+      ? textureMed
+      : textureSm
   );
-  map.repeat.set(4, 16);
+  map.repeat.set(3, 8);
   map.wrapS = map.wrapT = THREE.RepeatWrapping;
 
   return (
