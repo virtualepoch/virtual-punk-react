@@ -66,6 +66,8 @@ function App() {
     }, 1);
   }, [linkClicked]);
 
+  // const directionalLight = useRef();
+  // useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
   return (
     <div className="App">
       <Loader />
@@ -107,6 +109,12 @@ function App() {
         )}
 
         <Suspense>
+          <ambientLight intensity={1} position={[0, 0, 0]} />
+          <directionalLight
+            // ref={directionalLight}
+            position={[1, 1, 1]}
+            angle={0.3}
+          />
           <XR
             foveation={foveation}
             frameRate={

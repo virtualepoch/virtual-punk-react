@@ -1,8 +1,8 @@
 import { useLoader } from "@react-three/fiber";
 import * as THREE from "three";
-import textureLg from "../../assets/images/torus/future-machine-4096.jpg";
-import textureMed from "../../assets/images/torus/future-machine-2048.jpg";
-import textureSm from "../../assets/images/torus/future-machine-1024.jpg";
+import textureLg from "../../assets/images/rabbit-hole/future-machine-4096.jpg";
+import textureMed from "../../assets/images/rabbit-hole/future-machine-2048.jpg";
+import textureSm from "../../assets/images/rabbit-hole/future-machine-1024.jpg";
 
 export const RabbitHole = ({ position, rabbitHoleTexture }) => {
   const map = useLoader(

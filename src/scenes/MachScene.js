@@ -1,10 +1,10 @@
 import * as THREE from "three";
-import { useState, useRef } from "react";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
-import { OrbitControls, Stars, useHelper } from "@react-three/drei";
+import { useRef } from "react";
+import { useFrame, useLoader } from "@react-three/fiber";
+import { Stars, useHelper } from "@react-three/drei";
 import { JetConcept } from "../components/models/Jet_concept";
-import earth500 from "../assets/images/earth_clouds_1k.jpg";
-import earth8k from "../assets/images/earth_clouds_4k.jpg";
+import earth500 from "../assets/images/textures/earth_clouds_1k.jpg";
+import earth8k from "../assets/images/textures/earth_clouds_4k.jpg";
 
 export function MachScene() {
   function Earth() {

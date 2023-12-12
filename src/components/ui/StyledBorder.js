@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./styled-border.css";
 
 export const StyledBorder = ({ modalInfoOpen }) => {
   const [borderOpen, setBorderOpen] = useState(false);
