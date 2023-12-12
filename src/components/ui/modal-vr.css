@@ -60,11 +60,18 @@
 
 .vr-modal section {
   width: 100%;
-  border: 1px solid cyan;
-  border-radius: 20px;
   padding: 10px 10px 50px;
 }
 
+hr.vr-modal-hr {
+  width: 80%;
+  min-width: 200px;
+  max-width: 400px;
+  height: 1px;
+  min-height: 1px;
+  border: none;
+  background: cyan;
+}
 .vr-modal .text {
   max-width: 500px;
 }

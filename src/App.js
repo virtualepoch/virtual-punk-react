@@ -1,8 +1,9 @@
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Route, Routes, useMatch } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
-import { Loader } from "@react-three/drei";
-import { Controllers, Hands, VRButton, XR } from "@react-three/xr";
+import { Loader, PerformanceMonitor } from "@react-three/drei";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
+import { Controllers, Hands, XR } from "@react-three/xr";
 
 // COMPONENTS
 import { UI } from "./components/UI.js";
@@ -34,6 +35,7 @@ function App() {
   const [foveation, setFoveation] = useState(0);
   const [vrFrameRate, setVrFrameRate] = useState(null);
   const [linkClicked, setLinkClicked] = useState(false);
+  const [downgradedPerformance, setDowngradedPerformance] = useState(false);
 
   // State for Torus Controls
   const [bg, setBg] = useState(0);
@@ -63,8 +65,14 @@ function App() {
     }, 1);
   }, [linkClicked]);
 
+  const [rabbitHoleTexture, setRabbitHoleTexture] = useState(1024);
   return (
     <div className="App">
+      <div className="texture-btns flex-col">
+        <button onClick={() => setRabbitHoleTexture(2048)}>2048</button>
+        <button onClick={() => setRabbitHoleTexture(1024)}>1024</button>
+        <button onClick={() => setRabbitHoleTexture(512)}>512</button>
+      </div>
       <Loader />
       <UI
         start={start}
@@ -90,22 +98,21 @@ function App() {
           fov: 30,
         }}
       >
+        <PerformanceMonitor
+          onDecline={(fps) => {
+            setDowngradedPerformance(true);
+          }}
+        />
+
+        {!downgradedPerformance && (
+          <EffectComposer disableNormalPass>
+            <Bloom luminanceThreshold={1} intensity={1.5} mipmapBlur />
+          </EffectComposer>
+        )}
+
         <Suspense>
           <XR
-            /**
-             * Enables foveated rendering. Default is `0`
-             * 0 = no foveation, full resolution
-             * 1 = maximum foveation, the edges render at lower resolution
-             */
             foveation={foveation}
-            /**
-             * The target framerate for the XRSystem. Smaller rates give more CPU headroom at the cost of responsiveness.
-             * Recommended range is `72`-`120`. Default is unset and left to the device.
-             * @note If your experience cannot effectively reach the target framerate, it will be subject to frame reprojection
-             * which will halve the effective framerate. Choose a conservative estimate that balances responsiveness and
-             * headroom based on your experience.
-             * @see https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API/Rendering#refresh_rate_and_frame_rate
-             */
             frameRate={
               vrFrameRate === 72
                 ? 72
@@ -123,7 +130,13 @@ function App() {
             <Routes>
               <Route
                 index
-                element={<IntroScene start={start} setStart={setStart} />}
+                element={
+                  <IntroScene
+                    start={start}
+                    setStart={setStart}
+                    rabbitHoleTexture={rabbitHoleTexture}
+                  />
+                }
               />
               <Route
                 path="/torus"

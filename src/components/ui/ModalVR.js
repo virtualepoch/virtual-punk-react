@@ -55,6 +55,8 @@ export const ModalVR = ({
             </div>
           </section>
 
+          <hr className="vr-modal-hr"/>
+          
           <section className="flex-col">
             <h2>Framerate</h2>
             <p className="text">

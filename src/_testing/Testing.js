@@ -16,7 +16,7 @@ import { DirectionalLightHelper } from "three";
 // import { TheGreatMorpheus } from "../components/models/TheGreatMorpheus";
 import { PcSpider } from "../components/models/PcSpider1k";
 import { ExtraSoundPro } from "../components/models/ExtraSoundPro";
-import { HubScenes } from "../components/three/HubScenes";
+import { HubScenes, SpinningPanels } from "../components/three/SpinningPanels";
 import { MyVRButton } from "../components/three/MyVRButton";
 import { MeshUIPanel } from "../components/three/MeshUIPanel";
 import { HubScene } from "../components/three/HubScene";
@@ -93,14 +93,14 @@ export function Testing() {
       {/* <MeshUIPanel /> */}
       <MyVRButton>Start</MyVRButton>
 
-      <HubScenes
-          panelDistance={10}
-          panelSize={[8, 8, 0.5]}
-          panelsPosition={[0,-3, 0]}
-          panelsRotationX={0}
-          panelsRotationYSpeed={0}
-          panelsColor="cyan"
-        />
+      <SpinningPanels
+        panelDistance={10}
+        panelSize={[8, 8, 0.5]}
+        panelsPosition={[0, -3, 0]}
+        panelsRotationX={0}
+        panelsRotationYSpeed={0}
+        panelsColor="cyan"
+      />
 
       <Stars />
       <Floor receiveShadow />

@@ -1,15 +1,17 @@
 import { useState } from "react";
+
+import { MainOverlay } from "./ui/MainOverlay";
 import { BtnFullScreen } from "./ui/BtnFullScreen";
 import { Header } from "./ui/Header";
 import { NavMenu } from "./ui/NavMenu";
 import { FpsMeter } from "./ui/FpsMeter";
 import { Leva } from "leva";
 import { OmniControls } from "./ui/OmniControls";
-import { MainOverlay } from "./ui/MainOverlay";
-import { HeroSection } from "./ui/HeroSection";
-import { BtnStart } from "./ui/BtnStart";
 import { ModalInfo } from "./ui/ModalInfo";
 import { ModalVR } from "./ui/ModalVR";
+import { BtnStart } from "./ui/BtnStart";
+import { HeroSection } from "./ui/HeroSection";
+import { sceneCredits } from "./sceneCredits";
 
 export const UI = ({
   start,
@@ -54,6 +56,24 @@ export const UI = ({
 
   return (
     <>
+      {sceneCredits.map((item) => (
+        <ModalInfo
+          modalInfoOpen={modalInfoOpen}
+          setModalInfoOpen={setModalInfoOpen}
+          key={item.id}
+          info={item}
+        />
+      ))}
+
+      {/* INTRO SCENE STUFF /////////////////////// */}
+      {intro && (
+        <>
+          <MainOverlay />
+          <HeroSection start={start} />
+          <BtnStart start={start} setStart={setStart} />
+        </>
+      )}
+
       <BtnFullScreen />
 
       <Header
@@ -81,6 +101,14 @@ export const UI = ({
 
       <FpsMeter fpsMeter={fpsMeter} setFpsMeter={setFpsMeter} />
 
+      {/* INFO STUFF /////////////////////// */}
+      <button
+        className="btn-info"
+        onClick={() => setModalInfoOpen(!modalInfoOpen)}
+      >
+        <div className="info-icon"></div>
+      </button>
+
       {/* VR STUFF //////////////////////// */}
       <button
         className={modalVROpen ? "btn-vr-modal open" : "btn-vr-modal"}
@@ -95,35 +123,9 @@ export const UI = ({
         setFoveation={setFoveation}
       />
 
-      {/* INFO STUFF /////////////////////// */}
-      <button
-        className="btn-info"
-        onClick={() => setModalInfoOpen(!modalInfoOpen)}
-      >
-        <div className="info-icon"></div>
-      </button>
-
-      {creditsInfo.map((item) => (
-        <ModalInfo
-          modalInfoOpen={modalInfoOpen}
-          setModalInfoOpen={setModalInfoOpen}
-          key={item.id}
-          info={item}
-        />
-      ))}
-
       {/* CONTROLS /////// */}
       <Leva hidden={hideLeva ? true : false} />
       {torus ? <OmniControls /> : <></>}
-
-      {/* INTRO SCENE STUFF /////////////////////// */}
-      {intro && (
-        <>
-          <MainOverlay />
-          <HeroSection start={start} />
-          <BtnStart start={start} setStart={setStart} />
-        </>
-      )}
     </>
   );
 };

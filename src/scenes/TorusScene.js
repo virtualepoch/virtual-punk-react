@@ -2,19 +2,6 @@ import { useFrame, useLoader, useThree } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
 import a1 from "../assets/images/torus/Abstract_512x512-75.png";
-import a2 from "../assets/images/torus/future-machine-512.jpg";
-import a3 from "../assets/images/torus/sci-metal-512.jpg";
-import a4 from "../assets/images/torus/sci-metal-1200.jpg";
-import a5 from "../assets/images/torus/sci-metal-2-512.jpg";
-import a6 from "../assets/images/torus/sci-metal-2-1024.jpg";
-import a7 from "../assets/images/torus/space-cruiser-512.png";
-import a8 from "../assets/images/torus/space-cruiser-1024.png";
-import a9 from "../assets/images/torus/Tile_02-512x512.png";
-import a10 from "../assets/images/torus/Tile_04-512x512.png";
-import a11 from "../assets/images/torus/Tile_11-512x512.png";
-import bg1 from "../assets/images/torus/bg/Blue_Nebula_01-1024x1024.png";
-import bg2 from "../assets/images/torus/bg/Blue_Nebula_02-1024x1024.png";
-import bg3 from "../assets/images/torus/bg/Blue_Nebula_03-1024x1024.png";
 
 import { button, buttonGroup, folder, useControls } from "leva";
 import { CameraControls, OrbitControls, useHelper } from "@react-three/drei";
@@ -22,9 +9,6 @@ import { TorusMesh } from "../components/three/TorusMesh";
 import { DEG2RAD } from "three/src/math/MathUtils";
 
 export const TorusScene = ({
-  bg,
-  bgWrapX,
-  bgWrapY,
   texture,
   wrapX,
   wrapY,
@@ -173,30 +157,7 @@ export const TorusScene = ({
       { collapsed: true }
     );
 
-    const meshTexture = useLoader(
-      THREE.TextureLoader,
-      texture === 1
-        ? a1
-        : texture === 2
-        ? a2
-        : texture === 3
-        ? a3
-        : texture === 4
-        ? a4
-        : texture === 5
-        ? a5
-        : texture === 6
-        ? a6
-        : texture === 7
-        ? a7
-        : texture === 8
-        ? a8
-        : texture === 9
-        ? a9
-        : texture === 10
-        ? a10
-        : a11
-    );
+    const meshTexture = useLoader(THREE.TextureLoader, a1);
 
     meshTexture.repeat.set(wrapY, wrapX);
     meshTexture.wrapS = meshTexture.wrapT = THREE.RepeatWrapping;
