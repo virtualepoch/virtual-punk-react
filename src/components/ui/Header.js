@@ -1,11 +1,14 @@
 import { useMatch } from "react-router-dom";
+
 import { HeaderLogo } from "./HeaderLogo";
+import { SceneTitle } from "./SceneTitle";
 import { BtnNavMenu } from "./BtnNavMenu";
 
 import "./header.css";
-import { SceneTitle } from "./SceneTitle";
 
 export const Header = ({
+  setStart,
+  setHub,
   navMenuOpen,
   setNavMenuOpen,
   setLinkClicked,
@@ -36,6 +39,8 @@ export const Header = ({
       }
     >
       <HeaderLogo
+        setStart={setStart}
+        setHub={setHub}
         setNavMenuOpen={setNavMenuOpen}
         setLinkClicked={setLinkClicked}
       />

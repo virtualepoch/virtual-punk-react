@@ -1,9 +1,10 @@
-export const BtnStart = ({ start, setStart }) => {
+export const BtnStart = ({ start, setStart}) => {
+
   return (
     <>
       <button
         className={start ? "btn-start opacity-0" : "btn-start"}
-        onClick={() => setStart(!start)}
+        onClick={() => setStart(true)}
       >
         Start
       </button>

@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export const HeaderLogo = ({ setNavMenuOpen, setLinkClicked }) => {
+export const HeaderLogo = ({
+  setStart,
+  setHub,
+  setNavMenuOpen,
+  setLinkClicked,
+}) => {
   const [pressed, setPressed] = useState(false);
 
   return (
@@ -11,6 +16,8 @@ export const HeaderLogo = ({ setNavMenuOpen, setLinkClicked }) => {
         to={"/"}
         aria-label="link to home page"
         onClick={() => {
+          setStart(false);
+          setHub(false);
           setNavMenuOpen(false);
           setLinkClicked(true);
         }}

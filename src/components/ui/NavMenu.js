@@ -1,8 +1,11 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
+
 import "./nav-menu.css";
 
 export function NavMenu({
+  setStart,
+  setHub,
   navMenuOpen,
   setNavMenuOpen,
   setLinkClicked,
@@ -24,6 +27,10 @@ export function NavMenu({
           onClick={() => {
             setNavMenuOpen(false);
             setLinkClicked(true);
+            if (to === "/") {
+              setStart(false);
+              setHub(false);
+            }
           }}
         >
           {children}
@@ -42,7 +49,8 @@ export function NavMenu({
       >
         <nav className="nav-menu">
           <ul>
-            <CustomLink to={"/"}>Home</CustomLink>
+            <CustomLink to={"/"}>Intro</CustomLink>
+            <CustomLink to={"/hub"}>Hub</CustomLink>
             <CustomLink to={"/torus"}>Torus</CustomLink>
             <CustomLink to={"/space"}>Space</CustomLink>
             {/* <CustomLink to={"/time"}>Time</CustomLink> */}

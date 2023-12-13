@@ -27,11 +27,13 @@ import { Testing } from "./_testing/Testing.js";
 import "./_intro.css";
 import "./App.css";
 import "./buttons.css";
+import { Hub } from "./scenes/__Hub.js";
 // import "./bday.css";
 
 function App() {
   // useState hooks
   const [start, setStart] = useState(false);
+  const [hub, setHub] = useState(false);
   const [foveation, setFoveation] = useState(0);
   const [vrFrameRate, setVrFrameRate] = useState(null);
   const [linkClicked, setLinkClicked] = useState(false);
@@ -74,6 +76,8 @@ function App() {
       <UI
         start={start}
         setStart={setStart}
+        hub={hub}
+        setHub={setHub}
         foveation={foveation}
         setFoveation={setFoveation}
         setVrFrameRate={setVrFrameRate}
@@ -138,10 +142,13 @@ function App() {
                   <IntroScene
                     start={start}
                     setStart={setStart}
+                    hub={hub}
+                    setHub={setHub}
                     rabbitHoleTexture={rabbitHoleTexture}
                   />
                 }
               />
+              <Route path="/hub" element={<Hub />} />
               <Route
                 path="/torus"
                 element={

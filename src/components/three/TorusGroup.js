@@ -1,11 +1,11 @@
-import { useFrame, useLoader } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
+import { useFrame, useLoader } from "@react-three/fiber";
 import { TorusMesh } from "./TorusMesh";
 
 import a1 from "../../assets/images/torus/Abstract_512x512-75.png";
 
-export const TorusGroup = ({ position, rotation }) => {
+export const TorusGroup = ({ position, rotation, scale, hubScene }) => {
   function textureChanger() {
     if (window.innerWidth < 700) {
       return a1;
@@ -26,29 +26,29 @@ export const TorusGroup = ({ position, rotation }) => {
 
   useFrame(() => {
     if (meshRef1.current) {
-      meshRef1.current.rotation.x += 0.05;
-      meshRef1.current.rotation.y += 0.05;
-      meshRef1.current.rotation.z += 0.1;
+      meshRef1.current.rotation.x += hubScene ? 0.005 : 0.05;
+      meshRef1.current.rotation.y += hubScene ? 0.005 : 0.05;
+      meshRef1.current.rotation.z += hubScene ? 0.01 : 0.1;
     }
     if (meshRef2.current) {
       meshRef2.current.rotation.x += 0;
-      meshRef2.current.rotation.y += 0.1;
+      meshRef2.current.rotation.y += hubScene ? 0.01 : 0.1;
       meshRef2.current.rotation.z += 0;
     }
     if (meshRef3.current) {
-      meshRef3.current.rotation.x += 0.05;
+      meshRef3.current.rotation.x += hubScene ? 0.005 : 0.05;
       meshRef3.current.rotation.y += 0;
       meshRef3.current.rotation.z += 0;
     }
     if (meshRef4.current) {
       meshRef4.current.rotation.x += 0;
-      meshRef4.current.rotation.y -= 0.05;
+      meshRef4.current.rotation.y -= hubScene ? 0.005 : 0.05;
       meshRef4.current.rotation.z += 0;
     }
   });
 
   return (
-    <mesh position={position} rotation={rotation}>
+    <mesh position={position} rotation={rotation} scale={scale}>
       <TorusMesh
         args={[0.9, 0.1, 6, 32]}
         map={meshTexture}

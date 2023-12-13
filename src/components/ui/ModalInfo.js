@@ -29,7 +29,7 @@ export const ModalInfo = ({ modalInfoOpen, setModalInfoOpen, ...props }) => {
           <hr className="credits-hr" />
 
           <div className="credit-wrapper flex-col">
-            <p className="credit-info">Asset for— {props.info.assetFor}</p>
+            <p className="credit-info">Asset for— {props.info.asset}</p>
             <p className="credit-info">Title— {props.info.title}</p>
             <a
               className="credit-link"
@@ -39,7 +39,7 @@ export const ModalInfo = ({ modalInfoOpen, setModalInfoOpen, ...props }) => {
             >
               <img
                 className="credit-img"
-                src={props.info.linkImg}
+                src={props.info.img}
                 alt="future machine bg for triangular cylinder"
               />
             </a>

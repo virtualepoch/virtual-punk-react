@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+// UI COMPONENTS //
 import { MainOverlay } from "./ui/MainOverlay";
 import { BtnFullScreen } from "./ui/BtnFullScreen";
 import { Header } from "./ui/Header";
@@ -11,11 +12,16 @@ import { ModalInfo } from "./ui/ModalInfo";
 import { ModalVR } from "./ui/ModalVR";
 import { BtnStart } from "./ui/BtnStart";
 import { HeroSection } from "./ui/HeroSection";
-import { sceneCredits } from "./sceneCredits";
+
+// CREDITS FOR INFO MODAL //
+import { introCredits } from "./credits/introCredits";
+import { torusCredits } from "./credits/torusCredits";
 
 export const UI = ({
   start,
   setStart,
+  hub,
+  setHub,
   foveation,
   setFoveation,
   setLinkClicked,
@@ -33,30 +39,9 @@ export const UI = ({
   const [hideLeva, setHideLeva] = useState(true);
   const [fpsMeter, setFpsMeter] = useState(false);
 
-  // CreditsModal info-
-  const creditsInfo = [
-    {
-      id: "00",
-      title: "title",
-      link: "link",
-      credits: `credits`,
-      changes: `changes`,
-
-      title2: "title2",
-      link2: "link2",
-      credits2: `credits2`,
-      changes2: `changes2`,
-
-      title3: "title3",
-      link3: "link3",
-      credits3: `credits3`,
-      changes3: `changes3`,
-    },
-  ];
-
   return (
     <>
-      {sceneCredits.map((item) => (
+      {(intro ? introCredits : torusCredits).map((item) => (
         <ModalInfo
           modalInfoOpen={modalInfoOpen}
           setModalInfoOpen={setModalInfoOpen}
@@ -77,6 +62,8 @@ export const UI = ({
       <BtnFullScreen />
 
       <Header
+        setStart={setStart}
+        setHub={setHub}
         navMenuOpen={navMenuOpen}
         setNavMenuOpen={setNavMenuOpen}
         setLinkClicked={setLinkClicked}
@@ -90,6 +77,8 @@ export const UI = ({
       />
 
       <NavMenu
+        setStart={setStart}
+        setHub={setHub}
         navMenuOpen={navMenuOpen}
         setNavMenuOpen={setNavMenuOpen}
         setLinkClicked={setLinkClicked}
@@ -116,6 +105,7 @@ export const UI = ({
       >
         VR
       </button>
+
       <ModalVR
         modalVROpen={modalVROpen}
         setModalVROpen={setModalVROpen}
@@ -125,7 +115,7 @@ export const UI = ({
 
       {/* CONTROLS /////// */}
       <Leva hidden={hideLeva ? true : false} />
-      {torus ? <OmniControls /> : <></>}
+      {torus && <OmniControls />}
     </>
   );
 };
