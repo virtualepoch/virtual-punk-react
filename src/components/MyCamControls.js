@@ -4,7 +4,10 @@ import { button, buttonGroup, folder, useControls } from "leva";
 import { useEffect, useRef } from "react";
 import { DEG2RAD } from "three/src/math/MathUtils";
 
-export const MyCamControls = ({ centerMeshRef, linkClicked, intro }) => {
+export const MyCamControls = ({
+  centerMeshRef,
+  linkClicked,
+}) => {
   const { camera } = useThree();
   const cameraControlsRef = useRef();
 
@@ -135,7 +138,10 @@ export const MyCamControls = ({ centerMeshRef, linkClicked, intro }) => {
       ),
       saveState: button(() => cameraControlsRef.current?.saveState()),
       reset: button(() => cameraControlsRef.current?.reset(true)),
-      enabled: { value: intro ? true : true, label: "controls on" },
+      enabled: {
+        value: true,
+        label: "controls on",
+      },
       verticalDragToForward: {
         value: false,
         label: "vert. drag to move forward",

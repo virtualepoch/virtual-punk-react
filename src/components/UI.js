@@ -16,28 +16,27 @@ import { HeroSection } from "./ui/HeroSection";
 // CREDITS FOR INFO MODAL //
 import { introCredits } from "./credits/introCredits";
 import { torusCredits } from "./credits/torusCredits";
+import { BtnsHub } from "./ui/BtnsHub";
+import { useMatch } from "react-router-dom";
 
 export const UI = ({
   start,
   setStart,
-  hub,
   setHub,
   foveation,
   setFoveation,
   setLinkClicked,
-  intro,
-  torus,
-  space,
-  scroll,
-  mach,
-  water,
-  star,
+  hubLink,
+  setHubLink,
 }) => {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
   const [modalInfoOpen, setModalInfoOpen] = useState(false);
   const [modalVROpen, setModalVROpen] = useState(false);
   const [hideLeva, setHideLeva] = useState(true);
   const [fpsMeter, setFpsMeter] = useState(false);
+
+  const intro = useMatch("/");
+  const torus = useMatch("/torus");
 
   return (
     <>
@@ -67,13 +66,6 @@ export const UI = ({
         navMenuOpen={navMenuOpen}
         setNavMenuOpen={setNavMenuOpen}
         setLinkClicked={setLinkClicked}
-        intro={intro}
-        torus={torus}
-        space={space}
-        scroll={scroll}
-        mach={mach}
-        water={water}
-        star={star}
       />
 
       <NavMenu
@@ -105,6 +97,8 @@ export const UI = ({
       >
         VR
       </button>
+
+      <BtnsHub hubLink={hubLink} setHubLink={setHubLink} />
 
       <ModalVR
         modalVROpen={modalVROpen}

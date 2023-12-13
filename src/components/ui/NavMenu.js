@@ -52,15 +52,15 @@ export function NavMenu({
             <CustomLink to={"/"}>Intro</CustomLink>
             <CustomLink to={"/hub"}>Hub</CustomLink>
             <CustomLink to={"/torus"}>Torus</CustomLink>
-            <CustomLink to={"/space"}>Space</CustomLink>
-            {/* <CustomLink to={"/time"}>Time</CustomLink> */}
-            <CustomLink to={"/scroll"}>Scroll</CustomLink>
-            {/* <CustomLink to={"/shoe"}>Shoe</CustomLink> */}
             <CustomLink to={"/mach"}>Mach</CustomLink>
             <CustomLink to={"/water"}>Water</CustomLink>
+            <CustomLink to={"/star-punk"}>Star Punk</CustomLink>
+            {/* <CustomLink to={"/space"}>Space</CustomLink> */}
+            {/* <CustomLink to={"/time"}>Time</CustomLink> */}
+            {/* <CustomLink to={"/scroll"}>Scroll</CustomLink> */}
+            {/* <CustomLink to={"/shoe"}>Shoe</CustomLink> */}
             {/* <CustomLink to={"/portal"}>Portal</CustomLink> */}
             {/* <CustomLink to={"/dragon"}>Dragon</CustomLink> */}
-            <CustomLink to={"/star-punk"}>Star Punk</CustomLink>
             {/* <CustomLink to={"/dissolve"}>Dissolve</CustomLink> */}
           </ul>
 

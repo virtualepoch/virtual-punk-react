@@ -12,13 +12,6 @@ export const Header = ({
   navMenuOpen,
   setNavMenuOpen,
   setLinkClicked,
-  intro,
-  torus,
-  space,
-  scroll,
-  mach,
-  water,
-  star,
 }) => {
   const isSandyBdayPageActive = useMatch({
     path: "/happy-bday-sandy",
@@ -45,15 +38,7 @@ export const Header = ({
         setLinkClicked={setLinkClicked}
       />
 
-      <SceneTitle
-        intro={intro}
-        torus={torus}
-        space={space}
-        scroll={scroll}
-        mach={mach}
-        water={water}
-        star={star}
-      />
+      <SceneTitle />
 
       <BtnNavMenu navMenuOpen={navMenuOpen} setNavMenuOpen={setNavMenuOpen} />
     </header>

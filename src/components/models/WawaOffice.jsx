@@ -12,7 +12,7 @@ export const FLOOR_HEIGHT = 2.3;
 export const NB_FLOORS = 3;
 
 export function WawaOffice(props) {
-  const { nodes, materials } = useGLTF("./models/wawa-office.glb");
+  const { nodes, materials } = useGLTF("./models/wawa_office.glb");
   const ref = useRef();
   const tl = useRef();
   const libraryRef = useRef();
@@ -99,4 +99,4 @@ export function WawaOffice(props) {
   );
 }
 
-useGLTF.preload("./models/wawa-office.glb");
+useGLTF.preload("./models/wawa_office.glb");

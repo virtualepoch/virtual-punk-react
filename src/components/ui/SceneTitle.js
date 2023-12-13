@@ -1,10 +1,19 @@
-export const SceneTitle = ({ intro, torus, space, scroll, mach,water, star }) => {
+import { useMatch } from "react-router-dom";
+
+export const SceneTitle = () => {
+  const hub = useMatch("/hub");
+  const torus = useMatch("/torus");
+  const space = useMatch("/space");
+  const mach = useMatch("/mach");
+  const water = useMatch("/water");
+  const star = useMatch("/star-punk");
+
   return (
     <h1 className="scene-title">
-      {torus
+      {hub
+        ? "Hub"
+        : torus
         ? "Torus"
-        : scroll
-        ? "Scroll"
         : space
         ? "Space"
         : mach
@@ -14,7 +23,6 @@ export const SceneTitle = ({ intro, torus, space, scroll, mach,water, star }) =>
         : star
         ? "Star Punk"
         : "Virtual Punk"}
-      <div className="x-pad"></div>
     </h1>
   );
 };

@@ -2,7 +2,6 @@ import { Suspense, useEffect, useRef, useState } from "react";
 import { Route, Routes, useMatch } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
 import { Loader, PerformanceMonitor } from "@react-three/drei";
-import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { Controllers, Hands, XR } from "@react-three/xr";
 
 // COMPONENTS
@@ -10,10 +9,10 @@ import { UI } from "./components/UI.js";
 import { MyCamControls } from "./components/MyCamControls.js";
 
 // SCENES
-import { IntroScene } from "./scenes/_IntroScene.js";
+import { IntroScene } from "./scenes/__IntroScene.js";
+import { Hub } from "./scenes/_Hub.js";
 import { TorusScene } from "./scenes/TorusScene.js";
 import { SpaceScene } from "./scenes/SpaceScene.js";
-import { ScrollScene } from "./scenes/ScrollScene.js";
 import { MachScene } from "./scenes/MachScene.js";
 import { StarPunkScene } from "./scenes/StarPunkScene.js";
 import { WaterScene } from "./scenes/WaterScene.js";
@@ -27,7 +26,6 @@ import { Testing } from "./_testing/Testing.js";
 import "./_intro.css";
 import "./App.css";
 import "./buttons.css";
-import { Hub } from "./scenes/__Hub.js";
 // import "./bday.css";
 
 function App() {
@@ -37,8 +35,9 @@ function App() {
   const [foveation, setFoveation] = useState(0);
   const [vrFrameRate, setVrFrameRate] = useState(null);
   const [linkClicked, setLinkClicked] = useState(false);
-  const [downgradedPerformance, setDowngradedPerformance] = useState(false);
+  // const [downgradedPerformance, setDowngradedPerformance] = useState(false);
   const [rabbitHoleTexture, setRabbitHoleTexture] = useState("lg");
+  const [hubLink, setHubLink] = useState(0);
 
   // State for Torus Controls
   const [bg, setBg] = useState(0);
@@ -48,18 +47,6 @@ function App() {
   const [wrapX, setWrapX] = useState(3);
   const [wrapY, setWrapY] = useState(22);
   const [intensity, setIntensity] = useState(1);
-
-  // useMatch hooks
-  const intro = useMatch("/");
-  const torus = useMatch("/torus");
-  const space = useMatch("/space");
-  const scroll = useMatch("/scroll");
-  const mach = useMatch("/mach");
-  const water = useMatch("/water");
-  const star = useMatch("/star-punk");
-
-  // useRef hooks
-  const canvas = useRef();
 
   // My functions
   useEffect(() => {
@@ -82,17 +69,11 @@ function App() {
         setFoveation={setFoveation}
         setVrFrameRate={setVrFrameRate}
         setLinkClicked={setLinkClicked}
-        intro={intro}
-        torus={torus}
-        space={space}
-        scroll={scroll}
-        mach={mach}
-        water={water}
-        star={star}
+        hubLink={hubLink}
+        setHubLink={setHubLink}
       />
 
       <Canvas
-        ref={canvas}
         className="canvas"
         camera={{
           position: [0, 0, 1],
@@ -101,19 +82,13 @@ function App() {
       >
         <PerformanceMonitor
           onDecline={(fps) => {
-            setDowngradedPerformance(true);
+            // setDowngradedPerformance(true);
             setRabbitHoleTexture("med");
           }}
         />
 
-        {!downgradedPerformance && (
-          <EffectComposer disableNormalPass>
-            <Bloom luminanceThreshold={1} intensity={1.5} mipmapBlur />
-          </EffectComposer>
-        )}
-
         <Suspense>
-          <ambientLight intensity={1} position={[0, 0, 0]} />
+          <ambientLight intensity={1} />
           <directionalLight
             // ref={directionalLight}
             position={[1, 1, 1]}
@@ -133,7 +108,8 @@ function App() {
           >
             <Controllers />
             <Hands />
-            <MyCamControls linkClicked={linkClicked} intro={intro} />
+
+            <MyCamControls linkClicked={linkClicked} />
 
             <Routes>
               <Route
@@ -148,7 +124,7 @@ function App() {
                   />
                 }
               />
-              <Route path="/hub" element={<Hub />} />
+              <Route path="/hub" element={<Hub hubLink={hubLink} />} />
               <Route
                 path="/torus"
                 element={
@@ -170,7 +146,6 @@ function App() {
                 }
               />
               <Route path="/space" element={<SpaceScene />} />
-              <Route path="/scroll" element={<ScrollScene />} />
               <Route path="/mach" element={<MachScene />} />
               <Route path="/water" element={<WaterScene />} />
               <Route path="/star-punk" element={<StarPunkScene />} />
