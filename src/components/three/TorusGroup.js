@@ -4,8 +4,10 @@ import { useFrame, useLoader } from "@react-three/fiber";
 import { TorusMesh } from "./TorusMesh";
 
 import a1 from "../../assets/images/torus/Abstract_512x512-75.png";
+import { AppearanceEffectLightBeam } from "../models/AppearanceEffectLightBeam";
+import { useMatch } from "react-router-dom";
 
-export const TorusGroup = ({ position, rotation, scale, hubScene }) => {
+export const TorusGroup = ({ position, rotation, scale, start, hubLinkClicked }) => {
   function textureChanger() {
     if (window.innerWidth < 700) {
       return a1;
@@ -23,6 +25,7 @@ export const TorusGroup = ({ position, rotation, scale, hubScene }) => {
   const meshRef2 = useRef(null);
   const meshRef3 = useRef(null);
   const meshRef4 = useRef(null);
+  const hubScene = useMatch("/hub");
 
   useFrame(() => {
     if (meshRef1.current) {
@@ -49,6 +52,7 @@ export const TorusGroup = ({ position, rotation, scale, hubScene }) => {
 
   return (
     <mesh position={position} rotation={rotation} scale={scale}>
+      <AppearanceEffectLightBeam start={start} hubLinkClicked={hubLinkClicked}/>
       <TorusMesh
         args={[0.9, 0.1, 6, 32]}
         map={meshTexture}

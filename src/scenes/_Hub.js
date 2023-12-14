@@ -15,7 +15,7 @@ export const scenePanels = [
   },
 ];
 
-export const Hub = ({ hubScene, hubLink }) => {
+export const Hub = ({ hubLink, hubLinkClicked }) => {
   const viewport = useThree((state) => state.viewport);
   const panelWidth = viewport.width * 4;
   const panelHeight =
@@ -44,7 +44,7 @@ export const Hub = ({ hubScene, hubLink }) => {
           <HubLinkPanel
             key={index}
             boxSize={[panelWidth, panelHeight, 0.2]}
-            position={[index * (viewport.width + panelWidth), -0.01, -4]}
+            position={[index * (viewport.width + panelWidth), -0.01, -5]}
             imageUrl={scenePanel.imageUrl}
           />
         ))}
@@ -52,9 +52,9 @@ export const Hub = ({ hubScene, hubLink }) => {
 
       <mesh position={[0, 0, 0]}>
         <TorusGroup
-          position={[0, 0, -10]}
+          position={[0, 2, -10]}
           rotation={[0, 0, 0]}
-          hubScene={hubScene}
+          hubLinkClicked={hubLinkClicked}
         />
       </mesh>
 

@@ -10,9 +10,10 @@ import {
 import { ExtraSoundPro } from "../components/models/ExtraSoundPro";
 import { ReflectiveFloor } from "../components/three/ReflectiveFloor";
 import { HubLinkPanel, HubScene } from "../components/three/HubLinkPanel";
-import { MyVRButton } from "../components/three/MyVRButton";
+import { MyVRButton } from "../components/vr/MyVRButton";
 
 import { useThree } from "@react-three/fiber";
+import { AppearanceEffectLightBeam } from "../components/models/AppearanceEffectLightBeam";
 
 // import { MeshUIPanel } from "../components/three/MeshUIPanel";
 // import { UnstableAntimatter } from "../components/models/UnstableAntimatter";
@@ -21,16 +22,10 @@ import { useThree } from "@react-three/fiber";
 // import { PcSpider } from "../components/models/PcSpider1k";
 // import { RampagingTRex } from "../components/models/RampagingTRex";
 
-
-
 export const Testing = () => {
-
-
-
-
   return (
     <>
-
+      <AppearanceEffectLightBeam />
       {/* <MeshUIPanel /> */}
       {/* <MyVRButton>Start</MyVRButton> */}
       <Environment preset="city" />

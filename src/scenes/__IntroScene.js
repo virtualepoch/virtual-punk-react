@@ -5,7 +5,7 @@ import { RabbitHole } from "../components/three/RabbitHole";
 import { SpinningPanels } from "../components/three/SpinningPanels";
 import { TorusGroup } from "../components/three/TorusGroup";
 import { Ocean } from "../components/three/Ocean";
-import { MyVRButton } from "../components/three/MyVRButton";
+import { MyVRButton } from "../components/vr/MyVRButton";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -20,7 +20,7 @@ export const IntroScene = ({
   var sceneSpeed = start ? 0.7 : 0.004;
 
   useFrame(() => {
-    if (sceneObjects.current.position.z >= 100) {
+    if (sceneObjects.current.position.z >= 105) {
       sceneObjects.current.position.z = 0;
       setHub(start ? true : false);
     }
@@ -51,7 +51,7 @@ export const IntroScene = ({
           panelsColor="cyan"
         />
 
-        <TorusGroup position={[0, 0, -98]} rotation={[0, 0, 0]} />
+        <TorusGroup position={[0, 0, -98]} rotation={[0, 0, 0]} start={start} />
       </mesh>
 
       <Ocean

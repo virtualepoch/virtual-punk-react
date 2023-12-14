@@ -26,6 +26,7 @@ import { Testing } from "./_testing/Testing.js";
 import "./_intro.css";
 import "./App.css";
 import "./buttons.css";
+import { ScrollScene } from "./scenes/ScrollScene.js";
 // import "./bday.css";
 
 function App() {
@@ -34,10 +35,12 @@ function App() {
   const [hub, setHub] = useState(false);
   const [foveation, setFoveation] = useState(0);
   const [vrFrameRate, setVrFrameRate] = useState(null);
+  // linkClicked is used to reset the CameraControls when a Link is clicked (Scene changes)
   const [linkClicked, setLinkClicked] = useState(false);
   // const [downgradedPerformance, setDowngradedPerformance] = useState(false);
   const [rabbitHoleTexture, setRabbitHoleTexture] = useState("lg");
   const [hubLink, setHubLink] = useState(0);
+  const [hubLinkClicked, setHubLinkClicked] = useState(false);
 
   // State for Torus Controls
   const [bg, setBg] = useState(0);
@@ -71,6 +74,8 @@ function App() {
         setLinkClicked={setLinkClicked}
         hubLink={hubLink}
         setHubLink={setHubLink}
+        hubLinkClicked={hubLinkClicked}
+        setHubLinkClicked={setHubLinkClicked}
       />
 
       <Canvas
@@ -124,7 +129,12 @@ function App() {
                   />
                 }
               />
-              <Route path="/hub" element={<Hub hubLink={hubLink} />} />
+              <Route
+                path="/hub"
+                element={
+                  <Hub hubLink={hubLink} hubLinkClicked={hubLinkClicked} />
+                }
+              />
               <Route
                 path="/torus"
                 element={
