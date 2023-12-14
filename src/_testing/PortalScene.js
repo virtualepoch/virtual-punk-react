@@ -1,17 +1,21 @@
 import * as THREE from "three";
 import { useState, useRef, useEffect } from "react";
 import { useFrame, useLoader, useThree } from "@react-three/fiber";
-import { CameraControls, MeshPortalMaterial, RoundedBox, Text } from "@react-three/drei";
+import {
+  CameraControls,
+  MeshPortalMaterial,
+  RoundedBox,
+  Text,
+} from "@react-three/drei";
 import { easing } from "maath";
 
-import bg from "../../assets/images/realistic_wireframe_matrix.jpg";
-import raptorBg from "../../assets/images/realistic_clowdy_jungle_floor.jpg";
-import trexBg from "../../assets/images/realistic_dark_desert.jpg";
-import megBg from "../../assets/images/scenic_underwater.jpg";
+import bg from "../assets/images/panoramas/realistic_wireframe_matrix.jpg";
+import raptorBg from "../assets/images/panoramas/realistic_clowdy_jungle_floor.jpg";
+import trexBg from "../assets/images/panoramas/realistic_dark_desert.jpg";
+import megBg from "../assets/images/panoramas/scenic_underwater.jpg";
 
-import { Raptor } from "./Raptor";
-import { Trex } from "./Trex";
-import { Megalodon } from "./Megalodon";
+import { Trex } from "../components/models/Trex";
+import { Megalodon } from "../components/models/Megalodon";
 
 export function PortalScene() {
   const [active, setActive] = useState(null);
@@ -23,7 +27,15 @@ export function PortalScene() {
     if (active) {
       const targetPosition = new THREE.Vector3();
       scene.getObjectByName(active).getWorldPosition(targetPosition);
-      controlsRef.current.setLookAt(0, 0, 5, targetPosition.x, targetPosition.y, targetPosition.z, true);
+      controlsRef.current.setLookAt(
+        0,
+        0,
+        5,
+        targetPosition.x,
+        targetPosition.y,
+        targetPosition.z,
+        true
+      );
     } else {
       controlsRef.current.setLookAt(0, 0, 10, 0, 0, 0, true);
     }
@@ -33,17 +45,39 @@ export function PortalScene() {
     <>
       <ambientLight intensity={1} />
       <Background />
-      <CameraControls ref={controlsRef} maxPolarAngle={Math.PI / 2} minPolarAngle={Math.PI / 3} />
+      <CameraControls
+        ref={controlsRef}
+        maxPolarAngle={Math.PI / 2}
+        minPolarAngle={Math.PI / 3}
+      />
 
-      <CreatureCard width={2} height={4} texture={raptorBg} position={[-2.8, 0, 0.5]} rotation-y={Math.PI / 8} textY={-1.4} name={"Velociraptor"} fontSize={0.3} active={active} setActive={setActive} hovered={hovered} setHovered={setHovered}>
-        <Raptor position={[0, -1.2, 0]} hovered={hovered === "Velociraptor"} />
-      </CreatureCard>
-
-      <CreatureCard width={4} height={6} texture={trexBg} textY={-2.7} name={"Tyranosaurus Rex"} fontSize={0.5} active={active} setActive={setActive}>
+      <CreatureCard
+        width={4}
+        height={6}
+        texture={trexBg}
+        position={[-2, 0, -3]}
+        rotation-y={Math.PI / 8}
+        textY={-2.7}
+        name={"Tyranosaurus Rex"}
+        fontSize={0.3}
+        active={active}
+        setActive={setActive}
+      >
         <Trex position={[0, -3, -2]} scale={3} />
       </CreatureCard>
 
-      <CreatureCard width={2} height={4} texture={megBg} position={[2.8, 0, 0.5]} rotation-y={Math.PI / -8} textY={-1.4} name={"Megalodon"} fontSize={0.3} active={active} setActive={setActive}>
+      <CreatureCard
+        width={4}
+        height={6}
+        texture={megBg}
+        position={[2, 0, -3]}
+        rotation-y={Math.PI / -8}
+        textY={-2.7}
+        name={"Megalodon"}
+        fontSize={0.3}
+        active={active}
+        setActive={setActive}
+      >
         <Megalodon position={[0, -0.8, 0]} scale={1.5} />
       </CreatureCard>
     </>
@@ -60,7 +94,20 @@ const Background = () => {
   );
 };
 
-const CreatureCard = ({ width, height, children, texture, textY, fontSize, name, active, setActive, hovered, setHovered, ...props }) => {
+const CreatureCard = ({
+  width,
+  height,
+  children,
+  texture,
+  textY,
+  fontSize,
+  name,
+  active,
+  setActive,
+  hovered,
+  setHovered,
+  ...props
+}) => {
   const map = useLoader(THREE.TextureLoader, texture);
   const portalRef = useRef();
 
@@ -71,10 +118,22 @@ const CreatureCard = ({ width, height, children, texture, textY, fontSize, name,
 
   return (
     <group {...props}>
-      <Text font="fonts/Ailerons-TrialVersion.otf" fontSize={fontSize} position={[0, textY, 0.051]} anchorY="bottom" color={"red"}>
+      <Text
+        font="fonts/Ailerons-TrialVersion.otf"
+        fontSize={fontSize}
+        position={[0, textY, 0.051]}
+        anchorY="bottom"
+        color={"red"}
+      >
         {name}
       </Text>
-      <RoundedBox args={[width, height, 0.1]} onClick={() => setActive(active === name ? null : name)} name={name} onPointerEnter={() => setHovered(name)} onPointerLeave={() => setHovered(null)}>
+      <RoundedBox
+        args={[width, height, 0.1]}
+        onClick={() => setActive(active === name ? null : name)}
+        name={name}
+        onPointerEnter={() => setHovered(name)}
+        onPointerLeave={() => setHovered(null)}
+      >
         <MeshPortalMaterial ref={portalRef}>
           <ambientLight intensity={1} />
           <pointLight />

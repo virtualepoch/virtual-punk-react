@@ -1,5 +1,5 @@
-import { Suspense, useEffect, useRef, useState } from "react";
-import { Route, Routes, useMatch } from "react-router-dom";
+import { Suspense, useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
 import { Loader, PerformanceMonitor } from "@react-three/drei";
 import { Controllers, Hands, XR } from "@react-three/xr";
@@ -17,27 +17,31 @@ import { MachScene } from "./scenes/MachScene.js";
 import { StarPunkScene } from "./scenes/StarPunkScene.js";
 import { WaterScene } from "./scenes/WaterScene.js";
 import { Testing } from "./_testing/_Testing.js";
-
 // VIRTUAL B-DAY CARDS
 // import { SandyBday } from "./scenes/bday-cards/SandyBday";
 // import { DadBday } from "./scenes/bday-cards/DadBday";
+
+// VR COMPONENTS ////////////////
+import { MyVRButton } from "./components/vr/MyVRButton.js";
 
 // CSS
 import "./css/_intro.css";
 import "./css/App.css";
 import "./css/buttons.css";
+import { PortalScene } from "./_testing/PortalScene.js";
 // import "./bday.css";
 
 function App() {
   // useState hooks
   const [start, setStart] = useState(false);
   const [hub, setHub] = useState(false);
+  const [vrSession, setVrSession] = useState(true);
   const [foveation, setFoveation] = useState(0);
   const [vrFrameRate, setVrFrameRate] = useState(null);
   // linkClicked is used to reset the CameraControls when a Link is clicked (Scene changes)
   const [linkClicked, setLinkClicked] = useState(false);
   // const [downgradedPerformance, setDowngradedPerformance] = useState(false);
-  const [rabbitHoleTexture, setRabbitHoleTexture] = useState("lg");
+  const [rabbitHoleTexture, setRabbitHoleTexture] = useState("med");
   const [hubLink, setHubLink] = useState(0);
   const [hubLinkClicked, setHubLinkClicked] = useState(false);
 
@@ -87,7 +91,7 @@ function App() {
         <PerformanceMonitor
           onDecline={(fps) => {
             // setDowngradedPerformance(true);
-            setRabbitHoleTexture("med");
+            setRabbitHoleTexture("sm");
           }}
         />
 
@@ -109,8 +113,17 @@ function App() {
                 ? 120
                 : null
             }
+            onSessionStart={() => setVrSession(true)}
+            onSessionEnd={() => setVrSession(false)}
           >
-            <Controllers />
+            {vrSession && (
+              <>
+                <Controllers />
+                <MyVRButton start={start} setStart={setStart}>
+                  Start
+                </MyVRButton>
+              </>
+            )}
             {/* <Hands /> */}
 
             <MyCamControls linkClicked={linkClicked} />
@@ -158,6 +171,7 @@ function App() {
               <Route path="/mach" element={<MachScene />} />
               <Route path="/water" element={<WaterScene />} />
               <Route path="/star-punk" element={<StarPunkScene />} />
+              <Route path="/portal" element={<PortalScene />} />
               <Route path="/test" element={<Testing />} />
             </Routes>
           </XR>

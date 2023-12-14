@@ -9,11 +9,13 @@ Title: High detailed rex animation
 
 import React, { useEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
-import { DissolveMaterial } from "../../scenes/dissolve/DissolveMaterial";
+import { DissolveMaterial } from "../three/DissolveMaterial";
 
 export function Trex(props) {
   const group = useRef();
-  const { nodes, materials, animations } = useGLTF("/models/trex_animation.glb");
+  const { nodes, materials, animations } = useGLTF(
+    "/models/trex_animation.glb"
+  );
   const { actions } = useAnimations(animations, group);
 
   useEffect(() => {
@@ -24,7 +26,11 @@ export function Trex(props) {
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
-        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]} scale={0.29}>
+        <group
+          name="Sketchfab_model"
+          rotation={[-Math.PI / 2, 0, 0]}
+          scale={0.29}
+        >
           <group name="root">
             <group name="GLTF_SceneRootNode" rotation={[Math.PI / 2, 0, 0]}>
               <group name="RootNode0_0" scale={0.01}>
@@ -34,8 +40,17 @@ export function Trex(props) {
                     <group name="TRex2_2_correction">
                       <group name="TRex2_2" />
                     </group>
-                    <skinnedMesh name="Object_80" geometry={nodes.Object_80.geometry} skeleton={nodes.Object_80.skeleton}>
-                      <DissolveMaterial baseMaterial={materials.material_0} visible={props.dissolveVisible} onFadeOut={props.onFadeOut} color="#0082b2" />
+                    <skinnedMesh
+                      name="Object_80"
+                      geometry={nodes.Object_80.geometry}
+                      skeleton={nodes.Object_80.skeleton}
+                    >
+                      <DissolveMaterial
+                        baseMaterial={materials.material_0}
+                        visible={props.dissolveVisible}
+                        onFadeOut={props.onFadeOut}
+                        color="#0082b2"
+                      />
                     </skinnedMesh>
                   </group>
                 </group>

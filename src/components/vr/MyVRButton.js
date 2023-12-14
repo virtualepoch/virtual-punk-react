@@ -34,7 +34,8 @@ export const MyVRButton = ({ setStart, children }) => {
         rotation={[0, 0.8, 0]}
       >
         <Text
-          position={[0, 0, 0.06]}
+        font="fonts/Ailerons-TrialVersion.otf"
+          position={[0, 0, 0.051]}
           fontSize={0.05}
           color="#fff"
           anchorX="center"

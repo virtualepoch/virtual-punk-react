@@ -34,10 +34,6 @@ export const IntroScene = ({
 
   return (
     <>
-      <MyVRButton start={start} setStart={setStart}>
-        Start
-      </MyVRButton>
-
       <mesh ref={sceneObjects} position={[0, 0, 0]}>
         <RabbitHole
           position={[0, 0, -38]}

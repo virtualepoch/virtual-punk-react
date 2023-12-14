@@ -7,11 +7,11 @@ import textureSm from "../../assets/images/rabbit-hole/future-machine-1024.jpg";
 export const RabbitHole = ({ position, rabbitHoleTexture }) => {
   const map = useLoader(
     THREE.TextureLoader,
-    rabbitHoleTexture === "lg"
-      ? textureLg
+    rabbitHoleTexture === "sm"
+      ? textureSm
       : rabbitHoleTexture === "med"
       ? textureMed
-      : textureSm
+      : textureMed
   );
   map.repeat.set(3, 8);
   map.wrapS = map.wrapT = THREE.RepeatWrapping;
