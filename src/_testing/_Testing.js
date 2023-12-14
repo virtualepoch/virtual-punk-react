@@ -14,6 +14,9 @@ import { MyVRButton } from "../components/vr/MyVRButton";
 
 import { useThree } from "@react-three/fiber";
 import { AppearanceEffectLightBeam } from "../components/models/AppearanceEffectLightBeam";
+import { BgSphere } from "../components/three/BgSphere";
+
+import bgImage from "../assets/images/spaceScene.jpg";
 
 // import { MeshUIPanel } from "../components/three/MeshUIPanel";
 // import { UnstableAntimatter } from "../components/models/UnstableAntimatter";
@@ -25,6 +28,15 @@ import { AppearanceEffectLightBeam } from "../components/models/AppearanceEffect
 export const Testing = () => {
   return (
     <>
+      <BgSphere
+        radius={4}
+        widthSegments={4}
+        heightSegments={8}
+        position={[0, 2, -4]}
+        bgImage={bgImage}
+        bgWrapX={1}
+        bgWrapY={2}
+      />
       <AppearanceEffectLightBeam />
       {/* <MeshUIPanel /> */}
       {/* <MyVRButton>Start</MyVRButton> */}
@@ -42,7 +54,7 @@ export const Testing = () => {
       <Stars />
       <ExtraSoundPro />
       <ReflectiveFloor />
-      <ContactShadows position-y={-1.8} opacity={1} color="red" />
+      {/* <ContactShadows position-y={-1.8} opacity={1} color="red" /> */}
     </>
   );
 };

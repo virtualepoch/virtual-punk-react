@@ -16,17 +16,16 @@ import { SpaceScene } from "./scenes/SpaceScene.js";
 import { MachScene } from "./scenes/MachScene.js";
 import { StarPunkScene } from "./scenes/StarPunkScene.js";
 import { WaterScene } from "./scenes/WaterScene.js";
-import { Testing } from "./_testing/Testing.js";
+import { Testing } from "./_testing/_Testing.js";
 
 // VIRTUAL B-DAY CARDS
 // import { SandyBday } from "./scenes/bday-cards/SandyBday";
 // import { DadBday } from "./scenes/bday-cards/DadBday";
 
 // CSS
-import "./_intro.css";
-import "./App.css";
-import "./buttons.css";
-import { ScrollScene } from "./scenes/ScrollScene.js";
+import "./css/_intro.css";
+import "./css/App.css";
+import "./css/buttons.css";
 // import "./bday.css";
 
 function App() {
@@ -112,7 +111,7 @@ function App() {
             }
           >
             <Controllers />
-            <Hands />
+            {/* <Hands /> */}
 
             <MyCamControls linkClicked={linkClicked} />
 

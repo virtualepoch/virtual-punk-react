@@ -4,10 +4,7 @@ import { button, buttonGroup, folder, useControls } from "leva";
 import { useEffect, useRef } from "react";
 import { DEG2RAD } from "three/src/math/MathUtils";
 
-export const MyCamControls = ({
-  centerMeshRef,
-  linkClicked,
-}) => {
+export const MyCamControls = ({ centerMeshRef, linkClicked }) => {
   const { camera } = useThree();
   const cameraControlsRef = useRef();
 

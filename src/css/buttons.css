@@ -8,12 +8,12 @@
   bottom: 0;
   right: 0;
   z-index: 888;
-  background: url(../public/icons/expand-cyan.svg) center / 30% no-repeat;
+  background: url(../../public/icons/expand-cyan.svg) center / 30% no-repeat;
   filter: drop-shadow(0 0 2px black);
 }
 
 .btn-fullscreen.clicked {
-  background: url(../public/icons/compress-cyan.svg) center / 30% no-repeat;
+  background: url(../../public/icons/compress-cyan.svg) center / 30% no-repeat;
 }
 
 /* OPEN/CLOSE NAVIGATION MENU BARS*/
@@ -80,7 +80,7 @@
   border: 1px solid red;
   border-radius: 100%;
   filter: drop-shadow(0 0 3px rgb(12, 124, 124));
-  background: url(../public/icons/info-solid.svg) center / 22% no-repeat;
+  background: url(../../public/icons/info-solid.svg) center / 22% no-repeat;
 }
 
 /* OPEN VR MODAL BUTTON */
@@ -281,13 +281,14 @@
   position: fixed;
   top: calc(50% - 25px);
   z-index: 333;
-  background: url(../public/icons/chevron-left-cyan.svg) 30% 50% / 40% no-repeat;
+  background: url(../../public/icons/chevron-left-cyan.svg) 30% 50% / 40%
+    no-repeat;
   filter: drop-shadow(0 0 2px black);
 }
 
 .btn-hub-right {
   right: 0;
-  background: url(../public/icons/chevron-right-cyan.svg) 70% 50% / 40%
+  background: url(../../public/icons/chevron-right-cyan.svg) 70% 50% / 40%
     no-repeat;
 }
 
@@ -328,13 +329,13 @@
   border: 1px solid gray;
   border-radius: 10px;
   margin: 20px auto;
-  background: url(../public/icons/video-white-o.svg) center / 50% no-repeat;
+  background: url(../../public/icons/video-white-o.svg) center / 50% no-repeat;
   filter: drop-shadow(0 0 2px black);
 }
 
 .btn-leva-controls.leva-open {
   border: 1px solid cyan;
-  background: url(../public/icons/video-cyan.svg) center / 50% no-repeat;
+  background: url(../../public/icons/video-cyan.svg) center / 50% no-repeat;
   filter: drop-shadow(0 0 2px cyan);
 }
 
@@ -369,10 +370,11 @@ button.btn-omni {
   transition: transform 500ms ease-in-out;
   border-radius: 100px;
   box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.5);
-  background: url(../public/icons/chevron-right-cyan.svg) center/20% no-repeat;
+  background: url(../../public/icons/chevron-right-cyan.svg) center/20%
+    no-repeat;
 }
 
 .btn-omni.omni-open {
   transform: translateX(170px);
-  background: url(../public/icons/chevron-left-cyan.svg) center/20% no-repeat;
+  background: url(../../public/icons/chevron-left-cyan.svg) center/20% no-repeat;
 }

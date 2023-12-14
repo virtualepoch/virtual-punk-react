@@ -57,23 +57,49 @@ export function DissolveScene() {
       <ambientLight intensity={1} />
       <pointLight intensity={1} />
       <BackDrop />
-      <CameraControls ref={controlsRef} minAzimuthAngle={-Math.PI / 1} maxAzimuthAngle={Math.PI / 1} maxPolarAngle={Math.PI / 1.5} minPolarAngle={Math.PI / 4} minDistance={2} maxDistance={15} />
+      <CameraControls
+        ref={controlsRef}
+        minAzimuthAngle={-Math.PI / 1}
+        maxAzimuthAngle={Math.PI / 1}
+        maxPolarAngle={Math.PI / 1.5}
+        minPolarAngle={Math.PI / 4}
+        minDistance={2}
+        maxDistance={15}
+      />
       {visibleItem === "box" && (
         <mesh>
           <boxGeometry />
-          <DissolveMaterial baseMaterial={boxMaterial} visible={itemsDisplayed === "box"} onFadeOut={onFadeOut} color="#0082b2" />
+          <DissolveMaterial
+            baseMaterial={boxMaterial}
+            visible={itemsDisplayed === "box"}
+            onFadeOut={onFadeOut}
+            color="#0082b2"
+          />
         </mesh>
       )}
 
       {visibleItem === "sphere" && (
         <mesh scale={0.5}>
           <sphereGeometry />
-          <DissolveMaterial baseMaterial={sphereMaterial} visible={itemsDisplayed === "sphere"} onFadeOut={onFadeOut} color="#ff0000" />
+          <DissolveMaterial
+            baseMaterial={sphereMaterial}
+            visible={itemsDisplayed === "sphere"}
+            onFadeOut={onFadeOut}
+            color="#ff0000"
+          />
         </mesh>
       )}
-      {visibleItem === "rei" && <Ayanami position={[0, -1.5, 0]} rotation={[0, -0.6, 0]} scale={[0.03, 0.03, 0.03]} dissolveVisible= {itemsDisplayed === "rei"} onFadeOut={onFadeOut}/>}
+      {visibleItem === "rei" && (
+        <Ayanami
+          position={[0, -1.5, 0]}
+          rotation={[0, -0.6, 0]}
+          scale={[0.03, 0.03, 0.03]}
+          dissolveVisible={itemsDisplayed === "rei"}
+          onFadeOut={onFadeOut}
+        />
+      )}
       <Environment preset="sunset" />
-      <Ground position-y={-1}/>
+      <Ground position-y={-1} />
       <ContactShadows opacity={0.7} position={[0, -1.49, 0]} />
     </>
   );

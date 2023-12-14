@@ -30,12 +30,11 @@ export const MyVRButton = ({ setStart, children }) => {
         color={color}
         scale={hover ? [1.5, 1.5, 1.5] : [1, 1, 1]}
         size={[0.2, 0.1, 0.01]}
-        position={[-0.5, 0.1, 0]}
+        position={[-0.5, 0.5, -1.5]}
         rotation={[0, 0.8, 0]}
       >
         <Text
-        debug
-          position={[0, 0, 0.07]}
+          position={[0, 0, 0.06]}
           fontSize={0.05}
           color="#fff"
           anchorX="center"
