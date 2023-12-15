@@ -28,31 +28,21 @@ import { MyVRButton } from "./components/vr/MyVRButton.js";
 import "./css/_intro.css";
 import "./css/App.css";
 import "./css/buttons.css";
-import { PortalScene } from "./_testing/PortalScene.js";
 // import "./bday.css";
+
+import { PortalScene } from "./_testing/PortalScene.js";
 
 function App() {
   // useState hooks
   const [start, setStart] = useState(false);
   const [hub, setHub] = useState(false);
-  const [vrSession, setVrSession] = useState(true);
+  const [vrSession, setVrSession] = useState(false);
   const [foveation, setFoveation] = useState(0);
   const [vrFrameRate, setVrFrameRate] = useState(null);
-  // linkClicked is used to reset the CameraControls when a Link is clicked (Scene changes)
-  const [linkClicked, setLinkClicked] = useState(false);
-  // const [downgradedPerformance, setDowngradedPerformance] = useState(false);
-  const [rabbitHoleTexture, setRabbitHoleTexture] = useState("med");
+  const [linkClicked, setLinkClicked] = useState(false); // used to reset the CameraControls when a Link is clicked (Scene changes)
+  const [downgradedPerformance, setDowngradedPerformance] = useState(false); // used to change asset quality based on device hardware
   const [hubLink, setHubLink] = useState(0);
   const [hubLinkClicked, setHubLinkClicked] = useState(false);
-
-  // State for Torus Controls
-  const [bg, setBg] = useState(0);
-  const [bgWrapX, setBgWrapX] = useState(3);
-  const [bgWrapY, setBgWrapY] = useState(3);
-  const [texture, setTexture] = useState(1);
-  const [wrapX, setWrapX] = useState(3);
-  const [wrapY, setWrapY] = useState(22);
-  const [intensity, setIntensity] = useState(1);
 
   // My functions
   useEffect(() => {
@@ -90,8 +80,7 @@ function App() {
       >
         <PerformanceMonitor
           onDecline={(fps) => {
-            // setDowngradedPerformance(true);
-            setRabbitHoleTexture("sm");
+            setDowngradedPerformance(true);
           }}
         />
 
@@ -116,15 +105,16 @@ function App() {
             onSessionStart={() => setVrSession(true)}
             onSessionEnd={() => setVrSession(false)}
           >
+            <Controllers />
+            {/* <Hands /> */}
+
             {vrSession && (
               <>
-                <Controllers />
                 <MyVRButton start={start} setStart={setStart}>
                   Start
                 </MyVRButton>
               </>
             )}
-            {/* <Hands /> */}
 
             <MyCamControls linkClicked={linkClicked} />
 
@@ -137,7 +127,7 @@ function App() {
                     setStart={setStart}
                     hub={hub}
                     setHub={setHub}
-                    rabbitHoleTexture={rabbitHoleTexture}
+                    downgradedPerformance={downgradedPerformance}
                   />
                 }
               />
@@ -150,21 +140,7 @@ function App() {
               <Route
                 path="/torus"
                 element={
-                  <TorusScene
-                    bg={bg}
-                    setBg={setBg}
-                    bgWrapX={bgWrapX}
-                    setBgWrapX={setBgWrapX}
-                    bgWrapY={bgWrapY}
-                    setBgWrapY={setBgWrapY}
-                    texture={texture}
-                    setTexture={setTexture}
-                    wrapX={wrapX}
-                    setWrapX={setWrapX}
-                    wrapY={wrapY}
-                    setWrapY={setWrapY}
-                    intensity={intensity}
-                  />
+                  <TorusScene downgradedPerformance={downgradedPerformance} />
                 }
               />
               <Route path="/space" element={<SpaceScene />} />

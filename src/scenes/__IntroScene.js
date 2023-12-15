@@ -1,20 +1,19 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useFrame } from "@react-three/fiber";
 // COMPONENTS //
 import { RabbitHole } from "../components/three/RabbitHole";
 import { SpinningPanels } from "../components/three/SpinningPanels";
 import { TorusGroup } from "../components/three/TorusGroup";
 import { Ocean } from "../components/three/Ocean";
-import { MyVRButton } from "../components/vr/MyVRButton";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+// import { MyVRButton } from "../components/vr/MyVRButton";
 
 export const IntroScene = ({
   start,
   setStart,
   hub,
   setHub,
-  rabbitHoleTexture,
+  downgradedPerformance,
 }) => {
   const sceneObjects = useRef();
   var sceneSpeed = start ? 0.7 : 0.004;
@@ -37,7 +36,7 @@ export const IntroScene = ({
       <mesh ref={sceneObjects} position={[0, 0, 0]}>
         <RabbitHole
           position={[0, 0, -38]}
-          rabbitHoleTexture={rabbitHoleTexture}
+          downgradedPerformance={downgradedPerformance}
         />
 
         <SpinningPanels
@@ -47,7 +46,12 @@ export const IntroScene = ({
           panelsColor="cyan"
         />
 
-        <TorusGroup position={[0, 0, -98]} rotation={[0, 0, 0]} start={start} />
+        <TorusGroup
+          position={[0, 0, -98]}
+          rotation={[0, 0, 0]}
+          start={start}
+          downgradedPerformance={downgradedPerformance}
+        />
       </mesh>
 
       <Ocean

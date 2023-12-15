@@ -2,24 +2,27 @@ import { useRef } from "react";
 import { useMatch } from "react-router-dom";
 import * as THREE from "three";
 import { useFrame, useLoader } from "@react-three/fiber";
+
+// COMPONENTS
 import { TorusMesh } from "./TorusMesh";
-
-// import a1 from "../../assets/images/textures/hex-200.jpg";
-import a1 from "../../assets/images/torus/future-machine-512.jpg";
 import { AppearanceEffectLightBeam } from "../models/AppearanceEffectLightBeam";
+import texture256 from "../../assets/images/torus/future-machine-256.jpg";
+import texture512 from "../../assets/images/torus/future-machine-512.jpg";
 
-export const TorusGroup = ({ position, rotation, scale, start, hubLinkClicked }) => {
-  function textureChanger() {
-    if (window.innerWidth < 700) {
-      return a1;
-    } else {
-      return a1;
-    }
-  }
+export const TorusGroup = ({
+  position,
+  rotation,
+  scale,
+  start,
+  hubLinkClicked,
+  downgradedPerformance,
+}) => {
+  const meshTexture = useLoader(
+    THREE.TextureLoader,
+    downgradedPerformance ? texture256 : texture512
+  );
 
-  const meshTexture = useLoader(THREE.TextureLoader, textureChanger());
-
-  meshTexture.repeat.set(6, 1);
+  meshTexture.repeat.set(8, 1);
   meshTexture.wrapS = meshTexture.wrapT = THREE.RepeatWrapping;
 
   const meshRef1 = useRef(null);
@@ -47,7 +50,10 @@ export const TorusGroup = ({ position, rotation, scale, start, hubLinkClicked })
 
   return (
     <mesh position={position} rotation={rotation} scale={scale}>
-      <AppearanceEffectLightBeam start={start} hubLinkClicked={hubLinkClicked}/>
+      <AppearanceEffectLightBeam
+        start={start}
+        hubLinkClicked={hubLinkClicked}
+      />
       <TorusMesh
         args={[0.9, 0.1, 3, 28]}
         map={meshTexture}

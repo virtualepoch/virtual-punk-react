@@ -28,7 +28,7 @@ export const MyVRButton = ({ setStart, children }) => {
     >
       <Box
         color={color}
-        scale={hover ? [1.5, 1.5, 1.5] : [1, 1, 1]}
+        scale={hover ? [1.2, 1.2, 1.2] : [1, 1, 1]}
         size={[0.2, 0.1, 0.01]}
         position={[-0.5, 0.5, -1.5]}
         rotation={[0, 0.8, 0]}
