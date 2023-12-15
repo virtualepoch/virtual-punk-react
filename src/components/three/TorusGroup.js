@@ -1,12 +1,12 @@
 import { useRef } from "react";
+import { useMatch } from "react-router-dom";
 import * as THREE from "three";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { TorusMesh } from "./TorusMesh";
 
-// import a1 from "../../assets/images/torus/Abstract_512x512-75.png";
-import a1 from "../../assets/images/torus/15.png";
+// import a1 from "../../assets/images/textures/hex-200.jpg";
+import a1 from "../../assets/images/torus/future-machine-512.jpg";
 import { AppearanceEffectLightBeam } from "../models/AppearanceEffectLightBeam";
-import { useMatch } from "react-router-dom";
 
 export const TorusGroup = ({ position, rotation, scale, start, hubLinkClicked }) => {
   function textureChanger() {
@@ -19,7 +19,7 @@ export const TorusGroup = ({ position, rotation, scale, start, hubLinkClicked })
 
   const meshTexture = useLoader(THREE.TextureLoader, textureChanger());
 
-  meshTexture.repeat.set(3, 4);
+  meshTexture.repeat.set(6, 1);
   meshTexture.wrapS = meshTexture.wrapT = THREE.RepeatWrapping;
 
   const meshRef1 = useRef(null);
@@ -49,17 +49,17 @@ export const TorusGroup = ({ position, rotation, scale, start, hubLinkClicked })
     <mesh position={position} rotation={rotation} scale={scale}>
       <AppearanceEffectLightBeam start={start} hubLinkClicked={hubLinkClicked}/>
       <TorusMesh
-        args={[0.9, 0.1, 6, 32]}
+        args={[0.9, 0.1, 3, 28]}
         map={meshTexture}
         torusMeshRef={meshRef1}
       />
       <TorusMesh
-        args={[1.1, 0.1, 6, 32]}
+        args={[1.1, 0.1, 3, 28]}
         map={meshTexture}
         torusMeshRef={meshRef2}
       />
       <TorusMesh
-        args={[1.3, 0.1, 6, 32]}
+        args={[1.3, 0.1, 3, 28]}
         map={meshTexture}
         torusMeshRef={meshRef3}
       />

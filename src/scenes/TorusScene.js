@@ -1,19 +1,13 @@
-import { useFrame, useLoader, useThree } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
-import a1 from "../assets/images/torus/Abstract_512x512-75.png";
+import { useFrame, useLoader } from "@react-three/fiber";
+import { useHelper } from "@react-three/drei";
+import { useControls } from "leva";
 
-import { button, buttonGroup, folder, useControls } from "leva";
-import { CameraControls, OrbitControls, useHelper } from "@react-three/drei";
 import { TorusMesh } from "../components/three/TorusMesh";
-import { DEG2RAD } from "three/src/math/MathUtils";
+import a1 from "../assets/images/torus/future-machine-512.jpg";
 
-export const TorusScene = ({
-  texture,
-  wrapX,
-  wrapY,
-  intensity,
-}) => {
+export const TorusScene = ({ texture, wrapX, wrapY, intensity }) => {
   const TorusGroup = () => {
     // function textureChanger() {
     //   if (window.innerWidth < 700) {

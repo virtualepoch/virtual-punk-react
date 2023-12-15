@@ -39,7 +39,7 @@ export const Hub = ({ hubLink, hubLinkClicked }) => {
 
   return (
     <>
-      {/* <mesh ref={hubLinksMesh} position={[0, 0, 0]}>
+      <mesh ref={hubLinksMesh} position={[0, 0, 0]}>
         {scenePanels.map((scenePanel, index) => (
           <HubLinkPanel
             key={index}
@@ -48,11 +48,11 @@ export const Hub = ({ hubLink, hubLinkClicked }) => {
             imageUrl={scenePanel.imageUrl}
           />
         ))}
-      </mesh> */}
+      </mesh>
 
       <mesh position={[0, 0, 0]}>
         <TorusGroup
-          position={[0, 0, -5]}
+          position={[0, 2.5, -10]}
           rotation={[0, 0, 0]}
           hubLinkClicked={hubLinkClicked}
         />
