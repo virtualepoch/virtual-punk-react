@@ -8,13 +8,7 @@ import { TorusGroup } from "../components/three/TorusGroup";
 import { Ocean } from "../components/three/Ocean";
 // import { MyVRButton } from "../components/vr/MyVRButton";
 
-export const IntroScene = ({
-  start,
-  setStart,
-  hub,
-  setHub,
-  downgradedPerformance,
-}) => {
+export const IntroScene = ({ start, hub, setHub, downgradedPerformance }) => {
   const sceneObjects = useRef();
   var sceneSpeed = start ? 0.7 : 0.004;
 
@@ -42,7 +36,7 @@ export const IntroScene = ({
         <SpinningPanels
           panelsPosition={[0, 0, -95]}
           panelsRotationX={Math.PI / 2}
-          panelsRotationYSpeed={-0.01}
+          panelsRotationYSpeed={start ? 0.1 : -0.01}
           panelsColor="cyan"
         />
 

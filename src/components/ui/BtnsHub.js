@@ -35,7 +35,7 @@ export const BtnsHub = ({
         <button
           className="btn-hub btn-hub-right"
           onClick={() => {
-            hubLink < 1 ? setHubLink(hubLink + 1) : setHubLink(hubLink);
+            hubLink < 2 ? setHubLink(hubLink + 1) : setHubLink(hubLink);
             setHubLinkClicked(false);
           }}
         />

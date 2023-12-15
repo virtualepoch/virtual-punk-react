@@ -1,25 +1,30 @@
+import { useRef } from "react";
+import { useFrame, useThree } from "@react-three/fiber";
+// COMPONENTS //
+import { HubLink } from "../components/three/HubLink";
 import { TorusGroup } from "../components/three/TorusGroup";
 import { Ocean } from "../components/three/Ocean";
-import { useFrame, useThree } from "@react-three/fiber";
-import { HubLinkPanel } from "../components/three/HubLinkPanel";
-import { useRef } from "react";
 
 export const scenePanels = [
   {
     index: "torus",
-    imageUrl: "/images/spaceScene.jpg",
+    image: "/images/spaceScene.jpg",
   },
   {
     index: "space",
-    imageUrl: "/images/torusScene.jpg",
+    image: "/images/torusScene.jpg",
+  },
+  {
+    index: "time",
+    image: "/images/torusScene.jpg",
   },
 ];
 
 export const Hub = ({ hubLink, hubLinkClicked }) => {
   const viewport = useThree((state) => state.viewport);
-  const panelWidth = viewport.width * 4;
-  const panelHeight =
-    viewport.width > viewport.height ? viewport.height * 4 : viewport.width * 4;
+  const portrait = viewport.width < viewport.height;
+  const hubLinkSize = portrait ? viewport.width * 2 : viewport.width;
+  const linkGapFactor = viewport.width * 1.5 + hubLinkSize;
 
   const hubLinksMesh = useRef();
   useFrame(() => {
@@ -30,22 +35,24 @@ export const Hub = ({ hubLink, hubLinkClicked }) => {
       }
       if (hubLink === 1) {
         hubLinksMesh.current.position.x -=
-          hubLinksMesh.current.position.x > -(viewport.width + panelWidth)
-            ? 0.1
-            : 0;
+          hubLinksMesh.current.position.x > -linkGapFactor ? 0.1 : 0;
+      }
+      if (hubLink === 2) {
+        hubLinksMesh.current.position.x -=
+          hubLinksMesh.current.position.x > -linkGapFactor * 2 ? 0.1 : 0;
       }
     }
   });
 
   return (
     <>
-      <mesh ref={hubLinksMesh} position={[0, 0, 0]}>
+      <mesh ref={hubLinksMesh} position={[0, 0, -2]}>
         {scenePanels.map((scenePanel, index) => (
-          <HubLinkPanel
+          <HubLink
             key={index}
-            boxSize={[panelWidth, panelHeight, 0.2]}
-            position={[index * (viewport.width + panelWidth), -0.01, -5]}
-            imageUrl={scenePanel.imageUrl}
+            size={hubLinkSize}
+            posX={index * linkGapFactor}
+            image={scenePanel.image}
           />
         ))}
       </mesh>

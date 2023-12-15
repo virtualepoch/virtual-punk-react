@@ -17,6 +17,9 @@ import { AppearanceEffectLightBeam } from "../components/models/AppearanceEffect
 import { BgSphere } from "../components/three/BgSphere";
 
 import bgImage from "../assets/images/spaceScene.jpg";
+import { HubLink  } from "../components/three/HubLink";
+
+import imageTorus from "../assets/images/spaceScene.jpg"
 
 // import { MeshUIPanel } from "../components/three/MeshUIPanel";
 // import { UnstableAntimatter } from "../components/models/UnstableAntimatter";
@@ -28,15 +31,16 @@ import bgImage from "../assets/images/spaceScene.jpg";
 export const Testing = () => {
   return (
     <>
-      <BgSphere
+      <HubLink size={[4,4]} image={imageTorus}/>
+      {/* <BgSphere
         radius={4}
-        widthSegments={4}
-        heightSegments={8}
+        widthSegments={3}
+        heightSegments={3}
         position={[0, 2, -4]}
         bgImage={bgImage}
         bgWrapX={1}
         bgWrapY={2}
-      />
+      /> */}
       <AppearanceEffectLightBeam />
       {/* <MeshUIPanel /> */}
       {/* <MyVRButton>Start</MyVRButton> */}
