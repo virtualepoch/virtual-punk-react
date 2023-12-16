@@ -9,13 +9,14 @@ export const Hub = ({ hubLink, hubLinkClicked }) => {
   const viewport = useThree((state) => state.viewport);
   const portrait = viewport.width < viewport.height;
   const hubLinkSize = portrait ? viewport.width * 1.7 : viewport.width;
+  const torusSize = portrait ? viewport.width * 1.7 : viewport.width;
 
   const [visibleItem, setVisibleItem] = useState(hubLink);
   const onFadeOut = () => setVisibleItem(hubLink);
 
   return (
     <>
-      <mesh position={[0, 0.12, -2]}>
+      <mesh position={[0, 0, -2]}>
         {visibleItem === 0 && (
           <HubLink
             size={hubLinkSize}
@@ -44,9 +45,9 @@ export const Hub = ({ hubLink, hubLinkClicked }) => {
         )}
       </mesh>
 
-      <mesh position={[0, 0, -2]} scale={0.7}>
+      <mesh position={[0, 0, -2]} scale={torusSize}>
         <TorusGroup
-          position={[0, 0, 0]}
+          position={[0, 0, -5]}
           rotation={[0, 0, 0]}
           hubLinkClicked={hubLinkClicked}
         />
