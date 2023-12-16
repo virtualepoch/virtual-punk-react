@@ -1,9 +1,16 @@
 import * as THREE from "three";
-import { Shape, useTexture } from "@react-three/drei";
+import { Shape, Text, useTexture } from "@react-three/drei";
 import { DissolveMaterial } from "./DissolveMaterial";
 import { useState } from "react";
 
-export const HubLink = ({ scale, image, visible, onFadeOut }) => {
+export const HubLink = ({
+  scale,
+  image,
+  visible,
+  onFadeOut,
+  fontSize = 0.1,
+  linkTitle = "hello",
+}) => {
   const map = useTexture(image);
   const dissolveMaterial = new THREE.MeshStandardMaterial({ map: map });
 
@@ -13,10 +20,17 @@ export const HubLink = ({ scale, image, visible, onFadeOut }) => {
   });
 
   return (
-    <mesh
-      scale={scale}
-      onClick={() => (red ? setRed(false) : setRed(true))}
-    >
+    <mesh scale={scale} onClick={() => (red ? setRed(false) : setRed(true))}>
+      <Text
+        font="fonts/Ailerons-TrialVersion.otf"
+        fontSize={fontSize}
+        position={[0, -0.53, 0.051]}
+        anchorY={"bottom"}
+        color={"red"}
+        castShadow
+      >
+        {linkTitle}
+      </Text>
       <Shape>
         <DissolveMaterial
           baseMaterial={dissolveMaterial}

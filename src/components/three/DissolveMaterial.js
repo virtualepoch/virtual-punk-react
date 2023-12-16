@@ -32,7 +32,15 @@ const fragmentShader = patchShaders(/* glsl */ `
     csm_DiffuseColor.rgb = mix(csm_DiffuseColor.rgb, uColor, border);
   }`);
 
-export function DissolveMaterial({ baseMaterial, thickness = 0.1, color = "#eb5a13", intensity = 50, duration = 0.7, visible = true, onFadeOut = () => {} }) {
+export function DissolveMaterial({
+  baseMaterial,
+  thickness = 0.1,
+  color = "#eb5a13",
+  intensity = 50,
+  duration = 0.7,
+  visible = true,
+  onFadeOut = () => {},
+}) {
   const uniforms = React.useRef({
     // uThickness: { value: 0.1 }, // original
     uThickness: { value: 0.5 },
@@ -46,7 +54,13 @@ export function DissolveMaterial({ baseMaterial, thickness = 0.1, color = "#eb5a
   }, [thickness, color, intensity]);
 
   useFrame((_state, delta) => {
-    easing.damp(uniforms.current.uProgress, "value", visible ? 1 : 0, duration, delta);
+    easing.damp(
+      uniforms.current.uProgress,
+      "value",
+      visible ? 1 : 0,
+      duration,
+      delta
+    );
     if (uniforms.current.uProgress.value < 0.1 && onFadeOut) {
       onFadeOut();
     }
@@ -54,7 +68,14 @@ export function DissolveMaterial({ baseMaterial, thickness = 0.1, color = "#eb5a
 
   return (
     <>
-      <CSM baseMaterial={baseMaterial} vertexShader={vertexShader} fragmentShader={fragmentShader} uniforms={uniforms.current} toneMapped={false} transparent />
+      <CSM
+        baseMaterial={baseMaterial}
+        vertexShader={vertexShader}
+        fragmentShader={fragmentShader}
+        uniforms={uniforms.current}
+        toneMapped={false}
+        transparent
+      />
     </>
   );
 }

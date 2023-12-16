@@ -20,28 +20,31 @@ export const Hub = ({ hubLink, hubLinkClicked }) => {
       <mesh position={[0, 0, -2]}>
         {visibleItem === 0 && (
           <HubLink
-            scale={hubLinkScale}
-            image={"/images/spaceScene.jpg"}
+            linkTitle="Torus"
+            image={"/images/torusScene.jpg"}
             visible={hubLink === 0}
             onFadeOut={onFadeOut}
+            scale={hubLinkScale}
           />
         )}
 
         {visibleItem === 1 && (
           <HubLink
-            scale={hubLinkScale}
-            image={"/images/torusScene.jpg"}
+            linkTitle="Space"
+            image={"/images/spaceScene.jpg"}
             visible={hubLink === 1}
             onFadeOut={onFadeOut}
+            scale={hubLinkScale}
           />
         )}
 
         {visibleItem === 2 && (
           <HubLink
-            scale={hubLinkScale}
+            linkTitle="Torus"
             image={"/images/torusScene.jpg"}
             visible={hubLink === 2}
             onFadeOut={onFadeOut}
+            scale={hubLinkScale}
           />
         )}
       </mesh>

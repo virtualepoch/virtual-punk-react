@@ -15,7 +15,7 @@ export const MyCamControls = ({ centerMeshRef, linkClicked }) => {
   // All same options as the original "basic" example:
   // https://yomotsu.github.io/camera-controls/examples/basic.html
   const {
-    minDistance,
+    // minDistance,
     enabled,
     verticalDragToForward,
     dollyToCursor,

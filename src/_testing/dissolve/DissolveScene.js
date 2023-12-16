@@ -27,15 +27,6 @@ export function DissolveScene() {
 
   return (
     <>
-      <CameraControls
-        ref={controlsRef}
-        minAzimuthAngle={-Math.PI / 1}
-        maxAzimuthAngle={Math.PI / 1}
-        maxPolarAngle={Math.PI / 1.5}
-        minPolarAngle={Math.PI / 4}
-        minDistance={2}
-        maxDistance={15}
-      />
       {visibleItem === "box" && (
         <mesh>
           <boxGeometry />
