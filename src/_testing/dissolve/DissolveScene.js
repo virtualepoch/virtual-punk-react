@@ -12,33 +12,6 @@ import { useControls } from "leva";
 const boxMaterial = new THREE.MeshStandardMaterial({ color: "white" });
 const sphereMaterial = new THREE.MeshStandardMaterial({ color: "white" });
 
-const BackDrop = () => {
-  const map = useLoader(THREE.TextureLoader, bg);
-  const ref = useRef();
-
-  useFrame(() => {
-    ref.current.rotation.y += 0.0003;
-  });
-
-  return (
-    <mesh position={[0, 0, 0]} rotation={[0, 1.6, 0]} ref={ref}>
-      <sphereGeometry args={[27, 20, 4]} />
-      <meshStandardMaterial map={map} side={THREE.BackSide} />
-    </mesh>
-  );
-};
-
-function Ground() {
-  return (
-    <>
-      <mesh position={[0, -1.5, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <planeGeometry args={[55, 55]} />
-        <meshBasicMaterial color="#dbecfb" />
-      </mesh>
-    </>
-  );
-}
-
 export function DissolveScene() {
   const controlsRef = useRef();
 
@@ -54,9 +27,6 @@ export function DissolveScene() {
 
   return (
     <>
-      <ambientLight intensity={1} />
-      <pointLight intensity={1} />
-      <BackDrop />
       <CameraControls
         ref={controlsRef}
         minAzimuthAngle={-Math.PI / 1}
@@ -98,9 +68,6 @@ export function DissolveScene() {
           onFadeOut={onFadeOut}
         />
       )}
-      <Environment preset="sunset" />
-      <Ground position-y={-1} />
-      <ContactShadows opacity={0.7} position={[0, -1.49, 0]} />
     </>
   );
 }

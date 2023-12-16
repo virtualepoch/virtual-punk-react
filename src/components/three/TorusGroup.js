@@ -33,13 +33,13 @@ export const TorusGroup = ({
   useFrame(() => {
     if (meshRef1.current) {
       meshRef1.current.rotation.x += 0;
-      meshRef1.current.rotation.y += hubScene ? -0.02 : -0.2;
-      meshRef1.current.rotation.z += hubScene ? 0.02 : 0.2;
+      meshRef1.current.rotation.y += hubScene ? 0 : -0.2;
+      meshRef1.current.rotation.z += hubScene ? -0.001 : 0.2;
     }
     if (meshRef2.current) {
       meshRef2.current.rotation.x += 0;
-      meshRef2.current.rotation.y += hubScene ? 0.01 : 0.1;
-      meshRef2.current.rotation.z += hubScene ? 0.01 : 0.1;
+      meshRef2.current.rotation.y += hubScene ? 0 : 0.1;
+      meshRef2.current.rotation.z += hubScene ? 0.001 : 0.1;
     }
     if (meshRef3.current) {
       meshRef3.current.rotation.x += hubScene ? 0.005 : 0.05;

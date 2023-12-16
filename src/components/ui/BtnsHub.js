@@ -9,7 +9,6 @@ export const BtnsHub = ({
 }) => {
   const match = useMatch("/hub");
 
-  console.log(hubLink);
   return (
     <>
       <CSSTransition

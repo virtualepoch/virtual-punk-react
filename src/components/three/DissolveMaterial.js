@@ -1,7 +1,6 @@
 import * as THREE from "three";
 import * as React from "react";
 import { patchShaders } from "gl-noise";
-import { PivotControls } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
 import { easing } from "maath";
 import CSM from "three-custom-shader-material";

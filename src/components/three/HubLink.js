@@ -1,35 +1,32 @@
-import { useRef } from "react";
 import * as THREE from "three";
-import { useFrame, useThree } from "@react-three/fiber";
 import { Shape, useTexture } from "@react-three/drei";
+import { DissolveMaterial } from "./DissolveMaterial";
 
-export const HubLink = ({
-  size,
-  posX,
-  image,
-  renderPriority = 1,
-  matrix = new THREE.Matrix4(),
-}) => {
+export const HubLink = ({ size, image, visible, onFadeOut }) => {
   const map = useTexture(image);
-
-  const hubLinkMesh = useRef();
-  const { camera } = useThree();
-
-  useFrame(() => {
-    matrix.copy(camera.matrix).invert();
-    hubLinkMesh.current.quaternion.setFromRotationMatrix(matrix);
+  const dissolveMaterial = new THREE.MeshStandardMaterial({ map: map });
+  const dissolveMaterial2 = new THREE.MeshStandardMaterial({
+    color: "#0b1735",
   });
 
   return (
-    <mesh ref={hubLinkMesh} scale={[size, size, size]} position-x={posX}>
+    <mesh scale={[size, size, size]}>
       <Shape>
-        <meshBasicMaterial map={map} />
+        <DissolveMaterial
+          baseMaterial={dissolveMaterial}
+          visible={visible}
+          onFadeOut={onFadeOut}
+          color="#0082b2"
+        />
       </Shape>
-      <Shape
-        scale={[1.1, 1.1, 1]}
-        position={[0, 0, -0.01]}
-        material-color="red"
-      />
+      <Shape scale={[1.1, 1.1, 1]} position={[0, 0, -0.01]}>
+        <DissolveMaterial
+          baseMaterial={dissolveMaterial2}
+          visible={visible}
+          onFadeOut={onFadeOut}
+          color="#0082b2"
+        />
+      </Shape>
     </mesh>
   );
 };

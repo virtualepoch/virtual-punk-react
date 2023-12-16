@@ -27,30 +27,12 @@ export function Dissolve() {
 
   return (
     <>
-      <h1 className="page-title">Dissolve</h1>
-      {/* {creditsInfo.map((item) => (
-        <CreditsModal modalOpen={modalOpen} setModalOpen={setModalOpen} key={item.id} info={item} />
-      ))} */}
-      <Canvas
-        shadows
-        camera={{ position: [-5, 3, 5], rotation: [0, 0, 0], fov: 50 }}
-      >
-        <XR>
-          <Controllers />
-          <Hands />
-          <Suspense fallback={null}>
-            <mesh>
-              <DissolveScene />
-            </mesh>
-          </Suspense>
-          <EffectComposer>
-            <Bloom luminanceThreshold={1} intensity={1.25} mipmapBlur />
-          </EffectComposer>
-          <primitive object={new THREE.AxesHelper(2)} />
-          <primitive object={new THREE.GridHelper(20, 20)} />
-        </XR>
-      </Canvas>
-      <VRButton />
+      <mesh>
+        <DissolveScene />
+      </mesh>
+
+      <primitive object={new THREE.AxesHelper(2)} />
+      <primitive object={new THREE.GridHelper(20, 20)} />
     </>
   );
 }
