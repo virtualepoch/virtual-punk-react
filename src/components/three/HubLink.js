@@ -1,16 +1,22 @@
 import * as THREE from "three";
 import { Shape, useTexture } from "@react-three/drei";
 import { DissolveMaterial } from "./DissolveMaterial";
+import { useState } from "react";
 
-export const HubLink = ({ size, image, visible, onFadeOut }) => {
+export const HubLink = ({ scale, image, visible, onFadeOut }) => {
   const map = useTexture(image);
   const dissolveMaterial = new THREE.MeshStandardMaterial({ map: map });
+
+  const [red, setRed] = useState(false);
   const dissolveMaterial2 = new THREE.MeshStandardMaterial({
-    color: "#0b1735",
+    color: red ? "red" : "#0b1735",
   });
 
   return (
-    <mesh scale={[size, size, size]}>
+    <mesh
+      scale={scale}
+      onClick={() => (red ? setRed(false) : setRed(true))}
+    >
       <Shape>
         <DissolveMaterial
           baseMaterial={dissolveMaterial}
@@ -24,7 +30,7 @@ export const HubLink = ({ size, image, visible, onFadeOut }) => {
           baseMaterial={dissolveMaterial2}
           visible={visible}
           onFadeOut={onFadeOut}
-          color="#0082b2"
+          color="#005555"
         />
       </Shape>
     </mesh>

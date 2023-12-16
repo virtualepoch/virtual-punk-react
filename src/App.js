@@ -85,6 +85,8 @@ function App() {
         />
 
         <Suspense>
+          <MyCamControls linkClicked={linkClicked} />
+
           <ambientLight intensity={1} />
           <directionalLight
             // ref={directionalLight}
@@ -115,8 +117,6 @@ function App() {
                 </MyVRButton>
               </>
             )}
-
-            <MyCamControls linkClicked={linkClicked} />
 
             <Routes>
               <Route

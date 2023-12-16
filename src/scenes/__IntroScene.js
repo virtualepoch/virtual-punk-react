@@ -14,7 +14,7 @@ export const IntroScene = ({ start, hub, setHub, downgradedPerformance }) => {
 
   useFrame(() => {
     if (sceneObjects.current.position.z >= 105) {
-      sceneObjects.current.position.z = 0;
+      sceneObjects.current.position.z = start ? 105 : 0;
       setHub(start ? true : false);
     }
     sceneObjects.current.position.z += sceneSpeed;

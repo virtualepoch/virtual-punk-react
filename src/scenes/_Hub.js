@@ -4,11 +4,12 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { HubLink } from "../components/three/HubLink";
 import { TorusGroup } from "../components/three/TorusGroup";
 import { Ocean } from "../components/three/Ocean";
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 
 export const Hub = ({ hubLink, hubLinkClicked }) => {
   const viewport = useThree((state) => state.viewport);
   const portrait = viewport.width < viewport.height;
-  const hubLinkSize = portrait ? viewport.width * 1.7 : viewport.width;
+  const hubLinkScale = portrait ? viewport.width * 1.7 : viewport.width;
   const torusSize = portrait ? viewport.width * 1.7 : viewport.width;
 
   const [visibleItem, setVisibleItem] = useState(hubLink);
@@ -19,7 +20,7 @@ export const Hub = ({ hubLink, hubLinkClicked }) => {
       <mesh position={[0, 0, -2]}>
         {visibleItem === 0 && (
           <HubLink
-            size={hubLinkSize}
+            scale={hubLinkScale}
             image={"/images/spaceScene.jpg"}
             visible={hubLink === 0}
             onFadeOut={onFadeOut}
@@ -28,7 +29,7 @@ export const Hub = ({ hubLink, hubLinkClicked }) => {
 
         {visibleItem === 1 && (
           <HubLink
-            size={hubLinkSize}
+            scale={hubLinkScale}
             image={"/images/torusScene.jpg"}
             visible={hubLink === 1}
             onFadeOut={onFadeOut}
@@ -37,7 +38,7 @@ export const Hub = ({ hubLink, hubLinkClicked }) => {
 
         {visibleItem === 2 && (
           <HubLink
-            size={hubLinkSize}
+            scale={hubLinkScale}
             image={"/images/torusScene.jpg"}
             visible={hubLink === 2}
             onFadeOut={onFadeOut}

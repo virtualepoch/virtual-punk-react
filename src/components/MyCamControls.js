@@ -65,7 +65,8 @@ export const MyCamControls = ({ centerMeshRef, linkClicked }) => {
           "/-2": () => cameraControlsRef.current?.zoom(-camera.zoom / 2, true),
         },
       }),
-      minDistance: { value: 0 },
+      // minDistance: { value: 2 },
+      // maxDistance: { value: 10 },
       moveTo: folder(
         {
           vec1: { value: [3, 5, 2], label: "vec" },
@@ -151,9 +152,14 @@ export const MyCamControls = ({ centerMeshRef, linkClicked }) => {
 
   return (
     <CameraControls
-      ref={cameraControlsRef}
-      minDistance={minDistance}
       enabled={enabled}
+      ref={cameraControlsRef}
+      minDistance={2}
+      maxDistance={15}
+      minAzimuthAngle={-Math.PI / 2}
+      maxAzimuthAngle={Math.PI / 2}
+      maxPolarAngle={Math.PI / 1.5}
+      minPolarAngle={Math.PI / 4}
       verticalDragToForward={verticalDragToForward}
       dollyToCursor={dollyToCursor}
       infinityDolly={infinityDolly}

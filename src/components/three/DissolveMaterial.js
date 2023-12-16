@@ -32,9 +32,10 @@ const fragmentShader = patchShaders(/* glsl */ `
     csm_DiffuseColor.rgb = mix(csm_DiffuseColor.rgb, uColor, border);
   }`);
 
-export function DissolveMaterial({ baseMaterial, thickness = 0.1, color = "#eb5a13", intensity = 50, duration = 1.2, visible = true, onFadeOut = () => {} }) {
+export function DissolveMaterial({ baseMaterial, thickness = 0.1, color = "#eb5a13", intensity = 50, duration = 0.7, visible = true, onFadeOut = () => {} }) {
   const uniforms = React.useRef({
-    uThickness: { value: 0.1 },
+    // uThickness: { value: 0.1 }, // original
+    uThickness: { value: 0.5 },
     uColor: { value: new THREE.Color("#eb5a13").multiplyScalar(20) },
     uProgress: { value: 0 },
   });
