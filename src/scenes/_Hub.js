@@ -57,9 +57,9 @@ export const Hub = ({ hubLink, hubLinkClicked }) => {
         ))}
       </mesh>
 
-      <mesh position={[0, 0, 0]}>
+      <mesh position={[0, 0, -2]} scale={0.5}>
         <TorusGroup
-          position={[0, 2.5, -10]}
+          position={[0, 0, 0]}
           rotation={[0, 0, 0]}
           hubLinkClicked={hubLinkClicked}
         />

@@ -68,7 +68,7 @@
   position: fixed;
   left: 0;
   bottom: 0;
-  z-index: 555;
+  z-index: 444;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -91,7 +91,7 @@
   bottom: 5px;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 444;
+  z-index: 553;
   border-radius: 20px;
   color: white;
   font: 100 25px Ailerons;

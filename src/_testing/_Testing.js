@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import * as THREE from "three";
 import { DirectionalLightHelper } from "three";
 import {
   ContactShadows,
@@ -9,67 +10,57 @@ import {
 // COMPONENTS
 import { ExtraSoundPro } from "../components/models/ExtraSoundPro";
 import { ReflectiveFloor } from "../components/three/ReflectiveFloor";
-import { HubLinkPanel, HubScene } from "../components/three/HubLinkPanel";
+
+// COMPONENTS TO TEST //
 import { MyVRButton } from "../components/vr/MyVRButton";
-
-import { useThree } from "@react-three/fiber";
-import { AppearanceEffectLightBeam } from "../components/models/AppearanceEffectLightBeam";
-import { BgSphere } from "../components/three/BgSphere";
-
-import bgImage from "../assets/images/spaceScene.jpg";
-import { HubLink  } from "../components/three/HubLink";
-
-import imageTorus from "../assets/images/spaceScene.jpg"
-
-// import { MeshUIPanel } from "../components/three/MeshUIPanel";
-// import { UnstableAntimatter } from "../components/models/UnstableAntimatter";
-// import { LightBeam } from "../components/models/LightBeam";
-// import { TheGreatMorpheus } from "../components/models/TheGreatMorpheus";
-// import { PcSpider } from "../components/models/PcSpider1k";
-// import { RampagingTRex } from "../components/models/RampagingTRex";
+import { HubLink } from "../components/three/HubLink";
+import imageTorus from "../assets/images/spaceScene.jpg";
+import { useFrame } from "@react-three/fiber";
 
 export const Testing = () => {
+  const directionalLight = useRef();
+  if (directionalLight.current) {
+    directionalLight.current.useHelper(
+      directionalLight,
+      DirectionalLightHelper,
+      1,
+      "red"
+    );
+  }
+
+  const hubLink = useRef();
+
+  const clock = new THREE.Clock();
+
+  useFrame(() => {
+    const a = clock.getElapsedTime() * 2;
+
+    if (a < 2) hubLink.current.position.x = a;
+    if (a > 2) {
+      hubLink.current.position.x = 2;
+      hubLink.current.position.y = a - 2;
+    }
+    if (a > 4) {
+      hubLink.current.position.y = 2;
+      hubLink.current.position.x -= a - 4;
+    }
+    if (a > 6) {
+      hubLink.current.position.x = 0;
+      hubLink.current.position.y -= a - 6;
+    }
+    if (a > 8) clock.start();
+  });
+
   return (
     <>
-      <HubLink size={[4,4]} image={imageTorus}/>
-      {/* <BgSphere
-        radius={4}
-        widthSegments={3}
-        heightSegments={3}
-        position={[0, 2, -4]}
-        bgImage={bgImage}
-        bgWrapX={1}
-        bgWrapY={2}
-      /> */}
-      <AppearanceEffectLightBeam />
-      {/* <MeshUIPanel /> */}
-      {/* <MyVRButton>Start</MyVRButton> */}
-      <Environment preset="city" />
+      <mesh ref={hubLink} position={[0, 0, -18]}>
+        <HubLink size={2} image={imageTorus} />
+      </mesh>
 
-      <ambientLight intensity={1} />
-      <directionalLight
-        // ref={light}
-        position={[0, 15, 10]}
-        // angle={0.3}
-        intensity={1}
-        color="white"
-        castShadow
-      />
+      <directionalLight ref={directionalLight} />
       <Stars />
       <ExtraSoundPro />
       <ReflectiveFloor />
-      {/* <ContactShadows position-y={-1.8} opacity={1} color="red" /> */}
     </>
   );
 };
-
-// const Shadows = memo(() => (
-//   <AccumulativeShadows temporal frames={100} color="#9d4b4b" colorBlend={0.5} alphaTest={0.9} scale={20}>
-//     <RandomizedLight amount={8} radius={4} position={[5, 5, -10]} />
-//   </AccumulativeShadows>
-// ))
-
-// const light = useRef();
-// if (light.current) {
-//   light.current.useHelper(light, DirectionalLightHelper, 1, "red");
-// }

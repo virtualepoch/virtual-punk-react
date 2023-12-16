@@ -27,7 +27,7 @@ export function AppearanceEffectLightBeam({ props, start, hubLinkClicked }) {
       ref={group}
       {...props}
       dispose={null}
-      rotation={[hubLinkClicked ? Math.PI / 1.8 : Math.PI / 2, 0, 0]}
+      rotation={[Math.PI / 2, 0, 0]}
       scale={[0.3, 3, 0.3]}
     >
       <group name="Sketchfab_Scene">
