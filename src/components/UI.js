@@ -28,8 +28,8 @@ export const UI = ({
   setLinkClicked,
   hubLink,
   setHubLink,
-  hubLinkClicked,
-  setHubLinkClicked,
+  hubBtnClicked,
+  setHubBtnClicked,
 }) => {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
   const [modalInfoOpen, setModalInfoOpen] = useState(false);
@@ -103,8 +103,7 @@ export const UI = ({
       <BtnsHub
         hubLink={hubLink}
         setHubLink={setHubLink}
-        hubLinkClicked={hubLinkClicked}
-        setHubLinkClicked={setHubLinkClicked}
+        setHubBtnClicked={setHubBtnClicked}
       />
 
       <ModalVR

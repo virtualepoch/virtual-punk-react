@@ -1,12 +1,7 @@
 import { useMatch } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 
-export const BtnsHub = ({
-  hubLink,
-  setHubLink,
-  hubLinkClicked,
-  setHubLinkClicked,
-}) => {
+export const BtnsHub = ({ hubLink, setHubLink, setHubBtnClicked }) => {
   const match = useMatch("/hub");
 
   return (
@@ -21,10 +16,11 @@ export const BtnsHub = ({
           className="btn-hub btn-hub-left"
           onClick={() => {
             hubLink > 0 ? setHubLink(hubLink - 1) : setHubLink(0);
-            setHubLinkClicked(true);
+            setHubBtnClicked(true);
           }}
         />
       </CSSTransition>
+      
       <CSSTransition
         in={match}
         classNames="btn-hub-right"
@@ -35,7 +31,7 @@ export const BtnsHub = ({
           className="btn-hub btn-hub-right"
           onClick={() => {
             hubLink < 2 ? setHubLink(hubLink + 1) : setHubLink(hubLink);
-            setHubLinkClicked(false);
+            setHubBtnClicked(true);
           }}
         />
       </CSSTransition>

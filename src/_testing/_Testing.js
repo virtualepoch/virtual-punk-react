@@ -3,12 +3,17 @@ import * as THREE from "three";
 import { DirectionalLightHelper } from "three";
 import {
   ContactShadows,
+  Decal,
   Environment,
   Hud,
   OrbitControls,
   OrthographicCamera,
   PerspectiveCamera,
+  Sphere,
   Stars,
+  Text,
+  Text3D,
+  useHelper,
   useTexture,
 } from "@react-three/drei";
 // COMPONENTS
@@ -21,23 +26,69 @@ import { HubLink } from "../components/three/HubLink";
 import { useFrame, useThree } from "@react-three/fiber";
 import { TorusGroup } from "../components/three/TorusGroup";
 // ASSETS
-import imageTorus from "../assets/images/spaceScene.jpg";
+import imageUrl from "../assets/images/spaceScene.jpg";
 
 export const Testing = () => {
   const directionalLight = useRef();
-  if (directionalLight.current) {
-    directionalLight.current.useHelper(
-      directionalLight,
-      DirectionalLightHelper,
-      1,
-      "red"
-    );
-  }
+  const helper = useHelper(directionalLight, DirectionalLightHelper, 1, "red");
+
+  const map = useTexture(imageUrl);
+
+  const ref = useRef();
+  useFrame(() => {
+    if (clicked) {
+      if (ref.current.scale.z > 0) ref.current.scale.z -= 0.5;
+    }
+  });
+
+  const [clicked, setClicked] = useState(false);
+
+  const viewport = useThree((state) => state.viewport);
+  const text3DScale = viewport.aspect * 4;
 
   return (
     <>
-      <PerspectiveCamera position={[0, 0, 10]} />
-      <directionalLight ref={directionalLight}/>
+      <mesh
+        ref={ref}
+        position={[0, 0, 0]}
+        scale={[text3DScale, text3DScale, text3DScale * 4]}
+        onClick={() => setClicked(!clicked)}
+        receiveShadow
+        castShadow
+      >
+        <Text3D
+          font="fonts/Arcade.json"
+          size={0.1}
+          position={[0, 0, 0]}
+          anchorY={"center"}
+          material-color={"white"}
+          scale={[1, 1, 0.2]}
+          receiveShadow
+          castShadow
+        >
+          VR
+        </Text3D>
+      </mesh>
+
+      {/* <mesh position={[-1.5, 0, 0]}>
+        <Text
+          font="fonts/ARCADE.TTF"
+          fontSize={0.4}
+          position={[0, 0, 1]}
+          anchorY={"center"}
+          color={"red"}
+        >
+          hello
+        </Text>
+
+        <Sphere args={[1, 8, 8]}>
+          <meshBasicMaterial color="black" />
+        </Sphere>
+      </mesh> */}
+
+      <PerspectiveCamera makeDefault position={[0, 0, 10]} />
+      <OrbitControls />
+      <directionalLight ref={directionalLight} position={[-2, 4, 2]} />
       <Stars />
       <ExtraSoundPro />
       <ReflectiveFloor />

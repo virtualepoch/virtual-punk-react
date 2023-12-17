@@ -42,14 +42,18 @@ function App() {
   const [linkClicked, setLinkClicked] = useState(false); // used to reset the CameraControls when a Link is clicked (Scene changes)
   const [downgradedPerformance, setDowngradedPerformance] = useState(false); // used to change asset quality based on device hardware
   const [hubLink, setHubLink] = useState(0);
-  const [hubLinkClicked, setHubLinkClicked] = useState(false);
+  const [hubBtnClicked, setHubBtnClicked] = useState(false);
 
   // My functions
   useEffect(() => {
     setTimeout(() => {
       if (linkClicked) setLinkClicked(false);
     }, 1);
-  }, [linkClicked]);
+
+    setTimeout(() => {
+      if (hubBtnClicked) setHubBtnClicked(false);
+    }, 1000);
+  }, [linkClicked, hubBtnClicked]);
 
   // const directionalLight = useRef();
   // useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
@@ -67,8 +71,8 @@ function App() {
         setLinkClicked={setLinkClicked}
         hubLink={hubLink}
         setHubLink={setHubLink}
-        hubLinkClicked={hubLinkClicked}
-        setHubLinkClicked={setHubLinkClicked}
+        hubBtnClicked={hubBtnClicked}
+        setHubBtnClicked={setHubBtnClicked}
       />
 
       <Canvas
@@ -134,7 +138,7 @@ function App() {
               <Route
                 path="/hub"
                 element={
-                  <Hub hubLink={hubLink} hubLinkClicked={hubLinkClicked} />
+                  <Hub hubLink={hubLink} hubBtnClicked={hubBtnClicked} />
                 }
               />
               <Route

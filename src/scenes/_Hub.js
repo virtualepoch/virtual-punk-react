@@ -6,7 +6,7 @@ import { TorusGroup } from "../components/three/TorusGroup";
 import { Ocean } from "../components/three/Ocean";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 
-export const Hub = ({ hubLink, hubLinkClicked }) => {
+export const Hub = ({ hubLink, hubBtnClicked }) => {
   const viewport = useThree((state) => state.viewport);
   const portrait = viewport.width < viewport.height;
   const hubLinkScale = portrait ? viewport.width * 1.7 : viewport.width;
@@ -25,6 +25,7 @@ export const Hub = ({ hubLink, hubLinkClicked }) => {
             visible={hubLink === 0}
             onFadeOut={onFadeOut}
             scale={hubLinkScale}
+            hubBtnClicked={hubBtnClicked}
           />
         )}
 
@@ -35,6 +36,7 @@ export const Hub = ({ hubLink, hubLinkClicked }) => {
             visible={hubLink === 1}
             onFadeOut={onFadeOut}
             scale={hubLinkScale}
+            hubBtnClicked={hubBtnClicked}
           />
         )}
 
@@ -45,6 +47,7 @@ export const Hub = ({ hubLink, hubLinkClicked }) => {
             visible={hubLink === 2}
             onFadeOut={onFadeOut}
             scale={hubLinkScale}
+            hubBtnClicked={hubBtnClicked}
           />
         )}
       </mesh>
@@ -53,7 +56,7 @@ export const Hub = ({ hubLink, hubLinkClicked }) => {
         <TorusGroup
           position={[0, 0, -5]}
           rotation={[0, 0, 0]}
-          hubLinkClicked={hubLinkClicked}
+          hubBtnClicked={hubBtnClicked}
         />
       </mesh>
 
