@@ -1,8 +1,14 @@
-export const TorusMesh = ({ args, map, torusMeshRef }) => {
+import { Torus } from "@react-three/drei";
+
+export const TorusMesh = ({
+  args,
+  torusMeshRef,
+  position = [0, 0, 0],
+  map,
+}) => {
   return (
-    <mesh ref={torusMeshRef} position={[0, 0, 0]}>
-      <torusGeometry args={args} />
-      <meshStandardMaterial map={map} transparent/>
-    </mesh>
+    <Torus args={args} ref={torusMeshRef} position={position}>
+      <meshStandardMaterial map={map} />
+    </Torus>
   );
 };

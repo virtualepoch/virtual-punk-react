@@ -34,15 +34,16 @@ import { PortalScene } from "./_testing/PortalScene.js";
 
 function App() {
   // useState hooks
-  const [start, setStart] = useState(false);
-  const [hub, setHub] = useState(false);
+  const [start, setStart] = useState(false); // Where:(UI(BtnStart) & IntroScene), For:(to activate the scene animation) 
+  const [hub, setHub] = useState(false); // (IntroScene) cancels the IntroScene animation / navigates to the Hub
+  const [linkClicked, setLinkClicked] = useState(false); // (UI(NavMenu) & MyCamControls) resets cam posistion when a Link is clicked (Scene changes)
+  const [downgradedPerformance, setDowngradedPerformance] = useState(false); // (App(PerformanceMonitor) & IntroScene & TorusScene) lowers asset quality based on fps
+  const [hubLink, setHubLink] = useState(0); // (UI(BtnsHub) & Hub) changes the currently displayed hub link
+  const [hubBtnClicked, setHubBtnClicked] = useState(false); // (UI(BtnsHub) & Hub(HubLink)) switch to cycle the opacity of the HubLink title and triangle backdrop
+  // VR hooks
   const [vrSession, setVrSession] = useState(false);
   const [foveation, setFoveation] = useState(0);
   const [vrFrameRate, setVrFrameRate] = useState(null);
-  const [linkClicked, setLinkClicked] = useState(false); // used to reset the CameraControls when a Link is clicked (Scene changes)
-  const [downgradedPerformance, setDowngradedPerformance] = useState(false); // used to change asset quality based on device hardware
-  const [hubLink, setHubLink] = useState(0);
-  const [hubBtnClicked, setHubBtnClicked] = useState(false);
 
   // My functions
   useEffect(() => {

@@ -32,18 +32,20 @@ export const Testing = () => {
   const directionalLight = useRef();
   const helper = useHelper(directionalLight, DirectionalLightHelper, 1, "red");
 
+  
   const map = useTexture(imageUrl);
-
+  
   const ref = useRef();
   useFrame(() => {
     if (clicked) {
       if (ref.current.scale.z > 0) ref.current.scale.z -= 0.5;
     }
   });
-
+  
   const [clicked, setClicked] = useState(false);
-
+  
   const viewport = useThree((state) => state.viewport);
+  const portrait = viewport.width < viewport.height;
   const text3DScale = viewport.aspect * 4;
 
   return (

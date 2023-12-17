@@ -1,31 +1,47 @@
-import { useRef, useState } from "react";
-import { useFrame, useThree } from "@react-three/fiber";
+import { useState } from "react";
+import { useThree } from "@react-three/fiber";
 // COMPONENTS //
 import { HubLink } from "../components/three/HubLink";
 import { TorusGroup } from "../components/three/TorusGroup";
 import { Ocean } from "../components/three/Ocean";
-import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
+import { useNavigate } from "react-router-dom";
 
 export const Hub = ({ hubLink, hubBtnClicked }) => {
+  // Params for responsive sizing
   const viewport = useThree((state) => state.viewport);
   const portrait = viewport.width < viewport.height;
-  const hubLinkScale = portrait ? viewport.width * 1.7 : viewport.width;
-  const torusSize = portrait ? viewport.width * 1.7 : viewport.width;
+  const scale = portrait ? viewport.width * 4 : viewport.height * 4;
+  // For navigation
+  const navigate = useNavigate();
 
+  // Changes visible hubLink after Dissolve anim
   const [visibleItem, setVisibleItem] = useState(hubLink);
-  const onFadeOut = () => setVisibleItem(hubLink);
+  const onFadeOut = () =>
+    hubLinkClicked ? setVisibleItem() : setVisibleItem(hubLink);
+
+  // State to start the transition anim prior to navigate
+  const [hubLinkClicked, setHubLinkClicked] = useState();
+
+  const NavTimeout = () => {
+    setTimeout(() => {
+      navigate("/torus");
+    }, 2000);
+  };
 
   return (
     <>
-      <mesh position={[0, 0, -2]}>
+      <mesh position={[0, 0.1, -7 + scale / 4]}>
         {visibleItem === 0 && (
           <HubLink
             linkTitle="Torus"
             image={"/images/torusScene.jpg"}
             visible={hubLink === 0}
             onFadeOut={onFadeOut}
-            scale={hubLinkScale}
+            scale={scale}
             hubBtnClicked={hubBtnClicked}
+            onClick={NavTimeout}
+            hubLinkClicked={hubLinkClicked}
+            setHubLinkClicked={setHubLinkClicked}
           />
         )}
 
@@ -35,8 +51,11 @@ export const Hub = ({ hubLink, hubBtnClicked }) => {
             image={"/images/spaceScene.jpg"}
             visible={hubLink === 1}
             onFadeOut={onFadeOut}
-            scale={hubLinkScale}
+            scale={scale}
             hubBtnClicked={hubBtnClicked}
+            onClick={() => navigate("/torus")}
+            hubLinkClicked={hubLinkClicked}
+            setHubLinkClicked={setHubLinkClicked}
           />
         )}
 
@@ -46,19 +65,22 @@ export const Hub = ({ hubLink, hubBtnClicked }) => {
             image={"/images/torusScene.jpg"}
             visible={hubLink === 2}
             onFadeOut={onFadeOut}
-            scale={hubLinkScale}
+            scale={scale}
             hubBtnClicked={hubBtnClicked}
+            onClick={() => navigate("/torus")}
+            hubLinkClicked={hubLinkClicked}
+            setHubLinkClicked={setHubLinkClicked}
           />
         )}
       </mesh>
 
-      <mesh position={[0, 0, -2]} scale={torusSize}>
-        <TorusGroup
-          position={[0, 0, -5]}
-          rotation={[0, 0, 0]}
-          hubBtnClicked={hubBtnClicked}
-        />
-      </mesh>
+      <TorusGroup
+        position={[0, 0, -7]}
+        scale={scale / 2}
+        rotation={[0, 0, 0]}
+        hubBtnClicked={hubBtnClicked}
+        hubLinkClicked={hubLinkClicked}
+      />
 
       <Ocean
         position={[0, -140, 0]}
