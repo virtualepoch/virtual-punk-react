@@ -1,15 +1,17 @@
+import { useState } from "react";
 import { useMatch } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 
 export const BtnsHub = ({ hubLink, setHubLink, setHubBtnClicked }) => {
   const match = useMatch("/hub");
+  const [clicked, setClicked] = useState(false);
 
   return (
     <>
       <CSSTransition
-        in={match}
+        in={match && hubLink > 0}
         classNames="btn-hub-left"
-        timeout={1000}
+        timeout={hubLink > 0 ? 1000 : 500}
         unmountOnExit
       >
         <button
@@ -20,18 +22,21 @@ export const BtnsHub = ({ hubLink, setHubLink, setHubBtnClicked }) => {
           }}
         />
       </CSSTransition>
-      
+
       <CSSTransition
-        in={match}
+        in={match && hubLink < 2}
         classNames="btn-hub-right"
-        timeout={1000}
+        timeout={hubLink < 2 ? 1000 : 500}
         unmountOnExit
       >
         <button
-          className="btn-hub btn-hub-right"
+          className={
+            clicked ? "clicked btn-hub btn-hub-right" : "btn-hub btn-hub-right"
+          }
           onClick={() => {
             hubLink < 2 ? setHubLink(hubLink + 1) : setHubLink(hubLink);
             setHubBtnClicked(true);
+            setClicked(true);
           }}
         />
       </CSSTransition>

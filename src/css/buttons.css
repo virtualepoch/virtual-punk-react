@@ -284,12 +284,35 @@
   background: url(../../public/icons/chevron-left-cyan.svg) 30% 50% / 40%
     no-repeat;
   filter: drop-shadow(0 0 2px black);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: inset -5px 0 5px 1px rgba(0, 0, 0, 0.1);
 }
 
 .btn-hub-right {
   right: 0;
   background: url(../../public/icons/chevron-right-cyan.svg) 70% 50% / 40%
     no-repeat;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: inset 5px 0 5px 1px rgba(0, 0, 0, 0.1);
+  animation: hub-btn-pulse 1s ease infinite;
+}
+
+.btn-hub-right.clicked {
+  animation: none;
+}
+
+@keyframes hub-btn-pulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 2px black);
+  }
+  50% {
+    filter: drop-shadow(0 0 2px cyan);
+  }
 }
 
 /* CSSTransition HUB BUTTON LEFT  */
@@ -305,7 +328,7 @@
 }
 .btn-hub-left-exit-active {
   transform: translateX(-100%);
-  transition: transform 1000ms ease;
+  transition: transform 500ms ease;
 }
 /* CSSTransition HUB BUTTON RIGHT  */
 .btn-hub-right-enter {
@@ -320,7 +343,7 @@
 }
 .btn-hub-right-exit-active {
   transform: translateX(100%);
-  transition: transform 1000ms ease;
+  transition: transform 500ms ease;
 }
 
 /* CONTROLS  */
