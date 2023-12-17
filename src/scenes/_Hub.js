@@ -11,6 +11,7 @@ export const Hub = ({ hubLink, hubBtnClicked }) => {
   const viewport = useThree((state) => state.viewport);
   const portrait = viewport.width < viewport.height;
   const scale = portrait ? viewport.width * 4 : viewport.height * 4;
+
   // For navigation
   const navigate = useNavigate();
 
@@ -22,9 +23,17 @@ export const Hub = ({ hubLink, hubBtnClicked }) => {
   // State to start the transition anim prior to navigate
   const [hubLinkClicked, setHubLinkClicked] = useState();
 
-  const NavTimeout = () => {
+  const navTimeout = () => {
     setTimeout(() => {
-      navigate("/torus");
+      navigate(
+        hubLink === 0
+          ? "/torus"
+          : hubLink === 1
+          ? "/mach"
+          : hubLink === 2
+          ? "/water"
+          : "/hub"
+      );
     }, 2000);
   };
 
@@ -37,9 +46,10 @@ export const Hub = ({ hubLink, hubBtnClicked }) => {
             image={"/images/torusScene.jpg"}
             visible={hubLink === 0}
             onFadeOut={onFadeOut}
+            portrait={portrait}
             scale={scale}
             hubBtnClicked={hubBtnClicked}
-            onClick={NavTimeout}
+            onClick={navTimeout}
             hubLinkClicked={hubLinkClicked}
             setHubLinkClicked={setHubLinkClicked}
           />
@@ -47,13 +57,14 @@ export const Hub = ({ hubLink, hubBtnClicked }) => {
 
         {visibleItem === 1 && (
           <HubLink
-            linkTitle="Space"
+            linkTitle="Mach"
             image={"/images/spaceScene.jpg"}
             visible={hubLink === 1}
             onFadeOut={onFadeOut}
+            portrait={portrait}
             scale={scale}
             hubBtnClicked={hubBtnClicked}
-            onClick={() => navigate("/torus")}
+            onClick={navTimeout}
             hubLinkClicked={hubLinkClicked}
             setHubLinkClicked={setHubLinkClicked}
           />
@@ -61,13 +72,14 @@ export const Hub = ({ hubLink, hubBtnClicked }) => {
 
         {visibleItem === 2 && (
           <HubLink
-            linkTitle="Torus"
+            linkTitle="Water"
             image={"/images/torusScene.jpg"}
             visible={hubLink === 2}
             onFadeOut={onFadeOut}
+            portrait={portrait}
             scale={scale}
             hubBtnClicked={hubBtnClicked}
-            onClick={() => navigate("/torus")}
+            onClick={navTimeout}
             hubLinkClicked={hubLinkClicked}
             setHubLinkClicked={setHubLinkClicked}
           />

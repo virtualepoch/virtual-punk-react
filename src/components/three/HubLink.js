@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 
 export const HubLink = ({
+  portrait,
   scale,
   image,
   visible = false,
@@ -40,7 +41,8 @@ export const HubLink = ({
     }
 
     if (hubLinkClicked) {
-      text3DMesh.current.position.z = a < timeFactor3 ? a * 2 : 10;
+      text3DMesh.current.position.z =
+        a < timeFactor3 ? (portrait ? a * scale * 4 : a * scale) : 8;
       dissolveMesh.current.position.z = a < timeFactor3 ? -a : 0;
       backdropMaterial.current.opacity = a < timeFactor3 ? 1 - a : 0;
     }
