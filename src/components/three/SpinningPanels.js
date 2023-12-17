@@ -31,7 +31,7 @@ export const SpinningPanels = ({
   });
 
   return (
-    <mesh
+    <group
       ref={panels}
       rotation={[panelsRotationX, 0, 0]}
       position={panelsPosition}
@@ -82,6 +82,6 @@ export const SpinningPanels = ({
         //   {...meshProps} // All THREE.Mesh props are valid
         material={panelMaterial}
       />
-    </mesh>
+    </group>
   );
 };

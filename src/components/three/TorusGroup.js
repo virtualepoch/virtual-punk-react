@@ -65,26 +65,28 @@ export const TorusGroup = ({
   });
 
   return (
-    <mesh position={position} rotation={rotation} scale={scale}>
-      <AppearanceEffectLightBeam
-        start={start}
-        hubLinkClicked={hubLinkClicked}
-      />
-      <TorusMesh
-        args={[0.9, 0.1, 3, 28]}
-        map={meshTexture}
-        torusMeshRef={meshRef1}
-      />
-      <TorusMesh
-        args={[1.1, 0.1, 3, 28]}
-        map={meshTexture}
-        torusMeshRef={meshRef2}
-      />
-      <TorusMesh
-        args={[1.3, 0.1, 3, 28]}
-        map={meshTexture}
-        torusMeshRef={meshRef3}
-      />
-    </mesh>
+    <>
+      <group position={position} rotation={rotation} scale={scale}>
+        <AppearanceEffectLightBeam
+          start={start}
+          hubLinkClicked={hubLinkClicked}
+        />
+        <TorusMesh
+          args={[0.9, 0.1, 3, 28]}
+          map={meshTexture}
+          torusMeshRef={meshRef1}
+        />
+        <TorusMesh
+          args={[1.1, 0.1, 3, 28]}
+          map={meshTexture}
+          torusMeshRef={meshRef2}
+        />
+        <TorusMesh
+          args={[1.3, 0.1, 3, 28]}
+          map={meshTexture}
+          torusMeshRef={meshRef3}
+        />
+      </group>
+    </>
   );
 };

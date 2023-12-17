@@ -27,7 +27,7 @@ export const IntroScene = ({ start, hub, setHub, downgradedPerformance }) => {
 
   return (
     <>
-      <mesh ref={sceneObjects} position={[0, 0, 0]}>
+      <group ref={sceneObjects} position={[0, 0, 0]}>
         <RabbitHole
           position={[0, 0, -38]}
           downgradedPerformance={downgradedPerformance}
@@ -46,7 +46,7 @@ export const IntroScene = ({ start, hub, setHub, downgradedPerformance }) => {
           start={start}
           downgradedPerformance={downgradedPerformance}
         />
-      </mesh>
+      </group>
 
       <Ocean
         position={[0, -140, 0]}

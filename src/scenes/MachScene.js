@@ -1,12 +1,16 @@
 import * as THREE from "three";
 import { useRef } from "react";
-import { useFrame, useLoader } from "@react-three/fiber";
+import { useFrame, useLoader, useThree } from "@react-three/fiber";
 import { Stars, useHelper } from "@react-three/drei";
 import { JetConcept } from "../components/models/Jet_concept";
 import earth500 from "../assets/images/textures/earth_clouds_1k.jpg";
 import earth8k from "../assets/images/textures/earth_clouds_4k.jpg";
 
 export function MachScene() {
+  const directionalLight = useRef();
+  // useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
+  const viewport = useThree((state) => state.viewport); // used to scale scene
+
   function Earth() {
     function textureChanger() {
       if (window.innerWidth < 700) {
@@ -17,11 +21,10 @@ export function MachScene() {
     }
 
     const texture = useLoader(THREE.TextureLoader, textureChanger());
-
     const earthRef = useRef(null);
 
     useFrame(() => {
-      if (earthRef.current) earthRef.current.rotation.x += 0.0002;
+      if (earthRef.current) earthRef.current.rotation.x += 0.0001;
     });
 
     return (
@@ -47,21 +50,15 @@ export function MachScene() {
     );
   }
 
-  const directionalLight = useRef();
-  useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
-
   return (
-    <>
-      <ambientLight intensity={1} />
-      <directionalLight
-        ref={directionalLight}
-        position={[1, 2, -2]}
-        angle={1}
-      />
-      {/* <OrbitControls autoRotate={true} /> */}
-      <JetMesh />
-      <Earth />
+    <group scale={viewport.aspect}>
+      <group position={[0, 0, -10]} rotation={[-0.1, 0, 0]}>
+        <ambientLight intensity={1} />
+        <directionalLight ref={directionalLight} position={[-2, 4, -2]} />
+        <JetMesh />
+        <Earth />
+      </group>
       <Stars />
-    </>
+    </group>
   );
 }

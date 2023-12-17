@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import * as THREE from "three";
 import { DirectionalLightHelper } from "three";
 import {
+  Center,
   ContactShadows,
   Decal,
   Environment,
@@ -28,72 +29,79 @@ import { TorusGroup } from "../components/three/TorusGroup";
 // ASSETS
 import imageUrl from "../assets/images/spaceScene.jpg";
 
-export const Testing = () => {
-  const directionalLight = useRef();
-  const helper = useHelper(directionalLight, DirectionalLightHelper, 1, "red");
+export const linkOrbInfo = [
+  {
+    text: "torus",
+    number: 0,
+  },
+  {
+    text: "mach",
+    number: 1,
+  },
+  {
+    text: "water",
+    number: 2,
+  },
+];
 
-  
+export const Testing = () => {
+  const viewport = useThree((state) => state.viewport);
+  const directionalLight = useRef();
+  useHelper(directionalLight, DirectionalLightHelper, 1, "red");
   const map = useTexture(imageUrl);
-  
   const ref = useRef();
+  const ref2 = useRef();
+
+  const [clicked, setClicked] = useState(false);
+  const [number, setNumber] = useState(0);
+
   useFrame(() => {
     if (clicked) {
-      if (ref.current.scale.z > 0) ref.current.scale.z -= 0.5;
+      if (ref2.current.scale.x < 2) ref2.current.scale.x += 0.5;
     }
   });
-  
-  const [clicked, setClicked] = useState(false);
-  
-  const viewport = useThree((state) => state.viewport);
-  const portrait = viewport.width < viewport.height;
-  const text3DScale = viewport.aspect * 4;
 
   return (
     <>
-      <mesh
-        ref={ref}
-        position={[0, 0, 0]}
-        scale={[text3DScale, text3DScale, text3DScale * 4]}
-        onClick={() => setClicked(!clicked)}
-        receiveShadow
-        castShadow
-      >
-        <Text3D
-          font="fonts/Arcade.json"
-          size={0.1}
+      <Center>
+        <group
+          ref={ref}
           position={[0, 0, 0]}
-          anchorY={"center"}
-          material-color={"white"}
-          scale={[1, 1, 0.2]}
+          scale={viewport.aspect / 8}
+          onClick={() => setClicked(!clicked)}
           receiveShadow
           castShadow
         >
-          VR
-        </Text3D>
-      </mesh>
+          {linkOrbInfo.map((item, index) => (
+            <group key={index} position={[index * 3, 0, 0]}>
+              <Text
+                ref={ref2}
+                font="fonts/ARCADE.TTF"
+                fontSize={0.4}
+                position={[0, 0, 1]}
+                anchorY={"center"}
+                color={"red"}
+              >
+                {item.text}
+              </Text>
 
-      {/* <mesh position={[-1.5, 0, 0]}>
-        <Text
-          font="fonts/ARCADE.TTF"
-          fontSize={0.4}
-          position={[0, 0, 1]}
-          anchorY={"center"}
-          color={"red"}
-        >
-          hello
-        </Text>
+              <Sphere args={[1, 8, 8]}>
+                <meshBasicMaterial
+                  color={item.number === number ? "cyan" : "black"}
+                />
+              </Sphere>
+            </group>
+          ))}
+        </group>
+      </Center>
 
-        <Sphere args={[1, 8, 8]}>
-          <meshBasicMaterial color="black" />
-        </Sphere>
-      </mesh> */}
-
-      <PerspectiveCamera makeDefault position={[0, 0, 10]} />
-      <OrbitControls />
-      <directionalLight ref={directionalLight} position={[-2, 4, 2]} />
-      <Stars />
-      <ExtraSoundPro />
-      <ReflectiveFloor />
+      <group>
+        <PerspectiveCamera makeDefault position={[0, 0, 10]} />
+        <directionalLight ref={directionalLight} position={[-2, 4, 2]} />
+        <Stars />
+        <ExtraSoundPro />
+        <ReflectiveFloor />
+      </group>
     </>
   );
 };

@@ -51,7 +51,7 @@ export const HubLink = ({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <mesh
+    <group
       scale={scale}
       onClick={() => {
         setHubLinkClicked(true);
@@ -65,7 +65,7 @@ export const HubLink = ({
           <Text3D
             font="fonts/Arcade.json"
             size={fontSize}
-            position={[0, -0.53, 0]}
+            position={[0, portrait ? -0.9 : -0.6, 0]}
           >
             <meshBasicMaterial
               ref={text3DMaterial}
@@ -88,6 +88,6 @@ export const HubLink = ({
       <Shape ref={backdropMesh} scale={[1.1, 1.1, 1]} position={[0, 0, -0.01]}>
         <meshBasicMaterial ref={backdropMaterial} color="#0b1735" transparent />
       </Shape>
-    </mesh>
+    </group>
   );
 };

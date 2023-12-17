@@ -5,6 +5,7 @@ import { HubLink } from "../components/three/HubLink";
 import { TorusGroup } from "../components/three/TorusGroup";
 import { Ocean } from "../components/three/Ocean";
 import { useNavigate } from "react-router-dom";
+import { HubLinkOrbs } from "../components/three/HubLinkOrbs";
 
 export const Hub = ({ hubLink, hubBtnClicked }) => {
   // Params for responsive sizing
@@ -40,6 +41,12 @@ export const Hub = ({ hubLink, hubBtnClicked }) => {
   return (
     <>
       <mesh position={[0, 0.1, -7 + scale / 4]}>
+        <HubLinkOrbs
+          hubLink={hubLink}
+          position={[(-1.5 * viewport.aspect) / 6, -1.3, 1]}
+          scale={viewport.aspect / 12}
+          rotationX={-0.3}
+        />
         {visibleItem === 0 && (
           <HubLink
             linkTitle="Torus"
