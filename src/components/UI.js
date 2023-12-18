@@ -18,6 +18,7 @@ import { introCredits } from "./credits/introCredits";
 import { torusCredits } from "./credits/torusCredits";
 import { BtnsHub } from "./ui/BtnsHub";
 import { useMatch } from "react-router-dom";
+import { SceneMessage } from "./ui/SceneMessage";
 
 export const UI = ({
   start,
@@ -39,6 +40,8 @@ export const UI = ({
 
   const intro = useMatch("/");
   const torus = useMatch("/torus");
+  const mach = useMatch("/mach");
+  const water = useMatch("/water");
 
   return (
     <>
@@ -59,6 +62,11 @@ export const UI = ({
           <BtnStart start={start} setStart={setStart} />
         </>
       )}
+
+      <SceneMessage
+        active={torus || water || mach}
+        message="PLEASE NOTE— This scene is under 🚧 construction"
+      />
 
       <BtnFullScreen />
 

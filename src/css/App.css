@@ -3,6 +3,33 @@
   height: 100vh;
 }
 
+.scene-message {
+  width: fit-content;
+  max-width: 200px;
+  height: fit-content;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  color: cyan;
+  font: 100 35px arcade;
+  text-shadow: -2px 0 1px red, 2px 0 1px red, 0 2px 1px red, 0 -2px 1px red,
+    0 -3px 5px black;
+  pointer-events: none;
+}
+
+.scene-message-enter {
+  opacity: 0;
+}
+.scene-message-enter-active {
+  opacity: 1;
+  transition: opacity 2s ease;
+}
+.scene-message-exit {
+  opacity: 0;
+}
+
 /* FPS METER */
 .fps {
   width: 200px;
