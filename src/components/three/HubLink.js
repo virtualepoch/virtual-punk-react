@@ -5,12 +5,9 @@ import { useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 
 export const HubLink = ({
-  portrait,
-  scale,
   image,
   visible = false,
   onFadeOut,
-  fontSize = 0.1,
   linkTitle = "hello",
   hubBtnClicked,
   onClick,
@@ -41,9 +38,8 @@ export const HubLink = ({
     }
 
     if (hubLinkClicked) {
-      text3DMesh.current.position.z =
-        a < timeFactor3 ? (portrait ? a * scale * 4 : a * scale) : 8;
-      dissolveMesh.current.position.z = a < timeFactor3 ? -a : 0;
+      text3DMesh.current.position.z = a < timeFactor3 ? a * 2 : 10;
+      dissolveMesh.current.position.z = a < timeFactor3 ? -a : -10;
       backdropMaterial.current.opacity = a < timeFactor3 ? 1 - a : 0;
     }
   });
@@ -52,7 +48,8 @@ export const HubLink = ({
 
   return (
     <group
-      scale={scale}
+      position-z={0.5}
+      scale={2}
       onClick={() => {
         setHubLinkClicked(true);
         onClick();
@@ -61,12 +58,8 @@ export const HubLink = ({
       onPointerOut={() => setHovered(hubLinkClicked ? true : false)}
     >
       <mesh ref={text3DMesh} scale-z={0.5}>
-        <Center bottom>
-          <Text3D
-            font="fonts/Arcade.json"
-            size={fontSize}
-            position={[0, portrait ? -0.9 : -0.6, 0]}
-          >
+        <Center center disableY>
+          <Text3D font="fonts/Arcade.json" size={0.1} position={[0, -0.1, 0]}>
             <meshBasicMaterial
               ref={text3DMaterial}
               color={hovered ? "cyan" : "red"}

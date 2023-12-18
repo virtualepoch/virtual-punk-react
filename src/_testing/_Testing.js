@@ -46,6 +46,12 @@ export const linkOrbInfo = [
 
 export const Testing = () => {
   const viewport = useThree((state) => state.viewport);
+  // TO TEST
+  // const restaurantScalingFactor = Math.min(
+  //   Math.max(window.innerWidth / 1300, 0.5),
+  //   1.2
+  // );
+  
   const directionalLight = useRef();
   useHelper(directionalLight, DirectionalLightHelper, 1, "red");
   const map = useTexture(imageUrl);

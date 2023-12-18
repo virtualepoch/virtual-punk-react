@@ -11,7 +11,7 @@ export const Hub = ({ hubLink, hubBtnClicked }) => {
   // Params for responsive sizing
   const viewport = useThree((state) => state.viewport);
   const portrait = viewport.width < viewport.height;
-  const scale = portrait ? viewport.width * 4 : viewport.height * 4;
+  const scale = portrait ? viewport.width * 2 : viewport.height * 2;
 
   // For navigation
   const navigate = useNavigate();
@@ -40,12 +40,9 @@ export const Hub = ({ hubLink, hubBtnClicked }) => {
 
   return (
     <>
-      <mesh position={[0, 0.1, -7 + scale / 4]}>
+      <mesh position={[0, 0.1, -7]} scale={scale}>
         <HubLinkOrbs
           hubLink={hubLink}
-          position={[(-1.5 * viewport.aspect) / 6, -1.3, 1]}
-          scale={viewport.aspect / 12}
-          rotationX={-0.3}
         />
         {visibleItem === 0 && (
           <HubLink
@@ -53,8 +50,6 @@ export const Hub = ({ hubLink, hubBtnClicked }) => {
             image={"/images/torusScene.jpg"}
             visible={hubLink === 0}
             onFadeOut={onFadeOut}
-            portrait={portrait}
-            scale={scale}
             hubBtnClicked={hubBtnClicked}
             onClick={navTimeout}
             hubLinkClicked={hubLinkClicked}
@@ -68,8 +63,6 @@ export const Hub = ({ hubLink, hubBtnClicked }) => {
             image={"/images/spaceScene.jpg"}
             visible={hubLink === 1}
             onFadeOut={onFadeOut}
-            portrait={portrait}
-            scale={scale}
             hubBtnClicked={hubBtnClicked}
             onClick={navTimeout}
             hubLinkClicked={hubLinkClicked}
@@ -83,8 +76,6 @@ export const Hub = ({ hubLink, hubBtnClicked }) => {
             image={"/images/torusScene.jpg"}
             visible={hubLink === 2}
             onFadeOut={onFadeOut}
-            portrait={portrait}
-            scale={scale}
             hubBtnClicked={hubBtnClicked}
             onClick={navTimeout}
             hubLinkClicked={hubLinkClicked}
@@ -95,7 +86,7 @@ export const Hub = ({ hubLink, hubBtnClicked }) => {
 
       <TorusGroup
         position={[0, 0, -7]}
-        scale={scale / 2}
+        scale={scale}
         rotation={[0, 0, 0]}
         hubBtnClicked={hubBtnClicked}
         hubLinkClicked={hubLinkClicked}

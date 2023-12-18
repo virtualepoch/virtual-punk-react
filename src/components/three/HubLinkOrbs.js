@@ -17,12 +17,12 @@ export const linkOrbInfo = [
   },
 ];
 
-export const HubLinkOrbs = ({ hubLink, position, scale, rotationX }) => {
+export const HubLinkOrbs = ({ hubLink }) => {
   return (
     <group
-      position={position}
-      scale={scale}
-      rotation={[rotationX, 0, 0]}
+      position={[linkOrbInfo.length * -0.15, -1.2, 1.3]}
+      scale={0.15}
+      rotation={[-0.4, 0, 0]}
       onClick={() => {}}
       receiveShadow
       castShadow
