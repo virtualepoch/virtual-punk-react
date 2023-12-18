@@ -5,6 +5,7 @@ import { useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
 
 export const HubLink = ({
+  scale,
   image,
   visible = false,
   onFadeOut,
@@ -24,7 +25,6 @@ export const HubLink = ({
   const backdropMaterial = useRef();
 
   const clock = new THREE.Clock();
-
   useFrame(() => {
     const a = clock.getElapsedTime();
     const timeFactor = 0.4;
@@ -37,10 +37,13 @@ export const HubLink = ({
       text3DMaterial.current.opacity = a < timeFactor2 ? a / timeFactor2 : 1;
     }
 
-    if (hubLinkClicked) {
-      text3DMesh.current.position.z = a < timeFactor3 ? a * 2 : 10;
-      dissolveMesh.current.position.z = a < timeFactor3 ? -a : -10;
-      backdropMaterial.current.opacity = a < timeFactor3 ? 1 - a : 0;
+    if (hubLinkClicked && a < timeFactor3) {
+      text3DMesh.current.position.z = a * 2;
+      if (scale < 1) text3DMesh.current.position.z = a * 3;
+      if (scale < 0.75) text3DMesh.current.position.z = a * 5;
+      if (scale < 0.5) text3DMesh.current.position.z = a * 6.5;
+      dissolveMesh.current.position.z = -a;
+      backdropMaterial.current.opacity = 1 - a;
     }
   });
 
@@ -59,7 +62,11 @@ export const HubLink = ({
     >
       <mesh ref={text3DMesh} scale-z={0.5}>
         <Center center disableY>
-          <Text3D font="fonts/Arcade.json" size={0.1} position={[0, -0.1, 0]}>
+          <Text3D
+            font="fonts/Arcade.json"
+            size={0.1}
+            position={[0, scale < 1 ? -0.15 : -0.1, 0]}
+          >
             <meshBasicMaterial
               ref={text3DMaterial}
               color={hovered ? "cyan" : "red"}

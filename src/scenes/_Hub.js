@@ -41,11 +41,10 @@ export const Hub = ({ hubLink, hubBtnClicked }) => {
   return (
     <>
       <mesh position={[0, 0.1, -7]} scale={scale}>
-        <HubLinkOrbs
-          hubLink={hubLink}
-        />
+        <HubLinkOrbs hubLink={hubLink} />
         {visibleItem === 0 && (
           <HubLink
+            scale={scale}
             linkTitle="Torus"
             image={"/images/torusScene.jpg"}
             visible={hubLink === 0}
@@ -59,6 +58,7 @@ export const Hub = ({ hubLink, hubBtnClicked }) => {
 
         {visibleItem === 1 && (
           <HubLink
+            scale={scale}
             linkTitle="Mach"
             image={"/images/spaceScene.jpg"}
             visible={hubLink === 1}
@@ -72,6 +72,7 @@ export const Hub = ({ hubLink, hubBtnClicked }) => {
 
         {visibleItem === 2 && (
           <HubLink
+            scale={scale}
             linkTitle="Water"
             image={"/images/torusScene.jpg"}
             visible={hubLink === 2}
