@@ -28,6 +28,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import { TorusGroup } from "../components/three/TorusGroup";
 // ASSETS
 import imageUrl from "../assets/images/spaceScene.jpg";
+import { SpinningPanels } from "../components/three/SpinningPanels";
 
 export const linkOrbInfo = [
   {
@@ -51,7 +52,7 @@ export const Testing = () => {
   //   Math.max(window.innerWidth / 1300, 0.5),
   //   1.2
   // );
-  
+
   const directionalLight = useRef();
   useHelper(directionalLight, DirectionalLightHelper, 1, "red");
   const map = useTexture(imageUrl);
@@ -69,37 +70,6 @@ export const Testing = () => {
 
   return (
     <>
-      <Center>
-        <group
-          ref={ref}
-          position={[0, 0, 0]}
-          scale={viewport.aspect / 8}
-          onClick={() => setClicked(!clicked)}
-          receiveShadow
-          castShadow
-        >
-          {linkOrbInfo.map((item, index) => (
-            <group key={index} position={[index * 3, 0, 0]}>
-              <Text
-                ref={ref2}
-                font="fonts/ARCADE.TTF"
-                fontSize={0.4}
-                position={[0, 0, 1]}
-                anchorY={"center"}
-                color={"red"}
-              >
-                {item.text}
-              </Text>
-
-              <Sphere args={[1, 8, 8]}>
-                <meshBasicMaterial
-                  color={item.number === number ? "cyan" : "black"}
-                />
-              </Sphere>
-            </group>
-          ))}
-        </group>
-      </Center>
 
       <group>
         <PerspectiveCamera makeDefault position={[0, 0, 10]} />

@@ -38,10 +38,11 @@ export const HubLink = ({
     }
 
     if (hubLinkClicked && a < timeFactor3) {
+      // Need to refactor the following with some type of constant
       text3DMesh.current.position.z = a * 2;
       if (scale < 1) text3DMesh.current.position.z = a * 3;
-      if (scale < 0.75) text3DMesh.current.position.z = a * 5;
-      if (scale < 0.5) text3DMesh.current.position.z = a * 6.5;
+      if (scale < 0.76) text3DMesh.current.position.z = a * 4;
+      ///////////////////////////////////////////////////////////
       dissolveMesh.current.position.z = -a;
       backdropMaterial.current.opacity = 1 - a;
     }
@@ -65,7 +66,7 @@ export const HubLink = ({
           <Text3D
             font="fonts/Arcade.json"
             size={0.1}
-            position={[0, scale < 1 ? -0.15 : -0.1, 0]}
+            position={[0, scale < 0.76 ? -0.11 : -0.1, 0]}
           >
             <meshBasicMaterial
               ref={text3DMaterial}

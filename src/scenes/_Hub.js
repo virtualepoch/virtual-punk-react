@@ -11,8 +11,11 @@ export const Hub = ({ hubLink, hubBtnClicked }) => {
   // Params for responsive sizing
   const viewport = useThree((state) => state.viewport);
   const portrait = viewport.width < viewport.height;
-  const scale = portrait ? viewport.width * 2 : viewport.height * 2;
 
+  const scaleFactor = portrait ? viewport.width * 2 : viewport.height * 2;
+  const scale = Math.max(scaleFactor, 0.75);
+
+  console.log(scale)
   // For navigation
   const navigate = useNavigate();
 
