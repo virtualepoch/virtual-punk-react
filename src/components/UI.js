@@ -123,7 +123,7 @@ export const UI = ({
 
       {/* CONTROLS /////// */}
       <Leva hidden={hideLeva ? true : false} />
-      {torus && <OmniControls />}
+      {/* {torus && <OmniControls />} */}
     </>
   );
 };

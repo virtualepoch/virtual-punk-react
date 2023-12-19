@@ -1,9 +1,18 @@
 import { GradientTexture, Torus } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { useRef } from "react";
+import { MeshBasicMaterial } from "three";
 import { degToRad } from "three/src/math/MathUtils";
 
 export const TorusSceneGroup = ({ position }) => {
+  const smallTorusMaterial = new MeshBasicMaterial({
+    color: "white",
+    toneMapped: false,
+  });
+
+  smallTorusMaterial.color.multiplyScalar(2);
+
   const meshRef = useRef();
   const meshRef2 = useRef();
   const meshRef3 = useRef();
@@ -58,8 +67,11 @@ export const TorusSceneGroup = ({ position }) => {
 
   return (
     <group ref={meshRef} position={position} rotation={[0, 0, degToRad(120)]}>
+      <EffectComposer>
+        <Bloom />
+      </EffectComposer>
       <Torus
-        args={[torusScale, torusScale / 10, 3, 3]}
+        args={[torusScale, torusScale / 10, 16, 3]}
         rotation-z={-degToRad(30)}
         material-color={"red"}
         castShadow
@@ -68,7 +80,7 @@ export const TorusSceneGroup = ({ position }) => {
         <meshBasicMaterial>
           <GradientTexture
             stops={[0, 0.5, 1]}
-            colors={["red", "cyan", "red"]}
+            colors={["#0b1735", "cyan", "#0b1735"]}
             size={100}
           />
         </meshBasicMaterial>
@@ -88,7 +100,7 @@ export const TorusSceneGroup = ({ position }) => {
               <meshBasicMaterial>
                 <GradientTexture
                   stops={[0, 0.5, 1]}
-                  colors={["cyan", "#e63946", "cyan"]}
+                  colors={["#0b1735", "cyan", "#0b1735"]}
                   size={100}
                 />
               </meshBasicMaterial>
@@ -107,7 +119,7 @@ export const TorusSceneGroup = ({ position }) => {
                     <meshBasicMaterial>
                       <GradientTexture
                         stops={[0, 0.5, 1]}
-                        colors={["#e63946", "cyan", "#e63946"]}
+                        colors={["cyan", "white", "cyan"]}
                         size={100}
                       />
                     </meshBasicMaterial>
@@ -115,7 +127,7 @@ export const TorusSceneGroup = ({ position }) => {
                       <Torus
                         key={index}
                         args={[item.scale / 16, torusScale / 80, 3, 8]}
-                        material-color="cyan"
+                        material={smallTorusMaterial}
                         position={[item.positionX / 8, item.positionY / 8, 0]}
                         rotation={item.rotation}
                         castShadow

@@ -116,11 +116,9 @@ function App() {
             {/* <Hands /> */}
 
             {vrSession && (
-              <>
-                <MyVRButton start={start} setStart={setStart}>
-                  Start
-                </MyVRButton>
-              </>
+              <MyVRButton start={start} setStart={setStart}>
+                Start
+              </MyVRButton>
             )}
 
             <Routes>
