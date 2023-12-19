@@ -34,7 +34,7 @@ import { PortalScene } from "./_testing/PortalScene.js";
 
 function App() {
   // useState hooks
-  const [start, setStart] = useState(false); // Where:(UI(BtnStart) & IntroScene), For:(to activate the scene animation) 
+  const [start, setStart] = useState(false); // Where:(UI(BtnStart) & IntroScene), For:(to activate the scene animation)
   const [hub, setHub] = useState(false); // (IntroScene) cancels the IntroScene animation / navigates to the Hub
   const [linkClicked, setLinkClicked] = useState(false); // (UI(NavMenu) & MyCamControls) resets cam posistion when a Link is clicked (Scene changes)
   const [downgradedPerformance, setDowngradedPerformance] = useState(false); // (App(PerformanceMonitor) & IntroScene & TorusScene) lowers asset quality based on fps
@@ -152,7 +152,6 @@ function App() {
               <Route path="/mach" element={<MachScene />} />
               <Route path="/water" element={<WaterScene />} />
               <Route path="/star-punk" element={<StarPunkScene />} />
-              <Route path="/portal" element={<PortalScene />} />
               <Route path="/test" element={<Testing />} />
             </Routes>
           </XR>

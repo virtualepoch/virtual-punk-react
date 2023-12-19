@@ -9,11 +9,11 @@
   height: fit-content;
   position: fixed;
   left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  bottom: 100px;
+  transform: translateX(-50%);
   z-index: 10;
   color: cyan;
-  font: 100 35px arcade;
+  font: 100 30px arcade;
   text-shadow: -2px 0 1px red, 2px 0 1px red, 0 2px 1px red, 0 -2px 1px red,
     0 -3px 5px black;
   pointer-events: none;

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useMatch } from "react-router-dom";
 
 // UI COMPONENTS //
 import { MainOverlay } from "./ui/MainOverlay";
@@ -12,13 +13,8 @@ import { ModalInfo } from "./ui/ModalInfo";
 import { ModalVR } from "./ui/ModalVR";
 import { BtnStart } from "./ui/BtnStart";
 import { HeroSection } from "./ui/HeroSection";
-
-// CREDITS FOR INFO MODAL //
-import { introCredits } from "./credits/introCredits";
-import { torusCredits } from "./credits/torusCredits";
-import { BtnsHub } from "./ui/BtnsHub";
-import { useMatch } from "react-router-dom";
 import { SceneMessage } from "./ui/SceneMessage";
+import { BtnsHub } from "./ui/BtnsHub";
 
 export const UI = ({
   start,
@@ -39,21 +35,14 @@ export const UI = ({
   const [fpsMeter, setFpsMeter] = useState(false);
 
   const intro = useMatch("/");
+  const hub = useMatch("/hub");
   const torus = useMatch("/torus");
   const mach = useMatch("/mach");
   const water = useMatch("/water");
+  const starPunk = useMatch("/star-punk");
 
   return (
     <>
-      {(intro ? introCredits : torusCredits).map((item) => (
-        <ModalInfo
-          modalInfoOpen={modalInfoOpen}
-          setModalInfoOpen={setModalInfoOpen}
-          key={item.id}
-          info={item}
-        />
-      ))}
-
       {/* INTRO SCENE STUFF /////////////////////// */}
       {intro && (
         <>
@@ -112,6 +101,17 @@ export const UI = ({
         hubLink={hubLink}
         setHubLink={setHubLink}
         setHubBtnClicked={setHubBtnClicked}
+      />
+
+      <ModalInfo
+      intro={intro}
+      hub={hub}
+      torus={torus}
+      mach={mach}
+      water={water}
+      starPunk={starPunk}
+        modalInfoOpen={modalInfoOpen}
+        setModalInfoOpen={setModalInfoOpen}
       />
 
       <ModalVR

@@ -34,7 +34,7 @@ export function StarPunkScene() {
       {/* <OrbitControls target={[0, 0, 0]} autoRotate={true} autoRotateSpeed={2} /> */}
       <Stars />
 
-      <StarPunkShip position={[0, -3, 0]} />
+      <StarPunkShip position={[0, -3, -15]} />
 
       <ExtendingWalls />
     </>

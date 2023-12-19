@@ -1,8 +1,25 @@
 import { MeshReflectorMaterial } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { useRef } from "react";
+import { Clock } from "three";
 
 export const StarPunkShip = ({ position }) => {
+  const starship = useRef();
+  const clock = new Clock();
+  useFrame(() => {
+    const a = clock.getElapsedTime();
+    if (a <= 2) {
+      starship.current.rotation.z -= 0.01;
+      // starship.current.position.y += 0.05;
+    }
+    if (a > 2) {
+      starship.current.rotation.z += 0.05;
+      // starship.current.position.y -= 0.05;
+    }
+    if (a > 6) clock.start();
+  });
   return (
-    <mesh position={position}>
+    <group ref={starship} position={position} rotation={[0, 0, 0]}>
       {/* NOSE */}
       <mesh position={[0, 0, -2]} rotation={[-Math.PI / 2, 0, 0]}>
         <coneGeometry args={[0.5, 4, 3]} />
@@ -160,6 +177,6 @@ export const StarPunkShip = ({ position }) => {
           metalness={0.6}
         />
       </mesh>
-    </mesh>
+    </group>
   );
 };

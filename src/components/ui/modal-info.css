@@ -14,12 +14,12 @@
   box-shadow: -1px 1px 10px 1px rgba(0, 0, 0, 0.6);
 }
 
-/* @media (max-width: 700px) {
+@media (max-width: 700px) {
   .modal-info {
     background: rgba(0, 0, 0, 0.99);
     backdrop-filter: none;
   }
-} */
+}
 
 /* CSSTransition Styling */
 .modal-info-enter {
@@ -41,139 +41,47 @@
   transition: 700ms ease;
 }
 
-/* LOADING  */
-.loading-section {
-  width: 100%;
-  height: 25px;
-  position: relative;
-  /* clip-path: polygon(15% 0, calc(15% + 16px) 50%, calc(30% - 16px) 50%, 30% 0, 70% 0, calc(70% + 16px) 50%, calc(85% - 16px) 50%, 85% 0, 100% 0, calc(100% - 16px) 50%, 85% 50%, calc(85% - 16px) 100%, calc(70% + 16px) 100%, 70% 50%, calc(70% - 16px) 100%, calc(30% + 16px) 100%, 30% 50%, calc(30% - 16px) 100%, calc(15% + 16px) 100%, 15% 50%, 0 50%, 16px 0); */
-  clip-path: polygon(
-    15% 0,
-    calc(15% + 16px) 50%,
-    calc(30% - 16px) 50%,
-    30% 0,
-    70% 0,
-    calc(70% + 16px) 50%,
-    calc(85% - 16px) 50%,
-    85% 0,
-    100% 0,
-    calc(100% - 16px) 50%,
-    85% 50%,
-    calc(85% - 16px) 100%,
-    calc(70% + 16px) 100%,
-    70% 50%,
-    calc(70% - 16px) 100%,
-    calc(30% + 16px) 100%,
-    30% 50%,
-    calc(30% - 16px) 100%,
-    calc(15% + 16px) 100%,
-    15% 50%,
-    0 50%,
-    16px 0
-  );
-}
-
-.loading-progress {
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: cyan;
-  box-shadow: inset 0 0 5px 1px blue;
-  transition: width 0.5s;
-}
-
-/* .loading-progress::after {
-  content: "";
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to right, red, blue, red);
-  position: absolute;
-  clip-path: polygon(15% 15%, calc(15% + 16px) 65%, calc(30% - 16px) 65%, 30% 15%, calc(30% + 18px) 70%, calc(30% + 18px) 70%, 35% 15%, 40% 70%, 45% 15%, 50% 70%, 55% 15%, 60% 70%, 65% 15%, calc(70% - 18px) 70%, 70% 15%, calc(70% + 16px) 65%, calc(85% - 16px) 65%, 85% 15%, calc(100% - 8px) 15%, calc(100% - 16px) 35%, 85% 35%, calc(85% - 16px) 85%, calc(70% + 16px) 85%, 70% 35%, calc(70% - 18px) 85%, 65% 30%, 60% 85%, 55% 30%, 50% 85%, 45% 30%, 40% 85%, 35% 30%, calc(30% + 18px) 85%, 30% 35%, calc(30% - 16px) 85%, calc(15% + 16px) 85%, 15% 35%, 8px 35%, 16px 15%);
-  animation: electro 1s ease infinite;
-} */
-
-/* @keyframes electro {
-  5% {
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-    background: white;
-  }
-  50% {
-    opacity: 0;
-  }
-  55% {
-    opacity: 1;
-    background: white;
-  }
-  60% {
-    opacity: 0;
-  }
-} */
-
-.loadMessage {
-  width: fit-content;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  color: cyan;
-  mix-blend-mode: difference;
-  opacity: 1;
-}
-
-.loading-anim {
-  animation: load-message-flash 2s ease infinite;
-}
-
-@keyframes load-message-flash {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
-/* CONTENT & LINKS */
-.credits-container {
+.info-container {
   height: 100%;
   width: 100%;
   padding: 20px 20px 200px;
   overflow: auto;
 }
 
-.credits-header {
+.info-header {
   color: red;
   font: 30px Ailerons;
   text-shadow: 1px 0 3px cyan;
 }
 
-.credits-hr {
+.info-hr {
   width: 80%;
   min-height: 1px;
   border: none;
   background: cyan;
 }
 
-.credit-wrapper {
+
+/* CONTENT & LINKS */
+
+
+.info-wrapper {
   width: 100%;
   text-align: center;
 }
 
-.credit-info {
+.info-text {
   color: cyan;
   font-size: 20px;
 }
 
-.credit-link {
+.info-link {
   color: cyan;
   font-size: 20px;
   position: relative;
 }
 
-.credit-link::after {
+.info-link::after {
   content: "Click image to visit source site";
   width: fit-content;
   height: fit-content;
@@ -187,6 +95,6 @@
   filter: drop-shadow(0 1px 2px black);
 }
 
-.credit-img {
+.info-img {
   max-width: 90%;
 }

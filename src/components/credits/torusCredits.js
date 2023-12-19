@@ -1,23 +1,13 @@
-import futureMachine from "../../assets/images/rabbit-hole/AdobeStock_440677546-512.jpg";
+import vpIcon from "../../assets/images/vp-icon.png";
 
 export const torusCredits = [
   {
-    id: "torus",
-    assetFor: "'texture for torus group'",
-    title: "Grunge details",
-    link: "https://stock.adobe.com/images/detail-of-a-futuristic-machine-3d-illustration-of-a-futuristic-wall-made-of-various-details-under-orange-neon-lights-cyberpunk-background-industrial-wallpaper-grunge-details/440677546?asset_id=440677546",
-    linkImg: futureMachine,
-    credits: `Виталий Сова`,
-    changes: `On smaller screens the resolution may have been scaled down.`,
-
-    title2: "title2",
-    link2: "link2",
-    credits2: `credits2`,
-    changes2: `changes2`,
-
-    title3: "title3",
-    link3: "link3",
-    credits3: `credits3`,
-    changes3: `changes3`,
+    asset:
+      "No assets used in this scene... just three.js created with the react-three/fiber & react-three/drei libraries.",
+    title: "Torus",
+    link: "https://vr-punk.vercel.app/torus",
+    img: vpIcon,
+    credits: "Craig Kaufman",
+    changes: "",
   },
 ];

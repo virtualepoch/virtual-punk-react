@@ -2,10 +2,55 @@ import { CSSTransition } from "react-transition-group";
 import { StyledBorder } from "./StyledBorder";
 import "./modal-info.css";
 
-export const ModalInfo = ({ modalInfoOpen, setModalInfoOpen, ...props }) => {
-  // useEffect(() => {
-  //   setModalInfoOpen(true);
-  // }, [setModalInfoOpen]);
+// Credit files
+import { sceneInfo } from "../credits/_sceneInfo";
+import { introCredits } from "../credits/introCredits";
+import { hubCredits } from "../credits/hubCredits";
+import { torusCredits } from "../credits/torusCredits";
+import { emptyCredits } from "../credits/emptyCredits";
+
+const Credit = ({ ...props }) => {
+  return (
+    <div className="info-wrapper flex-col">
+      <hr className="info-hr" />
+      <p className="info-text">Asset— {props.info.asset}</p>
+      <p className="info-text">Title— {props.info.title}</p>
+      <a
+        className="info-link"
+        href={props.info.link}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <img
+          className="info-img"
+          src={props.info.img}
+          alt="future machine bg for triangular cylinder"
+        />
+      </a>
+      <p className="info-text">Created by— {props.info.credits}</p>
+      <p className="info-text">Changes— {props.info.changes}</p>
+    </div>
+  );
+};
+
+export const ModalInfo = ({
+  intro,
+  hub,
+  torus,
+  mach,
+  water,
+  starPunk,
+  modalInfoOpen,
+  setModalInfoOpen,
+  ...props
+}) => {
+  const credits = intro
+    ? introCredits
+    : hub
+    ? hubCredits
+    : torus
+    ? torusCredits
+    : emptyCredits;
 
   return (
     <CSSTransition
@@ -23,53 +68,37 @@ export const ModalInfo = ({ modalInfoOpen, setModalInfoOpen, ...props }) => {
           // disabled={progress < 100}
         />
 
-        <div className="credits-container flex-col">
-          <h2 className="credits-header">Scene Asset Credits</h2>
+        <div className="info-container flex-col">
+          <h2 className="info-header">Scene Info</h2>
 
-          <hr className="credits-hr" />
+          <hr className="info-hr" />
 
-          <div className="credit-wrapper flex-col">
-            <p className="credit-info">Asset for— {props.info.asset}</p>
-            <p className="credit-info">Title— {props.info.title}</p>
-            <a
-              className="credit-link"
-              href={props.info.link}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <img
-                className="credit-img"
-                src={props.info.img}
-                alt="future machine bg for triangular cylinder"
-              />
-            </a>
-            <p className="credit-info">Created by— {props.info.credits}</p>
-            <p className="credit-info">Changes— {props.info.changes}</p>
+          <div className="info-wrapper flex-col">
+            <p className="info-text">
+              {intro
+                ? sceneInfo.intro
+                : hub
+                ? sceneInfo.hub
+                : torus
+                ? sceneInfo.torus
+                : mach
+                ? sceneInfo.mach
+                : water
+                ? sceneInfo.water
+                : starPunk
+                ? sceneInfo.starPunk
+                : sceneInfo.empty}
+            </p>
           </div>
 
-          <hr className="credits-hr" />
+          <hr className="info-hr" />
 
-          <div className="credit-wrapper">
-            <p className="credits-info">{props.info.title2}</p>
-            <a href={props.info.link2} target="_blank" rel="noreferrer">
-              <p className="credits-info link">{props.info.link2}</p>
-            </a>
-            <p className="credits-info">{props.info.credits2}</p>
-            <p className="credits-info">{props.info.changes2}</p>
-          </div>
+          <h2 className="info-header">Scene Asset Credits</h2>
 
-          <hr className="credits-hr" />
-
-          <div className="credit-wrapper">
-            <p className="credits-info">{props.info.title3}</p>
-            <a href={props.info.link3} target="_blank" rel="noreferrer">
-              <p className="credits-info link">{props.info.link3}</p>
-            </a>
-            <p className="credits-info">{props.info.credits3}</p>
-            <p className="credits-info">{props.info.changes3}</p>
-          </div>
+          {credits.map((item, index) => (
+            <Credit key={index} info={item} />
+          ))}
         </div>
-
         <StyledBorder modalInfoOpen={modalInfoOpen} />
       </div>
     </CSSTransition>
