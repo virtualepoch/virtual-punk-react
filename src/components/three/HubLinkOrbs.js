@@ -1,6 +1,4 @@
-import { Center, Sphere, Text } from "@react-three/drei";
-import { useThree } from "@react-three/fiber";
-import { useState } from "react";
+import { Sphere, Text } from "@react-three/drei";
 
 export const linkOrbInfo = [
   {

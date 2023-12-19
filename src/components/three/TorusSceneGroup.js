@@ -1,6 +1,5 @@
 import { GradientTexture, Torus } from "@react-three/drei";
 import { useFrame } from "@react-three/fiber";
-import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { useRef } from "react";
 import { MeshBasicMaterial } from "three";
 import { degToRad } from "three/src/math/MathUtils";
@@ -67,9 +66,6 @@ export const TorusSceneGroup = ({ position }) => {
 
   return (
     <group ref={meshRef} position={position} rotation={[0, 0, degToRad(120)]}>
-      <EffectComposer>
-        <Bloom />
-      </EffectComposer>
       <Torus
         args={[torusScale, torusScale / 10, 16, 3]}
         rotation-z={-degToRad(30)}

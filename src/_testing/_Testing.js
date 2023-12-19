@@ -1,76 +1,74 @@
 import { useRef, useState } from "react";
 import * as THREE from "three";
 import { DirectionalLightHelper } from "three";
+import { useFrame } from "@react-three/fiber";
 import {
-  Center,
-  ContactShadows,
-  Decal,
-  Environment,
-  Hud,
-  OrbitControls,
-  OrthographicCamera,
   PerspectiveCamera,
   Sphere,
   Stars,
-  Text,
-  Text3D,
+  Torus,
   useHelper,
-  useTexture,
 } from "@react-three/drei";
 // COMPONENTS
 import { ExtraSoundPro } from "../components/models/ExtraSoundPro";
 import { ReflectiveFloor } from "../components/three/ReflectiveFloor";
-
-// COMPONENTS TO TEST //
-import { MyVRButton } from "../components/vr/MyVRButton";
-import { HubLink } from "../components/three/HubLink";
-import { useFrame, useThree } from "@react-three/fiber";
-import { TorusGroup } from "../components/three/TorusGroup";
-// ASSETS
-import imageUrl from "../assets/images/spaceScene.jpg";
-import { SpinningPanels } from "../components/three/SpinningPanels";
-
-export const linkOrbInfo = [
-  {
-    text: "torus",
-    number: 0,
-  },
-  {
-    text: "mach",
-    number: 1,
-  },
-  {
-    text: "water",
-    number: 2,
-  },
-];
+import { degToRad } from "three/src/math/MathUtils";
 
 export const Testing = () => {
-  const viewport = useThree((state) => state.viewport);
-  // TO TEST
-  // const restaurantScalingFactor = Math.min(
-  //   Math.max(window.innerWidth / 1300, 0.5),
-  //   1.2
-  // );
-
   const directionalLight = useRef();
   useHelper(directionalLight, DirectionalLightHelper, 1, "red");
-  const map = useTexture(imageUrl);
-  const ref = useRef();
-  const ref2 = useRef();
 
-  const [clicked, setClicked] = useState(false);
-  const [number, setNumber] = useState(0);
+  // const ref1 = useRef();
+  // const ref2 = useRef();
+  // const [clicked, setClicked] = useState(false);
+  // const [number, setNumber] = useState(0);
 
-  useFrame(() => {
-    if (clicked) {
-      if (ref2.current.scale.x < 2) ref2.current.scale.x += 0.5;
-    }
+  const material = new THREE.MeshToonMaterial({
+    color: "cyan",
+    toneMapped: false,
   });
+
+  const torus1 = useRef();
+  const torus2 = useRef();
+  const torus3 = useRef();
+  useFrame(() => {
+    torus1.current.rotation.x += 0.1;
+    torus2.current.rotation.z += 0.1;
+    torus3.current.rotation.z += 0.1;
+  });
+
+  const Atom = () => {
+    return (
+      <Sphere args={[0.5, 16, 16]} material={material}>
+        <Torus ref={torus1} args={[1, 0.1, 1, 10]} rotation-y={degToRad(90)}>
+          <Sphere args={[0.2, 8, 8]} position-y={1} material-color="white" />
+        </Torus>
+
+        <Torus
+          ref={torus2}
+          args={[1, 0.1, 1, 10]}
+          rotation-x={degToRad(90)}
+          rotation-y={degToRad(45)}
+          rotation-z={degToRad(45)}
+        >
+          <Sphere args={[0.2, 8, 8]} position-y={1} material-color="magenta" />
+        </Torus>
+        <Torus
+          ref={torus3}
+          args={[1, 0.1, 1, 10]}
+          rotation-x={degToRad(90)}
+          rotation-y={degToRad(-45)}
+          rotation-z={degToRad(-225)}
+        >
+          <Sphere args={[0.2, 8, 8]} position-y={1} material-color="#0011aa" />
+        </Torus>
+      </Sphere>
+    );
+  };
 
   return (
     <>
-
+      <Atom />
       <group>
         <PerspectiveCamera makeDefault position={[0, 0, 10]} />
         <directionalLight ref={directionalLight} position={[-2, 4, 2]} />
@@ -81,6 +79,13 @@ export const Testing = () => {
     </>
   );
 };
+
+// const viewport = useThree((state) => state.viewport);
+// TO TEST
+// const restaurantScalingFactor = Math.min(
+//   Math.max(window.innerWidth / 1300, 0.5),
+//   1.2
+// );
 
 ///////////////////////////////////////////////////////////////////////////
 // ANIMATION TESTING WITH 'getElapsedTime' //////////////////////////////

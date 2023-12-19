@@ -53,7 +53,7 @@ export const UI = ({
       )}
 
       <SceneMessage
-        active={torus || water || mach}
+        active={torus || water || mach || starPunk}
         message="PLEASE NOTE— This scene is under 🚧 construction"
       />
 

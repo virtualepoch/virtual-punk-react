@@ -58,8 +58,14 @@ export const HubLink = ({
         setHubLinkClicked(true);
         onClick();
       }}
-      onPointerMove={() => setHovered(true)}
-      onPointerOut={() => setHovered(hubLinkClicked ? true : false)}
+      onPointerMove={() => {
+        setHovered(true);
+        document.body.style.cursor = "pointer";
+      }}
+      onPointerOut={() => {
+        setHovered(hubLinkClicked ? true : false);
+        document.body.style.cursor = "default";
+      }}
     >
       <mesh ref={text3DMesh} scale-z={0.5}>
         <Center center disableY>
