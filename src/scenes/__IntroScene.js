@@ -8,7 +8,7 @@ import { TorusGroup } from "../components/three/TorusGroup";
 import { Ocean } from "../components/three/Ocean";
 // import { MyVRButton } from "../components/vr/MyVRButton";
 
-export const IntroScene = ({ start, hub, setHub, downgradedPerformance }) => {
+export const IntroScene = ({ start, hub, setHub, performance }) => {
   const sceneObjects = useRef();
   var sceneSpeed = start ? 0.7 : 0.004;
 
@@ -30,7 +30,7 @@ export const IntroScene = ({ start, hub, setHub, downgradedPerformance }) => {
       <group ref={sceneObjects} position={[0, 0, 0]}>
         <RabbitHole
           position={[0, 0, -38]}
-          downgradedPerformance={downgradedPerformance}
+          performance={performance}
         />
 
         <SpinningPanels
@@ -44,7 +44,7 @@ export const IntroScene = ({ start, hub, setHub, downgradedPerformance }) => {
           position={[0, 0, -98]}
           rotation={[0, 0, 0]}
           start={start}
-          downgradedPerformance={downgradedPerformance}
+          performance={performance}
         />
       </group>
 

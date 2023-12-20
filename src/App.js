@@ -36,7 +36,7 @@ function App() {
   const [start, setStart] = useState(false); // Where:(UI(BtnStart) & IntroScene), For:(to activate the scene animation)
   const [hub, setHub] = useState(false); // (IntroScene) cancels the IntroScene animation / navigates to the Hub
   const [linkClicked, setLinkClicked] = useState(false); // (UI(NavMenu) & MyCamControls) resets cam posistion when a Link is clicked (Scene changes)
-  const [downgradedPerformance, setDowngradedPerformance] = useState(false); // (App(PerformanceMonitor) & IntroScene & TorusScene) lowers asset quality based on fps
+  const [performance, setPerformance] = useState(1); // ("0-2") (App(PerformanceMonitor) & IntroScene & TorusScene) lowers asset quality based on fps
   const [hubLink, setHubLink] = useState(0); // (UI(BtnsHub) & Hub) changes the currently displayed hub link
   const [hubBtnClicked, setHubBtnClicked] = useState(false); // (UI(BtnsHub) & Hub(HubLink)) switch to cycle the opacity of the HubLink title and triangle backdrop
   // VR hooks
@@ -81,8 +81,12 @@ function App() {
         }}
       >
         <PerformanceMonitor
+          bounds={(fps) => (fps > 90 ? [50, 90] : [50, 60])}
           onDecline={(fps) => {
-            setDowngradedPerformance(true);
+            setPerformance(0);
+          }}
+          onIncline={(fps) => {
+            setPerformance(2);
           }}
         />
 
@@ -120,7 +124,7 @@ function App() {
                     setStart={setStart}
                     hub={hub}
                     setHub={setHub}
-                    downgradedPerformance={downgradedPerformance}
+                    performance={performance}
                   />
                 }
               />
@@ -133,11 +137,11 @@ function App() {
               <Route
                 path="/torus"
                 element={
-                  <TorusScene downgradedPerformance={downgradedPerformance} />
+                  <TorusScene performance={performance} />
                 }
               />
               <Route path="/space" element={<SpaceScene />} />
-              <Route path="/mach" element={<MachScene />} />
+              <Route path="/mach" element={<MachScene performance={performance} />} />
               <Route path="/water" element={<WaterScene />} />
               <Route path="/star-punk" element={<StarPunkScene />} />
               <Route path="/test-stage" element={<TestingStage />} />

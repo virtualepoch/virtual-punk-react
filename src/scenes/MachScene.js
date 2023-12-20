@@ -6,21 +6,16 @@ import { JetConcept } from "../components/models/Jet_concept";
 import earth500 from "../assets/images/textures/earth_clouds_1k.jpg";
 import earth8k from "../assets/images/textures/earth_clouds_4k.jpg";
 
-export function MachScene() {
+export const MachScene = ({ performance }) => {
   const directionalLight = useRef();
   // useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
   const viewport = useThree((state) => state.viewport); // used to scale scene
 
   function Earth() {
-    function textureChanger() {
-      if (window.innerWidth < 700) {
-        return earth500;
-      } else {
-        return earth8k;
-      }
-    }
-
-    const texture = useLoader(THREE.TextureLoader, textureChanger());
+    const texture = useLoader(
+      THREE.TextureLoader,
+      performance > 0 ? earth8k : earth500
+    );
     const earthRef = useRef(null);
 
     useFrame(() => {
@@ -65,4 +60,4 @@ export function MachScene() {
       <Stars />
     </group>
   );
-}
+};

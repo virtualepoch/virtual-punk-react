@@ -6,6 +6,7 @@ import { Torus } from "@react-three/drei";
 
 // COMPONENTS
 import { AppearanceEffectLightBeam } from "../models/AppearanceEffectLightBeam";
+import texture128 from "../../assets/images/torus/future-machine-128.jpg";
 import texture256 from "../../assets/images/torus/future-machine-256.jpg";
 import texture512 from "../../assets/images/torus/future-machine-512.jpg";
 
@@ -15,11 +16,11 @@ export const TorusGroup = ({
   scale,
   start,
   hubLinkClicked,
-  downgradedPerformance,
+  performance,
 }) => {
   const texture = useLoader(
     THREE.TextureLoader,
-    downgradedPerformance ? texture256 : texture512
+    performance === 0 ? texture128 : performance === 2 ? texture512 : texture256
   );
   texture.repeat.set(8, 1);
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
