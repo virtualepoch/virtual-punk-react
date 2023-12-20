@@ -8,8 +8,8 @@ extend({ Water });
 export const Ocean = ({
   position,
   rotation,
-  sunColor,
-  waterColor = "#005477",
+  sunColor = 0xffffff,
+  waterColor = 0x001e0f,
 }) => {
   const ref = useRef();
   const gl = useThree((state) => state.gl);
@@ -25,9 +25,7 @@ export const Ocean = ({
       textureHeight: 512,
       waterNormals,
       sunDirection: new THREE.Vector3(),
-      // sunColor: 0xffffff,
       sunColor: sunColor,
-      // waterColor: 0x001e0f,
       waterColor: waterColor,
       distortionScale: 3.7,
       fog: true,

@@ -162,16 +162,12 @@
       rgba(255, 255, 255, 0.3),
       transparent 70%
     ),
-    linear-gradient(transparent, rgb(0, 155, 155), transparent),
+    linear-gradient(transparent, #009b9b, transparent),
     linear-gradient(to right, transparent, #a5cc82, transparent);
 }
 
 .canvas.space {
   background: black;
-}
-
-.canvas.moto {
-  background: linear-gradient(white, gray, white);
 }
 
 .canvas.bday {

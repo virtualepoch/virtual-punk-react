@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { MeshPhongMaterial } from "three";
+import { MeshBasicMaterial } from "three";
 import { useFrame } from "@react-three/fiber";
 import { RoundedBox } from "@react-three/drei";
 
@@ -17,7 +17,7 @@ export const SpinningPanels = ({
   panelsRotationYSpeed,
   panelsColor,
 }) => {
-  const panelMaterial = new MeshPhongMaterial({
+  const panelMaterial = new MeshBasicMaterial({
     color: panelsColor,
     toneMapped: false,
   });

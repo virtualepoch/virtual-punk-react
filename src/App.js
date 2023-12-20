@@ -16,7 +16,8 @@ import { SpaceScene } from "./scenes/SpaceScene.js";
 import { MachScene } from "./scenes/MachScene.js";
 import { StarPunkScene } from "./scenes/StarPunkScene.js";
 import { WaterScene } from "./scenes/WaterScene.js";
-import { Testing } from "./_testing/_Testing.js";
+import { TestingStage } from "./_testing/_TestingStage.js";
+import { TestingBlank } from "./_testing/_TestingBlank.js";
 // VIRTUAL B-DAY CARDS
 // import { SandyBday } from "./scenes/bday-cards/SandyBday";
 // import { DadBday } from "./scenes/bday-cards/DadBday";
@@ -29,8 +30,6 @@ import "./css/_intro.css";
 import "./css/App.css";
 import "./css/buttons.css";
 // import "./bday.css";
-
-import { PortalScene } from "./_testing/PortalScene.js";
 
 function App() {
   // useState hooks
@@ -94,9 +93,9 @@ function App() {
 
           <ambientLight intensity={1} />
           <directionalLight
+            intensity={1}
             // ref={directionalLight}
-            position={[1, 1, 1]}
-            angle={0.3}
+            position={[0, 4, 1]}
           />
           <XR
             foveation={foveation}
@@ -150,7 +149,8 @@ function App() {
               <Route path="/mach" element={<MachScene />} />
               <Route path="/water" element={<WaterScene />} />
               <Route path="/star-punk" element={<StarPunkScene />} />
-              <Route path="/test" element={<Testing />} />
+              <Route path="/test-stage" element={<TestingStage />} />
+              <Route path="/test-blank" element={<TestingBlank />} />
             </Routes>
           </XR>
         </Suspense>

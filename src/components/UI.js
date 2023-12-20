@@ -53,7 +53,7 @@ export const UI = ({
       )}
 
       <SceneMessage
-        active={torus || water || mach || starPunk}
+        active={water || starPunk}
         message="PLEASE NOTE— This scene is under 🚧 construction"
       />
 
@@ -104,12 +104,12 @@ export const UI = ({
       />
 
       <ModalInfo
-      intro={intro}
-      hub={hub}
-      torus={torus}
-      mach={mach}
-      water={water}
-      starPunk={starPunk}
+        intro={intro}
+        hub={hub}
+        torus={torus}
+        mach={mach}
+        water={water}
+        starPunk={starPunk}
         modalInfoOpen={modalInfoOpen}
         setModalInfoOpen={setModalInfoOpen}
       />

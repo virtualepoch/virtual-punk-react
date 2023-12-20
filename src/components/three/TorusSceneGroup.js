@@ -73,13 +73,13 @@ export const TorusSceneGroup = ({ position }) => {
         castShadow
         receiveShadow
       >
-        <meshBasicMaterial>
+        <meshStandardMaterial>
           <GradientTexture
             stops={[0, 0.5, 1]}
             colors={["#0b1735", "cyan", "#0b1735"]}
             size={100}
           />
-        </meshBasicMaterial>
+        </meshStandardMaterial>
         <group rotation-z={degToRad(30)}>
           {torusMap.map((item, index) => (
             <Torus
@@ -93,13 +93,13 @@ export const TorusSceneGroup = ({ position }) => {
               castShadow
               receiveShadow
             >
-              <meshBasicMaterial>
+              <meshStandardMaterial>
                 <GradientTexture
                   stops={[0, 0.5, 1]}
                   colors={["#0b1735", "cyan", "#0b1735"]}
                   size={100}
                 />
-              </meshBasicMaterial>
+              </meshStandardMaterial>
               <group rotation-z={degToRad(30)}>
                 {torusMap.map((item, index) => (
                   <Torus
@@ -112,13 +112,13 @@ export const TorusSceneGroup = ({ position }) => {
                     castShadow
                     receiveShadow
                   >
-                    <meshBasicMaterial>
+                    <meshStandardMaterial>
                       <GradientTexture
                         stops={[0, 0.5, 1]}
                         colors={["cyan", "white", "cyan"]}
                         size={100}
                       />
-                    </meshBasicMaterial>
+                    </meshStandardMaterial>
                     {torusMap.map((item, index) => (
                       <Torus
                         key={index}

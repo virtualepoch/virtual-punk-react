@@ -41,7 +41,7 @@ export const TorusScene = () => {
   return (
     <group>
       <ambientLight intensity={1} />
-      <directionalLight ref={directionalLight} position={[4, 15, 10]} />
+      <directionalLight ref={directionalLight} intensity={10} position={[-1, 2, 4]} />
       {/* <pointLight ref={pointLight} position={[-4, 15, 10]} intensity={1}/> */}
       <group ref={torusGroup} position={[0, 0, 0]}>
         <TorusSceneGroup />
