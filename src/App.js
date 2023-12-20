@@ -55,8 +55,6 @@ function App() {
     }, 1000);
   }, [linkClicked, hubBtnClicked]);
 
-  // const directionalLight = useRef();
-  // useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
   return (
     <div className="App">
       <Loader />
@@ -90,13 +88,6 @@ function App() {
 
         <Suspense>
           <MyCamControls linkClicked={linkClicked} />
-
-          <ambientLight intensity={1} />
-          <directionalLight
-            intensity={1}
-            // ref={directionalLight}
-            position={[0, 4, 1]}
-          />
           <XR
             foveation={foveation}
             frameRate={

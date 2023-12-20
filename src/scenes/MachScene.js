@@ -53,8 +53,12 @@ export function MachScene() {
   return (
     <group scale={viewport.aspect}>
       <group position={[0, 0, -10]} rotation={[-0.1, 0, 0]}>
-        <ambientLight intensity={1} />
-        <directionalLight ref={directionalLight} position={[-2, 4, -2]} />
+        <ambientLight intensity={2} />
+        <directionalLight
+          ref={directionalLight}
+          position={[-2, 4, -2]}
+          intensity={1}
+        />
         <JetMesh />
         <Earth />
       </group>

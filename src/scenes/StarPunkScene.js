@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { OrbitControls, Stars } from "@react-three/drei";
+import { Stars } from "@react-three/drei";
 import { StarPunkShip } from "./StarPunkShip";
 
 export function StarPunkScene() {
@@ -30,12 +30,9 @@ export function StarPunkScene() {
   return (
     <>
       <ambientLight intensity={0.5} />
-      <directionalLight position={[10, 15, 10]} angle={0.3} />
-      {/* <OrbitControls target={[0, 0, 0]} autoRotate={true} autoRotateSpeed={2} /> */}
+      <directionalLight position={[0, 15, -10]} />
       <Stars />
-
       <StarPunkShip position={[0, -3, -15]} />
-
       <ExtendingWalls />
     </>
   );

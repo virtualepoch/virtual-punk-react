@@ -16,7 +16,7 @@ export const HubLink = ({
   setHubLinkClicked,
 }) => {
   const map = useTexture(image);
-  const dissolveMaterial = new THREE.MeshStandardMaterial({ map: map });
+  const dissolveMaterial = new THREE.MeshBasicMaterial({ map: map });
 
   const text3DMaterial = useRef();
   const text3DMesh = useRef();
