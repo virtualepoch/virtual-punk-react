@@ -44,8 +44,6 @@ function App() {
   const [foveation, setFoveation] = useState(0);
   const [vrFrameRate, setVrFrameRate] = useState(null);
 
-  const orbitControlsRef = useRef();
-
   // My functions
   useEffect(() => {
     setTimeout(() => {
@@ -56,11 +54,6 @@ function App() {
       if (hubBtnClicked) setHubBtnClicked(false);
     }, 1000);
   }, [linkClicked, hubBtnClicked]);
-
-  const intro = useNavigate("/");
-  const hubScene = useNavigate("/hub");
-  const torus = useNavigate("/torus");
-  const mach = useNavigate("/mach");
 
   return (
     <div className="App">
@@ -80,17 +73,7 @@ function App() {
         setHubBtnClicked={setHubBtnClicked}
       />
 
-      <Canvas
-        className="canvas"
-        camera={{
-          fov: 30,
-          position: [
-            0,
-            intro || hubScene || torus ? 0 : mach ? 25 : 0,
-            intro || hubScene || torus ? 1 : mach ? 25 : 1,
-          ],
-        }}
-      >
+      <Canvas className="canvas" camera={{ fov: 30, position: [0, 0, 1] }}>
         <PerformanceMonitor
           bounds={(fps) => (fps > 90 ? [50, 90] : [40, 60])}
           onDecline={(fps) => {
@@ -103,27 +86,14 @@ function App() {
 
         <Suspense>
           <OrbitControls
-            ref={orbitControlsRef}
-            autoRotate={intro ? false : hubScene ? false : mach ? true : false}
-            minDistance={2}
-            maxDistance={15}
-            minAzimuthAngle={
-              intro || hubScene || torus
-                ? -Math.PI / 2
-                : mach
-                ? -Math.PI
-                : -Math.PI / 2
-            }
-            maxAzimuthAngle={
-              intro || hubScene || torus
-                ? Math.PI / 2
-                : mach
-                ? Infinity
-                : Math.PI / 2
-            }
+            minDistance={1}
+            maxDistance={5}
+            minAzimuthAngle={-Math.PI / 2}
+            maxAzimuthAngle={Math.PI / 2}
             maxPolarAngle={Math.PI / 1.5}
             minPolarAngle={Math.PI / 4}
           />
+
           <XR
             foveation={foveation}
             frameRate={

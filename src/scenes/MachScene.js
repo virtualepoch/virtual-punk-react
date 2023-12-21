@@ -1,10 +1,11 @@
 import * as THREE from "three";
 import { useRef } from "react";
 import { useFrame, useLoader, useThree } from "@react-three/fiber";
-import { Stars } from "@react-three/drei";
+import { OrbitControls, Stars } from "@react-three/drei";
 import { JetConcept } from "../components/models/Jet_concept";
 import earth500 from "../assets/images/textures/earth_clouds_1k.jpg";
 import earth8k from "../assets/images/textures/earth_clouds_4k.jpg";
+import { degToRad } from "three/src/math/MathUtils";
 
 export const MachScene = ({ performance }) => {
   const directionalLight = useRef();

@@ -4,6 +4,7 @@ import { useFrame, useThree } from "@react-three/fiber";
 import {
   GradientTexture,
   Hud,
+  OrbitControls,
   OrthographicCamera,
   Torus,
   useHelper,
@@ -35,13 +36,18 @@ export const TorusScene = () => {
   const clock = new THREE.Clock();
   useFrame(() => {
     const a = clock.getElapsedTime();
-    torusGroup.current.position.z -= torusGroup.current.position.z > -6 ? 0.02 : 0;
+    torusGroup.current.position.z -=
+      torusGroup.current.position.z > -6 ? 0.02 : 0;
   });
 
   return (
     <group>
       <ambientLight intensity={1} />
-      <directionalLight ref={directionalLight} intensity={10} position={[-1, 2, 4]} />
+      <directionalLight
+        ref={directionalLight}
+        intensity={10}
+        position={[-1, 2, 4]}
+      />
       {/* <pointLight ref={pointLight} position={[-4, 15, 10]} intensity={1}/> */}
       <group ref={torusGroup} position={[0, 0, 0]}>
         <TorusSceneGroup />

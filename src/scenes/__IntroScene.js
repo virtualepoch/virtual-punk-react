@@ -7,6 +7,7 @@ import { RabbitHole } from "../components/three/RabbitHole";
 import { SpinningPanels } from "../components/three/SpinningPanels";
 import { TorusGroup } from "../components/three/TorusGroup";
 import { Ocean } from "../components/three/Ocean";
+import { OrbitControls } from "@react-three/drei";
 
 export const IntroScene = ({ start, hub, setHub, performance }) => {
   const sceneObjects = useRef();
@@ -29,6 +30,14 @@ export const IntroScene = ({ start, hub, setHub, performance }) => {
 
   return (
     <group ref={sceneObjects} position={[0, 0, 0]}>
+      <OrbitControls
+        minDistance={2}
+        maxDistance={15}
+        minAzimuthAngle={-Math.PI / 2}
+        maxAzimuthAngle={Math.PI / 2}
+        maxPolarAngle={Math.PI / 1.5}
+        minPolarAngle={Math.PI / 4}
+      />
       <RabbitHole position={[0, 0, -38]} performance={performance} />
 
       <SpinningPanels

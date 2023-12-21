@@ -6,6 +6,7 @@ import { TorusGroup } from "../components/three/TorusGroup";
 import { Ocean } from "../components/three/Ocean";
 import { useNavigate } from "react-router-dom";
 import { HubLinkOrbs } from "../components/three/HubLinkOrbs";
+import { OrbitControls } from "@react-three/drei";
 
 export const Hub = ({ hubLink, hubBtnClicked }) => {
   // Params for responsive sizing
@@ -42,6 +43,14 @@ export const Hub = ({ hubLink, hubBtnClicked }) => {
 
   return (
     <>
+      <OrbitControls
+        minDistance={2}
+        maxDistance={15}
+        minAzimuthAngle={-Math.PI / 2}
+        maxAzimuthAngle={Math.PI / 2}
+        maxPolarAngle={Math.PI / 1.5}
+        minPolarAngle={Math.PI / 4}
+      />
       <mesh position={[0, 0.1, -7]} scale={scale}>
         <HubLinkOrbs hubLink={hubLink} />
         {visibleItem === 0 && (
