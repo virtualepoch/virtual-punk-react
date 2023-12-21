@@ -6,7 +6,6 @@ import { RabbitHole } from "../components/three/RabbitHole";
 import { SpinningPanels } from "../components/three/SpinningPanels";
 import { TorusGroup } from "../components/three/TorusGroup";
 import { Ocean } from "../components/three/Ocean";
-import gsap from "gsap";
 import { Clock } from "three";
 // import { MyVRButton } from "../components/vr/MyVRButton";
 
@@ -19,30 +18,17 @@ export const IntroScene = ({
   performance,
 }) => {
   const sceneObjects = useRef();
-  // var sceneSpeed = start ? 0.7 : 0.004;
+  const clock = new Clock();
 
-  // const clock = new Clock()
-  // useFrame(() => {
-  // const a = clock.getElapsedTime()
-  // if (sceneObjects.current.position.z >= 105) {
-  //   sceneObjects.current.position.z = start ? 105 : 0;
-  //   setHub(start ? true : false);
-  // }
-  // sceneObjects.current.position.z += sceneSpeed;
-  // camControls.current.moveTo([0, 0, a + 1]);
-  // });
-
-  useEffect(() => {
-    if (!sceneObjects.current) return;
-    gsap.to(sceneObjects.current.position, {
-      z: 105,
-      ease: start ? "power4.in" : "linear",
-      duration: start ? 4 : 300,
-      onUpdate: () => {
-        if (start && sceneObjects.current.position.z >= 105) setHub(true);
-      },
-    });
-  }, [start, hub, setHub, sceneObjects]);
+  useFrame(() => {
+    var a = clock.getElapsedTime();
+    var sceneSpeed = start ? 0.004 * (a + 0.5) ** 6 : 0.004;
+    if (sceneObjects.current.position.z >= 105) {
+      sceneObjects.current.position.z = start ? 105 : 0;
+      setHub(start ? true : false);
+    }
+    sceneObjects.current.position.z += sceneSpeed;
+  });
 
   const navigate = useNavigate();
   useEffect(() => {

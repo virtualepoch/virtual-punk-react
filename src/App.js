@@ -30,7 +30,6 @@ import { MyVRButton } from "./components/vr/MyVRButton.js";
 import "./css/_intro.css";
 import "./css/App.css";
 import "./css/buttons.css";
-import gsap from "gsap";
 // import "./bday.css";
 
 function App() {
@@ -61,16 +60,8 @@ function App() {
 
   const camera = new THREE.PerspectiveCamera({
     fov: 30,
-    position: [0, 0, 10],
+    position: [0, 0, 1],
     default: true,
-  });
-
-  useEffect(() => {
-    gsap.to(camControls, {
-      ease: "linear",
-      duration: 2,
-      onUpdate: () => camControls.moveTo(0, 0, 80),
-    });
   });
 
   return (

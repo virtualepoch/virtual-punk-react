@@ -19,7 +19,6 @@ import { ExtraSoundPro } from "../components/models/ExtraSoundPro";
 // import { ReflectiveFloor } from "../components/three/ReflectiveFloor";
 import { degToRad } from "three/src/math/MathUtils";
 import { Atom } from "../components/three/Atom";
-import gsap from "gsap";
 
 export const TestingStage = ({ camera, camControls }) => {
   const directionalLight = useRef();
@@ -80,26 +79,14 @@ export const TestingStage = ({ camera, camControls }) => {
   const torus6 = useRef();
 
   const rotSpeed = 0.02;
-  // useFrame(() => {
-  //   torus1.current.rotation.x += rotSpeed;
-  //   torus2.current.rotation.z += rotSpeed;
-  //   torus3.current.rotation.z += rotSpeed;
-  //   torus4.current.rotation.x += rotSpeed;
-  //   torus5.current.rotation.z += rotSpeed;
-  //   torus6.current.rotation.z += rotSpeed;
-  // });
-
-  console.log(camControls.current);
-
-  useEffect(() => {
-    gsap.to(camControls.current, {
-      moveTo: [0, 0, 8],
-      ease: "power4.in",
-      repeat: -1,
-      duration: 4,
-      // onUpdate: camControls.current.moveTo([0, 0, 8]),
-    });
-  }, [camControls]);
+  useFrame(() => {
+    torus1.current.rotation.x += rotSpeed;
+    torus2.current.rotation.z += rotSpeed;
+    torus3.current.rotation.z += rotSpeed;
+    torus4.current.rotation.x += rotSpeed;
+    torus5.current.rotation.z += rotSpeed;
+    torus6.current.rotation.z += rotSpeed;
+  });
 
   return (
     <>
