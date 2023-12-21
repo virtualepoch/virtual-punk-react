@@ -1,7 +1,8 @@
-import { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useRef, useState } from "react";
 import { Route, Routes } from "react-router-dom";
+import * as THREE from "three";
 import { Canvas } from "@react-three/fiber";
-import { Loader, PerformanceMonitor } from "@react-three/drei";
+import { Loader, OrbitControls, PerformanceMonitor } from "@react-three/drei";
 import { Controllers, Hands, XR } from "@react-three/xr";
 
 // COMPONENTS
@@ -29,6 +30,7 @@ import { MyVRButton } from "./components/vr/MyVRButton.js";
 import "./css/_intro.css";
 import "./css/App.css";
 import "./css/buttons.css";
+import gsap from "gsap";
 // import "./bday.css";
 
 function App() {
@@ -44,6 +46,8 @@ function App() {
   const [foveation, setFoveation] = useState(0);
   const [vrFrameRate, setVrFrameRate] = useState(null);
 
+  const camControls = useRef();
+
   // My functions
   useEffect(() => {
     setTimeout(() => {
@@ -54,6 +58,20 @@ function App() {
       if (hubBtnClicked) setHubBtnClicked(false);
     }, 1000);
   }, [linkClicked, hubBtnClicked]);
+
+  const camera = new THREE.PerspectiveCamera({
+    fov: 30,
+    position: [0, 0, 10],
+    default: true,
+  });
+
+  useEffect(() => {
+    gsap.to(camControls, {
+      ease: "linear",
+      duration: 2,
+      onUpdate: () => camControls.moveTo(0, 0, 80),
+    });
+  });
 
   return (
     <div className="App">
@@ -91,7 +109,7 @@ function App() {
         />
 
         <Suspense>
-          <MyCamControls linkClicked={linkClicked} />
+          <MyCamControls camControls={camControls} linkClicked={linkClicked} />
           <XR
             foveation={foveation}
             frameRate={
@@ -120,6 +138,8 @@ function App() {
                 index
                 element={
                   <IntroScene
+                    camera={camera}
+                    camControls={camControls}
                     start={start}
                     setStart={setStart}
                     hub={hub}
@@ -136,15 +156,21 @@ function App() {
               />
               <Route
                 path="/torus"
-                element={
-                  <TorusScene performance={performance} />
-                }
+                element={<TorusScene performance={performance} />}
               />
               <Route path="/space" element={<SpaceScene />} />
-              <Route path="/mach" element={<MachScene performance={performance} />} />
+              <Route
+                path="/mach"
+                element={<MachScene performance={performance} />}
+              />
               <Route path="/water" element={<WaterScene />} />
               <Route path="/star-punk" element={<StarPunkScene />} />
-              <Route path="/test-stage" element={<TestingStage />} />
+              <Route
+                path="/test-stage"
+                element={
+                  <TestingStage camera={camera} camControls={camControls} />
+                }
+              />
               <Route path="/test-blank" element={<TestingBlank />} />
             </Routes>
           </XR>

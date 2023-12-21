@@ -1,4 +1,5 @@
 import {
+  useEffect,
   useRef,
   //  useState
 } from "react";
@@ -7,7 +8,6 @@ import { DirectionalLightHelper } from "three";
 import { useFrame } from "@react-three/fiber";
 import {
   GradientTexture,
-  PerspectiveCamera,
   Plane,
   Sphere,
   Stars,
@@ -19,8 +19,9 @@ import { ExtraSoundPro } from "../components/models/ExtraSoundPro";
 // import { ReflectiveFloor } from "../components/three/ReflectiveFloor";
 import { degToRad } from "three/src/math/MathUtils";
 import { Atom } from "../components/three/Atom";
+import gsap from "gsap";
 
-export const TestingStage = () => {
+export const TestingStage = ({ camera, camControls }) => {
   const directionalLight = useRef();
   useHelper(directionalLight, DirectionalLightHelper, 1, "red");
   const pointLight = useRef();
@@ -79,14 +80,26 @@ export const TestingStage = () => {
   const torus6 = useRef();
 
   const rotSpeed = 0.02;
-  useFrame(() => {
-    torus1.current.rotation.x += rotSpeed;
-    torus2.current.rotation.z += rotSpeed;
-    torus3.current.rotation.z += rotSpeed;
-    torus4.current.rotation.x += rotSpeed;
-    torus5.current.rotation.z += rotSpeed;
-    torus6.current.rotation.z += rotSpeed;
-  });
+  // useFrame(() => {
+  //   torus1.current.rotation.x += rotSpeed;
+  //   torus2.current.rotation.z += rotSpeed;
+  //   torus3.current.rotation.z += rotSpeed;
+  //   torus4.current.rotation.x += rotSpeed;
+  //   torus5.current.rotation.z += rotSpeed;
+  //   torus6.current.rotation.z += rotSpeed;
+  // });
+
+  console.log(camControls.current);
+
+  useEffect(() => {
+    gsap.to(camControls.current, {
+      moveTo: [0, 0, 8],
+      ease: "power4.in",
+      repeat: -1,
+      duration: 4,
+      // onUpdate: camControls.current.moveTo([0, 0, 8]),
+    });
+  }, [camControls]);
 
   return (
     <>
@@ -111,7 +124,7 @@ export const TestingStage = () => {
         position={[1, -2, 0]}
       />
       <group>
-        <PerspectiveCamera makeDefault position={[0, 0, 10]} />
+        {/* <PerspectiveCamera makeDefault position={[0, 0, 10]} /> */}
         {/* <directionalLight ref={directionalLight} position={[-2, 4, 2]} intensity={2} /> */}
         {/* <pointLight ref={pointLight} position={[0, -1, 0]} intensity={2} /> */}
 

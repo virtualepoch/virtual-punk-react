@@ -6,19 +6,43 @@ import { RabbitHole } from "../components/three/RabbitHole";
 import { SpinningPanels } from "../components/three/SpinningPanels";
 import { TorusGroup } from "../components/three/TorusGroup";
 import { Ocean } from "../components/three/Ocean";
+import gsap from "gsap";
+import { Clock } from "three";
 // import { MyVRButton } from "../components/vr/MyVRButton";
 
-export const IntroScene = ({ start, hub, setHub, performance }) => {
+export const IntroScene = ({
+  camera,
+  camControls,
+  start,
+  hub,
+  setHub,
+  performance,
+}) => {
   const sceneObjects = useRef();
-  var sceneSpeed = start ? 0.7 : 0.004;
+  // var sceneSpeed = start ? 0.7 : 0.004;
 
-  useFrame(() => {
-    if (sceneObjects.current.position.z >= 105) {
-      sceneObjects.current.position.z = start ? 105 : 0;
-      setHub(start ? true : false);
-    }
-    sceneObjects.current.position.z += sceneSpeed;
-  });
+  // const clock = new Clock()
+  // useFrame(() => {
+  // const a = clock.getElapsedTime()
+  // if (sceneObjects.current.position.z >= 105) {
+  //   sceneObjects.current.position.z = start ? 105 : 0;
+  //   setHub(start ? true : false);
+  // }
+  // sceneObjects.current.position.z += sceneSpeed;
+  // camControls.current.moveTo([0, 0, a + 1]);
+  // });
+
+  useEffect(() => {
+    if (!sceneObjects.current) return;
+    gsap.to(sceneObjects.current.position, {
+      z: 105,
+      ease: start ? "power4.in" : "linear",
+      duration: start ? 4 : 300,
+      onUpdate: () => {
+        if (start && sceneObjects.current.position.z >= 105) setHub(true);
+      },
+    });
+  }, [start, hub, setHub, sceneObjects]);
 
   const navigate = useNavigate();
   useEffect(() => {
@@ -28,10 +52,7 @@ export const IntroScene = ({ start, hub, setHub, performance }) => {
   return (
     <>
       <group ref={sceneObjects} position={[0, 0, 0]}>
-        <RabbitHole
-          position={[0, 0, -38]}
-          performance={performance}
-        />
+        <RabbitHole position={[0, 0, -38]} performance={performance} />
 
         <SpinningPanels
           panelsPosition={[0, 0, -95]}
