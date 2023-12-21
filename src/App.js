@@ -1,8 +1,14 @@
 import { Suspense, useEffect, useRef, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import * as THREE from "three";
-import { Canvas } from "@react-three/fiber";
-import { Loader, OrbitControls, PerformanceMonitor } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
+import {
+  Loader,
+  OrbitControls,
+  PerformanceMonitor,
+  PerspectiveCamera,
+  Sphere,
+} from "@react-three/drei";
 import { Controllers, Hands, XR } from "@react-three/xr";
 
 // COMPONENTS
@@ -44,8 +50,9 @@ function App() {
   const [vrSession, setVrSession] = useState(false);
   const [foveation, setFoveation] = useState(0);
   const [vrFrameRate, setVrFrameRate] = useState(null);
-
+  // useRef hooks
   const camControls = useRef();
+  const player = useRef();
 
   // My functions
   useEffect(() => {
@@ -57,12 +64,6 @@ function App() {
       if (hubBtnClicked) setHubBtnClicked(false);
     }, 1000);
   }, [linkClicked, hubBtnClicked]);
-
-  const camera = new THREE.PerspectiveCamera({
-    fov: 30,
-    position: [0, 0, 1],
-    default: true,
-  });
 
   return (
     <div className="App">
@@ -85,12 +86,12 @@ function App() {
       <Canvas
         className="canvas"
         camera={{
-          position: [0, 0, 1],
           fov: 30,
+          position: [0, 0, 1],
         }}
       >
         <PerformanceMonitor
-          bounds={(fps) => (fps > 90 ? [50, 90] : [50, 60])}
+          bounds={(fps) => (fps > 90 ? [50, 90] : [40, 60])}
           onDecline={(fps) => {
             setPerformance(0);
           }}
@@ -100,7 +101,11 @@ function App() {
         />
 
         <Suspense>
-          <MyCamControls camControls={camControls} linkClicked={linkClicked} />
+          <MyCamControls
+            camControls={camControls}
+            player={player}
+            linkClicked={linkClicked}
+          />
           <XR
             foveation={foveation}
             frameRate={
@@ -124,12 +129,21 @@ function App() {
               </MyVRButton>
             )}
 
+            <Sphere ref={player} args={[0.1, 4, 3]} position={[0, 0, 100]}>
+              <meshBasicMaterial
+                color={"white"}
+                wireframe
+                transparent
+                opacity={0}
+              />
+            </Sphere>
+
             <Routes>
               <Route
                 index
                 element={
                   <IntroScene
-                    camera={camera}
+                    player={player}
                     camControls={camControls}
                     start={start}
                     setStart={setStart}
@@ -152,14 +166,22 @@ function App() {
               <Route path="/space" element={<SpaceScene />} />
               <Route
                 path="/mach"
-                element={<MachScene performance={performance} />}
+                element={
+                  <MachScene
+                    // camera={camera}
+                    performance={performance}
+                  />
+                }
               />
               <Route path="/water" element={<WaterScene />} />
               <Route path="/star-punk" element={<StarPunkScene />} />
               <Route
                 path="/test-stage"
                 element={
-                  <TestingStage camera={camera} camControls={camControls} />
+                  <TestingStage
+                  // camera={camera}
+                  // camControls={camControls}
+                  />
                 }
               />
               <Route path="/test-blank" element={<TestingBlank />} />

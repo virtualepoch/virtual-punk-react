@@ -1,14 +1,19 @@
 import { CameraControls } from "@react-three/drei";
-import { useThree } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import { button, buttonGroup, folder, useControls } from "leva";
 import { useEffect, useRef } from "react";
 import { DEG2RAD } from "three/src/math/MathUtils";
 
-export const MyCamControls = ({camera, camControls, centerMeshRef, linkClicked }) => {
-
+export const MyCamControls = ({
+  camera,
+  camControls,
+  player,
+  centerMeshRef,
+  linkClicked,
+}) => {
   useEffect(() => {
     if (linkClicked) camControls.current?.reset(true);
-  }, [linkClicked]);
+  }, [linkClicked, camControls]);
 
   // All same options as the original "basic" example:
   // https://yomotsu.github.io/camera-controls/examples/basic.html
@@ -24,21 +29,16 @@ export const MyCamControls = ({camera, camControls, centerMeshRef, linkClicked }
       thetaGrp: buttonGroup({
         label: "rotate theta",
         opts: {
-          "+45º": () =>
-            camControls.current?.rotate(45 * DEG2RAD, 0, true),
-          "-90º": () =>
-            camControls.current?.rotate(-90 * DEG2RAD, 0, true),
-          "+360º": () =>
-            camControls.current?.rotate(360 * DEG2RAD, 0, true),
+          "+45º": () => camControls.current?.rotate(45 * DEG2RAD, 0, true),
+          "-90º": () => camControls.current?.rotate(-90 * DEG2RAD, 0, true),
+          "+360º": () => camControls.current?.rotate(360 * DEG2RAD, 0, true),
         },
       }),
       phiGrp: buttonGroup({
         label: "rotate phi",
         opts: {
-          "+20º": () =>
-            camControls.current?.rotate(0, 20 * DEG2RAD, true),
-          "-40º": () =>
-            camControls.current?.rotate(0, -40 * DEG2RAD, true),
+          "+20º": () => camControls.current?.rotate(0, 20 * DEG2RAD, true),
+          "-40º": () => camControls.current?.rotate(0, -40 * DEG2RAD, true),
         },
       }),
       truckGrp: buttonGroup({
@@ -81,10 +81,7 @@ export const MyCamControls = ({camera, camControls, centerMeshRef, linkClicked }
         {
           vec2: { value: [-5, 2, 1], label: "vec" },
           "setPosition(…vec)": button((get) =>
-            camControls.current?.setPosition(
-              ...get("setPosition.vec2"),
-              true
-            )
+            camControls.current?.setPosition(...get("setPosition.vec2"), true)
           ),
         },
         { collapsed: true }
@@ -152,8 +149,8 @@ export const MyCamControls = ({camera, camControls, centerMeshRef, linkClicked }
     <CameraControls
       enabled={enabled}
       ref={camControls}
-      // minDistance={2}
-      // maxDistance={15}
+      minDistance={2}
+      maxDistance={15}
       minAzimuthAngle={-Math.PI / 2}
       maxAzimuthAngle={Math.PI / 2}
       maxPolarAngle={Math.PI / 1.5}

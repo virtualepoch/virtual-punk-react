@@ -15,7 +15,6 @@ export const Hub = ({ hubLink, hubBtnClicked }) => {
   const scaleFactor = portrait ? viewport.width * 2 : viewport.height * 2;
   const scale = Math.max(scaleFactor, 0.75);
 
-  console.log(scale)
   // For navigation
   const navigate = useNavigate();
 
