@@ -1,19 +1,12 @@
 import * as THREE from "three";
 import { useRef } from "react";
 import { useFrame, useLoader, useThree } from "@react-three/fiber";
-import {
-  OrbitControls,
-  PerspectiveCamera,
-  Stars,
-  useHelper,
-} from "@react-three/drei";
+import { Stars } from "@react-three/drei";
 import { JetConcept } from "../components/models/Jet_concept";
 import earth500 from "../assets/images/textures/earth_clouds_1k.jpg";
 import earth8k from "../assets/images/textures/earth_clouds_4k.jpg";
 
 export const MachScene = ({ performance }) => {
-  const MyCamera = new THREE.PerspectiveCamera();
-
   const directionalLight = useRef();
   // useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
   const viewport = useThree((state) => state.viewport); // used to scale scene
@@ -54,13 +47,7 @@ export const MachScene = ({ performance }) => {
 
   return (
     <group scale={viewport.aspect}>
-      <OrbitControls
-        camera={MyCamera}
-        makeDefault
-        autoRotate
-        autoRotateSpeed={1}
-      />
-      <group position={[0, 0, -10]} rotation={[-0.1, 0, 0]}>
+      <group position={[0, 0, 0]} rotation={[-0.1, 0, 0]}>
         <ambientLight intensity={2} />
         <directionalLight
           ref={directionalLight}
