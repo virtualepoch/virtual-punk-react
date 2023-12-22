@@ -1,13 +1,15 @@
-import vpIcon from "../../assets/images/vp-icon.png";
+import flyingDragonSm from "../../assets/images/torus/flying-dragon-256.png";
+import flyingDragonLg from "../../assets/images/torus/flying-dragon-512.png";
 
 export const torusCredits = [
   {
-    asset:
-      "No assets used in this scene... just three.js created with the react-three/fiber & react-three/drei libraries.",
-    title: "Torus",
-    link: "https://vr-punk.vercel.app/torus",
-    img: vpIcon,
-    credits: "Craig Kaufman",
-    changes: "",
+    asset: "Dragon flying in front of the camera.",
+    title: "'Dragon Animation Flying'",
+    link: "https://sketchfab.com/3d-models/dragon-animation-flying-2fdae78e272c4994bb67336a289f11ef",
+    imgSm: flyingDragonSm,
+    imgLg: flyingDragonLg,
+    credits: "Al-Deezel (https://sketchfab.com/Al-dezel)",
+    changes:
+      "The original texture wouldn't load with the model so I inserted the texture listed next.",
   },
 ];

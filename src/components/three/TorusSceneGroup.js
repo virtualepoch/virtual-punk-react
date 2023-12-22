@@ -65,7 +65,7 @@ export const TorusSceneGroup = ({ position }) => {
   ];
 
   return (
-    <group ref={meshRef} position={position} rotation={[0, 0, degToRad(120)]}>
+    <group ref={meshRef} position={position} rotation={[0, 0, degToRad(-60)]}>
       <Torus
         args={[torusScale, torusScale / 10, 16, 3]}
         rotation-z={-degToRad(30)}

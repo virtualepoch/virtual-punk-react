@@ -8,6 +8,8 @@ import { Globe } from "../components/three/Globe";
 // import textureSm from "../assets/images/textures/Tile_04-512x512.png";
 import textureLg from "../assets/images/textures/Tile_04-512x512.png";
 import { DragonFlying } from "../components/models/DragonFlying";
+import { Box, Cloud, Clouds } from "@react-three/drei";
+import { ShadowDragon } from "../components/models/ShadowDragon";
 
 export const TorusScene = ({ performance }) => {
   const directionalLight = useRef();
@@ -23,11 +25,16 @@ export const TorusScene = ({ performance }) => {
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
   const torusGroup = useRef();
-  // const clock = new THREE.Clock();
+  const shadowDragon = useRef();
+  const clock = new THREE.Clock();
   useFrame(() => {
-    // const a = clock.getElapsedTime();
+    const a = clock.getElapsedTime();
     torusGroup.current.position.z -=
       torusGroup.current.position.z > -6 ? 0.02 : 0;
+    torusGroup.current.position.y += a >= 4 ? 0.1 : 0;
+    torusGroup.current.rotation.y += a >= 4 ? 0.3 : a >= 8 ? 0 : 0;
+    shadowDragon.current.position.z +=
+      a >= 4 ? 0.05 : a >= 7 ? 0 : a >= 12 ? 0.08 : 0;
   });
 
   return (
@@ -38,15 +45,43 @@ export const TorusScene = ({ performance }) => {
         intensity={10}
         position={[-1, 2, 4]}
       />
+      {/* <Clouds /> */}
+      <Clouds limit={100}>
+        <Cloud
+          seed={10}
+          fade={30}
+          speed={0.1}
+          growth={4}
+          segments={20}
+          volume={6}
+          opacity={0.6}
+          bounds={[4, 3, 1]}
+        />
+        <Cloud
+          seed={20}
+          fade={30}
+          position={[0, 1, 0]}
+          speed={0.5}
+          growth={4}
+          volume={10}
+          opacity={1}
+          bounds={[6, 2, 1]}
+          color={"red"}
+        />
+        <pointLight position={[0, 0, 0.5]} color="blue" />
+      </Clouds>
       {/* <pointLight ref={pointLight} position={[-4, 15, 10]} intensity={1}/> */}
       <DragonFlying position={[0, -0.7, 0]} />
       <Globe
         args={[512, 256, 256]}
-        position={[0, -511.5, -50]}
+        position={[0, -512, -50]}
         rotation={[0, 0, Math.PI / 2]}
         performance={performance}
         texture={texture}
       />
+      <group ref={shadowDragon}>
+        <ShadowDragon position={[0, 0, -20]} />
+      </group>
       <group ref={torusGroup} position={[0, 0, 0]}>
         <TorusSceneGroup />
       </group>

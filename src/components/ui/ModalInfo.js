@@ -13,8 +13,8 @@ const Credit = ({ ...props }) => {
   return (
     <div className="info-wrapper flex-col">
       <hr className="info-hr" />
-      <p className="info-text">Asset— {props.info.asset}</p>
-      <p className="info-text">Title— {props.info.title}</p>
+      <p className="info-text">Asset: {props.info.asset}</p>
+      <p className="info-text">Title: {props.info.title}</p>
       <a
         className="info-link"
         href={props.info.link}
@@ -23,12 +23,12 @@ const Credit = ({ ...props }) => {
       >
         <img
           className="info-img"
-          src={props.info.img}
+          src={window.innerWidth < 700 ? props.info.imgSm : props.info.imgLg}
           alt="future machine bg for triangular cylinder"
         />
       </a>
-      <p className="info-text">Created by— {props.info.credits}</p>
-      <p className="info-text">Changes— {props.info.changes}</p>
+      <p className="info-text">Author: {props.info.credits}</p>
+      <p className="info-text">Changes: {props.info.changes}</p>
     </div>
   );
 };
