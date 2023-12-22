@@ -86,7 +86,7 @@ function App() {
 
         <Suspense>
           <OrbitControls
-            minDistance={1}
+            minDistance={0}
             maxDistance={5}
             minAzimuthAngle={-Math.PI / 2}
             maxAzimuthAngle={Math.PI / 2}

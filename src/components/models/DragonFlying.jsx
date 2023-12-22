@@ -7,17 +7,33 @@ Source: https://sketchfab.com/3d-models/dragon-animation-flying-2fdae78e272c4994
 Title: Dragon Animation Flying
 */
 
-import React, { useRef } from 'react'
-import { useGLTF, useAnimations } from '@react-three/drei'
+import React, { useEffect, useRef } from "react";
+import { useGLTF, useAnimations } from "@react-three/drei";
 
-export function Model(props) {
-  const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/models/dragon_flying.glb')
-  const { actions } = useAnimations(animations, group)
+export function DragonFlying({ props, position }) {
+  const group = useRef();
+  const { nodes, materials, animations } = useGLTF("/models/dragon_flying.glb");
+  const { actions, mixer } = useAnimations(animations, group);
+
+  useEffect(() => {
+    actions["flying"].play();
+    mixer.timeScale = 1;
+  }, [actions, mixer]);
+
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group
+      ref={group}
+      {...props}
+      dispose={null}
+      position={position}
+      rotation={[0, Math.PI, 0]}
+    >
       <group name="Sketchfab_Scene">
-        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]} scale={7.32}>
+        <group
+          name="Sketchfab_model"
+          rotation={[-Math.PI / 2, 0, 0]}
+          scale={1.32}
+        >
           <group name="root">
             <group name="GLTF_SceneRootNode" rotation={[Math.PI / 2, 0, 0]}>
               <group name="RootNode0_0" scale={0.01}>
@@ -27,7 +43,13 @@ export function Model(props) {
                     <group name="dragon_wings22_2_correction">
                       <group name="dragon_wings22_2" />
                     </group>
-                    <skinnedMesh name="Object_228" geometry={nodes.Object_228.geometry} material={materials.material_0} skeleton={nodes.Object_228.skeleton} />
+                    <skinnedMesh
+                      name="Object_228"
+                      geometry={nodes.Object_228.geometry}
+                      skeleton={nodes.Object_228.skeleton}
+                    >
+                      <meshPhongMaterial color={"cyan"}/>
+                    </skinnedMesh>
                   </group>
                 </group>
               </group>
@@ -36,7 +58,7 @@ export function Model(props) {
         </group>
       </group>
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/models/dragon_flying.glb')
+useGLTF.preload("/models/dragon_flying.glb");

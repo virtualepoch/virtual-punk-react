@@ -7,6 +7,7 @@ import { Globe } from "../components/three/Globe";
 // import textureLg from "../assets/images/textures/hex-100.jpg"
 // import textureSm from "../assets/images/textures/Tile_04-512x512.png";
 import textureLg from "../assets/images/textures/Tile_04-512x512.png";
+import { DragonFlying } from "../components/models/DragonFlying";
 
 export const TorusScene = ({ performance }) => {
   const directionalLight = useRef();
@@ -38,6 +39,7 @@ export const TorusScene = ({ performance }) => {
         position={[-1, 2, 4]}
       />
       {/* <pointLight ref={pointLight} position={[-4, 15, 10]} intensity={1}/> */}
+      <DragonFlying position={[0, -0.7, 0]} />
       <Globe
         args={[512, 256, 256]}
         position={[0, -511.5, -50]}
