@@ -23,11 +23,17 @@ const Credit = ({ ...props }) => {
       >
         <img
           className="info-img"
-          src={window.innerWidth < 700 ? props.info.imgSm : props.info.imgLg}
-          alt="future machine bg for triangular cylinder"
+          src={
+            window.innerWidth <= 700
+              ? props.info.imgSm
+              : window.innerWidth > 700
+              ? props.info.imgLg
+              : props.info.img
+          }
+          alt={props.info.alt}
         />
       </a>
-      <p className="info-text">Author: {props.info.credits}</p>
+      <p className="info-text">Author: {props.info.author}</p>
       <p className="info-text">Changes: {props.info.changes}</p>
     </div>
   );

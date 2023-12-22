@@ -15,9 +15,9 @@ export const MyVRButton = ({ setStart, children }) => {
 
   useEffect(() => {
     gsap.to(button.current, {
-      scale: hover ? [1.1, 1.1, 1.1] : [1, 1, 1],
-      ease: "power1.inout",
       duration: 0.4,
+      ease: "power1.inOut",
+      scale: hover ? [1.1, 1.1, 1.1] : [1, 1, 1],
     });
   });
 

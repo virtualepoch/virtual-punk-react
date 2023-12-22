@@ -61,9 +61,7 @@
   background: cyan;
 }
 
-
 /* CONTENT & LINKS */
-
 
 .info-wrapper {
   width: 100%;
@@ -71,13 +69,13 @@
 }
 
 .info-text {
-  color: cyan;
+  color: rgb(150, 255, 255);
   font-size: 20px;
 }
 
 .info-link {
-  color: cyan;
-  font-size: 20px;
+  min-width: 250px;
+  min-height: 100px;
   position: relative;
 }
 
