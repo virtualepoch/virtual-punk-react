@@ -1,5 +1,5 @@
-import { Suspense, useEffect, useRef, useState } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Suspense, useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
 import { Loader, OrbitControls, PerformanceMonitor } from "@react-three/drei";
 import { Controllers, Hands, XR } from "@react-three/xr";
@@ -135,6 +135,7 @@ function App() {
                 element={
                   <Hub
                     hubLink={hubLink}
+                    setHubLink={setHubLink}
                     hubBtnClicked={hubBtnClicked}
                     performance={performance}
                   />

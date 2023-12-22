@@ -1,8 +1,10 @@
 import { Box, Text } from "@react-three/drei";
 import { Interactive } from "@react-three/xr";
-import { useState } from "react";
+import gsap from "gsap";
+import { useEffect, useRef, useState } from "react";
 
 export const MyVRButton = ({ setStart, children }) => {
+  const button = useRef();
   const [hover, setHover] = useState(false);
   const [color, setColor] = useState(0x003456);
 
@@ -11,17 +13,21 @@ export const MyVRButton = ({ setStart, children }) => {
     setStart(true);
   };
 
+  useEffect(() => {
+    gsap.to(button.current, {
+      scale: hover ? [1.1, 1.1, 1.1] : [1, 1, 1],
+      ease: "power1.inout",
+      duration: 0.4,
+    });
+  });
+
   return (
     <Interactive
       onSelect={onSelect}
       onHover={() => setHover(true)}
       onBlur={() => setHover(false)}
     >
-      <group
-        position={[-1, 1.5, -4.5]}
-        rotation-y={0.4}
-        scale={hover ? [1.1, 1.1, 1.1] : [1, 1, 1]}
-      >
+      <group ref={button} position={[-1, 1.5, -4.5]} rotation-y={0.4}>
         <Box args={[1, 0.5, 0.01]}>
           <meshBasicMaterial color={color} />
           <Text

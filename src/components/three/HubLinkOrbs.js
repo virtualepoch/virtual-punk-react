@@ -1,7 +1,7 @@
 import { Sphere, Text } from "@react-three/drei";
 import * as THREE from "three";
 import { Atom } from "./Atom";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useFrame, useLoader } from "@react-three/fiber";
 import gsap from "gsap";
 
@@ -13,18 +13,22 @@ export const linkOrbInfo = [
   {
     text: "torus",
     number: 0,
+    path: "/torus",
   },
   {
     text: "mach",
     number: 1,
+    path: "/mach",
   },
   {
     text: "water",
     number: 2,
+    path: "/water",
   },
 ];
 
-export const HubLinkOrbs = ({ hubLink,performance }) => {
+export const HubLinkOrbs = ({ hubLink, setHubLink, performance }) => {
+  const [hovered, setHovered] = useState();
   const texture = useLoader(
     THREE.TextureLoader,
     performance === 0 ? texture128 : performance === 2 ? texture512 : texture256
@@ -52,9 +56,26 @@ export const HubLinkOrbs = ({ hubLink,performance }) => {
       castShadow
     >
       <ambientLight />
-      <Atom atomRef={atomRef} scale={1.5} orbitScale={0.07} performance={performance} />
+      <Atom
+        atomRef={atomRef}
+        scale={1.5}
+        orbitScale={0.07}
+        performance={performance}
+      />
       {linkOrbInfo.map((item, index) => (
-        <group key={index} position={[index * 4, 0, 0]}>
+        <group
+          key={index}
+          position={[index * 4, 0, 0]}
+          onClick={() => setHubLink(item.number)}
+          onPointerMove={() => {
+            setHovered(true);
+            document.body.style.cursor = "pointer";
+          }}
+          onPointerOut={() => {
+            setHovered(false);
+            document.body.style.cursor = "default";
+          }}
+        >
           <Text
             font="fonts/ARCADE.TTF"
             fontSize={1}
@@ -66,10 +87,7 @@ export const HubLinkOrbs = ({ hubLink,performance }) => {
           </Text>
 
           <Sphere args={[1, 16, 16]}>
-            <meshStandardMaterial
-              map={texture}
-              receiveShadow
-            />
+            <meshStandardMaterial map={texture} receiveShadow />
           </Sphere>
         </group>
       ))}

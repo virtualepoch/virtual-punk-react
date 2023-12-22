@@ -8,13 +8,14 @@ import { useNavigate } from "react-router-dom";
 import { HubLinkOrbs } from "../components/three/HubLinkOrbs";
 import { OrbitControls } from "@react-three/drei";
 
-export const Hub = ({ hubLink, hubBtnClicked, performance }) => {
+export const Hub = ({ hubLink, setHubLink, hubBtnClicked, performance }) => {
   // Params for responsive sizing
   const viewport = useThree((state) => state.viewport);
   const portrait = viewport.width < viewport.height;
 
   const scaleFactor = portrait ? viewport.width * 2 : viewport.height * 2;
-  const scale = Math.max(scaleFactor, 0.75);
+  const scale = Math.max(Math.min(scaleFactor, 1.2), 0.75);
+  console.log(scaleFactor);
 
   // For navigation
   const navigate = useNavigate();
@@ -52,7 +53,11 @@ export const Hub = ({ hubLink, hubBtnClicked, performance }) => {
         minPolarAngle={Math.PI / 4}
       />
       <mesh position={[0, 0.1, -7]} scale={scale}>
-        <HubLinkOrbs hubLink={hubLink} performance={performance} />
+        <HubLinkOrbs
+          hubLink={hubLink}
+          setHubLink={setHubLink}
+          performance={performance}
+        />
         {visibleItem === 0 && (
           <HubLink
             scale={scale}

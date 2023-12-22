@@ -8,7 +8,7 @@ import { Globe } from "../components/three/Globe";
 // import textureSm from "../assets/images/textures/Tile_04-512x512.png";
 import textureLg from "../assets/images/textures/Tile_04-512x512.png";
 import { DragonFlying } from "../components/models/DragonFlying";
-import { Box, Cloud, Clouds } from "@react-three/drei";
+import { Box } from "@react-three/drei";
 import { ShadowDragon } from "../components/models/ShadowDragon";
 import gsap from "gsap";
 
@@ -56,33 +56,6 @@ export const TorusScene = ({ performance }) => {
         intensity={10}
         position={[-1, 2, 4]}
       />
-      {performance === 2 && (
-        <Clouds limit={100}>
-          <Cloud
-            seed={10}
-            fade={30}
-            speed={0.1}
-            growth={4}
-            segments={20}
-            volume={6}
-            opacity={0.6}
-            bounds={[4, 3, 1]}
-            color={"blue"}
-          />
-          <Cloud
-            seed={20}
-            fade={30}
-            position={[0, 1, 0]}
-            speed={0.5}
-            growth={4}
-            volume={10}
-            opacity={1}
-            bounds={[6, 2, 1]}
-            color={"red"}
-          />
-          <pointLight position={[0, 0, 0.5]} color="blue" />
-        </Clouds>
-      )}
       {/* <pointLight ref={pointLight} position={[-4, 15, 10]} intensity={1}/> */}
       <DragonFlying position={[0, -0.7, 0]} />
       <Globe

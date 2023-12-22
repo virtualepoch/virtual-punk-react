@@ -7,8 +7,7 @@ import { BtnFullScreen } from "./ui/BtnFullScreen";
 import { Header } from "./ui/Header";
 import { NavMenu } from "./ui/NavMenu";
 import { FpsMeter } from "./ui/FpsMeter";
-import { Leva } from "leva";
-import { OmniControls } from "./ui/OmniControls";
+// import { Leva } from "leva";
 import { ModalInfo } from "./ui/ModalInfo";
 import { ModalVR } from "./ui/ModalVR";
 import { BtnStart } from "./ui/BtnStart";
@@ -120,10 +119,6 @@ export const UI = ({
         foveation={foveation}
         setFoveation={setFoveation}
       />
-
-      {/* CONTROLS /////// */}
-      <Leva hidden={hideLeva ? true : false} />
-      {/* {torus && <OmniControls />} */}
     </>
   );
 };
