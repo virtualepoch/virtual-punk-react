@@ -8,6 +8,8 @@ import { DirectionalLightHelper } from "three";
 import { useFrame } from "@react-three/fiber";
 import {
   GradientTexture,
+  OrbitControls,
+  PerspectiveCamera,
   Plane,
   Sphere,
   Stars,
@@ -20,7 +22,7 @@ import { ExtraSoundPro } from "../components/models/ExtraSoundPro";
 import { degToRad } from "three/src/math/MathUtils";
 import { Atom } from "../components/three/Atom";
 
-export const TestingStage = ({ camera, camControls }) => {
+export const TestingStage = () => {
   const directionalLight = useRef();
   useHelper(directionalLight, DirectionalLightHelper, 1, "red");
   const pointLight = useRef();
@@ -55,69 +57,15 @@ export const TestingStage = ({ camera, camControls }) => {
   });
 
   // Not very reflective but better for performance
-  const material3 = new THREE.MeshMatcapMaterial({
-    color: 0x00ffff,
-    toneMapped: false,
-  });
-  const material4 = new THREE.MeshNormalMaterial({
-    color: "magenta",
-  });
-  const material5 = new THREE.MeshPhongMaterial({
-    color: "cyan",
-    toneMapped: false,
-  });
-  const material6 = new THREE.MeshPhysicalMaterial({
-    color: "darkblue",
-    toneMapped: false,
-  });
-
-  const torus1 = useRef();
-  const torus2 = useRef();
-  const torus3 = useRef();
-  const torus4 = useRef();
-  const torus5 = useRef();
-  const torus6 = useRef();
-
-  const rotSpeed = 0.02;
-  useFrame(() => {
-    torus1.current.rotation.x += rotSpeed;
-    torus2.current.rotation.z += rotSpeed;
-    torus3.current.rotation.z += rotSpeed;
-    torus4.current.rotation.x += rotSpeed;
-    torus5.current.rotation.z += rotSpeed;
-    torus6.current.rotation.z += rotSpeed;
-  });
 
   return (
     <>
-      <Atom
-        torus1ref={torus1}
-        torus2ref={torus2}
-        torus3ref={torus3}
-        atomMaterial={material}
-        atom1Material={material1}
-        atom2Material={material2}
-        atom3Material={material3}
-        position={[-1, -2, 0]}
-      />
-      <Atom
-        torus1ref={torus4}
-        torus2ref={torus5}
-        torus3ref={torus6}
-        atomMaterial={material}
-        atom1Material={material4}
-        atom2Material={material5}
-        atom3Material={material6}
-        position={[1, -2, 0]}
-      />
+      <Atom position={[0, -2, -5]} />
+
       <group>
-        {/* <PerspectiveCamera makeDefault position={[0, 0, 10]} /> */}
+        <PerspectiveCamera makeDefault position={[0, 0, 10]} />
         {/* <directionalLight ref={directionalLight} position={[-2, 4, 2]} intensity={2} /> */}
         {/* <pointLight ref={pointLight} position={[0, -1, 0]} intensity={2} /> */}
-
-        <Plane args={[1, 5]} position={[1, -2, -2]} rotation={[0.6, 0, 0]}>
-          <rectAreaLight args={[0xff0000, 10, 5, 5]} />
-        </Plane>
 
         <Stars color="red" />
         <ExtraSoundPro />
@@ -141,7 +89,7 @@ export const TestingStage = ({ camera, camControls }) => {
           args={[50, 25]}
           rotation={[-Math.PI / 2, 0, 0]}
           position={[0, -4, 0]}
-          material={material3}
+          material={material}
           receiveShadow
         />
       </group>

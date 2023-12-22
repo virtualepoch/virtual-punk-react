@@ -1,63 +1,95 @@
-import { Sphere, Torus } from "@react-three/drei";
+import { useRef } from "react";
+import * as THREE from "three";
 import { degToRad } from "three/src/math/MathUtils";
+import { useFrame } from "@react-three/fiber";
+import { Sphere, Torus } from "@react-three/drei";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
 
 export const Atom = ({
-  scale,
+  atomRef,
+  scale = 1,
+  orbitScale = 0.1,
   position,
-  torus1ref,
-  torus2ref,
-  torus3ref,
-  atomMaterial,
-  atom1Material,
-  atom2Material,
-  atom3Material,
+  rotSpeed = 0.07,
+  intensity = 0.05,
 }) => {
+  const materialTrans = new THREE.MeshBasicMaterial({
+    color: 0xffffff,
+    toneMapped: false,
+    transparent: true,
+    opacity: 0,
+  });
+
+  const material = new THREE.MeshBasicMaterial({
+    color: 0x00ffff,
+    toneMapped: false,
+  });
+
+  material.color.multiplyScalar(1.5);
+
+  const ref1 = useRef();
+  const ref2 = useRef();
+  const ref3 = useRef();
+  useFrame(() => {
+    ref1.current.rotation.x += rotSpeed;
+    ref2.current.rotation.z += rotSpeed;
+    ref3.current.rotation.z += rotSpeed;
+  });
   return (
-    <Sphere args={[0.5, 16, 16]} material={atomMaterial} position={position} scale={scale}>
-      <Torus ref={torus1ref} args={[1, 0.1, 1, 10]} rotation-y={degToRad(90)}>
-        <Sphere
-          args={[0.3, 32, 32]}
-          position-y={1}
-          material={atom1Material}
-          castShadow
-          receiveShadow
-        >
-          <pointLight intensity={2} />
-        </Sphere>
+    <Sphere
+      ref={atomRef}
+      args={[0.5, 16, 16]}
+      material={materialTrans}
+      position={position}
+      scale={scale}
+    >
+      <Torus ref={ref1} args={[1, 0.1, 1, 10]} rotation-y={degToRad(90)}>
+        <EffectComposer>
+          <Sphere
+            args={[orbitScale, 32, 32]}
+            position-y={1}
+            material={material}
+            castShadow
+            receiveShadow
+          >
+            <pointLight intensity={intensity} />
+          </Sphere>
+          <Bloom />
+        </EffectComposer>
       </Torus>
 
       <Torus
-        ref={torus2ref}
+        ref={ref2}
         args={[1, 0.1, 1, 10]}
         rotation-x={degToRad(90)}
         rotation-y={degToRad(45)}
         rotation-z={degToRad(45)}
       >
         <Sphere
-          args={[0.3, 32, 32]}
+          args={[orbitScale, 32, 32]}
           position-y={1}
-          material={atom2Material}
+          material={material}
           castShadow
           receiveShadow
         >
-          <pointLight intensity={20} />
+          <pointLight intensity={intensity} />
         </Sphere>
       </Torus>
       <Torus
-        ref={torus3ref}
+        ref={ref3}
         args={[1, 0.1, 1, 10]}
         rotation-x={degToRad(90)}
         rotation-y={degToRad(-45)}
         rotation-z={degToRad(-225)}
       >
         <Sphere
-          args={[0.3, 32, 32]}
+          args={[orbitScale, 32, 32]}
           position-y={1}
-          material={atom3Material}
+          material={material}
           castShadow
           receiveShadow
         >
-          <pointLight intensity={2} />
+          <pointLight intensity={intensity} />
         </Sphere>
       </Torus>
     </Sphere>
