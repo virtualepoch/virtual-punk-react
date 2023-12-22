@@ -11,6 +11,7 @@ import { DragonFlying } from "../components/models/DragonFlying";
 import { Box } from "@react-three/drei";
 import { ShadowDragon } from "../components/models/ShadowDragon";
 import gsap from "gsap";
+import { Tree } from "../components/models/Tree";
 
 export const TorusScene = ({ performance }) => {
   const directionalLight = useRef();
@@ -26,6 +27,7 @@ export const TorusScene = ({ performance }) => {
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
   const torusGroup = useRef();
+  const treeGroup = useRef();
   const shadowDragon = useRef();
   const clock = new THREE.Clock();
   useFrame(() => {
@@ -34,6 +36,8 @@ export const TorusScene = ({ performance }) => {
       torusGroup.current.position.z > -6 ? 0.02 : 0;
     torusGroup.current.position.y += a >= 4 ? 0.1 : 0;
     torusGroup.current.rotation.y += a >= 4 ? 0.3 : a >= 8 ? 0 : 0;
+    if (treeGroup.current.position.z > 10) treeGroup.current.position.z = -15;
+    treeGroup.current.position.z += 0.009;
   });
 
   useEffect(() => {
@@ -58,6 +62,13 @@ export const TorusScene = ({ performance }) => {
       />
       {/* <pointLight ref={pointLight} position={[-4, 15, 10]} intensity={1}/> */}
       <DragonFlying position={[0, -0.7, 0]} />
+      <group ref={treeGroup} position={[-1, -1, -15]}>
+        <Tree position={[-1.5, 0, 0]} />
+        <Tree position={[1.5, 0, 0]} />
+        <Tree position={[1.5, 0, -4]} scale={2} />
+        <Tree position={[-1.5, 0, -5]} scale={0.5} />
+        <Tree position={[-3.5, 0, -10]} scale={2.5} />
+      </group>
       <Globe
         args={[512, 256, 256]}
         position={[0, -512, -50]}
