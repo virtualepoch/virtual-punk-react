@@ -133,7 +133,11 @@ function App() {
               <Route
                 path="/hub"
                 element={
-                  <Hub hubLink={hubLink} hubBtnClicked={hubBtnClicked} />
+                  <Hub
+                    hubLink={hubLink}
+                    hubBtnClicked={hubBtnClicked}
+                    performance={performance}
+                  />
                 }
               />
               <Route
@@ -145,7 +149,10 @@ function App() {
                 path="/mach"
                 element={<MachScene performance={performance} />}
               />
-              <Route path="/water" element={<WaterScene />} />
+              <Route
+                path="/water"
+                element={<WaterScene performance={performance} />}
+              />
               <Route path="/star-punk" element={<StarPunkScene />} />
               <Route path="/test-stage" element={<TestingStage />} />
               <Route path="/test-blank" element={<TestingBlank />} />

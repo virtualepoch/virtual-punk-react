@@ -1,14 +1,23 @@
 import { useRef } from "react";
+import * as THREE from "three";
 import { Float, Stars, useHelper } from "@react-three/drei";
+import textureSm from "../assets/images/textures/earth_clouds_1k.jpg";
+import textureLg from "../assets/images/textures/earth_clouds_4k.jpg";
 
 // THREE COMPONENTS
 import { Ocean } from "../components/three/Ocean";
-import { Earth } from "../components/three/Earth";
+import { Globe } from "../components/three/Globe";
 import { DirectionalLightHelper } from "three";
+import { useLoader } from "@react-three/fiber";
 
-export const WaterScene = () => {
+export const WaterScene = ({ performance }) => {
   const light = useRef();
   useHelper(light, DirectionalLightHelper, 1, "red");
+
+  const texture = useLoader(
+    THREE.TextureLoader,
+    performance === 0 ? textureSm : textureLg
+  );
 
   return (
     <>
@@ -37,7 +46,7 @@ export const WaterScene = () => {
         floatIntensity={0.1} // Up/down float intensity, works like a multiplier with floatingRange,defaults to 1
         floatingRange={[10, 0.1]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
       >
-        <Earth />
+        <Globe performance={performance} texture={texture} />
       </Float>
       <Ocean position={[0, -10, 0]} sunColor={"white"} waterColor={"red"} />
     </>

@@ -24,7 +24,7 @@ export const linkOrbInfo = [
   },
 ];
 
-export const HubLinkOrbs = ({ hubLink }) => {
+export const HubLinkOrbs = ({ hubLink,performance }) => {
   const texture = useLoader(
     THREE.TextureLoader,
     performance === 0 ? texture128 : performance === 2 ? texture512 : texture256
@@ -52,7 +52,7 @@ export const HubLinkOrbs = ({ hubLink }) => {
       castShadow
     >
       <ambientLight />
-      <Atom atomRef={atomRef} scale={1.5} orbitScale={0.07} />
+      <Atom atomRef={atomRef} scale={1.5} orbitScale={0.07} performance={performance} />
       {linkOrbInfo.map((item, index) => (
         <group key={index} position={[index * 4, 0, 0]}>
           <Text

@@ -1,41 +1,30 @@
 import { useRef } from "react";
 import * as THREE from "three";
-import { useFrame, useThree } from "@react-three/fiber";
-import {
-  GradientTexture,
-  Hud,
-  OrbitControls,
-  OrthographicCamera,
-  Torus,
-  useHelper,
-} from "@react-three/drei";
-import { DEG2RAD, degToRad } from "three/src/math/MathUtils";
+import { useFrame, useLoader } from "@react-three/fiber";
 import { TorusSceneGroup } from "../components/three/TorusSceneGroup";
+import { Globe } from "../components/three/Globe";
+// import textureSm from "../assets/images/textures/hex-100.jpg"
+// import textureLg from "../assets/images/textures/hex-100.jpg"
+// import textureSm from "../assets/images/textures/Tile_04-512x512.png";
+import textureLg from "../assets/images/textures/Tile_04-512x512.png";
 
-export const TorusScene = () => {
+export const TorusScene = ({ performance }) => {
   const directionalLight = useRef();
   // useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
-  // const pointLight = useRef();
-  // useHelper(pointLight, THREE.PointLightHelper, 1, "blue");
 
-  function Sphere() {
-    const sphere = useRef(null);
-
-    useFrame(() => {
-      sphere.current.rotation.y += 0.5;
-    });
-    return (
-      <mesh ref={sphere}>
-        <sphereGeometry args={[0.2, 4, 2]} />
-        <meshBasicMaterial color="red" wireframe={true} />
-      </mesh>
-    );
-  }
+  const texture = useLoader(
+    THREE.TextureLoader,
+    // performance === 0 ? textureSm :
+    textureLg
+  );
+  const textureMult = 128;
+  texture.repeat.set(32 * textureMult, 16 * textureMult);
+  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
   const torusGroup = useRef();
-  const clock = new THREE.Clock();
+  // const clock = new THREE.Clock();
   useFrame(() => {
-    const a = clock.getElapsedTime();
+    // const a = clock.getElapsedTime();
     torusGroup.current.position.z -=
       torusGroup.current.position.z > -6 ? 0.02 : 0;
   });
@@ -49,6 +38,13 @@ export const TorusScene = () => {
         position={[-1, 2, 4]}
       />
       {/* <pointLight ref={pointLight} position={[-4, 15, 10]} intensity={1}/> */}
+      <Globe
+        args={[512, 256, 256]}
+        position={[0, -511.5, -50]}
+        rotation={[0, 0, Math.PI / 2]}
+        performance={performance}
+        texture={texture}
+      />
       <group ref={torusGroup} position={[0, 0, 0]}>
         <TorusSceneGroup />
       </group>
