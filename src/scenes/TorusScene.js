@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { TorusSceneGroup } from "../components/three/TorusSceneGroup";
@@ -10,6 +10,7 @@ import textureLg from "../assets/images/textures/Tile_04-512x512.png";
 import { DragonFlying } from "../components/models/DragonFlying";
 import { Box, Cloud, Clouds } from "@react-three/drei";
 import { ShadowDragon } from "../components/models/ShadowDragon";
+import gsap from "gsap";
 
 export const TorusScene = ({ performance }) => {
   const directionalLight = useRef();
@@ -33,8 +34,18 @@ export const TorusScene = ({ performance }) => {
       torusGroup.current.position.z > -6 ? 0.02 : 0;
     torusGroup.current.position.y += a >= 4 ? 0.1 : 0;
     torusGroup.current.rotation.y += a >= 4 ? 0.3 : a >= 8 ? 0 : 0;
-    shadowDragon.current.position.z +=
-      a >= 4 ? 0.05 : a >= 7 ? 0 : a >= 12 ? 0.08 : 0;
+  });
+
+  useEffect(() => {
+    var tl = gsap.timeline({ repeat: 1, repeatDelay: 1 });
+    tl.to(shadowDragon.current.position, { z: -3, duration: 9 });
+    tl.to(shadowDragon.current.position, { z: -3, duration: 2 });
+    tl.to(shadowDragon.current.position, { z: 5, duration: 1 });
+    tl.to(shadowDragon.current.position, { z: -20, duration: 10 });
+    // tl.pause();
+    // tl.resume();
+    // tl.seek(1.5);
+    // tl.reverse();
   });
 
   return (
@@ -45,31 +56,33 @@ export const TorusScene = ({ performance }) => {
         intensity={10}
         position={[-1, 2, 4]}
       />
-      {/* <Clouds /> */}
-      <Clouds limit={100}>
-        <Cloud
-          seed={10}
-          fade={30}
-          speed={0.1}
-          growth={4}
-          segments={20}
-          volume={6}
-          opacity={0.6}
-          bounds={[4, 3, 1]}
-        />
-        <Cloud
-          seed={20}
-          fade={30}
-          position={[0, 1, 0]}
-          speed={0.5}
-          growth={4}
-          volume={10}
-          opacity={1}
-          bounds={[6, 2, 1]}
-          color={"red"}
-        />
-        <pointLight position={[0, 0, 0.5]} color="blue" />
-      </Clouds>
+      {performance === 2 && (
+        <Clouds limit={100}>
+          <Cloud
+            seed={10}
+            fade={30}
+            speed={0.1}
+            growth={4}
+            segments={20}
+            volume={6}
+            opacity={0.6}
+            bounds={[4, 3, 1]}
+            color={"blue"}
+          />
+          <Cloud
+            seed={20}
+            fade={30}
+            position={[0, 1, 0]}
+            speed={0.5}
+            growth={4}
+            volume={10}
+            opacity={1}
+            bounds={[6, 2, 1]}
+            color={"red"}
+          />
+          <pointLight position={[0, 0, 0.5]} color="blue" />
+        </Clouds>
+      )}
       {/* <pointLight ref={pointLight} position={[-4, 15, 10]} intensity={1}/> */}
       <DragonFlying position={[0, -0.7, 0]} />
       <Globe
@@ -79,8 +92,8 @@ export const TorusScene = ({ performance }) => {
         performance={performance}
         texture={texture}
       />
-      <group ref={shadowDragon}>
-        <ShadowDragon position={[0, 0, -20]} />
+      <group ref={shadowDragon} position={[0, 0, -20]}>
+        <ShadowDragon />
       </group>
       <group ref={torusGroup} position={[0, 0, 0]}>
         <TorusSceneGroup />
