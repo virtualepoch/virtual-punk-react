@@ -1,8 +1,4 @@
-import {
-  useEffect,
-  useRef,
-  //  useState
-} from "react";
+import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { DirectionalLightHelper } from "three";
 import { useFrame } from "@react-three/fiber";
@@ -12,15 +8,11 @@ import {
   PerspectiveCamera,
   Plane,
   Sphere,
-  Stars,
-  Torus,
   useHelper,
 } from "@react-three/drei";
 // COMPONENTS
 import { ExtraSoundPro } from "../components/models/ExtraSoundPro";
-// import { ReflectiveFloor } from "../components/three/ReflectiveFloor";
 import { degToRad } from "three/src/math/MathUtils";
-import { Atom } from "../components/three/Atom";
 
 export const TestingStage = () => {
   const directionalLight = useRef();
@@ -28,7 +20,6 @@ export const TestingStage = () => {
   const pointLight = useRef();
   useHelper(pointLight, THREE.PointLightHelper, 1, "red");
 
-  // const ref1 = useRef();
   // const ref2 = useRef();
   // const [clicked, setClicked] = useState(false);
   // const [number, setNumber] = useState(0);
@@ -41,41 +32,49 @@ export const TestingStage = () => {
   // });
 
   const material = new THREE.MeshStandardMaterial({
-    color: "black",
-    toneMapped: false,
-  });
-  // This material requires a displacementMap- need to research
-  const material1 = new THREE.MeshDepthMaterial({
-    color: "red",
-    toneMapped: false,
-    // displacementMap={}
-  });
-
-  const material2 = new THREE.MeshLambertMaterial({
-    color: "green",
+    color: "silver",
     toneMapped: false,
   });
 
-  // Not very reflective but better for performance
+  const cam = useRef();
+  const clock = new THREE.Clock();
+  useFrame(() => {
+    const a = clock.getElapsedTime();
+    if (cam.current) {
+      cam.current.position.z += 1;
+    }
+    pointLight.current.rotation.y += 0.01;
+  });
 
   return (
     <>
-      <Atom position={[0, -2, -5]} />
+      <group ref={cam}>
+        <PerspectiveCamera makeDefault position={[0, 0, 20]}>
+          <mesh />
+          <OrbitControls
+            makeDefault
+            minDistance={1}
+            minAzimuthAngle={-Math.PI / 2}
+            maxAzimuthAngle={Math.PI / 2}
+            maxPolarAngle={Math.PI / 1.5}
+            minPolarAngle={Math.PI / 4}
+          />
+        </PerspectiveCamera>
+      </group>
 
       <group>
-        <PerspectiveCamera makeDefault position={[0, 0, 10]} />
-        {/* <directionalLight ref={directionalLight} position={[-2, 4, 2]} intensity={2} /> */}
-        {/* <pointLight ref={pointLight} position={[0, -1, 0]} intensity={2} /> */}
-
-        <Stars color="red" />
+        <directionalLight
+          ref={directionalLight}
+          position={[-2, 4, 2]}
+          intensity={2}
+        />
+        <pointLight ref={pointLight} position={[0, -1, 0]} intensity={2} />
         <ExtraSoundPro />
-        {/* <ReflectiveFloor /> */}
         <Sphere
-          args={[100, 8, 8]}
+          args={[80, 8, 8]}
           rotation={[0, 0, 0]}
           position={[0, 1, -10]}
           material={material}
-          receiveShadow
         >
           <meshBasicMaterial side={THREE.BackSide}>
             <GradientTexture
@@ -96,6 +95,17 @@ export const TestingStage = () => {
     </>
   );
 };
+
+// // This material requires a displacementMap- need to research
+// const material1 = new THREE.MeshDepthMaterial({
+//   color: "red",
+//   toneMapped: false,
+//   // displacementMap={}
+// });
+// const material2 = new THREE.MeshLambertMaterial({
+//   color: "green",
+//   toneMapped: false,
+// });
 
 // const viewport = useThree((state) => state.viewport);
 // TO TEST
