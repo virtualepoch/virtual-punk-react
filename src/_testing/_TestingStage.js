@@ -20,48 +20,26 @@ export const TestingStage = () => {
   const pointLight = useRef();
   useHelper(pointLight, THREE.PointLightHelper, 1, "red");
 
-  // const ref2 = useRef();
-  // const [clicked, setClicked] = useState(false);
-  // const [number, setNumber] = useState(0);
-
-  //////////////////////////////////
-  // NOTE::::::: The MeshStandardMaterial is what is now the norm and used in game development with Unity and Unreal.
-  // const material = new THREE.MeshStandardMaterial({
-  //   color: "cyan",
-  //   toneMapped: false,
-  // });
-
   const material = new THREE.MeshStandardMaterial({
     color: "silver",
     toneMapped: false,
   });
 
   const cam = useRef();
-  const clock = new THREE.Clock();
+  // const clock = new THREE.Clock();
   useFrame(() => {
-    const a = clock.getElapsedTime();
+    // const a = clock.getElapsedTime();
     if (cam.current) {
-      cam.current.position.z += 1;
+      // cam.current.position.z += 1;
     }
     pointLight.current.rotation.y += 0.01;
   });
 
   return (
     <>
-      <group ref={cam}>
-        <PerspectiveCamera makeDefault position={[0, 0, 20]}>
-          <mesh />
-          <OrbitControls
-            makeDefault
-            minDistance={1}
-            minAzimuthAngle={-Math.PI / 2}
-            maxAzimuthAngle={Math.PI / 2}
-            maxPolarAngle={Math.PI / 1.5}
-            minPolarAngle={Math.PI / 4}
-          />
-        </PerspectiveCamera>
-      </group>
-
+      <PerspectiveCamera makeDefault position={[0, 0, 20]} ref={cam}>
+        <OrbitControls />
+      </PerspectiveCamera>
       <group>
         <directionalLight
           ref={directionalLight}
@@ -71,16 +49,15 @@ export const TestingStage = () => {
         <pointLight ref={pointLight} position={[0, -1, 0]} intensity={2} />
         <ExtraSoundPro />
         <Sphere
-          args={[80, 8, 8]}
+          args={[40, 8, 8]}
           rotation={[0, 0, 0]}
           position={[0, 1, -10]}
-          material={material}
         >
           <meshBasicMaterial side={THREE.BackSide}>
             <GradientTexture
               stops={[0, 0.5, 1]}
               colors={["#009b9b", "#a5cc82", "#009b9b"]}
-              size={100}
+              size={10}
             />
           </meshBasicMaterial>
         </Sphere>

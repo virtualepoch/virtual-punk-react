@@ -43,6 +43,8 @@ function App() {
   const [vrSession, setVrSession] = useState(false);
   const [foveation, setFoveation] = useState(0);
   const [vrFrameRate, setVrFrameRate] = useState(null);
+  // TorusScene hooks
+  const [thirdPerson, setThirdPerson] = useState(false);
 
   // My functions
   useEffect(() => {
@@ -63,14 +65,18 @@ function App() {
         setStart={setStart}
         hub={hub}
         setHub={setHub}
-        foveation={foveation}
-        setFoveation={setFoveation}
-        setVrFrameRate={setVrFrameRate}
         setLinkClicked={setLinkClicked}
         hubLink={hubLink}
         setHubLink={setHubLink}
         hubBtnClicked={hubBtnClicked}
         setHubBtnClicked={setHubBtnClicked}
+        //VR hooks
+        foveation={foveation}
+        setFoveation={setFoveation}
+        setVrFrameRate={setVrFrameRate}
+        // TorusScene
+        thirdPerson={thirdPerson}
+        setThirdPerson={setThirdPerson}
       />
 
       <Canvas className="canvas" camera={{ fov: 30, position: [0, 0, 1] }}>
@@ -85,15 +91,6 @@ function App() {
         />
 
         <Suspense>
-          <OrbitControls
-            minDistance={0}
-            maxDistance={5}
-            minAzimuthAngle={-Math.PI / 2}
-            maxAzimuthAngle={Math.PI / 2}
-            maxPolarAngle={Math.PI / 1.5}
-            minPolarAngle={Math.PI / 4}
-          />
-
           <XR
             foveation={foveation}
             frameRate={
@@ -143,7 +140,12 @@ function App() {
               />
               <Route
                 path="/torus"
-                element={<TorusScene performance={performance} />}
+                element={
+                  <TorusScene
+                    performance={performance}
+                    thirdPerson={thirdPerson}
+                  />
+                }
               />
               <Route path="/space" element={<SpaceScene />} />
               <Route

@@ -48,6 +48,14 @@ export const MachScene = ({ performance }) => {
 
   return (
     <group scale={viewport.aspect}>
+      <OrbitControls
+        minDistance={0}
+        maxDistance={15}
+        minAzimuthAngle={-Math.PI / 2}
+        maxAzimuthAngle={Math.PI / 2}
+        maxPolarAngle={Math.PI / 1.5}
+        minPolarAngle={Math.PI / 4}
+      />
       <group position={[0, 0, 0]} rotation={[-0.1, 0, 0]}>
         <ambientLight intensity={2} />
         <directionalLight

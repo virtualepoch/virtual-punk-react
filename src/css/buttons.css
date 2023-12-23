@@ -346,22 +346,6 @@
   transition: transform 500ms ease;
 }
 
-/* CONTROLS  */
-.btn-leva-controls {
-  min-height: 50px;
-  border: 1px solid gray;
-  border-radius: 10px;
-  margin: 20px auto;
-  background: url(../../public/icons/video-white-o.svg) center / 50% no-repeat;
-  filter: drop-shadow(0 0 2px black);
-}
-
-.btn-leva-controls.leva-open {
-  border: 1px solid cyan;
-  background: url(../../public/icons/video-cyan.svg) center / 50% no-repeat;
-  filter: drop-shadow(0 0 2px cyan);
-}
-
 /* FPS  */
 .btn-fps {
   width: 50px;
@@ -382,22 +366,40 @@
   color: cyan;
   filter: drop-shadow(0 0 2px cyan);
 }
-/* OMNI */
-button.btn-omni {
-  width: 40px;
-  height: 40px;
+
+.btn-torus-scene {
   position: fixed;
-  top: calc(50% - 20px);
-  left: 0;
-  z-index: 996;
-  transition: transform 500ms ease-in-out;
-  border-radius: 100px;
-  box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.5);
-  background: url(../../public/icons/chevron-right-cyan.svg) center/20%
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: url(../../public/icons/chevron-left-cyan.svg) 30% 50% / 40%
     no-repeat;
+  filter: drop-shadow(0 0 2px black);
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: inset -5px 0 5px 1px rgba(0, 0, 0, 0.1);
 }
 
-.btn-omni.omni-open {
-  transform: translateX(170px);
-  background: url(../../public/icons/chevron-left-cyan.svg) center/20% no-repeat;
+.btn-torus-scene.right {
+  right: 0;
+  background: url(../../public/icons/chevron-right-cyan.svg) 70% 50% / 40%
+    no-repeat;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  box-shadow: inset 5px 0 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+.btn-torus-scene-third-person {
+  height: 80px;
+  min-height: 80px;
+  position: fixed;
+  right: 0;
+  bottom: 100px;
+  z-index: 1;
+  background: url(../../public/icons/video-white-o.svg) 50% 30% / 40% no-repeat,
+    url(../../public/icons/chevron-down-cyan.svg) 50% 70% / 40% no-repeat;
+  border: 1px solid white;
+  border-radius: 100px;
 }

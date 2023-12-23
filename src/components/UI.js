@@ -26,6 +26,8 @@ export const UI = ({
   setHubLink,
   hubBtnClicked,
   setHubBtnClicked,
+  thirdPerson,
+  setThirdPerson,
 }) => {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
   const [modalInfoOpen, setModalInfoOpen] = useState(false);
@@ -119,6 +121,19 @@ export const UI = ({
         foveation={foveation}
         setFoveation={setFoveation}
       />
+
+      {torus && (
+        <>
+          <button className="btn-torus-scene" />
+          <button className="btn-torus-scene right" />
+          <button
+            className="btn-torus-scene-third-person"
+            onClick={() => {
+              setThirdPerson(!thirdPerson);
+            }}
+          />
+        </>
+      )}
     </>
   );
 };

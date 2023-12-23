@@ -31,8 +31,8 @@ export const IntroScene = ({ start, hub, setHub, performance }) => {
   return (
     <group ref={sceneObjects} position={[0, 0, 0]}>
       <OrbitControls
-        minDistance={2}
-        maxDistance={15}
+        minDistance={1}
+        maxDistance={2}
         minAzimuthAngle={-Math.PI / 2}
         maxAzimuthAngle={Math.PI / 2}
         maxPolarAngle={Math.PI / 1.5}

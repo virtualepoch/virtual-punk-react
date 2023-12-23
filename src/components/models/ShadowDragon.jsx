@@ -21,7 +21,6 @@ export function ShadowDragon(props) {
     mixer.timeScale = 0.5;
   }, [actions, mixer]);
 
-  console.log(actions);
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">

@@ -8,12 +8,12 @@ import { Globe } from "../components/three/Globe";
 // import textureSm from "../assets/images/textures/Tile_04-512x512.png";
 import textureLg from "../assets/images/textures/Tile_04-512x512.png";
 import { DragonFlying } from "../components/models/DragonFlying";
-import { Box } from "@react-three/drei";
+import { Box, OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { ShadowDragon } from "../components/models/ShadowDragon";
 import gsap from "gsap";
 import { Tree } from "../components/models/Tree";
 
-export const TorusScene = ({ performance }) => {
+export const TorusScene = ({ performance, thirdPerson }) => {
   const directionalLight = useRef();
   // useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
 
@@ -52,16 +52,38 @@ export const TorusScene = ({ performance }) => {
     // tl.reverse();
   });
 
+  const dragon = useRef();
+  useEffect(() => {
+    gsap.to(dragon.current.position, {
+      y: thirdPerson ? -1 : -0.7,
+      z: thirdPerson ? -2 : -0.2,
+      duration: 0.7,
+      ease: "power1.inOut",
+    });
+  }, [dragon, thirdPerson]);
+
   return (
     <group>
-      <ambientLight intensity={1} />
-      <directionalLight
-        ref={directionalLight}
-        intensity={10}
-        position={[-1, 2, 4]}
-      />
-      {/* <pointLight ref={pointLight} position={[-4, 15, 10]} intensity={1}/> */}
-      <DragonFlying position={[0, -0.7, 0]} />
+      <PerspectiveCamera makeDefault position={[0, 0, 1]}>
+        <OrbitControls
+          minDistance={0}
+          maxDistance={15}
+          minAzimuthAngle={-Math.PI / 2}
+          maxAzimuthAngle={Math.PI / 2}
+          maxPolarAngle={Math.PI / 1.5}
+          minPolarAngle={Math.PI / 4}
+        />
+        <ambientLight intensity={1} />
+        <directionalLight
+          ref={directionalLight}
+          intensity={10}
+          position={[-1, 2, 4]}
+        />
+        {/* <pointLight ref={pointLight} position={[-4, 15, 10]} intensity={1}/> */}
+        <mesh ref={dragon}>
+          <DragonFlying />
+        </mesh>
+      </PerspectiveCamera>
       <group ref={treeGroup} position={[-1, -1, -15]}>
         <Tree position={[-1.5, 0, 0]} />
         <Tree position={[1.5, 0, 0]} />
