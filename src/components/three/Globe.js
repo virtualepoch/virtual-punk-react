@@ -6,10 +6,16 @@ import { Sphere } from "@react-three/drei";
 export const Globe = ({
   args = [3, 16, 16],
   position = [0, -10, -64],
-  texture,
   rotation,
+  texture,
 }) => {
   const sphere = useRef();
+
+  const map = useLoader(
+    THREE.TextureLoader,
+    // performance === 0 ? textureSm :
+    texture
+  );
 
   // useFrame(() => {
   //   sphere.current.rotation.x += 0.00002;
@@ -17,7 +23,7 @@ export const Globe = ({
 
   return (
     <Sphere ref={sphere} args={args} position={position} rotation={rotation}>
-      <meshPhongMaterial map={texture} />
+      <meshPhongMaterial map={map} />
     </Sphere>
   );
 };

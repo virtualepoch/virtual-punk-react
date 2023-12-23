@@ -1,34 +1,30 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { useFrame, useLoader } from "@react-three/fiber";
-import { TorusSceneGroup } from "../components/three/TorusSceneGroup";
-import { Globe } from "../components/three/Globe";
-// import textureSm from "../assets/images/textures/hex-100.jpg"
-// import textureLg from "../assets/images/textures/hex-100.jpg"
-// import textureSm from "../assets/images/textures/Tile_04-512x512.png";
-import textureLg from "../assets/images/textures/Tile_04-512x512.png";
-import { DragonFlying } from "../components/models/DragonFlying";
 import {
-  Box,
   OrbitControls,
   PerspectiveCamera,
   Plane,
   useHelper,
 } from "@react-three/drei";
-import { ShadowDragon } from "../components/models/ShadowDragon";
 import gsap from "gsap";
-import { Tree } from "../components/models/Tree";
-import {
-  Physics,
-  RigidBody,
-  RapierRigidBody,
-  vec3,
-  quat,
-  euler,
-} from "@react-three/rapier";
+
+//COMPONENTS
+import { BgSphere } from "../components/three/BgSphere";
+import { TorusSceneGroup } from "../components/three/TorusSceneGroup";
+import { DragonFlying } from "../components/models/DragonFlying";
 import { TempleOfLight } from "../components/models/TempleOfLight";
+import { ShadowDragon } from "../components/models/ShadowDragon";
+
+// import textureSm from "../assets/images/textures/hex-100.jpg"
+// import textureLg from "../assets/images/textures/Tile_04-512x512.png";
+import textureLg from "../assets/images/textures/hex-100.jpg";
+import bgTexture from "../assets/images/panoramas/cyber-sky.jpg";
 
 export const TorusScene = ({ performance, thirdPerson }) => {
+  const mapWidth = 50;
+  const mapLength = 200;
+
   const directionalLight = useRef();
   useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
 
@@ -38,27 +34,14 @@ export const TorusScene = ({ performance, thirdPerson }) => {
     textureLg
   );
 
-  texture.repeat.set(32, 16);
+  texture.repeat.set(mapWidth / 4, mapLength / 2);
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
   const cam = useRef();
   const sceneMap = useRef();
   const torusGroup = useRef();
-  // const treeGroup = useRef();
   const shadowDragon = useRef();
   const clock = new THREE.Clock();
-
-  // useEffect(() => {
-  //   var tl = gsap.timeline({ repeat: 1, repeatDelay: 1 });
-  //   tl.to(shadowDragon.current.position, { z: -3, duration: 9 });
-  //   tl.to(shadowDragon.current.position, { z: -3, duration: 2 });
-  //   tl.to(shadowDragon.current.position, { z: 5, duration: 1 });
-  //   tl.to(shadowDragon.current.position, { z: -20, duration: 10 });
-  //   // tl.pause();
-  //   // tl.resume();
-  //   // tl.seek(1.5);
-  //   // tl.reverse();
-  // });
 
   const dragonTorus = useRef();
   useEffect(() => {
@@ -72,15 +55,22 @@ export const TorusScene = ({ performance, thirdPerson }) => {
 
   useFrame(() => {
     const a = clock.getElapsedTime();
-    sceneMap.current.rotation.y -= 0.001;
+    torusGroup.current.position.z -=
+      torusGroup.current.position.z > -6 ? 0.02 : 0;
+    torusGroup.current.position.y += a >= 4 ? 0.1 : 0;
+    torusGroup.current.rotation.y += a >= 4 ? 0.3 : a >= 8 ? 0 : 0;
+
+    if (sceneMap.current.position.z > 175) sceneMap.current.position.z = 0;
+    sceneMap.current.position.z += 0.03;
   });
 
+  const camPos = 0.1;
   return (
     <group>
-      <PerspectiveCamera ref={cam} makeDefault position={[0, 0, 0.1]}>
+      <PerspectiveCamera ref={cam} makeDefault position={[0, 0, camPos]}>
         <OrbitControls
           minDistance={0}
-          maxDistance={0.1}
+          maxDistance={camPos}
           minAzimuthAngle={-Math.PI / 2}
           maxAzimuthAngle={Math.PI / 2}
           maxPolarAngle={Math.PI / 1.5}
@@ -93,36 +83,31 @@ export const TorusScene = ({ performance, thirdPerson }) => {
           position={[-1, 2, 4]}
         />
       </PerspectiveCamera>
+      <BgSphere bgImage={bgTexture} />
 
       <DragonFlying dragonRef={dragonTorus} />
+      <group ref={torusGroup} position={[0, 0, 0]}>
+        <TorusSceneGroup />
+      </group>
 
-      <group ref={sceneMap} position={[-25, -5, 0]}>
-        <mesh position={[0, -7, 0]} scale={15}>
+      <group ref={sceneMap} position={[0, -5, 0]}>
+        <mesh position={[-25, -7.5, -40]} scale={15}>
+          <TempleOfLight />
+        </mesh>
+        <mesh position={[25, -7.5, -40]} scale={15}>
           <TempleOfLight />
         </mesh>
         <mesh ref={shadowDragon} position={[24, 0, -5]}>
           <ShadowDragon />
         </mesh>
         <Plane
-          args={[100, 100]}
-          position={[0, -8, 0]}
+          args={[mapWidth, mapLength]}
+          position={[0, -8, -mapLength / 2]}
           rotation={[-Math.PI / 2, 0, 0]}
         >
-          <meshBasicMaterial map={texture} />
+          <meshBasicMaterial map={texture} transparent opacity={0.5} />
         </Plane>
       </group>
     </group>
   );
 };
-
-// <group ref={treeGroup} position={[-1, -1, -15]}>
-// <Tree position={[-1.5, 0, 0]} />
-// <Tree position={[1.5, 0, 0]} />
-// <Tree position={[1.5, 0, -4]} scale={2} />
-// <Tree position={[-1.5, 0, -5]} scale={0.5} />
-// <Tree position={[-3.5, 0, -10]} scale={2.5} />
-// </group>
-
-// <group ref={torusGroup} position={[0, 0, 0]}>
-// <TorusSceneGroup />
-// </group>

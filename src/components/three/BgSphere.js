@@ -3,18 +3,18 @@ import { useLoader } from "@react-three/fiber";
 import { Sphere } from "@react-three/drei";
 
 export const BgSphere = ({
-  radius,
-  widthSegments,
-  heightSegments,
+  radius = 100,
+  widthSegments = 8,
+  heightSegments = 8,
   position,
   rotation,
   bgImage,
-  bgWrapY,
-  bgWrapX,
+  bgWrapY = 1,
+  bgWrapX = 1,
 }) => {
-  const bgTexture = useLoader(THREE.TextureLoader, bgImage);
-  bgTexture.repeat.set(bgWrapY, bgWrapX);
-  bgTexture.wrapS = bgTexture.wrapT = THREE.RepeatWrapping;
+  const map = useLoader(THREE.TextureLoader, bgImage);
+  map.repeat.set(bgWrapY, bgWrapX);
+  map.wrapS = map.wrapT = THREE.RepeatWrapping;
 
   return (
     <Sphere
@@ -22,7 +22,7 @@ export const BgSphere = ({
       position={position}
       rotation={rotation}
     >
-      <meshStandardMaterial map={bgTexture} side={THREE.BackSide} />
+      <meshBasicMaterial map={map} side={THREE.BackSide} />
     </Sphere>
   );
 };

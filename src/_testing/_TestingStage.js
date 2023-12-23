@@ -40,6 +40,7 @@ export const TestingStage = () => {
       <PerspectiveCamera makeDefault position={[0, 0, 20]} ref={cam}>
         <OrbitControls />
       </PerspectiveCamera>
+
       <group>
         <directionalLight
           ref={directionalLight}
@@ -48,11 +49,7 @@ export const TestingStage = () => {
         />
         <pointLight ref={pointLight} position={[0, -1, 0]} intensity={2} />
         <ExtraSoundPro />
-        <Sphere
-          args={[40, 8, 8]}
-          rotation={[0, 0, 0]}
-          position={[0, 1, -10]}
-        >
+        <Sphere args={[40, 8, 8]} rotation={[0, 0, 0]} position={[0, 1, -10]}>
           <meshBasicMaterial side={THREE.BackSide}>
             <GradientTexture
               stops={[0, 0.5, 1]}
