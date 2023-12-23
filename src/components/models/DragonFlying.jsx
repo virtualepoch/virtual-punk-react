@@ -10,7 +10,7 @@ Title: Dragon Animation Flying
 import React, { useEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 
-export function DragonFlying({ props, position }) {
+export function DragonFlying({ props, dragonRef, position }) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/dragon_flying.glb");
   const { actions, mixer } = useAnimations(animations, group);
@@ -21,35 +21,37 @@ export function DragonFlying({ props, position }) {
   }, [actions, mixer]);
 
   return (
-    <group
-      ref={group}
-      {...props}
-      dispose={null}
-      position={position}
-      rotation={[0, Math.PI, 0]}
-    >
-      <group name="Sketchfab_Scene">
-        <group
-          name="Sketchfab_model"
-          rotation={[-Math.PI / 2, 0, 0]}
-          scale={1.32}
-        >
-          <group name="root">
-            <group name="GLTF_SceneRootNode" rotation={[Math.PI / 2, 0, 0]}>
-              <group name="RootNode0_0" scale={0.01}>
-                <group name="skeletal3_3">
-                  <group name="GLTF_created_0">
-                    <primitive object={nodes.GLTF_created_0_rootJoint} />
-                    <group name="dragon_wings22_2_correction">
-                      <group name="dragon_wings22_2" />
+    <group ref={dragonRef} position={position}>
+      <group
+        ref={group}
+        {...props}
+        dispose={null}
+        rotation={[0, Math.PI, 0]}
+        position-y={-0.7}
+      >
+        <group name="Sketchfab_Scene">
+          <group
+            name="Sketchfab_model"
+            rotation={[-Math.PI / 2, 0, 0]}
+            scale={1.32}
+          >
+            <group name="root">
+              <group name="GLTF_SceneRootNode" rotation={[Math.PI / 2, 0, 0]}>
+                <group name="RootNode0_0" scale={0.01}>
+                  <group name="skeletal3_3">
+                    <group name="GLTF_created_0">
+                      <primitive object={nodes.GLTF_created_0_rootJoint} />
+                      <group name="dragon_wings22_2_correction">
+                        <group name="dragon_wings22_2" />
+                      </group>
+                      <skinnedMesh
+                        name="Object_228"
+                        geometry={nodes.Object_228.geometry}
+                        skeleton={nodes.Object_228.skeleton}
+                      >
+                        <meshPhongMaterial color={"cyan"} />
+                      </skinnedMesh>
                     </group>
-                    <skinnedMesh
-                      name="Object_228"
-                      geometry={nodes.Object_228.geometry}
-                      skeleton={nodes.Object_228.skeleton}
-                    >
-                      <meshPhongMaterial color={"cyan"}/>
-                    </skinnedMesh>
                   </group>
                 </group>
               </group>

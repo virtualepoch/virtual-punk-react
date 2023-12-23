@@ -11,9 +11,9 @@ export const Globe = ({
 }) => {
   const sphere = useRef();
 
-  useFrame(() => {
-    sphere.current.rotation.x += 0.00002;
-  });
+  // useFrame(() => {
+  //   sphere.current.rotation.x += 0.00002;
+  // });
 
   return (
     <Sphere ref={sphere} args={args} position={position} rotation={rotation}>
