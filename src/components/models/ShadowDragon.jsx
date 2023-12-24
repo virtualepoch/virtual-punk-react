@@ -17,7 +17,7 @@ export function ShadowDragon(props) {
 
   useEffect(() => {
     // Attack, Die, Fire While Flying, Hover, Hurt, Idle, Run, Start Flying
-    actions["Hover"].play();
+    actions["Idle"].play();
     mixer.timeScale = 0.5;
   }, [actions, mixer]);
 

@@ -1,49 +1,25 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-import { useFrame, useLoader } from "@react-three/fiber";
-import {
-  OrbitControls,
-  PerspectiveCamera,
-  Plane,
-  useHelper,
-} from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { OrbitControls, PerspectiveCamera, useHelper } from "@react-three/drei";
 import gsap from "gsap";
-
 //COMPONENTS
-import { BgSphere } from "../components/three/BgSphere";
-import { TorusSceneGroup } from "../components/three/TorusSceneGroup";
 import { DragonFlying } from "../components/models/DragonFlying";
-import { TempleOfLight } from "../components/models/TempleOfLight";
-import { ShadowDragon } from "../components/models/ShadowDragon";
-
-// import textureSm from "../assets/images/textures/hex-100.jpg"
-// import textureLg from "../assets/images/textures/Tile_04-512x512.png";
-import textureLg from "../assets/images/textures/hex-100.jpg";
+import { TorusSceneGroup } from "../components/three/TorusSceneGroup";
+import { BgSphere } from "../components/three/BgSphere";
 import bgTexture from "../assets/images/panoramas/cyber-sky.jpg";
-
+import { TorusSceneMap } from "./TorusSceneMap";
+// EXPORT: FUNCTIONAL COMPONENT
 export const TorusScene = ({ performance, thirdPerson }) => {
-  const mapWidth = 50;
-  const mapLength = 200;
-
   const directionalLight = useRef();
   useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
-
-  const texture = useLoader(
-    THREE.TextureLoader,
-    // performance === 0 ? textureSm :
-    textureLg
-  );
-
-  texture.repeat.set(mapWidth / 4, mapLength / 2);
-  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
   const cam = useRef();
   const sceneMap = useRef();
   const torusGroup = useRef();
-  const shadowDragon = useRef();
+  const dragonTorus = useRef();
   const clock = new THREE.Clock();
 
-  const dragonTorus = useRef();
   useEffect(() => {
     gsap.to(dragonTorus.current.position, {
       y: thirdPerson ? -0.5 : 0,
@@ -83,31 +59,16 @@ export const TorusScene = ({ performance, thirdPerson }) => {
           position={[-1, 2, 4]}
         />
       </PerspectiveCamera>
+
       <BgSphere bgImage={bgTexture} />
 
       <DragonFlying dragonRef={dragonTorus} />
+
       <group ref={torusGroup} position={[0, 0, 0]}>
         <TorusSceneGroup />
       </group>
 
-      <group ref={sceneMap} position={[0, -5, 0]}>
-        <mesh position={[-25, -7.5, -40]} scale={15}>
-          <TempleOfLight />
-        </mesh>
-        <mesh position={[25, -7.5, -40]} scale={15}>
-          <TempleOfLight />
-        </mesh>
-        <mesh ref={shadowDragon} position={[24, 0, -5]}>
-          <ShadowDragon />
-        </mesh>
-        <Plane
-          args={[mapWidth, mapLength]}
-          position={[0, -8, -mapLength / 2]}
-          rotation={[-Math.PI / 2, 0, 0]}
-        >
-          <meshBasicMaterial map={texture} transparent opacity={0.5} />
-        </Plane>
-      </group>
+      <TorusSceneMap sceneMap={sceneMap} />
     </group>
   );
 };

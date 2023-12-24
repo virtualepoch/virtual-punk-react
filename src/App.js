@@ -157,8 +157,8 @@ function App() {
                 element={<WaterScene performance={performance} />}
               />
               <Route path="/star-punk" element={<StarPunkScene />} />
-              <Route path="/test-stage" element={<TestingStage />} />
-              <Route path="/test-blank" element={<TestingBlank />} />
+              <Route path="/t-1" element={<TestingStage />} />
+              <Route path="/t-2" element={<TestingBlank />} />
             </Routes>
           </XR>
         </Suspense>
