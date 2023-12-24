@@ -8,17 +8,18 @@ Title: PC Spider
 */
 
 import React, { useEffect, useRef } from "react";
-import { useGLTF, useAnimations } from "@react-three/drei";
+import { useGLTF, useAnimations, GradientTexture } from "@react-three/drei";
 
 export function PcSpider({ props, position, scale, rotation }) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/pc_spider_1k.glb");
   const { actions, mixer } = useAnimations(animations, group);
 
-  useEffect(() => {
-    actions["Take 001"].play();
-    mixer.timeScale = 1;
-  }, [actions, mixer]);
+  // Actions = Take 001
+  // useEffect(() => {
+  //   actions["Take 001"].play();
+  //   mixer.timeScale = 1;
+  // }, [actions, mixer]);
 
   return (
     <group
@@ -59,9 +60,16 @@ export function PcSpider({ props, position, scale, rotation }) {
                   <skinnedMesh
                     name="Object_7"
                     geometry={nodes.Object_7.geometry}
-                    material={materials["14_-_Default"]}
                     skeleton={nodes.Object_7.skeleton}
-                  />
+                  >
+                    <meshPhongMaterial>
+                      <GradientTexture
+                        stops={[0, 0.5, 1]}
+                        colors={["#000", "black", "red"]}
+                        size={10}
+                      />
+                    </meshPhongMaterial>
+                  </skinnedMesh>
                 </group>
               </group>
             </group>
