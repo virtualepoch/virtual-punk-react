@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import * as THREE from "three";
-import { useLoader } from "@react-three/fiber";
+import { useFrame, useLoader } from "@react-three/fiber";
 import { Plane } from "@react-three/drei";
 // COMPONENTS
 import { MegaWyvern } from "../components/models/MegaWyvern";
@@ -10,13 +10,14 @@ import { ShadowDragon } from "../components/models/ShadowDragon";
 import textureLg from "../assets/images/textures/hex-100.jpg";
 import { degToRad } from "three/src/math/MathUtils";
 import { Ocean } from "../components/three/Ocean";
+import { Megalodon } from "../components/models/Megalodon";
 
-export const TorusSceneMap = ({ sceneMap }) => {
+export const TorusSceneMap = ({ sceneMap, target }) => {
   const mapWidth = 50;
   const mapLength = 200;
 
   const shadowDragon = useRef();
-  const megaWyvern = useRef();
+  const megalodon = useRef();
 
   const texture = useLoader(
     THREE.TextureLoader,
@@ -25,6 +26,11 @@ export const TorusSceneMap = ({ sceneMap }) => {
   );
   texture.repeat.set(mapWidth / 4, mapLength / 2);
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+
+  useFrame(() => {
+    if (megalodon.current.position.z >= 0) megalodon.current.position.z = -320;
+    megalodon.current.position.z += 0.1;
+  });
 
   return (
     <group ref={sceneMap} position={[0, -5, 0]}>
@@ -35,7 +41,7 @@ export const TorusSceneMap = ({ sceneMap }) => {
         <TempleOfLight />
       </mesh>
       <mesh
-        ref={megaWyvern}
+        ref={target}
         scale={4}
         position={[-6, 2, -30]}
         rotation-y={degToRad(35)}
@@ -50,6 +56,7 @@ export const TorusSceneMap = ({ sceneMap }) => {
       >
         <ShadowDragon />
       </mesh>
+      <Megalodon megalodon={megalodon} scale={15} position={[0, -16, -320]} />
       <Ocean position={[0, -7, 0]} />
       <Plane
         args={[mapWidth, mapLength]}
