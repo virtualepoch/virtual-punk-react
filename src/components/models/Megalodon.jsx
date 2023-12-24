@@ -10,49 +10,38 @@ Title: Otodus Megalodon
 import React, { useEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 
-export function Megalodon({ megalodon, scale, position, rotation, props }) {
+export function Megalodon({ scale, position, rotation, props }) {
   const group = useRef();
   const { nodes, materials, animations } = useGLTF("/models/megalodon_1k.glb");
-  const { actions } = useAnimations(animations, group);
+  const { actions, mixer } = useAnimations(animations, group);
 
   useEffect(() => {
-    actions["Swim"].reset().fadeIn(0.5).play();
-    return () => actions["Swim"].fadeOut(0.5);
+    actions["Swim"].play();
+    mixer.timeScale = 1;
   });
 
   return (
-    <group
-      ref={megalodon}
-      scale={scale}
-      position={position}
-      rotation={rotation}
-    >
-      <group ref={group} {...props} dispose={null}>
-        <group name="Sketchfab_Scene">
-          <group
-            name="Sketchfab_model"
-            rotation={[-Math.PI / 2, 0, 0]}
-            scale={1}
-          >
-            <group name="root">
-              <group name="GLTF_SceneRootNode" rotation={[Math.PI / 2, 0, 0]}>
-                <group
-                  name="RootNode_(gltf_orientation_matrix)_35"
-                  rotation={[-Math.PI / 2, 0, 0]}
-                >
-                  <group name="RootNode_(model_correction_matrix)_34">
-                    <group name="Root_33">
-                      <group name="Armature_30" position={[0, -0.22, -0.47]}>
-                        <group name="GLTF_created_0">
-                          <primitive object={nodes.GLTF_created_0_rootJoint} />
-                          <group name="Mesh_0_29" />
-                          <skinnedMesh
-                            name="Object_10"
-                            geometry={nodes.Object_10.geometry}
-                            material={materials["mat_0-megalodon.jpg"]}
-                            skeleton={nodes.Object_10.skeleton}
-                          />
-                        </group>
+    <group ref={group} {...props} dispose={null}>
+      <group name="Sketchfab_Scene">
+        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]} scale={1}>
+          <group name="root">
+            <group name="GLTF_SceneRootNode" rotation={[Math.PI / 2, 0, 0]}>
+              <group
+                name="RootNode_(gltf_orientation_matrix)_35"
+                rotation={[-Math.PI / 2, 0, 0]}
+              >
+                <group name="RootNode_(model_correction_matrix)_34">
+                  <group name="Root_33">
+                    <group name="Armature_30" position={[0, -0.22, -0.47]}>
+                      <group name="GLTF_created_0">
+                        <primitive object={nodes.GLTF_created_0_rootJoint} />
+                        <group name="Mesh_0_29" />
+                        <skinnedMesh
+                          name="Object_10"
+                          geometry={nodes.Object_10.geometry}
+                          material={materials["mat_0-megalodon.jpg"]}
+                          skeleton={nodes.Object_10.skeleton}
+                        />
                       </group>
                     </group>
                   </group>

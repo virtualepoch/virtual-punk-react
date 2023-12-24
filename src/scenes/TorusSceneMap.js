@@ -55,15 +55,19 @@ export const TorusSceneMap = ({ sceneMap, target }) => {
       <mesh
         ref={shadowDragon}
         scale={12}
-        position={[18, 1.8, -38]}
-        rotation-y={degToRad(-35)}
+        position={[17, 2, -40]}
+        rotation={[degToRad(10), degToRad(-35), degToRad(11)]}
       >
         <ShadowDragon />
       </mesh>
-      <group ref={spider} position={[-36, 11, -100]} rotation-y={Math.PI / 8}>
+
+      <group ref={spider} position={[-36, 10, -70]} rotation-y={degToRad(45)}>
         <PcSpider scale={1.5} />
       </group>
-      <Megalodon megalodon={megalodon} scale={15} position={[0, -16, -320]} />
+
+      <group ref={megalodon} scale={15} position={[0, -16, -320]}>
+        <Megalodon />
+      </group>
       <Ocean position={[0, -7, 0]} />
       <Box
         args={[mapWidth, mapHeight, mapLength * 2]}

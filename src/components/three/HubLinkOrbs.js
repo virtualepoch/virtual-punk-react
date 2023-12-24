@@ -8,6 +8,7 @@ import gsap from "gsap";
 import texture128 from "../../assets/images/textures/hex-128.jpg";
 import texture256 from "../../assets/images/textures/hex-256.jpg";
 import texture512 from "../../assets/images/textures/hex-512.jpg";
+import { Interactive } from "@react-three/xr";
 
 export const linkOrbInfo = [
   {
@@ -63,33 +64,39 @@ export const HubLinkOrbs = ({ hubLink, setHubLink, performance }) => {
         performance={performance}
       />
       {linkOrbInfo.map((item, index) => (
-        <group
-          key={index}
-          position={[index * 4, 0, 0]}
-          onClick={() => setHubLink(item.number)}
-          onPointerMove={() => {
-            setHovered(true);
-            document.body.style.cursor = "pointer";
-          }}
-          onPointerOut={() => {
-            setHovered(false);
-            document.body.style.cursor = "default";
-          }}
+        <Interactive
+          onSelect={() => setHubLink(item.number)}
+          onHover={() => setHovered(true)}
+          onBlur={() => setHovered(false)}
         >
-          <Text
-            font="fonts/ARCADE.TTF"
-            fontSize={1}
-            position={[0, 0, 1]}
-            anchorY={"center"}
-            color={item.number === hubLink ? "red" : "cyan"}
+          <group
+            key={index}
+            position={[index * 4, 0, 0]}
+            onClick={() => setHubLink(item.number)}
+            onPointerMove={() => {
+              setHovered(true);
+              document.body.style.cursor = "pointer";
+            }}
+            onPointerOut={() => {
+              setHovered(false);
+              document.body.style.cursor = "default";
+            }}
           >
-            {item.text}
-          </Text>
+            <Text
+              font="fonts/ARCADE.TTF"
+              fontSize={1}
+              position={[0, 0, 1]}
+              anchorY={"center"}
+              color={item.number === hubLink ? "red" : "cyan"}
+            >
+              {item.text}
+            </Text>
 
-          <Sphere args={[1, 16, 16]}>
-            <meshStandardMaterial map={texture} receiveShadow />
-          </Sphere>
-        </group>
+            <Sphere args={[1, 16, 16]}>
+              <meshStandardMaterial map={texture} receiveShadow />
+            </Sphere>
+          </group>
+        </Interactive>
       ))}
     </group>
   );

@@ -1,13 +1,13 @@
 import { useRef, useState } from "react";
-import { useThree } from "@react-three/fiber";
-// COMPONENTS //
-import { HubLink } from "../components/three/HubLink";
-import { TorusGroup } from "../components/three/TorusGroup";
-import { Ocean } from "../components/three/Ocean";
 import { useNavigate } from "react-router-dom";
-import { HubLinkOrbs } from "../components/three/HubLinkOrbs";
+import { useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import gsap from "gsap";
+// COMPONENTS //
+import { HubLink } from "../components/three/HubLink";
+import { HubLinkOrbs } from "../components/three/HubLinkOrbs";
+import { TorusGroup } from "../components/three/TorusGroup";
+import { Ocean } from "../components/three/Ocean";
 
 export const Hub = ({ hubLink, setHubLink, hubBtnClicked, performance }) => {
   // Params for responsive sizing
@@ -16,7 +16,6 @@ export const Hub = ({ hubLink, setHubLink, hubBtnClicked, performance }) => {
 
   const scaleFactor = portrait ? viewport.width * 2 : viewport.height * 2;
   const scale = Math.max(Math.min(scaleFactor, 1.2), 0.75);
-  console.log(scaleFactor);
 
   // For navigation
   const navigate = useNavigate();

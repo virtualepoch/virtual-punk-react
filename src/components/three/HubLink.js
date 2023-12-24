@@ -3,6 +3,7 @@ import { Center, Shape, Text, Text3D, useTexture } from "@react-three/drei";
 import { DissolveMaterial } from "./DissolveMaterial";
 import { useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";
+import { Interactive } from "@react-three/xr";
 
 export const HubLink = ({
   scale,
@@ -51,50 +52,67 @@ export const HubLink = ({
   const [hovered, setHovered] = useState(false);
 
   return (
-    <group
-      position-z={0.5}
-      scale={2}
-      onClick={() => {
+    <Interactive
+      onSelect={() => {
         setHubLinkClicked(true);
         onClick();
       }}
-      onPointerMove={() => {
-        setHovered(true);
-        document.body.style.cursor = "pointer";
-      }}
-      onPointerOut={() => {
-        setHovered(hubLinkClicked ? true : false);
-        document.body.style.cursor = "default";
-      }}
+      onHover={() => setHovered(true)}
+      onBlur={() => setHovered(false)}
     >
-      <mesh ref={text3DMesh} scale-z={0.5}>
-        <Center center disableY>
-          <Text3D
-            font="fonts/Arcade.json"
-            size={0.1}
-            position={[0, scale < 0.76 ? -0.11 : -0.1, 0]}
-          >
-            <meshBasicMaterial
-              ref={text3DMaterial}
-              color={hovered ? "cyan" : "red"}
-              transparent
-            />
-            {linkTitle}
-          </Text3D>
-        </Center>
-      </mesh>
+      <group
+        position-z={0.5}
+        scale={2}
+        onClick={() => {
+          setHubLinkClicked(true);
+          onClick();
+        }}
+        onPointerMove={() => {
+          setHovered(true);
+          document.body.style.cursor = "pointer";
+        }}
+        onPointerOut={() => {
+          setHovered(hubLinkClicked ? true : false);
+          document.body.style.cursor = "default";
+        }}
+      >
+        <mesh ref={text3DMesh} scale-z={0.5}>
+          <Center center disableY>
+            <Text3D
+              font="fonts/Arcade.json"
+              size={0.1}
+              position={[0, scale < 0.76 ? -0.11 : -0.1, 0]}
+            >
+              <meshBasicMaterial
+                ref={text3DMaterial}
+                color={hovered ? "cyan" : "red"}
+                transparent
+              />
+              {linkTitle}
+            </Text3D>
+          </Center>
+        </mesh>
 
-      <Shape ref={dissolveMesh}>
-        <DissolveMaterial
-          baseMaterial={dissolveMaterial}
-          visible={visible}
-          onFadeOut={onFadeOut}
-          color="#0082b2"
-        />
-      </Shape>
-      <Shape ref={backdropMesh} scale={[1.1, 1.1, 1]} position={[0, 0, -0.01]}>
-        <meshBasicMaterial ref={backdropMaterial} color="#0b1735" transparent />
-      </Shape>
-    </group>
+        <Shape ref={dissolveMesh}>
+          <DissolveMaterial
+            baseMaterial={dissolveMaterial}
+            visible={visible}
+            onFadeOut={onFadeOut}
+            color="#0082b2"
+          />
+        </Shape>
+        <Shape
+          ref={backdropMesh}
+          scale={[1.1, 1.1, 1]}
+          position={[0, 0, -0.01]}
+        >
+          <meshBasicMaterial
+            ref={backdropMaterial}
+            color="#0b1735"
+            transparent
+          />
+        </Shape>
+      </group>
+    </Interactive>
   );
 };

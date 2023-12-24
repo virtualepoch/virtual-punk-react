@@ -1,14 +1,14 @@
 import { useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useFrame } from "@react-three/fiber";
 import { Clock } from "three";
+import { useFrame } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 import gsap from "gsap";
 // COMPONENTS //
 import { RabbitHole } from "../components/three/RabbitHole";
 import { SpinningPanels } from "../components/three/SpinningPanels";
 import { TorusGroup } from "../components/three/TorusGroup";
 import { Ocean } from "../components/three/Ocean";
-import { OrbitControls } from "@react-three/drei";
 
 export const IntroScene = ({ start, hub, setHub, performance }) => {
   const sceneObjects = useRef();
