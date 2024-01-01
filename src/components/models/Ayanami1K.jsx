@@ -7,19 +7,27 @@ Source: https://sketchfab.com/3d-models/ayanami-91cdc6379870408e8bfb2c2c22f586de
 Title: Ayanami
 */
 
-import React, { useRef } from 'react'
-import { useGLTF } from '@react-three/drei'
+import React, { useRef } from "react";
+import { useGLTF } from "@react-three/drei";
 
 export function Ayanami(props) {
-  const { nodes, materials } = useGLTF('/models/ayanami.gltf')
+  const { nodes, materials } = useGLTF("/models/ayanami_1k.gltf");
   return (
     <group {...props} dispose={null}>
       <group position={[40.68, 1.31, -3.39]} rotation={[0.03, -0.22, 0.28]}>
-        <mesh geometry={nodes['1_Material_#1_0'].geometry} material={materials.Material_1} scale={1.02} />
+        <mesh
+          geometry={nodes["1_Material_#1_0"].geometry}
+          material={materials.Material_1}
+          scale={1.02}
+        />
       </group>
-      <mesh geometry={nodes['2_Material_#0_0'].geometry} material={materials.Material_0} scale={1.02} />
+      <mesh
+        geometry={nodes["2_Material_#0_0"].geometry}
+        material={materials.Material_0}
+        scale={1.02}
+      />
     </group>
-  )
+  );
 }
 
-useGLTF.preload('/models/ayanami.gltf')
+useGLTF.preload("/models/ayanami_1k.gltf");

@@ -1,14 +1,16 @@
-import { Sphere, Text } from "@react-three/drei";
-import * as THREE from "three";
-import { Atom } from "./Atom";
 import { useEffect, useRef, useState } from "react";
-import { useFrame, useLoader } from "@react-three/fiber";
+import * as THREE from "three";
+import { useLoader } from "@react-three/fiber";
+import { Sphere, Text } from "@react-three/drei";
+import { Interactive } from "@react-three/xr";
 import gsap from "gsap";
 
+// <COMPONENTS & ASSETS
+import { Atom } from "./Atom";
 import texture128 from "../../assets/images/textures/hex-128.jpg";
 import texture256 from "../../assets/images/textures/hex-256.jpg";
 import texture512 from "../../assets/images/textures/hex-512.jpg";
-import { Interactive } from "@react-three/xr";
+// >
 
 export const linkOrbInfo = [
   {
@@ -30,12 +32,14 @@ export const linkOrbInfo = [
 
 export const HubLinkOrbs = ({ hubLink, setHubLink, performance }) => {
   const [hovered, setHovered] = useState();
-  const texture = useLoader(
+  document.body.style.cursor = hovered ? "pointer" : "default";
+
+  const map = useLoader(
     THREE.TextureLoader,
     performance === 0 ? texture128 : performance === 2 ? texture512 : texture256
   );
-  texture.repeat.set(2, 1);
-  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+  map.repeat.set(2, 1);
+  map.wrapS = map.wrapT = THREE.RepeatWrapping;
 
   const atomRef = useRef();
   useEffect(() => {
@@ -52,9 +56,6 @@ export const HubLinkOrbs = ({ hubLink, setHubLink, performance }) => {
       position={[linkOrbInfo.length * -0.2, -1.2, 1.3]}
       scale={0.15}
       rotation={[-0.4, 0, 0]}
-      onClick={() => {}}
-      receiveShadow
-      castShadow
     >
       <ambientLight />
       <Atom
@@ -75,11 +76,9 @@ export const HubLinkOrbs = ({ hubLink, setHubLink, performance }) => {
             onClick={() => setHubLink(item.number)}
             onPointerMove={() => {
               setHovered(true);
-              document.body.style.cursor = "pointer";
             }}
             onPointerOut={() => {
               setHovered(false);
-              document.body.style.cursor = "default";
             }}
           >
             <Text
@@ -93,7 +92,7 @@ export const HubLinkOrbs = ({ hubLink, setHubLink, performance }) => {
             </Text>
 
             <Sphere args={[1, 16, 16]}>
-              <meshStandardMaterial map={texture} receiveShadow />
+              <meshStandardMaterial map={map} receiveShadow />
             </Sphere>
           </group>
         </Interactive>

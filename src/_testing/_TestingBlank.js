@@ -13,6 +13,8 @@ import { Ocean } from "../components/three/Ocean";
 import { TorusSceneMap } from "../scenes/TorusSceneMap";
 
 export const TestingBlank = () => {
+  const directionalLight2 = useRef();
+  useHelper(directionalLight2, DirectionalLightHelper, 1, "blue");
   const directionalLight = useRef();
   useHelper(directionalLight, DirectionalLightHelper, 1, "red");
   const pointLight = useRef();
@@ -20,6 +22,7 @@ export const TestingBlank = () => {
 
   const controls = useRef();
   const target = useRef();
+  const val = useRef();
   useFrame(() => {
     // controls.current.setLookAt(
     //   target.current.position.x,
@@ -37,11 +40,17 @@ export const TestingBlank = () => {
         </PerspectiveCamera>
         <directionalLight
           ref={directionalLight}
-          position={[-2, 4, 2]}
-          intensity={2}
+          position={[-2, 3, 1]}
+          intensity={3}
         />
-        <pointLight ref={pointLight} position={[0, -1, 0]} intensity={2} />
+        <directionalLight
+          ref={directionalLight2}
+          position={[2, 1, -2]}
+          intensity={3}
+        />
+        {/* <pointLight ref={pointLight} position={[0, 0, 1]} intensity={2} /> */}
         <TorusSceneMap target={target} />
+
         {/* <Ocean position={[0, -10, 0]} /> */}
       </group>
     </>

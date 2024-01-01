@@ -1,4 +1,5 @@
 import { useMemo, useRef } from "react";
+import * as THREE from "three";
 import { useFrame } from "@react-three/fiber";
 import {
   Stars,
@@ -6,9 +7,9 @@ import {
   Line,
   PerspectiveCamera,
   useScroll,
+  OrbitControls,
 } from "@react-three/drei";
 import { Spacecraft } from "../components/models/Spacecraft";
-import * as THREE from "three";
 
 const LINE_NB_POINTS = 200;
 
@@ -72,10 +73,16 @@ export const SpaceX = () => {
       )
     );
 
-    // const targetCameraQuaternion = new THREE.Quaternion().setFromEuler(new THREE.Euler(cameraGroup.current.rotation.x, cameraGroup.current.rotation.z, angleRotation));
+    const targetCameraQuaternion = new THREE.Quaternion().setFromEuler(
+      new THREE.Euler(
+        cameraGroup.current.rotation.x,
+        cameraGroup.current.rotation.z,
+        angleRotation
+      )
+    );
 
     spacecraft.current.quaternion.slerp(targetSpacecraftQuaternion, delta * 2);
-    // cameraGroup.current.quaternion.slerp(targetCameraQuaternion, delta * 2);
+    cameraGroup.current.quaternion.slerp(targetCameraQuaternion, delta * 2);
 
     cameraGroup.current.position.lerp(curPoint, delta * 24);
   });
@@ -106,6 +113,7 @@ export const SpaceX = () => {
         <ambientLight intensity={0.5} />
         <directionalLight position={[10, 15, 10]} angle={0.3} />
         <Stars />
+        {/* <OrbitControls /> */}
         <PerspectiveCamera position={[0, 0, 5]} fov={40} makeDefault />
         <group ref={spacecraft}>
           <Float floatIntensity={2} speed={2}>

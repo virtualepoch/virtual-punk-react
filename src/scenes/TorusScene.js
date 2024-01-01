@@ -1,16 +1,23 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
-import { useFrame } from "@react-three/fiber";
-import { OrbitControls, PerspectiveCamera, useHelper } from "@react-three/drei";
+import { useFrame, useLoader } from "@react-three/fiber";
+import {
+  OrbitControls,
+  PerspectiveCamera,
+  Sphere,
+  useHelper,
+} from "@react-three/drei";
 import gsap from "gsap";
 //COMPONENTS
 import { DragonFlying } from "../components/models/DragonFlying";
 import { TorusSceneGroup } from "../components/three/TorusSceneGroup";
 import { BgSphere } from "../components/three/BgSphere";
-import bgTexture from "../assets/images/panoramas/cyber-sky.jpg";
 import { TorusSceneMap } from "./TorusSceneMap";
+import texture from "../assets/images/panoramas/cyber-sky.jpg";
+import { Ocean } from "../components/three/Ocean";
 // EXPORT: FUNCTIONAL COMPONENT
 export const TorusScene = ({ performance, thirdPerson }) => {
+  const map = useLoader(THREE.TextureLoader, texture);
   const directionalLight = useRef();
   useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
 
@@ -43,7 +50,7 @@ export const TorusScene = ({ performance, thirdPerson }) => {
   const camPos = 0.1;
   return (
     <group>
-      <PerspectiveCamera ref={cam} makeDefault position={[0, 0, camPos]}>
+      <PerspectiveCamera ref={cam} position={[0, 0, camPos]}>
         <OrbitControls
           minDistance={0}
           maxDistance={camPos}
@@ -60,7 +67,10 @@ export const TorusScene = ({ performance, thirdPerson }) => {
         />
       </PerspectiveCamera>
 
-      <BgSphere bgImage={bgTexture} />
+      <Sphere args={[300, 16, 16]}>
+        <meshBasicMaterial map={map} side={THREE.BackSide} />
+        <Ocean position-y={-30}/>
+      </Sphere>
 
       <DragonFlying dragonRef={dragonTorus} />
 

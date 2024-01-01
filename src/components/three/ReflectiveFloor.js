@@ -2,14 +2,14 @@ import { MeshReflectorMaterial } from "@react-three/drei";
 
 export const ReflectiveFloor = () => {
   return (
-    <mesh position={[0, -3, 0]} rotation={[-Math.PI / 1.95, 0, 0]}>
+    <mesh position={[0, -3, 0]} rotation={[-Math.PI / 2, 0, 0]}>
       <planeGeometry args={[50, 50]} />
       <MeshReflectorMaterial
-        blur={[0, 0]} // Blur ground reflections (width, height), 0 skips blur
-        mixBlur={0} // How much blur mixes with surface roughness (default = 1)
+        blur={[1, 1]} // Blur ground reflections (width, height), 0 skips blur
+        mixBlur={0.5} // How much blur mixes with surface roughness (default = 1)
         mixStrength={1} // Strength of the reflections
         mixContrast={1} // Contrast of the reflections
-        resolution={256} // Off-buffer resolution, lower=faster, higher=better quality, slower
+        resolution={512} // Off-buffer resolution, lower=faster, higher=better quality, slower
         mirror={0} // Mirror environment, 0 = texture colors, 1 = pick up env colors
         depthScale={0} // Scale the depth factor (0 = no depth, default = 0)
         minDepthThreshold={0.9} // Lower edge for the depthTexture interpolation (default = 0)
@@ -30,7 +30,7 @@ export const ReflectiveFloor = () => {
               4 = lod channel (based on the roughness)
             */
         reflectorOffset={0.2} // Offsets the virtual camera that projects the reflection. Useful when the reflective surface is some distance from the object's origin (default = 0)
-        color={"#15ffff"}
+        color={"#00cccc"}
       />
     </mesh>
   );

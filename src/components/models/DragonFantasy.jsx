@@ -7,7 +7,7 @@ Source: https://sketchfab.com/3d-models/dragon-fantasy-ffe005ed8976412cb81c19d93
 Title: Dragon Fantasy
 */
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 
 export function DragonFantasy(props) {
@@ -15,13 +15,18 @@ export function DragonFantasy(props) {
   const { nodes, materials, animations } = useGLTF(
     "/models/dragon_fantasy.glb"
   );
-  const { actions } = useAnimations(animations, group);
+  const { actions,mixer } = useAnimations(animations, group);
+  // action= JiNengGongJi1,JiNengGongJi2,PuTongGongJi,SiWang,XingZou,ZhanLi
+  useEffect(() => {
+    actions["JiNengGongJi2"].play();
+    mixer.timeScale = 0.5;
+  }, [actions, mixer]);
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
         <group
           name="Sketchfab_model"
-          rotation={[-Math.PI / 2, 0, Math.PI]}
           scale={20.91}
         >
           <group name="drgonfbx" rotation={[Math.PI / 2, 0, 0]} scale={0.01}>

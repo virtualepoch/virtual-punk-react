@@ -10,72 +10,41 @@ import { ShadowDragon } from "../components/models/ShadowDragon";
 import textureLg from "../assets/images/textures/hex-100.jpg";
 import { degToRad } from "three/src/math/MathUtils";
 import { Ocean } from "../components/three/Ocean";
-import { Megalodon } from "../components/models/Megalodon";
-import { PcSpider } from "../components/models/PcSpider1k";
 import gsap from "gsap";
 
-export const TorusSceneMap = ({ sceneMap, target }) => {
-  const mapWidth = 30;
-  const mapHeight = 5;
-  const mapLength = 200;
+import { FloatingIslandPortal } from "../components/models/FloatingIslandPortal";
+import { DragonFantasy } from "../components/models/DragonFantasy";
 
-  const shadowDragon = useRef();
-  const megalodon = useRef();
-  const spider = useRef();
 
-  const texture = useLoader(
-    THREE.TextureLoader,
-    // performance === 0 ? textureSm :
-    textureLg
-  );
-  texture.repeat.set(mapWidth / 4, mapLength / 2);
-  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-
-  useFrame(() => {
-    if (megalodon.current.position.z >= 0) megalodon.current.position.z = -320;
-    megalodon.current.position.z += 0.1;
-  });
+export const TorusSceneMap = ({ sceneMap }) => {
+  const ShadowDragonIsland = (props) => {
+    return (
+      <group {...props}>
+        <FloatingIslandPortal />
+        <ShadowDragon scale={8} position-y={5} />
+      </group>
+    );
+  };
+  
+  const TempleIsland = (props) => {
+    return (
+      <group {...props}>
+        <DragonFantasy scale={3} position={[0, 5, 2]} />
+        <FloatingIslandPortal />
+        <TempleOfLight
+          position={[0, 5, 0]}
+          rotation={[0, -0.3, 0]}
+          scale={1.2}
+        />
+      </group>
+    );
+  };
 
   return (
     <group ref={sceneMap} position={[0, -5, 0]}>
-      <mesh position={[-20, -7.5, -40]} scale={10}>
-        <TempleOfLight />
-      </mesh>
-      <mesh position={[25, -7.5, -40]} scale={15}>
-        <TempleOfLight />
-      </mesh>
-      <mesh
-        ref={target}
-        scale={4}
-        position={[-6, 2, -30]}
-        rotation-y={degToRad(35)}
-      >
-        <MegaWyvern />
-      </mesh>
-      <mesh
-        ref={shadowDragon}
-        scale={12}
-        position={[17, 2, -40]}
-        rotation={[degToRad(10), degToRad(-35), degToRad(11)]}
-      >
-        <ShadowDragon />
-      </mesh>
-
-      <group ref={spider} position={[-36, 10, -70]} rotation-y={degToRad(45)}>
-        <PcSpider scale={1.5} />
-      </group>
-
-      <group ref={megalodon} scale={15} position={[0, -16, -320]}>
-        <Megalodon />
-      </group>
-      <Ocean position={[0, -7, 0]} />
-      <Box
-        args={[mapWidth, mapHeight, mapLength * 2]}
-        position={[-mapWidth * 1.5, -7, -mapLength]}
-        rotation={[0, 0, 0]}
-      >
-        <meshBasicMaterial map={texture} />
-      </Box>
+      <MegaWyvern scale={4} position={[-6, 2, -30]} rotation-y={degToRad(35)} />
+      <ShadowDragonIsland position={[10, -5, -30]} rotation-y={-1} />
+      <TempleIsland position={[0, -70, -250]} scale={10} />
     </group>
   );
 };
