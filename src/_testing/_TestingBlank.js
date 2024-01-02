@@ -49,7 +49,6 @@ export const TestingBlank = () => {
           intensity={3}
         />
         {/* <pointLight ref={pointLight} position={[0, 0, 1]} intensity={2} /> */}
-        <TorusSceneMap target={target} />
 
         {/* <Ocean position={[0, -10, 0]} /> */}
       </group>

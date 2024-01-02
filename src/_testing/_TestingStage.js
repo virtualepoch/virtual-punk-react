@@ -13,6 +13,7 @@ import {
 import { degToRad } from "three/src/math/MathUtils";
 import { ReflectiveFloor } from "../components/three/ReflectiveFloor";
 import { MedievalSciFiPillar } from "../components/models/MedievalSciFiPillar";
+import { Clockdoor } from "../components/models/Clockdoor";
 // COMPONENTS
 
 export const TestingStage = () => {
@@ -38,6 +39,7 @@ export const TestingStage = () => {
 
   return (
     <>
+      <Clockdoor scale={0.02} position={[0, -3, -3]} />
       <PerspectiveCamera makeDefault position={[0, 0, 20]} ref={cam}>
         <OrbitControls />
       </PerspectiveCamera>
@@ -50,7 +52,7 @@ export const TestingStage = () => {
         />
         <pointLight ref={pointLight} position={[0, -1, 0]} intensity={2} />
 
-        <Sphere args={[40, 8, 8]} rotation={[0, 0, 0]} position={[0, 1, -10]}>
+        <Sphere args={[100, 8, 8]} rotation={[0, 0, 0]} position={[0, 1, -10]}>
           <meshBasicMaterial side={THREE.BackSide}>
             <GradientTexture
               stops={[0, 0.5, 1]}
@@ -59,6 +61,7 @@ export const TestingStage = () => {
             />
           </meshBasicMaterial>
         </Sphere>
+
         <MedievalSciFiPillar position={[-10, -3.6, 0]} />
         <MedievalSciFiPillar position={[10, -3.6, 0]} />
         <MedievalSciFiPillar position={[-5, -3.6, -10]} />

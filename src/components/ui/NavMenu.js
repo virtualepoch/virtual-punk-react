@@ -9,8 +9,6 @@ export function NavMenu({
   navMenuOpen,
   setNavMenuOpen,
   setLinkClicked,
-  hideLeva,
-  setHideLeva,
   fpsMeter,
   setFpsMeter,
 }) {
@@ -54,22 +52,8 @@ export function NavMenu({
             <CustomLink to={"/torus"}>Torus</CustomLink>
             <CustomLink to={"/mach"}>Mach</CustomLink>
             <CustomLink to={"/water"}>Water</CustomLink>
-            <CustomLink to={"/star-punk"}>Star Punk</CustomLink>
-            {/* <CustomLink to={"/space"}>Space</CustomLink> */}
-            {/* <CustomLink to={"/time"}>Time</CustomLink> */}
-            {/* <CustomLink to={"/scroll"}>Scroll</CustomLink> */}
-            {/* <CustomLink to={"/shoe"}>Shoe</CustomLink> */}
-            {/* <CustomLink to={"/portal"}>Portal</CustomLink> */}
-            {/* <CustomLink to={"/dragon"}>Dragon</CustomLink> */}
-            {/* <CustomLink to={"/dissolve"}>Dissolve</CustomLink> */}
+            <CustomLink to={"/t-1"}>t-1</CustomLink>
           </ul>
-
-          <button
-            className={
-              hideLeva ? "btn-leva-controls" : "btn-leva-controls leva-open"
-            }
-            onClick={() => setHideLeva(!hideLeva)}
-          />
 
           <button
             className={fpsMeter ? "btn-fps meter-open" : "btn-fps"}

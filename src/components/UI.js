@@ -32,7 +32,6 @@ export const UI = ({
   const [navMenuOpen, setNavMenuOpen] = useState(false);
   const [modalInfoOpen, setModalInfoOpen] = useState(false);
   const [modalVROpen, setModalVROpen] = useState(false);
-  const [hideLeva, setHideLeva] = useState(true);
   const [fpsMeter, setFpsMeter] = useState(false);
 
   const intro = useMatch("/");
@@ -74,8 +73,6 @@ export const UI = ({
         navMenuOpen={navMenuOpen}
         setNavMenuOpen={setNavMenuOpen}
         setLinkClicked={setLinkClicked}
-        hideLeva={hideLeva}
-        setHideLeva={setHideLeva}
         fpsMeter={fpsMeter}
         setFpsMeter={setFpsMeter}
       />
