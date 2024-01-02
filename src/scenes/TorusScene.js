@@ -29,8 +29,8 @@ export const TorusScene = ({ performance, thirdPerson }) => {
 
   useEffect(() => {
     gsap.to(dragonTorus.current.position, {
-      y: thirdPerson ? -0.5 : 0,
-      z: thirdPerson ? -1 : 0,
+      y: thirdPerson ? -0.2 : 0,
+      z: thirdPerson ? -2 : 0,
       duration: 0.7,
       ease: "power1.inOut",
     });

@@ -7,16 +7,18 @@ import { MegaWyvern } from "../components/models/MegaWyvern";
 import { TempleOfLight } from "../components/models/TempleOfLight";
 import { ShadowDragon } from "../components/models/ShadowDragon";
 // TEXTURES
-import textureLg from "../assets/images/textures/hex-100.jpg";
+import texture from "../assets/images/textures/hex-512.jpg";
 import { degToRad } from "three/src/math/MathUtils";
 import { Ocean } from "../components/three/Ocean";
 import gsap from "gsap";
 
 import { FloatingIslandPortal } from "../components/models/FloatingIslandPortal";
 import { DragonFantasy } from "../components/models/DragonFantasy";
-import { Terrain } from "../components/models/Terrain";
 
 export const TorusSceneMap = ({ sceneMap }) => {
+  const map = useLoader(THREE.TextureLoader, texture);
+  map.repeat.set(30, 16);
+  map.wrapS = map.wrapT = THREE.RepeatWrapping;
   const ShadowDragonIsland = (props) => {
     return (
       <group {...props}>
@@ -42,8 +44,25 @@ export const TorusSceneMap = ({ sceneMap }) => {
 
   return (
     <group ref={sceneMap} position={[0, -5, 0]}>
-      <Terrain scale={0.1} position={[-70, -8, -70]}  rotation-y={-Math.PI/4}/>
-      <MegaWyvern scale={4} position={[-6, 2, -150]} rotation-y={degToRad(35)} />
+      <Plane
+        args={[120, 60]}
+        position={[-5, -20, -60]}
+        rotation-y={Math.PI / 2}
+      >
+         <meshBasicMaterial map={map}/>
+      </Plane>
+      <Plane
+        args={[120, 60]}
+        position={[5, -20, -60]}
+        rotation-y={Math.PI / 2}
+      >
+         <meshBasicMaterial map={map} side={THREE.BackSide}/>
+      </Plane>
+      <MegaWyvern
+        scale={4}
+        position={[-6, 2, -150]}
+        rotation-y={degToRad(35)}
+      />
       <ShadowDragonIsland position={[10, -5, -140]} rotation-y={-1} />
       <TempleIsland position={[0, -70, -250]} scale={10} />
     </group>
