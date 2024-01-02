@@ -124,8 +124,6 @@ export const UI = ({
 
       {torus && (
         <>
-          <button className="btn-torus-scene" />
-          <button className="btn-torus-scene right" />
           <button
             className="btn-torus-scene-third-person"
             onClick={() => {

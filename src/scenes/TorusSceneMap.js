@@ -14,7 +14,7 @@ import gsap from "gsap";
 
 import { FloatingIslandPortal } from "../components/models/FloatingIslandPortal";
 import { DragonFantasy } from "../components/models/DragonFantasy";
-
+import { Terrain } from "../components/models/Terrain";
 
 export const TorusSceneMap = ({ sceneMap }) => {
   const ShadowDragonIsland = (props) => {
@@ -25,7 +25,7 @@ export const TorusSceneMap = ({ sceneMap }) => {
       </group>
     );
   };
-  
+
   const TempleIsland = (props) => {
     return (
       <group {...props}>
@@ -42,8 +42,9 @@ export const TorusSceneMap = ({ sceneMap }) => {
 
   return (
     <group ref={sceneMap} position={[0, -5, 0]}>
-      <MegaWyvern scale={4} position={[-6, 2, -30]} rotation-y={degToRad(35)} />
-      <ShadowDragonIsland position={[10, -5, -30]} rotation-y={-1} />
+      <Terrain scale={0.1} position={[-70, -8, -70]}  rotation-y={-Math.PI/4}/>
+      <MegaWyvern scale={4} position={[-6, 2, -150]} rotation-y={degToRad(35)} />
+      <ShadowDragonIsland position={[10, -5, -140]} rotation-y={-1} />
       <TempleIsland position={[0, -70, -250]} scale={10} />
     </group>
   );
