@@ -52,7 +52,7 @@ export function NavMenu({
             <CustomLink to={"/torus"}>Torus</CustomLink>
             <CustomLink to={"/mach"}>Mach</CustomLink>
             <CustomLink to={"/water"}>Water</CustomLink>
-            <CustomLink to={"/t-1"}>t-1</CustomLink>
+            {/* <CustomLink to={"/t-1"}>t-1</CustomLink> */}
           </ul>
 
           <button
