@@ -30,7 +30,7 @@ export const TestingStage = ({na}) => {
 
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 5, 10]} />
+      {/* <PerspectiveCamera makeDefault position={[0, 5, 10]} /> */}
       <OrbitControls />
 
       <directionalLight
