@@ -5,18 +5,20 @@ import {
   GradientTexture,
   OrbitControls,
   PerspectiveCamera,
-  Plane,
   Sphere,
   useHelper,
 } from "@react-three/drei";
 import { degToRad } from "three/src/math/MathUtils";
 // COMPONENTS /////////////////////////
 import { ReflectiveFloor } from "../components/three/ReflectiveFloor";
-import { PlaneBrickWall } from "../components/three/PlaneBrickWall";
+import { PlaneWall } from "../components/three/PlaneWall";
 import { MedievalSciFiPillar } from "../components/models/MedievalSciFiPillar";
-import { Clockdoor } from "../components/models/Clockdoor";
-import { Sofa } from "../components/models/Sofa";
 import { Spider } from "../components/models/Spider";
+import { Door } from "../components/models/Door";
+import { VictorianCouch } from "../components/models/VictorianCouch";
+import { useFrame } from "@react-three/fiber";
+import { Model } from "../components/models/Model";
+// import { Valley } from "../components/models/Valley";
 // COMPONENTS
 
 export const TestingStage = () => {
@@ -25,9 +27,13 @@ export const TestingStage = () => {
   const pointLight = useRef();
   useHelper(pointLight, THREE.PointLightHelper, 1, "red");
 
+  useFrame(() => {
+    pointLight.current.position.y += 0.1;
+  });
+
   return (
     <>
-      {/* <PerspectiveCamera makeDefault position={[0, 0, 30]} /> */}
+      <PerspectiveCamera makeDefault position={[0, 0, 10]} />
       <OrbitControls />
 
       <directionalLight
@@ -36,13 +42,27 @@ export const TestingStage = () => {
         intensity={1}
       />
 
-      <PlaneBrickWall
+      <pointLight ref={pointLight} position={[0, 3.5, -6]} intensity={2} />
+
+      <Model scale={2} position={[0, -3, -2]} />
+
+      <VictorianCouch
+        scale={2}
+        position={[-6.5, -3.1, -1.5]}
+        rotation-y={degToRad(90)}
+      />
+
+      <Door scale={[1.4, 2, 1]} position={[0.8, 1.2, -4]} />
+
+      <PlaneWall args={[20, 20]} position={[0, 7, -9]} />
+
+      <PlaneWall
         args={[20, 20]}
         position={[-6, 7, -1]}
         rotation-y={Math.PI / 2}
       />
 
-      <PlaneBrickWall
+      <PlaneWall
         args={[20, 20]}
         position={[6, 7, -1]}
         rotation-y={-Math.PI / 2}
@@ -53,15 +73,6 @@ export const TestingStage = () => {
         rotation={[Math.PI / 2, 0, Math.PI / 2]}
         position={[5.2, 16, 0]}
       />
-
-      <Clockdoor scale={0.02} position={[0, -3, -5]} />
-      <pointLight ref={pointLight} position={[0, 3.5, -4]} intensity={2} />
-
-      {/* <Sofa
-        scale={0.02}
-        position={[-4.5, -3.05, -1]}
-        rotation-y={Math.PI / 2}
-      /> */}
 
       <MedievalSciFiPillar position={[-5, -3.6, 3]} />
       <MedievalSciFiPillar position={[5, -3.6, 3]} />
