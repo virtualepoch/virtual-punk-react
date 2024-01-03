@@ -16,8 +16,10 @@ import { MedievalSciFiPillar } from "../components/models/MedievalSciFiPillar";
 import { Spider } from "../components/models/Spider";
 import { Door } from "../components/models/Door";
 import { VictorianCouch } from "../components/models/VictorianCouch";
-import { useFrame } from "@react-three/fiber";
 import { Model } from "../components/models/Model";
+import { Kick } from "../components/models/Kick";
+import { NaShroom } from "../components/models/NaShroom";
+
 // import { Valley } from "../components/models/Valley";
 // COMPONENTS
 
@@ -29,7 +31,7 @@ export const TestingStage = () => {
 
   return (
     <>
-      {/* <PerspectiveCamera makeDefault position={[0, 0, 10]} /> */}
+      {/* <PerspectiveCamera makeDefault position={[0, 5, 10]} /> */}
       <OrbitControls />
 
       <directionalLight
@@ -38,9 +40,17 @@ export const TestingStage = () => {
         intensity={1}
       />
 
-      <pointLight ref={pointLight} position={[0, -2, -3]} intensity={2} />
+      <pointLight ref={pointLight} position={[0, 2, -3]} intensity={2} />
 
-      <Model scale={2} position={[.5, -3, -4]} />
+      <Model scale={2} position={[0.5, 0.2, -4]} />
+
+      <Kick scale={1.8} rotation-y={degToRad(50)} position={[-3, 0.2, -2]} />
+
+      <NaShroom
+        scale={0.01}
+        rotation-y={degToRad(-30)}
+        position={[3, 0.3, -2]}
+      />
 
       {/* <VictorianCouch
         scale={2}
@@ -48,21 +58,25 @@ export const TestingStage = () => {
         rotation-y={degToRad(90)}
       /> */}
 
-      <Door scale={[1.4, 2, 1]} position={[0.8, 1.2, -4]} />
+      <Door scale={[1.4, 2, 1]} position={[0.8, 4.4, -4]} />
 
-      <PlaneWall args={[12, 20]} position={[0, 7, -9]} />
+      <PlaneWall args={[12, 20]} position={[0, 10, -9]} />
 
-      <PlaneWall args={[12, 20]} position={[0, -3.3, 0]}  rotation-x={-Math.PI / 2} />
+      <PlaneWall
+        args={[12, 20]}
+        position={[0, 0, 0]}
+        rotation-x={-Math.PI / 2}
+      />
 
       <PlaneWall
         args={[20, 20]}
-        position={[-6, 7, -1]}
+        position={[-6, 10, -1]}
         rotation-y={Math.PI / 2}
       />
 
       <PlaneWall
         args={[20, 20]}
-        position={[6, 7, -1]}
+        position={[6, 10, -1]}
         rotation-y={-Math.PI / 2}
       />
 
@@ -72,10 +86,10 @@ export const TestingStage = () => {
         position={[5.2, 16, 0]}
       />
 
-      <MedievalSciFiPillar position={[-5, -3.6, 3]} />
-      <MedievalSciFiPillar position={[5, -3.6, 3]} />
-      <MedievalSciFiPillar position={[-5, -3.6, -7]} />
-      <MedievalSciFiPillar position={[5, -3.6, -7]} />
+      <MedievalSciFiPillar position={[-5, -0.4, 3]} />
+      <MedievalSciFiPillar position={[5, -0.4, 3]} />
+      <MedievalSciFiPillar position={[-5, -0.4, -7]} />
+      <MedievalSciFiPillar position={[5, -0.4, -7]} />
 
       {/* <ReflectiveFloor /> */}
 
