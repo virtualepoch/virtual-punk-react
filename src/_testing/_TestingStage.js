@@ -41,7 +41,7 @@ export const TestingStage = ({na}) => {
 
       <pointLight ref={pointLight} position={[0, 0.5, -0.5]} intensity={2} />
 
-      <Valley na={na} scale={0.03} position={[0.3, 0, -1]} />
+      <Valley na={na} scale={0.025} position={[0.3, 0, -1]} />
 
       <Kick scale={0.8} rotation-y={degToRad(50)} position={[-1, -0, 0]} />
 
