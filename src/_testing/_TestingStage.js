@@ -16,17 +16,12 @@ import { MedievalSciFiPillar } from "../components/models/MedievalSciFiPillar";
 import { Spider } from "../components/models/Spider";
 import { Door } from "../components/models/Door";
 import { VictorianCouch } from "../components/models/VictorianCouch";
-import { Kick } from "../components/models/Kick";
-import { NaShroom } from "../components/models/NaShroom";
-
-import { Valley } from "../components/models/Valley";
-// COMPONENTS
 
 export const TestingStage = ({na}) => {
   const directionalLight = useRef();
   useHelper(directionalLight, DirectionalLightHelper, 1, "red");
   const pointLight = useRef();
-  // useHelper(pointLight, THREE.PointLightHelper, 1, "red");
+  useHelper(pointLight, THREE.PointLightHelper, 1, "red");
 
   return (
     <>
@@ -40,16 +35,6 @@ export const TestingStage = ({na}) => {
       />
 
       <pointLight ref={pointLight} position={[0, 0.5, -0.5]} intensity={2} />
-
-      <Valley na={na} scale={0.025} position={[0.3, 0, -1]} />
-
-      <Kick scale={0.8} rotation-y={degToRad(50)} position={[-1, -0, 0]} />
-
-      <NaShroom
-        scale={0.004}
-        rotation-y={degToRad(-30)}
-        position={[1, 0.3, 0]}
-      />
 
       {/* <VictorianCouch
         scale={2}
