@@ -27,30 +27,25 @@ export const TestingStage = () => {
 
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 0, 10]} />
+      {/* <PerspectiveCamera makeDefault position={[0, 0, 30]} /> */}
       <OrbitControls />
 
       <directionalLight
         ref={directionalLight}
         position={[-1, 4, 2]}
-        intensity={2}
+        intensity={1}
       />
 
       <PlaneBrickWall
-        // args={[20, 20, 2, 2]}
         args={[20, 20]}
         position={[-6, 7, -1]}
         rotation-y={Math.PI / 2}
-        roughness={1}
-        displacementScale={2}
-        // aoMapIntensity={2}
       />
 
       <PlaneBrickWall
-        args={[20, 20, 32, 4]}
+        args={[20, 20]}
         position={[6, 7, -1]}
         rotation-y={-Math.PI / 2}
-        roughness={1}
       />
 
       <Spider
@@ -62,11 +57,11 @@ export const TestingStage = () => {
       <Clockdoor scale={0.02} position={[0, -3, -5]} />
       <pointLight ref={pointLight} position={[0, 3.5, -4]} intensity={2} />
 
-      <Sofa
+      {/* <Sofa
         scale={0.02}
         position={[-4.5, -3.05, -1]}
         rotation-y={Math.PI / 2}
-      />
+      /> */}
 
       <MedievalSciFiPillar position={[-5, -3.6, 3]} />
       <MedievalSciFiPillar position={[5, -3.6, 3]} />
@@ -78,8 +73,8 @@ export const TestingStage = () => {
       <Sphere args={[100, 8, 8]} rotation={[0, 0, 0]} position={[0, 1, -10]}>
         <meshBasicMaterial side={THREE.BackSide}>
           <GradientTexture
-            stops={[0, 0.5, 1]}
-            colors={["#000", "#009b9b", "#000"]}
+            stops={[0, 1]}
+            colors={["#000", "#ff0000"]}
             size={10}
           />
         </meshBasicMaterial>

@@ -5,21 +5,17 @@ export const PlaneBrickWall = (
   { displacementScale, aoMapIntensity, roughness }
 ) => {
   const textures = useTexture({
-    map: "/textures/brick-white/Brick_Wall_015_COLOR.jpg",
-    aoMap: "/textures/brick-white/Brick_Wall_015_OCC.jpg",
-    displacementMap: "/textures/brick-white/Brick_Wall_015_DISP.png",
-    roughnessMap: "/textures/brick-white/Brick_Wall_015_ROUGH.jpg",
-    normalMap: "/textures/brick-white/Brick_Wall_015_NORM.jpg",
+    map: "/textures/metal-screen-orange/baseColor.png",
+    displacementMap: "/textures/metal-screen-orange/height.png",
+    roughnessMap: "/textures/metal-screen-orange/roughness.png",
+    metalnessMap: "/textures/metal-screen-orange/metallic.png",
+    normalMap: "/textures/metal-screen-orange/normal.png",
+    alphaMap: "/textures/metal-screen-orange/opacity.png",
   });
 
   return (
     <Plane {...props}>
-      <meshStandardMaterial
-        {...textures}
-        displacementScale={displacementScale}
-        aoMapIntensity={aoMapIntensity}
-        roughness={roughness}
-      />
+      <meshStandardMaterial {...textures} transparent />
     </Plane>
   );
 };
