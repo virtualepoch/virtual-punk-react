@@ -27,13 +27,9 @@ export const TestingStage = () => {
   const pointLight = useRef();
   useHelper(pointLight, THREE.PointLightHelper, 1, "red");
 
-  useFrame(() => {
-    pointLight.current.position.y += 0.1;
-  });
-
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 0, 10]} />
+      {/* <PerspectiveCamera makeDefault position={[0, 0, 10]} /> */}
       <OrbitControls />
 
       <directionalLight
@@ -42,19 +38,21 @@ export const TestingStage = () => {
         intensity={1}
       />
 
-      <pointLight ref={pointLight} position={[0, 3.5, -6]} intensity={2} />
+      <pointLight ref={pointLight} position={[0, -2, -3]} intensity={2} />
 
-      <Model scale={2} position={[0, -3, -2]} />
+      <Model scale={2} position={[.5, -3, -4]} />
 
-      <VictorianCouch
+      {/* <VictorianCouch
         scale={2}
         position={[-6.5, -3.1, -1.5]}
         rotation-y={degToRad(90)}
-      />
+      /> */}
 
       <Door scale={[1.4, 2, 1]} position={[0.8, 1.2, -4]} />
 
-      <PlaneWall args={[20, 20]} position={[0, 7, -9]} />
+      <PlaneWall args={[12, 20]} position={[0, 7, -9]} />
+
+      <PlaneWall args={[12, 20]} position={[0, -3.3, 0]}  rotation-x={-Math.PI / 2} />
 
       <PlaneWall
         args={[20, 20]}
@@ -79,7 +77,7 @@ export const TestingStage = () => {
       <MedievalSciFiPillar position={[-5, -3.6, -7]} />
       <MedievalSciFiPillar position={[5, -3.6, -7]} />
 
-      <ReflectiveFloor />
+      {/* <ReflectiveFloor /> */}
 
       <Sphere args={[100, 8, 8]} rotation={[0, 0, 0]} position={[0, 1, -10]}>
         <meshBasicMaterial side={THREE.BackSide}>
