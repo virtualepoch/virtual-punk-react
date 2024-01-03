@@ -16,8 +16,6 @@ import { MedievalSciFiPillar } from "../components/models/MedievalSciFiPillar";
 import { Clockdoor } from "../components/models/Clockdoor";
 import { Sofa } from "../components/models/Sofa";
 import { PlaneBrickWall } from "../components/three/PlaneBrickWall";
-import { useControls } from "leva";
-import { PlaneBrickWall2 } from "../components/three/PlaneBrickWall2";
 import { Spider } from "../components/models/Spider";
 // COMPONENTS
 
@@ -44,11 +42,11 @@ export const TestingStage = () => {
         position={[-6, 7, -1]}
         rotation-y={Math.PI / 2}
         displacementScale={1}
-        aoMapIntensity={1}
-        roughness={1}
+        aoMapIntensity={2}
+        roughness={0.5}
       />
 
-      <PlaneBrickWall2
+      <PlaneBrickWall
         args={[20, 20, 2, 2]}
         position={[6, 7, -1]}
         rotation-y={-Math.PI / 2}
