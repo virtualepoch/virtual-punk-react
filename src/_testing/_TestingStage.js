@@ -16,8 +16,9 @@ import { MedievalSciFiPillar } from "../components/models/MedievalSciFiPillar";
 import { Spider } from "../components/models/Spider";
 import { Door } from "../components/models/Door";
 import { VictorianCouch } from "../components/models/VictorianCouch";
+import { FearCrawl } from "../components/models/FearCrawl";
 
-export const TestingStage = ({na}) => {
+export const TestingStage = ({ na }) => {
   const directionalLight = useRef();
   useHelper(directionalLight, DirectionalLightHelper, 1, "red");
   const pointLight = useRef();
@@ -25,7 +26,7 @@ export const TestingStage = ({na}) => {
 
   return (
     <>
-      {/* <PerspectiveCamera makeDefault position={[0, 5, 10]} /> */}
+      <PerspectiveCamera position={[0, 5, 5]} />
       <OrbitControls />
 
       <directionalLight
@@ -36,11 +37,13 @@ export const TestingStage = ({na}) => {
 
       <pointLight ref={pointLight} position={[0, 0.5, -0.5]} intensity={2} />
 
-      {/* <VictorianCouch
+      <FearCrawl scale={2} position={[0, 0, -10]} rotation-y={degToRad(-90)} />
+
+      <VictorianCouch
         scale={2}
-        position={[-6.5, -3.1, -1.5]}
+        position={[-6.5, -0.1, -1.5]}
         rotation-y={degToRad(90)}
-      /> */}
+      />
 
       <Door scale={[1.4, 2, 1]} position={[0.8, 4.4, -4]} />
 
