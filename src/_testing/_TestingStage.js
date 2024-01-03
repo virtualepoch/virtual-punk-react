@@ -1,7 +1,6 @@
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import * as THREE from "three";
 import { DirectionalLightHelper } from "three";
-import { useFrame } from "@react-three/fiber";
 import {
   GradientTexture,
   OrbitControls,
@@ -11,11 +10,12 @@ import {
   useHelper,
 } from "@react-three/drei";
 import { degToRad } from "three/src/math/MathUtils";
+// COMPONENTS /////////////////////////
 import { ReflectiveFloor } from "../components/three/ReflectiveFloor";
+import { PlaneBrickWall } from "../components/three/PlaneBrickWall";
 import { MedievalSciFiPillar } from "../components/models/MedievalSciFiPillar";
 import { Clockdoor } from "../components/models/Clockdoor";
 import { Sofa } from "../components/models/Sofa";
-import { PlaneBrickWall } from "../components/three/PlaneBrickWall";
 import { Spider } from "../components/models/Spider";
 // COMPONENTS
 
@@ -27,32 +27,30 @@ export const TestingStage = () => {
 
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 0, 1]}>
-        <OrbitControls />
-      </PerspectiveCamera>
+      <PerspectiveCamera makeDefault position={[0, 0, 10]} />
+      <OrbitControls />
 
       <directionalLight
         ref={directionalLight}
-        position={[-2, 4, 2]}
+        position={[-1, 4, 2]}
         intensity={2}
       />
 
       <PlaneBrickWall
-        args={[20, 20, 2, 2]}
+        // args={[20, 20, 2, 2]}
+        args={[20, 20]}
         position={[-6, 7, -1]}
         rotation-y={Math.PI / 2}
-        displacementScale={1}
-        aoMapIntensity={2}
-        roughness={0.5}
+        roughness={1}
+        displacementScale={2}
+        // aoMapIntensity={2}
       />
 
       <PlaneBrickWall
-        args={[20, 20, 2, 2]}
+        args={[20, 20, 32, 4]}
         position={[6, 7, -1]}
         rotation-y={-Math.PI / 2}
-        displacementScale={4}
-        aoMapIntensity={5}
-        roughness={0}
+        roughness={1}
       />
 
       <Spider

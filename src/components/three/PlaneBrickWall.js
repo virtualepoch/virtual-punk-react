@@ -1,5 +1,3 @@
-import * as THREE from "three";
-import { LinearEncoding } from "three";
 import { Plane, useTexture } from "@react-three/drei";
 
 export const PlaneBrickWall = (
@@ -18,7 +16,6 @@ export const PlaneBrickWall = (
     <Plane {...props}>
       <meshStandardMaterial
         {...textures}
-        normalMap-encoding={LinearEncoding}
         displacementScale={displacementScale}
         aoMapIntensity={aoMapIntensity}
         roughness={roughness}
