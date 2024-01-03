@@ -27,7 +27,7 @@ export const TestingStage = () => {
   const directionalLight = useRef();
   useHelper(directionalLight, DirectionalLightHelper, 1, "red");
   const pointLight = useRef();
-  useHelper(pointLight, THREE.PointLightHelper, 1, "red");
+  // useHelper(pointLight, THREE.PointLightHelper, 1, "red");
 
   return (
     <>
@@ -40,16 +40,16 @@ export const TestingStage = () => {
         intensity={1}
       />
 
-      <pointLight ref={pointLight} position={[0, 2, -3]} intensity={2} />
+      <pointLight ref={pointLight} position={[0, 0.5, -0.5]} intensity={2} />
 
-      <Model scale={2} position={[0.5, 0.2, -4]} />
+      <Model position={[0.3, 0, -1]} />
 
-      <Kick scale={1.8} rotation-y={degToRad(50)} position={[-3, 0.2, -2]} />
+      <Kick scale={0.8} rotation-y={degToRad(50)} position={[-1, -0, 0]} />
 
       <NaShroom
-        scale={0.01}
+        scale={0.004}
         rotation-y={degToRad(-30)}
-        position={[3, 0.3, -2]}
+        position={[1, 0.3, 0]}
       />
 
       {/* <VictorianCouch
@@ -64,7 +64,7 @@ export const TestingStage = () => {
 
       <PlaneWall
         args={[12, 20]}
-        position={[0, 0, 0]}
+        position={[0, -0.2, 0]}
         rotation-x={-Math.PI / 2}
       />
 
@@ -86,10 +86,10 @@ export const TestingStage = () => {
         position={[5.2, 16, 0]}
       />
 
-      <MedievalSciFiPillar position={[-5, -0.4, 3]} />
-      <MedievalSciFiPillar position={[5, -0.4, 3]} />
-      <MedievalSciFiPillar position={[-5, -0.4, -7]} />
-      <MedievalSciFiPillar position={[5, -0.4, -7]} />
+      <MedievalSciFiPillar position={[-5, -0.5, 3]} />
+      <MedievalSciFiPillar position={[5, -0.5, 3]} />
+      <MedievalSciFiPillar position={[-5, -0.5, -7]} />
+      <MedievalSciFiPillar position={[5, -0.5, -7]} />
 
       {/* <ReflectiveFloor /> */}
 
