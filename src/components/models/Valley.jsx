@@ -10,8 +10,9 @@ Title: Dolly of the Uncanny Valley
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export function Valley(props) {
+export function Valley(props, {naught=0}) {
   const { nodes, materials } = useGLTF('/models/valley.glb')
+
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]}>
@@ -99,7 +100,7 @@ export function Valley(props) {
         <mesh geometry={nodes.Object_83.geometry} material={materials.RightThighCloth} />
         <mesh geometry={nodes.Object_84.geometry} material={materials.RightThighCloth} />
         <mesh geometry={nodes.Object_85.geometry} material={materials.Sclera} />
-        <mesh geometry={nodes.Object_86.geometry} material={materials.Skirt2} />
+        <mesh geometry={nodes.Object_86.geometry} material={materials.Skirt2} scale={naught}/>
         <mesh geometry={nodes.Object_87.geometry} material={materials.Skirt2} />
         <mesh geometry={nodes.Object_88.geometry} material={materials.Skirt3} />
         <mesh geometry={nodes.Object_89.geometry} material={materials.Skirt4} />
@@ -110,9 +111,9 @@ export function Valley(props) {
         <mesh geometry={nodes.Object_94.geometry} material={materials.Strap} />
         <mesh geometry={nodes.Object_95.geometry} material={materials.Teeth} />
         <mesh geometry={nodes.Object_96.geometry} material={materials.Toenails} />
-        <mesh geometry={nodes.Object_97.geometry} material={materials.material_74} />
-        <mesh geometry={nodes.Object_98.geometry} material={materials.material_74} />
-        <mesh geometry={nodes.Object_99.geometry} material={materials.material_74} />
+        <mesh geometry={nodes.Object_97.geometry} material={materials.material_74} scale={naught} />
+        <mesh geometry={nodes.Object_98.geometry} material={materials.material_74} scale={naught} />
+        <mesh geometry={nodes.Object_99.geometry} material={materials.material_74} scale={naught} />
         <mesh geometry={nodes.Object_100.geometry} material={materials.Torso} />
         <mesh geometry={nodes.Object_101.geometry} material={materials.Torso} />
       </group>
