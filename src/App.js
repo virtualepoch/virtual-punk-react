@@ -1,7 +1,7 @@
 import { Suspense, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
-import { Loader, OrbitControls, PerformanceMonitor } from "@react-three/drei";
+import { Loader, PerformanceMonitor } from "@react-three/drei";
 import { Controllers, Hands, XR } from "@react-three/xr";
 
 // COMPONENTS

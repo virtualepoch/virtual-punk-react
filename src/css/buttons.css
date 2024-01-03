@@ -367,39 +367,13 @@
   filter: drop-shadow(0 0 2px cyan);
 }
 
-.btn-torus-scene {
-  position: fixed;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  background: url(../../public/icons/chevron-left-cyan.svg) 30% 50% / 40%
-    no-repeat;
-  filter: drop-shadow(0 0 2px black);
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  box-shadow: inset -5px 0 5px 1px rgba(0, 0, 0, 0.1);
-}
-
-.btn-torus-scene.right {
-  right: 0;
-  background: url(../../public/icons/chevron-right-cyan.svg) 70% 50% / 40%
-    no-repeat;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  box-shadow: inset 5px 0 5px 1px rgba(0, 0, 0, 0.1);
-}
-
 .btn-torus-scene-third-person {
-  width: 50px;
-  height: 50px;
   position: fixed;
-  right: 0;
-  bottom: 50px;
   z-index: 1;
-  background: url(../../public/icons/video-white-o.svg) 50% 30% / 40% no-repeat,
-    url(../../public/icons/chevron-down-cyan.svg) 50% 70% / 40% no-repeat;
-  border: 1px solid white;
+  right: 0;
+  bottom: 60px;
+  border-top: 1px solid cyan;
   border-radius: 100px;
+  background: url(../../public/icons/video-cyan.svg) center / 30% no-repeat;
+  transform: rotate(-90deg);
 }

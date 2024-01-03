@@ -30,7 +30,7 @@
   opacity: 0;
 }
 
-/* FPS METER */
+/* FPS METER //////////// */
 .fps {
   width: 200px;
   height: 20px;
@@ -59,7 +59,6 @@
   font: 15px Ailerons;
   letter-spacing: 2px;
 }
-
 /* CSSTransition */
 .fps-enter {
   transform: translateY(100%);
@@ -76,45 +75,7 @@
   transition: transform 500ms ease;
 }
 
-/* OMNI CONTROLS */
-.omni {
-  height: calc(100% -120px);
-  position: fixed;
-  left: 0;
-  top: 60px;
-  bottom: 60px;
-  z-index: 777;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 5px;
-  text-align: center;
-  color: white;
-  font-size: 15px;
-  overflow: auto;
-}
-
-/* CSSTransition */
-.omni-enter {
-  transform: translateX(-100%);
-}
-.omni-enter-active {
-  transform: translateX(0%);
-  transition: transform 500ms ease-in-out;
-}
-.omni-exit {
-  transform: translateX(0%);
-}
-.omni-exit-active {
-  transform: translateX(-100%);
-  transition: transform 500ms ease-in-out;
-}
-
-.omni p {
-  box-shadow: inset 0 0 10px 1px rgba(255, 255, 255, 0.2);
-  width: 50px;
-}
-
+/* TORUS SCENE STUFF ///////////// */
 .torus-btn-wrap {
   border-radius: 100px;
   box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.2);
@@ -176,23 +137,6 @@
 
 .canvas.bday-dad {
   background: linear-gradient(aqua, white, aqua);
-}
-
-.shoe-color-picker {
-  position: fixed;
-  top: 70px;
-  left: 0;
-  display: flex;
-}
-
-.current-shoe-mesh {
-  color: white;
-  filter: drop-shadow(0 0 3px black);
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -50px;
-  text-align: center;
 }
 
 .canvas-section {

@@ -19,6 +19,7 @@ export const TorusSceneMap = ({ sceneMap }) => {
   const map = useLoader(THREE.TextureLoader, texture);
   map.repeat.set(30, 16);
   map.wrapS = map.wrapT = THREE.RepeatWrapping;
+  
   const ShadowDragonIsland = (props) => {
     return (
       <group {...props}>

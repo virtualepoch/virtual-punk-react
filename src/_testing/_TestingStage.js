@@ -14,6 +14,11 @@ import { degToRad } from "three/src/math/MathUtils";
 import { ReflectiveFloor } from "../components/three/ReflectiveFloor";
 import { MedievalSciFiPillar } from "../components/models/MedievalSciFiPillar";
 import { Clockdoor } from "../components/models/Clockdoor";
+import { Sofa } from "../components/models/Sofa";
+import { PlaneBrickWall } from "../components/three/PlaneBrickWall";
+import { useControls } from "leva";
+import { PlaneBrickWall2 } from "../components/three/PlaneBrickWall2";
+import { Spider } from "../components/models/Spider";
 // COMPONENTS
 
 export const TestingStage = () => {
@@ -22,52 +27,67 @@ export const TestingStage = () => {
   const pointLight = useRef();
   useHelper(pointLight, THREE.PointLightHelper, 1, "red");
 
-  const material = new THREE.MeshStandardMaterial({
-    color: "silver",
-    toneMapped: false,
-  });
-
-  const cam = useRef();
-  // const clock = new THREE.Clock();
-  useFrame(() => {
-    // const a = clock.getElapsedTime();
-    if (cam.current) {
-      // cam.current.position.z += 1;
-    }
-    pointLight.current.rotation.y += 0.01;
-  });
-
   return (
     <>
-      <Clockdoor scale={0.02} position={[0, -3, -3]} />
-      <PerspectiveCamera makeDefault position={[0, 0, 20]} ref={cam}>
+      <PerspectiveCamera makeDefault position={[0, 0, 1]}>
         <OrbitControls />
       </PerspectiveCamera>
 
-      <group>
-        <directionalLight
-          ref={directionalLight}
-          position={[-2, 4, 2]}
-          intensity={2}
-        />
-        <pointLight ref={pointLight} position={[0, -1, 0]} intensity={2} />
+      <directionalLight
+        ref={directionalLight}
+        position={[-2, 4, 2]}
+        intensity={2}
+      />
 
-        <Sphere args={[100, 8, 8]} rotation={[0, 0, 0]} position={[0, 1, -10]}>
-          <meshBasicMaterial side={THREE.BackSide}>
-            <GradientTexture
-              stops={[0, 0.5, 1]}
-              colors={["#009b9b", "#ff00ff", "#009b9b"]}
-              size={10}
-            />
-          </meshBasicMaterial>
-        </Sphere>
+      <PlaneBrickWall
+        args={[20, 20, 2, 2]}
+        position={[-6, 7, -1]}
+        rotation-y={Math.PI / 2}
+        displacementScale={1}
+        aoMapIntensity={1}
+        roughness={1}
+      />
 
-        <MedievalSciFiPillar position={[-10, -3.6, 0]} />
-        <MedievalSciFiPillar position={[10, -3.6, 0]} />
-        <MedievalSciFiPillar position={[-5, -3.6, -10]} />
-        <MedievalSciFiPillar position={[5, -3.6, -10]} />
-        <ReflectiveFloor />
-      </group>
+      <PlaneBrickWall2
+        args={[20, 20, 2, 2]}
+        position={[6, 7, -1]}
+        rotation-y={-Math.PI / 2}
+        displacementScale={4}
+        aoMapIntensity={5}
+        roughness={0}
+      />
+
+      <Spider
+        scale={0.04}
+        rotation={[Math.PI / 2, 0, Math.PI / 2]}
+        position={[5.2, 16, 0]}
+      />
+
+      <Clockdoor scale={0.02} position={[0, -3, -5]} />
+      <pointLight ref={pointLight} position={[0, 3.5, -4]} intensity={2} />
+
+      <Sofa
+        scale={0.02}
+        position={[-4.5, -3.05, -1]}
+        rotation-y={Math.PI / 2}
+      />
+
+      <MedievalSciFiPillar position={[-5, -3.6, 3]} />
+      <MedievalSciFiPillar position={[5, -3.6, 3]} />
+      <MedievalSciFiPillar position={[-5, -3.6, -7]} />
+      <MedievalSciFiPillar position={[5, -3.6, -7]} />
+
+      <ReflectiveFloor />
+
+      <Sphere args={[100, 8, 8]} rotation={[0, 0, 0]} position={[0, 1, -10]}>
+        <meshBasicMaterial side={THREE.BackSide}>
+          <GradientTexture
+            stops={[0, 0.5, 1]}
+            colors={["#000", "#009b9b", "#000"]}
+            size={10}
+          />
+        </meshBasicMaterial>
+      </Sphere>
     </>
   );
 };

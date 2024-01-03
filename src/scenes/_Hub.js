@@ -1,8 +1,7 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import gsap from "gsap";
 // COMPONENTS //
 import { HubLink } from "../components/three/HubLink";
 import { HubLinkOrbs } from "../components/three/HubLinkOrbs";
@@ -42,33 +41,24 @@ export const Hub = ({ hubLink, setHubLink, hubBtnClicked, performance }) => {
     }, 2000);
   };
 
-  // Reset cam angle when link is clicked
-  const orbitControls = useRef();
-  gsap.to(orbitControls.current, {
-    minAzimuthAngle: hubLinkClicked ? 0 : -Math.PI / 3,
-    maxAzimuthAngle: hubLinkClicked ? 0 : Math.PI / 3,
-    minPolarAngle: hubLinkClicked ? Math.PI / 2 : Math.PI / 4,
-    maxPolarAngle: hubLinkClicked ? Math.PI / 2 : Math.PI / 1.5,
-    ease: "power1.in",
-  });
-
   return (
     <>
       <OrbitControls
-        ref={orbitControls}
         minDistance={2}
         maxDistance={5}
-        minAzimuthAngle={-Math.PI / 2}
-        maxAzimuthAngle={Math.PI / 2}
+        minAzimuthAngle={-0.4}
+        maxAzimuthAngle={0.4}
         maxPolarAngle={Math.PI / 1.5}
         minPolarAngle={Math.PI / 4}
       />
+
       <mesh position={[0, 0.1, -7]} scale={scale}>
         <HubLinkOrbs
           hubLink={hubLink}
           setHubLink={setHubLink}
           performance={performance}
         />
+
         {visibleItem === 0 && (
           <HubLink
             scale={scale}

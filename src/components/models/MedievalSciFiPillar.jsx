@@ -7,12 +7,19 @@ Source: https://sketchfab.com/3d-models/medieval-sci-fi-pillar-60c1b1f74df24898a
 Title: Medieval Sci-fi Pillar
 */
 
-import { useGLTF } from "@react-three/drei";
+import { useRef } from "react";
+import * as THREE from "three";
+import { useGLTF, useHelper } from "@react-three/drei";
 
 export function MedievalSciFiPillar(props) {
   const { nodes, materials } = useGLTF("/models/medieval_sci-fi_pillar.glb");
+
+  const pointLight = useRef();
+  // useHelper(pointLight, THREE.PointLightHelper, 1, "red");
+
   return (
     <group {...props} dispose={null}>
+      <pointLight ref={pointLight} position={[0, 4, 0]} intensity={2} />
       <mesh
         geometry={nodes.pCylinder4_Blue_neon_0.geometry}
         material={materials.Blue_neon}
