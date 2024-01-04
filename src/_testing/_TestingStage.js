@@ -23,7 +23,7 @@ import { useFrame } from "@react-three/fiber";
 import { SpiderWhiteAnim } from "../components/models/SpiderWhiteAnim";
 import { SpiderWolfAnim } from "../components/models/SpiderWolfAnim";
 
-export const TestingStage = () => {
+export const TestingStage = ({ vrSession }) => {
   const directionalLight = useRef();
   useHelper(directionalLight, DirectionalLightHelper, 1, "red");
   const pointLight = useRef();
@@ -47,7 +47,10 @@ export const TestingStage = () => {
 
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 5, 1]} />
+      <PerspectiveCamera
+        makeDefault={vrSession ? false : true}
+        position={[0, 5, 1]}
+      />
       <OrbitControls />
 
       <directionalLight
