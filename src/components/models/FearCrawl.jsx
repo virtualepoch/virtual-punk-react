@@ -7,21 +7,17 @@ Source: https://sketchfab.com/3d-models/fear-crawler-all-animation-it-takes-to-9
 Title: Fear Crawler All animation It Takes to
 */
 
-import React, { useEffect, useRef } from 'react'
-import { useGLTF, useAnimations } from '@react-three/drei'
+import React, { useRef } from 'react'
+import { useGLTF } from '@react-three/drei'
 
 export function FearCrawl(props) {
   const group = useRef()
-  const { nodes, materials, animations } = useGLTF('/models/fear_crawl.glb')
-  const { actions, mixer } = useAnimations(animations, group)
-  useEffect(() => {
-    actions["FearCrawler.ao|Enemies_Basement_FearCrawler_Crawl_Fwd"].play();
-    mixer.timeScale = 0.4;
-  });
+  const { nodes, materials } = useGLTF('/models/fear_crawl.glb')
+
   return (
     <group ref={group} {...props} dispose={null}>
       <group name="Sketchfab_Scene">
-        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
+        <group name="Sketchfab_model" rotation={[0, 0, 0]}>
           <group name="b6fdf511ec77460ab190ad6b1f95c6a9fbx" rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
             <group name="Object_2">
               <group name="RootNode">
@@ -29,11 +25,21 @@ export function FearCrawl(props) {
                   <group name="Object_5">
                     <primitive object={nodes._rootJoint} />
                     <group name="Object_290" rotation={[-Math.PI / 2, 0, 0]} scale={100} />
-                    <skinnedMesh name="Object_291" geometry={nodes.Object_291.geometry} material={materials.FearCrawler} skeleton={nodes.Object_291.skeleton} />
-                    <skinnedMesh name="Object_292" geometry={nodes.Object_292.geometry} material={materials.FearCrawler} skeleton={nodes.Object_292.skeleton} />
-                    <skinnedMesh name="Object_293" geometry={nodes.Object_293.geometry} material={materials.FearCrawler} skeleton={nodes.Object_293.skeleton} />
-                    <skinnedMesh name="Object_294" geometry={nodes.Object_294.geometry} material={materials.FearCrawler} skeleton={nodes.Object_294.skeleton} />
-                    <skinnedMesh name="Object_295" geometry={nodes.Object_295.geometry} material={materials.FearCrawler} skeleton={nodes.Object_295.skeleton} />
+                    <skinnedMesh name="Object_291" geometry={nodes.Object_291.geometry} material={materials.FearCrawler} skeleton={nodes.Object_291.skeleton}>
+                      <meshPhongMaterial color="#aa0000"/>
+                    </skinnedMesh>
+                    <skinnedMesh name="Object_292" geometry={nodes.Object_292.geometry} material={materials.FearCrawler} skeleton={nodes.Object_292.skeleton}>
+                      <meshPhongMaterial color="#aa0000"/>
+                    </skinnedMesh>
+                    <skinnedMesh name="Object_293" geometry={nodes.Object_293.geometry} material={materials.FearCrawler} skeleton={nodes.Object_293.skeleton}>
+                      <meshPhongMaterial color="#000"/>
+                    </skinnedMesh>
+                    <skinnedMesh name="Object_294" geometry={nodes.Object_294.geometry} material={materials.FearCrawler} skeleton={nodes.Object_294.skeleton}>
+                      <meshPhongMaterial color="#fff"/>
+                    </skinnedMesh>
+                    <skinnedMesh name="Object_295" geometry={nodes.Object_295.geometry} material={materials.FearCrawler} skeleton={nodes.Object_295.skeleton}>
+                      <meshPhongMaterial color="#fff"/>
+                    </skinnedMesh>
                   </group>
                 </group>
                 <group name="FearCrawlermo" rotation={[-Math.PI / 2, 0, 0]} scale={100} />
