@@ -19,6 +19,7 @@ import { FearCrawl } from "../components/models/FearCrawl";
 import { PlaneFloor } from "../components/three/PlaneFloor";
 import { useFrame } from "@react-three/fiber";
 import { SpiderWolfAnim } from "../components/models/SpiderWolfAnim";
+import { BoxDoor } from "../components/three/BoxDoor";
 
 export const TestingStage = ({ vrSession, performance }) => {
   const directionalLight = useRef();
@@ -58,7 +59,11 @@ export const TestingStage = ({ vrSession, performance }) => {
         rotation-y={degToRad(90)}
       />
 
-      <Door scale={[1.4, 2, 1]} position={[0.8, 4.4, -4]} />
+      {performance === 2 ? (
+        <Door scale={[1.4, 2, 1]} position={[0.8, 4.4, -4]} />
+      ) : (
+        <BoxDoor position={[0, 0, -7]} />
+      )}
 
       <PlaneWall args={[12, 20]} position={[0, 10, -9]} />
 
