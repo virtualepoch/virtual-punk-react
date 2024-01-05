@@ -23,7 +23,7 @@ import { useFrame } from "@react-three/fiber";
 import { SpiderWhiteAnim } from "../components/models/SpiderWhiteAnim";
 import { SpiderWolfAnim } from "../components/models/SpiderWolfAnim";
 
-export const TestingStage = ({ vrSession }) => {
+export const TestingStage = ({ vrSession, performance }) => {
   const directionalLight = useRef();
   useHelper(directionalLight, DirectionalLightHelper, 1, "red");
   const pointLight = useRef();
@@ -49,7 +49,7 @@ export const TestingStage = ({ vrSession }) => {
     <>
       <PerspectiveCamera
         makeDefault={vrSession ? false : true}
-        position={[0, 5, 1]}
+        position={[0, 1, 5]}
       />
       <OrbitControls />
 
@@ -80,7 +80,8 @@ export const TestingStage = ({ vrSession }) => {
       <PlaneFloor
         args={[12, 20]}
         position={[0, -0.2, 0]}
-        rotation-x={-Math.PI / 2}
+        rotX={-Math.PI / 2}
+        performance={performance}
       />
 
       <PlaneWall
@@ -101,15 +102,19 @@ export const TestingStage = ({ vrSession }) => {
         position={[5.2, 17, 7]}
       />
 
-      <SpiderUglyAnim scale={3} position={[0, 0, -2]} />
+      {performance > 0 && (
+        <>
+          <SpiderUglyAnim scale={3} position={[0, 0, -2]} />
 
-      <group ref={spiderHifi}>
-        <SpiderHifiAnim scale={0.05} position={[2, 0, -2]} />
-      </group>
+          <group ref={spiderHifi}>
+            <SpiderHifiAnim scale={0.05} position={[2, 0, -2]} />
+          </group>
 
-      <group ref={spiderWhite}>
-        <SpiderWhiteAnim scale={0.5} position={[-1, 0, -2]} />
-      </group>
+          <group ref={spiderWhite}>
+            <SpiderWhiteAnim scale={0.5} position={[-1, 0, -2]} />
+          </group>
+        </>
+      )}
 
       <group ref={spiderWolf}>
         <SpiderWolfAnim

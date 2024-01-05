@@ -77,6 +77,7 @@ function App() {
         // TorusScene
         thirdPerson={thirdPerson}
         setThirdPerson={setThirdPerson}
+        performance={performance}
       />
 
       <Canvas className="canvas" camera={{ fov: 30, position: [0, 0, 1] }}>
@@ -157,7 +158,7 @@ function App() {
                 element={<WaterScene performance={performance} />}
               />
               <Route path="/star-punk" element={<StarPunkScene />} />
-              <Route path="/t-1" element={<TestingStage vrSession={vrSession} />} />
+              <Route path="/t-1" element={<TestingStage vrSession={vrSession} performance={performance} />} />
               <Route path="/t-2" element={<TestingBlank />} />
             </Routes>
           </XR>

@@ -13,6 +13,8 @@ const Credit = ({ ...props }) => {
   return (
     <div className="info-wrapper flex-col">
       <hr className="info-hr" />
+      <hr className="info-hr red" />
+      <hr className="info-hr" />
       <p className="info-text">Asset: {props.info.asset}</p>
       <p className="info-text">Title: {props.info.title}</p>
       <a

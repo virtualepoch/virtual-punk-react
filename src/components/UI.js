@@ -28,6 +28,7 @@ export const UI = ({
   setHubBtnClicked,
   thirdPerson,
   setThirdPerson,
+  performance,
 }) => {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
   const [modalInfoOpen, setModalInfoOpen] = useState(false);
@@ -43,6 +44,8 @@ export const UI = ({
 
   return (
     <>
+      <h1 className="performance-num">{performance}</h1>
+      
       {/* INTRO SCENE STUFF /////////////////////// */}
       {intro && (
         <>

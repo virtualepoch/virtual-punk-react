@@ -61,6 +61,12 @@
   background: cyan;
 }
 
+.info-hr.red {
+  width: 40%;
+  background: rgb(255, 80, 80);
+  box-shadow: 0 0 5px 1px rgb(255, 80, 80);
+}
+
 /* CONTENT & LINKS */
 
 .info-wrapper {

@@ -3,6 +3,16 @@
   height: 100vh;
 }
 
+.performance-num {
+  position: fixed;
+  left: 0;
+  top: 50%;
+  z-index: 99999;
+  border: solid;
+  border-radius: 100%;
+  padding-bottom: 5px;
+}
+
 .scene-message {
   width: fit-content;
   max-width: 200px;
