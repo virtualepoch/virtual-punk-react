@@ -21,7 +21,7 @@ import { useFrame } from "@react-three/fiber";
 import { SpiderWolfAnim } from "../components/models/SpiderWolfAnim";
 import { BoxDoor } from "../components/three/BoxDoor";
 
-export const TestingStage = ({ vrSession, performance }) => {
+export const PanicScene = ({ vrSession, performance }) => {
   const directionalLight = useRef();
   // useHelper(directionalLight, DirectionalLightHelper, 1, "red");
   // const pointLight = useRef();

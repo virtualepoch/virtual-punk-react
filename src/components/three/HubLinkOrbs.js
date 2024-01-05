@@ -24,9 +24,9 @@ export const linkOrbInfo = [
     path: "/mach",
   },
   {
-    text: "water",
+    text: "panic",
     number: 2,
-    path: "/water",
+    path: "/panic",
   },
 ];
 

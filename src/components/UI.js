@@ -34,18 +34,19 @@ export const UI = ({
   const [modalInfoOpen, setModalInfoOpen] = useState(false);
   const [modalVROpen, setModalVROpen] = useState(false);
   const [fpsMeter, setFpsMeter] = useState(false);
+  const [sceneMessage, setSceneMessage] = useState(false);
 
   const intro = useMatch("/");
   const hub = useMatch("/hub");
   const torus = useMatch("/torus");
   const mach = useMatch("/mach");
-  const water = useMatch("/water");
-  const starPunk = useMatch("/star-punk");
+  const panic = useMatch("/panic");
+  const punk = useMatch("/punk");
 
   return (
     <>
       <h1 className="performance-num">{performance}</h1>
-      
+
       {/* INTRO SCENE STUFF /////////////////////// */}
       {intro && (
         <>
@@ -56,7 +57,7 @@ export const UI = ({
       )}
 
       <SceneMessage
-        active={water || starPunk}
+        sceneMessage={punk ? true : false}
         message="PLEASE NOTE— This scene is under 🚧 construction"
       />
 
@@ -109,8 +110,8 @@ export const UI = ({
         hub={hub}
         torus={torus}
         mach={mach}
-        water={water}
-        starPunk={starPunk}
+        panic={panic}
+        punk={punk}
         modalInfoOpen={modalInfoOpen}
         setModalInfoOpen={setModalInfoOpen}
       />

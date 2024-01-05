@@ -3,10 +3,9 @@ import { useMatch } from "react-router-dom";
 export const SceneTitle = () => {
   const hub = useMatch("/hub");
   const torus = useMatch("/torus");
-  const space = useMatch("/space");
   const mach = useMatch("/mach");
-  const water = useMatch("/water");
-  const star = useMatch("/star-punk");
+  const panic = useMatch("/panic");
+  const punk = useMatch("/punk");
 
   return (
     <h1 className="scene-title">
@@ -14,14 +13,12 @@ export const SceneTitle = () => {
         ? "Hub"
         : torus
         ? "Torus"
-        : space
-        ? "Space"
         : mach
         ? "Mach"
-        : water
-        ? "Water"
-        : star
-        ? "Star Punk"
+        : panic
+        ? "Panic"
+        : punk
+        ? "Punk"
         : "Virtual Punk"}
     </h1>
   );

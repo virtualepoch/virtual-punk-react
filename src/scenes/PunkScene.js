@@ -10,7 +10,7 @@ import { Globe } from "../components/three/Globe";
 import { DirectionalLightHelper } from "three";
 import { useLoader } from "@react-three/fiber";
 
-export const WaterScene = ({ performance }) => {
+export const PunkScene = ({ performance }) => {
   const light = useRef();
   useHelper(light, DirectionalLightHelper, 1, "red");
 

@@ -11,12 +11,10 @@ import { UI } from "./components/UI.js";
 import { IntroScene } from "./scenes/__IntroScene.js";
 import { Hub } from "./scenes/_Hub.js";
 import { TorusScene } from "./scenes/TorusScene.js";
-import { SpaceScene } from "./scenes/SpaceScene.js";
 import { MachScene } from "./scenes/MachScene.js";
-import { StarPunkScene } from "./scenes/StarPunkScene.js";
-import { WaterScene } from "./scenes/WaterScene.js";
-import { TestingStage } from "./_testing/_TestingStage.js";
-import { TestingBlank } from "./_testing/_TestingBlank.js";
+import { PanicScene } from "./scenes/PanicScene.js";
+import { PunkScene } from "./scenes/PunkScene.js";
+import { Testing } from "./_testing/_Testing.js";
 
 // VIRTUAL B-DAY CARDS
 // import { SandyBday } from "./scenes/bday-cards/SandyBday";
@@ -39,10 +37,12 @@ function App() {
   const [performance, setPerformance] = useState(1); // ("0-2") (App(PerformanceMonitor) & IntroScene & TorusScene) lowers asset quality based on fps
   const [hubLink, setHubLink] = useState(0); // (UI(BtnsHub) & Hub) changes the currently displayed hub link
   const [hubBtnClicked, setHubBtnClicked] = useState(false); // (UI(BtnsHub) & Hub(HubLink)) switch to cycle the opacity of the HubLink title and triangle backdrop
+
   // VR hooks
   const [vrSession, setVrSession] = useState(false);
   const [foveation, setFoveation] = useState(0);
   const [vrFrameRate, setVrFrameRate] = useState(null);
+
   // TorusScene hooks
   const [thirdPerson, setThirdPerson] = useState(false);
 
@@ -128,6 +128,7 @@ function App() {
                   />
                 }
               />
+
               <Route
                 path="/hub"
                 element={
@@ -139,6 +140,7 @@ function App() {
                   />
                 }
               />
+
               <Route
                 path="/torus"
                 element={
@@ -148,18 +150,32 @@ function App() {
                   />
                 }
               />
-              <Route path="/space" element={<SpaceScene />} />
+
               <Route
                 path="/mach"
-                element={<MachScene performance={performance} />}
+                element={
+                  <MachScene performance={performance} vrSession={vrSession} />
+                }
               />
+
               <Route
-                path="/water"
-                element={<WaterScene performance={performance} />}
+                path="/panic"
+                element={
+                  <PanicScene performance={performance} vrSession={vrSession} />
+                }
               />
-              <Route path="/star-punk" element={<StarPunkScene />} />
-              <Route path="/t-1" element={<TestingStage vrSession={vrSession} performance={performance} />} />
-              <Route path="/t-2" element={<TestingBlank />} />
+
+              <Route
+                path="/punk"
+                element={<PunkScene performance={performance} />}
+              />
+
+              <Route
+                path="/test"
+                element={
+                  <Testing performance={performance} vrSession={vrSession} />
+                }
+              />
             </Routes>
           </XR>
         </Suspense>

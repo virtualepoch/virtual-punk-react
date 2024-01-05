@@ -10,47 +10,44 @@ import {
 } from "@react-three/drei";
 // COMPONENTS
 import { Ocean } from "../components/three/Ocean";
-import { TorusSceneMap } from "../scenes/TorusSceneMap";
+import { PlaneFloor } from "../components/three/PlaneFloor";
+import { degToRad } from "three/src/math/MathUtils";
 
-export const TestingBlank = () => {
-  const directionalLight2 = useRef();
-  useHelper(directionalLight2, DirectionalLightHelper, 1, "blue");
+export const Testing = ({ performance, vrSession }) => {
   const directionalLight = useRef();
   useHelper(directionalLight, DirectionalLightHelper, 1, "red");
+
+  const directionalLight2 = useRef();
+  useHelper(directionalLight2, DirectionalLightHelper, 1, "blue");
+  
   const pointLight = useRef();
   useHelper(pointLight, THREE.PointLightHelper, 1, "red");
-
-  const controls = useRef();
-  const target = useRef();
-  const val = useRef();
-  useFrame(() => {
-    // controls.current.setLookAt(
-    //   target.current.position.x,
-    //   target.current.position.y,
-    //   target.current.position.z,
-    //   true
-    // );
-  });
 
   return (
     <>
       <group>
-        <PerspectiveCamera makeDefault position={[0, 0, 10]}>
-          <CameraControls ref={controls} />
-        </PerspectiveCamera>
+        <PerspectiveCamera
+          makeDefault={vrSession ? false : true}
+          position={[0, 4, 8]}
+        />
+        <OrbitControls />
+
         <directionalLight
           ref={directionalLight}
           position={[-2, 3, 1]}
           intensity={3}
         />
+
         <directionalLight
           ref={directionalLight2}
           position={[2, 1, -2]}
           intensity={3}
         />
-        {/* <pointLight ref={pointLight} position={[0, 0, 1]} intensity={2} /> */}
 
-        {/* <Ocean position={[0, -10, 0]} /> */}
+        <pointLight ref={pointLight} position={[0, 1, 1]} intensity={2} />
+
+        <PlaneFloor args={[5, 5]} rotX={degToRad(-70)} />
+        <Ocean position={[0, -10, 0]} />
       </group>
     </>
   );

@@ -35,7 +35,7 @@ export const Hub = ({ hubLink, setHubLink, hubBtnClicked, performance }) => {
           : hubLink === 1
           ? "/mach"
           : hubLink === 2
-          ? "/water"
+          ? "/panic"
           : "/hub"
       );
     }, 2000);
@@ -90,7 +90,7 @@ export const Hub = ({ hubLink, setHubLink, hubBtnClicked, performance }) => {
         {visibleItem === 2 && (
           <HubLink
             scale={scale}
-            linkTitle="Water"
+            linkTitle="Panic"
             image={"/images/torusScene.jpg"}
             visible={hubLink === 2}
             onFadeOut={onFadeOut}

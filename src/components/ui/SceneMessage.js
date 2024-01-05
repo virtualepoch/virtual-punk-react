@@ -1,11 +1,11 @@
 import { CSSTransition } from "react-transition-group";
 
-export const SceneMessage = ({ active, message }) => {
+export const SceneMessage = ({ sceneMessage, message }) => {
   return (
     <CSSTransition
-      in={active}
+      in={sceneMessage}
       classNames="scene-message"
-      timeout={2000}
+      timeout={3000}
       unmountOnExit
     >
       <p className="scene-message">{message}</p>

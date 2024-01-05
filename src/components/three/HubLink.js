@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import { Center, Shape, Text, Text3D, useTexture } from "@react-three/drei";
+import { Center, Shape, Text3D, useTexture } from "@react-three/drei";
 import { DissolveMaterial } from "./DissolveMaterial";
 import { useRef, useState } from "react";
 import { useFrame } from "@react-three/fiber";

@@ -1,13 +1,13 @@
 import * as THREE from "three";
 import { useRef } from "react";
 import { useFrame, useLoader, useThree } from "@react-three/fiber";
-import { OrbitControls, Stars } from "@react-three/drei";
+import { OrbitControls, PerspectiveCamera, Stars } from "@react-three/drei";
 import { JetConcept } from "../components/models/Jet_concept";
 import earth500 from "../assets/images/textures/earth_clouds_1k.jpg";
 import earth8k from "../assets/images/textures/earth_clouds_4k.jpg";
 import { degToRad } from "three/src/math/MathUtils";
 
-export const MachScene = ({ performance }) => {
+export const MachScene = ({ performance, vrSession }) => {
   const directionalLight = useRef();
   // useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
   const viewport = useThree((state) => state.viewport); // used to scale scene
@@ -40,14 +40,18 @@ export const MachScene = ({ performance }) => {
     // });
 
     return (
-      <mesh ref={jet} position={[0, 0, 0]}>
-        <JetConcept scale={1} rotation={[0.6, Math.PI / -2, 0.2]} />
+      <mesh ref={jet}>
+        <JetConcept scale={1} rotation={[0.6, degToRad(-90), 0.2]} />
       </mesh>
     );
   }
 
   return (
     <group scale={viewport.aspect}>
+      <PerspectiveCamera
+        makeDefault={vrSession ? false : true}
+        position={[0, 1, 5]}
+      />
       <OrbitControls
         minDistance={0}
         maxDistance={15}
@@ -56,6 +60,7 @@ export const MachScene = ({ performance }) => {
         maxPolarAngle={Math.PI / 1.5}
         minPolarAngle={Math.PI / 4}
       />
+
       <group position={[0, 0, 0]} rotation={[-0.1, 0, 0]}>
         <ambientLight intensity={2} />
         <directionalLight

@@ -51,8 +51,9 @@ export function NavMenu({
             <CustomLink to={"/hub"}>Hub</CustomLink>
             <CustomLink to={"/torus"}>Torus</CustomLink>
             <CustomLink to={"/mach"}>Mach</CustomLink>
-            <CustomLink to={"/water"}>Water</CustomLink>
-            <CustomLink to={"/t-1"}>t-1</CustomLink>
+            <CustomLink to={"/panic"}>Panic</CustomLink>
+            <CustomLink to={"/punk"}>Punk</CustomLink>
+            <CustomLink to={"/test"}>Testing...</CustomLink>
           </ul>
 
           <button

@@ -42,7 +42,7 @@ export const BoxDoor = ({ position, rotation, performance }) => {
 
   return (
     <group position={position} rotation={rotation}>
-      <Plane args={[4, 10]} position={[-2.1, 5, 0]} rotation={[0, 0, 0]}>
+      <Plane args={[4, 10]} position={[-2.05, 5, 0]} rotation={[0, 0, 0]}>
         <meshStandardMaterial {...textures} />
 
         {/* LEFT */}
@@ -70,7 +70,7 @@ export const BoxDoor = ({ position, rotation, performance }) => {
         />
       </Plane>
 
-      <Plane args={[4, 10]} position={[2.1, 5, 0]} rotation={[0, 0, 0]}>
+      <Plane args={[4, 10]} position={[2.05, 5, 0]} rotation={[0, 0, 0]}>
         <meshStandardMaterial {...textures} />
 
         {/* LEFT */}
