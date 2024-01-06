@@ -77,6 +77,7 @@
 .info-text {
   color: rgb(150, 255, 255);
   font-size: 20px;
+  word-break: break-all;
 }
 
 .info-link {

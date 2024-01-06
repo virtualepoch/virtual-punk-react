@@ -1,5 +1,5 @@
 import { Suspense, useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useMatch } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
 import { Loader, PerformanceMonitor } from "@react-three/drei";
 import { Controllers, Hands, XR } from "@react-three/xr";
@@ -14,7 +14,7 @@ import { TorusScene } from "./scenes/TorusScene.js";
 import { MachScene } from "./scenes/MachScene.js";
 import { PanicScene } from "./scenes/PanicScene.js";
 import { PunkScene } from "./scenes/PunkScene.js";
-import { Testing } from "./_testing/_Testing.js";
+import { IdahomeScene } from "./scenes/IdahomeScene.js";
 
 // VIRTUAL B-DAY CARDS
 // import { SandyBday } from "./scenes/bday-cards/SandyBday";
@@ -28,6 +28,10 @@ import "./css/_intro.css";
 import "./css/App.css";
 import "./css/buttons.css";
 // import "./bday.css";
+
+// Idahome Stuff /////////////////////////////////////
+import { IdahomeUI } from "./__idahome/IdahomeUI.js";
+import "./__idahome/idahome.css";
 
 function App() {
   // useState hooks
@@ -57,28 +61,35 @@ function App() {
     }, 1000);
   }, [linkClicked, hubBtnClicked]);
 
+  // IdahomeServ Stuff /////////////////
+  const idahomeActive = useMatch("/idahome");
+
   return (
     <div className="App">
       <Loader />
-      <UI
-        start={start}
-        setStart={setStart}
-        hub={hub}
-        setHub={setHub}
-        setLinkClicked={setLinkClicked}
-        hubLink={hubLink}
-        setHubLink={setHubLink}
-        hubBtnClicked={hubBtnClicked}
-        setHubBtnClicked={setHubBtnClicked}
-        //VR hooks
-        foveation={foveation}
-        setFoveation={setFoveation}
-        setVrFrameRate={setVrFrameRate}
-        // TorusScene
-        thirdPerson={thirdPerson}
-        setThirdPerson={setThirdPerson}
-        performance={performance}
-      />
+      {idahomeActive ? (
+        <IdahomeUI />
+      ) : (
+        <UI
+          start={start}
+          setStart={setStart}
+          hub={hub}
+          setHub={setHub}
+          setLinkClicked={setLinkClicked}
+          hubLink={hubLink}
+          setHubLink={setHubLink}
+          hubBtnClicked={hubBtnClicked}
+          setHubBtnClicked={setHubBtnClicked}
+          //VR hooks
+          foveation={foveation}
+          setFoveation={setFoveation}
+          setVrFrameRate={setVrFrameRate}
+          // TorusScene
+          thirdPerson={thirdPerson}
+          setThirdPerson={setThirdPerson}
+          performance={performance}
+        />
+      )}
 
       <Canvas className="canvas" camera={{ fov: 30, position: [0, 0, 1] }}>
         <PerformanceMonitor
@@ -171,10 +182,8 @@ function App() {
               />
 
               <Route
-                path="/test"
-                element={
-                  <Testing performance={performance} vrSession={vrSession} />
-                }
+                path="/idahome"
+                element={<IdahomeScene performance={performance} />}
               />
             </Routes>
           </XR>

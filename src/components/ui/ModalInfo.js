@@ -46,8 +46,8 @@ export const ModalInfo = ({
   hub,
   torus,
   mach,
-  water,
-  starPunk,
+  panic,
+  punk,
   modalInfoOpen,
   setModalInfoOpen,
   ...props
@@ -91,10 +91,10 @@ export const ModalInfo = ({
                 ? sceneInfo.torus
                 : mach
                 ? sceneInfo.mach
-                : water
-                ? sceneInfo.water
-                : starPunk
-                ? sceneInfo.starPunk
+                : panic
+                ? sceneInfo.panic
+                : punk
+                ? sceneInfo.punk
                 : sceneInfo.empty}
             </p>
           </div>

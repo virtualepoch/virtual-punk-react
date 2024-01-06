@@ -34,7 +34,6 @@ export const UI = ({
   const [modalInfoOpen, setModalInfoOpen] = useState(false);
   const [modalVROpen, setModalVROpen] = useState(false);
   const [fpsMeter, setFpsMeter] = useState(false);
-  const [sceneMessage, setSceneMessage] = useState(false);
 
   const intro = useMatch("/");
   const hub = useMatch("/hub");
@@ -45,7 +44,7 @@ export const UI = ({
 
   return (
     <>
-      <h1 className="performance-num">{performance}</h1>
+      <p className="performance-num">{performance}</p>
 
       {/* INTRO SCENE STUFF /////////////////////// */}
       {intro && (
