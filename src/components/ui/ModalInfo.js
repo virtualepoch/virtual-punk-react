@@ -7,6 +7,7 @@ import { sceneInfo } from "../credits/_sceneInfo";
 import { introCredits } from "../credits/introCredits";
 import { hubCredits } from "../credits/hubCredits";
 import { torusCredits } from "../credits/torusCredits";
+import { panicCredits } from "../credits/panicCredits";
 import { emptyCredits } from "../credits/emptyCredits";
 
 const Credit = ({ ...props }) => {
@@ -58,6 +59,8 @@ export const ModalInfo = ({
     ? hubCredits
     : torus
     ? torusCredits
+    : panic
+    ? panicCredits
     : emptyCredits;
 
   return (

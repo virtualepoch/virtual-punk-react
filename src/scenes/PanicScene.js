@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import * as THREE from "three";
+import { useFrame } from "@react-three/fiber";
 // import { DirectionalLightHelper } from "three";
 import {
   GradientTexture,
@@ -14,12 +15,11 @@ import { PlaneWall } from "../components/three/PlaneWall";
 import { MedievalSciFiPillar } from "../components/models/MedievalSciFiPillar";
 import { Spider } from "../components/models/Spider";
 import { Door } from "../components/models/Door";
-import { VictorianCouch } from "../components/models/VictorianCouch";
-import { FearCrawl } from "../components/models/FearCrawl";
-import { PlaneFloor } from "../components/three/PlaneFloor";
-import { useFrame } from "@react-three/fiber";
-import { SpiderWolfAnim } from "../components/models/SpiderWolfAnim";
 import { BoxDoor } from "../components/three/BoxDoor";
+import { VictorianCouch } from "../components/models/VictorianCouch";
+import { PlaneFloor } from "../components/three/PlaneFloor";
+import { SpiderWolfAnim } from "../components/models/SpiderWolfAnim";
+import { FearCrawlEdit } from "../components/models/FearCrawlEdit";
 
 export const PanicScene = ({ vrSession, performance }) => {
   const directionalLight = useRef();
@@ -47,9 +47,9 @@ export const PanicScene = ({ vrSession, performance }) => {
         intensity={1}
       />
 
-      <FearCrawl
+      <FearCrawlEdit
         scale={2}
-        position={[6, 25, -12]}
+        position={[6, 18, -7]}
         rotation={[degToRad(55), degToRad(-90), 0]}
       />
 

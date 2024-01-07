@@ -5,8 +5,9 @@ export const emptyCredits = [
     asset: ". . .",
     title: ". . .",
     link: "https://vr-punk.vercel.app",
-    img: vpIcon,
-    credits: "",
-    changes: "",
+    imgSm: vpIcon,
+    imgLg: vpIcon,
+    author: "",
+    changes: "None.",
   },
 ];

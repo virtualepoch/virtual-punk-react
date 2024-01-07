@@ -1,16 +1,16 @@
 import vpIcon from "../../assets/images/vp-icon.png";
-import flyingDragonSm from "../../assets/images/credits/flying-dragon-256.jpg";
-import flyingDragonLg from "../../assets/images/credits/flying-dragon-512.jpg";
-import dragonFantasySm from "../../assets/images/credits/dragon-fantasy-256.jpg";
-import dragonFantasyLg from "../../assets/images/credits/dragon-fantasy-512.jpg";
-import shadowDragonSm from "../../assets/images/credits/shadow-dragon-256.jpg";
-import shadowDragonLg from "../../assets/images/credits/shadow-dragon-512.jpg";
-import megaWyvernSm from "../../assets/images/credits/mega-wyvern-256.jpg";
-import megaWyvernLg from "../../assets/images/credits/mega-wyvern-512.jpg";
-import templeLightSm from "../../assets/images/credits/temple-of-light-256.jpg";
-import templeLightLg from "../../assets/images/credits/temple-of-light-512.jpg";
-import floatingPortalSm from "../../assets/images/credits/floating-portal-256.jpg";
-import floatingPortalLg from "../../assets/images/credits/floating-portal-512.jpg";
+import flyingDragonSm from "../../assets/images/credits/torus/flying-dragon-256.jpg";
+import flyingDragonLg from "../../assets/images/credits/torus/flying-dragon-512.jpg";
+import dragonFantasySm from "../../assets/images/credits/torus/dragon-fantasy-256.jpg";
+import dragonFantasyLg from "../../assets/images/credits/torus/dragon-fantasy-512.jpg";
+import shadowDragonSm from "../../assets/images/credits/torus/shadow-dragon-256.jpg";
+import shadowDragonLg from "../../assets/images/credits/torus/shadow-dragon-512.jpg";
+import megaWyvernSm from "../../assets/images/credits/torus/mega-wyvern-256.jpg";
+import megaWyvernLg from "../../assets/images/credits/torus/mega-wyvern-512.jpg";
+import templeLightSm from "../../assets/images/credits/torus/temple-of-light-256.jpg";
+import templeLightLg from "../../assets/images/credits/torus/temple-of-light-512.jpg";
+import floatingPortalSm from "../../assets/images/credits/torus/floating-portal-256.jpg";
+import floatingPortalLg from "../../assets/images/credits/torus/floating-portal-512.jpg";
 
 export const torusCredits = [
   {
