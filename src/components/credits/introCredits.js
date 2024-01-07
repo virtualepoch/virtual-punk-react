@@ -1,6 +1,7 @@
 import futureMachine256 from "../../assets/images/credits/fm-preview-256.jpg";
 import futureMachine512 from "../../assets/images/credits/fm-preview-512.jpg";
-import appearanceEffect from "../../assets/images/credits/appearance-effect.jpg";
+import appearanceEffect256 from "../../assets/images/credits/appearance-effect-256.jpg";
+import appearanceEffect512 from "../../assets/images/credits/appearance-effect-512.jpg";
 
 export const introCredits = [
   {
@@ -20,8 +21,8 @@ export const introCredits = [
     asset: "Light beam effect for torus portal",
     title: "Appearance effect light beam",
     link: "https://sketchfab.com/3d-models/appearance-effect-light-beam-12db0ae299d140a5bd080d30dc123ef4",
-    imgSm: appearanceEffect,
-    imgLg: appearanceEffect,
+    imgSm: appearanceEffect256,
+    imgLg: appearanceEffect512,
     alt: "Appearance effect light beam",
     author: "Yuki",
     authorLink: "https://sketchfab.com/SHLER",

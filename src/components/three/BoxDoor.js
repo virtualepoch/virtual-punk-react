@@ -34,7 +34,7 @@ export const BoxDoor = ({ position, rotation, performance }) => {
 
   const repeatX = 2;
   const repeatY = 5;
-  
+
   textures.map.repeat.set(repeatX, repeatY);
   textures.map.wrapS = textures.map.wrapT = THREE.RepeatWrapping;
 

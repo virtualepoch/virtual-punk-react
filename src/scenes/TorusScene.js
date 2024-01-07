@@ -69,7 +69,7 @@ export const TorusScene = ({ performance, thirdPerson }) => {
 
       <Sphere args={[300, 16, 16]}>
         <meshBasicMaterial map={map} side={THREE.BackSide} />
-        <Ocean position-y={-30}/>
+        <Ocean position-y={-30} />
       </Sphere>
 
       <DragonFlying dragonRef={dragonTorus} />
