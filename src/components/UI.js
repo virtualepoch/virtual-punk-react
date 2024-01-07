@@ -51,7 +51,11 @@ export const UI = ({
         <>
           <MainOverlay />
           <HeroSection start={start} />
-          <BtnStart start={start} setStart={setStart} />
+          <BtnStart
+            start={start}
+            setStart={setStart}
+            setModalInfoOpen={setModalInfoOpen}
+          />
         </>
       )}
 

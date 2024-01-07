@@ -181,7 +181,7 @@ function App() {
                 path="/punk"
                 element={<PunkScene performance={performance} />}
               />
-          
+
               <Route
                 path="/test"
                 element={<TestScene performance={performance} />}

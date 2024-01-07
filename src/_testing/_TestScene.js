@@ -1,18 +1,21 @@
 import React, { useRef } from "react";
 import * as THREE from "three";
 import {
+  Box,
   OrbitControls,
   PerspectiveCamera,
-  Plane,
-  Stars,
+  Sky,
+  Sphere,
   useHelper,
   useTexture,
 } from "@react-three/drei";
 import { degToRad } from "three/src/math/MathUtils";
 import { useFrame } from "@react-three/fiber";
+import { WaterOne } from "../components/three/WaterOne";
+import { Atom } from "../components/three/Atom";
 
 export const TestScene = () => {
-  const PlaneFloor = ({ performance }) => {
+  const BoxTextureTest = ({ performance, position }) => {
     const textures = useTexture({
       map: `${
         performance < 2
@@ -46,8 +49,9 @@ export const TestScene = () => {
       }`,
     });
 
-    const repeatX = 5;
-    const repeatY = 5;
+    const repeat = 4;
+    const repeatX = repeat * 2;
+    const repeatY = repeat;
 
     textures.map.repeat.set(repeatX, repeatY);
     textures.map.wrapS = textures.map.wrapT = THREE.RepeatWrapping;
@@ -70,35 +74,46 @@ export const TestScene = () => {
     textures.alphaMap.repeat.set(repeatX, repeatY);
     textures.alphaMap.wrapS = textures.alphaMap.wrapT = THREE.RepeatWrapping;
 
+    const sphere = useRef();
+    useFrame((state, delta) => {
+      sphere.current.position.y =
+        -5 + Math.sin(state.clock.elapsedTime * 2) * 5;
+      sphere.current.rotation.x =
+        sphere.current.rotation.y =
+        sphere.current.rotation.z +=
+          delta;
+    });
+
+    const box = useRef();
+    useFrame((state, delta) => {
+      box.current.position.y = -5 + Math.sin(state.clock.elapsedTime * 2) * 5;
+      box.current.rotation.x =
+        box.current.rotation.y =
+        box.current.rotation.z +=
+          delta;
+    });
+
     return (
-      <Plane args={[10, 10]} position={[0, 0, 0]}>
-        <meshStandardMaterial {...textures} />
-      </Plane>
+      <>
+        <group ref={sphere} position={[-7, 0, -25]}>
+          <Sphere args={[4, 32, 32]}>
+            <meshStandardMaterial color="cyan" {...textures} />
+          </Sphere>
+          <Atom scale={5} lightIntensity={5} />
+        </group>
+
+        <group ref={box} position={[7, 0, -25]}>
+          <Box args={[8, 8, 8]}>
+            <meshStandardMaterial color="cyan" {...textures} />
+          </Box>
+          <Atom scale={5} lightIntensity={5} />
+        </group>
+      </>
     );
   };
 
   const directionalLight = useRef();
   useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
-
-  const pointLight = useRef();
-  // useHelper(pointLight, THREE.PointLightHelper, 1, "blue");
-
-  const pointLight2 = useRef();
-  // useHelper(pointLight2, THREE.PointLightHelper, 1, "blue");
-
-  const pointLight3 = useRef();
-  // useHelper(pointLight3, THREE.PointLightHelper, 1, "blue");
-
-  const pointLight4 = useRef();
-  // useHelper(pointLight4, THREE.PointLightHelper, 1, "blue");
-
-
-  const lightPlane = useRef();
-  const clock = new THREE.Clock();
-  useFrame(() => {
-    const a = clock.getElapsedTime();
-    lightPlane.current.rotation.z += 0.01;
-  });
 
   return (
     <>
@@ -106,7 +121,7 @@ export const TestScene = () => {
 
       <OrbitControls
         minDistance={0}
-        maxDistance={20}
+        maxDistance={2000}
         minAzimuthAngle={-Math.PI / 2}
         maxAzimuthAngle={Math.PI / 2}
         maxPolarAngle={Math.PI / 1.5}
@@ -121,17 +136,11 @@ export const TestScene = () => {
         position={[-4, 8, 4]}
       />
 
-      <Plane ref={lightPlane} args={[5, 5]} position={[0, 0, 0.7]}>
-        <meshBasicMaterial transparent wireframe />
-        <pointLight ref={pointLight} intensity={5} position={[0, 3, 0]} />
-        <pointLight ref={pointLight2} intensity={5} position={[0, -3, 0]} />
-        <pointLight ref={pointLight3} intensity={5} position={[-3, 0, 0]} />
-        <pointLight ref={pointLight4} intensity={5} position={[3, 0, 0]} />
-      </Plane>
+      <WaterOne position-y={-10} />
 
-      <Stars />
+      <Sky scale={1000} sunPosition={[500, 150, -1000]} turbidity={0.1} />
 
-      <PlaneFloor />
+      <BoxTextureTest />
     </>
   );
 };
