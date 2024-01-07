@@ -7,6 +7,7 @@ import { sceneInfo } from "../credits/_sceneInfo";
 import { introCredits } from "../credits/introCredits";
 import { hubCredits } from "../credits/hubCredits";
 import { torusCredits } from "../credits/torusCredits";
+import { machCredits } from "../credits/machCredits";
 import { panicCredits } from "../credits/panicCredits";
 import { emptyCredits } from "../credits/emptyCredits";
 
@@ -26,17 +27,18 @@ const Credit = ({ ...props }) => {
       >
         <img
           className="info-img"
-          src={
-            window.innerWidth <= 700
-              ? props.info.imgSm
-              : window.innerWidth > 700
-              ? props.info.imgLg
-              : props.info.img
-          }
+          src={window.innerWidth <= 700 ? props.info.imgSm : props.info.imgLg}
           alt={props.info.alt}
         />
       </a>
-      <p className="info-text">Author: {props.info.author}</p>
+      <a
+        className="info-text"
+        href={props.info.authorLink}
+        target="_blank"
+        rel="noreferrer"
+      >
+        Author: <span className="info-text author">{props.info.author}</span>
+      </a>
       <p className="info-text">Changes: {props.info.changes}</p>
     </div>
   );
@@ -51,7 +53,6 @@ export const ModalInfo = ({
   punk,
   modalInfoOpen,
   setModalInfoOpen,
-  ...props
 }) => {
   const credits = intro
     ? introCredits
@@ -61,6 +62,8 @@ export const ModalInfo = ({
     ? torusCredits
     : panic
     ? panicCredits
+    : mach
+    ? machCredits
     : emptyCredits;
 
   return (

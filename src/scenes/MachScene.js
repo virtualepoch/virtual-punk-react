@@ -1,11 +1,17 @@
 import * as THREE from "three";
 import { useRef } from "react";
 import { useFrame, useLoader, useThree } from "@react-three/fiber";
-import { OrbitControls, PerspectiveCamera, Stars } from "@react-three/drei";
+import {
+  OrbitControls,
+  PerspectiveCamera,
+  Sphere,
+  Stars,
+} from "@react-three/drei";
 import { JetConcept } from "../components/models/Jet_concept";
-import earth500 from "../assets/images/textures/earth_clouds_1k.jpg";
-import earth8k from "../assets/images/textures/earth_clouds_4k.jpg";
+import earth1k from "../assets/images/textures/earth_clouds_1k.jpg";
+import earth4k from "../assets/images/textures/earth_clouds_4k.jpg";
 import { degToRad } from "three/src/math/MathUtils";
+import { EarthTank2k } from "../components/models/EarthTank2k";
 
 export const MachScene = ({ performance, vrSession }) => {
   const directionalLight = useRef();
@@ -15,7 +21,7 @@ export const MachScene = ({ performance, vrSession }) => {
   function Earth() {
     const texture = useLoader(
       THREE.TextureLoader,
-      performance > 0 ? earth8k : earth500
+      performance > 0 ? earth4k : earth1k
     );
     const earthRef = useRef(null);
 
@@ -24,53 +30,48 @@ export const MachScene = ({ performance, vrSession }) => {
     });
 
     return (
-      <mesh ref={earthRef} position={[0, -80, -70]}>
-        <sphereGeometry args={[100, 110, 110]} />
+      <Sphere args={[100, 110, 110]} ref={earthRef} position={[0, -80, -70]}>
         <meshPhongMaterial map={texture} />
-      </mesh>
+      </Sphere>
     );
   }
 
-  function JetMesh() {
-    const jet = useRef(null);
-
-    // useFrame(() => {
-    //   jet.current.rotation.x += 0.01;
-    //   jet.current.position.y += 0.01;
-    // });
-
-    return (
-      <mesh ref={jet}>
-        <JetConcept scale={1} rotation={[0.6, degToRad(-90), 0.2]} />
-      </mesh>
-    );
-  }
+  const earth4kair = useRef();
+  useFrame(() => {
+    earth4kair.current.rotation.x += 0.0005;
+  });
 
   return (
     <group scale={viewport.aspect}>
       <PerspectiveCamera
         makeDefault={vrSession ? false : true}
-        position={[0, 1, 5]}
+        position={[0, 0, 5]}
       />
+
       <OrbitControls
         minDistance={0}
-        maxDistance={15}
+        // maxDistance={150}
         minAzimuthAngle={-Math.PI / 2}
         maxAzimuthAngle={Math.PI / 2}
         maxPolarAngle={Math.PI / 1.5}
         minPolarAngle={Math.PI / 4}
       />
 
-      <group position={[0, 0, 0]} rotation={[-0.1, 0, 0]}>
-        <ambientLight intensity={2} />
-        <directionalLight
-          ref={directionalLight}
-          position={[-2, 4, -2]}
-          intensity={1}
-        />
-        <JetMesh />
-        <Earth />
+      <ambientLight intensity={2} />
+
+      <directionalLight
+        ref={directionalLight}
+        position={[-2, 4, -2]}
+        intensity={1}
+      />
+
+      <JetConcept scale={1} rotation={[degToRad(45), degToRad(-90), 0.2]} />
+
+      {/* <Earth /> */}
+      <group ref={earth4kair} position={[0, -9, -8]}>
+        <EarthTank2k scale={1.8} />
       </group>
+
       <Stars />
     </group>
   );

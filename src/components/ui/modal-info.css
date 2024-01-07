@@ -44,7 +44,7 @@
 .info-container {
   height: 100%;
   width: 100%;
-  padding: 20px 20px 200px;
+  padding: 20px 30px 200px;
   overflow: auto;
 }
 
@@ -77,11 +77,14 @@
 .info-text {
   color: rgb(150, 255, 255);
   font-size: 20px;
-  word-break: break-all;
+}
+
+.info-text.author {
+  text-decoration: underline;
 }
 
 .info-link {
-  min-width: 250px;
+  min-width: 100%;
   min-height: 100px;
   position: relative;
 }
@@ -101,5 +104,5 @@
 }
 
 .info-img {
-  max-width: 90%;
+  width: 100%;
 }

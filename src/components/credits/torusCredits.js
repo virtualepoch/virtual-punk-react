@@ -19,7 +19,8 @@ export const torusCredits = [
     link: "https://sketchfab.com/3d-models/dragon-animation-flying-2fdae78e272c4994bb67336a289f11ef",
     imgSm: flyingDragonSm,
     imgLg: flyingDragonLg,
-    author: "Al-Deezel (https://sketchfab.com/Al-dezel)",
+    author: "Al-Deezel",
+    authorLink: "https://sketchfab.com/Al-dezel",
     changes:
       "The original texture wouldn't load with the model so I inserted the texture listed next.",
   },
@@ -29,7 +30,8 @@ export const torusCredits = [
     link: "https://sketchfab.com/3d-models/dragon-fantasy-ffe005ed8976412cb81c19d9395c00ae",
     imgSm: dragonFantasySm,
     imgLg: dragonFantasyLg,
-    author: "Prof.v7x (https://sketchfab.com/profesor_v7x)",
+    author: "Prof.v7x",
+    authorLink: "https://sketchfab.com/profesor_v7x",
     changes: "None.",
   },
   {
@@ -38,7 +40,8 @@ export const torusCredits = [
     link: "https://sketchfab.com/3d-models/shadow-dragon-a5e537f7365a4c74b41fa521676ae1cd",
     imgSm: shadowDragonSm,
     imgLg: shadowDragonLg,
-    author: "HallowDragon (https://sketchfab.com/HallowDragon)",
+    author: "HallowDragon",
+    authorLink: "https://sketchfab.com/HallowDragon",
     changes: "None.",
   },
   {
@@ -47,7 +50,8 @@ export const torusCredits = [
     link: "https://sketchfab.com/3d-models/mega-wyvern-f8caf90ad5da4017b0dddfe880cf37cc",
     imgSm: megaWyvernSm,
     imgLg: megaWyvernLg,
-    author: "ArachnoBoy (https://sketchfab.com/vang807)",
+    author: "ArachnoBoy",
+    authorLink: "https://sketchfab.com/vang807",
     changes: "None.",
   },
   {
@@ -56,7 +60,8 @@ export const torusCredits = [
     link: "https://sketchfab.com/3d-models/temple-of-light-infinite-mandalas-720acbe09c84432a8f6712a0b685e1be",
     imgSm: templeLightSm,
     imgLg: templeLightLg,
-    author: "Miguelangelo Rosario (https://sketchfab.com/miguelangelo2k)",
+    author: "Miguelangelo Rosario",
+    authorLink: "https://sketchfab.com/miguelangelo2k",
     changes: "None.",
   },
   {
@@ -65,7 +70,8 @@ export const torusCredits = [
     link: "https://sketchfab.com/3d-models/floating-portal-island-diorama-62cade7753204cfc9589fa12a6b8b7df",
     imgSm: floatingPortalSm,
     imgLg: floatingPortalLg,
-    author: "Myjato (https://sketchfab.com/Myjato)",
+    author: "Myjato",
+    authorLink: "https://sketchfab.com/Myjato",
     changes: "None.",
   },
 ];

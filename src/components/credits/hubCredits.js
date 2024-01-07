@@ -11,7 +11,9 @@ export const hubCredits = [
     imgSm: futureMachine256,
     imgLg: futureMachine512,
     alt: "future machine bg for triangular cylinder and rotating tori",
-    credits: "Виталий Сова",
+    author: "Виталий Сова",
+    authorLink:
+      "https://stock.adobe.com/contributor/206796243/%D0%B2%D0%B8%D1%82%D0%B0%D0%BB%D0%B8%D0%B9-%D1%81%D0%BE%D0%B2%D0%B0?load_type=author&prev_url=detail",
     changes: "On smaller screens the resolution may have been scaled down.",
   },
   {
@@ -21,7 +23,8 @@ export const hubCredits = [
     imgSm: appearanceEffect,
     imgLg: appearanceEffect,
     alt: "Appearance effect light beam",
-    author: "Yuki (https://sketchfab.com/SHLER)",
+    author: "Yuki",
+    authorLink: "https://sketchfab.com/SHLER",
     changes: "None.",
   },
 ];

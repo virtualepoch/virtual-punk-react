@@ -3,39 +3,29 @@ import { Plane, useTexture } from "@react-three/drei";
 export const PlaneFloor = ({ args, position, rotX, performance }) => {
   const textures = useTexture({
     map: `${
-      performance === 0
-        ? "/textures/tile-green/baseColorLow.png"
-        : performance === 2
-        ? "/textures/tile-green/baseColor.png"
-        : "/textures/tile-green/baseColorMed.png"
+      performance < 2
+        ? "/textures/tile-green/baseColor-1024.png"
+        : "/textures/tile-green/baseColor-2048.png"
     }`,
     displacementMap: `${
-      performance === 0
-        ? "/textures/tile-green/heightLow.png"
-        : performance === 2
-        ? "/textures/tile-green/height.png"
-        : "/textures/tile-green/heightMed.png"
+      performance < 2
+        ? "/textures/tile-green/height-1024.png"
+        : "/textures/tile-green/height-2048.png"
     }`,
     roughnessMap: `${
-      performance === 0
-        ? "/textures/tile-green/roughnessLow.png"
-        : performance === 2
-        ? "/textures/tile-green/roughness.png"
-        : "/textures/tile-green/roughnessMed.png"
+      performance < 2
+        ? "/textures/tile-green/roughness-1024.png"
+        : "/textures/tile-green/roughness-2048.png"
     }`,
     metalnessMap: `${
-      performance === 0
-        ? "/textures/tile-green/metallicLow.png"
-        : performance === 2
-        ? "/textures/tile-green/metallic.png"
-        : "/textures/tile-green/metallicMed.png"
+      performance < 2
+        ? "/textures/tile-green/metallic-1024.png"
+        : "/textures/tile-green/metallic-2048.png"
     }`,
     normalMap: `${
-      performance === 0
-        ? "/textures/tile-green/normalLow.png"
-        : performance === 2
-        ? "/textures/tile-green/normal.png"
-        : "/textures/tile-green/normalMed.png"
+      performance < 2
+        ? "/textures/tile-green/normal-1024.png"
+        : "/textures/tile-green/normal-2048.png"
     }`,
   });
 

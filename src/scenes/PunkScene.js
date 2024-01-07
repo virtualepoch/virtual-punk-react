@@ -1,28 +1,34 @@
 import { useRef } from "react";
 import * as THREE from "three";
-import { Float, Stars, useHelper } from "@react-three/drei";
-import textureSm from "../assets/images/textures/earth_clouds_1k.jpg";
-import textureLg from "../assets/images/textures/earth_clouds_4k.jpg";
+import { DirectionalLightHelper } from "three";
+import { useLoader } from "@react-three/fiber";
+import { Float, Sphere, Stars, useHelper } from "@react-three/drei";
 
 // THREE COMPONENTS
 import { Ocean } from "../components/three/Ocean";
-import { Globe } from "../components/three/Globe";
-import { DirectionalLightHelper } from "three";
-import { useLoader } from "@react-three/fiber";
+import earth1k from "../assets/images/textures/earth_clouds_1k.jpg";
+import earth4k from "../assets/images/textures/earth_clouds_4k.jpg";
 
 export const PunkScene = ({ performance }) => {
   const light = useRef();
   useHelper(light, DirectionalLightHelper, 1, "red");
 
-  const texture = useLoader(
-    THREE.TextureLoader,
-    performance === 0 ? textureSm : textureLg
-  );
+  function Earth() {
+    const texture = useLoader(
+      THREE.TextureLoader,
+      performance > 0 ? earth4k : earth1k
+    );
+
+    return (
+      <Sphere args={[3, 16, 16]} position={[0, -10, -64]}>
+        <meshPhongMaterial map={texture} />
+      </Sphere>
+    );
+  }
 
   return (
     <>
       <ambientLight intensity={1} />
-      <Stars />
       <directionalLight
         ref={light}
         position={[0, 15, -10]}
@@ -46,9 +52,12 @@ export const PunkScene = ({ performance }) => {
         floatIntensity={0.1} // Up/down float intensity, works like a multiplier with floatingRange,defaults to 1
         floatingRange={[10, 0.1]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
       >
-        <Globe performance={performance} texture={texture} />
+        <Earth />
       </Float>
+
       <Ocean position={[0, -10, 0]} sunColor={"white"} waterColor={"red"} />
+      
+      <Stars />
     </>
   );
 };

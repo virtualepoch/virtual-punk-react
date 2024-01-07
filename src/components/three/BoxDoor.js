@@ -1,48 +1,61 @@
-import { Box, Plane, useTexture } from "@react-three/drei";
+import * as THREE from "three";
+import { Plane, useTexture } from "@react-three/drei";
 import { degToRad } from "three/src/math/MathUtils";
+import { useLoader } from "@react-three/fiber";
 
 export const BoxDoor = ({ position, rotation, performance }) => {
   const textures = useTexture({
     map: `${
-      performance === 0
-        ? "/textures/tile-green/baseColorLow.png"
-        : performance === 2
-        ? "/textures/tile-green/baseColor.png"
-        : "/textures/tile-green/baseColorMed.png"
+      performance < 2
+        ? "/textures/space-cruiser-panels/albedo-512.png"
+        : "/textures/space-cruiser-panels/albedo-1024.png"
     }`,
     displacementMap: `${
-      performance === 0
-        ? "/textures/tile-green/heightLow.png"
-        : performance === 2
-        ? "/textures/tile-green/height.png"
-        : "/textures/tile-green/heightMed.png"
+      performance < 2
+        ? "/textures/space-cruiser-panels/height-512.png"
+        : "/textures/space-cruiser-panels/height-1024.png"
     }`,
     roughnessMap: `${
-      performance === 0
-        ? "/textures/tile-green/roughnessLow.png"
-        : performance === 2
-        ? "/textures/tile-green/roughness.png"
-        : "/textures/tile-green/roughnessMed.png"
+      performance < 2
+        ? "/textures/space-cruiser-panels/roughness-512.png"
+        : "/textures/space-cruiser-panels/roughness-1024.png"
     }`,
     metalnessMap: `${
-      performance === 0
-        ? "/textures/tile-green/metallicLow.png"
-        : performance === 2
-        ? "/textures/tile-green/metallic.png"
-        : "/textures/tile-green/metallicMed.png"
+      performance < 2
+        ? "/textures/space-cruiser-panels/ao-512.png"
+        : "/textures/space-cruiser-panels/ao-1024.png"
     }`,
     normalMap: `${
-      performance === 0
-        ? "/textures/tile-green/normalLow.png"
-        : performance === 2
-        ? "/textures/tile-green/normal.png"
-        : "/textures/tile-green/normalMed.png"
+      performance < 2
+        ? "/textures/space-cruiser-panels/normal-512.png"
+        : "/textures/space-cruiser-panels/normal-1024.png"
     }`,
   });
 
+  const repeatX = 2;
+  const repeatY = 5;
+  
+  textures.map.repeat.set(repeatX, repeatY);
+  textures.map.wrapS = textures.map.wrapT = THREE.RepeatWrapping;
+
+  textures.displacementMap.repeat.set(repeatX, repeatY);
+  textures.displacementMap.wrapS = textures.displacementMap.wrapT =
+    THREE.RepeatWrapping;
+
+  textures.roughnessMap.repeat.set(repeatX, repeatY);
+  textures.roughnessMap.wrapS = textures.roughnessMap.wrapT =
+    THREE.RepeatWrapping;
+
+  textures.metalnessMap.repeat.set(repeatX, repeatY);
+  textures.metalnessMap.wrapS = textures.metalnessMap.wrapT =
+    THREE.RepeatWrapping;
+
+  textures.normalMap.repeat.set(repeatX, repeatY);
+  textures.normalMap.wrapS = textures.normalMap.wrapT = THREE.RepeatWrapping;
+
   return (
     <group position={position} rotation={rotation}>
-      <Plane args={[4, 10]} position={[-2.05, 5, 0]} rotation={[0, 0, 0]}>
+      <Plane args={[4, 10]} position={[-2.01, 5, 0]} rotation={[0, 0, 0]}>
         <meshStandardMaterial {...textures} />
 
         {/* LEFT */}
@@ -70,7 +83,7 @@ export const BoxDoor = ({ position, rotation, performance }) => {
         />
       </Plane>
 
-      <Plane args={[4, 10]} position={[2.05, 5, 0]} rotation={[0, 0, 0]}>
+      <Plane args={[4, 10]} position={[2.01, 5, 0]} rotation={[0, 0, 0]}>
         <meshStandardMaterial {...textures} />
 
         {/* LEFT */}

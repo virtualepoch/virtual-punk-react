@@ -1,4 +1,3 @@
-import vpIcon from "../../assets/images/vp-icon.png";
 import greenTileSm from "../../assets/images/credits/green-tile-256.jpg";
 import greenTileLg from "../../assets/images/credits/green-tile-512.jpg";
 import orangeMetalSm from "../../assets/images/credits/orange-metal-256.jpg";
@@ -22,6 +21,8 @@ export const panicCredits = [
     imgSm: greenTileSm,
     imgLg: greenTileLg,
     author: "Substance Source",
+    authorLink:
+      "https://stock.adobe.com/contributor/206389603/substance-source?load_type=author&prev_url=detail",
     changes: "None",
   },
   {
@@ -31,6 +32,8 @@ export const panicCredits = [
     imgSm: orangeMetalSm,
     imgLg: orangeMetalLg,
     author: "Substance Source",
+    authorLink:
+      "https://stock.adobe.com/contributor/206389603/substance-source?load_type=author&prev_url=detail",
     changes: "None",
   },
   {
@@ -39,8 +42,8 @@ export const panicCredits = [
     link: "https://sketchfab.com/3d-models/wolf-spider-rigged-rabidosa-rabida-6392e4cfb64d407182fdad2cea9e0abe",
     imgSm: wolfSpiderSm,
     imgLg: wolfSpiderLg,
-    author:
-      "Dreaming In Alternation 27 (https://sketchfab.com/DreamingInAlternation27)",
+    author: "Dreaming In Alternation 27",
+    authorLink: "https://sketchfab.com/DreamingInAlternation27",
     changes: "None",
   },
   {
@@ -49,8 +52,9 @@ export const panicCredits = [
     link: "https://sketchfab.com/3d-models/spider-bc0a750b8363472e80eaa5881655ed23",
     imgSm: blackSpiderSm,
     imgLg: blackSpiderLg,
-    author: "JoshTrevisiol (https://sketchfab.com/JoshTrevisiol)",
-    changes: "None",
+    author: "JoshTrevisiol",
+    authorLink: "https://sketchfab.com/JoshTrevisiol",
+    changes: "Original textures were removed and replaced with a solid black material.",
   },
   {
     asset: "The pillars with light beams.",
@@ -58,7 +62,8 @@ export const panicCredits = [
     link: "https://sketchfab.com/3d-models/medieval-sci-fi-pillar-60c1b1f74df24898a54968ec3008fc63",
     imgSm: lightPillarSm,
     imgLg: lightPillarLg,
-    author: "Nick.Amalin (https://sketchfab.com/Nick.Amalin)",
+    author: "Nick.Amalin",
+    authorLink: "https://sketchfab.com/Nick.Amalin",
     changes: "None",
   },
   {
@@ -67,8 +72,9 @@ export const panicCredits = [
     link: "https://sketchfab.com/3d-models/fear-crawler-all-animation-it-takes-to-9f5dc82f62f148f7a53504f50c439eab",
     imgSm: fearCrawlSm,
     imgLg: fearCrawlLg,
-    author: "alex.andain.777 (https://sketchfab.com/alex.andain.777)",
-    changes: "None",
+    author: "alex.andain.777",
+    authorLink: "https://sketchfab.com/alex.andain.777",
+    changes: "Original textures were removed and replaced with a solid materials of different colors.",
   },
   {
     asset: "The couch.",
@@ -76,7 +82,8 @@ export const panicCredits = [
     link: "https://sketchfab.com/3d-models/victorian-couch-6446946d72e34074bf188c78e57ccadd",
     imgSm: victorianCouchSm,
     imgLg: victorianCouchLg,
-    author: "kbangart (https://sketchfab.com/kbangart)",
+    author: "kbangart",
+    authorLink: "https://sketchfab.com/kbangart",
     changes: "None",
   },
 ];

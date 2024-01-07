@@ -10,6 +10,7 @@ import {
   // useHelper,
 } from "@react-three/drei";
 import { degToRad } from "three/src/math/MathUtils";
+
 // COMPONENTS /////////////////////////
 import { PlaneWall } from "../components/three/PlaneWall";
 import { MedievalSciFiPillar } from "../components/models/MedievalSciFiPillar";
@@ -37,73 +38,71 @@ export const PanicScene = ({ vrSession, performance }) => {
     <>
       <PerspectiveCamera
         makeDefault={vrSession ? false : true}
-        position={[0, 1, 5]}
+        position={[0, 0, 0.5]}
       />
       <OrbitControls />
 
-      <directionalLight
-        ref={directionalLight}
-        position={[-1, 4, 2]}
-        intensity={1}
-      />
-
-      <FearCrawlEdit
-        scale={2}
-        position={[6, 18, -7]}
-        rotation={[degToRad(55), degToRad(-90), 0]}
-      />
-
-      <VictorianCouch
-        scale={1.8}
-        position={[-6.5, -0.1, -1.5]}
-        rotation-y={degToRad(90)}
-      />
-
-      {performance === 2 ? (
-        <Door scale={[1.4, 2, 1]} position={[0.8, 4.4, -4]} />
-      ) : (
-        <BoxDoor position={[0, 0, -7]} />
-      )}
-
-      <PlaneWall args={[12, 20]} position={[0, 10, -9]} />
-
-      <PlaneFloor
-        args={[12, 20]}
-        position={[0, -0.2, 0]}
-        rotX={-Math.PI / 2}
-        performance={performance}
-      />
-
-      <PlaneWall
-        args={[20, 20]}
-        position={[-6, 10, -1]}
-        rotation-y={Math.PI / 2}
-      />
-
-      <PlaneWall
-        args={[20, 20]}
-        position={[6, 10, -1]}
-        rotation-y={-Math.PI / 2}
-      />
-
-      <Spider
-        scale={0.04}
-        rotation={[degToRad(110), 0, Math.PI / 2]}
-        position={[5.2, 17, 7]}
-      />
-
-      <group ref={spiderWolf}>
-        <SpiderWolfAnim
-          scale={2}
-          position={[0, 0, -1]}
-          rotation-y={degToRad(180)}
+      <group position-y={vrSession ? 0 : -3}>
+        <directionalLight
+          ref={directionalLight}
+          position={[-1, 4, 2]}
+          intensity={1}
         />
-      </group>
 
-      <MedievalSciFiPillar position={[-5, -0.5, 3]} />
-      <MedievalSciFiPillar position={[5, -0.5, 3]} />
-      <MedievalSciFiPillar position={[-5, -0.5, -7]} />
-      <MedievalSciFiPillar position={[5, -0.5, -7]} />
+        <FearCrawlEdit
+          scale={2}
+          position={[6, 18, -7]}
+          rotation={[degToRad(55), degToRad(-90), 0]}
+        />
+
+        <VictorianCouch
+          scale={1.8}
+          position={[-6.5, -0.1, -1.5]}
+          rotation-y={degToRad(90)}
+        />
+
+        <BoxDoor position={[0, 0, -7]} />
+
+        <PlaneWall args={[12, 20]} position={[0, 10, -9]} />
+
+        <PlaneFloor
+          args={[12, 20]}
+          position={[0, -0.2, 0]}
+          rotX={-Math.PI / 2}
+          performance={performance}
+        />
+
+        <PlaneWall
+          args={[20, 20]}
+          position={[-6, 10, -1]}
+          rotation-y={Math.PI / 2}
+        />
+
+        <PlaneWall
+          args={[20, 20]}
+          position={[6, 10, -1]}
+          rotation-y={-Math.PI / 2}
+        />
+
+        <Spider
+          scale={0.04}
+          rotation={[degToRad(110), 0, Math.PI / 2]}
+          position={[5.2, 17, 7]}
+        />
+
+        <group ref={spiderWolf}>
+          <SpiderWolfAnim
+            scale={2}
+            position={[0, 0, -1]}
+            rotation-y={degToRad(180)}
+          />
+        </group>
+
+        <MedievalSciFiPillar position={[-5, -0.5, 3]} />
+        <MedievalSciFiPillar position={[5, -0.5, 3]} />
+        <MedievalSciFiPillar position={[-5, -0.5, -7]} />
+        <MedievalSciFiPillar position={[5, -0.5, -7]} />
+      </group>
 
       <Sphere args={[100, 8, 8]} rotation={[0, 0, 0]} position={[0, 1, -10]}>
         <meshBasicMaterial side={THREE.BackSide}>
