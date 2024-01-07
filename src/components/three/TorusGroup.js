@@ -33,7 +33,7 @@ export const TorusGroup = ({
     }`,
     metalnessMap: `${
       performance < 2
-        ? "/textures/red-scifi-metal/metallic-16.png"
+        ? "/textures/red-scifi-metal/metallic-512.png"
         : "/textures/red-scifi-metal/metallic.png"
     }`,
     normalMap: `${
