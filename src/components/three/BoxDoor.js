@@ -1,7 +1,6 @@
 import * as THREE from "three";
 import { Plane, useTexture } from "@react-three/drei";
 import { degToRad } from "three/src/math/MathUtils";
-import { useLoader } from "@react-three/fiber";
 
 export const BoxDoor = ({ position, rotation, performance }) => {
   const textures = useTexture({
@@ -61,7 +60,7 @@ export const BoxDoor = ({ position, rotation, performance }) => {
         {/* LEFT */}
         <Plane
           args={[1, 10]}
-          position={[-2, 0, -0.31]}
+          position={[-2, 0, 0]}
           rotation={[0, degToRad(-90), 0]}
           material-color="#330000"
         />
@@ -69,7 +68,7 @@ export const BoxDoor = ({ position, rotation, performance }) => {
         {/* RIGHT */}
         <Plane
           args={[1, 10]}
-          position={[2, 0, -0.31]}
+          position={[2, 0, 0]}
           rotation={[0, degToRad(90), 0]}
           material-color="#330000"
         />
@@ -77,7 +76,7 @@ export const BoxDoor = ({ position, rotation, performance }) => {
         {/* TOP */}
         <Plane
           args={[4, 1]}
-          position={[0, 5, -0.31]}
+          position={[0, 5, 0]}
           rotation={[degToRad(-90), 0, 0]}
           material-color="#330000"
         />
@@ -89,7 +88,7 @@ export const BoxDoor = ({ position, rotation, performance }) => {
         {/* LEFT */}
         <Plane
           args={[1, 10]}
-          position={[-2, 0, -0.31]}
+          position={[-2, 0, 0]}
           rotation={[0, degToRad(-90), 0]}
           material-color="#330000"
         />
@@ -97,7 +96,7 @@ export const BoxDoor = ({ position, rotation, performance }) => {
         {/* RIGHT */}
         <Plane
           args={[1, 10]}
-          position={[2, 0, -0.31]}
+          position={[2, 0, 0]}
           rotation={[0, degToRad(90), 0]}
           material-color="#330000"
         />
@@ -105,7 +104,7 @@ export const BoxDoor = ({ position, rotation, performance }) => {
         {/* TOP */}
         <Plane
           args={[4, 1]}
-          position={[0, 5, -0.31]}
+          position={[0, 5, 0]}
           rotation={[degToRad(-90), 0, 0]}
           material-color="#330000"
         />

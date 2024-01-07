@@ -32,6 +32,7 @@ import "./css/buttons.css";
 // Idahome Stuff /////////////////////////////////////
 import { IdahomeUI } from "./__idahome/IdahomeUI.js";
 import "./__idahome/idahome.css";
+import { TestScene } from "./_testing/_TestScene.js";
 
 function App() {
   // useState hooks
@@ -179,6 +180,11 @@ function App() {
               <Route
                 path="/punk"
                 element={<PunkScene performance={performance} />}
+              />
+          
+              <Route
+                path="/test"
+                element={<TestScene performance={performance} />}
               />
 
               <Route

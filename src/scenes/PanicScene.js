@@ -15,7 +15,6 @@ import { degToRad } from "three/src/math/MathUtils";
 import { PlaneWall } from "../components/three/PlaneWall";
 import { MedievalSciFiPillar } from "../components/models/MedievalSciFiPillar";
 import { Spider } from "../components/models/Spider";
-import { Door } from "../components/models/Door";
 import { BoxDoor } from "../components/three/BoxDoor";
 import { VictorianCouch } from "../components/models/VictorianCouch";
 import { PlaneFloor } from "../components/three/PlaneFloor";
@@ -61,7 +60,7 @@ export const PanicScene = ({ vrSession, performance }) => {
           rotation-y={degToRad(90)}
         />
 
-        <BoxDoor position={[0, 0, -7]} />
+        <BoxDoor position={[0, 0, -7.5]} />
 
         <PlaneWall args={[12, 20]} position={[0, 10, -9]} />
 

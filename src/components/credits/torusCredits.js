@@ -1,4 +1,5 @@
-import vpIcon from "../../assets/images/vp-icon.png";
+import mossRockSm from "../../assets/images/credits/torus/moss-rock-256.jpg";
+import mossRockLg from "../../assets/images/credits/torus/moss-rock-512.jpg";
 import flyingDragonSm from "../../assets/images/credits/torus/flying-dragon-256.jpg";
 import flyingDragonLg from "../../assets/images/credits/torus/flying-dragon-512.jpg";
 import dragonFantasySm from "../../assets/images/credits/torus/dragon-fantasy-256.jpg";
@@ -13,6 +14,17 @@ import floatingPortalSm from "../../assets/images/credits/torus/floating-portal-
 import floatingPortalLg from "../../assets/images/credits/torus/floating-portal-512.jpg";
 
 export const torusCredits = [
+  {
+    asset: "The mossy rock texture on the hall walls.",
+    title: "'Green river moss'",
+    link: "https://stock.adobe.com/3d-assets/green-river-moss/178009820",
+    imgSm: mossRockSm,
+    imgLg: mossRockLg,
+    author: "Substance Source",
+    authorLink:
+      "https://stock.adobe.com/contributor/206389603/substance-source?load_type=author&prev_url=detail",
+    changes: "The texture images were resized.",
+  },
   {
     asset: "The dragon flying in front of the camera (Torus).",
     title: "'Dragon Animation Flying'",

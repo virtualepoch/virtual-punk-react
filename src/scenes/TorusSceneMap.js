@@ -1,19 +1,13 @@
-import { useEffect, useRef } from "react";
 import * as THREE from "three";
-import { useFrame, useLoader } from "@react-three/fiber";
-import { Box, Plane, useTexture } from "@react-three/drei";
+import { Plane, useTexture } from "@react-three/drei";
+import { degToRad } from "three/src/math/MathUtils";
+
 // COMPONENTS
 import { MegaWyvern } from "../components/models/MegaWyvern";
-import { TempleOfLight } from "../components/models/TempleOfLight";
 import { ShadowDragon } from "../components/models/ShadowDragon";
-// TEXTURES
-import texture from "../assets/images/textures/hex-512.jpg";
-import { degToRad } from "three/src/math/MathUtils";
-import { Ocean } from "../components/three/Ocean";
-import gsap from "gsap";
-
 import { FloatingIslandPortal } from "../components/models/FloatingIslandPortal";
 import { DragonFantasy } from "../components/models/DragonFantasy";
+import { TempleOfLight } from "../components/models/TempleOfLight";
 
 export const TorusSceneMap = ({ sceneMap }) => {
   const textures = useTexture({
@@ -64,10 +58,6 @@ export const TorusSceneMap = ({ sceneMap }) => {
 
   textures.normalMap.repeat.set(repeatX, repeatY);
   textures.normalMap.wrapS = textures.normalMap.wrapT = THREE.RepeatWrapping;
-
-  // const map = useLoader(THREE.TextureLoader, texture);
-  // map.repeat.set(30, 16);
-  // map.wrapS = map.wrapT = THREE.RepeatWrapping;
 
   const ShadowDragonIsland = (props) => {
     return (

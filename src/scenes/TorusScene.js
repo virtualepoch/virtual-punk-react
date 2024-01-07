@@ -8,14 +8,14 @@ import {
   useHelper,
 } from "@react-three/drei";
 import gsap from "gsap";
+
 //COMPONENTS
 import { DragonFlying } from "../components/models/DragonFlying";
 import { TorusSceneGroup } from "../components/three/TorusSceneGroup";
-import { BgSphere } from "../components/three/BgSphere";
 import { TorusSceneMap } from "./TorusSceneMap";
-import texture from "../assets/images/panoramas/cyber-sky.jpg";
 import { Ocean } from "../components/three/Ocean";
-// EXPORT: FUNCTIONAL COMPONENT
+import texture from "../assets/images/panoramas/cyber-sky.jpg";
+
 export const TorusScene = ({ performance, thirdPerson }) => {
   const map = useLoader(THREE.TextureLoader, texture);
   const directionalLight = useRef();
@@ -50,22 +50,24 @@ export const TorusScene = ({ performance, thirdPerson }) => {
   const camPos = 0.1;
   return (
     <group>
-      <PerspectiveCamera ref={cam} position={[0, 0, camPos]}>
-        <OrbitControls
-          minDistance={0}
-          maxDistance={camPos}
-          minAzimuthAngle={-Math.PI / 2}
-          maxAzimuthAngle={Math.PI / 2}
-          maxPolarAngle={Math.PI / 1.5}
-          minPolarAngle={Math.PI / 4}
-        />
-        <ambientLight intensity={1} />
-        <directionalLight
-          ref={directionalLight}
-          intensity={10}
-          position={[-1, 2, 4]}
-        />
-      </PerspectiveCamera>
+      <PerspectiveCamera ref={cam} position={[0, 0, camPos]} />
+
+      <OrbitControls
+        minDistance={0}
+        maxDistance={camPos}
+        minAzimuthAngle={-Math.PI / 2}
+        maxAzimuthAngle={Math.PI / 2}
+        maxPolarAngle={Math.PI / 1.5}
+        minPolarAngle={Math.PI / 4}
+      />
+
+      <ambientLight intensity={1} />
+
+      <directionalLight
+        ref={directionalLight}
+        intensity={5}
+        position={[-1, 2, 4]}
+      />
 
       <Sphere args={[300, 16, 16]}>
         <meshBasicMaterial map={map} side={THREE.BackSide} />

@@ -1,16 +1,10 @@
-import * as THREE from "three";
 import { useRef } from "react";
-import { useFrame, useLoader, useThree } from "@react-three/fiber";
-import {
-  OrbitControls,
-  PerspectiveCamera,
-  Sphere,
-  Stars,
-} from "@react-three/drei";
-import { JetConcept } from "../components/models/Jet_concept";
-import earth1k from "../assets/images/textures/earth_clouds_1k.jpg";
-import earth4k from "../assets/images/textures/earth_clouds_4k.jpg";
+import { useFrame, useThree } from "@react-three/fiber";
+import { OrbitControls, PerspectiveCamera, Stars } from "@react-three/drei";
 import { degToRad } from "three/src/math/MathUtils";
+
+// COMPONENTS
+import { JetConcept } from "../components/models/Jet_concept";
 import { EarthTank2k } from "../components/models/EarthTank2k";
 
 export const MachScene = ({ performance, vrSession }) => {
@@ -18,27 +12,9 @@ export const MachScene = ({ performance, vrSession }) => {
   // useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
   const viewport = useThree((state) => state.viewport); // used to scale scene
 
-  function Earth() {
-    const texture = useLoader(
-      THREE.TextureLoader,
-      performance > 0 ? earth4k : earth1k
-    );
-    const earthRef = useRef(null);
-
-    useFrame(() => {
-      if (earthRef.current) earthRef.current.rotation.x += 0.0001;
-    });
-
-    return (
-      <Sphere args={[100, 110, 110]} ref={earthRef} position={[0, -80, -70]}>
-        <meshPhongMaterial map={texture} />
-      </Sphere>
-    );
-  }
-
-  const earth4kair = useRef();
+  const earth = useRef();
   useFrame(() => {
-    earth4kair.current.rotation.x += 0.0005;
+    earth.current.rotation.x += 0.0005;
   });
 
   return (
@@ -49,8 +25,8 @@ export const MachScene = ({ performance, vrSession }) => {
       />
 
       <OrbitControls
-        minDistance={0}
-        // maxDistance={150}
+        minDistance={2}
+        maxDistance={10}
         minAzimuthAngle={-Math.PI / 2}
         maxAzimuthAngle={Math.PI / 2}
         maxPolarAngle={Math.PI / 1.5}
@@ -67,8 +43,7 @@ export const MachScene = ({ performance, vrSession }) => {
 
       <JetConcept scale={1} rotation={[degToRad(45), degToRad(-90), 0.2]} />
 
-      {/* <Earth /> */}
-      <group ref={earth4kair} position={[0, -9, -8]}>
+      <group ref={earth} position={[0, -9, -8]} rotation={[0, 0, degToRad(90)]}>
         <EarthTank2k scale={1.8} />
       </group>
 
