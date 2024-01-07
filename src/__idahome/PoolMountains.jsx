@@ -11,15 +11,15 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function PoolMountains(props) {
-  const { nodes, materials } = useGLTF("/models/pool_mountains.glb");
+  const { nodes, materials } = useGLTF("/models/pool_mountains_4k.glb");
   return (
     <group {...props} dispose={null}>
-      <mesh
+      {/* <mesh
         geometry={nodes.Object_4.geometry}
         material={materials["Material.003"]}
         position={[3.335, -0.05, 1.565]}
         rotation={[-Math.PI, 0.786, -Math.PI]}
-      />
+      /> */}
       <mesh
         geometry={nodes.Object_6.geometry}
         material={materials["Material.001"]}
@@ -37,4 +37,4 @@ export function PoolMountains(props) {
   );
 }
 
-useGLTF.preload("/models/pool_mountains.glb");
+useGLTF.preload("/models/pool_mountains_4k.glb");

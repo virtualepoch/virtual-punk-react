@@ -62,7 +62,11 @@ export const PanicScene = ({ vrSession, performance }) => {
 
         <BoxDoor position={[0, 0, -7.5]} />
 
-        <PlaneWall args={[12, 20]} position={[0, 10, -9]} />
+        <PlaneWall
+          args={[12, 20]}
+          position={[0, 10, -9]}
+          performance={performance}
+        />
 
         <PlaneFloor
           args={[12, 20]}
@@ -74,13 +78,15 @@ export const PanicScene = ({ vrSession, performance }) => {
         <PlaneWall
           args={[20, 20]}
           position={[-6, 10, -1]}
-          rotation-y={Math.PI / 2}
+          rotY={Math.PI / 2}
+          performance={performance}
         />
 
         <PlaneWall
           args={[20, 20]}
           position={[6, 10, -1]}
-          rotation-y={-Math.PI / 2}
+          rotY={-Math.PI / 2}
+          performance={performance}
         />
 
         <Spider

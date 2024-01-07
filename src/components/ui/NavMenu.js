@@ -11,6 +11,8 @@ export function NavMenu({
   setLinkClicked,
   fpsMeter,
   setFpsMeter,
+  setModalInfoOpen,
+  setModalVROpen,
 }) {
   function CustomLink({ to, children, ...props }) {
     const resolvedPath = useResolvedPath(to);
@@ -25,6 +27,8 @@ export function NavMenu({
           onClick={() => {
             setNavMenuOpen(false);
             setLinkClicked(true);
+            setModalInfoOpen(false);
+            setModalVROpen(false);
             if (to === "/") {
               setStart(false);
               setHub(false);

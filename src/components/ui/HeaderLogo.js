@@ -6,6 +6,8 @@ export const HeaderLogo = ({
   setHub,
   setNavMenuOpen,
   setLinkClicked,
+  setModalInfoOpen,
+  setModalVROpen,
 }) => {
   const [pressed, setPressed] = useState(false);
 
@@ -20,6 +22,8 @@ export const HeaderLogo = ({
           setHub(false);
           setNavMenuOpen(false);
           setLinkClicked(true);
+          setModalInfoOpen(false);
+          setModalVROpen(false);
         }}
         onMouseDown={() => setPressed(true)}
         onMouseUp={() => setPressed(false)}

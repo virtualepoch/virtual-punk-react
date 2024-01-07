@@ -1,5 +1,7 @@
 import greenTileSm from "../../assets/images/credits/green-tile-256.jpg";
 import greenTileLg from "../../assets/images/credits/green-tile-512.jpg";
+import spacePanelsSm from "../../assets/images/credits/panic/space-cruiser-panels-256.jpg";
+import spacePanelsLg from "../../assets/images/credits/panic/space-cruiser-panels-512.jpg";
 import orangeMetalSm from "../../assets/images/credits/orange-metal-256.jpg";
 import orangeMetalLg from "../../assets/images/credits/orange-metal-512.jpg";
 import wolfSpiderSm from "../../assets/images/credits/panic/wolf-spider-256.jpg";
@@ -23,6 +25,16 @@ export const panicCredits = [
     author: "Substance Source",
     authorLink:
       "https://stock.adobe.com/contributor/206389603/substance-source?load_type=author&prev_url=detail",
+    changes: "None",
+  },
+  {
+    asset: "The sci-fi texture for the door.",
+    title: "Space Cruiser Panels 2 PBR Material",
+    link: "https://freepbr.com/materials/space-cruiser-panels2-pbr/",
+    imgSm: spacePanelsSm,
+    imgLg: spacePanelsLg,
+    author: "Freepbr",
+    authorLink: "https://freepbr.com/",
     changes: "None",
   },
   {
@@ -54,7 +66,8 @@ export const panicCredits = [
     imgLg: blackSpiderLg,
     author: "JoshTrevisiol",
     authorLink: "https://sketchfab.com/JoshTrevisiol",
-    changes: "Original textures were removed and replaced with a solid black material.",
+    changes:
+      "Original textures were removed and replaced with a solid black material.",
   },
   {
     asset: "The pillars with light beams.",
@@ -74,7 +87,8 @@ export const panicCredits = [
     imgLg: fearCrawlLg,
     author: "alex.andain.777",
     authorLink: "https://sketchfab.com/alex.andain.777",
-    changes: "Original textures were removed and replaced with a solid materials of different colors.",
+    changes:
+      "Original textures were removed and replaced with a solid materials of different colors.",
   },
   {
     asset: "The couch.",

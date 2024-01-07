@@ -13,28 +13,33 @@ export const TorusSceneMap = ({ sceneMap }) => {
   const textures = useTexture({
     map: `${
       performance < 2
-        ? "/textures/moss-rock/baseColor.jpg"
+        ? "/textures/moss-rock/baseColor-1024.jpg"
         : "/textures/moss-rock/baseColor.jpg"
     }`,
     displacementMap: `${
       performance < 2
-        ? "/textures/moss-rock/height.jpg"
+        ? "/textures/moss-rock/height-1024.jpg"
         : "/textures/moss-rock/height.jpg"
     }`,
     roughnessMap: `${
       performance < 2
-        ? "/textures/moss-rock/roughness.jpg"
+        ? "/textures/moss-rock/roughness-1024.jpg"
         : "/textures/moss-rock/roughness.jpg"
     }`,
     metalnessMap: `${
       performance < 2
-        ? "/textures/moss-rock/metallic.jpg"
+        ? "/textures/moss-rock/metallic-16.jpg"
         : "/textures/moss-rock/metallic.jpg"
     }`,
     normalMap: `${
       performance < 2
-        ? "/textures/moss-rock/normal.jpg"
+        ? "/textures/moss-rock/normal-1024.jpg"
         : "/textures/moss-rock/normal.jpg"
+    }`,
+    alphaMap: `${
+      performance < 2
+        ? "/textures/moss-rock/opacity-16.jpg"
+        : "/textures/moss-rock/opacity.jpg"
     }`,
   });
 
@@ -58,6 +63,9 @@ export const TorusSceneMap = ({ sceneMap }) => {
 
   textures.normalMap.repeat.set(repeatX, repeatY);
   textures.normalMap.wrapS = textures.normalMap.wrapT = THREE.RepeatWrapping;
+
+  textures.alphaMap.repeat.set(repeatX, repeatY);
+  textures.alphaMap.wrapS = textures.alphaMap.wrapT = THREE.RepeatWrapping;
 
   const ShadowDragonIsland = (props) => {
     return (

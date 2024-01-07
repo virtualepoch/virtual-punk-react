@@ -68,6 +68,8 @@ export const UI = ({
         navMenuOpen={navMenuOpen}
         setNavMenuOpen={setNavMenuOpen}
         setLinkClicked={setLinkClicked}
+        setModalInfoOpen={setModalInfoOpen}
+        setModalVROpen={setModalVROpen}
       />
 
       <NavMenu
@@ -78,6 +80,8 @@ export const UI = ({
         setLinkClicked={setLinkClicked}
         fpsMeter={fpsMeter}
         setFpsMeter={setFpsMeter}
+        setModalInfoOpen={setModalInfoOpen}
+        setModalVROpen={setModalVROpen}
       />
 
       <FpsMeter fpsMeter={fpsMeter} setFpsMeter={setFpsMeter} />

@@ -12,6 +12,8 @@ export const Header = ({
   navMenuOpen,
   setNavMenuOpen,
   setLinkClicked,
+  setModalInfoOpen,
+  setModalVROpen,
 }) => {
   const isSandyBdayPageActive = useMatch({
     path: "/happy-bday-sandy",
@@ -36,6 +38,8 @@ export const Header = ({
         setHub={setHub}
         setNavMenuOpen={setNavMenuOpen}
         setLinkClicked={setLinkClicked}
+        setModalInfoOpen={setModalInfoOpen}
+        setModalVROpen={setModalVROpen}
       />
 
       <SceneTitle />
