@@ -2,8 +2,8 @@ import redScifiMetal256 from "../../assets/images/credits/red-scifi-metal-256.jp
 import redScifiMetal512 from "../../assets/images/credits/red-scifi-metal-512.jpg";
 import appearanceEffect256 from "../../assets/images/credits/appearance-effect-256.jpg";
 import appearanceEffect512 from "../../assets/images/credits/appearance-effect-512.jpg";
-import hex256 from "../../assets/images/textures/hex-256.jpg";
-import hex512 from "../../assets/images/textures/hex-512.jpg";
+import hex256 from "../../assets/basic-textures/hex-256.jpg";
+import hex512 from "../../assets/basic-textures/hex-512.jpg";
 
 export const hubCredits = [
   {

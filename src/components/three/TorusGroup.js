@@ -102,7 +102,7 @@ export const TorusGroup = ({
       <directionalLight
         // ref={directionalLight}
         intensity={2}
-        position={[-4, 4, 4]}
+        position={[-1, 1, 4]}
       />
 
       <AppearanceEffectLightBeam

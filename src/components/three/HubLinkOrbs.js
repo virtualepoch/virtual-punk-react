@@ -7,9 +7,9 @@ import gsap from "gsap";
 
 // <COMPONENTS & ASSETS
 import { Atom } from "./Atom";
-import texture128 from "../../assets/images/textures/hex-128.jpg";
-import texture256 from "../../assets/images/textures/hex-256.jpg";
-import texture512 from "../../assets/images/textures/hex-512.jpg";
+import texture128 from "../../assets/basic-textures/hex-128.jpg";
+import texture256 from "../../assets/basic-textures/hex-256.jpg";
+import texture512 from "../../assets/basic-textures/hex-512.jpg";
 // >
 
 export const linkOrbInfo = [

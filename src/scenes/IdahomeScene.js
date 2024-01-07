@@ -38,7 +38,12 @@ export const IdahomeScene = ({ performance }) => {
 
         <PoolMountains position={[0, -1, 0]} rotation-y={degToRad(100)} />
 
-        <WaterOne position={[1, -1, -5]} rotation-y={degToRad(-40)} />
+        <WaterOne
+          width={7}
+          height={7}
+          position={[1, -1, -5]}
+          rotY={degToRad(-40)}
+        />
       </group>
     </>
   );

@@ -63,7 +63,7 @@ export const Hub = ({ hubLink, setHubLink, hubBtnClicked, performance }) => {
           <HubLink
             scale={scale}
             linkTitle="Torus"
-            image={"/images/torusScene.jpg"}
+            image={"/images/scenes/torus-1024.jpg"}
             visible={hubLink === 0}
             onFadeOut={onFadeOut}
             hubBtnClicked={hubBtnClicked}
@@ -77,7 +77,7 @@ export const Hub = ({ hubLink, setHubLink, hubBtnClicked, performance }) => {
           <HubLink
             scale={scale}
             linkTitle="Mach"
-            image={"/images/spaceScene.jpg"}
+            image={"/images/scenes/mach-1024.jpg"}
             visible={hubLink === 1}
             onFadeOut={onFadeOut}
             hubBtnClicked={hubBtnClicked}
@@ -91,7 +91,7 @@ export const Hub = ({ hubLink, setHubLink, hubBtnClicked, performance }) => {
           <HubLink
             scale={scale}
             linkTitle="Panic"
-            image={"/images/torusScene.jpg"}
+            image={"/images/scenes/panic-1024.jpg"}
             visible={hubLink === 2}
             onFadeOut={onFadeOut}
             hubBtnClicked={hubBtnClicked}

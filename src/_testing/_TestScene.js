@@ -136,7 +136,7 @@ export const TestScene = () => {
         position={[-4, 8, 4]}
       />
 
-      <WaterOne position-y={-10} />
+      <WaterOne position={[0, -10, 0]} />
 
       <Sky scale={1000} sunPosition={[500, 150, -1000]} turbidity={0.1} />
 
