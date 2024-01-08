@@ -71,11 +71,11 @@ export function IdahomeNavMenu({
             </div>
           </div>
           <ul>
-            <CustomLink to={"/idahome"}>About</CustomLink>
+            <CustomLink to={"/idahome"}>Schedule</CustomLink>
+            <CustomLink to={"/idahome"}>Services</CustomLink>
             <CustomLink to={"/idahome"}>Testimonials</CustomLink>
             <CustomLink to={"/idahome"}>Images</CustomLink>
-            <CustomLink to={"/idahome"}>Services</CustomLink>
-            <CustomLink to={"/idahome"}>Schedule</CustomLink>
+            <CustomLink to={"/idahome"}>About</CustomLink>
           </ul>
 
           <button

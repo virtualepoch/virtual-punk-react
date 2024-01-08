@@ -13,23 +13,24 @@
 .logo-idahome {
   width: 50px;
   height: 50px;
-  background: url(./logos/FullColor_TransparentBgcrop_72dpi.png) center/70%
+  background: url(./logos/FullColor_TransparentBgcrop_72dpi.png) center/80%
     no-repeat;
-  filter: drop-shadow(0 0 3px rgba(0, 255, 255, 0.5));
+  filter: drop-shadow(0 0 2px black);
 }
 
 .title-idahome {
   font: 30px sans-serif;
   color: #0573ce;
-  color: cyan;
-  text-shadow: 1px 1px 1px blue, 1px -1px 1px blue, -1px 1px 1px blue,
-    -1px -1px 1px blue, 2px 0 2px black, 3px 1px 2px cyan, 4px 1px 2px black;
+  color: white;
+  text-shadow: 1px 1px 1px black, 1px -1px 1px black, -1px 1px 1px black,
+    -1px -1px 1px black, 1px -1px 1px cyan, 2px -1px 1px cyan, 1px 1px 1px black,
+    2px 2px 2px black;
 }
 
 /* BTN NAV MENU ///////////////////////////////////////////// */
 .btn-idahome-menu .bar {
   width: 50%;
-  height: 1px;
+  height: 2px;
   border-radius: 100px;
   position: absolute;
   transition: transform 200ms linear;
@@ -38,9 +39,8 @@
 .btn-idahome-menu .bar.open {
   top: 41%;
   background: white;
-  box-shadow: 0 0 1px 1px rgba(0, 255, 255, 0.6),
-    0 1px 3px 1px rgba(0, 0, 0, 0.6);
-  filter: drop-shadow(0 0 2px cyan);
+  box-shadow: 0 0 1px 1px black, 1px 1px 1px 1px black, 1px 1px 5px 1px black,
+    0 0 1px 1px cyan;
 }
 
 .btn-idahome-menu .bar.open:nth-child(2) {

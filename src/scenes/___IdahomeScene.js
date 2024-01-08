@@ -1,20 +1,25 @@
 import { useRef } from "react";
-import * as THREE from "three";
-import { DirectionalLightHelper } from "three";
-import { useHelper, PerspectiveCamera, OrbitControls } from "@react-three/drei";
+// import * as THREE from "three";
+// import { DirectionalLightHelper } from "three";
+import {
+  // useHelper,
+  PerspectiveCamera,
+  OrbitControls,
+  Float,
+} from "@react-three/drei";
+import { degToRad } from "three/src/math/MathUtils";
 
 // COMPONENTS
-import { degToRad } from "three/src/math/MathUtils";
 import { PoolMountains } from "../__idahome/models/PoolMountains";
 import { WaterOne } from "../components/three/WaterOne";
 import { Title3d } from "../__idahome/components/Title3d";
+import { Beachball } from "../__idahome/models/Beachball";
 
 export const IdahomeScene = ({ performanceLevel, bgRes }) => {
   const directionalLight = useRef();
-  useHelper(directionalLight, DirectionalLightHelper, 1, "red");
-
-  const pointLight = useRef();
-  useHelper(pointLight, THREE.PointLightHelper, 1, "red");
+  // useHelper(directionalLight, DirectionalLightHelper, 1, "red");
+  // const pointLight = useRef();
+  // useHelper(pointLight, THREE.PointLightHelper, 1, "red");
 
   return (
     <>
@@ -35,7 +40,7 @@ export const IdahomeScene = ({ performanceLevel, bgRes }) => {
           intensity={3}
         />
 
-        <pointLight ref={pointLight} position={[0, 1, 1]} intensity={2} />
+        {/* <pointLight ref={pointLight} position={[0, 0, -3]} intensity={2} /> */}
 
         <Title3d />
 
@@ -51,6 +56,15 @@ export const IdahomeScene = ({ performanceLevel, bgRes }) => {
           position={[1, -1, -5]}
           rotY={degToRad(-40)}
         />
+
+        <Float
+          speed={3} // Animation speed, defaults to 1
+          rotationIntensity={0.1} // XYZ rotation intensity, defaults to 1
+          floatIntensity={0.1} // Up/down float intensity, works like a multiplier with floatingRange,defaults to 1
+          floatingRange={[0.1, 0.1]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
+        >
+          <Beachball position={[0.5, -1, -4]} />
+        </Float>
       </group>
     </>
   );
