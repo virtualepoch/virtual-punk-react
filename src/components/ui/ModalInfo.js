@@ -10,6 +10,7 @@ import { torusCredits } from "../credits/torusCredits";
 import { machCredits } from "../credits/machCredits";
 import { panicCredits } from "../credits/panicCredits";
 import { punkCredits } from "../credits/punkCredits";
+import { emptyCredits } from "../credits/emptyCredits";
 
 const Credit = ({ ...props }) => {
   return (
@@ -60,11 +61,13 @@ export const ModalInfo = ({
     ? hubCredits
     : torus
     ? torusCredits
-    : panic
-    ? panicCredits
     : mach
     ? machCredits
-    : punkCredits;
+    : panic
+    ? panicCredits
+    : punk
+    ? punkCredits
+    : emptyCredits;
 
   return (
     <CSSTransition

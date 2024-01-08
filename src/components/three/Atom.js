@@ -9,7 +9,7 @@ export const Atom = ({
   scale = 1,
   orbitScale = 0.1,
   position,
-  rotSpeed = 0.07,
+  rotSpeed = 0.04,
   performance,
   lightIntensity = performance === 0 ? 0.03 : performance === 2 ? 0.07 : 0.05,
 }) => {

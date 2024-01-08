@@ -19,7 +19,7 @@ export function MegaWyvern(props) {
   // Appearance,Beam|Roar,Combo Hit,Death,Fire Balls,Flame Blast,Idle,Roar,Strike Swoop,Talon Smash,Wind Blast|Wing Slap,
   useEffect(() => {
     actions["Idle"].play();
-    mixer.timeScale = 1;
+    mixer.timeScale = 1.5;
   }, [actions, mixer]);
 
   return (

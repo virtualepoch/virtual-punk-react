@@ -1,5 +1,5 @@
 export const sceneInfo = {
-  empty: ". . .",
+  empty: "Testing...",
   //
   intro:
     "In this scene I wanted to simulate inter-dimensional travel. It was a lot of fun to make and was a good experiment working with animations. The movie Contact was the inspiration for the group of tori.",
@@ -11,7 +11,8 @@ export const sceneInfo = {
   //
   mach: "This scene is meant to simulate hypersonic flight. As time allows, I plan to add more effects to improve the experience.",
   //
-  panic: "This scene is meant to make your hair stand up. Hope it works. Please Note: The scene is more effective when viewed in VR.",
+  panic:
+    "This scene is meant to make your hair stand up. Hope it works. Please Note: The scene is more effective when viewed in VR.",
   //
   punk: "In this scene I decided to showcase a model by the talented 3d artist Miguelangelo Rosario. It's titled 'Grid City'. I can only imagine the amount of talent it took to make.",
 };

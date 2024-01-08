@@ -4,8 +4,6 @@ import flyingDragonSm from "../../assets/images/credits/torus/flying-dragon-256.
 import flyingDragonLg from "../../assets/images/credits/torus/flying-dragon-512.jpg";
 import dragonFantasySm from "../../assets/images/credits/torus/dragon-fantasy-256.jpg";
 import dragonFantasyLg from "../../assets/images/credits/torus/dragon-fantasy-512.jpg";
-import shadowDragonSm from "../../assets/images/credits/torus/shadow-dragon-256.jpg";
-import shadowDragonLg from "../../assets/images/credits/torus/shadow-dragon-512.jpg";
 import megaWyvernSm from "../../assets/images/credits/torus/mega-wyvern-256.jpg";
 import megaWyvernLg from "../../assets/images/credits/torus/mega-wyvern-512.jpg";
 import templeLightSm from "../../assets/images/credits/torus/temple-of-light-256.jpg";
@@ -44,16 +42,6 @@ export const torusCredits = [
     imgLg: dragonFantasyLg,
     author: "Prof.v7x",
     authorLink: "https://sketchfab.com/profesor_v7x",
-    changes: "None.",
-  },
-  {
-    asset: "The dragon on the right standing on the floating island.",
-    title: "'Shadow Dragon'",
-    link: "https://sketchfab.com/3d-models/shadow-dragon-a5e537f7365a4c74b41fa521676ae1cd",
-    imgSm: shadowDragonSm,
-    imgLg: shadowDragonLg,
-    author: "HallowDragon",
-    authorLink: "https://sketchfab.com/HallowDragon",
     changes: "None.",
   },
   {

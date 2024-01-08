@@ -11,21 +11,19 @@ import gsap from "gsap";
 
 //COMPONENTS
 import { DragonFlying } from "../components/models/DragonFlying";
-import { TorusSceneGroup } from "../components/three/TorusSceneGroup";
 import { TorusSceneMap } from "./TorusSceneMap";
 import { Ocean } from "../components/three/Ocean";
 import texture from "../assets/images/panoramas/cyber-sky.jpg";
 
 export const TorusScene = ({ performance, thirdPerson }) => {
   const map = useLoader(THREE.TextureLoader, texture);
+
   const directionalLight = useRef();
   useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
 
   const cam = useRef();
   const sceneMap = useRef();
-  const torusGroup = useRef();
   const dragonTorus = useRef();
-  const clock = new THREE.Clock();
 
   useEffect(() => {
     gsap.to(dragonTorus.current.position, {
@@ -37,12 +35,6 @@ export const TorusScene = ({ performance, thirdPerson }) => {
   }, [dragonTorus, thirdPerson]);
 
   useFrame(() => {
-    const a = clock.getElapsedTime();
-    torusGroup.current.position.z -=
-      torusGroup.current.position.z > -6 ? 0.02 : 0;
-    torusGroup.current.position.y += a >= 4 ? 0.1 : 0;
-    torusGroup.current.rotation.y += a >= 4 ? 0.3 : a >= 8 ? 0 : 0;
-
     if (sceneMap.current.position.z > 175) sceneMap.current.position.z = 0;
     sceneMap.current.position.z += 0.03;
   });
@@ -75,10 +67,6 @@ export const TorusScene = ({ performance, thirdPerson }) => {
       </Sphere>
 
       <DragonFlying dragonRef={dragonTorus} />
-
-      <group ref={torusGroup} position={[0, 0, 0]}>
-        <TorusSceneGroup />
-      </group>
 
       <TorusSceneMap sceneMap={sceneMap} />
     </group>

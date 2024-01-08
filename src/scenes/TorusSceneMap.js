@@ -4,7 +4,6 @@ import { degToRad } from "three/src/math/MathUtils";
 
 // COMPONENTS
 import { MegaWyvern } from "../components/models/MegaWyvern";
-import { ShadowDragon } from "../components/models/ShadowDragon";
 import { FloatingIslandPortal } from "../components/models/FloatingIslandPortal";
 import { DragonFantasy } from "../components/models/DragonFantasy";
 import { TempleOfLight } from "../components/models/TempleOfLight";
@@ -67,15 +66,6 @@ export const TorusSceneMap = ({ sceneMap }) => {
   textures.alphaMap.repeat.set(repeatX, repeatY);
   textures.alphaMap.wrapS = textures.alphaMap.wrapT = THREE.RepeatWrapping;
 
-  const ShadowDragonIsland = (props) => {
-    return (
-      <group {...props}>
-        <FloatingIslandPortal />
-        <ShadowDragon scale={8} position-y={5} />
-      </group>
-    );
-  };
-
   const TempleIsland = (props) => {
     return (
       <group {...props}>
@@ -93,26 +83,24 @@ export const TorusSceneMap = ({ sceneMap }) => {
   return (
     <group ref={sceneMap} position={[0, -5, 0]}>
       <Plane
-        args={[120, 60]}
-        position={[-5, -20, -60]}
+        args={[60, 60]}
+        position={[-10, -20, -30]}
         rotation-y={Math.PI / 2}
       >
         <meshStandardMaterial {...textures} />
       </Plane>
 
-      <Plane args={[120, 60]} position={[5, -20, -60]} rotation-y={Math.PI / 2}>
+      <Plane args={[60, 60]} position={[10, -20, -30]} rotation-y={Math.PI / 2}>
         <meshStandardMaterial {...textures} side={THREE.BackSide} />
       </Plane>
 
       <MegaWyvern
         scale={4}
-        position={[-6, 2, -150]}
+        position={[-7, -5, -120]}
         rotation-y={degToRad(35)}
       />
 
-      <ShadowDragonIsland position={[10, -5, -140]} rotation-y={-1} />
-
-      <TempleIsland position={[0, -70, -250]} scale={10} />
+      <TempleIsland position={[0, -70, -220]} scale={10} />
     </group>
   );
 };

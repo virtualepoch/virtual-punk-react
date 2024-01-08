@@ -77,28 +77,47 @@ export const TorusGroup = ({
   const ref3 = useRef(null);
   const hub = useMatch("/hub");
   useFrame(() => {
-    ref1.current.rotation.x = hubLinkClicked ? 0 : hub ? Math.PI * 0.25 : 0;
-    ref1.current.rotation.y += hubLinkClicked ? -0.2 : hub ? 0 : -0.2;
-    ref1.current.rotation.z += hubLinkClicked ? 0.2 : hub ? -0.001 : 0.2;
+    ref1.current.rotation.x =
+      hubLinkClicked | start ? 0 : hub ? Math.PI * 0.25 : 0;
+    ref1.current.rotation.y += hubLinkClicked | start ? -0.2 : hub ? 0 : -0.02;
+    ref1.current.rotation.z +=
+      hubLinkClicked | start ? 0.2 : hub ? -0.001 : 0.02;
 
     ref2.current.rotation.x += 0;
-    ref2.current.rotation.y += hubLinkClicked ? 0.1 : hub ? 0 : 0.1;
-    ref2.current.rotation.z += hubLinkClicked ? 0.1 : hub ? 0.001 : 0.1;
+    ref2.current.rotation.y += hubLinkClicked | start ? 0.1 : hub ? 0 : 0.01;
+    ref2.current.rotation.z +=
+      hubLinkClicked | start ? 0.1 : hub ? 0.001 : 0.01;
 
-    hubLinkClicked
+    hubLinkClicked | start
       ? (ref3.current.rotation.x += 0.05)
       : hub
       ? (ref3.current.rotation.x = Math.PI * 0.75)
-      : (ref3.current.rotation.x += 0.05);
+      : (ref3.current.rotation.x += 0.005);
     ref3.current.rotation.y += 0;
-    ref3.current.rotation.z += hubLinkClicked ? 0.1 : hub ? 0.001 : 0.1;
+    ref3.current.rotation.z +=
+      hubLinkClicked | start ? 0.1 : hub ? 0.001 : 0.01;
   });
 
   // const directionalLight = useRef();
   // useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
 
+  // const torusGroup = useRef();
+  // const clock = new THREE.Clock();
+  // useFrame(() => {
+  //   const a = clock.getElapsedTime();
+  //   torusGroup.current.position.z -=
+  //     torusGroup.current.position.z > -6 ? 0.02 : 0;
+  //   torusGroup.current.position.y += a >= 4 ? 0.1 : 0;
+  //   torusGroup.current.rotation.y += a >= 4 ? 0.3 : a >= 8 ? 0 : 0;
+  // });
+
   return (
-    <group position={position} rotation={rotation} scale={scale}>
+    <group
+      //  ref={torusGroup}
+      position={position}
+      rotation={rotation}
+      scale={scale}
+    >
       <directionalLight
         // ref={directionalLight}
         intensity={2}
