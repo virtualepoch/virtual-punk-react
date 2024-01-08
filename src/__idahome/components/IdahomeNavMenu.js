@@ -1,7 +1,14 @@
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 
-export function IdahomeNavMenu({ idahomeNavMenuOpen, setIdahomeNavMenuOpen,fpsMeter,setFpsMeter }) {
+export function IdahomeNavMenu({
+  idahomeNavMenuOpen,
+  setIdahomeNavMenuOpen,
+  fpsMeter,
+  setFpsMeter,
+  bgRes,
+  setBgRes,
+}) {
   function CustomLink({ to, children, ...props }) {
     const resolvedPath = useResolvedPath(to);
     const isActive = useMatch({ path: resolvedPath.pathname, end: true });
@@ -31,6 +38,38 @@ export function IdahomeNavMenu({ idahomeNavMenuOpen, setIdahomeNavMenuOpen,fpsMe
         classNames="idahome-nav-menu"
       >
         <nav className="idahome-nav-menu">
+          <div className="btns-bg-res">
+            <p>Background Res:</p>
+            <div className="btns-bg-res-wrap">
+              <button
+                className={bgRes === "low" ? "low active" : "low"}
+                onClick={() => {
+                  setIdahomeNavMenuOpen(false);
+                  setBgRes("low");
+                }}
+              >
+                2k
+              </button>
+              <button
+                className={bgRes === "mid" ? "mid active" : "mid"}
+                onClick={() => {
+                  setIdahomeNavMenuOpen(false);
+                  setBgRes("mid");
+                }}
+              >
+                4k
+              </button>
+              <button
+                className={bgRes === "high" ? "high active" : "high"}
+                onClick={() => {
+                  setIdahomeNavMenuOpen(false);
+                  setBgRes("high");
+                }}
+              >
+                6k
+              </button>
+            </div>
+          </div>
           <ul>
             <CustomLink to={"/idahome"}>About</CustomLink>
             <CustomLink to={"/idahome"}>Testimonials</CustomLink>

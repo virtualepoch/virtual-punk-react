@@ -9,7 +9,7 @@ import { PoolMountains } from "../__idahome/models/PoolMountains";
 import { WaterOne } from "../components/three/WaterOne";
 import { Title3d } from "../__idahome/components/Title3d";
 
-export const IdahomeScene = ({ performanceLevel }) => {
+export const IdahomeScene = ({ performanceLevel, bgRes }) => {
   const directionalLight = useRef();
   useHelper(directionalLight, DirectionalLightHelper, 1, "red");
 
@@ -39,7 +39,11 @@ export const IdahomeScene = ({ performanceLevel }) => {
 
         <Title3d />
 
-        <PoolMountains position={[0, -1, 0]} rotY={degToRad(100)} performanceLevel={performanceLevel} />
+        <PoolMountains
+          position={[0, -1, 0]}
+          rotY={degToRad(100)}
+          bgRes={bgRes}
+        />
 
         <WaterOne
           width={7}

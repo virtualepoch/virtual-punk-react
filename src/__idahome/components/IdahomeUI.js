@@ -3,7 +3,13 @@ import { BtnIdahomeMenu } from "./BtnIdahomeNavMenu";
 import { IdahomeNavMenu } from "./IdahomeNavMenu";
 import { FpsMeter } from "../../components/ui/FpsMeter";
 
-export const IdahomeUI = ({ fpsMeter, setFpsMeter }) => {
+export const IdahomeUI = ({
+  fpsMeter,
+  setFpsMeter,
+  performanceLevel,
+  bgRes,
+  setBgRes,
+}) => {
   const [idahomeNavMenuOpen, setIdahomeNavMenuOpen] = useState(false);
 
   return (
@@ -19,11 +25,19 @@ export const IdahomeUI = ({ fpsMeter, setFpsMeter }) => {
 
       <IdahomeNavMenu
         idahomeNavMenuOpen={idahomeNavMenuOpen}
+        setIdahomeNavMenuOpen={setIdahomeNavMenuOpen}
         fpsMeter={fpsMeter}
         setFpsMeter={setFpsMeter}
+        performanceLevel={performanceLevel}
+        bgRes={bgRes}
+        setBgRes={setBgRes}
       />
 
-      <FpsMeter fpsMeter={fpsMeter} setFpsMeter={setFpsMeter} />
+      <FpsMeter
+        fpsMeter={fpsMeter}
+        setFpsMeter={setFpsMeter}
+        performanceLevel={performanceLevel}
+      />
     </>
   );
 };

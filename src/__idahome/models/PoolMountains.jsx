@@ -11,13 +11,17 @@ import React from "react";
 import * as THREE from "three";
 import { useGLTF, useTexture } from "@react-three/drei";
 
-export function PoolMountains({ position, rotY, performanceLevel }) {
+export function PoolMountains({ position, rotY, bgRes }) {
   const { nodes, materials } = useGLTF("/models/idahome/pool_mountains_4k.glb");
 
   const texture = useTexture(
-    performanceLevel < 2
-      ? "./images/idahome/iStock-1481866039-boise-4k-crop.jpg"
-      : "./images/idahome/iStock-1481866039-boise-6k-crop.jpg"
+    bgRes === "high"
+      ? "./images/idahome/boise-6k.jpg"
+      : bgRes === "mid"
+      ? "./images/idahome/boise-4k.jpg"
+      : bgRes === "low"
+      ? "./images/idahome/boise-2k.jpg"
+      : "./images/idahome/boise-2k.jpg"
   );
   texture.repeat.set(1, 1);
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;

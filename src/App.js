@@ -67,13 +67,19 @@ function App() {
 
   // IdahomeServ Stuff /////////////////
   const idahomeActive = useMatch("/idahome");
+  const [bgRes, setBgRes] = useState("mid");
 
   return (
     <div className="App">
       <Loader />
       {idahomeActive ? (
-        <IdahomeUI     fpsMeter={fpsMeter}
-        setFpsMeter={setFpsMeter}/>
+        <IdahomeUI
+          fpsMeter={fpsMeter}
+          setFpsMeter={setFpsMeter}
+          performanceLevel={performanceLevel}
+          bgRes={bgRes}
+          setBgRes={setBgRes}
+        />
       ) : (
         <UI
           start={start}
@@ -206,7 +212,7 @@ function App() {
 
               <Route
                 path="/idahome"
-                element={<IdahomeScene performanceLevel={performanceLevel} />}
+                element={<IdahomeScene performanceLevel={performanceLevel} bgRes={bgRes} />}
               />
             </Routes>
           </XR>
