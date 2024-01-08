@@ -1,19 +1,22 @@
-import { Center, Text3D } from "@react-three/drei";
-// import { useFrame, useThree } from "@react-three/fiber";
+import * as THREE from "three";
+import { Center, Text3D, useHelper } from "@react-three/drei";
+import { useFrame, useThree } from "@react-three/fiber";
 import { useRef } from "react";
 
 export const Title3d = () => {
   // const { width, height } = useThree((state) => state.viewport);
   // const margin = 0.5;
 
-  const text = useRef();
-  // useFrame(() => {
-  // text.current.rotation.z += 0.02;
-  // text.current.rotation.y += 0.02;
-  // });
+  const pointLight = useRef();
+  // useHelper(pointLight, THREE.PointLightHelper, 1, "red");
+
+  useFrame((state, delta) => {
+    pointLight.current.position.x = Math.sin(state.clock.elapsedTime) * 7;
+  });
 
   return (
-    <group ref={text} scale={0.2} position={[1, -0.7, -4]}>
+    <group scale={0.2} position-z={-4}>
+      <pointLight ref={pointLight} position={[0, 0.1, 2]} />
       <Center rotation={[0, 0, 0]}>
         <Text3D
           curveSegments={32}
