@@ -1,12 +1,9 @@
 import React, { useRef } from "react";
 import * as THREE from "three";
-import { useFrame, useLoader } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import {
-  Box,
-  Float,
   OrbitControls,
   PerspectiveCamera,
-  Sky,
   Sphere,
   useHelper,
   useTexture,
@@ -14,10 +11,7 @@ import {
 import { degToRad } from "three/src/math/MathUtils";
 
 // COMPONENTS
-import { WaterOne } from "../components/three/WaterOne";
 import { Atom } from "../components/three/Atom";
-// ASSETS
-
 import { GridCity } from "../components/models/GridCity";
 
 export const PunkScene = () => {

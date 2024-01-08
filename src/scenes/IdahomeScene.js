@@ -7,6 +7,7 @@ import { useHelper, PerspectiveCamera, OrbitControls } from "@react-three/drei";
 import { degToRad } from "three/src/math/MathUtils";
 import { PoolMountains } from "../__idahome/PoolMountains";
 import { WaterOne } from "../components/three/WaterOne";
+import { Title3d } from "../__idahome/Title3d";
 
 export const IdahomeScene = ({ performance }) => {
   const directionalLight = useRef();
@@ -35,6 +36,8 @@ export const IdahomeScene = ({ performance }) => {
         />
 
         <pointLight ref={pointLight} position={[0, 1, 1]} intensity={2} />
+
+        <Title3d />
 
         <PoolMountains position={[0, -1, 0]} rotation-y={degToRad(100)} />
 
