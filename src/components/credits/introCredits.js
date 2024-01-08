@@ -27,7 +27,7 @@ export const introCredits = [
     alt: "future machine bg for triangular cylinder and rotating tori",
     author: "Freepbr",
     authorLink: "https://freepbr.com/",
-    changes: "On smaller screens the resolution may have been scaled down.",
+    changes: "On smaller screens the size may have been scaled down.",
   },
   {
     asset: "Light beam effect for torus portal",

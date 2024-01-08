@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import * as THREE from "three";
 import {
   Box,
+  Float,
   OrbitControls,
   PerspectiveCamera,
   Sky,
@@ -10,11 +11,26 @@ import {
   useTexture,
 } from "@react-three/drei";
 import { degToRad } from "three/src/math/MathUtils";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useLoader } from "@react-three/fiber";
 import { WaterOne } from "../components/three/WaterOne";
 import { Atom } from "../components/three/Atom";
+import earth1k from "../assets/basic-textures/earth_clouds_1k.jpg";
+import earth4k from "../assets/basic-textures/earth_clouds_4k.jpg";
 
 export const TestScene = () => {
+  const Earth = () => {
+    const texture = useLoader(
+      THREE.TextureLoader,
+      performance > 0 ? earth4k : earth1k
+    );
+
+    return (
+      <Sphere args={[3, 16, 16]} position={[5, -10, -10]}>
+        <meshPhongMaterial map={texture} />
+      </Sphere>
+    );
+  };
+
   const BoxTextureTest = ({ performance, position }) => {
     const textures = useTexture({
       map: `${
@@ -141,6 +157,15 @@ export const TestScene = () => {
       <Sky scale={1000} sunPosition={[500, 150, -1000]} turbidity={0.1} />
 
       <BoxTextureTest />
+
+      <Float
+        speed={3} // Animation speed, defaults to 1
+        rotationIntensity={0.1} // XYZ rotation intensity, defaults to 1
+        floatIntensity={0.1} // Up/down float intensity, works like a multiplier with floatingRange,defaults to 1
+        floatingRange={[10, 0.1]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
+      >
+        <Earth />
+      </Float>
     </>
   );
 };

@@ -16,33 +16,6 @@
   pointer-events: none;
 }
 
-.scene-message {
-  width: fit-content;
-  max-width: 200px;
-  height: fit-content;
-  position: fixed;
-  left: 50%;
-  bottom: 100px;
-  transform: translateX(-50%);
-  z-index: 10;
-  color: cyan;
-  font: 100 30px arcade;
-  text-shadow: -2px 0 1px red, 2px 0 1px red, 0 2px 1px red, 0 -2px 1px red,
-    0 -3px 5px black;
-  pointer-events: none;
-}
-
-.scene-message-enter {
-  opacity: 0;
-}
-.scene-message-enter-active {
-  opacity: 1;
-  transition: opacity 3s ease;
-}
-.scene-message-exit {
-  opacity: 0;
-}
-
 /* FPS METER //////////// */
 .fps {
   width: 200px;

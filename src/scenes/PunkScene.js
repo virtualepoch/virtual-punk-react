@@ -17,24 +17,11 @@ import { degToRad } from "three/src/math/MathUtils";
 import { WaterOne } from "../components/three/WaterOne";
 import { Atom } from "../components/three/Atom";
 // ASSETS
-import earth1k from "../assets/basic-textures/earth_clouds_1k.jpg";
-import earth4k from "../assets/basic-textures/earth_clouds_4k.jpg";
+
+import { GridCity } from "../components/models/GridCity";
 
 export const PunkScene = () => {
-  const Earth = () => {
-    const texture = useLoader(
-      THREE.TextureLoader,
-      performance > 0 ? earth4k : earth1k
-    );
-
-    return (
-      <Sphere args={[3, 16, 16]} position={[0, -10, -64]}>
-        <meshPhongMaterial map={texture} />
-      </Sphere>
-    );
-  };
-
-  const BoxTextureTest = ({ performance, position }) => {
+  const TextureTest = ({ performance }) => {
     const textures = useTexture({
       map: `${
         performance < 2
@@ -69,8 +56,8 @@ export const PunkScene = () => {
     });
 
     const repeat = 4;
-    const repeatX = repeat * 2;
-    const repeatY = repeat;
+    const repeatX = repeat;
+    const repeatY = repeat / 2;
 
     textures.map.repeat.set(repeatX, repeatY);
     textures.map.wrapS = textures.map.wrapT = THREE.RepeatWrapping;
@@ -103,48 +90,32 @@ export const PunkScene = () => {
           delta;
     });
 
-    const box = useRef();
-    useFrame((state, delta) => {
-      box.current.position.y = -5 + Math.sin(state.clock.elapsedTime * 2) * 5;
-      box.current.rotation.x =
-        box.current.rotation.y =
-        box.current.rotation.z +=
-          delta;
-    });
-
     return (
       <>
-        <group ref={sphere} position={[-7, 0, -25]}>
-          <Sphere args={[4, 32, 32]}>
-            <meshStandardMaterial color="cyan" {...textures} />
+        <group ref={sphere} position={[0, 0, -40]}>
+          <Sphere args={[3, 16, 16]}>
+            <meshStandardMaterial color={0xff2255} {...textures} />
           </Sphere>
-          <Atom scale={5} lightIntensity={5} />
-        </group>
-
-        <group ref={box} position={[7, 0, -25]}>
-          <Box args={[8, 8, 8]}>
-            <meshStandardMaterial color="cyan" {...textures} />
-          </Box>
-          <Atom scale={5} lightIntensity={5} />
+          <Atom scale={3.7} lightIntensity={5} />
         </group>
       </>
     );
   };
 
   const directionalLight = useRef();
-  useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
+  useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "white");
 
   return (
     <>
-      <PerspectiveCamera makeDefault position={[0, 0, 20]} />
+      <PerspectiveCamera makeDefault position={[0, 0, 1]} />
 
       <OrbitControls
-        minDistance={0}
-        maxDistance={2000}
-        minAzimuthAngle={-Math.PI / 2}
-        maxAzimuthAngle={Math.PI / 2}
-        maxPolarAngle={Math.PI / 1.5}
-        minPolarAngle={Math.PI / 4}
+        minDistance={0.1}
+        maxDistance={2}
+        minAzimuthAngle={degToRad(-60)}
+        maxAzimuthAngle={degToRad(60)}
+        maxPolarAngle={degToRad(100)}
+        minPolarAngle={degToRad(70)}
       />
 
       <ambientLight intensity={1} />
@@ -152,8 +123,8 @@ export const PunkScene = () => {
       <directionalLight
         ref={directionalLight}
         intensity={5}
-        position={[-4, 8, 4]}
-        color="white"
+        position={[-3, 0, 8]}
+        color="#77ffff"
         castShadow
         shadow-camera-near={0}
         shadow-camera-far={100}
@@ -166,20 +137,9 @@ export const PunkScene = () => {
         shadow-bias={-0.0001}
       />
 
-      <WaterOne position={[0, -10, 0]} />
+      <GridCity scale={20} position={[100, 1700, 0]} />
 
-      <Sky scale={1000} sunPosition={[500, 150, -1000]} turbidity={0.1} />
-
-      <BoxTextureTest />
-
-      <Float
-        speed={3} // Animation speed, defaults to 1
-        rotationIntensity={0.1} // XYZ rotation intensity, defaults to 1
-        floatIntensity={0.1} // Up/down float intensity, works like a multiplier with floatingRange,defaults to 1
-        floatingRange={[10, 0.1]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
-      >
-        <Earth />
-      </Float>
+      <TextureTest />
     </>
   );
 };

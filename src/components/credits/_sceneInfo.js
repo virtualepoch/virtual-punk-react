@@ -11,7 +11,7 @@ export const sceneInfo = {
   //
   mach: "This scene is meant to simulate hypersonic flight. As time allows, I plan to add more effects to improve the experience.",
   //
-  panic: "panic",
+  panic: "This scene is meant to make your hair stand up. Hope it works. Please Note: The scene is more effective when viewed in VR.",
   //
-  punk: "punk",
+  punk: "In this scene I decided to showcase a model by the talented 3d artist Miguelangelo Rosario. It's titled 'Grid City'. I can only imagine the amount of talent it took to make.",
 };

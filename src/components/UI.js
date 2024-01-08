@@ -12,7 +12,6 @@ import { ModalInfo } from "./ui/ModalInfo";
 import { ModalVR } from "./ui/ModalVR";
 import { BtnStart } from "./ui/BtnStart";
 import { HeroSection } from "./ui/HeroSection";
-import { SceneMessage } from "./ui/SceneMessage";
 import { BtnsHub } from "./ui/BtnsHub";
 
 export const UI = ({
@@ -58,11 +57,6 @@ export const UI = ({
           />
         </>
       )}
-
-      <SceneMessage
-        sceneMessage={punk ? true : false}
-        message="PLEASE NOTE— This scene is under 🚧 construction"
-      />
 
       <BtnFullScreen />
 

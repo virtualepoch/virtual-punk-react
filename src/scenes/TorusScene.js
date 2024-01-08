@@ -47,10 +47,10 @@ export const TorusScene = ({ performance, thirdPerson }) => {
     sceneMap.current.position.z += 0.03;
   });
 
-  const camPos = 10;
+  const camPos = 1;
   return (
     <group>
-      <PerspectiveCamera ref={cam} position={[0, 0, camPos]} />
+      <PerspectiveCamera ref={cam} makeDefault position={[0, 0, camPos]} />
 
       <OrbitControls
         minDistance={0}
