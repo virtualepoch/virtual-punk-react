@@ -2,7 +2,7 @@ import { useMatch } from "react-router-dom";
 
 import { HeaderLogo } from "./HeaderLogo";
 import { SceneTitle } from "./SceneTitle";
-import { BtnNavMenu } from "./BtnNavMenu";
+import { BtnNavMenu } from "./buttons/BtnNavMenu";
 
 import "./header.css";
 

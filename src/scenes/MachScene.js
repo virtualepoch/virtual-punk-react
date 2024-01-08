@@ -7,7 +7,7 @@ import { degToRad } from "three/src/math/MathUtils";
 import { JetConcept } from "../components/models/Jet_concept";
 import { EarthTank2k } from "../components/models/EarthTank2k";
 
-export const MachScene = ({ performance, vrSession }) => {
+export const MachScene = ({ performanceLevel, vrSession }) => {
   const directionalLight = useRef();
   // useHelper(directionalLight, THREE.DirectionalLightHelper, 1, "red");
   const viewport = useThree((state) => state.viewport); // used to scale scene

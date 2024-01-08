@@ -8,7 +8,13 @@ import { HubLinkOrbs } from "../components/three/HubLinkOrbs";
 import { TorusGroup } from "../components/three/TorusGroup";
 import { Ocean } from "../components/three/Ocean";
 
-export const Hub = ({ hubLink, setHubLink, hubBtnClicked, performance }) => {
+export const Hub = ({
+  hubLink,
+  setHubLink,
+  hubBtnClicked,
+  performanceLevel,
+  setModalInfoOpen,
+}) => {
   // Params for responsive sizing
   const viewport = useThree((state) => state.viewport);
   const portrait = viewport.width < viewport.height;
@@ -28,6 +34,7 @@ export const Hub = ({ hubLink, setHubLink, hubBtnClicked, performance }) => {
   const [hubLinkClicked, setHubLinkClicked] = useState();
 
   const navTimeout = () => {
+    setModalInfoOpen(false);
     setTimeout(() => {
       navigate(
         hubLink === 0
@@ -56,7 +63,7 @@ export const Hub = ({ hubLink, setHubLink, hubBtnClicked, performance }) => {
         <HubLinkOrbs
           hubLink={hubLink}
           setHubLink={setHubLink}
-          performance={performance}
+          performanceLevel={performanceLevel}
         />
 
         {visibleItem === 0 && (

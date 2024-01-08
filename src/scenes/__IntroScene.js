@@ -9,7 +9,7 @@ import { SpinningPanels } from "../components/three/SpinningPanels";
 import { TorusGroup } from "../components/three/TorusGroup";
 import { Ocean } from "../components/three/Ocean";
 
-export const IntroScene = ({ start, hub, setHub, performance }) => {
+export const IntroScene = ({ start, hub, setHub, performanceLevel }) => {
   const sceneObjects = useRef();
   const clock = new Clock();
 
@@ -39,7 +39,7 @@ export const IntroScene = ({ start, hub, setHub, performance }) => {
         maxPolarAngle={Math.PI / 1.5}
       />
 
-      <RabbitHole position={[0, 0, -38]} performance={performance} />
+      <RabbitHole position={[0, 0, -38]} performanceLevel={performanceLevel} />
 
       <SpinningPanels
         panelsPosition={[0, 0, -95]}
@@ -52,7 +52,7 @@ export const IntroScene = ({ start, hub, setHub, performance }) => {
         position={[0, 0, -98]}
         rotation={[0, 0, 0]}
         start={start}
-        performance={performance}
+        performanceLevel={performanceLevel}
       />
 
       <Ocean

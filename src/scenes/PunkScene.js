@@ -15,35 +15,35 @@ import { Atom } from "../components/three/Atom";
 import { GridCity } from "../components/models/GridCity";
 
 export const PunkScene = () => {
-  const TextureTest = ({ performance }) => {
+  const TextureTest = ({ performanceLevel }) => {
     const textures = useTexture({
       map: `${
-        performance < 2
+        performanceLevel < 2
           ? "/textures/metal-futuristic-grid/baseColor.png"
           : "/textures/metal-futuristic-grid/baseColor.png"
       }`,
       displacementMap: `${
-        performance < 2
+        performanceLevel < 2
           ? "/textures/metal-futuristic-grid/height.png"
           : "/textures/metal-futuristic-grid/height.png"
       }`,
       roughnessMap: `${
-        performance < 2
+        performanceLevel < 2
           ? "/textures/metal-futuristic-grid/roughness.png"
           : "/textures/metal-futuristic-grid/roughness.png"
       }`,
       metalnessMap: `${
-        performance < 2
+        performanceLevel < 2
           ? "/textures/metal-futuristic-grid/metallic.png"
           : "/textures/metal-futuristic-grid/metallic.png"
       }`,
       normalMap: `${
-        performance < 2
+        performanceLevel < 2
           ? "/textures/metal-futuristic-grid/normal.png"
           : "/textures/metal-futuristic-grid/normal.png"
       }`,
       alphaMap: `${
-        performance < 2
+        performanceLevel < 2
           ? "/textures/metal-futuristic-grid/opacity.png"
           : "/textures/metal-futuristic-grid/opacity.png"
       }`,

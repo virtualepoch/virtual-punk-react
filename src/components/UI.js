@@ -3,16 +3,16 @@ import { useMatch } from "react-router-dom";
 
 // UI COMPONENTS //
 import { MainOverlay } from "./ui/MainOverlay";
-import { BtnFullScreen } from "./ui/BtnFullScreen";
+import { BtnFullScreen } from "./ui/buttons/BtnFullScreen";
 import { Header } from "./ui/Header";
 import { NavMenu } from "./ui/NavMenu";
 import { FpsMeter } from "./ui/FpsMeter";
 // import { Leva } from "leva";
-import { ModalInfo } from "./ui/ModalInfo";
-import { ModalVR } from "./ui/ModalVR";
-import { BtnStart } from "./ui/BtnStart";
+import { ModalInfo } from "./ui/modals/ModalInfo";
+import { ModalVR } from "./ui/modals/ModalVR";
+import { BtnStart } from "./ui/buttons/BtnStart";
 import { HeroSection } from "./ui/HeroSection";
-import { BtnsHub } from "./ui/BtnsHub";
+import { BtnsHub } from "./ui/buttons/BtnsHub";
 
 export const UI = ({
   start,
@@ -27,12 +27,15 @@ export const UI = ({
   setHubBtnClicked,
   thirdPerson,
   setThirdPerson,
-  performance,
+  performanceLevel,
+  modalInfoOpen,
+  setModalInfoOpen,
+  modalVROpen,
+  setModalVROpen,
+  fpsMeter,
+  setFpsMeter,
 }) => {
   const [navMenuOpen, setNavMenuOpen] = useState(false);
-  const [modalInfoOpen, setModalInfoOpen] = useState(false);
-  const [modalVROpen, setModalVROpen] = useState(false);
-  const [fpsMeter, setFpsMeter] = useState(false);
 
   const intro = useMatch("/");
   const hub = useMatch("/hub");
@@ -43,8 +46,6 @@ export const UI = ({
 
   return (
     <>
-      <p className="performance-num">{performance}</p>
-
       {/* INTRO SCENE STUFF /////////////////////// */}
       {intro && (
         <>
@@ -82,7 +83,11 @@ export const UI = ({
         setModalVROpen={setModalVROpen}
       />
 
-      <FpsMeter fpsMeter={fpsMeter} setFpsMeter={setFpsMeter} />
+      <FpsMeter
+        fpsMeter={fpsMeter}
+        setFpsMeter={setFpsMeter}
+        performanceLevel={performanceLevel}
+      />
 
       {/* INFO STUFF /////////////////////// */}
       <button

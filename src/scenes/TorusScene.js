@@ -15,7 +15,7 @@ import { TorusSceneMap } from "./TorusSceneMap";
 import { Ocean } from "../components/three/Ocean";
 import texture from "../assets/images/panoramas/cyber-sky.jpg";
 
-export const TorusScene = ({ performance, thirdPerson }) => {
+export const TorusScene = ({ performanceLevel, thirdPerson }) => {
   const map = useLoader(THREE.TextureLoader, texture);
 
   const directionalLight = useRef();
@@ -68,7 +68,7 @@ export const TorusScene = ({ performance, thirdPerson }) => {
 
       <DragonFlying dragonRef={dragonTorus} />
 
-      <TorusSceneMap sceneMap={sceneMap} />
+      <TorusSceneMap sceneMap={sceneMap} performanceLevel={performanceLevel} />
     </group>
   );
 };

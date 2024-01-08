@@ -3,19 +3,6 @@
   height: 100vh;
 }
 
-.performance-num {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  z-index: 99999;
-  border-top-right-radius: 100px;
-  box-shadow: -2px 2px 10px 2px black;
-  background: transparent;
-  backdrop-filter: blur(2px);
-  font-size: 20px;
-  pointer-events: none;
-}
-
 /* FPS METER //////////// */
 .fps {
   width: 200px;
@@ -61,26 +48,7 @@
   transition: transform 500ms ease;
 }
 
-/* TORUS SCENE STUFF ///////////// */
-.torus-btn-wrap {
-  border-radius: 100px;
-  box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.2);
-  display: flex;
-}
-
-.torus-btn-wrap .btn {
-  width: 50px;
-  height: 50px;
-  background: url(../../public/icons/chevron-right-cyan.svg) center / 20%
-    no-repeat;
-}
-
-.torus-btn-wrap .btn.down {
-  background: url(../../public/icons/chevron-left-cyan.svg) center / 20%
-    no-repeat;
-}
-
-/* CANVAS */
+/* Canvas ///////////////////////////////////////////// */
 .canvas {
   background: linear-gradient(
       transparent 20%,
@@ -97,34 +65,11 @@
     linear-gradient(to right, transparent, #a5cc82, transparent);
 }
 
-.canvas.torus {
-  background: linear-gradient(
-      transparent 20%,
-      rgba(255, 255, 255, 0.3),
-      transparent 80%
-    ),
-    linear-gradient(
-      to right,
-      transparent 30%,
-      rgba(255, 255, 255, 0.3),
-      transparent 70%
-    ),
-    linear-gradient(transparent, #009b9b, transparent),
-    linear-gradient(to right, transparent, #a5cc82, transparent);
-}
-
-.canvas.space {
+.canvas.black {
   background: black;
 }
 
-.canvas.bday {
-  background: linear-gradient(pink, white, pink);
-}
-
-.canvas.bday-dad {
-  background: linear-gradient(aqua, white, aqua);
-}
-
+/* Styling for ScrollControls ////////////////////////////////// */
 .canvas-section {
   height: 100vh;
   width: 100vw;

@@ -21,7 +21,7 @@ import { PlaneFloor } from "../components/three/PlaneFloor";
 import { SpiderWolfAnim } from "../components/models/SpiderWolfAnim";
 import { FearCrawlEdit } from "../components/models/FearCrawlEdit";
 
-export const PanicScene = ({ vrSession, performance }) => {
+export const PanicScene = ({ vrSession, performanceLevel }) => {
   const directionalLight = useRef();
   // useHelper(directionalLight, DirectionalLightHelper, 1, "red");
   // const pointLight = useRef();
@@ -65,28 +65,28 @@ export const PanicScene = ({ vrSession, performance }) => {
         <PlaneWall
           args={[12, 20]}
           position={[0, 10, -9]}
-          performance={performance}
+          performanceLevel={performanceLevel}
         />
 
         <PlaneFloor
           args={[12, 20]}
           position={[0, -0.2, 0]}
           rotX={-Math.PI / 2}
-          performance={performance}
+          performanceLevel={performanceLevel}
         />
 
         <PlaneWall
           args={[20, 20]}
           position={[-6, 10, -1]}
           rotY={Math.PI / 2}
-          performance={performance}
+          performanceLevel={performanceLevel}
         />
 
         <PlaneWall
           args={[20, 20]}
           position={[6, 10, -1]}
           rotY={-Math.PI / 2}
-          performance={performance}
+          performanceLevel={performanceLevel}
         />
 
         <Spider

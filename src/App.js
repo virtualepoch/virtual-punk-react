@@ -14,7 +14,7 @@ import { TorusScene } from "./scenes/TorusScene.js";
 import { MachScene } from "./scenes/MachScene.js";
 import { PanicScene } from "./scenes/PanicScene.js";
 import { PunkScene } from "./scenes/PunkScene.js";
-import { IdahomeScene } from "./scenes/IdahomeScene.js";
+import { TestScene } from "./scenes/ZtestScene.js";
 
 // VIRTUAL B-DAY CARDS
 // import { SandyBday } from "./scenes/bday-cards/SandyBday";
@@ -30,18 +30,21 @@ import "./css/buttons.css";
 // import "./bday.css";
 
 // Idahome Stuff /////////////////////////////////////
-import { IdahomeUI } from "./__idahome/IdahomeUI.js";
+import { IdahomeUI } from "./__idahome/components/IdahomeUI.js";
+import { IdahomeScene } from "./scenes/___IdahomeScene.js";
 import "./__idahome/idahome.css";
-import { TestScene } from "./_testing/_TestScene.js";
 
 function App() {
   // useState hooks
   const [start, setStart] = useState(false); // Where:(UI(BtnStart) & IntroScene), For:(to activate the scene animation)
   const [hub, setHub] = useState(false); // (IntroScene) cancels the IntroScene animation / navigates to the Hub
-  const [linkClicked, setLinkClicked] = useState(false); // (UI(NavMenu) & MyCamControls) resets cam posistion when a Link is clicked (Scene changes)
-  const [performance, setPerformance] = useState(1); // ("0-2") (App(PerformanceMonitor) & IntroScene & TorusScene) lowers asset quality based on fps
+  const [linkClicked, setLinkClicked] = useState(false); // (UI(NavMenu) & MyCamControls) resets cam position when a Link is clicked (Scene changes)
+  const [performanceLevel, setPerformanceLevel] = useState(1); // ("0-2") (App(PerformanceMonitor) & all scenes) the lower the number the lower the devices performance. Lowers asset quality based on fps
   const [hubLink, setHubLink] = useState(0); // (UI(BtnsHub) & Hub) changes the currently displayed hub link
   const [hubBtnClicked, setHubBtnClicked] = useState(false); // (UI(BtnsHub) & Hub(HubLink)) switch to cycle the opacity of the HubLink title and triangle backdrop
+  const [modalInfoOpen, setModalInfoOpen] = useState(false);
+  const [modalVROpen, setModalVROpen] = useState(false);
+  const [fpsMeter, setFpsMeter] = useState(false);
 
   // VR hooks
   const [vrSession, setVrSession] = useState(false);
@@ -69,7 +72,8 @@ function App() {
     <div className="App">
       <Loader />
       {idahomeActive ? (
-        <IdahomeUI />
+        <IdahomeUI     fpsMeter={fpsMeter}
+        setFpsMeter={setFpsMeter}/>
       ) : (
         <UI
           start={start}
@@ -81,6 +85,10 @@ function App() {
           setHubLink={setHubLink}
           hubBtnClicked={hubBtnClicked}
           setHubBtnClicked={setHubBtnClicked}
+          modalInfoOpen={modalInfoOpen}
+          setModalInfoOpen={setModalInfoOpen}
+          modalVROpen={modalVROpen}
+          setModalVROpen={setModalVROpen}
           //VR hooks
           foveation={foveation}
           setFoveation={setFoveation}
@@ -88,7 +96,9 @@ function App() {
           // TorusScene
           thirdPerson={thirdPerson}
           setThirdPerson={setThirdPerson}
-          performance={performance}
+          performanceLevel={performanceLevel}
+          fpsMeter={fpsMeter}
+          setFpsMeter={setFpsMeter}
         />
       )}
 
@@ -96,10 +106,10 @@ function App() {
         <PerformanceMonitor
           bounds={(fps) => (fps > 90 ? [50, 90] : [40, 60])}
           onDecline={(fps) => {
-            setPerformance(0);
+            setPerformanceLevel(0);
           }}
           onIncline={(fps) => {
-            setPerformance(2);
+            setPerformanceLevel(2);
           }}
         />
 
@@ -136,7 +146,7 @@ function App() {
                     setStart={setStart}
                     hub={hub}
                     setHub={setHub}
-                    performance={performance}
+                    performanceLevel={performanceLevel}
                   />
                 }
               />
@@ -148,7 +158,8 @@ function App() {
                     hubLink={hubLink}
                     setHubLink={setHubLink}
                     hubBtnClicked={hubBtnClicked}
-                    performance={performance}
+                    performanceLevel={performanceLevel}
+                    setModalInfoOpen={setModalInfoOpen}
                   />
                 }
               />
@@ -157,7 +168,7 @@ function App() {
                 path="/torus"
                 element={
                   <TorusScene
-                    performance={performance}
+                    performanceLevel={performanceLevel}
                     thirdPerson={thirdPerson}
                   />
                 }
@@ -166,30 +177,36 @@ function App() {
               <Route
                 path="/mach"
                 element={
-                  <MachScene performance={performance} vrSession={vrSession} />
+                  <MachScene
+                    performanceLevel={performanceLevel}
+                    vrSession={vrSession}
+                  />
                 }
               />
 
               <Route
                 path="/panic"
                 element={
-                  <PanicScene performance={performance} vrSession={vrSession} />
+                  <PanicScene
+                    performanceLevel={performanceLevel}
+                    vrSession={vrSession}
+                  />
                 }
               />
 
               <Route
                 path="/punk"
-                element={<PunkScene performance={performance} />}
+                element={<PunkScene performanceLevel={performanceLevel} />}
               />
 
               <Route
                 path="/test"
-                element={<TestScene performance={performance} />}
+                element={<TestScene performanceLevel={performanceLevel} />}
               />
 
               <Route
                 path="/idahome"
-                element={<IdahomeScene performance={performance} />}
+                element={<IdahomeScene performanceLevel={performanceLevel} />}
               />
             </Routes>
           </XR>

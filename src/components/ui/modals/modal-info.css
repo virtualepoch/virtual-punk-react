@@ -1,0 +1,108 @@
+.modal-info {
+  width: calc(100% - 50px);
+  max-width: 700px;
+  height: calc(100% - 60px);
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  z-index: 443;
+  margin: 0 30px 0 10px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(20px);
+  border-radius: 15px;
+  box-shadow: -1px 1px 10px 1px rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 700px) {
+  .modal-info {
+    background: rgba(0, 0, 0, 0.99);
+    backdrop-filter: none;
+  }
+}
+
+/* CSSTransition Styling */
+.modal-info-enter {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+.modal-info-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition: 700ms ease;
+}
+.modal-info-exit {
+  transform: translateX(0);
+  opacity: 1;
+}
+.modal-info-exit-active {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: 700ms ease;
+}
+
+.info-container {
+  height: 100%;
+  width: 100%;
+  padding: 20px 30px 200px;
+  overflow: auto;
+}
+
+.info-header {
+  color: red;
+  font: 30px Ailerons;
+  text-shadow: 1px 0 3px cyan;
+}
+
+.info-hr {
+  width: 80%;
+  min-height: 1px;
+  border: none;
+  background: cyan;
+}
+
+.info-hr.red {
+  width: 40%;
+  background: rgb(255, 80, 80);
+  box-shadow: 0 0 5px 1px rgb(255, 80, 80);
+}
+
+/* CONTENT & LINKS */
+
+.info-wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.info-text {
+  color: rgb(150, 255, 255);
+  font-size: 20px;
+}
+
+.info-text.author {
+  text-decoration: underline;
+}
+
+.info-link {
+  min-width: 100%;
+  min-height: 100px;
+  position: relative;
+}
+
+.info-link::after {
+  content: "Click image to visit source site";
+  width: fit-content;
+  height: fit-content;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20px;
+  z-index: 100;
+  color: white;
+  font-size: 15px;
+  filter: drop-shadow(0 1px 2px black);
+}
+
+.info-img {
+  width: 100%;
+}

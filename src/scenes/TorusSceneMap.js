@@ -8,35 +8,35 @@ import { FloatingIslandPortal } from "../components/models/FloatingIslandPortal"
 import { DragonFantasy } from "../components/models/DragonFantasy";
 import { TempleOfLight } from "../components/models/TempleOfLight";
 
-export const TorusSceneMap = ({ sceneMap }) => {
+export const TorusSceneMap = ({ sceneMap, performanceLevel }) => {
   const textures = useTexture({
     map: `${
-      performance < 2
+      performanceLevel < 2
         ? "/textures/moss-rock/baseColor-1024.jpg"
         : "/textures/moss-rock/baseColor.jpg"
     }`,
     displacementMap: `${
-      performance < 2
+      performanceLevel < 2
         ? "/textures/moss-rock/height-1024.jpg"
         : "/textures/moss-rock/height.jpg"
     }`,
     roughnessMap: `${
-      performance < 2
+      performanceLevel < 2
         ? "/textures/moss-rock/roughness-1024.jpg"
         : "/textures/moss-rock/roughness.jpg"
     }`,
     metalnessMap: `${
-      performance < 2
+      performanceLevel < 2
         ? "/textures/moss-rock/metallic-16.jpg"
         : "/textures/moss-rock/metallic.jpg"
     }`,
     normalMap: `${
-      performance < 2
+      performanceLevel < 2
         ? "/textures/moss-rock/normal-1024.jpg"
         : "/textures/moss-rock/normal.jpg"
     }`,
     alphaMap: `${
-      performance < 2
+      performanceLevel < 2
         ? "/textures/moss-rock/opacity-16.jpg"
         : "/textures/moss-rock/opacity.jpg"
     }`,
