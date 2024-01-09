@@ -1,7 +1,6 @@
 .header-idahome {
   position: fixed;
   top: 0;
-  left: 0;
   z-index: 1010;
   height: 50px;
   width: 100%;
@@ -28,7 +27,11 @@
 }
 
 /* BTN NAV MENU ///////////////////////////////////////////// */
-.btn-idahome-menu .bar {
+.btn-open-idahome-nav {
+  position: relative;
+}
+
+.btn-open-idahome-nav .bar {
   width: 50%;
   height: 2px;
   border-radius: 100px;
@@ -36,142 +39,46 @@
   transition: transform 200ms linear;
 }
 
-.btn-idahome-menu .bar.open {
+.btn-open-idahome-nav .bar.open {
   top: 41%;
   background: white;
   box-shadow: 0 0 1px 1px black, 0 1px 1px 1px black,
     1px 1px 5px 1px rgba(0, 0, 0, 0.4), 0 -0.5px 1px 1px cyan;
 }
 
-.btn-idahome-menu .bar.open:nth-child(2) {
+.btn-open-idahome-nav .bar.open:nth-child(2) {
   top: auto;
   bottom: 41%;
 }
 
-.btn-idahome-menu .bar.open.scale-x {
+.btn-open-idahome-nav .bar.open.scale-x {
   transform: scaleX(0);
 }
 
-.btn-idahome-menu .bar.close {
+.btn-open-idahome-nav .bar.close {
   top: 50%;
   background: red;
   filter: drop-shadow(0 0 5px cyan);
   transform: rotate(45deg);
 }
 
-.btn-idahome-menu .bar.close:nth-child(4) {
+.btn-open-idahome-nav .bar.close:nth-child(4) {
   transform: rotate(-45deg);
 }
 
-.btn-idahome-menu .bar.close.scale-x {
+.btn-open-idahome-nav .bar.close.scale-x {
   transform: rotate(45deg) scaleX(0);
 }
 
-.btn-idahome-menu .bar.close.scale-x:nth-child(4) {
+.btn-open-idahome-nav .bar.close.scale-x:nth-child(4) {
   transform: rotate(-45deg) scaleX(0);
 }
 
 /* NAV MENU ///////////////////////////////// */
-
-.idahome-nav-menu {
-  width: calc(100% - 20px);
-  height: calc(100% - 100px);
-  position: fixed;
-  top: 50px;
-  left: 0;
-  right: 0;
-  z-index: 666;
-  margin: 0 10px;
-  padding: 10px;
-  overflow: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  box-shadow: inset 0 1px 7px 1px rgba(0, 0, 0, 0.7);
-}
-
-.idahome-nav-menu ul {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-}
-
-.idahome-nav-menu li {
-  width: 70px;
-  height: 70px;
-  /* border: solid red; */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: translate(50%, -100%);
-}
-
-/* CSSTransition ////////////////////////////////// */
-.li-enter {
-  transform: translate(2000%, 0%);
-}
-.li-enter-active {
-  transform: translate(0%, 0%);
-  transition: transform 500ms ease;
-}
-.li-exit {
-  transform: translate(0%, 0%);
-}
-.li-exit-active {
-  transform: translate(2000%, 0%);
-  transition: transform 500ms ease;
-}
-
-.idahome-nav-menu .link {
-  width: 100%;
-  min-width: 100%;
-  height: 100%;
-  background: blue;
-  margin: 30px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font: 100 25px Ailerons;
-  letter-spacing: 4px;
-  text-decoration: none;
-  border: 1px solid aqua;
-  border-radius: 200px;
-  box-shadow: inset 0 0 10px 1px rgb(0, 255, 255, 0.6),
-    2px 2px 5px 1px rgb(0, 0, 0, 0.7);
-}
-
-.idahome-nav-menu .link.active,
-.idahome-nav-menu .link:hover {
-  background: cyan;
-  color: blue;
-  border: none;
-  box-shadow: inset -2px -2px 5px 1px rgba(0, 0, 0, 0.7),
-    0 2px 5px 1px rgba(0, 0, 0, 0.7);
-  color: white;
-  text-shadow: 1px 0 2px blue, -1px 0 2px blue, 0 1px 2px blue, 0 -1px 2px blue,
-    2px 2px 3px black;
-}
-
-@media (max-width: 700px) {
-  .idahome-nav-menu .link,
-  .idahome-nav-menu .link.active,
-  .idahome-nav-menu .link:hover {
-    box-shadow: none;
-  }
-}
-
-/* BACKGROUND WATER //////////////////////////// */
-.nav-bg {
+.idahome-nav {
   width: 100%;
   height: 100%;
   position: fixed;
-  right: 0;
-  top: 0;
   z-index: 10;
   background: linear-gradient(
     109.5deg,
@@ -179,26 +86,110 @@
     rgba(86, 255, 248, 0.7) 78.4%
   );
   backdrop-filter: blur(5px);
-  border-radius: 1010px;
-  transform: translate(0) scale(2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
 }
-
 /* CSSTransition //////////////////////////////// */
-.nav-bg-enter {
-  transform: translate(100%, -100%) scale(1);
+.idahome-nav-enter {
+  opacity: 0;
 }
-.nav-bg-enter-active {
-  transform: translate(0) scale(2);
-  transition: transform 400ms ease;
+.idahome-nav-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease;
 }
-.nav-bg-exit {
-  transform: translate(0) scale(2);
+.idahome-nav-exit {
+  opacity: 1;
 }
-.nav-bg-exit-active {
-  transform: translate(100%, -100%) scale(1);
-  transition: transform 400ms ease;
+.idahome-nav-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease;
 }
 
+/* LINK /////////////////////////////////////////////////////// */
+.link-schedule,
+.link-services,
+.link-reviews,
+.link-about {
+  width: 60px;
+  min-width: 60px;
+  height: 60px;
+  background: blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font: 100 25px Ailerons;
+  letter-spacing: 4px;
+  border: 1px solid aqua;
+  border-radius: 200px;
+  box-shadow: inset 0 0 10px 1px rgb(0, 255, 255, 0.6),
+    2px 2px 5px 1px rgb(0, 0, 0, 0.7);
+}
+
+:root {
+  --schedule-time: 500ms;
+  --schedule-offset: 60px;
+  --services-time: 1000ms;
+  --services-offset: -60px;
+  --reviews-time: 1000ms;
+  --reviews-offset: -60px;
+  --about-time: 1000ms;
+  --about-offset: -60px;
+}
+
+/* .link-services{
+  transform: translate(50vw, calc(-50vh - 60px));
+} */
+/* .link:hover {
+  background: cyan;
+  color: blue;
+  border: none;
+  box-shadow: inset -2px -2px 5px 1px rgba(0, 0, 0, 0.7),
+    0 2px 5px 1px rgba(0, 0, 0, 0.7);
+  text-shadow: 1px 0 2px blue, -1px 0 2px blue, 0 1px 2px blue, 0 -1px 2px blue,
+    2px 2px 3px black;
+} */
+
+/* SCHEDULE CSSTransition ////////////////////////////////// */
+.link-schedule-enter {
+  transform: translate(50vw, calc(-50vh + var(--schedule-offset)));
+}
+.link-schedule-enter-active {
+  transform: translate(0);
+  transition: transform var(--schedule-time) ease;
+}
+
+/* SERVICES CSSTransition ///////////////// */
+.link-services-enter {
+  transform: translate(50vw, calc(-50vh + var(--services-offset)));
+}
+.link-services-enter-active {
+  transform: translate(0);
+  transition: transform var(--services-time) ease;
+}
+
+/* REVIEWS CSSTransition ///////////////// */
+.link-reviews-enter {
+  transform: translate(50vw, calc(-50vh + var(--services-offset)));
+}
+.link-reviews-enter-active {
+  transform: translate(0);
+  transition: transform var(--reviews-time) ease;
+}
+
+/* ABOUT CSSTransition ///////////////// */
+.link-about-enter {
+  transform: translate(50vw, calc(-50vh + var(--services-offset)));
+}
+.link-about-enter-active {
+  transform: translate(0);
+  transition: transform var(--reviews-time) ease;
+}
+
+/* /////////////////////////////////////////////////////////////////// */
 /* FOOTER STUFF TO DELETE LATER /////////////////////////////////////////// */
 .footer-menu {
   width: calc(100% - 40px);

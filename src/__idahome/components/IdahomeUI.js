@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BtnIdahomeMenu } from "./BtnIdahomeNavMenu";
+import { BtnOpenIdahomeNav } from "./BtnOpenIdahomeNav";
 import { IdahomeNavMenu } from "./IdahomeNavMenu";
 import { FpsMeter } from "../../components/ui/FpsMeter";
 
@@ -10,22 +10,22 @@ export const IdahomeUI = ({
   bgRes,
   setBgRes,
 }) => {
-  const [idahomeNavMenuOpen, setIdahomeNavMenuOpen] = useState(false);
+  const [idahomeNav, setIdahomeNav] = useState(false);
 
   return (
     <>
       <header className="header-idahome">
         <div className="logo-idahome" />
         <h1 className="title-idahome">IdahomeServ</h1>
-        <BtnIdahomeMenu
-          idahomeNavMenuOpen={idahomeNavMenuOpen}
-          setIdahomeNavMenuOpen={setIdahomeNavMenuOpen}
+        <BtnOpenIdahomeNav
+          idahomeNav={idahomeNav}
+          setIdahomeNav={setIdahomeNav}
         />
       </header>
 
       <IdahomeNavMenu
-        idahomeNavMenuOpen={idahomeNavMenuOpen}
-        setIdahomeNavMenuOpen={setIdahomeNavMenuOpen}
+        idahomeNav={idahomeNav}
+        setIdahomeNav={setIdahomeNav}
         fpsMeter={fpsMeter}
         setFpsMeter={setFpsMeter}
         performanceLevel={performanceLevel}
