@@ -9,74 +9,94 @@ export function IdahomeNavMenu({
   bgRes,
   setBgRes,
 }) {
-  function CustomLink({ to, children, ...props }) {
+  function CustomLink({
+    timeout = 500,
+    classNames,
+    className,
+    to,
+    children,
+    ...props
+  }) {
     const resolvedPath = useResolvedPath(to);
     const isActive = useMatch({ path: resolvedPath.pathname, end: true });
 
     return (
-      <li className="link-li">
-        <Link
-          to={to}
-          {...props}
-          className={isActive ? "active link" : "link"}
-          onClick={() => {
-            setIdahomeNavMenuOpen(false);
-          }}
-        >
-          {children}
-        </Link>
-      </li>
+      <CSSTransition
+        in={idahomeNavMenuOpen}
+        unmountOnExit
+        timeout={500}
+        classNames="li"
+      >
+        <li className={className}>
+          <Link
+            to={to}
+            {...props}
+            className={isActive ? "active link" : "link"}
+            onClick={() => {
+              setIdahomeNavMenuOpen(false);
+            }}
+          >
+            {children}
+          </Link>
+        </li>
+      </CSSTransition>
     );
   }
 
   return (
     <>
+      <nav className="idahome-nav-menu">
+        <ul>
+          <CustomLink className="li schedule" to={"/idahome"}>
+            Schedule
+          </CustomLink>
+          <CustomLink className="li services" to={"/idahome"}>
+            Services
+          </CustomLink>
+          <CustomLink className="li reviews" to={"/idahome"}>
+            Reviews
+          </CustomLink>
+          <CustomLink className="li about" to={"/idahome"}>
+            About
+          </CustomLink>
+        </ul>
+      </nav>
+
       <CSSTransition
         in={idahomeNavMenuOpen}
         unmountOnExit
         timeout={800}
-        classNames="idahome-nav-menu"
+        classNames="footer-menu"
       >
-        <nav className="idahome-nav-menu">
-          <div className="btns-bg-res">
-            <p>Background Res:</p>
-            <div className="btns-bg-res-wrap">
-              <button
-                className={bgRes === "low" ? "low active" : "low"}
-                onClick={() => {
-                  setIdahomeNavMenuOpen(false);
-                  setBgRes("low");
-                }}
-              >
-                2k
-              </button>
-              <button
-                className={bgRes === "mid" ? "mid active" : "mid"}
-                onClick={() => {
-                  setIdahomeNavMenuOpen(false);
-                  setBgRes("mid");
-                }}
-              >
-                4k
-              </button>
-              <button
-                className={bgRes === "high" ? "high active" : "high"}
-                onClick={() => {
-                  setIdahomeNavMenuOpen(false);
-                  setBgRes("high");
-                }}
-              >
-                6k
-              </button>
-            </div>
-          </div>
-          <ul>
-            <CustomLink to={"/idahome"}>Schedule</CustomLink>
-            <CustomLink to={"/idahome"}>Services</CustomLink>
-            <CustomLink to={"/idahome"}>Testimonials</CustomLink>
-            <CustomLink to={"/idahome"}>Images</CustomLink>
-            <CustomLink to={"/idahome"}>About</CustomLink>
-          </ul>
+        <div className="footer-menu">
+          <p>Bg:</p>
+          <button
+            className={bgRes === "low" ? "btn-bg-res active" : "btn-bg-res"}
+            onClick={() => {
+              setIdahomeNavMenuOpen(false);
+              setBgRes("low");
+            }}
+          >
+            3k
+          </button>
+          <button
+            className={bgRes === "mid" ? "btn-bg-res active" : "btn-bg-res"}
+            onClick={() => {
+              setIdahomeNavMenuOpen(false);
+              setBgRes("mid");
+            }}
+          >
+            4k
+          </button>
+          <button
+            className={bgRes === "high" ? "btn-bg-res active" : "btn-bg-res"}
+            onClick={() => {
+              setIdahomeNavMenuOpen(false);
+              setBgRes("high");
+            }}
+          >
+            5k
+          </button>
 
           <button
             className={fpsMeter ? "btn-fps meter-open" : "btn-fps"}
@@ -86,25 +106,16 @@ export function IdahomeNavMenu({
           >
             FPS
           </button>
-        </nav>
+        </div>
       </CSSTransition>
 
       <CSSTransition
         in={idahomeNavMenuOpen}
         unmountOnExit
-        timeout={800}
-        classNames={"left"}
+        timeout={400}
+        classNames="nav-bg"
       >
-        <div className="idahome-bg left"></div>
-      </CSSTransition>
-
-      <CSSTransition
-        in={idahomeNavMenuOpen}
-        unmountOnExit
-        timeout={800}
-        classNames={"right"}
-      >
-        <div className="idahome-bg right"></div>
+        <div className="nav-bg" />
       </CSSTransition>
     </>
   );

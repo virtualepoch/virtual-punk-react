@@ -16,12 +16,12 @@ export function PoolMountains({ position, rotY, bgRes }) {
 
   const texture = useTexture(
     bgRes === "high"
-      ? "./images/idahome/boise-6k.jpg"
+      ? "./images/idahome/boise-5k.jpg"
       : bgRes === "mid"
       ? "./images/idahome/boise-4k.jpg"
       : bgRes === "low"
-      ? "./images/idahome/boise-2k.jpg"
-      : "./images/idahome/boise-2k.jpg"
+      ? "./images/idahome/boise-3k.jpg"
+      : "./images/idahome/boise-3k.jpg"
   );
   texture.repeat.set(1, 1);
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;

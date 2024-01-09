@@ -108,7 +108,10 @@ function App() {
         />
       )}
 
-      <Canvas className="canvas" camera={{ fov: 30, position: [0, 0, 1] }}>
+      <Canvas
+        className={idahomeActive ? "canvas-idahome" : "canvas"}
+        camera={{ fov: 30, position: [0, 0, 1] }}
+      >
         <PerformanceMonitor
           bounds={(fps) => (fps > 90 ? [50, 90] : [40, 60])}
           onDecline={(fps) => {
@@ -212,7 +215,12 @@ function App() {
 
               <Route
                 path="/idahome"
-                element={<IdahomeScene performanceLevel={performanceLevel} bgRes={bgRes} />}
+                element={
+                  <IdahomeScene
+                    performanceLevel={performanceLevel}
+                    bgRes={bgRes}
+                  />
+                }
               />
             </Routes>
           </XR>

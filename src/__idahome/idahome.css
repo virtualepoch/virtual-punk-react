@@ -39,8 +39,8 @@
 .btn-idahome-menu .bar.open {
   top: 41%;
   background: white;
-  box-shadow: 0 0 1px 1px black, 1px 1px 1px 1px black, 1px 1px 5px 1px black,
-    0 0 1px 1px cyan;
+  box-shadow: 0 0 1px 1px black, 0 1px 1px 1px black,
+    1px 1px 5px 1px rgba(0, 0, 0, 0.4), 0 -0.5px 1px 1px cyan;
 }
 
 .btn-idahome-menu .bar.open:nth-child(2) {
@@ -72,29 +72,6 @@
 }
 
 /* NAV MENU ///////////////////////////////// */
-.btns-bg-res {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  color: white;
-}
-
-.btns-bg-res-wrap {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-}
-
-.btns-bg-res-wrap button {
-  color: white;
-  border: 1px solid;
-  border-radius: 10px;
-}
-
-.btns-bg-res-wrap button.active {
-  background: rgba(200, 200, 200, 0.5);
-}
 
 .idahome-nav-menu {
   width: calc(100% - 20px);
@@ -110,134 +87,49 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   border-radius: 10px;
   box-shadow: inset 0 1px 7px 1px rgba(0, 0, 0, 0.7);
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(2px);
 }
 
-@media (max-width: 700px) {
-  .idahome-nav-menu {
-    box-shadow: none;
-    background: rgba(0, 0, 0, 0.8);
-    border: 1px solid cyan;
-    backdrop-filter: none;
-  }
-}
-
-/* NavMenu CSSTransition */
-.idahome-nav-menu-enter {
-  transform: translateY(-130%);
-}
-.idahome-nav-menu-enter-active {
-  transform: translateY(0%);
-  transition: transform 800ms ease;
-}
-.idahome-nav-menu-exit {
-  transform: translateY(0%);
-}
-.idahome-nav-menu-exit-active {
-  transform: translateY(-130%);
-  transition: transform 800ms ease;
-}
-
-/* NavMenu left and right back panels */
-.idahome-bg {
-  width: calc(50% + 10px);
+.idahome-nav-menu ul {
   height: 100%;
-  background: rgb(0, 200, 200, 0.5);
-  backdrop-filter: blur(5px);
-  position: fixed;
-  top: 0;
-  z-index: 665;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 }
 
-@media (max-width: 700px) {
-  .idahome-bg {
-    background: rgba(0, 0, 0, 0.9);
-    backdrop-filter: none;
-  }
+.idahome-nav-menu li {
+  width: 70px;
+  height: 70px;
+  /* border: solid red; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translate(50%, -100%);
 }
 
-.idahome-bg.left {
-  left: 0;
-  /* border-right: 1px solid cyan; */
-  box-shadow: inset -2px 0 10px 1px rgba(0, 255, 255, 0.5);
-  clip-path: polygon(
-    calc(100% - 20px) 0,
-    calc(100% - 20px) calc(20% - 10px),
-    100% calc(20% + 10px),
-    100% calc(40% - 10px),
-    calc(100% - 20px) calc(40% + 10px),
-    calc(100% - 20px) calc(60% - 10px),
-    100% calc(60% + 10px),
-    100% calc(80% - 10px),
-    calc(100% - 20px) calc(80% + 10px),
-    calc(100% - 20px) 100%,
-    0 100%,
-    0 0
-  );
+/* CSSTransition ////////////////////////////////// */
+.li-enter {
+  transform: translate(2000%, 0%);
 }
-
-.idahome-bg.right {
-  right: 0;
-  /* border-left: 1px solid cyan; */
-  box-shadow: inset 2px 0 10px 1px rgba(0, 255, 255, 0.5);
-  clip-path: polygon(
-    100% 0,
-    100% 100%,
-    0 100%,
-    0 calc(80% + 10px),
-    20px calc(80% - 10px),
-    20px calc(60% + 10px),
-    0 calc(60% - 10px),
-    0 calc(40% + 10px),
-    20px calc(40% - 10px),
-    20px calc(20% + 10px),
-    0 calc(20% - 10px),
-    0 0
-  );
+.li-enter-active {
+  transform: translate(0%, 0%);
+  transition: transform 500ms ease;
 }
-
-:root {
-  --idahome-bg-speed: 800ms;
+.li-exit {
+  transform: translate(0%, 0%);
 }
-
-/* idahome-Bg Left CSSTransition */
-.idahome-bg.left-enter {
-  transform: translateX(-100%);
-}
-.idahome-bg.left-enter-active {
-  transform: translateX(0%);
-  transition: transform var(--idahome-bg-speed) ease;
-}
-.idahome-bg.left-exit {
-  transform: translateX(0%);
-}
-.idahome-bg.left-exit-active {
-  transform: translateX(-100%);
-  transition: transform var(--idahome-bg-speed) ease;
-}
-/* idahome-Bg Right CSSTransition */
-.idahome-bg.right-enter {
-  transform: translateX(100%);
-}
-.idahome-bg.right-enter-active {
-  transform: translateX(0%);
-  transition: transform var(--idahome-bg-speed) ease;
-}
-.idahome-bg.right-exit {
-  transform: translateX(0%);
-}
-.idahome-bg.right-exit-active {
-  transform: translateX(100%);
-  transition: transform var(--idahome-bg-speed) ease;
+.li-exit-active {
+  transform: translate(2000%, 0%);
+  transition: transform 500ms ease;
 }
 
 .idahome-nav-menu .link {
-  width: 200px;
-  max-width: 333px;
-  height: 40px;
+  width: 100%;
+  min-width: 100%;
+  height: 100%;
   background: blue;
   margin: 30px 0;
   display: flex;
@@ -271,4 +163,83 @@
   .idahome-nav-menu .link:hover {
     box-shadow: none;
   }
+}
+
+/* BACKGROUND WATER //////////////////////////// */
+.nav-bg {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  background: linear-gradient(
+    109.5deg,
+    rgba(13, 11, 136, 0.7) 9.4%,
+    rgba(86, 255, 248, 0.7) 78.4%
+  );
+  backdrop-filter: blur(5px);
+  border-radius: 1010px;
+  transform: translate(0) scale(2);
+}
+
+/* CSSTransition //////////////////////////////// */
+.nav-bg-enter {
+  transform: translate(100%, -100%) scale(1);
+}
+.nav-bg-enter-active {
+  transform: translate(0) scale(2);
+  transition: transform 400ms ease;
+}
+.nav-bg-exit {
+  transform: translate(0) scale(2);
+}
+.nav-bg-exit-active {
+  transform: translate(100%, -100%) scale(1);
+  transition: transform 400ms ease;
+}
+
+/* FOOTER STUFF TO DELETE LATER /////////////////////////////////////////// */
+.footer-menu {
+  width: calc(100% - 40px);
+  height: 60px;
+  background: rgb(0, 200, 200, 0.5);
+  backdrop-filter: blur(5px);
+  position: fixed;
+  bottom: 20px;
+  z-index: 1010;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+  padding: 5px 20px;
+  margin: 0 20px;
+  border-radius: 50px;
+  box-shadow: inset 0 0 5px 1px cyan, 0 0 20px 0.01rem black;
+}
+
+/* CSSTransition //////////////////////////////// */
+.footer-menu-enter {
+  transform: translateY(calc(100% + 40px));
+}
+.footer-menu-enter-active {
+  transform: translateY(0%);
+  transition: transform 500ms ease;
+}
+.footer-menu-exit {
+  transform: translateY(0%);
+}
+.footer-menu-exit-active {
+  transform: translateY(calc(100% + 40px));
+  transition: transform 500ms ease;
+}
+
+.btn-bg-res {
+  color: white;
+  border: 1px solid;
+  border-radius: 10px;
+}
+
+.btn-bg-res.active {
+  background: rgba(200, 200, 200, 0.5);
 }
