@@ -86,11 +86,6 @@
     rgba(86, 255, 248, 0.7) 78.4%
   );
   backdrop-filter: blur(5px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 60px;
 }
 /* CSSTransition //////////////////////////////// */
 .idahome-nav-enter {
@@ -127,66 +122,58 @@
   border-radius: 200px;
   box-shadow: inset 0 0 10px 1px rgb(0, 255, 255, 0.6),
     2px 2px 5px 1px rgb(0, 0, 0, 0.7);
+  position: fixed;
+  left: calc(50% - 30px);
+  z-index: 1;
 }
 
-:root {
-  --schedule-time: 500ms;
-  --schedule-offset: 60px;
-  --services-time: 1000ms;
-  --services-offset: -60px;
-  --reviews-time: 1000ms;
-  --reviews-offset: -60px;
-  --about-time: 1000ms;
-  --about-offset: -60px;
+.link-schedule {
+  top: calc(50% - 165px);
 }
-
-/* .link-services{
-  transform: translate(50vw, calc(-50vh - 60px));
-} */
-/* .link:hover {
-  background: cyan;
-  color: blue;
-  border: none;
-  box-shadow: inset -2px -2px 5px 1px rgba(0, 0, 0, 0.7),
-    0 2px 5px 1px rgba(0, 0, 0, 0.7);
-  text-shadow: 1px 0 2px blue, -1px 0 2px blue, 0 1px 2px blue, 0 -1px 2px blue,
-    2px 2px 3px black;
-} */
+.link-services {
+  top: calc(50% - 75px);
+}
+.link-reviews {
+  top: calc(50% + 15px);
+}
+.link-about {
+  top: calc(50% + 105px);
+}
 
 /* SCHEDULE CSSTransition ////////////////////////////////// */
 .link-schedule-enter {
-  transform: translate(50vw, calc(-50vh + var(--schedule-offset)));
+  transform: translate(50vw, calc(-50vh + 135px));
 }
 .link-schedule-enter-active {
   transform: translate(0);
-  transition: transform var(--schedule-time) ease;
+  transition: transform 1000ms ease;
 }
 
 /* SERVICES CSSTransition ///////////////// */
 .link-services-enter {
-  transform: translate(50vw, calc(-50vh + var(--services-offset)));
+  transform: translate(50vw, calc(-50vh + 45px));
 }
 .link-services-enter-active {
   transform: translate(0);
-  transition: transform var(--services-time) ease;
+  transition: transform 1000ms ease;
 }
 
 /* REVIEWS CSSTransition ///////////////// */
 .link-reviews-enter {
-  transform: translate(50vw, calc(-50vh + var(--services-offset)));
+  transform: translate(50vw, calc(-50vh - 45px));
 }
 .link-reviews-enter-active {
   transform: translate(0);
-  transition: transform var(--reviews-time) ease;
+  transition: transform 1000ms ease;
 }
 
 /* ABOUT CSSTransition ///////////////// */
 .link-about-enter {
-  transform: translate(50vw, calc(-50vh + var(--services-offset)));
+  transform: translate(50vw, calc(-50vh - 135px));
 }
 .link-about-enter-active {
   transform: translate(0);
-  transition: transform var(--reviews-time) ease;
+  transition: transform 1000ms ease;
 }
 
 /* /////////////////////////////////////////////////////////////////// */

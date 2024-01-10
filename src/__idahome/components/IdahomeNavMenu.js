@@ -10,13 +10,33 @@ export function IdahomeNavMenu({
   bgRes,
   setBgRes,
 }) {
-  const [linkOpen, setLinkOpen] = useState();
+  const [linkSchedule, setLinkSchedule] = useState();
+  const [linkServices, setLinkServices] = useState();
+  const [linkReviews, setLinkReviews] = useState();
+  const [linkAbout, setLinkAbout] = useState();
 
   useEffect(() => {
     setTimeout(() => {
-      setLinkOpen(idahomeNav);
-    }, 1);
-  }, [linkOpen, idahomeNav]);
+      setLinkSchedule(idahomeNav ? true : false);
+    }, 300);
+
+    setTimeout(() => {
+      setLinkServices(idahomeNav ? true : false);
+    }, 500);
+
+    setTimeout(() => {
+      setLinkReviews(idahomeNav ? true : false);
+    }, 700);
+
+    setTimeout(() => {
+      setLinkAbout(idahomeNav ? true : false);
+    }, 900);
+  },[idahomeNav]);
+
+  console.log(`schedule: ${linkSchedule}`);
+  console.log(`services: ${linkServices}`);
+  console.log(`reviews: ${linkReviews}`);
+  console.log(`about: ${linkAbout}`);
 
   function CustomLink({ to, className, linkName, ...props }) {
     const resolvedPath = useResolvedPath(to);
@@ -41,12 +61,12 @@ export function IdahomeNavMenu({
       <CSSTransition
         in={idahomeNav}
         unmountOnExit
-        timeout={300}
+        timeout={200}
         classNames="idahome-nav"
       >
         <nav className="idahome-nav">
           <CSSTransition
-            in={linkOpen}
+            in={linkSchedule}
             unmountOnExit
             timeout={1000}
             classNames="link-schedule"
@@ -59,7 +79,7 @@ export function IdahomeNavMenu({
           </CSSTransition>
 
           <CSSTransition
-            in={linkOpen}
+            in={linkServices}
             unmountOnExit
             timeout={1000}
             classNames="link-services"
@@ -72,7 +92,7 @@ export function IdahomeNavMenu({
           </CSSTransition>
 
           <CSSTransition
-            in={linkOpen}
+            in={linkReviews}
             unmountOnExit
             timeout={1000}
             classNames="link-reviews"
@@ -85,7 +105,7 @@ export function IdahomeNavMenu({
           </CSSTransition>
 
           <CSSTransition
-            in={linkOpen}
+            in={linkAbout}
             unmountOnExit
             timeout={1000}
             classNames="link-about"
