@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
-import { ScheduleModal } from "./ScheduleModal";
+import { ModalContact } from "./ModalContact";
 
 export function IdahomeNavMenu({
   idahomeNav,
@@ -50,9 +50,9 @@ export function IdahomeNavMenu({
             in={navOpen}
             unmountOnExit
             timeout={1000}
-            classNames="link-schedule"
+            classNames="btn-contact-links"
           >
-            <ScheduleModal />
+            <ModalContact />
           </CSSTransition>
 
           <CSSTransition

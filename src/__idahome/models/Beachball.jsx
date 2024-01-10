@@ -11,7 +11,7 @@ import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function Beachball(props) {
-  const { nodes, materials } = useGLTF("/models/idahome/beachball.glb");
+  const { nodes, materials } = useGLTF("/idahome/models/beachball.glb");
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -23,4 +23,4 @@ export function Beachball(props) {
   );
 }
 
-useGLTF.preload("/models/idahome/beachball.glb");
+useGLTF.preload("/idahome/models/beachball.glb");

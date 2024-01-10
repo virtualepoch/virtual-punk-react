@@ -11,17 +11,23 @@ import React from "react";
 import * as THREE from "three";
 import { useGLTF, useTexture } from "@react-three/drei";
 
+///////////////////////////////////////////////////////////////
+// CODO //////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////
+// ADD OCEAN (WATER) TO THE FIRST MESH BELOW INSTEAD OF TO THE WHOLE SCENE
+///////////////////////////////////////////////////////////
+
 export function PoolMountains({ position, rotY, bgRes }) {
-  const { nodes, materials } = useGLTF("/models/idahome/pool_mountains_4k.glb");
+  const { nodes, materials } = useGLTF("/idahome/models/pool_mountains_4k.glb");
 
   const texture = useTexture(
     bgRes === "high"
-      ? "./images/idahome/boise-5k.jpg"
+      ? "/idahome/images/boise-5k.jpg"
       : bgRes === "mid"
-      ? "./images/idahome/boise-4k.jpg"
+      ? "/idahome/images/boise-4k.jpg"
       : bgRes === "low"
-      ? "./images/idahome/boise-3k.jpg"
-      : "./images/idahome/boise-3k.jpg"
+      ? "/idahome/images/boise-3k.jpg"
+      : "/idahome/images/boise-3k.jpg"
   );
   texture.repeat.set(1, 1);
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
@@ -44,7 +50,7 @@ export function PoolMountains({ position, rotY, bgRes }) {
         geometry={nodes.Object_8.geometry}
         // material={materials.Skybox}
         position={[0.07, 1.327, 0.033]}
-        rotation={[-Math.PI, -0.395, -Math.PI]}
+        rotation={[-Math.PI, -1, -Math.PI]}
         scale={0.021}
       >
         <meshBasicMaterial map={texture} />
@@ -53,4 +59,4 @@ export function PoolMountains({ position, rotY, bgRes }) {
   );
 }
 
-useGLTF.preload("/models/idahome/pool_mountains_4k.glb");
+useGLTF.preload("/idahome/models/pool_mountains_4k.glb");

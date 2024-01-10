@@ -1,19 +1,37 @@
-.link-schedule.open {
+.btn-contact-links.open {
   width: 100%;
-  height: 100%;
+  height: calc(100% - 50px);
   left: 0;
   top: 50px;
   z-index: 1010101;
   border-radius: 0;
   flex-direction: column;
-  gap: 30px;
+  justify-content: space-around;
+  padding-bottom: 80px;
   transition: all 500ms ease;
+  cursor: default;
 }
 
-.link-schedule.open button{
-    border: solid blue;
+.link-call {
+  background: url(../../public/idahome/icons/phone-solid.svg) center / 50%
+    no-repeat;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
 }
 
-.link-schedule.open button.btn-close-schedule {
-  border: solid red;
+.link-text {
+  background: url(../../public/idahome/icons/message-regular.svg) center / 60%
+    no-repeat;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+}
+
+.link-email {
+  background: url(../../public/idahome/icons/envelope-regular.svg) center / 50%
+    no-repeat;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+}
+
+.btn-close-contact-links {
+  background: url(../../public/idahome/icons/xmark-solid.svg) center / 50%
+    no-repeat;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
 }
