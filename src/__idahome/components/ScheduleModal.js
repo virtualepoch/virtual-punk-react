@@ -1,18 +1,18 @@
 import { useState } from "react";
 
 export const ScheduleModal = () => {
-  const [schedule, setSchedule] = useState(false);
+  const [scheduleOpen, setScheduleOpen] = useState(false);
 
-  console.log(schedule);
+  console.log(scheduleOpen);
   return (
     <div
-      className={schedule ? "link-schedule open" : "link-schedule"}
-      onClick={() => setSchedule(true)}
+      className={scheduleOpen ? "link-schedule open" : "link-schedule"}
+      onClick={() => setScheduleOpen(!scheduleOpen)}
     >
       <h2 className="header">schedule</h2>
       <button
         className="btn-close-schedule"
-        onClick={() => setSchedule(false)}
+        onClick={() => setScheduleOpen(!scheduleOpen)}
       />
       <button className="btn-call" />
       <button className="btn-text" />

@@ -65,8 +65,12 @@
     linear-gradient(to right, transparent, #a5cc82, transparent);
 }
 
-.canvas-idahome{
-  background: linear-gradient(109.5deg, rgb(13, 11, 136) 9.4%, rgb(86, 255, 248) 78.4%);
+.canvas-idahome {
+  background: linear-gradient(
+    109.5deg,
+    rgb(86, 255, 248) 9.4%,
+    rgb(13, 11, 136) 78.4%
+  );
 }
 
 .canvas.black {
