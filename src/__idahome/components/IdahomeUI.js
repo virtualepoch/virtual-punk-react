@@ -2,6 +2,7 @@ import { useState } from "react";
 import { BtnOpenIdahomeNav } from "./BtnOpenIdahomeNav";
 import { IdahomeNavMenu } from "./IdahomeNavMenu";
 import { FpsMeter } from "../../components/ui/FpsMeter";
+import "../idahome-test.css";
 
 export const IdahomeUI = ({
   fpsMeter,

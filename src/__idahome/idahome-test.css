@@ -1,0 +1,19 @@
+.link-schedule.open {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 50px;
+  z-index: 1010101;
+  border-radius: 0;
+  flex-direction: column;
+  gap: 30px;
+  transition: all 500ms ease;
+}
+
+.link-schedule.open button{
+    border: solid blue;
+}
+
+.link-schedule.open button.btn-close-schedule {
+  border: solid red;
+}

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
+import { ScheduleModal } from "./ScheduleModal";
 
 export function IdahomeNavMenu({
   idahomeNav,
@@ -51,11 +52,7 @@ export function IdahomeNavMenu({
             timeout={1000}
             classNames="link-schedule"
           >
-            <CustomLink
-              className="link-schedule"
-              to={"/idahome/schedule"}
-              linkName="schedule"
-            />
+            <ScheduleModal />
           </CSSTransition>
 
           <CSSTransition
@@ -66,7 +63,7 @@ export function IdahomeNavMenu({
           >
             <CustomLink
               className="link-services"
-              to={"/idahome/services"}
+              to={"/idahome"}
               linkName="services"
             />
           </CSSTransition>
@@ -79,7 +76,7 @@ export function IdahomeNavMenu({
           >
             <CustomLink
               className="link-reviews"
-              to={"/idahome/reviews"}
+              to={"/idahome"}
               linkName="reviews"
             />
           </CSSTransition>
@@ -92,7 +89,7 @@ export function IdahomeNavMenu({
           >
             <CustomLink
               className="link-about"
-              to={"/idahome/about"}
+              to={"/idahome"}
               linkName="about"
             />
           </CSSTransition>
