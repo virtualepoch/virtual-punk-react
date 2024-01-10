@@ -18,25 +18,11 @@ export function IdahomeNavMenu({
   useEffect(() => {
     setTimeout(() => {
       setLinkSchedule(idahomeNav ? true : false);
-    }, 300);
-
-    setTimeout(() => {
       setLinkServices(idahomeNav ? true : false);
-    }, 500);
-
-    setTimeout(() => {
       setLinkReviews(idahomeNav ? true : false);
-    }, 700);
-
-    setTimeout(() => {
       setLinkAbout(idahomeNav ? true : false);
-    }, 900);
-  },[idahomeNav]);
-
-  console.log(`schedule: ${linkSchedule}`);
-  console.log(`services: ${linkServices}`);
-  console.log(`reviews: ${linkReviews}`);
-  console.log(`about: ${linkAbout}`);
+    }, 1);
+  }, [idahomeNav]);
 
   function CustomLink({ to, className, linkName, ...props }) {
     const resolvedPath = useResolvedPath(to);

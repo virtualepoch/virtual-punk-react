@@ -93,14 +93,14 @@
 }
 .idahome-nav-enter-active {
   opacity: 1;
-  transition: opacity 300ms ease;
+  transition: opacity 200ms ease;
 }
 .idahome-nav-exit {
   opacity: 1;
 }
 .idahome-nav-exit-active {
   opacity: 0;
-  transition: opacity 300ms ease;
+  transition: opacity 200ms ease;
 }
 
 /* LINK /////////////////////////////////////////////////////// */
@@ -146,7 +146,7 @@
 }
 .link-schedule-enter-active {
   transform: translate(0);
-  transition: transform 1000ms ease;
+  transition: transform 400ms ease;
 }
 
 /* SERVICES CSSTransition ///////////////// */
@@ -155,7 +155,7 @@
 }
 .link-services-enter-active {
   transform: translate(0);
-  transition: transform 1000ms ease;
+  transition: transform 600ms ease;
 }
 
 /* REVIEWS CSSTransition ///////////////// */
@@ -164,7 +164,7 @@
 }
 .link-reviews-enter-active {
   transform: translate(0);
-  transition: transform 1000ms ease;
+  transition: transform 800ms ease;
 }
 
 /* ABOUT CSSTransition ///////////////// */
