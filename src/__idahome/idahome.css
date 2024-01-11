@@ -103,7 +103,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 60px;
 }
 /* CSSTransition //////////////////////////////// */
 .idahome-nav-enter {
@@ -161,12 +161,7 @@
 }
 
 .btn-contact-links .header {
-  width: 100px;
-  height: 100px;
   font: 20px "Comfortaa", sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .link-services {
@@ -251,7 +246,7 @@
   width: 50px;
   position: fixed;
   left: 0;
-  bottom: 5px;
+  bottom: 0;
   z-index: 10101;
   background: url(../../public/idahome/icons/chevron-right-cyan.svg) center /
     30% no-repeat;
@@ -268,7 +263,7 @@
 
 .omni-idahome {
   width: calc(100% - 50px);
-  height: 60px;
+  height: 50px;
   background: rgb(0, 200, 200, 0.7);
   backdrop-filter: blur(3px);
   position: fixed;

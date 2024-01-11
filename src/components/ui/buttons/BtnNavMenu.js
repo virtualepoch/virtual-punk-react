@@ -1,7 +1,7 @@
-import { useState } from "react";
+// import { useState } from "react";
 
 export const BtnNavMenu = ({ navMenuOpen, setNavMenuOpen }) => {
-  const [pressed, setPressed] = useState(false);
+  // const [pressed, setPressed] = useState(false);
 
   return (
     <>
@@ -9,13 +9,13 @@ export const BtnNavMenu = ({ navMenuOpen, setNavMenuOpen }) => {
         className="btn-nav-menu flex-center"
         aria-label="navigation menu button"
         onClick={() => setNavMenuOpen(!navMenuOpen)}
-        onMouseDown={() => setPressed(true)}
-        onMouseUp={() => setPressed(false)}
-        onTouchStart={() => setPressed(true)}
-        onTouchEnd={() => setPressed(false)}
-        style={{
-          transform: pressed ? "scale(0.95)" : "scale(1)",
-        }}
+        // onMouseDown={() => setPressed(true)}
+        // onMouseUp={() => setPressed(false)}
+        // onTouchStart={() => setPressed(true)}
+        // onTouchEnd={() => setPressed(false)}
+        // style={{
+        //   transform: pressed ? "scale(0.95)" : "scale(1)",
+        // }}
       >
         <div className={navMenuOpen ? "bar open scale-x" : "bar open"}></div>
         <div className={navMenuOpen ? "bar open scale-x" : "bar open"}></div>
