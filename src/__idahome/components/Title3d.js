@@ -27,9 +27,9 @@ export const Title3d = () => {
           lineHeight={0.5}
           letterSpacing={-0.06}
           size={1.5}
-          font="/fonts/Inter_Bold.json"
+          font="/fonts/Comfortaa_Regular.json"
         >
-          IdahomeServ
+          IdahomeServ LLC
           <meshStandardMaterial color={0x44eeff} />
         </Text3D>
       </Center>

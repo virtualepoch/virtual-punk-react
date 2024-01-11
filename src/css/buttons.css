@@ -16,6 +16,10 @@
   background: url(../../public/icons/compress-cyan.svg) center / 30% no-repeat;
 }
 
+.btn-nav-menu{
+  position: relative;
+}
+
 /* OPEN/CLOSE NAVIGATION MENU BARS*/
 .btn-nav-menu .bar {
   width: 50%;
