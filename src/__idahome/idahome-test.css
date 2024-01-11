@@ -15,23 +15,27 @@
 .link-call {
   background: url(../../public/idahome/icons/phone-solid.svg) center / 50%
     no-repeat;
+    color: white;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
 }
 
 .link-text {
   background: url(../../public/idahome/icons/message-regular.svg) center / 60%
     no-repeat;
+    color: white;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
 }
 
 .link-email {
   background: url(../../public/idahome/icons/envelope-regular.svg) center / 50%
     no-repeat;
+    color: white;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
 }
 
 .btn-close-contact-links {
   background: url(../../public/idahome/icons/xmark-solid.svg) center / 50%
     no-repeat;
+    color: white;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
 }

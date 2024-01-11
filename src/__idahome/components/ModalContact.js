@@ -32,11 +32,3 @@ export const ModalContact = () => {
     </button>
   );
 };
-
-{
-  /* <div class="contact-link-row">
-<a ><i class="fa-solid fa-comment-dots"></i></a>
-<a href=""><i class="fa-solid fa-envelope"></i></a>
-<a ><i class="fa-solid fa-phone"></i></a>
-</div> */
-}

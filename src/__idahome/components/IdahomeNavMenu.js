@@ -95,53 +95,6 @@ export function IdahomeNavMenu({
           </CSSTransition>
         </nav>
       </CSSTransition>
-
-      <CSSTransition
-        in={idahomeNav}
-        unmountOnExit
-        timeout={800}
-        classNames="footer-menu"
-      >
-        <div className="footer-menu">
-          <p>Bg:</p>
-          <button
-            className={bgRes === "low" ? "btn-bg-res active" : "btn-bg-res"}
-            onClick={() => {
-              setIdahomeNav(false);
-              setBgRes("low");
-            }}
-          >
-            3k
-          </button>
-          <button
-            className={bgRes === "mid" ? "btn-bg-res active" : "btn-bg-res"}
-            onClick={() => {
-              setIdahomeNav(false);
-              setBgRes("mid");
-            }}
-          >
-            4k
-          </button>
-          <button
-            className={bgRes === "high" ? "btn-bg-res active" : "btn-bg-res"}
-            onClick={() => {
-              setIdahomeNav(false);
-              setBgRes("high");
-            }}
-          >
-            5k
-          </button>
-
-          <button
-            className={fpsMeter ? "btn-fps meter-open" : "btn-fps"}
-            onClick={() => {
-              setFpsMeter(!fpsMeter);
-            }}
-          >
-            FPS
-          </button>
-        </div>
-      </CSSTransition>
     </>
   );
 }

@@ -1,7 +1,7 @@
 .header-idahome {
   position: fixed;
   top: 0;
-  z-index: 1010;
+  z-index: 100;
   height: 50px;
   width: 100%;
   display: flex;
@@ -206,38 +206,58 @@
 
 /* /////////////////////////////////////////////////////////////////// */
 /* FOOTER STUFF TO DELETE LATER /////////////////////////////////////////// */
-.footer-menu {
-  width: calc(100% - 40px);
-  height: 60px;
-  background: rgb(0, 200, 200, 0.5);
-  backdrop-filter: blur(5px);
+.btn-omni-idahome {
+  width: 50px;
   position: fixed;
-  bottom: 20px;
+  left: 0;
+  bottom: 5px;
+  z-index: 10101;
+  background: url(../../public/idahome/icons/chevron-right-cyan.svg) center /
+    30% no-repeat;
+  border-right: 1px solid cyan;
+
+  border-radius: 100%;
+  transition: transform 400ms ease;
+}
+
+.btn-omni-idahome.open {
+  transform: rotateY(180deg);
+  transition: transform 400ms ease;
+}
+
+.omni-idahome {
+  width: calc(100% - 50px);
+  height: 60px;
+  background: rgb(0, 200, 200, 0.7);
+  backdrop-filter: blur(3px);
+  position: fixed;
+  left: 40px;
+  bottom: 0;
   z-index: 1010;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 5px;
   justify-content: center;
-  padding: 5px 20px;
-  margin: 0 20px;
-  border-radius: 50px;
+  padding: 0 5px;
+  margin: 0 auto;
+  border-radius: 10px;
   box-shadow: inset 0 0 5px 1px cyan, 0 0 20px 0.01rem black;
 }
 
 /* CSSTransition //////////////////////////////// */
-.footer-menu-enter {
-  transform: translateY(calc(100% + 40px));
+.omni-idahome-enter {
+  transform: translateX(calc(-100% + 40px));
 }
-.footer-menu-enter-active {
-  transform: translateY(0%);
-  transition: transform 500ms ease;
+.omni-idahome-enter-active {
+  transform: translateX(0%);
+  transition: transform 400ms ease;
 }
-.footer-menu-exit {
-  transform: translateY(0%);
+.omni-idahome-exit {
+  transform: translateX(0%);
 }
-.footer-menu-exit-active {
-  transform: translateY(calc(100% + 40px));
-  transition: transform 500ms ease;
+.omni-idahome-exit-active {
+  transform: translateX(calc(-130%));
+  transition: transform 400ms ease;
 }
 
 .btn-bg-res {

@@ -3,6 +3,7 @@ import { BtnOpenIdahomeNav } from "./BtnOpenIdahomeNav";
 import { IdahomeNavMenu } from "./IdahomeNavMenu";
 import { FpsMeter } from "../../components/ui/FpsMeter";
 import "../idahome-test.css";
+import { OmniIdahome } from "./OmniIdahome";
 
 export const IdahomeUI = ({
   fpsMeter,
@@ -32,6 +33,13 @@ export const IdahomeUI = ({
         performanceLevel={performanceLevel}
         bgRes={bgRes}
         setBgRes={setBgRes}
+      />
+
+      <OmniIdahome
+        bgRes={bgRes}
+        setBgRes={setBgRes}
+        fpsMeter={fpsMeter}
+        setFpsMeter={setFpsMeter}
       />
 
       <FpsMeter
