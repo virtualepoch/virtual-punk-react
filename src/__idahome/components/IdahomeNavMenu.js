@@ -38,7 +38,7 @@ export function IdahomeNavMenu({ idahomeNav, setIdahomeNav, titleHeight }) {
         timeout={1000}
         classNames="idahome-nav"
       >
-        <nav className="idahome-nav">
+        <nav className="idahome-nav" style={{ paddingTop: titleHeight }}>
           <CSSTransition
             in={navOpen}
             unmountOnExit

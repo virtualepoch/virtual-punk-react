@@ -37,8 +37,8 @@ export const ModalContact = ({ titleHeight }) => {
             onTouchEnd={() => setPressed(false)}
             style={{
               boxShadow: pressed
-                ? "inset 2px 2px 3px 1px rgba(255, 255, 255, 0.5), inset -2px -2px 3px 1px rgba(0, 0, 0, 0.5)"
-                : "inset 2px 2px 3px 1px rgba(255, 255, 255, 0.5), inset -2px -2px 3px 1px rgba(0, 0, 0, 0.5), 0 1px 5px 1px rgba(0, 0, 0, 0.8)",
+                ? "inset 1px 2px 3px 1px rgba(255, 255, 255, 0.5), inset -1px -2px 3px 1px rgba(0, 0, 0, 0.5)"
+                : "inset 1px 2px 3px 1px rgba(255, 255, 255, 0.5), inset -1px -2px 3px 1px rgba(0, 0, 0, 0.5), 0 1px 5px 1px rgba(0, 0, 0, 0.8)",
             }}
           />
         </div>

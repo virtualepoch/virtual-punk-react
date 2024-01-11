@@ -14,7 +14,7 @@ export const OmniIdahome = ({ bgRes, setBgRes, fpsMeter, setFpsMeter }) => {
       <CSSTransition
         in={omniIdahome}
         unmountOnExit
-        timeout={400}
+        timeout={200}
         classNames="omni-idahome"
       >
         <div className="omni-idahome">

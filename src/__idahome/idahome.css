@@ -22,20 +22,18 @@
   flex-direction: column;
   align-items: center;
   padding-top: 10px;
-}
-
-.title-idahome {
-  font: 30px "Comfortaa", sans-serif;
   color: cyan;
   text-shadow: 0 0 1px black, -0.5px -0.5px 1px white,
     1px 1px 1px rgba(0, 0, 0, 0.7), 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.title-idahome {
+  font: clamp(1.5rem, 0.75rem + 3.3333vw, 2.5rem) "Comfortaa", sans-serif;
   text-align: center;
 }
 
 .subtitle-idahome {
-  font: 25px "Comfortaa", sans-serif;
-  color: rgb(0, 200, 200);
-  text-shadow: 1px 1px 1px black, 2px 2px 2px black;
+  font: clamp(1.25rem, 0.5rem + 3.3333vw, 2.25rem) "Comfortaa", sans-serif;
 }
 
 /* BTN NAV MENU ///////////////////////////////////////////// */
@@ -84,6 +82,26 @@
 
 .btn-open-idahome-nav .bar.close.scale-x:nth-child(4) {
   transform: rotate(-45deg) scaleX(0);
+}
+
+/* BUTTON GET QUOTE ///////////////////////////////////// */
+.btn-get-quote {
+  width: 150px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20px;
+  z-index: 10;
+  color: white;
+  font: 20px "Chivo", sans-serif;
+  text-shadow: 0 0 1px black,0 0 2px black,0 0 3px black;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+  border-radius: 10px;
+  background: linear-gradient(
+    109.5deg,
+    rgb(86, 255, 248) 9.4%,
+    rgb(13, 11, 136) 78.4%
+  );
 }
 
 /* NAV MENU ///////////////////////////////// */
@@ -137,7 +155,6 @@
   letter-spacing: 3px;
   text-shadow: 0 0 1px black, 0 0 2px black, 0 1px 3px black, 0 2px 4px black;
   border-radius: 200px;
-  background: radial-gradient(circle at 10% 10%, cyan, blue);
   box-shadow: 3px 3px 10px 1px rgb(0, 0, 0, 0.5);
 }
 
@@ -158,6 +175,7 @@
 .btn-contact-links {
   z-index: 9;
   cursor: pointer;
+  background: radial-gradient(circle at 10% 10%, cyan, blue);
 }
 
 .btn-contact-links .header {
@@ -167,16 +185,22 @@
 .link-services {
   z-index: 7;
   background: radial-gradient(
-      circle at 35% 20%,
-      RGBA(255, 255, 255, 0.7),
-      transparent 25%
+      circle at 60% 30%,
+      cyan 8px,
+      gray 8px,
+      transparent 9px
     ),
-    radial-gradient(circle at 10% 10%, cyan, blue);
+    repeating-conic-gradient(at 60% 30%, cyan 0deg 60deg, blue 60deg 120deg);
+  box-shadow: inset -2px -2px 15px 1px black, 3px 3px 10px 1px rgb(0, 0, 0, 0.5);
 }
 
 .link-testimonials {
   z-index: 6;
-  background: radial-gradient(circle at 30% 20%, white, transparent 40%),
+  background: radial-gradient(
+      circle at 30% 20%,
+      rgba(255, 255, 255, 0.5),
+      transparent 40%
+    ),
     radial-gradient(circle at 60% 60%, cyan 8px, gray 8px, transparent 9px),
     repeating-conic-gradient(at 60% 60%, cyan 0deg 60deg, magenta 60deg 120deg);
   box-shadow: inset -2px -2px 15px 1px black, 3px 3px 10px 1px rgb(0, 0, 0, 0.5);
@@ -184,23 +208,13 @@
 
 .link-gallery {
   z-index: 5;
-  background: radial-gradient(circle at 30% 20%, white, transparent 40%),
-    radial-gradient(circle at 60% 60%, white 8px, gray 8px, transparent 9px),
-    repeating-conic-gradient(
-      at 60% 60%,
-      gray 0deg 1deg,
-      white 0deg 60deg,
-      gray 60deg 61deg,
-      cyan 60deg 120deg,
-      gray 120deg 121deg,
-      white 120deg 180deg,
-      gray 180deg 181deg,
-      yellow 180deg 240deg,
-      gray 240deg 241deg,
-      white 240deg 300deg,
-      gray 300deg 301deg,
-      magenta 300deg 360deg
-    );
+  background: radial-gradient(
+      circle at 30% 20%,
+      rgba(255, 255, 255, 0.5),
+      transparent 40%
+    ),
+    radial-gradient(circle at 30% 60%, cyan 8px, gray 8px, transparent 9px),
+    repeating-conic-gradient(at 30% 60%, cyan 0deg 45deg, blue 45deg 90deg);
   box-shadow: inset -2px -2px 15px 1px black, 3px 3px 10px 1px rgb(0, 0, 0, 0.5);
 }
 
@@ -248,31 +262,28 @@
   left: 0;
   bottom: 0;
   z-index: 10101;
-  background: url(../../public/idahome/icons/chevron-right-cyan.svg) center /
-    30% no-repeat;
-  border-right: 1px solid cyan;
-
-  border-radius: 100%;
-  transition: transform 400ms ease;
+  background: url(../../public/idahome/icons/chevron-right-cyan.svg) 10% 50% /
+    20% no-repeat;
 }
 
 .btn-omni-idahome.open {
   transform: rotateY(180deg);
-  transition: transform 400ms ease;
+  background: url(../../public/idahome/icons/chevron-right-cyan.svg) 90% 50% /
+    20% no-repeat;
 }
 
 .omni-idahome {
-  width: calc(100% - 50px);
+  width: calc(100% - 30px);
   height: 50px;
   background: rgb(0, 200, 200, 0.7);
   backdrop-filter: blur(3px);
   position: fixed;
-  left: 40px;
+  left: 20px;
   bottom: 0;
   z-index: 1010;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
   justify-content: center;
   padding: 0 5px;
   margin: 0 auto;
@@ -286,14 +297,14 @@
 }
 .omni-idahome-enter-active {
   transform: translateX(0%);
-  transition: transform 400ms ease;
+  transition: transform 200ms ease;
 }
 .omni-idahome-exit {
   transform: translateX(0%);
 }
 .omni-idahome-exit-active {
   transform: translateX(calc(-130%));
-  transition: transform 400ms ease;
+  /* transition: transform 100ms ease; */
 }
 
 .btn-bg-res {
