@@ -12,30 +12,48 @@
   cursor: default;
 }
 
-.link-call {
-  background: url(../../public/idahome/icons/phone-solid.svg) center / 50%
-    no-repeat;
-    color: white;
+.btn-contact-links.open .header {
+  border-bottom: solid;
+  border-radius: 100%;
+  text-shadow: 0 0 1px black;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+}
+
+.link-call,
+.link-text,
+.link-email {
+  width: 60px;
+  height: 60px;
+  color: white;
+  text-shadow: 0 0 1px black;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
+  border-top: 1px solid cyan;
+  border-radius: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.link-call {
+  background: url(../../public/idahome/icons/phone-solid.svg) 50% 30% / 40%
+    no-repeat;
 }
 
 .link-text {
-  background: url(../../public/idahome/icons/message-regular.svg) center / 60%
+  background: url(../../public/idahome/icons/message-regular.svg) 50% 30% / 40%
     no-repeat;
-    color: white;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
 }
 
 .link-email {
-  background: url(../../public/idahome/icons/envelope-regular.svg) center / 50%
+  background: url(../../public/idahome/icons/envelope-regular.svg) 50% 30% / 50%
     no-repeat;
-    color: white;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
 }
 
 .btn-close-contact-links {
-  background: url(../../public/idahome/icons/xmark-solid.svg) center / 50%
+  width: 60px;
+  height: 60px;
+  border-top: 1px solid red;
+  border-radius: 100%;
+  background: url(../../public/idahome/icons/xmark-solid.svg) 50% 30% / 40%
     no-repeat;
-    color: white;
-  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.4));
 }

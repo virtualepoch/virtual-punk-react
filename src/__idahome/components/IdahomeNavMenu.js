@@ -64,7 +64,7 @@ export function IdahomeNavMenu({
             <CustomLink
               className="link-services"
               to={"/idahome"}
-              linkName="services"
+              linkName="Services"
             />
           </CSSTransition>
 
@@ -72,12 +72,12 @@ export function IdahomeNavMenu({
             in={navOpen}
             unmountOnExit
             timeout={1000}
-            classNames="link-reviews"
+            classNames="link-testimonials"
           >
             <CustomLink
-              className="link-reviews"
+              className="link-testimonials"
               to={"/idahome"}
-              linkName="reviews"
+              linkName="Testimonials"
             />
           </CSSTransition>
 
@@ -85,12 +85,12 @@ export function IdahomeNavMenu({
             in={navOpen}
             unmountOnExit
             timeout={1000}
-            classNames="link-about"
+            classNames="link-gallery"
           >
             <CustomLink
-              className="link-about"
+              className="link-gallery"
               to={"/idahome"}
-              linkName="about"
+              linkName="Gallery"
             />
           </CSSTransition>
         </nav>

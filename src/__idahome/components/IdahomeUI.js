@@ -18,7 +18,10 @@ export const IdahomeUI = ({
     <>
       <header className="header-idahome">
         <div className="logo-idahome" />
-        <h1 className="title-idahome">IdahomeServ</h1>
+        <div className="title-idahome-wrapper">
+          <h1 className="title-idahome">IdahomeServ LLC</h1>
+          <h2 className="subtitle-idahome">Pool and Spa</h2>
+        </div>
         <BtnOpenIdahomeNav
           idahomeNav={idahomeNav}
           setIdahomeNav={setIdahomeNav}

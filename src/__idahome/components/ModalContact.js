@@ -11,7 +11,7 @@ export const ModalContact = () => {
       }
       onClick={() => setModalContactOpen(!modalContactOpen)}
     >
-      <h2 className="header">contact</h2>
+      <h2 className="header">Contact</h2>
       {modalContactOpen && (
         <>
           <a className="link-call" href="tel:+1208-761-5818">
