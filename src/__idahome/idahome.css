@@ -27,8 +27,9 @@
 .title-idahome {
   font: 30px "Comfortaa", sans-serif;
   color: cyan;
-  text-shadow: -1px -1px 1px white, 0 0 1px rgba(0, 0, 0, 0.5),
+  text-shadow: 0 0 1px black, -0.5px -0.5px 1px white,
     1px 1px 1px rgba(0, 0, 0, 0.7), 2px 2px 2px rgba(0, 0, 0, 0.5);
+  text-align: center;
 }
 
 .subtitle-idahome {
@@ -98,6 +99,11 @@
   );
   backdrop-filter: blur(4px);
   font: 30px "Comfortaa", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
 }
 /* CSSTransition //////////////////////////////// */
 .idahome-nav-enter {
@@ -123,8 +129,6 @@
   width: 60px;
   min-width: 60px;
   height: 60px;
-  position: fixed;
-  left: calc(50% - 30px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -137,8 +141,21 @@
   box-shadow: 3px 3px 10px 1px rgb(0, 0, 0, 0.5);
 }
 
+@media (orientation: landscape) {
+  .idahome-nav {
+    flex-direction: row;
+  }
+  .btn-contact-links,
+  .link-services,
+  .link-testimonials,
+  .link-gallery {
+    writing-mode: vertical-lr;
+    text-orientation: upright;
+    letter-spacing: 0;
+  }
+}
+
 .btn-contact-links {
-  top: calc(50% - 165px);
   z-index: 9;
   cursor: pointer;
 }
@@ -153,7 +170,6 @@
 }
 
 .link-services {
-  top: calc(50% - 75px);
   z-index: 7;
   background: radial-gradient(
       circle at 35% 20%,
@@ -164,7 +180,6 @@
 }
 
 .link-testimonials {
-  top: calc(50% + 15px);
   z-index: 6;
   background: radial-gradient(circle at 30% 20%, white, transparent 40%),
     radial-gradient(circle at 60% 60%, cyan 8px, gray 8px, transparent 9px),
@@ -173,7 +188,6 @@
 }
 
 .link-gallery {
-  top: calc(50% + 105px);
   z-index: 5;
   background: radial-gradient(circle at 30% 20%, white, transparent 40%),
     radial-gradient(circle at 60% 60%, white 8px, gray 8px, transparent 9px),

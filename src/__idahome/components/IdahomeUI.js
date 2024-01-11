@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { BtnOpenIdahomeNav } from "./BtnOpenIdahomeNav";
 import { IdahomeNavMenu } from "./IdahomeNavMenu";
 import { FpsMeter } from "../../components/ui/FpsMeter";
@@ -14,11 +14,18 @@ export const IdahomeUI = ({
 }) => {
   const [idahomeNav, setIdahomeNav] = useState(false);
 
+  const [titleHeight, setTitleHeight] = useState();
+  const titleWrapper = useRef();
+
+  useLayoutEffect(() => {
+    setTitleHeight(titleWrapper.current.clientHeight);
+  }, [setTitleHeight]);
+
   return (
     <>
       <header className="header-idahome">
         <div className="logo-idahome" />
-        <div className="title-idahome-wrapper">
+        <div className="title-idahome-wrapper" ref={titleWrapper}>
           <h1 className="title-idahome">IdahomeServ LLC</h1>
           <h2 className="subtitle-idahome">Pool and Spa</h2>
         </div>
@@ -31,11 +38,7 @@ export const IdahomeUI = ({
       <IdahomeNavMenu
         idahomeNav={idahomeNav}
         setIdahomeNav={setIdahomeNav}
-        fpsMeter={fpsMeter}
-        setFpsMeter={setFpsMeter}
-        performanceLevel={performanceLevel}
-        bgRes={bgRes}
-        setBgRes={setBgRes}
+        titleHeight={titleHeight}
       />
 
       <OmniIdahome

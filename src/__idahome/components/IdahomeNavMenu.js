@@ -3,14 +3,7 @@ import { Link, useMatch, useResolvedPath } from "react-router-dom";
 import { CSSTransition } from "react-transition-group";
 import { ModalContact } from "./ModalContact";
 
-export function IdahomeNavMenu({
-  idahomeNav,
-  setIdahomeNav,
-  fpsMeter,
-  setFpsMeter,
-  bgRes,
-  setBgRes,
-}) {
+export function IdahomeNavMenu({ idahomeNav, setIdahomeNav, titleHeight }) {
   const [navOpen, setNavOpen] = useState();
 
   useEffect(() => {
@@ -52,7 +45,7 @@ export function IdahomeNavMenu({
             timeout={1000}
             classNames="btn-contact-links"
           >
-            <ModalContact />
+            <ModalContact titleHeight={titleHeight} />
           </CSSTransition>
 
           <CSSTransition

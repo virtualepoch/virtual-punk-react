@@ -1,14 +1,18 @@
 import { useState } from "react";
 
-export const ModalContact = () => {
+export const ModalContact = ({ titleHeight }) => {
   const [modalContactOpen, setModalContactOpen] = useState(false);
 
-  console.log(modalContactOpen);
   return (
     <button
       className={
         modalContactOpen ? "btn-contact-links open" : "btn-contact-links"
       }
+      style={{
+        position: `${modalContactOpen ? "fixed" : "static"}`,
+        left: `${modalContactOpen ? "0" : "calc(50% - 30px)"}`,
+        top: modalContactOpen ? titleHeight + 10 : "calc(50% - 165px)",
+      }}
       onClick={() => setModalContactOpen(!modalContactOpen)}
     >
       <h2 className="header">Contact</h2>
